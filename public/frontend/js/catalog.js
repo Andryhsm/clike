@@ -1,14 +1,16 @@
 $(".select-tri").on('change', '.filter', function(event) {
     var url = get_filter_url();
-    apply_filter(url);
+    apply_filter(url);  
 });
 $(".dropdown > button").click(function() {}, function() {
     var $icon = $(this).find("i");
     if ($icon.hasClass('fa-angle-down')) {
         $icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+        $(this).parents('.dropdown').addClass('open');
     }
     else {
         $icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+        $(this).parents('.dropdown').removeClass('open');
     }
 });
 

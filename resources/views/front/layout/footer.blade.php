@@ -158,7 +158,7 @@
     </div>
     <!-- footer-bottom-area-end -->
 </footer>
-<!-- footer-area-end -->
+ <!-- footer-area-end -->
 <!-- all js here -->
 
 <!-- jquery latest version -->
@@ -218,8 +218,6 @@
 <script src="{!! URL::to('/') !!}/frontend/js/jquery.easy-autocomplete.min.js"></script>
 <!-- plugins js -->
 <script src="{!! URL::to('/') !!}/frontend/js/plugins.js"></script>
-<!-- main js -->
-<script src="{!! URL::to('/') !!}/frontend/js/catalog.js"></script>
 <!-- main js -->
 <script src="{!! URL::to('/') !!}/frontend/js/main.js"></script>
 {!! Html::script('frontend/js/validation.js') !!}
