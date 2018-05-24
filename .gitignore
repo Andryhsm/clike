@@ -9,6 +9,7 @@ composer.lock
 /storage/*
 /vendor
 /.idea
+/.c9
 Homestead.json
 Homestead.yaml
 public/upload
