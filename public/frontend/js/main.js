@@ -664,23 +664,7 @@
 		})
 		.always(function() {});
 
-	//Do something where the popup area modal is open
-	$('#area-modal').on('shown.bs.modal', function(e) {
-		//Change value of the button
-		var $new_selected = $('.select-area').find('.selected');
-		var new_val = $new_selected.find('span').html();
-		$('.btn-select-area').find('span').html(new_val);
-	});
-	$('#area-modal').on('hidden.bs.modal', function(e) {
-		//Close popup
-		if (!$('li.dropdown').is(e.target) &&
-			$('li.dropdown').has(e.target).length === 0 &&
-			$('.open').has(e.target).length === 0
-		) {
-			$('li.dropdown').removeClass('open');
-		}
-	});
-
+	
 	//Close the list area where it open
 	$('body').on('click', function(e) {
 		if (!$('.select-area.dropdown').is(e.target) &&
