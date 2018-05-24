@@ -8,6 +8,7 @@ composer.lock
 /storage/*.key
 /storage/*
 /vendor
+/.c9
 /.idea
 Homestead.json
 Homestead.yaml
