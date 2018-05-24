@@ -1,0 +1,199 @@
+.treeview {
+	font-size: 16px;
+}	
+.main-sidebar {
+	margin-top: 12.5%;
+}
+.box {
+	min-height: 350px;
+}
+.main-header{
+  z-index: 900;
+}
+.main-sidebar, .left-side{
+	 min-height: 0% !important;
+}
+.logo-merchant{
+    position: absolute;
+    margin-top: -35px;
+}
+.product-autocomplete {
+    padding-top: 0px !important; 
+}
+.skin-black-light .main-header li.user-header {
+    background-color: #65bb9f !important;
+}
+.bottle {
+    content: "";
+    display: table;
+    width: 100%;
+}
+.main .content {
+    margin-bottom: 30px;
+    padding: 3% 0%;
+    min-height: 50px;
+}
+.centered-items {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+.vertically-centered {
+    display: flex !important;
+    align-items: center;
+}
+.bottle-box {
+    border: 4px solid #044651;
+    padding: 5px 0 10px 0;
+    text-align: center;
+}
+.bottle-box h3 {
+    margin: 0;
+}
+h3 .bottle-box-number {
+    font-size: 45px;
+    color: #65BB9F;
+    font-weight: 600;
+}
+#store_form input, #store_form select, #store_form textarea,
+#product input, #product select, #product textarea {
+    border: 4px solid rgb(4, 70, 81);
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 0px;
+    background: #EFEFED;
+    color: #044651;
+}
+.file {
+    border: 4px solid rgb(4, 70, 81);
+    width: 100%;
+    height: 5rem;
+    font-size: 15px;
+    padding: 0 20px;
+    outline: none;
+    border-radius: 0px;
+    background: #EFEFED;
+    color: #D2D2CD !important;
+    background: url(../../../images/icon/cloud.svg) no-repeat 0 -4px;
+    background-size: 13%;
+    background-position: 95% 50%;
+}
+.file span {
+    text-decoration: underline;
+}
+.file img {
+    width: 35px;
+    right: 0;
+}
+input#logo, input#shop_image {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+#store_form input, #store_form select,
+#product input, #product select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    height: 5rem;
+}
+ #store_form select, #product select{
+    background: url(../../../images/arrow_select.svg) no-repeat 0 -4px;
+    background-size: 17px;
+    background-position: 95% 50%;
+ }
+  #store_form textarea {
+    height: 14.3rem;
+    resize: none;
+  }
+#store_form label {
+    font-weight: normal;
+}
+.btn-merchant-filled {
+    color: white !important;
+    text-align: center;
+    border-radius: 0px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: #044651;
+    padding: 10px 20px;
+}
+.btn-merchant-filled:hover {
+    background-color: #65bb9f;
+    color: white;
+}
+.call_add_user, #add-role {
+    width: 35%;
+}
+.btn-icon {
+    padding: 10px 25px;
+}
+.visa-account {
+    height: 50px;
+    margin-top: 1%;
+} 
+.visa-account img{
+    width: 65%;
+}
+.visa-expired img {
+    width: 25px;
+}
+.btn-icon span{
+    padding-left: 30px;
+    background-size: 22px !important;
+    background-position: 0% 50% !important;
+    height: 25px;
+    line-height: 2;
+    display: inline-block;
+    background: url(../../../images/icon/white-trash.svg) no-repeat 5px -4px;
+}
+.visa-expired{
+    width: 100% !important;
+    background: #65bb9f;
+    display: inline;
+    color: #fff;
+    margin: 2% 0 -3% 0;
+    padding: 2% 0 2% 10% !important;
+}
+.expired {
+    color: #65bb9f;
+}
+.mini-height-1 {
+    line-height: 1.2 !important;
+}
+.default-payment i, .title-master-manager i {
+    font-size: 22px;
+    font-weight: 600;
+}
+.morris-hover {
+    border: 4px solid #044651 !important;
+    border-radius: 0 !important;
+}
+path {
+    stroke: #044651;
+    stroke-width: 1;
+}
+#salesstat svg path:first {
+    stroke: #044651;
+    stroke-width: 4;
+}
+text {
+    font-size: 15px !important;
+    fill: #044651;
+}
+.text { color: #044651;}
+#salescamembert svg path {
+    stroke: none !important;
+}
+.content-header .header-btn {
+    top: 0;
+    padding: 0 5px;
+}
