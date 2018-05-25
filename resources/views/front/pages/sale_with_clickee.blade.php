@@ -121,7 +121,7 @@
             <div class="tab-content tab-login" id="tab-engagement">
                 <div role="tabpanel" class="tab-pane active" id="uploadTab">
                 	
-                	<div class="row" style="width: 104.4%;margin-bottom: -14px;">
+                	<div class="row" style="width: 105%;margin-bottom: -1.38rem;">
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12 bg-green">LE PLUS POPULAIRE</div>
@@ -129,7 +129,7 @@
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	</div>    
                 	
-                	<div class="row" style="width: 104.4%;">
+                	<div class="row" style="width: 105%;">
                         
                         <div class="col-sm-2 point5 border-green" style="margin-top: 30rem;">
                             <p><b>Compte employés</b></p>
@@ -281,7 +281,7 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="browseTab">
                 	
-                	<div class="row" style="width: 104.4%;margin-bottom: -14px;">
+                	<div class="row" style="width: 105%;margin-bottom: -1.38rem;">
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12 bg-green">LE PLUS POPULAIRE</div>
@@ -289,7 +289,7 @@
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	</div>
                 	
-                	<div class="row" style="width: 104.4%;">
+                	<div class="row" style="width: 105%;">
                         
                         <div class="col-sm-2 point5 border-green" style="margin-top: 30rem;">
                             <p><b>Compte employés</b></p>

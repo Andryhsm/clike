@@ -153,7 +153,7 @@ img.banner-hover{
     color: #000;
     padding: 0.2em 0;
 }
-.login-area form input, .register-area form input, .content-review-form input, .content-review-form textarea {
+.login-area form input, .register-area form input, .content-review-form input, .content-review-form textarea, .register-area input{
     border: 4px solid rgb(4, 70, 81);
     display: block;
     height: 5rem;
@@ -3047,4 +3047,82 @@ img.equipe-clickee {
 .shadow-engagement{
   box-shadow: 0 9px 24px 0 rgba(0, 0, 0, 0.41);
     z-index: 1;
+}
+.content-cart-product, .cart-information {
+    border: 4px solid #0f4651;
+    padding: 20px !important;
+}
+.cart-information {
+    width: 100%;
+    margin: auto;
+    font-weight: 600;
+    font-size: 16px;
+}
+.cart-information .info {
+    margin: 20px 3.5% 0px;
+}
+.container-fluid.page-cart-content, .page-confirm-cart-content {
+    margin: 0% 5%;
+}
+.page-cart-content, .page-confirm-cart-content {
+    font-size: 16px;
+}
+.product-image img {
+    max-height: 160px;
+    max-width: 160px;
+}
+.cart-product .product-image {
+    display: table-cell;
+    width: 160px !important;
+    height: 160px !important;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    border: 4px solid #0f4651;
+}
+.cart-product .product-remove button {
+    font-size: 38px;
+    font-weight: 400;
+}
+.cart-information .btn-clickee-default {
+    color: #044651;
+}
+.cart-information .btn-clickee-default:hover {
+    color: #65bb9f;
+}
+.page-confirm-cart-content .product-image img {
+    max-height: 100px;
+    max-width: 70px;
+}
+.page-confirm-cart-content .cart-product .product-image {
+    width: 100px !important;
+    height: 70px !important;
+ }
+.page-confirm-cart-content .cart-product .product-remove button {
+    font-size: 22px;
+}
+.page-confirm-cart-content .page-cart-content, .page-confirm-cart-content {
+    font-size: 13px;
+}
+.page-confirm-cart-content .content-cart-product h4 {
+    margin-bottom: 0px;
+}
+.page-confirm-cart-content .product-price {
+    margin-top: 0px;
+}
+.page-confirm-cart-content .cart-product .form-control {
+    width: 35% !important;
+    font-size: 11px;
+}
+.page-confirm-cart-content .total-amount {
+    font-weight: 600;
+}
+.page-confirm-cart-content .paiement-title h4 {
+    font-size: 28px;
+    font-weight: 600;
+}
+.content-cart-product h4 {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }

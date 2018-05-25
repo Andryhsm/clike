@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="">
-        <div class="container-fluid page-cart-content mt-50 mb-50">
+        <div class="container-fluid page-confirm-cart-content mt-50 mb-50">
 
             <div class="row">
                 <div class="col-lg-12">
@@ -11,10 +11,37 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 pt-40">
                     {!! Form::open(['url' => url(LaravelLocalization::getCurrentLocale().'/checkout'),'id' =>'cart_form', 'method' => 'POST']) !!}
                         <div class="row">
-                            <div class="cart-product-list col-lg-7 col-md-7 col-sm-7 col-xs-12 mb-20">
+                             <div class="cart-order col-lg-7 col-md-7 col-sm-7 col-xs-12 mb-20">
+                                <div class="cart-information row">
+                                    <div class="cart-title">
+                                        <h2>Ma commande</h2>
+                                    </div>
+                                    <div class="cart-product row">
+                                        <div class="content-cart">
+                                            <div class="paiement-title">
+                                                <h2>CODE PROMOTIONNEL</h2>
+                                            </div>
+                                            <input type="text" class="form-control" name="code-promo"/>
+                                        </div>
+                                         <div class="col-lg-1 product-remove pull-right">
+                                                 <button type="button" onclick="location.href = '".http://clickee.fr/fr/cart/remove/8fc983a91396319d8c394084e2d749d7."'" class="close">×</button>
+                                          </div>
+                                    </div>
+                                    <div class="col-lg-12 info">
+                                        <ul>
+                                            
+                                            <li class="text-center">    
+                                                <button type="submit" class="btn btn-clickee-default mt-40  text-uppercase">Paiement</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="cart-product-list col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
                                 <div class="content-cart-product">
                                     <div class="cart-title">
-                                        <h2>Mon panier</h2>
+                                        <h2>{!! (count($cart->items()) == 0) ? count($cart->items()).' ARTICLE' : count($cart->items()).' ARTICLES' !!} </h2>
                                     </div>
                                     @if(count($cart->items())>0)
                                     @foreach($cart->items() as $item_id=>$item)
@@ -51,6 +78,7 @@
                                             </div>
                                            
                                         </div>
+                                        
                                         <div class="col-lg-1 product-remove pull-right">
                                                 <!--<a href="{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"><i class="fa fa-times"></i></a>-->
                                                 <button type="button" onclick="location.href = '".{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}."'" class="close">×</button>
@@ -58,6 +86,12 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    <div class="cart-product row">
+                                        <div class="col-lg-12 fs-16 total-amount">
+                                                <span>TOTAL À RÉGLER</span>
+                                                <span class="pull-right total_original_amount">{!! format_price($cart->total()) !!}</span>
+                                        </div>
+                                    </div>
                                     @else
                                     <tr>
                                         <td colspan="7">
@@ -67,46 +101,8 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="cart-order col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                <div class="cart-information row">
-                                    <div class="cart-title">
-                                        <h2>Ma commande</h2>
-                                    </div>
-                                    <div class="col-lg-12 info">
-                                        <ul>
-                                            <li>
-                                                <span>TOTAL</span>
-                                                <span class="pull-right total_original_amount">{!! format_price($cart->total()) !!}</span>
-                                             </li>
-                                            <li class="text-center">    
-                                                <a type="button" href="{!! url(LaravelLocalization::getCurrentLocale().'/cart/confirm') !!}" class="btn btn-clickee-default mt-40  text-uppercase">Paiement</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    
-                                </div>
-                            </div>
+                           
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-md-8 col-sm-7 col-xs-12">
-                                <div class="buttons-cart">
-                                    <input type="submit" value="{!! trans('cart.update_cart') !!}" name="update_cart">
-                                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/') !!}">{!! trans('cart.continue_shopping') !!}</a>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 col-sm-5 col-xs-12 mb-30">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="payment_type" value="1"> {!! trans('cart.payment_label') !!}
-                                    </label>
-                                </div>                                <div class="cart_totals">
-                                    <div class="wc-proceed-to-checkout">
-                                        <a href="javascript://" class="checkout-btn">{!! trans('cart.proceed_to_checkout') !!}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     {!! Form::close() !!}
                 </div>
 

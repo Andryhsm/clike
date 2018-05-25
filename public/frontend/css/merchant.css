@@ -28,6 +28,9 @@
     display: table;
     width: 100%;
 }
+.content {
+    min-height: 80px;
+}
 .main .content {
     margin-bottom: 30px;
     padding: 3% 0%;
@@ -56,7 +59,11 @@ h3 .bottle-box-number {
     font-weight: 600;
 }
 #store_form input, #store_form select, #store_form textarea,
-#product input, #product select, #product textarea {
+#product input, #product select,
+#code_promo input, #code_promo select,
+#customer_form input,  #customer_form select, #customer_form .select2,
+#promotion input, #promotion .select2, #promotion textarea, 
+#add_contact input {
     border: 4px solid rgb(4, 70, 81);
     display: block;
     width: 100%;
@@ -97,23 +104,28 @@ input#logo, input#shop_image {
 	z-index: -1;
 }
 #store_form input, #store_form select,
-#product input, #product select{
+#product input, #product select,
+#code_promo input, #code_promo select,
+#customer_form input, #customer_form select, #customer_form .select2,
+#promotion input, #promotion .select2,
+#add_contact input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     outline: 0;
     height: 5rem;
 }
- #store_form select, #product select{
+ #store_form select, #product select,  #customer_form select, #customer_form .select2, 
+#promotion select {
     background: url(../../../images/arrow_select.svg) no-repeat 0 -4px;
     background-size: 17px;
     background-position: 95% 50%;
  }
-  #store_form textarea {
-    height: 14.3rem;
+  #store_form textarea, #code_promo select#categories, #promotion textarea {
+    height: 14.3rem !important;
     resize: none;
   }
-#store_form label {
+#store_form label, #code_promo label, .customer_encasement label {
     font-weight: normal;
 }
 .btn-merchant-filled {
@@ -130,7 +142,7 @@ input#logo, input#shop_image {
     background-color: #65bb9f;
     color: white;
 }
-.call_add_user, #add-role {
+.call_add_user, #store_form button#add-role {
     width: 35%;
 }
 .btn-icon {
@@ -181,10 +193,7 @@ path {
     stroke: #044651;
     stroke-width: 1;
 }
-#salesstat svg path:first {
-    stroke: #044651;
-    stroke-width: 4;
-}
+
 text {
     font-size: 15px !important;
     fill: #044651;
@@ -196,4 +205,18 @@ text {
 .content-header .header-btn {
     top: 0;
     padding: 0 5px;
+}
+#code_promo .search-box-container .search-box {
+    border: none;
+}
+#code_promo .search-box-container .search-box ul {
+    padding: 0;
+}
+.customer-encasement {
+    height: 200px;
+    padding-top: 30px;
+}
+.select2-container--default .select2-selection--single {
+    background-color: #EFEFED;
+    border: none;
 }

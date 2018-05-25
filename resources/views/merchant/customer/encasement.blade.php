@@ -30,28 +30,28 @@
 <section class="content">
     <div class="bottle">
     	<section class="content-header text-center">
-            <h1>
+            <strong class="text-uppercase">
                 Encaissement
-            </h1>
+            </strong>
         </section>
     
         <section class="content">
             @include('admin.layout.notification')
-            <div class="">
+            <div class="customer-encasement">
                 <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-body">
+                    <!--<div class="box">
+                        <div class="box-body">-->
                             <div class="title text-center">
-                                <h1>Client</h1>
+                                <strong class="text-uppercase">Client</strong>
                             </div>
-                            <div class="btn btn-small col-sm-6">
+                            <div class="btn btn-small mt-20 col-sm-6">
                                 <a href="{!! URL::to('merchant/customer') !!}" class="btn btn-block btn-merchant-filled">Dejà Client</a>
                             </div>
-                            <div class="btn btn-small col-sm-6">
+                            <div class="btn btn-small mt-20 col-sm-6">
                                 <a href="{!! URL::to('merchant/customer/create') !!}" class="btn btn-block btn-merchant-filled">Nouveau Client</a>
                             </div>
-                        </div>
-                    </div>
+                        <!--</div>
+                    </div>-->
                 </div>
             </div>
         </section>

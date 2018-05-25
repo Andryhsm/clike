@@ -7,16 +7,23 @@ use App\Http\Controllers\Controller;
 use App\Interfaces\UserRepositoryInterface;
 use App\Interfaces\StoreRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
+use App\Interfaces\BrandRepositoryInterface;
+use App\Interfaces\RegionRepositoryInterface;
+use App\BrandTag;
 
 class PagesController extends Controller
 {
 	protected $user_repository;
 	protected $store_repository;
 	protected $product_repository;
+	protected $region_repository;
+	protected $brand_repository;
 	
-	public function __construct(StoreRepositoryInterface $store_repo_interface, UserRepositoryInterface $user_repo_interface, ProductRepositoryInterface $product_repo_interface)
+	public function __construct(StoreRepositoryInterface $store_repo_interface, ProductRepositoryInterface $product_repo_interface,UserRepositoryInterface $user_repository,RegionRepositoryInterface $region_repo, BrandRepositoryInterface $brand_repo)
 	{
-		$this->user_repository = $user_repo_interface;
+        $this->region_repository = $region_repo;
+        $this->brand_repository = $brand_repo;
+		$this->user_repository = $user_repository;
 		$this->store_repository = $store_repo_interface;
 		$this->product_repository = $product_repo_interface;
 	}
@@ -81,6 +88,10 @@ class PagesController extends Controller
 	//Page de test pour le tab
 	public function PageTest()
 	{
-		return view('front.test.test');
+		$countries = $this->region_repository->getCountries();
+        $store = false;
+        $brands = $this->brand_repository->lists();
+        $brand_tags = BrandTag::get();
+		return view('front.test.test', compact('countries', 'store', 'brands', 'brand_tags'));
 	}
 }

@@ -197,6 +197,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
     Route::get('cart', 'CartController@index');
     Route::post('cart/add','CartController@add');
     Route::post('cart/update','CartController@update');
+    Route::get('cart/confirm', 'CartController@confirmCart');
     Route::get('cart/remove/{item_id}','CartController@remove');
     Route::post('remove-product','ProductController@removeProduct');
     Route::post('product-sorting','ProductController@getSortByPrice');

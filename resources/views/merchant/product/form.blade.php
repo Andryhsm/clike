@@ -68,7 +68,7 @@
             <input type="text" class="form-control" placeholder="URL de la vidéo">
         </div>
         <div class="col-xs-3 button">
-            <button type="button" class="btn btn-primary">Ajouter une option</button>
+            <button type="button" class="btn btn-merchant-filled">Ajouter une option</button>
         </div>
     </div>
     <section class="content-header">
@@ -210,10 +210,10 @@
                                                     </div>
                                                 </div>
                                                  <div class="form-group french_input hidden">
-                                                        {!! Form::label('fr_summary', 'Résumé', ['class' => 'col-sm-2 control-label']) !!}
-                                                        <div class="col-sm-10">
+                                                        {!! Form::label('fr_summary', 'Résumé', ['class' => 'col-sm-4 control-label']) !!}
+                                                        <div class="col-sm-7">
                                                         <textarea class="textarea" placeholder="Résumé" name="fr_summary" id="fr_summary"
-                                                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 4px solid #044651; padding: 10px;">
                                                             @if($product && !empty($product->french))
                                                                 {!! $product->french->summary !!}
                                                             @endif
@@ -223,9 +223,9 @@
 
                                                     <div class="form-group french_input">
                                                         {!! Form::label('fr_description', 'Description', ['class' => 'col-sm-4 control-label']) !!}
-                                                        <div class="col-sm-77>
+                                                        <div class="col-sm-7">
                                                         <textarea class="textarea" placeholder="Description" name="fr_description" id="fr_description"
-                                                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 4px solid #044651; padding: 10px;background:#EFEFED">
                                                             @if($product && !empty($product->french))
                                                                 {!! $product->french->description !!}
                                                             @endif
@@ -342,7 +342,7 @@
                                                placeholder="Lien0">
                                                </div>
                                     <div class="col-xs-3 button">
-                                        <button type="button" class="btn btn-primary add_option">Ajouter une option</button>
+                                        <button type="button" class="btn btn-merchant-filled add_option">Ajouter une option</button>
                                     </div>
                                 </div>
                             @endif
@@ -357,7 +357,7 @@
                                     <input type="text" class="form-control" id="product-search">
                                 </div>
                                 <div class="col-xs-3">
-                                    <button type="button" class="btn btn-primary" data-type="{!! ($product)?'edit':'add' !!}" id="product-search-btn">Chercher
+                                    <button type="button" class="btn btn-merchant-filled" data-type="{!! ($product)?'edit':'add' !!}" id="product-search-btn">Chercher
                                     </button>
                                 </div>
                             </div>
@@ -469,8 +469,8 @@
 
 
                         <div class="box-footer">
-                            <a href="{!! route('product') !!}" class="btn btn-default">Annuler</a>
-                            <button type="submit" class="btn btn-primary pull-right" id="add-product">Sauvegarder
+                            <a href="{!! route('product') !!}" class="btn btn-merchant-filled">Annuler</a>
+                            <button type="submit" class="btn btn-merchant-filled pull-right" id="add-product">Sauvegarder
                             </button>
                         </div>
                         {!! Form::close() !!}

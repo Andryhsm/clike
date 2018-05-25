@@ -29,8 +29,8 @@ Morris.Bar({
   // chart.
   labels: ['ventes'],
   barColors: ['#65BB9F'],
+  xLabelMargin: 10
 });
-
 
 
 var donut = Morris.Donut({
@@ -47,3 +47,22 @@ var donut = Morris.Donut({
   ],
   formatter: function(x) { return x + "%" }
 });
+$(document).ready(function() {
+  donut.select(0);
+  $("#salescamembert text:first tspan").html("70%").attr('fill', '#65BB9F');
+  $("#salescamembert text:last tspan").html("en ligne").css({
+    'text-transform': 'uppercase',
+    'font-size': '12px'
+  });
+});
+
+for (i = 0; i < donut.segments.length; i++) {
+  donut.segments[i].handlers['hover'].push(function(i) {
+    /*console.log(donut.data[i].value)*/
+    $("#salescamembert text:first tspan").html(donut.data[i].value + "%").attr('fill', '#65BB9F');
+    $("#salescamembert text:last tspan").html(donut.data[i].label).css({
+      'text-transform': 'uppercase',
+      'font-size': '12px'
+    });
+  });
+}

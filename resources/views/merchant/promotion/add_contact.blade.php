@@ -26,26 +26,26 @@
     </div>
 @stop
 @section('content')
-
-<section class="content-header">
-    <h1>
-        Ajouter des contacts
-    </h1>
-</section>
-
 <section class="content">
-    @include('admin.layout.notification')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-primary">
-                
-                <div class="box-body">   
-                    <form action="{!! url(LaravelLocalization::getCurrentLocale().'/subscribe') !!}" method="post" class="">
-                        <input type="text" name="email" class="form-control required email" placeholder='entrer votre E-MAIL ici'/>
-                        <button style="margin-top:5px;" type="submit" id="subscribe" class="col-lg-2 btn btn-primary">Ajouter</button>
-                    </form>
-                </div>    
-                
+    <div class="bottle">
+        <section class="content-header text-center">
+            <strong class="text-uppercase">
+                Ajouter des contacts
+            </strong>
+        </section>
+        @include('admin.layout.notification')
+        <div class="row">
+            <div class="col-md-12">
+                <div class=""> <!-- box box-primary -->
+                    
+                    <div class="box-body">   
+                        <form action="{!! url(LaravelLocalization::getCurrentLocale().'/subscribe') !!}" method="post" class="" id="add_contact">
+                            <input type="text" name="email" class="form-control required email" placeholder='entrer votre E-MAIL ici'/>
+                            <button style="margin:10px 0 0 40%;" type="submit" id="subscribe" class="col-lg-2 btn btn-merchant-filled">Ajouter</button>
+                        </form>
+                    </div>    
+                    
+                </div>
             </div>
         </div>
     </div>

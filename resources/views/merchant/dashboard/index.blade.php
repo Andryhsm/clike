@@ -32,7 +32,7 @@
             <div class="box-body">-->
         <div class="bottle">
             <div  class="col-lg-12 col-sm-12 text-center">
-               <h3><label class="label color-text">Statistiques de vente</label></h3>
+               <h3><label class="label color-text text-uppercase">Statistiques de vente</label></h3>
         	   <div id="salesstat"></div>
             
         
@@ -76,7 +76,7 @@
     <section class="content">
         <div  class="bottle">
             <div class="col-sm-6 col-sm-offset-3 text-center">
-                <h3><label class="label color-text">Ventes en ligne - locales</label></h3>
+                <h3><label class="label color-text text-uppercase">Ventes en ligne - locales</label></h3>
                 <div id="salescamembert"></div>
             </div>
         </div>
