@@ -622,6 +622,10 @@
 		$('#2-tab').trigger('click');
 	});
 
+	$('#btn-etape3').on('click', function() {
+		$('#4-tab').trigger('click');
+	});
+
 	$('.btn-pack').on('click', function() {
 		$('#3-tab').trigger('click');
 	});

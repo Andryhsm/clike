@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs hidden" id="myTab" role="tablist">
     <li class="nav-item active">
       <a class="nav-link" id="1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Info perso</a>
     </li>
@@ -77,7 +77,7 @@
         @include('merchant.pack')
     </div>
     <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="3-tab">
-        payement
+        @include('merchant.cart-merchant')
     </div>
     <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="4-tab">
         @include('merchant.register')

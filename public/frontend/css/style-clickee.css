@@ -3106,7 +3106,7 @@ img.equipe-clickee {
     width: 100px !important;
     height: 70px !important;
  }
-.page-confirm-cart-content .cart-product .product-remove button {
+.page-confirm-cart-content .cart-product .product-remove button,.tab-pane .product-remove button{
     font-size: 22px;
 }
 .page-confirm-cart-content .page-cart-content, .page-confirm-cart-content {
@@ -3145,4 +3145,14 @@ img.equipe-clickee {
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
+}
+
+.cart-information .info-facture p{
+   margin: 0px !important;
+   padding: 0px !important;
+   font-weight: 400;
+   font-size: 15px;
+}
+.address-fact{
+  margin-left: 3%;
 }
