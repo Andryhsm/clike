@@ -93,7 +93,7 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 				$query->where('merchant_id',$user_id);
 				$query->where('is_added_by',"merchant");
 			},'coupon'])
-			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_SELECTED])
+			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_WANSWER])
 			->whereIn('brand_id', $brands)
 			->get();
 		return $items;
@@ -156,7 +156,7 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 				$query->where('is_added_by',"customer");
 				$query->where('is_booked','0');
 			},'coupon'])
-			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_SELECTED])
+			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_WANSWER])
 			->get();
 		return $items;
 	}
@@ -181,7 +181,7 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 					$q->orWhere('is_canceled', '1');
 				});
 			},'coupon'])
-			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_FINISHED,OrderItem::ORDER_STATUS_CANCELED,OrderItem::ORDER_STATUS_NEGATIVE])
+			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_FINISHED,OrderItem::ORDER_STATUS_CANCELED])
 			->get();
 		return $items;
 	}

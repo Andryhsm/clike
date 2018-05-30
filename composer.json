@@ -30,6 +30,7 @@
         "predis/predis": "~1.1",
         "revolution/laravel-amazon-product-api": "^0.4.0",
         "skovmand/mailchimp-laravel": "^1.0",
+        "webup/laravel-sendinblue": "1.0.*",
         "yajra/laravel-datatables-oracle": "^7.2",
         "zfr/zfr-mailchimp": "2.*"
     },

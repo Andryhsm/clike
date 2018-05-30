@@ -8,7 +8,7 @@
        <div class="col-lg-12">
                     @include('notification')
                 </div>
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs nav-width">
         <li role="presentation" class="active">
             <a class="nav-title notflip" href="#login-merchant-tab" aria-controls="cnxTab" role="tab" data-toggle="tab">CONNEXION</a>
         </li>
@@ -16,13 +16,13 @@
             <a class="nav-title flip" href="#register-merchant-tab" aria-controls="enregTab" role="tab" data-toggle="tab">S'ENREGISTRER</a>
         </li>
     </ul>
-    <div class="tab-content tab-login">
+    <div class="tab-content"> <!--tab-login-->
         <div role="tabpanel" class="tab-pane active" id="login-merchant-tab">
             @include('merchant.login')
 
         </div>
         <div role="tabpanel" class="tab-pane" id="register-merchant-tab">
-            @include('merchant.register')
+            @include('merchant.register_master')
         </div>
     </div>
 </div>

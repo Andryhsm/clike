@@ -7,23 +7,23 @@
                 <h2>POURQUOI VENDRE SUR CLICKEE</h2>
             </div>
             
-            <h4 class="text-title mb--20">1. Mise en vente de vos produits en illimité</h4>
+            <h4 class="text-title mb--0">1. Mise en vente de vos produits en illimité</h4>
             <p>Vous pouvez mettre autant de produits que vous le souhaitez, au même titre que s’il s’agissait de
             votre site Internet, le tout avec une visibilité optimale (référencement et visibilité de part la
             communication faite de la plateforme).</p>
             
-            <h4 class="text-title mb--20">2. Gestion des stocks en temps réel</h4>
+            <h4 class="text-title mb--0">2. Gestion des stocks en temps réel</h4>
             <p>Grâce à notre fonctionnalité « Encaissement », vous pouvez gérer vos stocks en live et éviter les
             doublons.</p>
             
-            <h4 class="text-title mb--20">3. Attirer de nouveaux clients</h4>
+            <h4 class="text-title mb--0">3. Attirer de nouveaux clients</h4>
             <p>Clickee fonctionne sur le principe du Click and Collect, une fois les produits achetés, les clients
             viendront chez vous les récupèrer. A vous de jouer pour les fidéliser.</p>
             
-            <h4 class="text-title mb--20">4. Visibilité sur vos statistiques</h4>
+            <h4 class="text-title mb--0">4. Visibilité sur vos statistiques</h4>
             <p>Vous avez accès aux statistiques de vos performances en continue.</p>
             
-            <h4 class="text-title mb--20">5. Boutique ouverte 24h/24</h4>
+            <h4 class="text-title mb--0">5. Boutique ouverte 24h/24</h4>
             <p>Les clients peuvent acheter vos produits 24h/24 et 7j/7.</p>
             
             <div class="row">
@@ -84,17 +84,17 @@
                 </div>
             </div>
             
-            <h4 class="text-title mb--20">1. Créez votre compte professionnel</h4>
+            <h4 class="text-title mb--0">1. Créez votre compte professionnel</h4>
             <p>En moins de 5 minutes vous choisissez le pack le plus adapté à vos besoins et vous rentrez vos
             coordonnées professionnelles.</p>
             
-            <h4 class="text-title mb--20">2. Prenez vos produits en photo</h4>
+            <h4 class="text-title mb--0">2. Prenez vos produits en photo</h4>
             <p>A l’aide de votre téléphone et nos conseils, prenez vos produits en photo pour les mettre sur le site.</p>
             
-            <h4 class="text-title mb--20">3. Décrivez vos produits</h4>
+            <h4 class="text-title mb--0">3. Décrivez vos produits</h4>
             <p>Rentrez les informations qui concernent vos produits.</p>
             
-            <h4 class="text-title mb--20">4. Générez du flux dans votre boutique</h4>
+            <h4 class="text-title mb--0">4. Générez du flux dans votre boutique</h4>
             <p>Une fois vos produits vendus, les clients viennent vous voir pour les récupérer, à vous de jouer!</p>
             
             <div class="row">
@@ -121,7 +121,7 @@
             <div class="tab-content tab-login" id="tab-engagement">
                 <div role="tabpanel" class="tab-pane active" id="uploadTab">
                 	
-                	<div class="row" style="width: 104.4%;margin-bottom: -14px;">
+                	<div class="row" style="width: 105%;margin-bottom: -1.4rem;">
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12 bg-green">LE PLUS POPULAIRE</div>
@@ -129,7 +129,7 @@
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	</div>    
                 	
-                	<div class="row" style="width: 104.4%;">
+                	<div class="row" style="width: 105%;">
                         
                         <div class="col-sm-2 point5 border-green" style="margin-top: 30rem;">
                             <p><b>Compte employés</b></p>
@@ -281,7 +281,7 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="browseTab">
                 	
-                	<div class="row" style="width: 104.4%;margin-bottom: -14px;">
+                	<div class="row" style="width: 105%;margin-bottom: -1.4rem;">
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12 bg-green">LE PLUS POPULAIRE</div>
@@ -289,7 +289,7 @@
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	</div>
                 	
-                	<div class="row" style="width: 104.4%;">
+                	<div class="row" style="width: 105%;">
                         
                         <div class="col-sm-2 point5 border-green" style="margin-top: 30rem;">
                             <p><b>Compte employés</b></p>

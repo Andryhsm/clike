@@ -206,6 +206,8 @@
 <script src="{!! URL::to('/') !!}/frontend/js/jquery.meanmenu.js"></script>
 
 {!! Html::script('js/jquery.validate.min.js') !!}
+<!-- bootstrap date -->
+{!! Html::script('backend/plugins/datepicker/bootstrap-datepicker.js') !!}
 <!-- wow js -->
 <script src="{!! URL::to('/') !!}/frontend/js/wow.min.js"></script>
 <!-- jquery.mixitup.min.js -->

@@ -31,16 +31,17 @@
         $category_arr = [];
         $attributes = array();
     ?>
-    <section class="content-header" style="text-align: center;">
-        <h1>
-            @if($customer)
-                Dejà Client
-            @else
-                Nouveau Client
-            @endif
-        </h1>
-    </section>
-    <section class="content">
+<section class="content">
+    <div class="bottle">
+        <section class="content-header" style="text-align: center;">
+            <strong class="text-uppercase">
+                @if($customer)
+                    Dejà Client
+                @else
+                    Nouveau Client
+                @endif
+            </strong>
+        </section>
         @include('admin.layout.notification')
     	<div class="row">
     		<div class="col-md-12">
@@ -62,7 +63,8 @@
     			</div>
     		</div> 
     	</div>
-    </section>
+    </div>
+</section>
 
 @endsection
 @section('additional-script')    

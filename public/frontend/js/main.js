@@ -618,6 +618,14 @@
 		$('.btn-select-area').find('span').html(new_val);
 	});
 
+	$('#btn-etape1').on('click', function() {
+		$('#2-tab').trigger('click');
+	});
+
+	$('.btn-pack').on('click', function() {
+		$('#3-tab').trigger('click');
+	});
+
 	//Script of search product
 	$('.search-product').on('click', function() {
 		$('#search-product-modal').modal('show');
@@ -664,7 +672,7 @@
 		})
 		.always(function() {});
 
-	
+
 	//Close the list area where it open
 	$('body').on('click', function(e) {
 		if (!$('.select-area.dropdown').is(e.target) &&

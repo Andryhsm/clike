@@ -13,9 +13,9 @@ interface CustomerRepositoryInterface
 
 	public function save($input);
 
-	public function getCustomers($store_id);
+	public function getCustomers();
 
-	public function getCustomersLocal($store_id);
+	public function getCustomersLocal();
 
 	public function getAllCustomersSystem();
 

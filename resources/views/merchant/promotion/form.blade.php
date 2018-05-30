@@ -35,54 +35,56 @@ if(count($code_promos) > 0){
     }
 }
 ?>
-
-<section class="content-header">
-    <h1>
-        Nouvelle Newsletter
-    </h1>
-</section>
-
 <section class="content">
-    @include('admin.layout.notification')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-primary">
-                {!! Form::open(array('url' =>($promotion) ? Url("fr/merchant/promotion/$promotion->promotion_id") : Url("fr/merchant/promotion"),'id'=>'promotion','class'=>'promotion','method' => ($promotion)? 'PATCH':'POST')) !!}
-                <div class="box-body">                    
-                    <div class="row">
-                    	<div class="col-lg-6">
-	                    	<div class="form-group col-lg-12">
-		                        <label for="campagne_name">Nom campagne</label>
-		                        <input type="text" name="campagne_name" class="form-control required" id="campagne_name"
-		                               value="{!! ($promotion) ? $promotion->campagne_name : null !!}"
-		                               placeholder="Nom campagne">
-		                    </div>
-		                    <div class="form-group col-lg-12">
-	                            {!! Form::label('code_promo','Code promo') !!}
-								{!! Form::select('code_promo',$all_code_promo,($promotion) ? $promotion->code_promo : null,['class'=>'form-control required','id'=>'code_promo']) !!}
-	                        </div>
-                    	</div>
-                    	<div class="col-lg-6">
-	                    	<div class="form-group col-lg-12">
-		                        <label for="subject">Sujet</label>
-		                        <input type="text" name="subject" class="form-control required" id="subject"
-		                               value="{!! ($promotion) ? $promotion->subject : null !!}"
-		                               placeholder="Sujet du mail">
-		                    </div>
-		                    <div class="form-group col-lg-12">
-		                        <label for="description">Déscription</label>
-		                        <textarea name="description" rows="5" class="form-control required" id="description"
-		                               value="{!! ($promotion) ? $promotion->description : null !!}"
-		                               placeholder="Déscription"></textarea>
-		                    </div>
-                    	</div>
+    <div class="bottle">
+        <section class="content-header text-center">
+            <strong class="text-uppercase">
+                Nouvelle Newsletter
+            </strong>
+        </section>
+    
+        @include('admin.layout.notification')
+        <div class="">
+            <div class="col-md-12">
+                <div class=""> <!-- box box-primary -->
+                    <div class=""> <!-- box-body -->
+                    {!! Form::open(array('url' =>($promotion) ? Url("fr/merchant/promotion/$promotion->promotion_id") : Url("fr/merchant/promotion"),'id'=>'promotion','class'=>'promotion','method' => ($promotion)? 'PATCH':'POST')) !!}
+                                        
+                        <div class="row">
+                        	<div class="col-lg-6">
+    	                    	<div class="form-group col-lg-12">
+    		                        <label for="campagne_name">Nom campagne</label>
+    		                        <input type="text" name="campagne_name" class="form-control required" id="campagne_name"
+    		                               value="{!! ($promotion) ? $promotion->campagne_name : null !!}"
+    		                               placeholder="Nom campagne">
+    		                    </div>
+    		                    <div class="form-group col-lg-12">
+    	                            {!! Form::label('code_promo','Code promo') !!}
+    								{!! Form::select('code_promo',$all_code_promo,($promotion) ? $promotion->code_promo : null,['class'=>'form-control required','id'=>'code_promo']) !!}
+    	                        </div>
+                        	</div>
+                        	<div class="col-lg-6">
+    	                    	<div class="form-group col-lg-12">
+    		                        <label for="subject">Sujet</label>
+    		                        <input type="text" name="subject" class="form-control required" id="subject"
+    		                               value="{!! ($promotion) ? $promotion->subject : null !!}"
+    		                               placeholder="Sujet du mail">
+    		                    </div>
+    		                    <div class="form-group col-lg-12">
+    		                        <label for="description">Déscription</label>
+    		                        <textarea name="description" rows="5" class="form-control required" id="description"
+    		                               value="{!! ($promotion) ? $promotion->description : null !!}"
+    		                               placeholder="Déscription"></textarea>
+    		                    </div>
+                        	</div>
+                        </div>
                     </div>
+                    <div class="col-lg-12"> <!-- box-footer -->
+                        <a href="{!! Url('fr/merchant/promotion') !!}" class="btn btn-merchant-filled">Annuler</a>
+                        <button type="submit" class="btn btn-merchant-filled pull-right" id="add-role">Envoyer</button>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
-                <div class="box-footer">
-                    <a href="{!! Url('fr/merchant/promotion') !!}" class="btn btn-default">Annuler</a>
-                    <button type="submit" class="btn btn-primary pull-right" id="add-role">Envoyer</button>
-                </div>
-                {!! Form::close() !!}
             </div>
         </div>
     </div>

@@ -77,7 +77,9 @@ class ProductController extends Controller
 	public function getData()
 	{	
 		//$data_tables = Datatables::collection($this->product_repository->getByProductManager(Session::get('store_to_user')));
-		$data_tables = Datatables::collection($this->product_repository->getByStore(Session::get('store_to_user')));
+		$store_id = auth()->user()->store->first()->store_id;
+		$products = $this->product_repository->getByStore($store_id);
+		$data_tables = Datatables::collection($products);
 		$data_tables->EditColumn('product_name', function ($product) {
 			if(isset($product->french->product_name))	
 				return $product->french->product_name;

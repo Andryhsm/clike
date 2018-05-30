@@ -89,7 +89,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link {{ set_active(['fr/merchant/orders', 'fr/merchant/orders/*']) }}" href="{!! URL::to('/fr/merchant/orders') !!}">
-                <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/historique_de_mes_commandes.svg"/><span>Commandes</span>
+                <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/historique_de_mes_commandes.svg"/><span>Commandes &nbsp;&nbsp; <span class="badge bg-green-dark mr-5">{!! getNumberOrderPending(Auth::id()) !!}</span></span>
             </a>
         </li>
         <li class="nav-item">

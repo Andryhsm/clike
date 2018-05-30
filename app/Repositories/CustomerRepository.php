@@ -178,13 +178,13 @@ class CustomerRepository implements CustomerRepositoryInterface
 		return $this->model;
 	}
 
-	public function getCustomers($store_id){
-		$store = Store::find($store_id);
+	public function getCustomers(){
+		$store = Store::find(auth()->user()->store->first()->store_id);
 		return $store->customers;
 	}
 
-	public function getCustomersLocal($store_id){
-		$store = Store::find($store_id);
+	public function getCustomersLocal(){
+		$store = Store::find(auth()->user()->store->first()->store_id);
 		return $store->customersLocal;
 	}
 

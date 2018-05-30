@@ -59,6 +59,10 @@ return [
 		'MAILCHIMP_API_KEY' => '09d28a3824eb4ce1bbb69362b4ea77c2-us18',
 		'MAILCHIMP_LIST_ID' => 'e0da043836'
 	],
+	'sendinblue' => [
+       'url' => 'https://api.sendinblue.com/v2.0',
+       'key' => env('SENDINBLUE_KEY'),
+    ],
 
 
 ];

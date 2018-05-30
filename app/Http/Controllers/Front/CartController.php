@@ -32,7 +32,7 @@ class CartController extends Controller
 		$cart = $this->cart;
         return view('front.cart.index',compact('cart'));
     }
-
+	
 	public function add(Request $request)
 	{
 		$product_id = $request->input("product_id");
@@ -107,6 +107,12 @@ class CartController extends Controller
 			->render();
 		$cart_quantity = Cart::cartQuantity();
 		return Response::json(['cart_quantity'=>$cart_quantity,'recent_items'=>$recent_items_html]);
+	}
+	
+	public function confirmCart()
+	{
+		$cart = $this->cart;
+        return view('front.cart.confirm_cart',compact('cart'));
 	}
 
 }

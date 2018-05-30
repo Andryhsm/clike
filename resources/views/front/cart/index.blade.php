@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="">
-        <div class="container">
+        <div class="container-fluid page-cart-content mt-50 mb-50">
 
             <div class="row">
                 <div class="col-lg-12">
@@ -30,11 +30,11 @@
                                             <div class="product-price">
                                                     <?php $product = $item->getProduct();?>
                                                     @if($product->original_price != $product->best_price)
-                                                        <span class="old-price fs-14" style="color: rgb(67, 223, 230);">({!! getPercentage($product->original_price,$product->best_price) !!})</span>
-                                                        <span class="old-price original_price fs-14" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
-                                                        <span class="new-price real-price fs-14" data-price="{!! $product->best_price !!}">{!! format_price($product->best_price) !!}</span>
+                                                        <span class="old-price" style="color: rgb(67, 223, 230);">({!! getPercentage($product->original_price,$product->best_price) !!})</span>
+                                                        <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
+                                                        <span class="new-price real-price" data-price="{!! $product->best_price !!}">{!! format_price($product->best_price) !!}</span>
                                                     @else
-                                                        <span class="old-price real-price original_price fs-14" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
+                                                        <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
                                                     @endif
                                             </div>
                                             <div class="product-quantity">
@@ -52,7 +52,9 @@
                                            
                                         </div>
                                         <div class="col-lg-1 product-remove pull-right">
-                                                <a href="{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"><i class="fa fa-times"></i></a>
+                                                <!--<a href="{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"><i class="fa fa-times"></i></a>-->
+                                                <button type="button" onclick="location.href = '".{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}."'" class="close">×</button>
+                    
                                         </div>
                                     </div>
                                     @endforeach
@@ -75,6 +77,9 @@
                                             <li>
                                                 <span>TOTAL</span>
                                                 <span class="pull-right total_original_amount">{!! format_price($cart->total()) !!}</span>
+                                             </li>
+                                            <li class="text-center">    
+                                                <a type="button" href="{!! url(LaravelLocalization::getCurrentLocale().'/cart/confirm') !!}" class="btn btn-clickee-default mt-40  text-uppercase">Paiement</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -108,4 +113,5 @@
             </div>
         </div>
     </div>
+    @include('front.layout.section-avantage')    
 @stop

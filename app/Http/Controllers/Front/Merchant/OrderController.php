@@ -77,12 +77,14 @@ class OrderController extends Controller
                     $order_item_request->merchant_id = \Auth::id();
                     $order_item_request->is_added_by = 'merchant';
                     $order_item_request->store_id = $id_store;
-                    $order_item_request->available_type = 6;
-            		$order_item_request->is_canceled = 1;
+                    $order_item_request->available_type = 2;
                     $order_item_request->created_date = Carbon::now();
                     $order_item_request->save();
                     
-                    $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_CANCELED, $item->order_item_id);
+                    $coupon_code = $this->generateCouponCode();
+                    $coupon = $this->saveCoupon($coupon_code, $order_item_request);
+                    
+                    $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_REPLIED, $item->order_item_id);
                 }
             }
                 

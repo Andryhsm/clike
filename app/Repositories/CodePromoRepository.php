@@ -18,7 +18,7 @@ class CodePromoRepository implements CodePromoRepositoryInterface
         $this->model = $code_promo;
     }
     public function save($input){
-        $this->model->user_id = Session::get('store_to_user');;
+        $this->model->user_id = auth()->user()->store->first()->store_id;
         $this->model->code_promo_name = $input['code_promo_name'];
         $this->model->date_debut = Carbon::parse($input['date_debut']);
         $this->model->date_fin = Carbon::parse($input['date_fin']);
