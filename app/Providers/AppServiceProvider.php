@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
         ini_set('memory_limit','500M'); //set the limit of memory
-        
+
         Validator::extend(
           'recaptcha',
           'App\\Validators\\Recaptcha@validate'

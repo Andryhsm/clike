@@ -10,6 +10,7 @@ composer.lock
 /vendor
 .c9/*
 /.idea
+/.c9
 Homestead.json
 Homestead.yaml
 public/upload

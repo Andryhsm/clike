@@ -200,7 +200,6 @@
 
 <!-- jquery.elevateZoom-3.0.8.min.js -->
 <script src="{!! URL::to('/') !!}/frontend/js/jquery.elevatezoom.js"></script>
-
 <!-- Zoom.min.js -->
 <script src="{!! URL::to('/') !!}/frontend/js/jquery.zoom.js"></script>
 <!-- meanmenu js -->
