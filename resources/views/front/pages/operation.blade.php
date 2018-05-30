@@ -104,7 +104,7 @@
                 </div>
             </div>
             
-            <h4 class="text-title mb--20">Clients</h4>
+            <h4 class="text-title mb--0">Clients</h4>
             <p>En quelques cliques consultez les produits autour de chez vous sur Clickee. <br>
             Le commerçant est informé de la commande. Il a 12 heures jours ouvrés pour valider la
             disponibilité du produits en magasin. <br>
@@ -116,7 +116,7 @@
                 </div>
             </div>
             
-            <h4 class="text-title mb--20">Commerçants</h4>
+            <h4 class="text-title mb--0">Commerçants</h4>
             <p>Créez votre compte professionnel en moins de 5 minutes pour rejoindre notre communauté de
             boutiques locales.<br>
             Mettez vos produits en ligne à n’importe quel moment de la journée.<br>

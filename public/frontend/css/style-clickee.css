@@ -483,6 +483,7 @@ ul {
 .mb-10{ margin-bottom:10px;}
 .mb-20{ margin-bottom:20px;}
 .mb--20{ margin-bottom:-20px;}
+.mb--0{ margin-bottom:0px;}
 .mb-26{ margin-bottom:26px;}
 .mb-30{ margin-bottom:30px !important;}
 .mb-35{ margin-bottom:35px !important;}
@@ -2773,7 +2774,7 @@ span.text-title {
     font-weight: 600;
     color: #65BB9F;
 }
-.content-page p {
+.tab-panel p {
     margin: 20px 0 20px;
     line-height: 1.25;
 }
@@ -2877,6 +2878,9 @@ img.equipe-clickee {
 }
 .bg-white{
   background: white;
+}
+.bg-grey{
+  background: #efefed;
 }
 .engagement-logo{
   max-width: 35%;
@@ -3133,4 +3137,12 @@ img.equipe-clickee {
 .account-area input.form-control.open-time {
     width: 15%;
     margin: 0% 2%;
+}
+.nav-width{
+  width: 60% !important;
+}
+.info-width-register{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
 }

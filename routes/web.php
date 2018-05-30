@@ -218,7 +218,6 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
     Route::get('fonctionnement','PagesController@PageOperation');
     Route::get('test','PagesController@PageTest');
     Route::get('sendMailTest','TestController@SendMailTest');
-    Route::get('sendMailTest2','TestController@SendMailTest2');
     
     Route::get('wishlist','WishlistController@index');
     Route::get('wishlist/{id}','WishlistController@store');

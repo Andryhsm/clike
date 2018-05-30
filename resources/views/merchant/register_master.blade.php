@@ -1,13 +1,4 @@
-@extends('front.layout.master')
-
-@section('additional-css')
-
-@stop
-
-@section('content')
-
-<div class="container">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item active">
       <a class="nav-link" id="1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Info perso</a>
     </li>
@@ -31,7 +22,7 @@
           <h2>informations membre</h2>
         </div>
         <!-- register-area-start -->
-        <div class="register-area">
+        <div class="register-area info-width-register">
             <p>
                 <span><a href="#" class="gender mt-30 mr-20" id="Femme">
                     <i class="fa fa-dot-circle-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mme
@@ -92,6 +83,3 @@
         @include('merchant.register')
     </div>
   </div>
-</div>
-
-@endsection
