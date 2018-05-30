@@ -30,7 +30,7 @@ class CodePromoController extends Controller
      */
     public function index()
     {
-        $code_promos = Datatables::collection($this->code_promo_repository->getAll(Session::get('store_to_user')))->make(true);
+        $code_promos = Datatables::collection($this->code_promo_repository->getAll(auth()->user()->store->first()->store_id))->make(true);
         $code_promos = $code_promos->getData();
         return view('merchant.code_promo.list', compact('code_promos'));
     }

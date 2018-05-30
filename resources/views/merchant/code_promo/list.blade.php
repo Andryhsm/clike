@@ -72,12 +72,12 @@
                                             </td>
     	                                    <td>
     	                                    	@foreach($code_promo->categories as $category)
-                                                    <span class="badge bg-green mr-5" style="background: #044651 !important;">{!! $category->french->category_name !!}</span>
+                                                    <span class="badge bg-green-dark mr-5">{!! $category->french->category_name !!}</span>
                                                 @endforeach
     	                                    </td>
     	                                    <td>
     	                                    	@foreach($code_promo->products as $product)
-                                                    <span class="badge bg-green mr-5" style="background: #044651 !important;">{!! $product->french->product_name !!}</span>
+                                                    <span class="badge bg-green-dark mr-5">{!! $product->french->product_name !!}</span>
                                                 @endforeach
     	                                    </td>
     	                                    <td>

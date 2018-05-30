@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Input;
 use PDF;
+use App\Models\OrderItemRequest;
 
 class CustomerController extends Controller
 {
@@ -107,8 +108,26 @@ class CustomerController extends Controller
     public function getCurrentOrder(){
         $user = \Auth::user();
         $user_id = $user->user_id;
-        $pending_items = $this->order_item_repository->itemByStatusAndUser([OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_ORDERED],$user_id);
+        $pending_items = $this->order_item_repository->itemByStatusAndUser([OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_ORDERED,OrderItem::ORDER_STATUS_NEGATIVE],$user_id);
         return view('front.customer.current_order.index', compact('pending_items'));
+    }
+    
+    public function waitingOrder($id){
+        $item_request = OrderItemRequest::find($id);
+		$item_request->available_type = 2;
+		$item_request->save();
+		$this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_REPLIED, $item_request->item_id);
+        return response()->json(['success'=> true,'message' => 'Commande mise en attente éffectué avec succèes']);
+    }
+    
+    public function canceledOrder($id){
+        $item_request = OrderItemRequest::find($id);
+		$item_request->is_canceled = 1;
+		$item_request->booked_date = Carbon::now();
+		$item_request->available_type = 6;
+		$item_request->save();
+		$this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_CANCELED, $item_request->item_id);
+        return response()->json(['success'=> true,'message' => 'Commande annulée avec succèes' ]);
     }
     
     public function getCustomerBills(){

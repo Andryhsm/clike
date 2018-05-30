@@ -803,3 +803,32 @@ function getDistanceStore($store_lat, $store_lng, $zip_code, $country=''){
     }
     return 0;
 }
+
+function getNumberOrderPending($user_id)
+{
+    $items = \App\Models\OrderItem::whereNotExists(function($query) use ($user_id)
+		{
+			$query->select('*')
+				->from('order_item_request')
+				->whereRaw('order_item_request.item_id= order_item.order_item_id')
+				->where('order_item_request.merchant_id','=',$user_id);
+		})
+			->with(['brand','brand.stores', 'product', 'attributes'])
+			->where('order_status_id',\App\Models\OrderItem::ORDER_STATUS_ORDERED)
+			->get();
+	return count($items);		
+}
+function getNumberOrderEarned($user_id)
+{
+    $items = \App\Models\OrderItem::whereHas('itemRequest',function($query) use($user_id){
+			$query->where('merchant_id',$user_id);
+			$query->where('is_added_by','merchant');
+		})
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
+				$query->where('merchant_id',$user_id);
+				$query->where('is_added_by',"merchant");
+			},'coupon'])
+			->where('order_status_id',\App\Models\OrderItem::ORDER_STATUS_REPLIED)
+			->get();
+	return count($items);		
+}

@@ -2977,9 +2977,13 @@ img.equipe-clickee {
   background: #EFEFED;
 }
 .bg-green{
-  background: #65bb9f;
+  background: #65bb9f !important;
   color: white;
   padding: 10px 0px 10px 0px;
+}
+.bg-green-dark{
+  background: #044651 !important;
+  color: white;
 }
 .pd-d{
   padding: 52px 50px 125px 50px;
@@ -3125,4 +3129,8 @@ img.equipe-clickee {
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 20px;
+}
+.account-area input.form-control.open-time {
+    width: 15%;
+    margin: 0% 2%;
 }

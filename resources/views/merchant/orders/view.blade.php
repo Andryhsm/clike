@@ -41,8 +41,8 @@
                 <div class="box-body">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab">{!! trans('order.to_respond') !!}</a></li>
-                        <li><a href="#tab_3" data-toggle="tab">{!! trans('order.earned') !!}</a></li>
+                        <li class="active"><a href="#tab_1" data-toggle="tab">{!! trans('order.to_respond') !!} &nbsp;&nbsp; <span class="badge bg-green-dark mr-5">{!! getNumberOrderPending(Auth::id()) !!}</span></a></li>
+                        <li><a href="#tab_3" data-toggle="tab">{!! trans('order.earned') !!} &nbsp;&nbsp; <span class="badge bg-green-dark mr-5">{!! getNumberOrderEarned(Auth::id()) !!}</span></a></li>
                         <!--<li><a href="#tab_4" data-toggle="tab">TERMINER</a></li>-->
                     </ul>
                     <div class="tab-content">
@@ -56,7 +56,7 @@
                                                 @foreach($pending_items as $index=>$item)
                                                 {!! Form::open(['url' =>Url("fr/merchant/orders"), 'id'=>'product_search_form_'.$index, 'method' => 'post','class'=>' form-inline','autocomplete'=>'off']) !!}
                                                 <tr>
-                                                    <td width="30%">
+                                                    <td width="25%">
                                                         <strong>{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong><br><br>
                                                         <a href="{!! (!empty($item->product)>0 && !empty($item->product->url)) ? url($item->product->url->target_url): "#" !!}">{!! $item->product_name !!}</a>
                                                         @foreach($item->attributes as $index=>$attribute)
@@ -70,7 +70,7 @@
                                                         @endif
     
                                                     </td>
-                                                    <td width="20%">
+                                                    <td width="25%">
                                                         <div class="col-md-10">
                                                             <div class="funkyradio">
                                                                 <div class="funkyradio-info">
@@ -95,7 +95,7 @@
                                                         {!!Form::textarea('response',null,['class'=>"form-control",'placeholder'=>'','size' => '50x3']) !!}
                                                         <br>
                                                         <button type="submit"
-                                                                class="btn btn-default default-btn response-to-customer mb-10 pull-right"
+                                                                class="btn btn-block btn-merchant-filled response-to-customer mb-10 pull-right"
                                                                 data-index="{!! $index !!}"
                                                                 id="response-to-customer">Répondre
                                                         </button>
@@ -136,8 +136,8 @@
                                             </td>
                                             <td width="50%" class="vertical-align">
                                                 <button type="button"
-                                                        class="btn btn-default default-btn coupon-code-btn"
-                                                        id="coupon-code">{!! trans('order.coupon_see') !!}
+                                                        class="btn btn-block btn-merchant-filled coupon-code-btn"
+                                                        id="coupon-code">Afficher coupon
                                                 </button>
                                                 <div class="coupon-code mt-20">{!! $item->coupon->coupon_code !!}</div>
                                                 <br/>
@@ -146,7 +146,7 @@
                                                     : {!! Carbon\Carbon::parse($item->itemRequest->first()->created_date)->format('d/m/Y')  !!}
                                                 </div>
                                                 <div>
-                                                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/bookedRequest/'.$item->itemRequest->first()->order_item_request_id) !!}" class="btn btn-default default-btn pull-right">Terminer</a>
+                                                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/bookedRequest/'.$item->itemRequest->first()->order_item_request_id) !!}" class="btn btn-block btn-merchant-filled pull-right">Terminer</a>
                                                 </div>
                                             </td>
                                         </tr>

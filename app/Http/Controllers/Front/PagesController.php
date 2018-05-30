@@ -94,4 +94,5 @@ class PagesController extends Controller
         $brand_tags = BrandTag::get();
 		return view('front.test.test', compact('countries', 'store', 'brands', 'brand_tags'));
 	}
+	
 }

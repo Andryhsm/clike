@@ -103,7 +103,6 @@ function get_distance_store($shop_data) {
         .always(function() {
 
         });
-
 }
 
 function activate(ids) {
@@ -277,4 +276,35 @@ function updateCustomerInfo() {
 
 }
 
+function waiting_order(id, classe) {
+    var cle = $(classe).attr("id");
+    $.ajax({
+            url: base_url + 'customer/waiting-order/' + id,
+            type: 'GET',
+            dataType: 'json',
+        })
+        .done(function(data) {
+            $(classe).closest(".order-form").html("<div> <a href = \"current-coupon/" + cle + "\" class = 'Coupon btn btn-customer-filled pull-right'> Coupon à présenter </a> </div> <div><button class='Reception btn btn-customer-filled pull-right' type='button' onclick='reception(this);'> <span>Réception</span><i class='fa fa-angle-up'></i></button> </div>");
+            toastr.success(data.message);
+        })
+        .fail(function(xhr) {})
+        .always(function() {
 
+        });
+}
+
+function canceled_order(id, classe) {
+    $.ajax({
+            url: base_url + 'customer/canceled-order/' + id,
+            type: 'GET',
+            dataType: 'json',
+        })
+        .done(function(data) {
+            $(classe).closest(".ajax-content").remove();
+            toastr.success(data.message);
+        })
+        .fail(function(xhr) {})
+        .always(function() {
+
+        });
+}

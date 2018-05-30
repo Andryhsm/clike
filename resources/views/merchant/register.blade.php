@@ -122,6 +122,15 @@
                         {!! Form::text('tva', ($store) ? $store->tva :  null, ['class' => 'form-control','id'=>'tva']) !!}
                     </div>
                     <div class="row">
+                        <div class="form-check col-lg-6">
+                            <a class="open-day active" href="#"><span><i class="fa fa-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Check me out</span></a>
+                            <input type="hidden" class="form-check-input" id="monday" value="monday"/>
+                          </div>
+                        <input id="time_start1" type="text" class="col-lg-2 form-control open-time" data-format="MM/dd/yyyy HH:mm:ss PP" name="time_start1">
+                        <input type="text" class="col-lg-2 form-control open-time" data-format="MM/dd/yyyy HH:mm:ss PP" name="time_end1">
+                         
+                    </div>
+                    <div class="row">
                         <div class="section-title">
                             <div class="align-title"></div>
                             <h2 class="souligne">

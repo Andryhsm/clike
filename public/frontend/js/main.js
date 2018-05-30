@@ -664,7 +664,7 @@
 		})
 		.always(function() {});
 
-	
+
 	//Close the list area where it open
 	$('body').on('click', function(e) {
 		if (!$('.select-area.dropdown').is(e.target) &&

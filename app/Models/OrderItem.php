@@ -13,7 +13,7 @@ class OrderItem extends Model
     const ORDER_STATUS_ORDERED=1;
     const ORDER_STATUS_REPLIED=2;
     const ORDER_STATUS_NEGATIVE=3;
-    const ORDER_STATUS_SELECTED=4;
+    const ORDER_STATUS_WANSWER=4;
     const ORDER_STATUS_FINISHED=5;
     const ORDER_STATUS_CANCELED=6;
 

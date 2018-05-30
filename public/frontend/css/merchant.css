@@ -220,3 +220,14 @@ text {
     background-color: #EFEFED;
     border: none;
 }
+
+.merchant-order-list td, .merchant-order-list th, .bdr-btm td, .bdr-btm th {
+    border-bottom: 2px solid #044651 !important;
+    border-top: 2px solid #044651 !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.nav-tabs-custom>.nav-tabs>li.active{
+    border-top-color: #044651 !important;
+}

@@ -203,6 +203,7 @@ return [
 		Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Webup\LaravelSendinBlue\SendinBlueServiceProvider::class,
 
 	],
 

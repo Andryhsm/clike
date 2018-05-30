@@ -22,7 +22,7 @@
                                         $status = "TERMINER";
                                         break;
                                     case 6:
-                                        $status = "PAS DE REPONSE";
+                                        $status = "ANNULER";
                                         break;
                                     default:
                                         $status = "";

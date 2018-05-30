@@ -35,14 +35,27 @@
                         </div>
                     </div>
                     <div class="order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <div>
-                            <a href="{!! url(LaravelLocalization::getCurrentLocale().'/customer/current-coupon/'.$item->order_item_id) !!}" class="Coupon btn btn-customer-filled pull-right">Coupon à présenter</a>
-                        </div>
-                        <div>
-                            <button class="Reception btn btn-customer-filled pull-right" type="button" onclick="reception(this);">
-                                <span>Réception</span><i class="fa fa-angle-up"></i>
-                            </button>
-                        </div>
+                        @if($item->order_status_id == 3)
+                            <div>
+                                <button class="btn btn-customer-filled pull-right" id="{!! $item->order_item_id !!}" type="button" onclick="waiting_order({!! $item->itemRequest->first()->order_item_request_id !!},this);">
+                                    <span>Attendre</span>
+                                </button>
+                            </div>
+                            <div>
+                                <button class="btn btn-customer-filled pull-right" id="{!! $item->order_item_id !!}" type="button" onclick="canceled_order({!! $item->itemRequest->first()->order_item_request_id !!},this);">
+                                    <span>Annuler</span>
+                                </button>
+                            </div>
+                        @else
+                            <div>
+                                <a href="{!! url(LaravelLocalization::getCurrentLocale().'/customer/current-coupon/'.$item->order_item_id) !!}" class="Coupon btn btn-customer-filled pull-right">Coupon à présenter</a>
+                            </div>
+                            <div>
+                                <button class="Reception btn btn-customer-filled pull-right" type="button" onclick="reception(this);">
+                                    <span>Réception</span><i class="fa fa-angle-up"></i>
+                                </button>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 </div>

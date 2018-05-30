@@ -217,6 +217,8 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
     Route::get('nos-conseils-photo','PagesController@PageOurPhotosTips');
     Route::get('fonctionnement','PagesController@PageOperation');
     Route::get('test','PagesController@PageTest');
+    Route::get('sendMailTest','TestController@SendMailTest');
+    Route::get('sendMailTest2','TestController@SendMailTest2');
     
     Route::get('wishlist','WishlistController@index');
     Route::get('wishlist/{id}','WishlistController@store');
@@ -250,6 +252,8 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
                 Route::get('download-pdf/{id}','CustomerController@downloadPdf');
                 Route::get('print-pdf/{id}','CustomerController@printPdf');
                 Route::get('test-pdf','CustomerController@testPdf');
+                Route::get('waiting-order/{id}','CustomerController@waitingOrder');
+                Route::get('canceled-order/{id}','CustomerController@canceledOrder');
             });
             Route::post('manage-account', 'CustomerController@postManageAccount');
             Route::post('change-password', 'CustomerController@postResetPassword');

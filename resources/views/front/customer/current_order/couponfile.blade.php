@@ -74,7 +74,7 @@
                                         <p><span>Tarif : </span><span class="title-bold-2">{!! format_price($item->price) !!}</span></p>
                                     </div>
                                 </div>
-                                <br><br><br><br><br><br>
+                                <br><br><br><br><br><br><br><br><br><br><br>
                                 <div class="coupon-condition col-lg-12">
                                     <span><b>conditions générales de vente : </b></span>
                                     <span>
