@@ -638,12 +638,55 @@
 		var password = $('#password').val();
 		var confirm_password = $('#confirm_password').val();
 
-		/*if (shop_name!="" ) {*/
-		$('#2-tab').trigger('click');
-		/*}
+		if (shop_name == "") {
+			$('#shop_name').css('border-color', 'red');
+		}
 		else {
-		
-		}*/
+			$('#shop_name').css('border-color', '#044651');
+		}
+		if (registration_number == "") {
+			$('#registration_number').css('border-color', 'red');
+		}
+		else {
+			$('#registration_number').css('border-color', '#044651');
+		}
+		var regexForEmailValidation = /^\w+([-+.'][^\s]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+		var emailFormat = regexForEmailValidation.test(email);
+		if (email == "" || emailFormat == false) {
+			$('#email').css('border-color', 'red');
+		}
+		else {
+			$('#email').css('border-color', '#044651');
+		}
+		if (phone_number == "") {
+			$('#phone_number').css('border-color', 'red');
+		}
+		else {
+			$('#phone_number').css('border-color', '#044651');
+		}
+		if (password == "") {
+			$('#password').css('border-color', 'red');
+		}
+		else {
+			$('#password').css('border-color', '#044651');
+		}
+		if (confirm_password == "") {
+			$('#confirm_password').css('border-color', 'red');
+		}
+		else {
+			$('#confirm_password').css('border-color', '#044651');
+		}
+		if (confirm_password != password || confirm_password == "" || password == "") {
+			$('#password').css('border-color', 'red');
+			$('#confirm_password').css('border-color', 'red');
+		}
+		else {
+			$('#password').css('border-color', '#044651');
+			$('#confirm_password').css('border-color', '#044651');
+		}
+		if (shop_name != "" && registration_number != "" && email != "" && phone_number != "" && password != "" && confirm_password != "" && password == confirm_password) {
+			$('#2-tab').trigger('click');
+		}
 	});
 
 	$('#btn-etape3').on('click', function() {
@@ -815,36 +858,38 @@ function close_select_radius() {
 		$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
 }
 
-function aside_fixed(){
-    console.log('log')    
-    var $aside   = $("#aside"), 
-        $window    = $(window),
-        offset     = $aside.offset(),
-        topPadding = 15,
-        content = $('.main')[0].clientHeight,
-        css = {},
-        animate = {};
-    if (Modernizr.mq('(max-width: 767px)')){
-        $window.scroll(function() {
-            if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
-                $aside.stop().css({'position': 'fixed', 'top': '0', 'z-index': '2000'})
-            } else {
-                $aside.stop().animate({
-                    marginTop: 0
-                }).css('position', 'relative');
-            }
-        }); 
-    }
-    else {
-        $window.scroll(function() {
-            if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
-                $aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
-            } else {
-                $aside.stop().animate({
-                    marginTop: 0
-                });
-            }
-        }); 
+function aside_fixed() {
+	console.log('log')
+	var $aside = $("#aside"),
+		$window = $(window),
+		offset = $aside.offset(),
+		topPadding = 15,
+		content = $('.main')[0].clientHeight,
+		css = {},
+		animate = {};
+	if (Modernizr.mq('(max-width: 767px)')) {
+		$window.scroll(function() {
+			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
+				$aside.stop().css({ 'position': 'fixed', 'top': '0', 'z-index': '2000' })
+			}
+			else {
+				$aside.stop().animate({
+					marginTop: 0
+				}).css('position', 'relative');
+			}
+		});
+	}
+	else {
+		$window.scroll(function() {
+			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
+				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
+			}
+			else {
+				$aside.stop().animate({
+					marginTop: 0
+				});
+			}
+		});
 
-    }        
+	}
 }
