@@ -544,6 +544,17 @@
 			$('.receive-notification i').addClass('fa-circle-o');
 		}
 	});
+	$('.save-cart').click(function(e) {
+		e.preventDefault();
+		if ($('.save-cart i').hasClass('fa-circle-o')) {
+			$('.save-cart i').removeClass('fa-circle-o');
+			$('.save-cart i').addClass('fa-dot-circle-o');
+		}
+		else {
+			$('.save-cart i').removeClass('fa-dot-circle-o');
+			$('.save-cart i').addClass('fa-circle-o');
+		}
+	});
 	$('.receive-email').click(function(e) {
 		e.preventDefault();
 		if ($('.receive-email i').hasClass('fa-circle-o')) {
@@ -619,7 +630,20 @@
 	});
 
 	$('#btn-etape1').on('click', function() {
+
+		var shop_name = $('#shop_name').val();
+		var registration_number = $('#registration_number').val();
+		var email = $('#email').val();
+		var phone_number = $('#phone_number').val();
+		var password = $('#password').val();
+		var confirm_password = $('#confirm_password').val();
+
+		/*if (shop_name!="" ) {*/
 		$('#2-tab').trigger('click');
+		/*}
+		else {
+		
+		}*/
 	});
 
 	$('#btn-etape3').on('click', function() {
@@ -628,6 +652,9 @@
 
 	$('.btn-pack').on('click', function() {
 		$('#3-tab').trigger('click');
+	});
+	$('.close-article').on('click', function() {
+		$('#2-tab').trigger('click');
 	});
 
 	//Script of search product
