@@ -153,7 +153,7 @@ img.banner-hover{
     color: #000;
     padding: 0.2em 0;
 }
-.login-area form input, .register-area form input, .content-review-form input, .content-review-form textarea, .register-area input{
+.login-area form input, .register-area form input, .content-review-form input, .content-review-form textarea, .register-area input, .cart-product .cart-paye{
     border: 4px solid rgb(4, 70, 81);
     display: block;
     height: 5rem;
@@ -1482,7 +1482,7 @@ element.style {
     margin-left: auto;
     margin-right: auto;
 }
-.receive-notification i, .receive-email i,.gender i {
+.receive-notification i, .receive-email i,.gender i, .save-cart i {
   font-size: 22px;
   font-weight: 600;
 }
@@ -2989,6 +2989,7 @@ img.equipe-clickee {
   background: #044651 !important;
   color: white;
 }
+.pd-10{padding: 10px !important}
 .pd-d{
   padding: 52px 50px 125px 50px;
 }
@@ -3157,4 +3158,15 @@ a.open-day {
 }
 .address-fact{
   margin-left: 3%;
+}
+.secure-text{
+    font-size: 12px;
+    font-weight: 400;
+}
+.fw-400{
+  font-weight: 400;
+}
+
+.fw-600{
+  font-weight:600;
 }

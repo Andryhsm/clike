@@ -18,16 +18,44 @@
                                   </div>    
                                     <div class="cart-product row">
                                         <div class="content-cart">
-                                            <div class="paiement-title">
+                                            <div class="cart-title">
                                                 <h2>PAIEMENT SÉCURISÉ</h2>
                                             </div>
+                                            <p class="secure-text pb-20">FAITES VOS ACHATS EN TOUTE CONFIANCE AVEC NOTRE PAIEMENT SÉCURISÉ</p>
+                                            
+                                            <div class="form-group row mb-0">
+                                                <label class="col-lg-5 fw-400" for="cart_number">Numéro de carte *</label>
+                                                <div class="col-sm-7">     
+                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-0">
+                                                <label class="col-lg-5 fw-400" for="date_expirate">Date d’expiration *</label>
+                                                <div class="col-sm-7">     
+                                                    {{Form::text('date_expirate', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-0">
+                                                <label class="col-lg-5 fw-400" for="verif_code">Code de vérification *</label>
+                                                <div class="col-sm-7">     
+                                                    {{Form::text('verif_code', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-0">
+                                                <label class="col-lg-5 fw-400" for="cart_number">Numéro de carte *</label>
+                                                <div class="col-sm-7">     
+                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="#" class="save-cart fw-400"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Sauvegarder cette carte pour recevoir vos recettes.</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 info">
                                         <ul>
                                             
                                             <li class="text-center">    
-                                                <button class="btn btn-submit btn-clickee-default" type="button" id="btn-etape3">PAIEMENT</button>
+                                                <button class="btn btn-submit btn-clickee-info-plein pd-10" type="button" id="btn-etape3">CONFIRMER & PAYER</button>
                                             </li>
                                         </ul>
                                     </div>
@@ -41,17 +69,17 @@
                                     </div>
                                     <div class="cart-product row">
                                         
-                                        <div class="col-lg-11">
+                                        <div class="col-lg-10">
                                             <h4>PACKS NAME</h4>
                                         </div>
                                         
-                                        <div class="col-lg-1 product-remove pull-right">
-                                          <button type="button" onclick="#" class="close">×</button>
+                                        <div class="col-lg-2 product-remove pull-right">
+                                          <button type="button" class="close close-article">×</button>
                                         </div>
                                     </div>
                                     <div class="cart-product row">
                                         <div class="col-lg-12 fs-16 total-amount">
-                                                <span>TOTAL À RÉGLER</span>
+                                                <span class="fw-600">TOTAL À RÉGLER</span>
                                                 <span class="pull-right total_original_amount">10</span>
                                         </div>
                                     </div>
