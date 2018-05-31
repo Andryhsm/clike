@@ -98,3 +98,9 @@ $factory->define(\App\ProductStatus::class, function(Faker\Generator $faker){
 		'status' => $faker->name
 	];
 });
+  $factory->define(\App\StoreOpeningDay::class, function (Faker\Generator $faker) {
+                return [
+                    'opening_day_id' => $faker->name,
+                    'day_name' => $faker->name
+                ];
+   });

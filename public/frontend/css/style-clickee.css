@@ -3147,7 +3147,9 @@ img.equipe-clickee {
     margin-left: 20%;
     margin-right: 20%;
 }
-
+a.open-day {
+    font-size: 19px;
+}
 .cart-information .info-facture p{
    margin: 0px !important;
    padding: 0px !important;

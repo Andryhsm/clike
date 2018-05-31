@@ -192,8 +192,6 @@
 {!! Html::script('frontend/js/product_detail.js') !!}
 {!! Html::script('frontend/js/jquery.flexslider.js') !!}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js"></script>
 
 <!-- Loading overlay -->
 <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.0/dist/loadingoverlay.min.js"></script>
@@ -226,6 +224,11 @@
     {!! Html::script('frontend/js/validation_message_fr.js') !!}
 @endif
 {!! Html::script('frontend/js/catalog.js') !!}
+
+<!-- script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script -->
+{!! Html::script('backend/plugins/bootstrap-datetime-picker/moment.min.js') !!}
+{!! Html::script('backend/plugins/bootstrap-datetime-picker/bootstrap-datetimepicker.min.js') !!}
 {!! Html::script('frontend/js/my_account.js') !!}
 {!! Html::script('frontend/js/cloud-zoom.js') !!}
 

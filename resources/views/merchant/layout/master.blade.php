@@ -71,6 +71,7 @@
         </div>
     </div>
     <!--@include('front.layout.section-avantage')-->
+    <script src="{!! URL::to('/') !!}/frontend/js/vendor/modernizr-2.8.3.min.js"></script>
     @include('front.layout.footer')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
@@ -88,24 +89,7 @@
 {{ HTML::script('frontend/js/dashboard.js') }}
 <script type="text/javascript">
     // Effet fix du menu gauche 
-    console.log('log')    
-    var $aside   = $("#aside"), 
-        $window    = $(window),
-        offset     = $aside.offset(),
-        topPadding = 15;
-        content = $('.main')[0].clientHeight;
-        console.log(offset.top + "####")
-        console.log($(window).scrollTop())
-        console.log(content + '***********')
-    $window.scroll(function() {
-        if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
-            $aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
-        } else {
-            $aside.stop().animate({
-                marginTop: 0
-            });
-        }
-    }); 
+    aside_fixed();
     Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
     var base_url = {!! "'".URL::to('/')."/'" !!};
     var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};

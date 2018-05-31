@@ -78,5 +78,28 @@ $(function() {
             }
         };
     }
-
+    $(".open-time").prop('disabled', true);
+    $('.open-time').datetimepicker({
+        format: 'HH:mm'
+    });
+    $('.account-area').on('click', '.open-day', function(event) {
+        event.preventDefault();
+        console.log("active value");
+        var $inputs = $(this).parents('.info-one-day').find('.open-time');
+        var $icon = $(this).find('i');
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $icon.removeClass('fa-check-square');
+            $icon.addClass('fa-square-o');
+            $inputs.prop('disabled', true);
+            $inputs.val(null);
+        }else{
+            $(this).addClass('active');
+            $inputs.prop('disabled', false);
+            $icon.removeClass('fa-square-o');
+            $icon.addClass('fa-check-square');
+        }
+    });
+    
+         
 });
