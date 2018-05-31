@@ -43,7 +43,8 @@
 {!! Html::style('frontend/css/jquery.rating.css') !!}
 {!! Html::style('frontend/css/easy-autocomplete.min.css') !!}
 {!! Html::style('backend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') !!}
-{!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker.min.css') !!}
+{!! Html::style('backend/plugins/bootstrap-datetime-picker/bootstrap-datetimepicker.css') !!}
+{!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css') !!}
 {!! Html::style('backend/plugins/datepicker/datepicker3.css') !!}
 {!! Html::style('frontend/css/style-clickee.css') !!}
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
