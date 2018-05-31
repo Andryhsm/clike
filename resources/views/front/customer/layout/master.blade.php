@@ -37,19 +37,14 @@
         <script src="{!! URL::to('/') !!}/frontend/js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js"></script>
-        <script type="text/javascript">
-            Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
-            var base_url = {!! "'".URL::to('/')."/'" !!};
-            var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
-            var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";
-        </script>
+        
     </head>
     
     <body>
         <div class='container-fluid customer-area'>
             @include('front.customer.layout.header')
             <div class="">
-                <div class="aside  col-mm-4 col-lg-4 col-md-4 col-sm-2 col-xs-12">
+                <div class="aside  col-mm-4 col-lg-4 col-md-4 col-sm-2 col-xs-12" id="aside">
                     @include('front.customer.layout.nav_menu')
                 </div>
                 <div class="main ajax-content col-mm-8 col-lg-8 col-md-8 col-sm-10 col-xs-12">
@@ -66,7 +61,14 @@
         @yield('additional-script')
          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYvJI_Ul_xb9kOGHOtHJ9odVD43OcGz0s&callback=initMap" async defer></script>
          <script src="{!! URL::to('/') !!}/frontend/js/customer-area.js"></script>
-         
+         <script type="text/javascript">
+            // Effet fix du menu gauche 
+            aside_fixed();
+            Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
+            var base_url = {!! "'".URL::to('/')."/'" !!};
+            var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
+            var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";
+        </script>
     </body>
 <!-- END BODY -->
 </html>

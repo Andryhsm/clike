@@ -31,6 +31,13 @@ Morris.Bar({
   barColors: ['#65BB9F'],
   xLabelMargin: 10
 });
+var path0 = $('#salesstat svg path:nth-of-type(1)');
+var paths = $('#salesstat svg path:not(path:nth-of-type(1))');
+var lastrect = $('#salesstat svg rect:last');
+console.log(lastrect.attr('fill'))
+path0.attr({'stroke': '#044651', 'stroke-width': '4'})
+paths.attr({'stroke': '#044651', 'stroke-width': '1'})
+path0.insertAfter(lastrect)
 
 
 var donut = Morris.Donut({
@@ -47,6 +54,12 @@ var donut = Morris.Donut({
   ],
   formatter: function(x) { return x + "%" }
 });
+
+var path1 = $('#salescamembert svg path:nth-of-type(1), #salescamembert svg path:nth-of-type(3)');
+path1.attr('stroke-width', '7')
+var path2 = $('#salescamembert svg path:nth-of-type(2), #salescamembert svg path:nth-of-type(4)');
+path2.attr('stroke', 'none')
+
 $(document).ready(function() {
   donut.select(0);
   $("#salescamembert text:first tspan").html("70%").attr('fill', '#65BB9F');
