@@ -632,7 +632,7 @@
 	$('#btn-etape1').on('click', function() {
 
 		var shop_name = $('#shop_name').val();
-		var registration_number = $('#registration_number').val();
+		var siret = $('#siret').val();
 		var email = $('#email').val();
 		var phone_number = $('#phone_number').val();
 		var password = $('#password').val();
@@ -644,11 +644,11 @@
 		else {
 			$('#shop_name').css('border-color', '#044651');
 		}
-		if (registration_number == "") {
-			$('#registration_number').css('border-color', 'red');
+		if (siret == "") {
+			$('#siret').css('border-color', 'red');
 		}
 		else {
-			$('#registration_number').css('border-color', '#044651');
+			$('#siret').css('border-color', '#044651');
 		}
 		var regexForEmailValidation = /^\w+([-+.'][^\s]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 		var emailFormat = regexForEmailValidation.test(email);
@@ -684,7 +684,7 @@
 			$('#password').css('border-color', '#044651');
 			$('#confirm_password').css('border-color', '#044651');
 		}
-		if (shop_name != "" && registration_number != "" && email != "" && phone_number != "" && password != "" && confirm_password != "" && password == confirm_password) {
+		if (shop_name != "" && siret != "" && email != "" && emailFormat == true && phone_number != "" && password != "" && confirm_password != "" && password == confirm_password) {
 			$('#2-tab').trigger('click');
 		}
 	});
@@ -693,9 +693,15 @@
 		$('#4-tab').trigger('click');
 	});
 
+	//gratuit
+	$('.btn-pack-gratuit').on('click', function() {
+		$('#4-tab').trigger('click');
+	});
+
 	$('.btn-pack').on('click', function() {
 		$('#3-tab').trigger('click');
 	});
+
 	$('.close-article').on('click', function() {
 		$('#2-tab').trigger('click');
 	});

@@ -45,7 +45,7 @@
                                     <span>Découverte</span>
                                 </div>
                                 <div class="engagement-price mt-25">GRATUIT</div>
-                                <a href="#" class="btn btn-clickee-info-plein mtb-10 btn-pack">CHOISIR</a>
+                                <a href="#" class="btn btn-clickee-info-plein mtb-10 btn-pack-gratuit">CHOISIR</a>
                                 
                                 <p>
                                     Souscrivez au Pack Découverte pour découvrir toutes les fonctionnalités de Clickee sans dépenser un euro.
@@ -205,7 +205,7 @@
                                     <span>Découverte</span>
                                 </div>
                                 <div class="engagement-price mt-25">GRATUIT</div>
-                                <a href="#" class="btn btn-clickee-info-plein mtb-10 btn-pack">CHOISIR</a>
+                                <a href="#" class="btn btn-clickee-info-plein mtb-10 btn-pack-gratuit">CHOISIR</a>
                                 
                                 <p>
                                     Souscrivez au Pack Découverte pour découvrir toutes les fonctionnalités de Clickee sans dépenser un euro.
