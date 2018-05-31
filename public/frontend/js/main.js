@@ -787,3 +787,37 @@ function close_select_radius() {
 	if ($icon.hasClass('fa-angle-up'))
 		$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
 }
+
+function aside_fixed(){
+    console.log('log')    
+    var $aside   = $("#aside"), 
+        $window    = $(window),
+        offset     = $aside.offset(),
+        topPadding = 15,
+        content = $('.main')[0].clientHeight,
+        css = {},
+        animate = {};
+    if (Modernizr.mq('(max-width: 767px)')){
+        $window.scroll(function() {
+            if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
+                $aside.stop().css({'position': 'fixed', 'top': '0', 'z-index': '2000'})
+            } else {
+                $aside.stop().animate({
+                    marginTop: 0
+                }).css('position', 'relative');
+            }
+        }); 
+    }
+    else {
+        $window.scroll(function() {
+            if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
+                $aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
+            } else {
+                $aside.stop().animate({
+                    marginTop: 0
+                });
+            }
+        }); 
+
+    }        
+}
