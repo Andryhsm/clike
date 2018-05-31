@@ -62,7 +62,7 @@
             </div>
          </div>
         <div class="">
-            <div class="aside  col-mm-4 col-lg-4 col-md-4 col-sm-2 col-xs-12">
+            <div class="aside  col-mm-4 col-lg-4 col-md-4 col-sm-2 col-xs-12" id="aside">
                 @include('merchant.layout.sidebar')
             </div>
             <div class="main ajax-content col-mm-8 col-lg-8 col-md-8 col-sm-10 col-xs-12">
@@ -76,12 +76,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-<script type="text/javascript">
-    Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
-    var base_url = {!! "'".URL::to('/')."/'" !!};
-    var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
-    var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";
-</script>
+
 {!! Html::script('backend/bootstrap/js/bootstrap.min.js') !!}
 {!! Html::script('backend/dist/js/app.js') !!}
 {!! Html::script('js/jquery.validate.min.js') !!}
@@ -91,6 +86,31 @@
 {!! Html::script('backend/js/jquery.form.js') !!}
 {!! Html::script('backend/js/functions.js') !!}
 {{ HTML::script('frontend/js/dashboard.js') }}
+<script type="text/javascript">
+    // Effet fix du menu gauche 
+    console.log('log')    
+    var $aside   = $("#aside"), 
+        $window    = $(window),
+        offset     = $aside.offset(),
+        topPadding = 15;
+        content = $('.main')[0].clientHeight;
+        console.log(offset.top + "####")
+        console.log($(window).scrollTop())
+        console.log(content + '***********')
+    $window.scroll(function() {
+        if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
+            $aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
+        } else {
+            $aside.stop().animate({
+                marginTop: 0
+            });
+        }
+    }); 
+    Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
+    var base_url = {!! "'".URL::to('/')."/'" !!};
+    var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
+    var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";  
+</script>
 @yield('footer-scripts')
 </body>
 </html>

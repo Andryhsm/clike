@@ -189,19 +189,19 @@ input#logo, input#shop_image {
     border: 4px solid #044651 !important;
     border-radius: 0 !important;
 }
-path {
+/*path {
     stroke: #044651;
     stroke-width: 1;
-}
+}*/
 
 text {
     font-size: 15px !important;
     fill: #044651;
 }
 .text { color: #044651;}
-#salescamembert svg path {
+/*#salescamembert svg path {
     stroke: none !important;
-}
+}*/
 .content-header .header-btn {
     top: 0;
     padding: 0 5px;
