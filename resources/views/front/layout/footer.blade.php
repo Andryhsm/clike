@@ -227,8 +227,8 @@
 
 <!-- script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script -->
-{!! Html::script('backend/plugins/bootstrap-datetime-picker/moment.min.js') !!}
-{!! Html::script('backend/plugins/bootstrap-datetime-picker/bootstrap-datetimepicker.min.js') !!}
+{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js') !!}
+{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js') !!}
 {!! Html::script('frontend/js/my_account.js') !!}
 {!! Html::script('frontend/js/cloud-zoom.js') !!}
 
