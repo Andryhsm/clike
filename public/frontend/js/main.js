@@ -699,6 +699,12 @@
 	});
 
 	$('.btn-pack').on('click', function() {
+		var price = $(this).closest('.header-engagement-height').find('.price-int').html();
+		var name = $(this).closest('.header-engagement-height').find('.title span').html();
+		var type = $(this).closest('.tab-pane').find('.type-engagement').html();
+		$('.total_original_amount').html(price + "€/mois");
+		$('.subscription-type').html(type);
+		$('.pack-name').html(name);
 		$('#3-tab').trigger('click');
 	});
 

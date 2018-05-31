@@ -14,7 +14,7 @@
             </ul>
             <div class="tab-content tab-login" id="tab-engagement">
                 <div role="tabpanel" class="tab-pane active" id="uploadTab">
-                	
+                	<div class="type-engagement hidden">ENGAGEMENT ANNUEL</div>
                 	<div class="row" style="width: 105%;margin-bottom: -1.4rem;">
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
@@ -174,7 +174,7 @@
                 	
                 </div>
                 <div role="tabpanel" class="tab-pane" id="browseTab">
-                	
+                	<div class="type-engagement hidden">SANS ENGAGEMENT</div>
                 	<div class="row" style="width: 105%;margin-bottom: -1.4rem;">
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
                 	    <div class="col-sm-2 point5 col-xs-12"></div>
