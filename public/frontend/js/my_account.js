@@ -79,22 +79,7 @@ $(function() {
         };
     }
     $(".open-time").prop('disabled', true);
-    $(".close-time").prop('disabled', true);
     $('.open-time').datetimepicker({
-        format: 'HH:mm',
-        icons: {
-            time: 'fa fa-time',
-            date: 'fa fa-calendar',
-            up: 'fa fa-chevron-up',
-            down: 'fa fa-chevron-down',
-            previous: 'fa fa-backward',
-            next: 'fa fa-chevron-right',
-            today: 'fa fa-screenshot',
-            clear: 'fa fa-trash',
-            close: 'fa fa-remove'
-        }
-    });
-    $('.close-time').datetimepicker({
         format: 'HH:mm',
         icons: {
             time: 'fa fa-time',
