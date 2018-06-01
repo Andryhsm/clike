@@ -3130,6 +3130,17 @@ img.equipe-clickee {
     font-size: 28px;
     font-weight: 600;
 }
+.page-confirm-cart-content .cart-product {
+    padding-top: 25px !important;
+}
+.page-confirm-cart-content .promotional-code-content .product-remove button, .tab-pane .product-remove button {
+    font-size: 35px;
+}
+.page-confirm-cart-content .content-cart-product .cart-product {
+    padding-top: 15px !important;
+    margin: 20px 2rem 0px 2rem;
+    padding-bottom: 0px !important;
+}
 .content-cart-product h4 {
     font-weight: 600;
     text-transform: uppercase;
@@ -3138,6 +3149,11 @@ img.equipe-clickee {
 .account-area input.form-control.open-time {
     width: 15%;
     margin: 0% 2%;
+}
+img.image-secure {
+    display: inline;
+    margin: 0px 0px 6px 5px;
+    width: 17.5px;
 }
 .nav-width{
   width: 60% !important;

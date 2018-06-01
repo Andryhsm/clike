@@ -125,7 +125,6 @@ class StoreController extends Controller
 				Auth::login($user);
 				flash()->success(trans('form.register_success_message'));
 			}catch (\Exception $e){
-				dd($e->getMessage());
 				flash()->error(trans('form.register_error_message'));
 				return \Redirect::back()->withInput()->withErrors($validator);
 			}

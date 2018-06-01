@@ -196,16 +196,15 @@ jQuery(document).ready(function() {
                 url: loadurl,
                 data: "attribute_set_id=" + selected_attribute_set_id + "&product_id=" + product_id,
                 complete: function(data) {
-                    console.log(data);
                     $(targ).html(data.responseText);
                     $document.find(".select2").select2();
                     $document.find("input[name='old_attribute_set_id']").val(selected_attribute_set_id)
                 },
                 success: function(data) {
-                    console.log("data in succes : " + data);
+                   // console.log("data in succes : " + data);
                 },
                 error: function(xhr) {
-                    console.log(xhr.responseText);
+                    //console.log(xhr.responseText);
                 }
             });
 

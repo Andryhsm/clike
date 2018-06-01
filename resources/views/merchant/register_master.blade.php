@@ -39,7 +39,7 @@
             </div>
             <div class="form-group row mb-0">
                 <div class="col-sm-12">     
-                    {{Form::text('registration_number', '',['class'=>'required form-control', 'id'=>"registraion_number", 'placeholder' => "Siret *"])}}
+                    {{Form::text('siret', '',['class'=>'required form-control', 'id'=>"siret", 'placeholder' => "Siret *"])}}
                 </div>
             </div>
             <div class="form-group row mb-0">

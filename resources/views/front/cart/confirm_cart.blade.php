@@ -14,27 +14,78 @@
                              <div class="cart-order col-lg-7 col-md-7 col-sm-7 col-xs-12 mb-20">
                                 <div class="cart-information row">
                                     <div class="cart-title">
-                                        <h2>Ma commande</h2>
+                                        <h2>PAIEMENT</h2>
                                     </div>
+                                   <div class="cart-product promotional-code-content row">
+                                      <div class="cart-title col-lg-11">
+                                          <h2>CODE PROMOTIONNEL</h2>
+                                      </div>
+                                       <div class="col-lg-1 product-remove pull-right">
+                                              <button type="button" onclick="location.href = '".{!! url(LaravelLocalization::getCurrentLocale()) !!}."'" class="close">×</button>
+                                        </div>
+                                      <div class="info-facture mt-40">
+                                          <div class="col-sm-7">     
+                                                {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                           </div>
+                                      </div>
+                                     
+                                  </div>  
+                                  <div class="cart-product row">
+                                      <div class="cart-title">
+                                          <h2>ADRESSE DE FACTURATION</h2>
+                                      </div>
+                                      <div class="info-facture mt-40">
+                                          <p>Camille Plantade</p>
+                                          <p>60 chemin d’Odos</p>
+                                          <p>TARBES</p>
+                                          <p>65000</p>
+                                          <p>FRANCE</p>
+                                          <p>0619840764</p>
+                                      </div>
+                                  </div>    
                                     <div class="cart-product row">
                                         <div class="content-cart">
-                                            <div class="paiement-title">
-                                                <h2>CODE PROMOTIONNEL</h2>
+                                            <div class="cart-title">
+                                                <h2>PAIEMENT SÉCURISÉ  <img class="image-secure" src="{!! URL::to('/').'/images/icon/cadenat.svg' !!}"/></h2>
                                             </div>
-                                            <input type="text" class="form-control" name="code-promo"/>
+                                            <p class="secure-text pb-20">FAITES VOS ACHATS EN TOUTE CONFIANCE AVEC NOTRE PAIEMENT SÉCURISÉ</p>
+                                            
+                                            <div class="form-group row mb-0">
+                                                <label class="col-lg-5 fw-400" for="cart_number">Numéro de carte *</label>
+                                                <div class="col-sm-7">     
+                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-0">
+                                                <label class="col-lg-5 fw-400" for="date_expirate">Date d’expiration *</label>
+                                                <div class="col-sm-7">     
+                                                    {{Form::text('date_expirate', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-0">
+                                                <label class="col-lg-5 fw-400" for="verif_code">Code de vérification *</label>
+                                                <div class="col-sm-7">     
+                                                    {{Form::text('verif_code', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-0">
+                                                <label class="col-lg-5 fw-400" for="cart_number">Numéro de carte *</label>
+                                                <div class="col-sm-7">     
+                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="#" class="save-cart fw-400"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Sauvegarder cette carte pour recevoir vos recettes.</a>
                                         </div>
-                                         <div class="col-lg-1 product-remove pull-right">
-                                                 <button type="button" onclick="location.href = '".http://clickee.fr/fr/cart/remove/8fc983a91396319d8c394084e2d749d7."'" class="close">×</button>
-                                          </div>
                                     </div>
-                                    <div class="col-lg-12 info">
+                                    <div class="col-lg-12 text-center mb-20">
                                         <ul>
                                             
                                             <li class="text-center">    
-                                                <button type="submit" class="btn btn-clickee-default mt-40  text-uppercase">Paiement</button>
+                                                <button class="btn btn-submit btn-clickee-info-plein pd-10" type="button" id="btn-etape3">CONFIRMER & PAYER</button>
                                             </li>
                                         </ul>
-                                    </div>
+                                        </div>
                                     
                                 </div>
                             </div>
@@ -47,7 +98,7 @@
                                     @foreach($cart->items() as $item_id=>$item)
                                  
                                     <div class="cart-product row">
-                                        <div class="col-lg-4 mb-20">
+                                        <div class="col-lg-4">
                                             <div class="product-image"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/'.$item->getUrl()) !!}"><img src="{!! URL::to('/').'/'.\App\Product::PRODUCT_IMAGE_PATH.$item->getImage() !!}" alt="{!! $item->getImageAlt() !!}"></a>
                                             </div>
                                         </div>
