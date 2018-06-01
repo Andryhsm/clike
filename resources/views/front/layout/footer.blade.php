@@ -218,6 +218,10 @@
 <script src="{!! URL::to('/') !!}/frontend/js/jquery.easy-autocomplete.min.js"></script>
 <!-- plugins js -->
 <script src="{!! URL::to('/') !!}/frontend/js/plugins.js"></script>
+
+{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js') !!}
+{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js') !!}
+
 <!-- main js -->
 <script src="{!! URL::to('/') !!}/frontend/js/main.js"></script>
 {!! Html::script('frontend/js/validation.js') !!}

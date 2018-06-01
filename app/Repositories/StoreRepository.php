@@ -119,7 +119,7 @@ class StoreRepository implements StoreRepositoryInterface
 
 	public function getById($store_id)
 	{
-		return $this->model->with('users','requestBrand','brands')->where('store_id',$store_id)->first();
+		return $this->model->with('users','requestBrand','brands','hours')->where('store_id',$store_id)->first();
 	}
 
 	public function updateById($store_id, $input)
