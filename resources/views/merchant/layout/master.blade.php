@@ -26,6 +26,7 @@
     {!! Html::style('frontend/css/customer-responsive.css') !!}
     {!! Html::style('frontend/css/easy-autocomplete.min.css') !!}
     {{ Html::style('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css') }}
+    {!! Html::style('backend/plugins/bootstrap-datetime-picker/bootstrap-datetimepicker.css') !!}
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script type="text/javascript">
         var base_url = {!! "'".URL::to('/')."/'" !!};

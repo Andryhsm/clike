@@ -128,10 +128,10 @@
                             <input type="hidden" name="opening_day_id[1]" class="form-check-input" id="monday" value="1"/>
                         </div>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="opening_hour[1]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="opening_hour[1]" value="null">
                         </div><span class="col-lg-2 text-center">à</span>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="closure_hour[1]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="closure_hour[1]" value="null">
                         </div>
                     </div>
                     <div class="row info-one-day">
@@ -140,10 +140,10 @@
                             <input type="hidden" name="opening_day_id[2]" class="form-check-input" id="tuesday" value="2"/>
                         </div>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="opening_hour[2]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="opening_hour[2]" value="null">
                         </div><span class="col-lg-2 text-center">à</span>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="closure_hour[2]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="closure_hour[2]" value="null">
                         </div>
                     </div>
                     <div class="row info-one-day">
@@ -152,10 +152,10 @@
                             <input type="hidden" name="opening_day_id[3]" class="form-check-input" id="wednesday" value="3"/>
                         </div>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="opening_hour[3]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="opening_hour[3]" value="null">
                         </div><span class="col-lg-2 text-center">à</span>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="closure_hour[3]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="closure_hour[3]" value="null">
                         </div>
                     </div>
                     <div class="row info-one-day">
@@ -164,10 +164,10 @@
                             <input type="hidden" name="opening_day_id[4]" class="form-check-input" id="thursday" value="4"/>
                         </div>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="opening_hour[4]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="opening_hour[4]" value="null">
                         </div><span class="col-lg-2 text-center">à</span>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="closure_hour[4]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="closure_hour[4]" value="null">
                         </div>
                     </div>
                     <div class="row info-one-day">
@@ -176,10 +176,10 @@
                             <input type="hidden" name="opening_day_id[5]" class="form-check-input" id="friday" value="5"/>
                         </div>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="opening_hour[5]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="opening_hour[5]" value="null">
                         </div><span class="col-lg-2 text-center">à</span>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="closure_hour[5]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="closure_hour[5]" value="null">
                         </div>
                     </div>
                     <div class="row info-one-day">
@@ -188,10 +188,10 @@
                             <input type="hidden" name="opening_day_id[6]" class="form-check-input" id="saturday" value="6"/>
                         </div>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="opening_hour[6]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="opening_hour[6]" value="null">
                         </div><span class="col-lg-2 text-center">à</span>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="closure_hour[6]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="closure_hour[6]" value="null">
                         </div>
                     </div>
                     <div class="row info-one-day">
@@ -200,10 +200,10 @@
                             <input type="hidden" name="opening_day_id[7]" class="form-check-input" id="sunday" value="7"/>
                         </div>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="opening_hour[7]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="opening_hour[7]" value="null">
                         </div><span class="col-lg-2 text-center">à</span>
                         <div style="position: relative">
-                            <input type="text" class="col-lg-2 form-control open-time" name="closure_hour[7]" value="null">
+                            <input type="text" disabled class="col-lg-2 form-control open-time" name="closure_hour[7]" value="null">
                         </div>
                     </div>
                     <div class="row">

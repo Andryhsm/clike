@@ -698,6 +698,42 @@
 		$('#4-tab').trigger('click');
 	});
 
+	/*$(".open-time").prop('disabled', true);*/
+	$('.open-time').datetimepicker({
+		format: 'HH:mm',
+		icons: {
+			time: 'fa fa-time',
+			date: 'fa fa-calendar',
+			up: 'fa fa-chevron-up',
+			down: 'fa fa-chevron-down',
+			previous: 'fa fa-backward',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove'
+		}
+	});
+
+	$('.bottle').on('click', '.open-day', function(event) {
+		event.preventDefault();
+		console.log("active value");
+		var $inputs = $(this).parents('.info-one-day').find('.open-time');
+		var $icon = $(this).find('i');
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$icon.removeClass('fa-check-square');
+			$icon.addClass('fa-square-o');
+			$inputs.prop('disabled', true);
+			$inputs.val(null);
+		}
+		else {
+			$(this).addClass('active');
+			$inputs.prop('disabled', false);
+			$icon.removeClass('fa-square-o');
+			$icon.addClass('fa-check-square');
+		}
+	});
+
 	$('.btn-pack').on('click', function() {
 		var price = $(this).closest('.header-engagement-height').find('.price-int').html();
 		var name = $(this).closest('.header-engagement-height').find('.title span').html();

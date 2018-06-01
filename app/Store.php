@@ -53,5 +53,10 @@ class Store extends Model
 	{
 		return $this->belongsToMany(\App\Customer::class, 'encasement_store_customer', 'store_id', 'user_id')->where('type_customer', '=', 2);
 	}
+	
+	public function hours()
+	{
+		return $this->hasMany(\App\StoreOpeningHour::class,'store_id','store_id');	
+	}
 
 }
