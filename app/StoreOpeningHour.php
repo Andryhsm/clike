@@ -16,4 +16,9 @@ class StoreOpeningHour extends Model
 	 */
 	protected $fillable = ['opening_hour', 'closure_hour', 'opening_day_id', 'store_id'];
     public $timestamps = false;
+    
+    public function day()
+	{
+		return $this->hasOne(\App\StoreOpeningDay::class,'opening_day_id','opening_day_id');
+	}
 }

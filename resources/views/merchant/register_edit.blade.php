@@ -155,7 +155,7 @@
                         ?>
                         <div class="info-one-day col-lg-12 mb-10">
                             <div class="form-check col-lg-4">
-                                <a class="open-day" data-day="monday" href="#"><span><i class="fa {!! $class !!}"></i>&nbsp;&nbsp;&nbsp;&nbsp;Lundi</span></a>
+                                <a class="open-day" data-day="monday" href="#"><span class="capitalize-text"><i class="fa {!! $class !!}"></i>&nbsp;&nbsp;&nbsp;&nbsp;{!! $hour->day->day_name !!}</span></a>
                                 <input type="hidden" name="opening_day_id[{!! $i !!}]" class="form-check-input" id="monday" value="1"/>
                             </div>
                             <div style="position: relative">

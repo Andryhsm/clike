@@ -3187,3 +3187,6 @@ a.open-day {
 .fw-600{
   font-weight:600;
 }
+.capitalize-text{
+  text-transform: capitalize;
+}
