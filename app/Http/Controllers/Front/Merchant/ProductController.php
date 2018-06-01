@@ -137,6 +137,7 @@ class ProductController extends Controller
 		}else{	
 			$product_attributes = [];
 		}
+		\Log::debug($product_attributes);
 		return view('merchant.product.attributes',compact('attribute_set','product_attributes'));
 	}
 

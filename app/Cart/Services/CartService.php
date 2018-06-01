@@ -37,7 +37,6 @@ class CartService implements CartServiceInterface
         $cart_item = new CartItem();
         $cart_item->init($product, $form);
         $this->cart->add($cart_item);
-        
         return $cart_item;
     }
 

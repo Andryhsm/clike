@@ -29,6 +29,10 @@ class CartController extends Controller
     {
 //        $product = $this->product_repository->getProductById(6);
 //		$this->cart_service->add($product,['qty'=>1,'attrs'=>[10,13]]);
+    	dd($this->cart->items);
+    	foreach ($this->cart as $key => $value) {
+    		
+    	}
 		$cart = $this->cart;
         return view('front.cart.index',compact('cart'));
     }
@@ -52,8 +56,9 @@ class CartController extends Controller
 			flash()->error($e->getMessage());
 			return redirect()->back([400]);
 		} catch (\Exception $e) {
-			dd($e->getMessage()." error");
+			\Log::info($e->getMessage()." error");
 		}
+		\Log::info("Enregistrement avec success !");
 		flash()->success(trans('cart.item_added_success'));
 		return redirect('cart');
 	}

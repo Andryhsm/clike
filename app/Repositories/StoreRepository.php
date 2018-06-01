@@ -405,10 +405,11 @@ class StoreRepository implements StoreRepositoryInterface
 		
 		//Store opening day and opening hour in database
 		$opening_day_id_array = $input['opening_day_id'];
+		$opening_hour_id_array = $input['opening_hour_id'];
 		$opening_hour_array = $input['opening_hour'];
 		$closure_hour_array = $input['closure_hour'];
 		foreach ($opening_day_id_array as $key => $opening_day) {
-			$store_opening_hour = new \App\StoreOpeningHour();
+			$store_opening_hour = \App\StoreOpeningHour::findOrNew();
 			$store_opening_hour->opening_hour = (isset($opening_hour_array[$key])) ? $opening_hour_array[$key] : null;
 			$store_opening_hour->closure_hour = (isset($closure_hour_array[$key])) ? $closure_hour_array[$key] : null;
 			$store_opening_hour->opening_day_id = $opening_day;

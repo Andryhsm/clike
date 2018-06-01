@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+{"filter":false,"title":"test.blade.php","tooltip":"/resources/views/front/test/test.blade.php","undoManager":{"mark":-1,"position":-1,"stack":[]},"ace":{"folds":[],"scrolltop":0,"scrollleft":0,"selection":{"start":{"row":7,"column":0},"end":{"row":7,"column":0},"isBackwards":false},"options":{"guessTabSize":true,"useWrapMode":true,"wrapToView":true},"firstLineState":{"row":155,"state":"start","mode":"ace/mode/php"}},"timestamp":1527692316737,"hash":"e12ce04bbab9b5259b657288f3406b7f191d2332"}
+=======
 {"filter":false,"title":"test.blade.php","tooltip":"/resources/views/front/test/test.blade.php","undoManager":{"mark":-1,"position":-1,"stack":[]},"ace":{"folds":[],"scrolltop":1692,"scrollleft":0,"selection":{"start":{"row":146,"column":42},"end":{"row":146,"column":42},"isBackwards":false},"options":{"guessTabSize":true,"useWrapMode":false,"wrapToView":true},"firstLineState":{"row":20,"state":"start","mode":"ace/mode/php"}},"timestamp":1527692316737,"hash":"e12ce04bbab9b5259b657288f3406b7f191d2332"}
+>>>>>>> ab7305995cc9681f7d1eec2cb9a9ad1473ac0374

@@ -733,7 +733,6 @@
 			$icon.addClass('fa-check-square');
 		}
 	});
-
 	$('.btn-pack').on('click', function() {
 		var price = $(this).closest('.header-engagement-height').find('.price-int').html();
 		var name = $(this).closest('.header-engagement-height').find('.title span').html();

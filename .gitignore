@@ -11,6 +11,7 @@ composer.lock
 .c9/*
 /.idea
 /.c9
+/.c9/*
 Homestead.json
 Homestead.yaml
 .env
