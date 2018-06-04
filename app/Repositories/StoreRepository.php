@@ -119,7 +119,7 @@ class StoreRepository implements StoreRepositoryInterface
 
 	public function getById($store_id)
 	{
-		return $this->model->with('users','requestBrand','brands')->where('store_id',$store_id)->first();
+		return $this->model->with('users','requestBrand','brands','hours','hours.day')->where('store_id',$store_id)->first();
 	}
 
 	public function updateById($store_id, $input)
@@ -297,6 +297,20 @@ class StoreRepository implements StoreRepositoryInterface
 		$store_model->created_by = null;
 		$store_model->save();
 
+		//Store opening day and opening hour in database
+		$opening_day_id_array = $input['opening_day_id'];
+		$opening_hour_array = $input['opening_hour'];
+		$closure_hour_array = $input['closure_hour'];
+		foreach ($opening_day_id_array as $key => $opening_day) {
+			$store_opening_hour = new \App\StoreOpeningHour();
+			$store_opening_hour->opening_hour = (isset($opening_hour_array[$key])) ? $opening_hour_array[$key] : null;
+			$store_opening_hour->closure_hour = (isset($closure_hour_array[$key])) ? $closure_hour_array[$key] : null;
+			$store_opening_hour->opening_day_id = $opening_day;
+			$store_opening_hour->store_id = $store_model->store_id;
+			$store_opening_hour->save();
+		}
+		
+
 		if(!empty($managers)){
 			foreach ($managers as $manager_id=>$manager){
 				$store_model->users()->attach($manager_id,$manager);
@@ -388,6 +402,21 @@ class StoreRepository implements StoreRepositoryInterface
 		$store_model->save();
 
 		$store_model->users()->detach();
+		
+		//Store opening day and opening hour in database
+		$opening_day_id_array = $input['opening_day_id'];
+		$opening_hour_id_array = $input['opening_hour_id'];
+		$opening_hour_array = $input['opening_hour'];
+		$closure_hour_array = $input['closure_hour'];
+		foreach ($opening_day_id_array as $key => $opening_day) {
+			$store_opening_hour = \App\StoreOpeningHour::findOrNew();
+			$store_opening_hour->opening_hour = (isset($opening_hour_array[$key])) ? $opening_hour_array[$key] : null;
+			$store_opening_hour->closure_hour = (isset($closure_hour_array[$key])) ? $closure_hour_array[$key] : null;
+			$store_opening_hour->opening_day_id = $opening_day;
+			$store_opening_hour->store_id = $store_model->store_id;
+			$store_opening_hour->save();
+		}
+		
 		/*save store user*/
 		if(!empty($managers)){
 			foreach ($managers as $manager_id=>$manager){

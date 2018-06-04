@@ -89,7 +89,7 @@ class CartItem implements Arrayable
     {
        
         $this->id                      = $product->product_id;
-        $this->quantity                = round($data['qty']);
+        //$this->quantity                = round($data['qty']);
         $this->parent_row_id = isset($data['parent_row_id']) ? $data['parent_row_id'] : null;
 		//$this->radius = $data['radius'];
 		//$this->postal_code = $data['postal_code'];
@@ -107,7 +107,7 @@ class CartItem implements Arrayable
             $this->categories_name[] = $category->category_name;
         }
         
-            $this->initAttributes($product, $user_attrs);
+           $this->initAttributes($product, $user_attrs);
         
         $this->refresh($product);
         
@@ -120,11 +120,13 @@ class CartItem implements Arrayable
     public function initAttributes(Product $product, $user_attrs)
     {
         foreach ($product->attributeValues as $product_attr) {
-			if (in_array($product_attr->product_attribute_option_id,$user_attrs)) {
+    		if (in_array($product_attr->product_attribute_option_id,$user_attrs)) {
 				$cart_item_attribute = CartItemAttribute::make($product_attr);
-				$this->attributes->put($cart_item_attribute->getId(), $cart_item_attribute);
-			}
+				$list_cart_item_attribute[] = $cart_item_attribute;
+                $this->attributes->put($cart_item_attribute->getId(), $cart_item_attribute);
+		    }
         }
+        // dd($list_cart_item_attribute);
     }
 
     public function refresh(Product $product, $init_grouped_items = true)
@@ -147,7 +149,8 @@ class CartItem implements Arrayable
 			$cart_item_attribute = $this->attributes->get($product_attr->product_id."_".$product_attr->attribute_id);
 			if ($cart_item_attribute != null) {
 				$cart_item_attribute->setLabel($product_attr->attribute->french->attribute_name);
-				$cart_item_attribute->setValue($product_attr->option->french->option_value);
+			    if(isset($product_attr->option))
+                	$cart_item_attribute->setValue($product_attr->option->french->option_value);
 			
 			}
         }

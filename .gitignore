@@ -11,8 +11,8 @@ composer.lock
 .c9/*
 /.idea
 /.c9
+/.c9/*
 Homestead.json
 Homestead.yaml
-public/upload
 .env
 _ide_helper.php

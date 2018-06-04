@@ -544,6 +544,17 @@
 			$('.receive-notification i').addClass('fa-circle-o');
 		}
 	});
+	$('.save-cart').click(function(e) {
+		e.preventDefault();
+		if ($('.save-cart i').hasClass('fa-circle-o')) {
+			$('.save-cart i').removeClass('fa-circle-o');
+			$('.save-cart i').addClass('fa-dot-circle-o');
+		}
+		else {
+			$('.save-cart i').removeClass('fa-dot-circle-o');
+			$('.save-cart i').addClass('fa-circle-o');
+		}
+	});
 	$('.receive-email').click(function(e) {
 		e.preventDefault();
 		if ($('.receive-email i').hasClass('fa-circle-o')) {
@@ -619,15 +630,121 @@
 	});
 
 	$('#btn-etape1').on('click', function() {
-		$('#2-tab').trigger('click');
+
+		var shop_name = $('#shop_name').val();
+		var siret = $('#siret').val();
+		var email = $('#email').val();
+		var phone_number = $('#phone_number').val();
+		var password = $('#password').val();
+		var confirm_password = $('#confirm_password').val();
+
+		if (shop_name == "") {
+			$('#shop_name').css('border-color', 'red');
+		}
+		else {
+			$('#shop_name').css('border-color', '#044651');
+		}
+		if (siret == "") {
+			$('#siret').css('border-color', 'red');
+		}
+		else {
+			$('#siret').css('border-color', '#044651');
+		}
+		var regexForEmailValidation = /^\w+([-+.'][^\s]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+		var emailFormat = regexForEmailValidation.test(email);
+		if (email == "" || emailFormat == false) {
+			$('#email').css('border-color', 'red');
+		}
+		else {
+			$('#email').css('border-color', '#044651');
+		}
+		if (phone_number == "") {
+			$('#phone_number').css('border-color', 'red');
+		}
+		else {
+			$('#phone_number').css('border-color', '#044651');
+		}
+		if (password == "") {
+			$('#password').css('border-color', 'red');
+		}
+		else {
+			$('#password').css('border-color', '#044651');
+		}
+		if (confirm_password == "") {
+			$('#confirm_password').css('border-color', 'red');
+		}
+		else {
+			$('#confirm_password').css('border-color', '#044651');
+		}
+		if (confirm_password != password || confirm_password == "" || password == "") {
+			$('#password').css('border-color', 'red');
+			$('#confirm_password').css('border-color', 'red');
+		}
+		else {
+			$('#password').css('border-color', '#044651');
+			$('#confirm_password').css('border-color', '#044651');
+		}
+		if (shop_name != "" && siret != "" && email != "" && emailFormat == true && phone_number != "" && password != "" && confirm_password != "" && password == confirm_password) {
+			$('#2-tab').trigger('click');
+		}
 	});
 
 	$('#btn-etape3').on('click', function() {
 		$('#4-tab').trigger('click');
 	});
 
+	//gratuit
+	$('.btn-pack-gratuit').on('click', function() {
+		$('#4-tab').trigger('click');
+	});
+
+	/*$(".open-time").prop('disabled', true);*/
+	$('.open-time').datetimepicker({
+		format: 'HH:mm',
+		icons: {
+			time: 'fa fa-time',
+			date: 'fa fa-calendar',
+			up: 'fa fa-chevron-up',
+			down: 'fa fa-chevron-down',
+			previous: 'fa fa-backward',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove'
+		}
+	});
+
+	$('.bottle').on('click', '.open-day', function(event) {
+		event.preventDefault();
+		console.log("active value");
+		var $inputs = $(this).parents('.info-one-day').find('.open-time');
+		var $icon = $(this).find('i');
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$icon.removeClass('fa-check-square');
+			$icon.addClass('fa-square-o');
+			$inputs.prop('disabled', true);
+			$inputs.val(null);
+		}
+		else {
+			$(this).addClass('active');
+			$inputs.prop('disabled', false);
+			$icon.removeClass('fa-square-o');
+			$icon.addClass('fa-check-square');
+		}
+	});
 	$('.btn-pack').on('click', function() {
+		var price = $(this).closest('.header-engagement-height').find('.price-int').html();
+		var name = $(this).closest('.header-engagement-height').find('.title span').html();
+		var type = $(this).closest('.tab-pane').find('.type-engagement').html();
+		$('.total_original_amount').html(price + "€/mois");
+		$('.subscription-type').html(type);
+		$('.pack-name').html(name);
 		$('#3-tab').trigger('click');
+	});
+
+	$('.close-article').on('click', function() {
+		$('#2-tab').trigger('click');
 	});
 
 	//Script of search product
@@ -788,36 +905,38 @@ function close_select_radius() {
 		$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
 }
 
-function aside_fixed(){
-    console.log('log')    
-    var $aside   = $("#aside"), 
-        $window    = $(window),
-        offset     = $aside.offset(),
-        topPadding = 15,
-        content = $('.main')[0].clientHeight,
-        css = {},
-        animate = {};
-    if (Modernizr.mq('(max-width: 767px)')){
-        $window.scroll(function() {
-            if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
-                $aside.stop().css({'position': 'fixed', 'top': '0', 'z-index': '2000'})
-            } else {
-                $aside.stop().animate({
-                    marginTop: 0
-                }).css('position', 'relative');
-            }
-        }); 
-    }
-    else {
-        $window.scroll(function() {
-            if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
-                $aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
-            } else {
-                $aside.stop().animate({
-                    marginTop: 0
-                });
-            }
-        }); 
+function aside_fixed() {
+	console.log('log')
+	var $aside = $("#aside"),
+		$window = $(window),
+		offset = $aside.offset(),
+		topPadding = 15,
+		content = $('.main')[0].clientHeight,
+		css = {},
+		animate = {};
+	if (Modernizr.mq('(max-width: 767px)')) {
+		$window.scroll(function() {
+			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
+				$aside.stop().css({ 'position': 'fixed', 'top': '0', 'z-index': '2000' })
+			}
+			else {
+				$aside.stop().animate({
+					marginTop: 0
+				}).css('position', 'relative');
+			}
+		});
+	}
+	else {
+		$window.scroll(function() {
+			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
+				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
+			}
+			else {
+				$aside.stop().animate({
+					marginTop: 0
+				});
+			}
+		});
 
-    }        
+	}
 }

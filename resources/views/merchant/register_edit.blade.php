@@ -58,10 +58,9 @@
                                     {{Form::text('address1', ($store && $store->address1 !='') ? $store->address1 : null,['class'=>'form-control required','id'=>"address1"])}}
                                 </div>
                                 <div class="form-group">
-                                    <label for="city">{!! trans("merchant.city")!!} *</label>
-                                    {{Form::text('city', ($store) ? $store->city :  null ,['class'=>'form-control required','id'=>"city"])}}
+                                    <label for="address2">{!! trans("merchant.address_2")!!}</label>
+                                    {{Form::text('address2', ($store && $store->address2 !='') ? $store->address2 : null,['class'=>'form-control','id'=>"address2"])}}
                                 </div>
-                                
                                 <div class="form-group hidden">
                                     <label for="fix_phone">Numéro de téléphone fixe *</label>
                                     {{Form::text('fix_phone', ($store && $store->fix_phone !='') ? $store->fix_phone : null,['class'=>'form-control required','id'=>"fix_phone"])}}
@@ -80,14 +79,13 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    <label for="registration_number"> Numéro d'immatriculation *</label>
+                                    <label for="registration_number"> SIREN *</label>
                                     {{Form::text('registration_number', ($store) ? $store->registration_number :  null,['class'=>'form-control required'])}}
                                 </div>
                                 <div class="form-group">
-                                    <label for="address2">{!! trans("merchant.address_2")!!}</label>
-                                    {{Form::text('address2', ($store && $store->address2 !='') ? $store->address2 : null,['class'=>'form-control','id'=>"address2"])}}
+                                    <label for="city">{!! trans("merchant.city")!!} *</label>
+                                    {{Form::text('city', ($store) ? $store->city :  null ,['class'=>'form-control required','id'=>"city"])}}
                                 </div>
-    
                                 <div class="form-group">
                                     <label for="zip_code">{!! trans("merchant.zip_code")!!} *</label>
                                     {{Form::text('zip_code', ($store) ? $store->zip :  null ,['class'=>'form-control required','id'=>"zip"])}}
@@ -131,12 +129,45 @@
                                 </div>
                             </div>    
                         </div>
-                        <div class="col-md-12 hidden">
+                        <div class="col-lg-12">
+                            {!! Form::label('tva', 'Numéro TVA Intracommunautaire', ['class' => 'control-label']) !!}
+                            {!! Form::text('tva', ($store) ? $store->tva :  null, ['class' => 'form-control','id'=>'tva']) !!}
+                        </div>
+                        <!--<div class="col-md-12 hidden">
                             <div class="form-group">
                                 {!! Form::label('tva', 'Numéro TVA Intracommunautaire', ['class' => 'control-label']) !!}                                
                                 {!! Form::text('tva', ($store) ? $store->tva :  null, ['class' => 'form-control','id'=>'tva']) !!}
                             </div>
+                        </div>-->
+                        <div class="row mb-20">
+                        	<div class="text-center col-lg-12 col-md-12 mt-40">
+                                <strong class="text-uppercase">
+                                    Choisisser les horaires d'ouverture de votre magasin
+                                </strong>
+                            </div>
                         </div>
+                        <?php $i=1; ?>
+                        
+                        @foreach($store->hours as $hour)
+                        <?php 
+                            $class = ($hour->opening_hour == null)?"fa-square-o":"fa-check-square";  
+                            $disable = ($hour->opening_hour == null)?"disabled":"";
+                        ?>
+                        <div class="info-one-day col-lg-12 mb-10">
+                            <div class="form-check col-lg-4">
+                                <a class="open-day" data-day="monday" href="#"><span class="capitalize-text"><i class="fa {!! $class !!}"></i>&nbsp;&nbsp;&nbsp;&nbsp;{!! $hour->day->day_name !!}</span></a>
+                                <input type="hidden" name="opening_day_id[{!! $i !!}]" class="form-check-input" id="monday" value="1"/>
+                            </div>
+                            <div style="position: relative">
+                                <input type="text" {!! $disable !!} class="col-lg-2 form-control open-time w-lg-2" name="opening_hour[{!! $i !!}]" value="{!! $hour->opening_hour !!}">
+                            </div><span class="col-lg-2 text-center">à</span>
+                            <div style="position: relative">
+                                <input type="text" {!! $disable !!} class="col-lg-2 form-control open-time w-lg-2" name="closure_hour[{!! $i !!}]" value="{!! $hour->closure_hour !!}">
+                            </div>
+                        </div>
+                        <?php $i++; ?>
+                        @endforeach
+                        
                         <div class="text-center mt-40 mb-20 col-lg-12 col-md-12">
                             <strong class="text-uppercase">
                                 {!! trans('merchant.contact') !!}

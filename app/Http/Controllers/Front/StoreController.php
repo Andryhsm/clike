@@ -45,7 +45,6 @@ class StoreController extends Controller
 
     public function store(StoreRequest $store_request)
     {
-
         $all_input = $store_request->all();
 		$logo_name = "";
 		if ($store_request->hasFile("logo")) {
@@ -80,7 +79,7 @@ class StoreController extends Controller
 			'main_email' => 'required',
 			'cell_phone' => 'required',
 			'fix_phone' => 'required',
-			'g-recaptcha-response'=>'required|recaptcha'
+			//'g-recaptcha-response'=>'required|recaptcha'
 /*			'last_name' => 'required',
 			'first_name' => 'required',
 			'position' => 'required',
