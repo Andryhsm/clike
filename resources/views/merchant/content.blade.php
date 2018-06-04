@@ -4,7 +4,7 @@
 
 <?php Session::put('role_user',2); ?>
 
-<div class="container mtb-40 tab-panel-customer" style="width: 80%">
+<div class="container mtb-40 tab-panel-customer" id="register_marchant" style="width: 80%">
        <div class="col-lg-12">
                     @include('notification')
                 </div>

@@ -119,95 +119,7 @@
                 <button type="button" class="close" href="javascript:history.back()" aria-label="Close">
             </ul>
 
-            <div class="engagement-menu hidden text-center" id="uploadTab">
-                <br><br><br>
-                <div class="row menu-pop" style="width: 105%;margin-bottom: -1.4rem;">
-                    <div class="point5 col-xs-3"></div>
-                    <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
-                    <div class="point5 col-xs-3"></div>
-                    <div class="oint5 col-xs-3"></div>
-                </div>                      
-                <div class="row menu" style="width: 105%;">
-                        <a class="bg-white shadow-engagement active text-center col-xs-3" href = "#discovery" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Découverte</span>
-                            </div>
-                            <div class="engagement-price mt-25">GRATUIT</div>
-                        </a>
-                        <a class="bg-white text-center col-xs-3" href = "#seller" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Vendeur</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">30</span><span class="price-unity">€</span>/mois</div>
-                        </a>
-                        <a class="bg-white text-center col-xs-3" href = "#marketing" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Marketing</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">45</span><span class="price-unity">€</span>/mois</div>
-                        </a>
-                        <a class="bg-white text-center col-xs-3" href = "#marketingp" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Marketing +</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">65</span><span class="price-unity">€</span>/mois</div>                             
-                        </a>
-                </div>
-            </div>
-
-            <div class="engagement-menu hidden text-center" id="browseTab">
-                <br><br><br>
-                <div class="row menu-pop" style="width: 105%;margin-bottom: -1.4rem;">
-                    <div class="point5 col-xs-3"></div>
-                    <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
-                    <div class="point5 col-xs-3"></div>
-                    <div class="oint5 col-xs-3"></div>
-                </div>                      
-                <div class="row menu" style="width: 105%;">
-                        <a class="bg-white shadow-engagement active text-center col-xs-3" href = "#discovery2" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Découverte</span>
-                            </div>
-                            <div class="engagement-price mt-25">GRATUIT</div>
-                        </a>
-                        <a class="bg-white text-center col-xs-3" href = "#seller2" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Vendeur</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">39</span><span class="price-unity">€</span>/mois</div>
-                        </a>
-                        <a class="bg-white text-center col-xs-3" href = "#marketing2" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Marketing</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">59</span><span class="price-unity">€</span>/mois</div>
-                        </a>
-                        <a class="bg-white text-center col-xs-3" href = "#marketingp2" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Marketing +</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">79</span><span class="price-unity">€</span>/mois</div>                             
-                        </a>
-                </div>
-            </div>
-
-            <div class="hidden" id="engagement-menu-content">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 point5 left-header  border-green" style="margin-top: 30rem; border-right: none;">
-                    <p><b>Compte employés</b></p>
-                    <div class="row bg-white p-0"><p><b>Nombre d’articles</b></p></div>
-                    <p><b>Base de données clients</b></p>
-                    <div class="row bg-white p-0"><p><b>Visibilité des produits</b></p></div>
-                    <p><b>Frais de transaction</b></p>
-                    <div class="row bg-white p-0"><p><b>Codes promo</b></p></div>
-                    <p><b>Encaissement physique</b></p>
-                    <div class="row bg-white p-0"><p><b>Rapport d’activité</b></p></div>
-                    <p><b>Fiche boutique</b></p>
-                    <div class="row bg-white p-0"><p><b>Newsletters</b></p></div>
-                </div>
-                
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="content2">
-                </div>
-            </div>
+            
 
             <div class="tab-content tab-login" id="tab-engagement">                
 
@@ -531,6 +443,97 @@
                         
                     </div>
                 	
+                </div>
+            </div>
+
+            <!--  menu dans les écrans mobiles  -->
+            <div class="engagement-menu hidden text-center" id="uploadTab">
+                <br><br><br>
+                <div class="row menu-pop" style="width: 105%;"> <!-- margin-bottom: -1.4rem; -->
+                    <div class="point5 col-xs-3"></div>
+                    <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
+                    <div class="point5 col-xs-3"></div>
+                    <div class="oint5 col-xs-3"></div>
+                </div>                      
+                <div class="row menu" style="width: 105%;">
+                        <a class="active  bg-white text-center col-xs-3" href = "#discovery" data-tab="uploadTab" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Découverte</span>
+                            </div>
+                            <div class="engagement-price mt-25">GRATUIT</div>
+                        </a>
+                        <a class="shadow-engagement  bg-white text-center col-xs-3" href = "#seller" data-tab="uploadTab" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Vendeur</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">30</span><span class="price-unity">€</span>/mois</div>
+                        </a>
+                        <a class="text-center  bg-white col-xs-3" href = "#marketing" data-tab="uploadTab" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Marketing</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">45</span><span class="price-unity">€</span>/mois</div>
+                        </a>
+                        <a class="text-center  bg-white col-xs-3" href = "#marketingp" data-tab="uploadTab" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Marketing +</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">65</span><span class="price-unity">€</span>/mois</div>                             
+                        </a>
+                </div>
+            </div>
+
+            <div class="engagement-menu hidden text-center" id="browseTab">
+                <br><br><br>
+                <div class="row menu-pop" style="width: 105%;"> <!-- margin-bottom: -1.4rem; -->
+                    <div class="point5 col-xs-3"></div>
+                    <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
+                    <div class="point5 col-xs-3"></div>
+                    <div class="oint5 col-xs-3"></div>
+                </div>                      
+                <div class="row menu" style="width: 105%;">
+                        <a class="active  bg-white text-center col-xs-3" href = "#discovery2" data-tab="browseTab" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Découverte</span>
+                            </div>
+                            <div class="engagement-price mt-25">GRATUIT</div>
+                        </a>
+                        <a class="shadow-engagement  bg-white text-center col-xs-3" href = "#seller2" data-tab="browseTab" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Vendeur</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">39</span><span class="price-unity">€</span>/mois</div>
+                        </a>
+                        <a class="text-center  bg-white col-xs-3" href = "#marketing2" data-tab="browseTab" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Marketing</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">59</span><span class="price-unity">€</span>/mois</div>
+                        </a>
+                        <a class="text-center  bg-white col-xs-3" href = "#marketingp2" data-tab="browseTab" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Marketing +</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">79</span><span class="price-unity">€</span>/mois</div>                             
+                        </a>
+                </div>
+            </div>
+
+            <div class="hidden" id="engagement-menu-content">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 point5 left-header  border-green" style="margin-top: 30rem; border-right: none;">
+                    <p><b>Compte employés</b></p>
+                    <div class="row bg-white p-0"><p><b>Nombre d’articles</b></p></div>
+                    <p><b>Base de données clients</b></p>
+                    <div class="row bg-white p-0"><p><b>Visibilité des produits</b></p></div>
+                    <p><b>Frais de transaction</b></p>
+                    <div class="row bg-white p-0"><p><b>Codes promo</b></p></div>
+                    <p><b>Encaissement physique</b></p>
+                    <div class="row bg-white p-0"><p><b>Rapport d’activité</b></p></div>
+                    <p><b>Fiche boutique</b></p>
+                    <div class="row bg-white p-0"><p><b>Newsletters</b></p></div>
+                </div>
+                
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="content2">
                 </div>
             </div>
         </div>

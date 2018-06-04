@@ -498,6 +498,7 @@ a#scrollUp {
 .section-three-bloc-align {
     height: 52.8rem;
 }
+
 }
  
 /* Tablet desktop :768px. */
@@ -2074,12 +2075,32 @@ img.equipe-clickee {
 #tab-sale {
   padding-left: 0 !important;
   padding-right: 0 !important;
+  overflow: auto;
 }
 .engagement-menu .row {
   margin-left: 0 !important;
   margin-right: 0 !important;
   font-size: 18px;
   width: 100% !important;
+}
+.engagement-menu .row {
+  padding: 0;
+}
+.engagement-menu .menu a {
+  border-bottom: 4px solid #0f4651;
+  margin-bottom: 10px;
+}
+.engagement-menu a.active {
+  border-bottom: none !important;
+  border-top: 4px solid #0f4651;
+  border-left: 4px solid #0f4651;
+  border-right:  4px solid #0f4651;
+}
+.engagement-menu a:first-child {
+  border-left: none;
+}
+.engagement-menu a:last-child {
+  border-right: none;
 }
 
 }
@@ -2475,6 +2496,11 @@ text-align: center !important;
 }
 .content-page {
   margin: 8.5% 4% 4%;
+}
+#register_marchant {
+  width: 90% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 /*.engagement-menu .menu a {
   height: 120px !important;
