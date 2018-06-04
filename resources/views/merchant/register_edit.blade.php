@@ -156,7 +156,8 @@
                         <div class="info-one-day col-lg-12 mb-10">
                             <div class="form-check col-lg-4">
                                 <a class="open-day" data-day="monday" href="#"><span class="capitalize-text"><i class="fa {!! $class !!}"></i>&nbsp;&nbsp;&nbsp;&nbsp;{!! $hour->day->day_name !!}</span></a>
-                                <input type="hidden" name="opening_day_id[{!! $i !!}]" class="form-check-input" id="monday" value="1"/>
+                                <input type="hidden" name="opening_day_id[{!! $i !!}]" class="form-check-input" value="1"/>
+                                <input type="hidden" name="opening_hour_id[{!! $i !!}]" class="form-check-input" value="{!! $hour->opening_hour_id !!}"/>
                             </div>
                             <div style="position: relative">
                                 <input type="text" {!! $disable !!} class="col-lg-2 form-control open-time w-lg-2" name="opening_hour[{!! $i !!}]" value="{!! $hour->opening_hour !!}">

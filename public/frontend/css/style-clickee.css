@@ -2044,7 +2044,6 @@ element.style {
     width: auto;
     height: auto;
 }
-.product-price{margin-top: 19px}
 .default-btn:hover {
     background: #59b210 !important;
     color: #fff !important;
@@ -3077,6 +3076,11 @@ img.equipe-clickee {
 .page-cart-content, .page-confirm-cart-content {
     font-size: 16px;
 }
+.page-confirm-cart-content .star {
+    width: 15px;
+    height: 15px;
+    background-position-y: -20px;
+}
 .product-image img {
     max-height: 160px;
     max-width: 160px;
@@ -3119,6 +3123,7 @@ img.equipe-clickee {
 }
 .page-confirm-cart-content .product-price {
     margin-top: 0px;
+    margin-bottom: 5px;
 }
 .page-confirm-cart-content .cart-product .form-control {
     width: 35% !important;
@@ -3189,4 +3194,17 @@ a.open-day {
 }
 .capitalize-text{
   text-transform: capitalize;
+}
+.table-condensed td{
+  border:none !important;
+}
+.product-price {
+    margin-top: 0px;
+    margin-bottom: 18px;
+}
+.page-confirm-cart-content .stars_review {
+    padding-left: 0px !important;
+}
+.page-cart-content .stars_review {
+    padding-left: 10px !important;
 }

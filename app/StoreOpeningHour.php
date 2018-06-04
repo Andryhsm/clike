@@ -10,7 +10,7 @@ class StoreOpeningHour extends Model
 	/**
 	 * @var string
 	 */
-	protected $primaryKey = 'store_opening_hour_id';
+	protected $primaryKey = 'opening_hour_id';
 	/**
 	 * @var array
 	 */

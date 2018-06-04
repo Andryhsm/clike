@@ -37,6 +37,16 @@
                                                         <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
                                                     @endif
                                             </div>
+                                            <div class="row reviews-total">
+                                                <div class="stars_review col-lg-12" style="overflow: show !important;">
+                                                    @for($i=1;$i <= average_rating($product->product_id);$i++)
+                                                            <a title="1" class="star fullStar"></a>
+                                                    @endfor
+                                                    @for($i=5 ;$i > average_rating($product->product_id);$i--)
+                                                            <a title="1" class="star"></a>
+                                                    @endfor
+                                                </div>
+                                            </div>
                                             <div class="product-quantity">
                                                    @foreach($item->getAttributes() as $attribute)
                                                         @if($loop->first)
@@ -80,6 +90,7 @@
                                              </li>
                                             <li class="text-center">    
                                                 <a type="button" href="{!! url(LaravelLocalization::getCurrentLocale().'/cart/confirm') !!}" class="btn btn-clickee-default mt-40  text-uppercase">Paiement</a>
+                                                 <!--<button type="submit" class="btn btn-clickee-default mt-40  text-uppercase">Confirm cart</button>-->
                                             </li>
                                         </ul>
                                     </div>

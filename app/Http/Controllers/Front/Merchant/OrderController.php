@@ -17,6 +17,7 @@ use App\Models\OrderItemCoupon;
 use App\Models\OrderItemRequest;
 use App\User;
 use Carbon\Carbon;
+use Jenssegers\Date\Date;
 
 class OrderController extends Controller
 {
@@ -45,7 +46,7 @@ class OrderController extends Controller
 		$earned_items = $this->order_item_repository->getEarnedItemsByMerchant(\Auth::user()->user_id);
 		$history_items = $this->order_item_repository->getHistoryItemByMerchant(\Auth::user()->user_id);
 		/*dd($history_items);*/
-        return view('merchant.orders.view', compact('pending_items','earned_items'));
+		return view('merchant.orders.view', compact('pending_items','earned_items'));
     }
 
     /**
@@ -62,7 +63,13 @@ class OrderController extends Controller
             $location = $this->getLatitudeAndLongitudeByZipCode($item['zip_code'],$country);
             $distance = $this->calculateDistance($item->product->store->latitude, $item->product->store->longitude, $location['lat'], $location['lng']);
             if ($item['radius'] >= $distance) {
-                /*dd($item->product_name.'-'.$item->order_item_date.' - '.Carbon::parse($item->order_item_date)->addHours(1).' < '.Carbon::now());*/
+                Date::setLocale('fr');
+                foreach($item->product->store->hours as $hour){
+                    if ($hour->day->day_name == Date::now()->format('l')) {
+                        dd(Carbon::now()->addHours(1)->format('H:i:s')." ".$hour->opening_hour." ".$hour->closure_hour);
+                    }
+                }
+                
                 if((Carbon::parse($item->order_item_date)->addHours(1))->gt(Carbon::now()))
                 {
                     $items[$item['order_item_id']] = $item;

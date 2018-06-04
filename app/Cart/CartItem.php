@@ -126,7 +126,6 @@ class CartItem implements Arrayable
                 $this->attributes->put($cart_item_attribute->getId(), $cart_item_attribute);
 		    }
         }
-        // dd($list_cart_item_attribute);
     }
 
     public function refresh(Product $product, $init_grouped_items = true)

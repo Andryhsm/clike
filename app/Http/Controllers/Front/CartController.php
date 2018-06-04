@@ -29,10 +29,7 @@ class CartController extends Controller
     {
 //        $product = $this->product_repository->getProductById(6);
 //		$this->cart_service->add($product,['qty'=>1,'attrs'=>[10,13]]);
-    	dd($this->cart->items);
-    	foreach ($this->cart as $key => $value) {
-    		
-    	}
+ 
 		$cart = $this->cart;
         return view('front.cart.index',compact('cart'));
     }

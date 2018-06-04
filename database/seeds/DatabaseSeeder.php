@@ -29,31 +29,31 @@ class DatabaseSeeder extends Seeder
        
         factory(\App\StoreOpeningDay::class)->create([
             'opening_day_id' => 1,
-            'day_name' => 'monday'
+            'day_name' => 'lundi'
         ]);
         factory(\App\StoreOpeningDay::class)->create([
             'opening_day_id' => 2,
-            'day_name' => 'tuesday'
+            'day_name' => 'mardi'
         ]);
         factory(\App\StoreOpeningDay::class)->create([
             'opening_day_id' => 3,
-            'day_name' => 'wednesday'
+            'day_name' => 'mercredi'
         ]);
         factory(\App\StoreOpeningDay::class)->create([
             'opening_day_id' => 4,
-            'day_name' => 'thursday'
+            'day_name' => 'jeudi'
         ]);
         factory(\App\StoreOpeningDay::class)->create([
             'opening_day_id' => 5,
-            'day_name' => 'friday'
+            'day_name' => 'vendredi'
         ]);
         factory(\App\StoreOpeningDay::class)->create([
             'opening_day_id' => 6,
-            'day_name' => 'saturday'
+            'day_name' => 'samedi'
         ]);
         factory(\App\StoreOpeningDay::class)->create([
             'opening_day_id' => 7,
-            'day_name' => 'sunday'
+            'day_name' => 'dimanche'
         ]);
     }
 }

@@ -832,3 +832,9 @@ function getNumberOrderEarned($user_id)
 			->get();
 	return count($items);		
 }
+function average_rating($product_id){
+    $reviews = \App\Models\ProductRating::where('product_id',$product_id)->where('status', 1)->orderBy('review_date','desc')->paginate(4);
+    $total_ratings = \App\Models\ProductRating::where('product_id',$product_id)->where('status', 1)->sum('rating');
+    $average_rating = count($reviews) > 0 ? round($total_ratings/count($reviews)): 0;
+    return $average_rating;
+}

@@ -77,7 +77,7 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 				->whereRaw('order_item_request.item_id= order_item.order_item_id')
 				->where('order_item_request.merchant_id','=',$user_id);
 		})
-			->with(['brand','brand.stores', 'product', 'attributes'])
+			->with(['brand','brand.stores', 'product', 'product.store.hours', 'attributes'])
 			->where('order_status_id',OrderItem::ORDER_STATUS_ORDERED)
 			->get();
 		return $items;
