@@ -11,7 +11,7 @@
                 <div class="cart-list row">
                     <div class="cart-img col-lg-3">
                         <a href="#" title="{!! $item->getName() !!}"><img
-                                    src="{!! \App\Product::PRODUCT_IMAGE_CDN_PATH.$item->getImage() !!}"
+                                    src="{!! URL::to('/').'/'.\App\Product::PRODUCT_IMAGE_PATH.$item->getImage() !!}"
                                     alt="{!! $item->getImageAlt() !!}"/></a>
                     </div>
                     <div class="cart-info col-lg-8">
