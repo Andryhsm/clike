@@ -1134,6 +1134,13 @@ a#scrollUp {
     width: 100%;
     margin-top: 10%;
 }
+.header-engagement-height {
+    height: 32rem;
+}
+.point5.left-header { 
+  margin-top: 32rem !important;
+}
+
 }
 
 /* small mobile :320px. */
@@ -2054,6 +2061,27 @@ img.equipe-clickee {
   background-size: 15%;
   padding: 14px 30px 5px 30%;
 }
+.header-engagement-height {
+  text-align: center !important;
+}
+.header-engagement-height a {
+  width: 80%;
+}
+.engagement-menu a {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+#tab-sale {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.engagement-menu .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  font-size: 18px;
+  width: 100% !important;
+}
+
 }
 /* end max-width 767px */ 
 /* Large Mobile :480px. */
@@ -2233,10 +2261,13 @@ text-align: center !important;
 .blog-full-width .bloag-entry-area .post-date {
   margin-left: 160px;
 }
-
 .service-area {
     margin-left: 12vw;
 }
+#engagement-menu-content {
+  font-size: 16px !important;
+}
+
 }
 
 @media (max-width: 480px) {
@@ -2430,5 +2461,29 @@ text-align: center !important;
   margin-bottom: 10%;
   width: 50%;
 }
+.engagement-menu .row {
+  font-size: 16px !important;
+}
+#engagement-menu-content {
+  font-size: 14px;
+}
+.engagement-menu .menu a {
+  line-height: 1.2;
+}
+.header-engagement-height {
+  padding: 10px !important;
+}
+.content-page {
+  margin: 8.5% 4% 4%;
+}
+/*.engagement-menu .menu a {
+  height: 120px !important;
+}*/
 }
 
+@media (max-width: 360px) {
+.engagement-menu .menu a, .menu-pop .point5 {
+  width: 50%;
+}
+
+}

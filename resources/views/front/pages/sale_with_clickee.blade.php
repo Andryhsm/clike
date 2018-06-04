@@ -35,7 +35,7 @@
                     </div> 
                     
                     <div class="row mt--10">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <div class="border-green-dark text-center">
                                 <p class="figure">
                                     {!! $store_count !!}
@@ -45,7 +45,7 @@
                                 </p> 
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <div class="border-green-dark text-center">
                                 <p class="figure">
                                     {!! $product_count !!}
@@ -55,7 +55,7 @@
                                 </p> 
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <div class="border-green-dark text-center">
                                 <p class="figure">
                                     1
@@ -65,7 +65,7 @@
                                 </p> 
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <div class="border-green-dark text-center">
                                 <p class="figure">
                                     {!! $user_count !!}
@@ -118,20 +118,112 @@
                 </li>
                 <button type="button" class="close" href="javascript:history.back()" aria-label="Close">
             </ul>
-            <div class="tab-content tab-login" id="tab-engagement">
-                <div role="tabpanel" class="tab-pane active" id="uploadTab">
+
+            <div class="engagement-menu hidden text-center" id="uploadTab">
+                <br><br><br>
+                <div class="row menu-pop" style="width: 105%;margin-bottom: -1.4rem;">
+                    <div class="point5 col-xs-3"></div>
+                    <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
+                    <div class="point5 col-xs-3"></div>
+                    <div class="oint5 col-xs-3"></div>
+                </div>                      
+                <div class="row menu" style="width: 105%;">
+                        <a class="bg-white shadow-engagement active text-center col-xs-3" href = "#discovery" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Découverte</span>
+                            </div>
+                            <div class="engagement-price mt-25">GRATUIT</div>
+                        </a>
+                        <a class="bg-white text-center col-xs-3" href = "#seller" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Vendeur</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">30</span><span class="price-unity">€</span>/mois</div>
+                        </a>
+                        <a class="bg-white text-center col-xs-3" href = "#marketing" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Marketing</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">45</span><span class="price-unity">€</span>/mois</div>
+                        </a>
+                        <a class="bg-white text-center col-xs-3" href = "#marketingp" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Marketing +</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">65</span><span class="price-unity">€</span>/mois</div>                             
+                        </a>
+                </div>
+            </div>
+
+            <div class="engagement-menu hidden text-center" id="browseTab">
+                <br><br><br>
+                <div class="row menu-pop" style="width: 105%;margin-bottom: -1.4rem;">
+                    <div class="point5 col-xs-3"></div>
+                    <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
+                    <div class="point5 col-xs-3"></div>
+                    <div class="oint5 col-xs-3"></div>
+                </div>                      
+                <div class="row menu" style="width: 105%;">
+                        <a class="bg-white shadow-engagement active text-center col-xs-3" href = "#discovery2" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Découverte</span>
+                            </div>
+                            <div class="engagement-price mt-25">GRATUIT</div>
+                        </a>
+                        <a class="bg-white text-center col-xs-3" href = "#seller2" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Vendeur</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">39</span><span class="price-unity">€</span>/mois</div>
+                        </a>
+                        <a class="bg-white text-center col-xs-3" href = "#marketing2" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Marketing</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">59</span><span class="price-unity">€</span>/mois</div>
+                        </a>
+                        <a class="bg-white text-center col-xs-3" href = "#marketingp2" onclick = "showEngagement(this)">
+                            <div class="pt-10">
+                                <span>Marketing +</span>
+                            </div>
+                            <div class="engagement-price text-center"><span class="price-int">79</span><span class="price-unity">€</span>/mois</div>                             
+                        </a>
+                </div>
+            </div>
+
+            <div class="hidden" id="engagement-menu-content">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 point5 left-header  border-green" style="margin-top: 30rem; border-right: none;">
+                    <p><b>Compte employés</b></p>
+                    <div class="row bg-white p-0"><p><b>Nombre d’articles</b></p></div>
+                    <p><b>Base de données clients</b></p>
+                    <div class="row bg-white p-0"><p><b>Visibilité des produits</b></p></div>
+                    <p><b>Frais de transaction</b></p>
+                    <div class="row bg-white p-0"><p><b>Codes promo</b></p></div>
+                    <p><b>Encaissement physique</b></p>
+                    <div class="row bg-white p-0"><p><b>Rapport d’activité</b></p></div>
+                    <p><b>Fiche boutique</b></p>
+                    <div class="row bg-white p-0"><p><b>Newsletters</b></p></div>
+                </div>
+                
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="content2">
+                </div>
+            </div>
+
+            <div class="tab-content tab-login" id="tab-engagement">                
+
+                <div role="tabpanel" class="tab-pane active hidden-xs" id="uploadTab">
                 	
                 	<div class="row" style="width: 105%;margin-bottom: -1.4rem;">
-                	    <div class="col-sm-2 point5 col-xs-12"></div>
-                	    <div class="col-sm-2 point5 col-xs-12"></div>
-                	    <div class="col-sm-2 point5 col-xs-12 bg-green">LE PLUS POPULAIRE</div>
-                	    <div class="col-sm-2 point5 col-xs-12"></div>
-                	    <div class="col-sm-2 point5 col-xs-12"></div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5"></div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5"></div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5 bg-green">LE PLUS POPULAIRE</div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5"></div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5"></div>
                 	</div>    
                 	
                 	<div class="row" style="width: 105%;">
                         
-                        <div class="col-sm-2 point5 border-green" style="margin-top: 30rem;">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 point5 left-header  border-green" id="left-header" style="margin-top: 30rem;">
                             <p><b>Compte employés</b></p>
                             <div class="row bg-white p-0"><p><b>Nombre d’articles</b></p></div>
                             <p><b>Base de données clients</b></p>
@@ -144,7 +236,7 @@
                             <div class="row bg-white p-0"><p><b>Newsletters</b></p></div>
                         </div>
                         
-                        <div class="col-sm-2 point5 border-green">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="discovery">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
@@ -153,9 +245,9 @@
                                 <div class="engagement-price mt-25">GRATUIT</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
-                                <p>
+                                <span>
                                     Souscrivez au Pack Découverte pour découvrir toutes les fonctionnalités de Clickee sans dépenser un euro.
-                                </p>
+                                </span>
                             </div>
                             <p>illimité</p>
                             <div class="row bg-white p-0"><p>illimité</p></div>
@@ -177,7 +269,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-sm-2 point5 border-green shadow-engagement">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green shadow-engagement" id="seller">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
@@ -186,9 +278,9 @@
                                 <div class="engagement-price mb--10"><span class="price-int">30</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
-                                <p>
+                                <span>
                                     Souscrivez au Pack Vendeur pour commencer à booster vos ventes en local.
-                                </p>
+                                </span>
                             </div>
                             <p>illimité</p>
                             <div class="row bg-white p-0"><p>illimité</p></div>
@@ -210,7 +302,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-sm-2 point5 border-green">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="marketing">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
@@ -219,9 +311,9 @@
                                 <div class="engagement-price mb--10"><span class="price-int">45</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
-                                <p>
+                                <span>
                                     Souscrivez au Pack Marketing si vous souhaitez fidéliser vos clients en les tenant informés en live.
-                                </p>
+                                </span>
                             </div>
                             <p>illimité</p>
                             <div class="row bg-white p-0"><p>illimité</p></div>
@@ -243,7 +335,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-sm-2 point5 border-green">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green"  id="marketingp">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo clickee"/>
@@ -252,9 +344,9 @@
                                 <div class="engagement-price mb--10"><span class="price-int">65</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
-                                <p>
+                                <span>
                                     Souscrivez au Pack Marketing + quand votre base de données clients grandie.
-                                </p>
+                                </span>
                             </div>
                             <p>illimité</p>
                             <div class="row bg-white p-0"><p>illimité</p></div>
@@ -279,19 +371,20 @@
                     </div>
                 	
                 </div>
-                <div role="tabpanel" class="tab-pane" id="browseTab">
+
+                <div role="tabpanel" class="tab-pane hidden-xs" id="browseTab">
                 	
                 	<div class="row" style="width: 105%;margin-bottom: -1.4rem;">
-                	    <div class="col-sm-2 point5 col-xs-12"></div>
-                	    <div class="col-sm-2 point5 col-xs-12"></div>
-                	    <div class="col-sm-2 point5 col-xs-12 bg-green">LE PLUS POPULAIRE</div>
-                	    <div class="col-sm-2 point5 col-xs-12"></div>
-                	    <div class="col-sm-2 point5 col-xs-12"></div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5"></div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5"></div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5 bg-green">LE PLUS POPULAIRE</div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5"></div>
+                	    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 point5"></div>
                 	</div>
                 	
                 	<div class="row" style="width: 105%;">
                         
-                        <div class="col-sm-2 point5 border-green" style="margin-top: 30rem;">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 point5 left-header border-green" style="margin-top: 30rem;">
                             <p><b>Compte employés</b></p>
                             <div class="row bg-white p-0"><p><b>Nombre d’articles</b></p></div>
                             <p><b>Base de données clients</b></p>
@@ -304,7 +397,7 @@
                             <div class="row bg-white p-0"><p><b>Newsletters</b></p></div>
                         </div>
                         
-                        <div class="col-sm-2 point5 border-green">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="discovery2">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
@@ -313,9 +406,9 @@
                                 <div class="engagement-price mt-25">GRATUIT</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
-                                <p>
+                                <span>
                                     Souscrivez au Pack Découverte pour découvrir toutes les fonctionnalités de Clickee sans dépenser un euro.
-                                </p>
+                                </span>
                             </div>
                             <p>illimité</p>
                             <div class="row bg-white p-0"><p>illimité</p></div>
@@ -337,7 +430,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-sm-2 point5 border-green shadow-engagement">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green shadow-engagement" id="seller2">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
@@ -346,9 +439,9 @@
                                 <div class="engagement-price mb--10"><span class="price-int">39</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
-                                <p>
+                                <span>
                                     Souscrivez au Pack Vendeur pour commencer à booster vos ventes en local.
-                                </p>
+                                </span>
                             </div>
                             <p>illimité</p>
                             <div class="row bg-white p-0"><p>illimité</p></div>
@@ -370,7 +463,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-sm-2 point5 border-green">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="marketing2">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
@@ -379,9 +472,9 @@
                                 <div class="engagement-price mb--10"><span class="price-int">59</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
-                                <p>
+                                <span>
                                     Souscrivez au Pack Marketing si vous souhaitez fidéliser vos clients en les tenant informés en live.
-                                </p>
+                                </span>
                             </div>
                             <p>illimité</p>
                             <div class="row bg-white p-0"><p>illimité</p></div>
@@ -403,7 +496,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-sm-2 point5 border-green">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="marketingp2">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
@@ -412,9 +505,9 @@
                                 <div class="engagement-price mb--10"><span class="price-int">79</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
-                                <p>
+                                <span>
                                     Souscrivez au Pack Marketing + quand votre base de données clients grandie.
-                                </p>
+                                </span>
                             </div>
                             <p>illimité</p>
                             <div class="row bg-white p-0"><p>illimité</p></div>

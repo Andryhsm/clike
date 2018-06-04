@@ -238,6 +238,7 @@
 
 {!! Html::script('frontend/js/search-local-product.js') !!}
 {!! Html::script('frontend/js/wishlist.js') !!}
+{!! Html::script('frontend/js/responsive.js') !!}
 <!-- Bootstrap dropdown hover -->
 <!--<script src="{!! URL::to('/') !!}/frontend/js/bootstrap-dropdownhover.js"></script>-->
 @yield('additional-script')

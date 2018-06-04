@@ -2775,8 +2775,32 @@ span.text-title {
     color: #65BB9F;
 }
 .tab-panel p {
-    margin: 20px 0 20px;
+    /*margin: 20px 0 20px;*/
     line-height: 1.25;
+    margin: auto;
+    line-height: 1.25;
+    height: 60px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.point5 .title {
+  height: 70px;
+}
+.engagement-menu .bg-white {
+  border-bottom: 4px solid #0f4651;
+}
+.engagement-menu .menu a {
+  height: 97px;
+}
+.engagement-menu .menu a:hover{
+  cursor: pointer;
+  background: #65BB9F;
+  color: #fff !important;
+}
+.engagement-menu .menu a:hover .engagement-price {
+  color: #fff !important;
 }
 .presse-panel {
     border: 4px solid #0f4651;
@@ -2893,7 +2917,7 @@ img.equipe-clickee {
 }
 .price-int{
   font-size: 40px;
-  color: #65BB9F;
+  /*color: #65BB9F;*/
 }
 .price-unity{
   position: absolute;
