@@ -6,6 +6,7 @@ use App\Interfaces\OrderRepositoryInterface;
 use App\Order\Processor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Auth;
 
 class CheckoutController extends Controller
@@ -22,10 +23,12 @@ class CheckoutController extends Controller
 
 	public function storeOrderInfo(Request $request)
 	{
+		$cart_product_info = Session::get('cart_product_info');
 		$this->cart->setCustomer(Auth::user());
 		try {
 			$order = $this->order_processor->placeOrder($this->cart, $request->all());
 			$this->cart->clear();
+			Session::forget('cart_product_info');
 			return redirect("checkout/order-confirmed")->with('order_id',$order->order_id);
 		} catch (OrderException $e) {
 			dd($e->getMessage());
@@ -43,4 +46,20 @@ class CheckoutController extends Controller
 		$order = $this->order_repository->byId($order_id);
 		return view('front.cart.order_confirm',compact('order_id','order'));
 	}
+	
+	public function storeQuantitySession(Request $request)
+	{
+		foreach ($request->input("qty", []) as $item_id => $qty) {
+			Session::put($item_id, $qty);
+		}
+		return response()->json(['success', "Session put ok"]);
+	}
+	
+	public function confirmCart(Request $request)
+	{
+		Session::put('cart_product_info', $request->all());
+		$cart = $this->cart;
+        return view('front.cart.confirm_cart',compact('cart'));
+	}
+	
 }

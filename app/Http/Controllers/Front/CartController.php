@@ -111,10 +111,6 @@ class CartController extends Controller
 		return Response::json(['cart_quantity'=>$cart_quantity,'recent_items'=>$recent_items_html]);
 	}
 	
-	public function confirmCart()
-	{
-		$cart = $this->cart;
-        return view('front.cart.confirm_cart',compact('cart'));
-	}
+	
 
 }

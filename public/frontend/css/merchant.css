@@ -63,7 +63,8 @@ h3 .bottle-box-number {
 #code_promo input, #code_promo select,
 #customer_form input,  #customer_form select, #customer_form .select2,
 #promotion input, #promotion .select2, #promotion textarea, 
-#add_contact input {
+#add_contact input,
+.merchant-order-list textarea{
     border: 4px solid rgb(4, 70, 81);
     display: block;
     width: 100%;

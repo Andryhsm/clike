@@ -34,13 +34,16 @@
                                       <div class="cart-title">
                                           <h2>ADRESSE DE FACTURATION</h2>
                                       </div>
+                                      <?php $current_user = auth()->user();
+                                            $address_current_user = address($current_user);
+                                            ?>
                                       <div class="info-facture mt-40">
-                                          <p>Camille Plantade</p>
-                                          <p>60 chemin d’Odos</p>
-                                          <p>TARBES</p>
-                                          <p>65000</p>
-                                          <p>FRANCE</p>
-                                          <p>0619840764</p>
+                                          <p>{!! ucfirst($current_user->first_name)." ".strtoupper($current_user->last_name) !!}</p>
+                                          <!--<p>60 chemin d’Odos</p>-->
+                                          <!--<p>TARBES</p>-->
+                                          <p>{!! $address_current_user->zip !!}</p>
+                                          <p>{!! $address_current_user->city !!}</p>
+                                          <p>{!! $current_user->phone_number !!}</p>
                                       </div>
                                   </div>    
                                     <div class="cart-product row">
@@ -75,14 +78,14 @@
                                                 </div>
                                             </div>
                                             
-                                            <a href="#" class="save-cart fw-400"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Sauvegarder cette carte pour recevoir vos recettes.</a>
+                                            <a href="#" class="save-cart fw-400"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Sauvegarder cette carte pour la prochaine fois.</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 text-center mb-20">
                                         <ul>
                                             
                                             <li class="text-center">    
-                                                <button class="btn btn-submit btn-clickee-info-plein pd-10" type="button" id="btn-etape3">CONFIRMER & PAYER</button>
+                                                <button type="submit" class="btn btn-submit btn-clickee-info-plein pd-10" type="button" id="btn-etape3">CONFIRMER & PAYER</button>
                                             </li>
                                         </ul>
                                         </div>
@@ -118,18 +121,16 @@
                                             <div class="reviews-total">
                                                 <div class="stars_review col-lg-12" style="overflow: show !important;">
                                                     @for($i=1;$i <= average_rating($product->product_id);$i++)
-                                                            <a title="1" class="star fullStar"></a>
+                                                        <a title="1" class="star fullStar"></a>
                                                     @endfor
                                                     @for($i=5 ;$i > average_rating($product->product_id);$i--)
-                                                            <a title="1" class="star"></a>
+                                                        <a title="1" class="star"></a>
                                                     @endfor
                                                 </div>
                                             </div>
                                             <div class="product-quantity">
                                                    @foreach($item->getAttributes() as $attribute)
-                                                        @if($loop->first)
-                                                            <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>
-                                                        @endif
+                                                            <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>&nbsp;&nbsp;&nbsp;
                                                     @endforeach
                                                 <select  class="quantity form-control form-select" name="qty[{!! $item_id !!}]">
                                                     @for($i=1; $i<=10 ; $i++)    
@@ -142,7 +143,7 @@
                                         
                                         <div class="col-lg-1 product-remove pull-right">
                                                 <!--<a href="{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"><i class="fa fa-times"></i></a>-->
-                                                <button type="button" onclick="location.href = '".{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}."'" class="close">×</button>
+                                                <button type="button" onclick='location.href = "{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"' class="close">×</button>
                     
                                         </div>
                                     </div>

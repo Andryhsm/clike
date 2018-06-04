@@ -2479,6 +2479,23 @@ text-align: center !important;
 /*.engagement-menu .menu a {
   height: 120px !important;
 }*/
+.container-fluid.page-cart-content, .page-confirm-cart-content {
+    margin: 0% 0%;
+}
+.content-cart-product, .cart-information {
+    padding: 0px !important;
+}
+.content-cart-product .cart-title {
+  text-align: center;
+}
+.content-cart-product .btn-clickee-default {
+    padding: 10px 15px;
+}
+.content-cart-product .star {
+    width: 15px;
+    height: 15px;
+    background-position-y: -20px;
+}
 }
 
 @media (max-width: 360px) {

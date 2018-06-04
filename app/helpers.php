@@ -838,3 +838,8 @@ function average_rating($product_id){
     $average_rating = count($reviews) > 0 ? round($total_ratings/count($reviews)): 0;
     return $average_rating;
 }
+function address($user){
+    $user_id = $user->user_id;
+    return \App\UserAddress::where('user_id', $user_id)->first();
+    
+}

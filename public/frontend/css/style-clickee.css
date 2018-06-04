@@ -516,6 +516,8 @@ ul {
 .mt-50 { margin-top: 50px; }
 .mt-60 { margin-top: 60px; }
 .mt-70 { margin-top: 70px; }
+.mlp--4 { margin-left: -4% !important; }
+.mlp--2v5 {margin-left: -2.5% !important;}
 .mtb-10{
   margin-top:10px;
   margin-bottom:10px;
@@ -1557,7 +1559,7 @@ element.style {
   margin-bottom: 25px;
 }
 .shopping-cart h4 {
-   color: rgb(53, 120, 113);
+   color: rgb(15, 70, 81);
    font-weight: 600;
 }
 .dropdown-menu {
@@ -1569,19 +1571,25 @@ element.style {
     overflow: hidden;
     margin-bottom: 4px;
     width: 350px;
-    margin: 0 6px;
+    margin: 0 0px;
     margin-top: 5px;
 }
 .shopping-cart .cart-list .cart-img {
     margin-top: 4px;
     margin-left: 4px;
     margin-bottom: 4px;
-    padding-top: 18px;
     float: left;
+    padding: 0px;
     width: 100px;
     height: 105px;
     border: 4px solid #212B52;
     overflow: hidden;
+    display: table-cell;
+    text-align: center;
+}
+.shopping-cart .cart-list .cart-img img{
+   max-width: 100px;
+   max-height: 105px;
 }
 .shopping-cart .cart-list .cart-info {
     float: left;
@@ -1597,14 +1605,14 @@ element.style {
   margin-bottom:0;
 }
 .shopping-cart .cart-list .cart-info h4 a {
-  font-size: 16px;
-  color: #61b097;
-  font-weight: 400;
-  text-decoration: none;
-  text-transform: capitalize;
+    font-size: 16px;
+    color: #0f4651;
+    font-weight: 400;
+    text-transform: capitalize;
+    font-family: Roboto Light;
 }
 .shopping-cart .cart-list .cart-info .cart-price span {
-  font-size: 16px;
+  font-size: 15px;
 }
 .shopping-cart .cart-list .cart-info .cart-price span.price {
   font-size: 16px;
@@ -1612,16 +1620,26 @@ element.style {
 }
 .shopping-cart .cart-list .cart-info .cart-price {
     margin-top: 27px;
-    margin-left: -25px;
     font-weight: 600;
     width: 245px;
+}
+.shopping-cart .cart-list .cart-info .cart-price .star {
+    width: 15px;
+    height: 15px;
+    margin: 0px 3px 3px 3px;
+    background-position-y: -20px;
+}
+.shopping-cart .cart-list .cart-info .cart-price .content-new-price {
+   width: auto;
+   float: left;
+   padding: 0px;
 }
 .shopping-cart .mini-cart-total {
   width: 100%;
     padding: 0 3%;
 }
 .shopping-cart span {
-    color: rgb(78, 99, 102);
+    color: rgb(15, 70, 81);
     font-size: 16px;
 }
 .shopping-cart .cart-list .pro-del {
@@ -2341,7 +2359,7 @@ element.style {
     width: 120%;
 }
 .container-filter i {
-    font-size: 17px;
+    font-size: 13px;
     padding-top: 5px;
 }
 .container-filter .dropdown-item, .choose-area .dropdown-item {
@@ -2377,20 +2395,22 @@ element.style {
 .price-range .dropdown-menu .span-end-price {
   float: right;
 }
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active, .ui-state-default:focus {
     border: 1px solid #044651;
     background: #044651;
     font-weight: normal;
     color: #3f7966;
     border-radius: 50px;
     font-size: 17px;
+    border: none;
 }
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active, .ui-state-default:focus {
     background: #044651 !important;
     font-weight: normal;
     color: #3f7966;
     border-radius: 50px;
     font-size: 17px;
+    border: none;
 }
 .price-range .ui-widget-content {
     background: #fff !important;
@@ -2864,7 +2884,6 @@ span.text-important {
 
 img.img-double-quote {
     width: 11%;
-    margin-bottom: -2.5%;
 }
 
 img.img-double-quote-2 {
@@ -3069,7 +3088,7 @@ img.equipe-clickee {
     background-size: 15% !important;
 }
 .cart-product .form-control {
-    width: 30% !important;
+    width: 25% !important;
     display: inline-block;
     margin: 0 2%;
     border: none;
@@ -3231,4 +3250,13 @@ a.open-day {
 }
 .page-cart-content .stars_review {
     padding-left: 10px !important;
+}
+.content-cart-product .cart-product .form-control {
+    width: 85px !important  
+}
+.page-confirm-cart-content .content-cart-product .cart-product .form-control {
+    width: 65px !important;
+}
+.cart-info .content-star {
+  margin-left: -15px;
 }

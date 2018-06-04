@@ -34,7 +34,10 @@
             </h1>
         </section>
         <section class="content">
-            @include('admin.layout.notification')
+            <div class="col-lg-12">
+                @include('admin.layout.notification')    
+            </div>
+            
             <div class="">
                 <div class="col-xs-12">
                 <div class="box">
@@ -89,6 +92,8 @@
                                                                value="{!! $item->order_item_request_id  !!}">
                                                         <input type="hidden" name="item_id"
                                                                value="{!! $item->order_item_id  !!}">
+                                                        <input type="hidden" name="order_item_date"
+                                                               value="{!! $item->order_item_date  !!}">       
                                                         <input type="hidden" name="customer_id"
                                                                value="{!! $item->order->user_id  !!}">
                                                         <label>{!! trans('order.client_message') !!}</label>

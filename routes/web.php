@@ -197,7 +197,6 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
     Route::get('cart', 'CartController@index');
     Route::post('cart/add','CartController@add');
     Route::post('cart/update','CartController@update');
-    Route::get('cart/confirm', 'CartController@confirmCart');
     Route::get('cart/remove/{item_id}','CartController@remove');
     Route::post('remove-product','ProductController@removeProduct');
     Route::post('product-sorting','ProductController@getSortByPrice');
@@ -230,6 +229,8 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
     Route::group(['middleware' => ['auth']], function () {        
         Route::post('checkout', 'CheckoutController@storeOrderInfo');
         Route::get('checkout/order-confirmed', 'CheckoutController@confirmOrder');
+        Route::post('checkout/confirm-cart', 'CheckoutController@confirmCart');
+        Route::get('checkout_store_quantity_session', 'CheckoutController@storeQuantitySession');
         Route::group(['middleware' => ['customer']], function () {
             /*Customer specific routes*/
             Route::get('customer', 'CustomerController@index');

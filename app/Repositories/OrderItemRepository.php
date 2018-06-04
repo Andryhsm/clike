@@ -79,6 +79,7 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		})
 			->with(['brand','brand.stores', 'product', 'product.store.hours', 'attributes'])
 			->where('order_status_id',OrderItem::ORDER_STATUS_ORDERED)
+			->orderBy('order_item_id','desc')
 			->get();
 		return $items;
 	}
@@ -110,6 +111,7 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 				$query->where('is_added_by',"merchant");
 			},'coupon'])
 			->where('order_status_id',OrderItem::ORDER_STATUS_REPLIED)
+			->orderBy('order_item_id','desc')
 			->get();
 		return $items;
 	}
@@ -138,6 +140,7 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		})
 			->with(['brand','brand.stores', 'product', 'attributes','itemRequest.user.store'])
 			->whereIn('order_status_id',$status_id)
+			->orderBy('order_item_id','desc')
 			->get();
 		return $items;
 	}

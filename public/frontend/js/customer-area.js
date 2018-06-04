@@ -40,6 +40,7 @@ function start_map($shop_data) {
 jQuery(document).ready(function($) {
     change_header_title();
     $('.nav-menu .list-menu').on('click', '.nav-link', function(event) {
+        var content = $(this).attr('id')
         event.preventDefault();
         var menu_active = $('.nav-menu .list-menu').find('.active');
         menu_active.removeClass('active');
@@ -47,6 +48,8 @@ jQuery(document).ready(function($) {
         var url = $(this).data('url');
         change_header_title();
         change_page(url);
+        //aside_fixed(content);
+        aside_fixed();
     });
 
     $('.datepicker').datepicker({
@@ -56,6 +59,7 @@ jQuery(document).ready(function($) {
 
     changeGender();
     changeDateFormat();
+
 });
 
 function reception(box) {
@@ -167,7 +171,7 @@ function change_page(url) {
             $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
         },
         success: function(response, status) {
-            console.log($(response).find(".ajax-content").html());
+            // console.log($(response).find(".ajax-content").html());
             $(".ajax-content").html($(response).find(".ajax-content").html());
             history.pushState(null, null, url);
             $.LoadingOverlay("hide");

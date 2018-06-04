@@ -58,44 +58,70 @@ class OrderController extends Controller
     public function getItems($order_items)
     {
         $items = [];
+        $b=false;
+        $d=false;
+        //chercher les items
         foreach ($order_items as $item) {
             $country = $item->product->store->country->name;
             $location = $this->getLatitudeAndLongitudeByZipCode($item['zip_code'],$country);
             $distance = $this->calculateDistance($item->product->store->latitude, $item->product->store->longitude, $location['lat'], $location['lng']);
+            //condition pour les items autour du zone
             if ($item['radius'] >= $distance) {
                 Date::setLocale('fr');
+                //cherche les heures d'ouverture
                 foreach($item->product->store->hours as $hour){
-                    if ($hour->day->day_name == Date::now()->format('l')) {
-                        dd(Carbon::now()->addHours(1)->format('H:i:s')." ".$hour->opening_hour." ".$hour->closure_hour);
+                    
+                    $opening_hour = ($hour->opening_hour!=null)?$hour->opening_hour:'';
+                    $closure_hour = ($hour->closure_hour!=null)?$hour->closure_hour:'';
+                        
+                    //condition pour le jour et heure non null
+                    if ($hour->day->day_name == Date::now()->format('l') && $opening_hour!='' && $closure_hour!='') {
+                        
+                        $d=true;                       
+                        $date_jour = Carbon::now()->addHours(1)->format('Y-m-d');
+                        
+                        $open = Carbon::parse($date_jour." ".$opening_hour);
+                        $close = Carbon::parse($date_jour." ".$closure_hour);
+                        
+                        //condition si la date de commmande est dans la date du jour
+                        if (Carbon::parse($item->order_item_date)->gt($open) && Carbon::parse($item->order_item_date)->lt($close)) {
+                            //condition si le commerçand ne repond pas dans 1heure
+                            if ((Carbon::parse($item->order_item_date)->addHours(1))->gt(Carbon::now())) {
+                                $items[$item['order_item_id']] = $item;
+                            }else{
+                                $b=true;
+                            }
+                        }else{
+                            $b=true;
+                        }
+                        
                     }
                 }
                 
-                if((Carbon::parse($item->order_item_date)->addHours(1))->gt(Carbon::now()))
-                {
-                    $items[$item['order_item_id']] = $item;
-                }else{
-                    
-                    foreach (\Auth::user()->store as $key => $store) {
-                        $id_store = $store->store_id;
-                    }
-                    $order_item_request = New OrderItemRequest();
-                    $order_item_request->customer_id = $item->order->user_id;
-                    $order_item_request->item_id = $item->order_item_id;
-                    $order_item_request->merchant_id = \Auth::id();
-                    $order_item_request->is_added_by = 'merchant';
-                    $order_item_request->store_id = $id_store;
-                    $order_item_request->available_type = 2;
-                    $order_item_request->created_date = Carbon::now();
-                    $order_item_request->save();
-                    
-                    $coupon_code = $this->generateCouponCode();
-                    $coupon = $this->saveCoupon($coupon_code, $order_item_request);
-                    
-                    $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_REPLIED, $item->order_item_id);
-                }
+                
             }
+            /*dd($d);*/
+            if($b == true || $d == false){
+                foreach (\Auth::user()->store as $key => $store) {
+                    $id_store = $store->store_id;
+                }
+                $order_item_request = New OrderItemRequest();
+                $order_item_request->customer_id = $item->order->user_id;
+                $order_item_request->item_id = $item->order_item_id;
+                $order_item_request->merchant_id = \Auth::id();
+                $order_item_request->is_added_by = 'merchant';
+                $order_item_request->store_id = $id_store;
+                $order_item_request->available_type = 2;
+                $order_item_request->created_date = Carbon::now();
+                $order_item_request->save();
                 
+                $coupon_code = $this->generateCouponCode();
+                $coupon = $this->saveCoupon($coupon_code, $order_item_request);
+                
+                $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_REPLIED, $item->order_item_id);
+            }    
         }
+        
         return $items;
     }
     public function getLatitudeAndLongitudeByZipCode($zip_code,$country)
@@ -142,34 +168,41 @@ class OrderController extends Controller
         foreach (\Auth::user()->store as $key => $store) {
             $id_store = $store->store_id;
         }
-        $order_item_request = New OrderItemRequest();
-        $order_item_request->customer_id = $request['customer_id'];
-        $order_item_request->item_id = $request['item_id'];
-        $order_item_request->merchant_id = \Auth::id();
-        $order_item_request->message = $request['response'];
-        $order_item_request->is_added_by = 'merchant';
-        $order_item_request->store_id = $id_store;
-        $order_item_request->parent_id = $request['item_request_id'];
-        $order_item_request->available_type = $request['available_option_'.$request['item_id']];
-		/*$order_item_request->is_booked = 1;*/
-        /*$order_item_request->booked_date = Carbon::now();*/
-        $order_item_request->created_date = Carbon::now();
-        $order_item_request->save();
-        
-        $coupon_code = $this->generateCouponCode();
-        $coupon = $this->saveCoupon($coupon_code, $order_item_request);
-        
-        if($request['available_option_'.$request['item_id']]==1)
-        {
-            $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_REPLIED, $request['item_id']);    
+        if ((Carbon::parse($request['order_item_date'])->addHours(1))->gt(Carbon::now())) {
+            $order_item_request = New OrderItemRequest();
+            $order_item_request->customer_id = $request['customer_id'];
+            $order_item_request->item_id = $request['item_id'];
+            $order_item_request->merchant_id = \Auth::id();
+            $order_item_request->message = $request['response'];
+            $order_item_request->is_added_by = 'merchant';
+            $order_item_request->store_id = $id_store;
+            $order_item_request->parent_id = $request['item_request_id'];
+            $order_item_request->available_type = $request['available_option_'.$request['item_id']];
+    		/*$order_item_request->is_booked = 1;*/
+            /*$order_item_request->booked_date = Carbon::now();*/
+            $order_item_request->created_date = Carbon::now();
+            $order_item_request->save();
+            
+            $coupon_code = $this->generateCouponCode();
+            $coupon = $this->saveCoupon($coupon_code, $order_item_request);
+            
+            if($request['available_option_'.$request['item_id']]==1)
+            {
+                $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_REPLIED, $request['item_id']);    
+                flash()->success("Commande disponible !");
+            }else{
+                $order_item_request->is_canceled = 1;
+                $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_NEGATIVE, $request['item_id']);
+                flash()->success("Commande indisponible !");
+            }
+            
+            $customer = $this->user_repository->getById($request['customer_id']);
+            \Event::fire(New ItemRequest($customer));
+            return \Redirect::back();
         }else{
-            $order_item_request->is_canceled = 1;
-            $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_NEGATIVE, $request['item_id']);
+            flash()->warning("Vous avez déjà dépassé le temps de réponse, le produit est consideré comme disponible !");
+            return \Redirect::back();
         }
-        
-        $customer = $this->user_repository->getById($request['customer_id']);
-        \Event::fire(New ItemRequest($customer));
-        return \Redirect::back();
     }
     
     public function bookingRequest($id)
@@ -179,12 +212,8 @@ class OrderController extends Controller
         $item_request->booked_date = Carbon::now();
         $item_request->save();
         $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_FINISHED, $item_request->orderItem->order_item_id);
-        /*\Event::fire(New CouponWasGenerated($item_request));*/
-		$ordered_status_items = $this->order_item_repository->getPendingItemsByMerchant(\Auth::user()->user_id);
-        $pending_items =$this->getItems($ordered_status_items);
-		$earned_items = $this->order_item_repository->getEarnedItemsByMerchant(\Auth::user()->user_id);
 		flash()->success("Commande terminer avec succées !");
-        return view('merchant.orders.view', compact('pending_items','earned_items'));
+        return \Redirect::back();
     }
     
     public function cancelRequest(\Illuminate\Http\Request $request)

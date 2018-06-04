@@ -65,6 +65,63 @@
                 </button>
             </div>
         </div>
-    </div>    
+    </div> 
+          
+    <div class="information-visa">
+        <div class="content col-lg-12 mb-30">
+            <div class="col-lg-12 mb-10">
+                <div class="visa-img">
+                    <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/visa.svg"></img>
+                </div>
+                <div class="visa-information col-lg-4 mini-height">
+                    <p class="title-bold-2">VISA (3485)</p>
+                    <p>Exp : 10/19</p>
+                    <p>DAVID BOITARD</p>
+                </div>
+                <div class="col-lg-6">
+                    <button class="btn btn-customer-filled pull-right">
+                        <span>Supprimer</span>
+                    </button>
+                </div>
+            </div>
+            <div class="text-center">
+                <p>Ceci est votre mode de paiement par défaut</p>
+            </div>
+            <div class ="visa-expired col-lg-12">
+                <span>
+                    <i class="fa fa-info-circle"></i>
+                </span>
+                <span>&nbsp&nbsp Cette carte a expiré</span>
+            </div>
+        </div>
+    </div>
+    <div class="information-visa">
+        <div class="content col-lg-12 mb-30">
+            <div class="col-lg-12 mb-10">
+                <div class="visa-img">
+                    <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/visa.svg"></img>
+                </div>
+                <div class="visa-information col-lg-4 mini-height">
+                    <p class="title-bold-2">VISA (3485)</p>
+                    <p>Exp : 10/19</p>
+                    <p>DAVID BOITARD</p>
+                </div>
+                <div class="col-lg-6">
+                    <button class="btn btn-customer-filled pull-right">
+                        <span>Supprimer</span>
+                    </button>
+                </div>
+            </div>
+            <div class="text-center">
+                <p>
+                    <a href="#" class="default-payment mt-30 mr-20" id="default_payment" onclick="checka(this);">
+                        <i class="fa fa-circle-o"></i>
+                        Définir comme mode de paiement par défaut
+                    </a>
+                    {{ Form::text('default_payment', '' ,['class'=>"hidden",'id' => 'default_payment']) }}
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 @stop

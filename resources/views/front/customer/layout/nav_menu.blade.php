@@ -1,7 +1,7 @@
 <div class="nav-menu content">
     <ul class="list-menu nav">
         <li class="nav-item active">
-            <a class="nav-link {{ set_active(['*/customer/current-order']) }}" data-url="{!! url(LaravelLocalization::getCurrentLocale().'/customer/current-order') !!}" href="#"><img class="pull-left" src="{!! URL::to('/') !!}/images/icon/mes_commandes_en_cours.svg"/><span>Mes commandes en cours</span></a>
+            <a class="nav-link {{ set_active(['*/customer/current-order']) }}" data-url="{!! url(LaravelLocalization::getCurrentLocale().'/customer/current-order') !!}" href="#" id="#order_story"><img class="pull-left" src="{!! URL::to('/') !!}/images/icon/mes_commandes_en_cours.svg"/><span>Mes commandes en cours</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ set_active(['*/customer/order-story']) }}" data-url="{!! url(LaravelLocalization::getCurrentLocale().'/customer/order-story') !!}" href="#"><img class="pull-left" src="{!! URL::to('/') !!}/images/icon/historique_de_mes_commandes.svg"/><span>Historique de mes commandes</span></a>

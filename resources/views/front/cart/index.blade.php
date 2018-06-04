@@ -9,7 +9,7 @@
                     @include('notification')
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 pt-40">
-                    {!! Form::open(['url' => url(LaravelLocalization::getCurrentLocale().'/checkout'),'id' =>'cart_form', 'method' => 'POST']) !!}
+                    {!! Form::open(['url' => url(LaravelLocalization::getCurrentLocale().'/checkout/confirm-cart'),'id' =>'cart_form', 'method' => 'POST']) !!}
                         <div class="row">
                             <div class="cart-product-list col-lg-7 col-md-7 col-sm-7 col-xs-12 mb-20">
                                 <div class="content-cart-product">
@@ -29,13 +29,8 @@
                                             <span><a href="#">{!! $item->getName() !!}</a></span>
                                             <div class="product-price">
                                                     <?php $product = $item->getProduct();?>
-                                                    @if($product->original_price != $product->best_price)
-                                                        <span class="old-price" style="color: rgb(67, 223, 230);">({!! getPercentage($product->original_price,$product->best_price) !!})</span>
-                                                        <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
-                                                        <span class="new-price real-price" data-price="{!! $product->best_price !!}">{!! format_price($product->best_price) !!}</span>
-                                                    @else
-                                                        <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
-                                                    @endif
+                                                    <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
+                                                    
                                             </div>
                                             <div class="row reviews-total">
                                                 <div class="stars_review col-lg-12" style="overflow: show !important;">
@@ -48,12 +43,13 @@
                                                 </div>
                                             </div>
                                             <div class="product-quantity">
+                                                <?php $count_item = count($item->getAttributes()); ?>
                                                    @foreach($item->getAttributes() as $attribute)
                                                         @if($loop->first)
                                                             <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>
                                                         @endif
                                                     @endforeach
-                                                <select  class="quantity form-control form-select" name="qty[{!! $item_id !!}]">
+                                                <select  class="quantity form-control form-select {!! ($count_item == 0) ? 'mlp--2v5' : '' !!}" name="qty[{!! $item_id !!}]">
                                                     @for($i=1; $i<=10 ; $i++)    
                                                         <option value="{!!$i!!}" {!! (Session::has($item_id) && Session::get($item_id) == $i) ? 'selected' : '' !!}>Qté {!! $i !!}</option>
                                                     @endfor
@@ -89,8 +85,7 @@
                                                 <span class="pull-right total_original_amount">{!! format_price($cart->total()) !!}</span>
                                              </li>
                                             <li class="text-center">    
-                                                <a type="button" href="{!! url(LaravelLocalization::getCurrentLocale().'/cart/confirm') !!}" class="btn btn-clickee-default mt-40  text-uppercase">Paiement</a>
-                                                 <!--<button type="submit" class="btn btn-clickee-default mt-40  text-uppercase">Confirm cart</button>-->
+                                                <button type="submit" class="btn btn-clickee-default mt-40  text-uppercase">Paiement</button>
                                             </li>
                                         </ul>
                                     </div>

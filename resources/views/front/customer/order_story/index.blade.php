@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="ajax-content">
+<div class="ajax-content" id="order_story">
     @if(count($items) > 0) 
         @foreach($items as $item)
         <div class="order col-lg-12 ">

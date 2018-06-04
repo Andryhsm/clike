@@ -102,7 +102,7 @@ class AuthController extends Controller
                     $user_address->zip = Cookie::get('zip-code');
                     $user_address->save();
                 }
-				if (ends_with($intended_url, 'checkout')) {
+				if (ends_with($intended_url, 'checkout/confirm-cart')) {
 					return Redirect::to('cart');
 				}
 				if(\Session::has('ask-product')){

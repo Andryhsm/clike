@@ -18,22 +18,22 @@
                         <h4 class="text-uppercase">{!! (isset($item->getProduct()->brand)) ? ($item->getProduct()->brand->parent_id==null) ? $item->getProduct()->brand->brand_name : $item->getProduct()->brand->parent->brand_name : "" !!}</h4>
                         <h4 class="mb-10"><a href="#">{!! $item->getName() !!}</a></h4>
                         <div class="cart-price">
-                            <div class="col-lg-5 text-right">
+                            <div class="content-new-price">
                                 <span class="new-price">{!! format_price($item->getOriginalPrice()) !!}</span>         
                             </div>
                             <div class="col-lg-1 text-center">|</div>
-                            <div class="col-lg-5 pt-2">
+                            <div class="col-lg-7 content-star">
                                 <?php 
                                     $product = $item->getProduct();
                                 //    $average_full = average_rating_product($product->product_id); 
                                  //   $average_empty = 5-average_rating_product($product->product_id);
                                 ?>
-                                {{-- @for($i=1;$i<=$average_full;$i++)
-                                    <a class="fullStar_product"></a>
-                                @endfor
-                                @for($i=1;$i<=$average_empty;$i++)
-                                    <a class="emptyStar_product"></a>
-                                @endfor --}}         
+                                 @for($i=1;$i <= average_rating($product->product_id);$i++)
+                                        <a title="1" class="star fullStar"></a>
+                                 @endfor
+                                 @for($i=5 ;$i > average_rating($product->product_id);$i--)
+                                        <a title="1" class="star"></a>
+                                 @endfor   
                             </div>
                             
                         </div>
