@@ -1,4 +1,3 @@
-
 if (Modernizr.mq('(max-width: 767px)')){
 	// Vendre avec Clickee
 	$('.engagement-menu#uploadTab, #engagement-menu-content').removeClass('hidden')
@@ -29,7 +28,13 @@ if (Modernizr.mq('(max-width: 767px)')){
 	// }
 	$(function() {
 	  var observer = new MutationObserver(function(mutations) {
-	    alert('Attributes changed!');
+	    var max = 1
+		$(".engagement-menu .menu a").each(function() {
+		    max = Math.max(max, $(this).height());
+		    console.log(max + '****************')
+		});
+		$(".engagement-menu .menu a").css('height', max)
+		console.log(max + '$$$$$$$$$$$')
 	  });
 	  var target = document.querySelector('#tab2');
 	  observer.observe(target, {

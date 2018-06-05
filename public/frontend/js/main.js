@@ -905,13 +905,13 @@ function close_select_radius() {
 		$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
 }
 
-function aside_fixed(content = ".main") {
+function aside_fixed() {
 	console.log('log')
 	var $aside = $("#aside"),
 		$window = $(window),
 		offset = $aside.offset(),
 		topPadding = 15,
-		content = $(content)[0].clientHeight,
+		content = $('.main')[0].clientHeight,
 		css = {},
 		animate = {};
 	if (Modernizr.mq('(max-width: 767px)')) {
