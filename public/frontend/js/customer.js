@@ -24,6 +24,7 @@ jQuery(document).ready(function() {
         html_data.removeClass('master-input-size-container hidden').prop('id', row_index).addClass('product-content');
 
         html_data.find('.product_name select').attr('name', 'product_name[' + row_index + ']').attr('id', 'product_name' + row_index).attr('data-content-range', row_index).addClass('select-product-name');
+        html_data.find('.product_name label').attr('for', 'product_name' + row_index);
         html_data.find('.product_reference input').attr('name', 'product_reference[' + row_index + ']').addClass('input-product-reference');
         html_data.find('.parent_category select').attr('name', 'parent_category[' + row_index + ']').attr('id', 'parent_category' + row_index).addClass('select-parent-category').attr('data-content-range', row_index);
         html_data.find('.sub_category select').attr('name', 'sub_category[' + row_index + ']').attr('id', 'sub_category' + row_index).addClass('select-sub-category');

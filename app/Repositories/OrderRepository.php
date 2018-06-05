@@ -88,7 +88,7 @@ class OrderRepository implements OrderRepositoryInterface
 	{
 		return Order::count();
 	}
-
+	
 	public function getDashboardOrders()
 	{
 		return Order::with('customer')->orderBy('order_id','desc')->limit(12)->get();

@@ -48,8 +48,7 @@ jQuery(document).ready(function($) {
         var url = $(this).data('url');
         change_header_title();
         change_page(url);
-        //aside_fixed(content);
-        aside_fixed();
+
     });
 
     $('.datepicker').datepicker({
@@ -135,12 +134,13 @@ function simulateRadioButton(box) {
 }
 
 function changeDateFormat() {
-    var date = $('#birthday').val().split('-');
-    var birthday = "" + date[2] + "-" + date[1] + "-" + date[0];
-    $('#birthday').val(birthday);
+    if ($('#birthday').val() != null) {
+        var date = $('#birthday').val().split('-');
+        var birthday = "" + date[2] + "-" + date[1] + "-" + date[0];
+        $('#birthday').val(birthday);
+    }
 }
-
-$('.nav-menu .list-menu').on('click', '.nav-link', function(event) {
+/*$('.nav-menu .list-menu').on('click', '.nav-link', function(event) {
     event.preventDefault();
     var menu_active = $('.nav-menu .list-menu').find('.active');
     menu_active.removeClass('active');
@@ -148,7 +148,7 @@ $('.nav-menu .list-menu').on('click', '.nav-link', function(event) {
     var url = $(this).data('url');
     change_header_title();
     change_page(url);
-});
+});*/
 
 
 
@@ -169,6 +169,7 @@ function change_page(url) {
         dataType: 'html',
         beforeSend: function() {
             $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+
         },
         success: function(response, status) {
             // console.log($(response).find(".ajax-content").html());
@@ -177,12 +178,12 @@ function change_page(url) {
             $.LoadingOverlay("hide");
             changeGender();
             changeDateFormat();
+            setTimeout(aside_fixed, '1000');
             $('.datepicker').datepicker({
                 todayHighlight: true
             });
         },
         error: function(xhr, status, error) {}
-
     });
 }
 

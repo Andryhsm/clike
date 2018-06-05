@@ -39,8 +39,7 @@
             	<div class="mt-30">
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="bottle-box">
-                            <h3><span class="bottle-box-number">09</span></h3>
-        
+                            <h3><span class="bottle-box-number">{!! $product_count !!}</span></h3>
                             <span class="bottle-box-title">
                                 Produits en ligne
                             </span>
@@ -48,8 +47,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="bottle-box">
-                            <h3><span class="bottle-box-number">24</span></h3>
-        
+                            <h3><span class="bottle-box-number">{!! $sales_count !!}</span></h3>
                             <span class="bottle-box-title">
                                 Produits vendus
                         </div>
@@ -59,8 +57,7 @@
         
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                        <div class="bottle-box">
-                            <h3><span class="bottle-box-number">100</span></h3>
-        
+                            <h3><span class="bottle-box-number">{!! $total_sales !!}</span></h3>
                             <span class="bottle-box-title">
                                 Chiffre d'affaires total
                             </span>

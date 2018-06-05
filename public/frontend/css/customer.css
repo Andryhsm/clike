@@ -90,7 +90,7 @@
 }
 .content {
     background: #EFEFED;
-    padding: 3% 9%;
+    padding: 4% 6%;
 }
 .section-customer, .section-title {
     margin-bottom: 30px;
@@ -283,7 +283,14 @@
     background-color: #65bb9f;
     color: white;
 }
-.btn i {
+/*.btn i {*/
+/*    font-size: 30px;*/
+/*    position: absolute;*/
+/*    margin-top: -5px;*/
+/*    margin-left: 10px;*/
+/*}*/
+
+.order-containt .btn i {
     font-size: 30px;
     position: absolute;
     margin-top: -5px;
@@ -416,12 +423,25 @@
     background-size: 17px;
     background-position: 40px 4px;
 }
+.information-visa {
+    margin-bottom: 30px;
+    content: "";
+    display: table;
+    width: 100%;
+}
 .visa-img img {
     width: 40%;
 }
 .visa-img {
     width: 20%;
     margin-left: 5%;
+}
+.visa-expired {
+    background: #65bb9f;
+    position: absolute;
+    color: #fff;
+    margin: 0% -6% -4% -6%;
+    padding: 2% 0 2% 10% !important;
 }
 .customer-file-action span{
     padding-left: 30px;
@@ -525,6 +545,79 @@ td .customer-file-action.download {
 .title-active {
     width: 100%;
     text-align: center;
+}
+.customer-area table#product_list .btn.btn-default,
+.customer-area table#code_promo .btn.btn-default {
+    background: #0f4651;
+    color: white;
+    border-radius: 0px;
+    border-color: #0f4651;
+    margin: 1px;
+}
+.customer-area table#product_list .btn.btn-default:hover,
+.customer-area table#code_promo .btn.btn-default:hover {
+    background: #65bb9f;
+    border-color: #65bb9f;
+}
+.customer-area #product_list_wrapper .form-control,
+.customer-area #code_promo_wrapper .form-control {
+    border-radius: 0px;
+    border: 3px solid #0f4651;
+    background: #efefed;
+}
+.customer-area #product_list_wrapper .table-bordered,
+.customer-area #code_promo_wrapper .table-bordered {
+    border: 4px solid #0f4651;
+}
+.customer-area #product_list_wrapper div.dataTables_length label,
+.customer-area #code_promo_wrapper div.dataTables_length label {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.customer-area #product_list_wrapper div.dataTables_filter label,
+.customer-area #code_promo_wrapper div.dataTables_filter label {
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: left;
+    text-transform: uppercase;
+}
+.customer-area .box {
+    background: #efefed;
+    border-top: 4px solid #0f4651;
+    box-shadow: none;
+}
+.customer-area .pagination>.disabled>span, .customer-area .pagination>.disabled>span:hover, .customer-area .pagination>.disabled>span:focus, .customer-area .pagination>.disabled>a, .customer-area .pagination>.disabled>a:hover, .customer-area .pagination>.disabled>a:focus {
+    color: #fff;
+    background-color: #0f4651;
+    border-color: #0f4651;
+    cursor: not-allowed;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.customer-area .pagination>li:last-child>a, .customer-area .pagination>li:last-child>span {
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.customer-area .table-bordered>thead>tr>th, .customer-area .table-bordered>tbody>tr>th, .customer-area .table-bordered>tfoot>tr>th, .customer-area .table-bordered>thead>tr>td, .customer-area .table-bordered>tbody>tr>td, .customer-area .table-bordered>tfoot>tr>td {
+    border: 1px solid #0f46511a;
+    border-left: none;
+    border-right: none;
+}
+.customer-area .pagination>.active>a, .customer-area .pagination>.active>span, .customer-area .pagination>.active>a:hover, .customer-area .pagination>.active>span:hover, .customer-area .pagination>.active>a:focus, .customer-area .pagination>.active>span:focus {
+    z-index: 3;
+    color: #fff;
+    background-color: #6fc0a5;
+    border-color: #6fc0a5;
+    cursor: default;
+}
+.customer-area .nav-tabs-custom .footer-button {
+    background: #efefed;
+}
+.customer-area .nav-tabs-custom #size_list_input {
+    margin-bottom: 0px;
 }
 @media (max-width: 1367px) and (min-width: 992px)
 {

@@ -27,37 +27,29 @@
     </div>
 @stop
 @section('content')
-	<section class="content-header" style="text-align: center;">
-        <h1>
-            Mon fichier client
-        </h1>
-        <div class="header-btn">
-            <div class="clearfix">
-                <div class="btn-group inline pull-left">
-                    <div class="btn btn-small">
-                        <!-- <a href="{!! URL::to('merchant/customer/create') !!}" class="btn btn-block btn-primary">Créer un nouveau client</a> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <section class="content">
         @include('admin.layout.notification')
         <div class="row">
+            <section class="content-header" style="text-align: center;">
+                <h1>
+                    Mon fichier client
+                </h1>
+            </section>
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="customer" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>Nom</th>
                                 <th>Prénom</th>
-                            	<th>Adresse</th>
+                            	<!--<th>Adresse</th>-->
                                 <th>Code postal</th>
                                 <th>Ville</th>
-                                <th>Naissance</th>
-                                <th>Mail</th>
+                                <!--<th>Naissance</th>-->
+                                <!--<th>Mail</th>-->
                                 <th class="no-sort">Action</th>
                             </tr>
                             </thead>
@@ -71,12 +63,8 @@
 	                                    @else
 	                                        <?php $address = $customer; ?>
 	                                    @endif
-	                                    <td>{!! $address->address1 !!}</td>
 	                                    <td>{!! $address->zip !!}</td>
 	                                    <td>{!! $address->city !!}</td>
-	                                    
-	                                    <td>{!! $customer->birthday !!}</td>
-	                                    <td>{!! $customer->email !!}</td>
 	                                    <td>
 	                                        <div class="btn-group">
 	                                            <a href="{{ URL::to('merchant/customer/' . $customer->user_id . '/edit?type_customer=1') }}"
@@ -93,12 +81,8 @@
                                     <tr>
                                         <td>{!! $customer->first_name !!}</td>
                                         <td>{!! $customer->last_name !!}</td>
-                                        <td>{!! $customer->address !!}</td>
                                         <td>{!! $customer->postal_code !!}</td>
                                         <td>{!! $customer->country !!}</td>
-                                        
-                                        <td>{!! $customer->birthday !!}</td>
-                                        <td>{!! $customer->email !!}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="{{ URL::to('merchant/customer/' . $customer->customer_id . '/edit?type_customer=2') }}"
@@ -157,11 +141,8 @@
                     {searchable: true, sortable: true},
                     {searchable: true, sortable: true},
                     {searchable: true, sortable: true},
-                    {searchable: true, sortable: false},
-                    {searchable: true, sortable: false},
                     {searchable: true, sortable: true},
-                    {searchable: true, sortable: false},
-                    {searchable: false, sortable: false}
+                    {searchable: false, sortable: false},
                 ],
                 fnDrawCallback: function () {
                     var $paginate = this.siblings('.dataTables_paginate');

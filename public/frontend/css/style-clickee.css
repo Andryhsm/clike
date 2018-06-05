@@ -2811,7 +2811,6 @@ span.text-title {
 
 .engagement-menu .menu a {
   height: auto;
-  float: none;
 }
 .engagement-menu .menu a:hover{
   cursor: pointer;
@@ -2823,11 +2822,10 @@ span.text-title {
 }
 /*.engagement-menu .menu {
   overflow: auto;
-}*/
+}
 .engagement-menu .menu, .engagement-menu .menu-pop {
   display: inline-flex;
-  overflow: auto;
-}
+}*/
 /*.engagement-menu a{
   float: none;
 }*/
@@ -3029,23 +3027,25 @@ img.equipe-clickee {
     font-weight: 700;
     line-height: .6;
 }
-.bg-grey{
+.bg-grey {
   background: #EFEFED;
 }
-.bg-green{
+.tab-panel-customer .bg-green {
   background: #65bb9f !important;
   color: white;
   padding: 10px 0px 10px 0px;
 }
-.bg-green-dark{
+.bg-green-dark {
   background: #044651 !important;
   color: white;
 }
-.pd-10{padding: 10px !important}
-.pd-d{
+.pd-10 { 
+  padding: 10px !important;
+}
+.pd-d {
   padding: 52px 50px 125px 50px;
 }
-.pd-c{
+.pd-c {
   padding:100px 50px 126px 50px;
 }
 .content-page .content-tips {

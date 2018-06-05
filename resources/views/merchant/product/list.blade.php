@@ -52,7 +52,7 @@
                     <div class="box">
                         <div class="box-body">
                             <table id="product_list" class="table table-bordered table-hover table-responsive">
-                                <thead>
+                                <thead class="text-uppercase">
                                 <tr>
                                     <th>Nom Produit</th>
                                     <th>Numéro de série</th>

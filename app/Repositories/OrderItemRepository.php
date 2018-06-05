@@ -116,6 +116,59 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		return $items;
 	}
 	
+	
+	public function getCount($user_id)
+	{
+		$items = OrderItem::whereHas('itemRequest',function($query) use($user_id){
+			$query->where('merchant_id',$user_id);
+			$query->where('is_added_by','merchant');
+		})
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
+				$query->where('merchant_id',$user_id);
+				$query->where('is_added_by',"merchant");
+			},'coupon'])
+			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_FINISHED])
+			->orderBy('order_item_id','desc')
+			->count();
+		return $items;
+	}
+	
+	public function getStatSales($user_id)
+	{
+		$items = OrderItem::whereHas('itemRequest',function($query) use($user_id){
+			$query->where('merchant_id',$user_id);
+			$query->where('is_added_by','merchant');
+		})
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
+				$query->where('merchant_id',$user_id);
+				$query->where('is_added_by',"merchant");
+			},'coupon'])
+			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_FINISHED])
+			->select(\DB::raw('count(*) as order_count'), \DB::raw('MONTH(order_item_date) as month'), \DB::raw('sum(final_price) as total_price'))
+			->whereYear('order_item_date', '=', date('Y'))
+            ->groupBy('month')
+            ->get();
+		return $items;
+		
+	}
+	
+	public function getTotalSalesMerchant($user_id)
+	{
+		$items = OrderItem::whereHas('itemRequest',function($query) use($user_id){
+			$query->where('merchant_id',$user_id);
+			$query->where('is_added_by','merchant');
+		})
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
+				$query->where('merchant_id',$user_id);
+				$query->where('is_added_by',"merchant");
+			},'coupon'])
+			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_FINISHED])
+			->orderBy('order_item_id','desc')
+			->sum('final_price');
+		return $items;
+	}
+	
+	
 	public function getHistoryItemByMerchant($user_id)
 	{
 		$items = OrderItem::whereNotExists(function($query) use ($user_id)

@@ -73,10 +73,8 @@ class OrderController extends Controller
                     
                     $opening_hour = ($hour->opening_hour!=null)?$hour->opening_hour:'';
                     $closure_hour = ($hour->closure_hour!=null)?$hour->closure_hour:'';
-                        
                     //condition pour le jour et heure non null
                     if ($hour->day->day_name == Date::now()->format('l') && $opening_hour!='' && $closure_hour!='') {
-                        
                         $d=true;                       
                         $date_jour = Carbon::now()->addHours(1)->format('Y-m-d');
                         
@@ -100,7 +98,6 @@ class OrderController extends Controller
                 
                 
             }
-            /*dd($d);*/
             if($b == true || $d == false){
                 foreach (\Auth::user()->store as $key => $store) {
                     $id_store = $store->store_id;

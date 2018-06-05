@@ -5,7 +5,7 @@
         @foreach($pending_items as $item)
          @if(count($item->itemRequest)>0)
         @foreach($item->itemRequest as $index=>$request)
-        <div class="ajax-content">
+        <div class="ajax-content current_order">
             <div class="order col-lg-12">
                 <div class="order-header">
                     <div class="order-item col-lg-6 col-md-6 col-sm-6 col-xs-6">

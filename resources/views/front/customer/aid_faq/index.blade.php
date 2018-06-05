@@ -1,6 +1,6 @@
 @extends('front.customer.layout.master')
 @section('content')
-<div class="section-element-area">
+<div class="section-element-area aid_faq">
     <div class="faq-content col-lg-12">
         <div class="">
             <div class="faq">

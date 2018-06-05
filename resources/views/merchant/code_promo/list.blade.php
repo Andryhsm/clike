@@ -49,15 +49,15 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
-                            <table id="example2" class="table table-bordered table-hover">
-                                <thead>
+                            <table id="code_promo" class="table table-bordered table-hover">
+                                <thead class="text-uppercase">
                                 <tr>
                                     <th width="16%">Code</th>
                                     <th width="12%">Début</th>
                                     <th width="12%">Fin</th>
                                     <th width="25%">Catégories</th>
                                     <th width="25%">Produits</th>
-                                    <th width="10%" class="no-sort">Prolonger/Supprimer</th>
+                                    <th width="10%" class="no-sort text-center">Prolonger<br>/<br>Supprimer</th>
                                 </tr>
                                 </thead>
                                 <tbody>

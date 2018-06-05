@@ -277,6 +277,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
 
                 Route::group(['namespace' => 'Merchant'], function(){
                     Route::get('dashboard','DashboardController@index');
+                    Route::get('statistical','DashboardController@statistical');
                     Route::resource('code_promo','CodePromoController');
                     Route::resource('promotion','PromotionController');
                     Route::resource('orders','OrderController');

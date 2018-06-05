@@ -1,7 +1,7 @@
 @extends('front.customer.layout.master')
 
 @section('content')
-<div class="ajax-content">
+<div class="ajax-content customer_info">
     <div class="customer-informations">
         <div class="content col-lg-12 mb-30">
             <form class="customer-form" id="customer-form">
@@ -87,11 +87,9 @@
             <div class="text-center">
                 <p>Ceci est votre mode de paiement par défaut</p>
             </div>
-            <div class ="visa-expired col-lg-12">
-                <span>
-                    <i class="fa fa-info-circle"></i>
-                </span>
-                <span>&nbsp&nbsp Cette carte a expiré</span>
+            <div class="visa-expired col-lg-12">
+                <img class="mr-10" src="{!! URL::to('/') !!}/images/icon/information.svg"/>
+                <span>Cette carte a expiré</span>
             </div>
         </div>
     </div>

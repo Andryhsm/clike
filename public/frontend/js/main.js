@@ -905,15 +905,20 @@ function close_select_radius() {
 		$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
 }
 
+function initMap() {}
+
 function aside_fixed() {
 	console.log('log')
 	var $aside = $("#aside"),
 		$window = $(window),
 		offset = $aside.offset(),
+		//content = $('.main')[0].clientHeight,
+		content = $('.test')[0].clientHeight,
 		topPadding = 15,
-		content = $('.main')[0].clientHeight,
 		css = {},
 		animate = {};
+	console.log(content + ' content *******************')
+	console.log($('.main'))
 	if (Modernizr.mq('(max-width: 767px)')) {
 		$window.scroll(function() {
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {

@@ -114,17 +114,7 @@ class ProductController extends Controller
 		})->EditColumn('action', function ($product) {
 			return view("merchant.product.action", ['product' => $product]);
 		});
-		return $data_tables->rawColumns(['status','action'])
-		->setRowClass(function($product) {
-			switch ($product->is_active) {
-				case 2:
-					return 'darkGrey';
-					break;
-				default:
-					return 'backGreen';
-					break;
-			}
-		})->make(true);
+		return $data_tables->rawColumns(['status','action'])->make(true);
 	}
 
 	public function attributes(Request $request)

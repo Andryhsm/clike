@@ -4,8 +4,8 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                            <label for="product_name" class="col-sm-3 control-label">Nom produit</label>
+                        <div class="form-group product_name">
+                            <label class="col-sm-3 control-label">Nom produit</label>
                             <select class=" form-control required">
                             
                             </select>
@@ -72,7 +72,7 @@
         </div>
         
     </div>
-
+</div>
 <section class="content" id="size_list_input">
     <div class="row product-content row product_input_row " id="1">
         <div class="col-md-12">
@@ -145,14 +145,14 @@
  <input type="text" class="hidden" id="total_ttc" name="total_ttc"/>
 <section>
     <div class="">
-        <div class="col-md-12 mt-10">
+        <div class="col-md-12 mt-10 mb-30">
             <div class=""> <!-- box-footer -->
                 <button type="button" style="float:right;" class="btn btn-merchant-filled add_size_input">Produit suivant</button>
             </div>
         </div>
     </div>
 </section>
-<div class=""><!-- box-footer -->
+<div class="footer-button"><!-- box-footer -->
     <a href="#tab_1" data-toggle="tab" class="btn btn-merchant-filled">Precedent</a>
     <a class="btn btn-merchant-filled pull-right" id="paiement" href="#tab_3" data-toggle="tab"> Paiement </a>
 </div>

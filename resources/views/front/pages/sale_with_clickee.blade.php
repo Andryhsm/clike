@@ -449,7 +449,7 @@
             <!--  menu dans les écrans mobiles  -->
             <div class="engagement-menu hidden text-center" id="uploadTab">
                 <br><br><br>
-                <div class="row menu-pop" style="width: 105%;"> <!-- margin-bottom: -1.4rem; -->
+                <div class="row menu-pop" style="width: 105%;"> 
                     <div class="point5 col-xs-3"></div>
                     <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
                     <div class="point5 col-xs-3"></div>
@@ -485,7 +485,7 @@
 
             <div class="engagement-menu hidden text-center" id="browseTab">
                 <br><br><br>
-                <div class="row menu-pop" style="width: 105%;"> <!-- margin-bottom: -1.4rem; -->
+                <div class="row menu-pop" style="width: 105%;">
                     <div class="point5 col-xs-3"></div>
                     <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
                     <div class="point5 col-xs-3"></div>

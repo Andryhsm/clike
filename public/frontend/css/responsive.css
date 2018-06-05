@@ -2526,7 +2526,14 @@ text-align: center !important;
 
 @media (max-width: 360px) {
 .engagement-menu .menu a, .menu-pop .point5 {
-  width: 50%;
+  width: 50% !important;
 }
+/*.engagement-menu .menu a {
+  height: auto;
+  float: left;
+}
+.engagement-menu .menu, .engagement-menu .menu-pop {
+  display: block !important;
+}*/
 
 }

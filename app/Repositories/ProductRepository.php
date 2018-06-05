@@ -466,6 +466,11 @@ class ProductRepository implements ProductRepositoryInterface
 	{
 		return $this->model->count();
 	}
+	
+	public function getCountMerchant($id)
+	{
+		return $this->model->where('store_id',$id)->count();
+	}
 
 	public function getDashboardProduct()
 	{
