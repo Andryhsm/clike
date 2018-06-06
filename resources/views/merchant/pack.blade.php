@@ -47,7 +47,7 @@
                             <span>Découverte</span>
                         </div>
                         <div class="engagement-price mt-25">GRATUIT</div>
-                        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+                        <a class="btn btn-clickee-info-plein mtb-10 btn-pack-gratuit">CHOISIR</a>
                         
                         <span>
                             Souscrivez au Pack Découverte pour découvrir toutes les fonctionnalités de Clickee sans dépenser un euro.
@@ -80,7 +80,7 @@
                             <span>Vendeur</span>
                         </div>
                         <div class="engagement-price mb--10"><span class="price-int">30</span><span class="price-unity">€</span>/mois</div>
-                        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+                        <a class="btn btn-clickee-info-plein mtb-10 btn-pack">CHOISIR</a>
                         
                         <span>
                             Souscrivez au Pack Vendeur pour commencer à booster vos ventes en local.
@@ -113,7 +113,7 @@
                             <span>Marketing</span>
                         </div>
                         <div class="engagement-price mb--10"><span class="price-int">45</span><span class="price-unity">€</span>/mois</div>
-                        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+                        <a class="btn btn-clickee-info-plein mtb-10 btn-pack">CHOISIR</a>
                         
                         <span>
                             Souscrivez au Pack Marketing si vous souhaitez fidéliser vos clients en les tenant informés en live.
@@ -146,7 +146,7 @@
                             <span>Marketing +</span>
                         </div>
                         <div class="engagement-price mb--10"><span class="price-int">65</span><span class="price-unity">€</span>/mois</div>
-                        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+                        <a class="btn btn-clickee-info-plein mtb-10 btn-pack">CHOISIR</a>
                         
                         <span>
                             Souscrivez au Pack Marketing + quand votre base de données clients grandie.
@@ -208,7 +208,7 @@
                             <span>Découverte</span>
                         </div>
                         <div class="engagement-price mt-25">GRATUIT</div>
-                        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+                        <a class="btn btn-clickee-info-plein mtb-10 btn-pack-gratuit">CHOISIR</a>
                         
                         <span>
                             Souscrivez au Pack Découverte pour découvrir toutes les fonctionnalités de Clickee sans dépenser un euro.
@@ -241,7 +241,7 @@
                             <span>Vendeur</span>
                         </div>
                         <div class="engagement-price mb--10"><span class="price-int">39</span><span class="price-unity">€</span>/mois</div>
-                        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+                        <a class="btn btn-clickee-info-plein mtb-10 btn-pack">CHOISIR</a>
                         
                         <span>
                             Souscrivez au Pack Vendeur pour commencer à booster vos ventes en local.
@@ -274,7 +274,7 @@
                             <span>Marketing</span>
                         </div>
                         <div class="engagement-price mb--10"><span class="price-int">59</span><span class="price-unity">€</span>/mois</div>
-                        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+                        <a class="btn btn-clickee-info-plein mtb-10 btn-pack">CHOISIR</a>
                         
                         <span>
                             Souscrivez au Pack Marketing si vous souhaitez fidéliser vos clients en les tenant informés en live.
@@ -307,7 +307,7 @@
                             <span>Marketing +</span>
                         </div>
                         <div class="engagement-price mb--10"><span class="price-int">79</span><span class="price-unity">€</span>/mois</div>
-                        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+                        <a class="btn btn-clickee-info-plein mtb-10 btn-pack">CHOISIR</a>
                         
                         <span>
                             Souscrivez au Pack Marketing + quand votre base de données clients grandie.

@@ -436,7 +436,7 @@
     width: 20%;
     margin-left: 5%;
 }
-.visa-expired {
+.customer-informations .visa-expired {
     background: #65bb9f;
     position: absolute;
     color: #fff;
@@ -547,7 +547,10 @@ td .customer-file-action.download {
     text-align: center;
 }
 .customer-area table#product_list .btn.btn-default,
-.customer-area table#code_promo .btn.btn-default {
+.customer-area table#code_promo .btn.btn-default,
+.customer-area form#product_form .btn.btn-default,
+.customer-area table#customer .btn.btn-primary,
+.customer-area .box-customer .btn.btn-default {
     background: #0f4651;
     color: white;
     border-radius: 0px;
@@ -555,27 +558,37 @@ td .customer-file-action.download {
     margin: 1px;
 }
 .customer-area table#product_list .btn.btn-default:hover,
-.customer-area table#code_promo .btn.btn-default:hover {
+.customer-area table#code_promo .btn.btn-default:hover,
+.customer-area form#product_form .btn.btn-default:hover,
+.customer-area table#customer .btn.btn-primary:hover,
+.customer-area .box-customer .btn.btn-default:hover {
     background: #65bb9f;
     border-color: #65bb9f;
 }
 .customer-area #product_list_wrapper .form-control,
-.customer-area #code_promo_wrapper .form-control {
+.customer-area #code_promo_wrapper .form-control,
+.customer-area #promotion_wrapper .form-control,
+.customer-area #customer_wrapper .form-control {
     border-radius: 0px;
     border: 3px solid #0f4651;
     background: #efefed;
 }
 .customer-area #product_list_wrapper .table-bordered,
-.customer-area #code_promo_wrapper .table-bordered {
+.customer-area #code_promo_wrapper .table-bordered,
+.customer-area form#product_form .table-bordered {
     border: 4px solid #0f4651;
 }
 .customer-area #product_list_wrapper div.dataTables_length label,
-.customer-area #code_promo_wrapper div.dataTables_length label {
+.customer-area #code_promo_wrapper div.dataTables_length label,
+.customer-area #promotion_wrapper div.dataTables_length label,
+.customer-area #customer_wrapper div.dataTables_length label {
     text-transform: uppercase;
     font-weight: bold;
 }
 .customer-area #product_list_wrapper div.dataTables_filter label,
-.customer-area #code_promo_wrapper div.dataTables_filter label {
+.customer-area #code_promo_wrapper div.dataTables_filter label,
+.customer-area #promotion_wrapper div.dataTables_filter label,
+.customer-area #customer_wrapper div.dataTables_filter label {
     font-weight: bold;
     white-space: nowrap;
     text-align: left;
@@ -618,6 +631,125 @@ td .customer-file-action.download {
 }
 .customer-area .nav-tabs-custom #size_list_input {
     margin-bottom: 0px;
+}
+.customer-area .nav-tabs-custom>.nav-tabs {
+    margin: 0;
+    border-bottom-color: #f4f4f4;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: #0f4651;
+}
+.customer-area .nav-tabs-custom>.nav-tabs>li.active>a, .nav-tabs-custom>.nav-tabs>li.active:hover>a {
+    background-color: #65bb9f;
+}
+.customer-area .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: #fff !important;
+    background-color: #65bb9f !important;
+}
+.customer-area .nav-tabs-custom>.nav-tabs>li>a {
+    color: #65bb9f;
+    border-radius: 0;
+}
+.customer-area .nav-tabs-custom>.nav-tabs>li>a:hover, .customer-area .nav-tabs-custom>.nav-tabs>li>a:focus {
+    color: #fff !important;
+    background-color: #65bb9f !important;
+}
+.customer-area .nav-tabs-custom>.nav-tabs>li>a .bg-green-dark {
+    background: #65bb9f !important;
+    color: white;
+}
+.customer-area .nav-tabs-custom>.nav-tabs>li>a:hover .bg-green-dark, .customer-area .nav-tabs>li.active>a .bg-green-dark, .nav-tabs>li.active>a:hover .bg-green-dark, .nav-tabs>li.active>a:focus .bg-green-dark {
+    background: #0f4651 !important;
+    color: white;
+} 
+.customer-area .nav-tabs-custom {
+    background: #efefed;
+}
+.customer-area .box-footer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top: 1px solid #f4f4f4;
+    padding: 10px;
+    background-color: #efefed;
+}
+.customer-area #attributes .select2-container--default .select2-selection--multiple {
+    border: 4px solid #0f4651;
+}
+.customer-area #attributes input{
+    border: none;
+}
+.customer-area .select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: #0f4651;
+}
+.customer-area .select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: solid #0f4651 4px;
+}
+.customer-area .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #65bb9f;
+    color: white;
+}
+.customer-area .box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #0f4651;
+}
+.customer-area .table.table-bordered thead {
+    text-transform: uppercase;
+}
+.customer-area .select2-container--default .select2-selection--multiple {
+    background-color: #efefed;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: text;
+}
+.customer-area table.dataTable#code_promo thead > tr > th {
+    padding-right: 15px;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #65bb9f !important;
+    color: white;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #65bb9f;
+    border-color: #65bb9f;
+    padding: 1px 10px;
+    color: #fff;
+}
+.customer-area form#product_form ul.dynatree-container {
+    font-family: tahoma, arial, helvetica;
+    font-size: 10pt;
+    white-space: nowrap;
+    padding: 3px;
+    margin: 0;
+    background-color: #efefed;
+    border: 1px dotted gray;
+    overflow: auto;
+    height: 100%;
+}
+.customer-area form#product_form ul.dynatree-container a {
+    color: #0f4651;
+    text-decoration: none;
+    vertical-align: top;
+    margin: 0px;
+    margin-left: 3px;
+}
+.customer-area form#product_form i.fa.fa-eur {
+    color: #fff;
+}
+.customer-area .content-header>h1 {
+    margin: 0;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 @media (max-width: 1367px) and (min-width: 992px)
 {

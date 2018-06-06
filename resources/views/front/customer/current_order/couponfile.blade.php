@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="logo text-center">
-                                        <img src="{!! URL::to('/') !!}/images/logoPdf.png" alt="logo Alternateeve"/>
+                                        <img src="{!! URL::to('/') !!}/images/logoPdf.png" alt="logo clickee"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

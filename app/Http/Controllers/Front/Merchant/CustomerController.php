@@ -168,4 +168,9 @@ class CustomerController extends Controller
         $users = $this->customer_repository->getAllCustomersSystem();
         return response()->json([$users]);
     }
+    
+    public function facture()
+    {
+        return view('merchant.customer.facture');
+    }
 }

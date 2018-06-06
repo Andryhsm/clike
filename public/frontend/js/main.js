@@ -912,8 +912,8 @@ function aside_fixed() {
 	var $aside = $("#aside"),
 		$window = $(window),
 		offset = $aside.offset(),
-		//content = $('.main')[0].clientHeight,
-		content = $('.test')[0].clientHeight,
+		content = $('.main')[0].clientHeight,
+		//content = $('.test')[0].clientHeight,
 		topPadding = 15,
 		css = {},
 		animate = {};

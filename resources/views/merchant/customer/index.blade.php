@@ -38,7 +38,7 @@
                 </h1>
             </section>
             <div class="col-xs-12">
-                <div class="box">
+                <div class="box box-customer">
                     <div class="box-body">
                         <table id="customer" class="table table-bordered table-hover">
                             <thead>
@@ -98,7 +98,7 @@
 	                         </tbody>
 
                         </table>
-                        <a class="btn btn-default" href="{!! route('encasement') !!}" >Retour</a>
+                        <a class="btn btn-default text-uppercase" href="{!! route('encasement') !!}" >Retour</a>
                     </div>
                 </div>
             </div>

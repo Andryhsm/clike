@@ -1566,6 +1566,16 @@ element.style {
   border-radius: 0px;
   border: 1px solid #efefef;
 }
+.cart-list legend {
+  width: 20%;
+  position: absolute;
+  left: 50%; 
+  transform: translateX(-50%); 
+  background-color: white;
+  padding: 0 0.5em;
+  top: 0;
+  background: url(../../images/arrow_select.svg) no-repeat 50% 50% !important;
+}
 .shopping-cart .cart-list {
     border: 1px solid #489082;
     overflow: hidden;
@@ -1582,7 +1592,7 @@ element.style {
     padding: 0px;
     width: 100px;
     height: 105px;
-    border: 4px solid #212B52;
+    border: 4px solid #044651;
     overflow: hidden;
     display: table-cell;
     text-align: center;
@@ -3224,7 +3234,7 @@ img.image-secure {
 a.open-day {
     font-size: 19px;
 }
-.cart-information .info-facture p{
+.cart-information .info-facture p, .facture-header p{
    margin: 0px !important;
    padding: 0px !important;
    font-weight: 400;
@@ -3247,8 +3257,11 @@ a.open-day {
 .capitalize-text{
   text-transform: capitalize;
 }
-.table-condensed td{
+.table-condensed td, .table-paiement .border-none{
   border:none !important;
+}
+.table-paiement td, .table-paiement th{
+  border:2px solid #ddd !important;
 }
 .product-price {
     margin-top: 0px;

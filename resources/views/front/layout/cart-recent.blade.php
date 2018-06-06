@@ -1,5 +1,5 @@
 @if($cart_count > 0)
-    <div class="dropdown-menu cart-total text-right" id="content-cart" style="width: 365px;">
+    <div class="dropdown-menu cart-total text-right" id="content-cart" style="width: 365px;border: 1px solid #489082;">
     <ul class="cart-menu">
         <?php
             $nombre = ($cart_count < 10) ? '0'.$cart_count : $cart_count;
@@ -8,7 +8,8 @@
             <div class="shopping-cart">
 
                 @foreach($recent_items as $item_id=>$item)
-                <div class="cart-list row">
+                <fieldset class="cart-list row">
+                    <legend></legend>
                     <div class="cart-img col-lg-3">
                         <a href="#" title="{!! $item->getName() !!}"><img
                                     src="{!! URL::to('/').'/'.\App\Product::PRODUCT_IMAGE_PATH.$item->getImage() !!}"
@@ -41,7 +42,7 @@
                     <div class="pro-del col-lg-1">
                         <a href="{!! url("cart/remove/$item_id") !!}"><i  class="fa fa-times"></i></a>
                     </div>
-                </div>
+                </fieldset>
                 @endforeach
                 <div class="mini-cart-total mt--10">
                     <span>{!! trans('cart.total') !!}</span>

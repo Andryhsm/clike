@@ -70,7 +70,8 @@
                                     <ul>
                                         @if(!$is_user_login || Auth::user()->role_id==2)                               
                                             @if($is_user_login)
-                                                <li class="footer-menu"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/logout') !!}">Déconnexion</a></li>
+                                                <li class="footer-menu"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/dashboard') !!}">Mon compte pro</a></li>
+                                                <li class=""><a href="{!! url(LaravelLocalization::getCurrentLocale().'/logout') !!}">Déconnexion</a></li>
                                             @else
                                                 <li class="footer-menu"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/login') !!}">Inscription / Connexion</a></li>
                                             @endif

@@ -295,6 +295,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
                     Route::get('product/remove_product_image', 'ProductController@removeImage')->name('remove_product_image');
                     Route::get('product/add', 'ProductController@create')->name('create_product');
                     Route::resource('customer', 'CustomerController');
+                    Route::get('facture','CustomerController@facture');
                     Route::get('contact','CustomerController@addContact');
                     Route::post('save_contact','CustomerController@saveContactCustomer');
                     Route::get('encasement', 'CustomerController@encasement')->name('encasement');
@@ -350,7 +351,8 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
         try {
             $value = \App\Url::where('target_url', $slug)->first();
             if ($value == null) {
-                return view('front.404');
+               // return view('front.404');
+               return redirect()->route('crowdfunding');
             }
             $app = app();
             //dd($value);
@@ -370,7 +372,8 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
                     return $controller->callAction('show', [$value->target_id]);
             }
         } catch (Exception $e) {
-            return view('front.404');
+            // return view('front.404');
+            return redirect()->route('crowdfunding');
         }
     });
 });
