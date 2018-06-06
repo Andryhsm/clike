@@ -68,6 +68,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </div>
 <section class="content" id="size_list_input">
     <div class="row product-content row product_input_row " id="1">
