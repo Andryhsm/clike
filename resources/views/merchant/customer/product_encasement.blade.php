@@ -15,7 +15,6 @@
                             <select class="form-control required">
                                 <option></option>
                             </select>
-                            </div>
                         </div>
                         <div class="form-group product_size">
                             <label for="product_size" class="control-label">Taille</label>
@@ -30,14 +29,14 @@
                                  <span class="input-group-addon"> % </span>
                             </div>
                         </div>
-                    </<div>
+                    </div>
                         
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group product_reference">
                             <label for="product_reference" class="control-label">Référence</label>
                             <input type="text" placeholder="Référence" class=" form-control required"/>
                         </div>
-                    </<div>
+                    </div>
                     <div class="form-group sub_category">
                         <label for="sub_category" class="control-label">Sous catégorie</label>
                         <select class="form-control required">
@@ -70,8 +69,6 @@
                 </div>
             </div>
         </div>
-        
-    </div>
 </div>
 <section class="content" id="size_list_input">
     <div class="row product-content row product_input_row " id="1">
