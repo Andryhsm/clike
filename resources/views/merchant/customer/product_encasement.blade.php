@@ -36,25 +36,24 @@
                             <label for="product_reference" class="control-label">Référence</label>
                             <input type="text" placeholder="Référence" class=" form-control required"/>
                         </div>
+                        <div class="form-group sub_category">
+                            <label for="sub_category" class="control-label">Sous catégorie</label>
+                            <select class="form-control required">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="form-group product_color">
+                            <label for="product_color" class="control-label">Couleur</label>
+                            <select class="form-control required">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="form-group promo_code">
+                            <label for="promo_code" class="control-label">Code promo</label>
+                            <select class="form-control required">
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group sub_category">
-                        <label for="sub_category" class="control-label">Sous catégorie</label>
-                        <select class="form-control required">
-                            <option></option>
-                        </select>
-                    </div>
-                    <div class="form-group product_color">
-                        <label for="product_color" class="control-label">Couleur</label>
-                        <select class="form-control required">
-                            <option></option>
-                        </select>
-                    </div>
-                    <div class="form-group promo_code">
-                        <label for="promo_code" class="control-label">Code promo</label>
-                        <select class="form-control required">
-                        </select>
-                    </div>
-                </div>
                 
                 <div class="row">
                     <div class="product_price hidden">  
