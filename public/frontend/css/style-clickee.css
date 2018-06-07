@@ -1571,9 +1571,11 @@ element.style {
 .cart-menu {
   margin-top: 10px;
 }
+.cart-list legend {
+  position: absolute;
+}
 .cart-list:first-child legend, .shopping-cart fieldset:last-of-type legend {
   width: 15%;
-  position: absolute;
   left: 43%;  
   padding: 0 0.5em;
   height: 20px;
@@ -1625,7 +1627,8 @@ element.style {
     /*margin-left: 35px;
     padding-left: 0px;
     padding-top: 11px;*/
-    padding: 22px 10px;
+    padding: 23px 10px;
+    display: flex
 }
 .shopping-cart .cart-list .cart-info h4:first-child {
   margin-bottom:0;

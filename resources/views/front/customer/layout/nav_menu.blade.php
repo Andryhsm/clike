@@ -6,9 +6,9 @@
         <li class="nav-item">
             <a class="nav-link {{ set_active(['*/customer/order-story']) }}" data-url="{!! url(LaravelLocalization::getCurrentLocale().'/customer/order-story') !!}" href="#"><img class="pull-left" src="{!! URL::to('/') !!}/images/icon/historique_de_mes_commandes.svg"/><span>Historique de mes commandes</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link {{ set_active(['*/customer/customer-bills']) }}" data-url="{!! url(LaravelLocalization::getCurrentLocale().'/customer/customer-bills') !!}" href="#"><img class="pull-left" src="{!! URL::to('/') !!}/images/icon/mes_factures.svg"/><span>Mes factures</span></a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link {{ set_active(['*/customer/customer-informations']) }}" data-url="{!! url(LaravelLocalization::getCurrentLocale().'/customer/customer-informations') !!}"  href="#"><img class="pull-left" src="{!! URL::to('/') !!}/images/icon/mes_informations.svg"/><span>Mes informations</span></a>
         </li>

@@ -1,6 +1,6 @@
 (function($) {
 	"use strict";
-
+	footerCardFixed()
 	$(".remember-me").click(function() {
 		if ($(".remember-me").hasClass("clicked")) {
 			$('#remember-check').attr('checked', false);
@@ -944,4 +944,30 @@ function aside_fixed() {
 		});
 
 	}
+}
+
+function footerCardFixed(){
+	var contentCart = document.getElementById('content-cart');
+
+	var callback = function(mutationsList) {
+	    for(var mutation of mutationsList) {
+	        if (mutation.attributeName === 'style') {
+	            console.log("L'attribut '" + mutation.attributeName + "' a été modifié.");
+	            var count = $('.cart-list').length
+					childHeight = $('.cart-list')[0].clientHeight *2 + 2;
+
+				console.log(count + ' contentCart *******************')					
+				console.log(childHeight + ' childHeight *******************')
+
+	        	if(count > 2){
+					$(".content-cart").css({'height': childHeight, 'overflow-y': 'scroll'});
+					$(".shopping-cart .cart-list").css('width', '99%')
+					console.log('count is > 2 ******************')
+				} 
+	        }
+	    }
+	}
+
+	var observer = new MutationObserver(callback);
+	observer.observe(contentCart, { attributes: true});
 }
