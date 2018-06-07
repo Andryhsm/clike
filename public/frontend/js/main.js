@@ -952,17 +952,14 @@ function footerCardFixed(){
 	var callback = function(mutationsList) {
 	    for(var mutation of mutationsList) {
 	        if (mutation.attributeName === 'style') {
-	            console.log("L'attribut '" + mutation.attributeName + "' a été modifié.");
 	            var count = $('.cart-list').length
-					childHeight = $('.cart-list')[0].clientHeight *2 + 2;
-
-				console.log(count + ' contentCart *******************')					
-				console.log(childHeight + ' childHeight *******************')
+					childHeight = $('.cart-list')[0].clientHeight *2 + 20;
 
 	        	if(count > 2){
 					$(".content-cart").css({'height': childHeight, 'overflow-y': 'scroll'});
-					$(".shopping-cart .cart-list").css('width', '99%')
-					console.log('count is > 2 ******************')
+					$(".shopping-cart .cart-list").css('width', '99%');
+					$(".content-cart").scrollTop(0);	
+					$('.cart-list legend').last().hide();				
 				} 
 	        }
 	    }
@@ -970,4 +967,22 @@ function footerCardFixed(){
 
 	var observer = new MutationObserver(callback);
 	observer.observe(contentCart, { attributes: true});
+
+	$(".content-cart").scroll(function() {
+		var y = $(".content-cart").scrollTop();
+		var height = $(".content-cart")[0].scrollHeight - $(".content-cart")[0].clientHeight;
+		
+		if(y == 0){
+			$('.cart-list legend').first().show();
+			$('.cart-list legend').last().hide();
+		} 
+		else{
+			$('.cart-list legend').first().hide();
+			$('.cart-list legend').last().hide();
+			if(y == height){
+				$('.cart-list legend').first().hide();
+				$('.cart-list legend').last().show();
+			} 
+		}
+	})
 }
