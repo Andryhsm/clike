@@ -1,5 +1,5 @@
 @if($cart_count > 0)
-    <div class="dropdown-menu cart-total text-right" id="content-cart" style="width: 365px;border: 1px solid #489082;">
+    <div class="dropdown-menu cart-total text-right" id="content-cart" style="width: 365px;border: 1px solid #7fa6aa;">
     <ul class="cart-menu">
         <?php
             $nombre = ($cart_count < 10) ? '0'.$cart_count : $cart_count;
@@ -22,7 +22,7 @@
                             <div class="content-new-price">
                                 <span class="new-price">{!! format_price($item->getOriginalPrice()) !!}</span>         
                             </div>
-                            <div class="col-lg-1 text-center">|</div>
+                            <div class="col-lg-1 col-xs-1 text-center">|</div>
                             <div class="col-lg-7 content-star">
                                 <?php 
                                     $product = $item->getProduct();

@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group product_name">
-                            <label class="col-sm-3 control-label">Nom produit</label>
+                            <label class="control-label">Nom produit</label>
                             <select class=" form-control required">
                             
                             </select>
@@ -76,7 +76,7 @@
             <div class="box-body mt-30">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
+                        <div class="form-group product_name">
                             <label for="product_name" class="control-label">Nom produit</label>
                             <select id="product_name1" name="product_name[1]" data-content-range="1" class="select-product-name form-control required">
                             </select>
@@ -95,8 +95,10 @@
                         </div>
                         <div class="form-group">
                             <label for="discount" class="control-label">Rémise</label>
-                            <input type="number" name="discount[1]" placeholder="Rémise" id="discount1" class="input-discount form-control required"/>
-                            <span class="input-group-addon"> % </span>
+                            <div class="input-group">
+                                <input type="number" name="discount[1]" placeholder="Rémise" id="discount1" class="input-discount form-control required"/>
+                                <span class="input-group-addon"> % </span>
+                            </div>
                         </div>
                     </div>
                     
@@ -152,4 +154,5 @@
 <div class="footer-button"><!-- box-footer -->
     <a href="#tab_1" data-toggle="tab" class="btn btn-merchant-filled">Precedent</a>
     <a class="btn btn-merchant-filled pull-right" id="paiement" href="#tab_3" data-toggle="tab"> Paiement </a>
+    
 </div>

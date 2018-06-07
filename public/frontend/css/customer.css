@@ -573,11 +573,11 @@ td .customer-file-action.download {
     border: 3px solid #0f4651;
     background: #efefed;
 }
-.customer-area #product_list_wrapper .table-bordered,
-.customer-area #code_promo_wrapper .table-bordered,
-.customer-area form#product_form .table-bordered {
-    border: 4px solid #0f4651;
-}
+/*.customer-area #product_list_wrapper .table-bordered,*/
+/*.customer-area #code_promo_wrapper .table-bordered,*/
+/*.customer-area form#product_form .table-bordered {*/
+/*    border: 4px solid #0f4651;*/
+/*}*/
 .customer-area #product_list_wrapper div.dataTables_length label,
 .customer-area #code_promo_wrapper div.dataTables_length label,
 .customer-area #promotion_wrapper div.dataTables_length label,
@@ -744,6 +744,20 @@ td .customer-file-action.download {
 .customer-area form#product_form i.fa.fa-eur {
     color: #fff;
 }
+.customer-area form#customer_form .title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+}
+.customer-area form#customer_form .title h1 {
+    font-size: 26px;
+    font-weight: 600 !important;
+}
+.customer-area form#customer_form thead {
+    text-transform: uppercase;
+    font-weight: 600;
+}
 .customer-area .content-header>h1 {
     margin: 0;
     font-size: 15px;
@@ -751,6 +765,22 @@ td .customer-file-action.download {
     font-weight: 600;
     text-transform: uppercase;
 }
+.customer-area .nav-tabs-custom .product_input_row span.input-group-addon {
+    color: #fff;
+}
+.customer-area .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #0f4651;
+    line-height: 28px;
+}
+.customer-area .btn-danger, .customer-area .btn-danger:hover {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
 @media (max-width: 1367px) and (min-width: 992px)
 {
     .avatar {

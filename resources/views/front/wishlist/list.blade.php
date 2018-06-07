@@ -5,7 +5,7 @@
             @include('notification')
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
-                <tr>
+                <tr class="fs-20">
                     <th style="width:40%">{!! trans('product.product') !!}</th>
                     <th style="width:10%">{!! trans('product.original_price') !!}</th>
                     <th style="width:10%">{!! trans('product.best_price') !!}</th>
@@ -21,15 +21,17 @@
                         <div class="row">
                             <div class="col-sm-2 hidden-xs"><img src="{!! url(\App\Product::THUMB_IMAGE_PATH.$product->product->images->first()->image_name) !!}" alt="{!! $product_translation->product_name !!}" class="img-responsive"/></div>
                             <div class="col-sm-10">
-                                <h4 class="nomargin">{!! $product_translation->product_name !!}</h4>
+                                <h4 class="nomargin pt-25">{!! $product_translation->product_name !!}</h4>
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price">{!! format_price($product->product->original_price) !!}</td>
-                    <td data-th="Subtotal">{!! format_price($product->product->best_price) !!}</td>
+                    <td data-th="Price"><p class="pt-35">{!! format_price($product->product->original_price) !!}</p></td>
+                    <td data-th="Subtotal"><p class="pt-35">{!! format_price($product->product->best_price) !!}</p></td>
                     <td class="actions" data-th="">
-                        <a class="btn btn-danger btn-sm" href="{!! url('wishlist/remove/'.$product->product_id) !!}"><i class="fa fa-trash-o"></i></a>
-                        <a class="btn btn-success" href="{!! url($product->product->url->target_url) !!}">{!! trans('product.buy') !!}</a>
+                        <p class="pt-25">
+                            <a class="btn btn-clickee-info" href="{!! url('wishlist/remove_in_list/'.$product->product_id) !!}"><i class="fa fa-trash-o"></i></a>
+                            <a class="btn btn-clickee-info" href="{!! url($product->product->url->target_url) !!}">{!! trans('product.buy') !!}</a>
+                        </p>    
                     </td>
                 </tr>
                  @endforeach

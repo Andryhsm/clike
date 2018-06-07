@@ -32,7 +32,7 @@
     <section class="content">
         @include('admin.layout.notification')
         <div class="row">
-            <section class="content-header" style="text-align: center;">
+            <section class="content-header mb-40" style="text-align: center;">
                 <h1>
                     Mon fichier client
                 </h1>
@@ -86,7 +86,7 @@
                                         <td>
                                             <div class="btn-group">
                                                 <a href="{{ URL::to('merchant/customer/' . $customer->customer_id . '/edit?type_customer=2') }}"
-                                                   class="btn btn-primary btn-sm" title="Edit">Encaissement</a>&nbsp;
+                                                   class="btn btn-primary btn-sm" title="Edit">Encaisser</a>&nbsp;
                                                 {{-- {!! Form::open(array('url' => route('customer.destroy',['id' => $customer->user_id, 'type_customer' => \App\StoreCustomer::CUSTOMER_SYSTEM_USER]), 'class' => 'pull-right')) !!}
                                                 {!! Form::hidden('_method', 'DELETE') !!}
                                                 {!! Form::button('<i class="fa fa-fw fa-trash"></i>', ['type' => 'submit', 'class' => 'btn delete-btn btn-default btn-sm','title'=>'Delete'] ) !!}

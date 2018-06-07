@@ -221,6 +221,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
     Route::get('wishlist','WishlistController@index');
     Route::get('wishlist/{id}','WishlistController@store');
     Route::get('wishlist/remove/{id}','WishlistController@remove');
+    Route::get('wishlist/remove_in_list/{id}','WishlistController@remove_in_list');
     Route::get('wishlist/findid/{idpu}','WishlistController@findIdWishlist');
 
     Route::get('zoom-image-test', 'TestController@imageZoom');
@@ -296,6 +297,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
                     Route::get('product/add', 'ProductController@create')->name('create_product');
                     Route::resource('customer', 'CustomerController');
                     Route::get('facture','CustomerController@facture');
+                    Route::get('facturePdf','CustomerController@facturePdf');
                     Route::get('contact','CustomerController@addContact');
                     Route::post('save_contact','CustomerController@saveContactCustomer');
                     Route::get('encasement', 'CustomerController@encasement')->name('encasement');

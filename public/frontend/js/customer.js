@@ -228,15 +228,12 @@ function get_product_data(product_id, content_range) {
                 $('#parent_category' + content_range).append('<option value="' + category_id + '">' + data.category_arr[category_id] + '</option>');
                 $('#sub_category' + content_range).append('<option value="' + category_id + '">' + data.category_arr[category_id] + '</option>');
             }
-            console.log(product.original_price);
             $('#product_price' + content_range).val(product.original_price);
             $('#product_quantity' + content_range).val("1");
-            console.log(code_promo_arr);
         })
         .fail(function(xhr, options) {
             console.log(xhr.responseText);
         });
-
 }
 
 function validate_customer_info() {
@@ -256,6 +253,23 @@ function validate_customer_info() {
     if (form.valid()) {
         $('#add-customer').trigger('click');
     }
+}
+
+function validate_product_info() {
+    var form = $("#customer_form");
+    form.validate();
+    $('.select-product-name').each(function(index, element) {
+        $element_parent = $(element).parents('.product_name');
+        if ($(element).val() == 0) {
+            $(element).addClass('invalid');
+            $element_parent.append("<label class='error'>Veuillez sélectionner un produit</label>");
+        }
+        else {
+            $(element).removeClass('invalid');
+            $element_parent.find('.error').remove();
+        }
+
+    });
 }
 
 function autocomplete_list_customer() {

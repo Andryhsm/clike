@@ -52,10 +52,10 @@
                             <table id="code_promo" class="table table-bordered table-hover">
                                 <thead class="text-uppercase">
                                 <tr>
-                                    <th width="16%">Code</th>
-                                    <th width="12%">Début</th>
-                                    <th width="12%">Fin</th>
-                                    <th width="25%">Catégories</th>
+                                    <th width="15%">Code</th>
+                                    <th width="15%">Début</th>
+                                    <th width="15%">Fin</th>
+                                    <th width="20%">Catégories</th>
                                     <th width="25%">Produits</th>
                                     <th width="10%" class="no-sort text-center">Prolonger<br>/<br>Supprimer</th>
                                 </tr>
@@ -65,10 +65,10 @@
     	                                <tr>
     	                                    <td>{!! $code_promo->code_promo_name !!}</td>
     	                                    <td>
-                                                {!! Jenssegers\Date\Date::parse($code_promo->date_debut)->format('j F Y')!!}
+                                                {!! Jenssegers\Date\Date::parse($code_promo->date_debut)->format('d-m-Y')!!}
                                             </td>
     	                                    <td>
-                                                {!! Jenssegers\Date\Date::parse($code_promo->date_fin)->format('j F Y')!!}
+                                                {!! Jenssegers\Date\Date::parse($code_promo->date_fin)->format('d-m-Y')!!}
                                             </td>
     	                                    <td>
     	                                    	@foreach($code_promo->categories as $category)
