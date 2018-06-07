@@ -404,17 +404,20 @@ class ProductController extends Controller
 		$product_id = $request->get('product_id');
 		$product = $this->product_repository->getById($product_id);
 		$categories = $product->categories;
+		$parent_categorie = [];
 
 		foreach ($categories as $category) {
-			$category_arr[$category->category_id] = $category->french->category_name;
-		
+			if($category->parent_id == null)
+				$parent_categorie[$category->category_id] = $category->french->category_name;
+			else
+				$category_arr[$category->category_id] = $category->french->category_name;
 		}
 		$product_attributes = [];
 		if($product_id > 0){
 			$product_attributes = $this->product_repository->getAttributesByProductId($product_id);
 		}
 
-		return response()->json(['product' => $product, 'attribute' => $product_attributes, 'category_arr' => $category_arr]);
+		return response()->json(['product' => $product, 'attribute' => $product_attributes, 'category_arr' => $category_arr, 'parent_categorie' => $parent_categorie]);
 	}
 
 	public function getCodePromoByCategory(Request $request)

@@ -784,7 +784,11 @@
 							"</div>";
 					}
 				},
-
+				list: {
+					onClickEvent: function() {
+						$('#form-search').submit();
+					}	
+				}
 			};
 			$('#search-product-input').easyAutocomplete(options);
 		})

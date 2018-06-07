@@ -2784,6 +2784,10 @@ button.btn.btn-clickee-info.search-radio.text-uppercase {
     margin-top: -30px;
     border: none;
 }
+.search-product-modal .btn-search:active, .search-product-modal .btn-search:focus {
+    border: none !important;
+    box-shadow: none;
+}
 .content-result-autocompletion .brand-name {
   font-size : 14px;
   font-style: italic;

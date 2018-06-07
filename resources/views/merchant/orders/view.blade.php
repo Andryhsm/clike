@@ -46,7 +46,7 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">{!! trans('order.to_respond') !!} &nbsp;&nbsp; <span class="badge bg-green-dark mr-5">{!! getNumberOrderPending(Auth::id()) !!}</span></a></li>
                         <li><a href="#tab_3" data-toggle="tab">{!! trans('order.earned') !!} &nbsp;&nbsp; <span class="badge bg-green-dark mr-5">{!! getNumberOrderEarned(Auth::id()) !!}</span></a></li>
-                        <!--<li><a href="#tab_4" data-toggle="tab">TERMINER</a></li>-->
+                        <li><a href="#tab_4" data-toggle="tab">HISTORIQUE</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -118,8 +118,8 @@
                             </section>
                         </div>
                         <div class="tab-pane" id="tab_3">
-                            <section class="" id="image_content"><!--content-->
-                                <table class="table bdr-btm">
+                            <section class="" id=""><!--content-->
+                                <table width="100%" class="merchant-order-list bdr-btm">
                                     <tbody>
                                     @if(count($earned_items)>0)
                                         @foreach($earned_items as $index=>$item)
@@ -163,15 +163,44 @@
                                 </table>
                             </section>
                         </div>
-                        <!--<div class="tab-pane" id="tab_4">
-                            <section class="content" id="image_content">
-                                <table class="table bdr-btm">
+                        <div class="tab-pane" id="tab_4">
+                            <section class="" id="">
+                                <table width="100%" class="merchant-order-list bdr-btm">
                                     <tbody>
+                                        @if(count($history_items)>0)
+                                        @foreach($history_items as $index=>$item)
+                                        <tr>
+                                            <td width="50%" class="vertical-align">
+                                                <strong>{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong><br><br>
+                                                <a href="{!! (!empty($item->product)>0 && !empty($item->product->url)) ? url($item->product->url->target_url): "#" !!}">{!! $item->product_name !!}</a>
+                                                @foreach($item->attributes as $index=>$attribute)
+                                                    <br/>{!! $attribute->attribute_label !!}
+                                                    : {!! $attribute->attribute_selected_value !!}
+                                                @endforeach
+                                                <br/>{!! trans('order.price') !!}: {!! format_price($item->price) !!}
+                                                <br/>
+                                                <!--<a href="{!! !empty($item->product_url)?url($item->product_url) :'#' !!}">{!! trans('order.equalize_link') !!}</a><br>-->
+                                                @if($item->order->payment_type=='1')
+                                                    {!! trans('order.payment_type') !!}
+                                                @endif
     
+                                            </td>
+                                            <td width="50%" class="vertical-align">
+                                                <strong>{!! $item->itemRequest->first()->user->last_name !!} {!! $item->itemRequest->first()->user->first_name !!}</strong>
+                                                <div class="mt-20">Code coupon: {!! $item->coupon->coupon_code !!}</div>
+                                                <div class="">
+                                                    Date de récuperation: {!! Carbon\Carbon::parse($item->itemRequest->first()->booked_date)->format('d/m/Y')  !!}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @else
+                                        {!! trans('order.no_records_found') !!}
+                                    @endif
                                     </tbody>
                                 </table>
                             </section>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
                 </div>

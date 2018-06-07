@@ -23,7 +23,8 @@ class DashboardController extends Controller
 	}
 
     public function index()
-    {	$store_id = auth()->user()->store->first()->store_id;
+    {	
+    	$store_id = \Auth::user()->store->first()->store_id;
     	$user_id = \Auth::user()->user_id;
     	$product_count = $this->product_repository->getCountMerchant($store_id);
     	$sales_count = $this->order_item_repository->getCount($user_id);

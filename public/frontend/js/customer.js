@@ -180,6 +180,20 @@ function get_product_data(product_id, content_range) {
     $('#parent_category' + content_range).html("<option></option>");
     $('#sub_category' + content_range).html("<option></option>");
 
+    var $current_element = $('#product_name' + content_range);
+    $parent_element = $current_element.parents('.product_name');
+    if($current_element.val() == 0){
+        if(!$current_element.hasClass('invalid')){
+            $current_element.addClass('invalid');
+            $parent_element.append("<label class='error'>Veuillez sélectionner un produit</label>");
+        }
+    }else{
+        if($current_element.hasClass('invalid')){
+            $current_element.removeClass('invalid');
+            $parent_element.find('.error').remove();
+        }
+    }
+
     $.ajax({
             url: base_url + 'fr/merchant/product/get-product-for-encasement',
             type: 'GET',
@@ -219,15 +233,22 @@ function get_product_data(product_id, content_range) {
                     }
                 }
             }
+            console.log(data);
             var category_arr = data.category_arr;
+            var parent_categorie = data.parent_categorie;
             if (Object.keys(category_arr).length > 0) {
                 $('#parent_category' + content_range).html("<option name='0'>Séléctionner une catégorie</option>");
-                $('#sub_category' + content_range).html("<option name='0'>Séléctionner une catégorie</option>");
             }
+            if(Object.keys(parent_categorie).length > 0){
+                 $('#sub_category' + content_range).html("<option value='0'>Séléctionner une catégorie</option>");
+                 for (var category_id in parent_categorie) {
+                    $('#parent_category' + content_range).append('<option value="' + category_id + '">' + data.parent_categorie[category_id] + '</option>');
+               }
+            }
+               
             for (var category_id in category_arr) {
-                $('#parent_category' + content_range).append('<option value="' + category_id + '">' + data.category_arr[category_id] + '</option>');
                 $('#sub_category' + content_range).append('<option value="' + category_id + '">' + data.category_arr[category_id] + '</option>');
-            }
+           }
             $('#product_price' + content_range).val(product.original_price);
             $('#product_quantity' + content_range).val("1");
         })
@@ -261,15 +282,19 @@ function validate_product_info() {
     $('.select-product-name').each(function(index, element) {
         $element_parent = $(element).parents('.product_name');
         if ($(element).val() == 0) {
-            $(element).addClass('invalid');
-            $element_parent.append("<label class='error'>Veuillez sélectionner un produit</label>");
+            if(!$(element).hasClass('invalid')){
+                $(element).addClass('invalid');
+                $element_parent.append("<label class='error'>Veuillez sélectionner un produit</label>");
+            }
         }
         else {
             $(element).removeClass('invalid');
             $element_parent.find('.error').remove();
         }
-
     });
+    if($('#size_list_input').find('.invalid').length == 0){
+        $('#next-in-paiement').trigger('click');
+    }
 }
 
 function autocomplete_list_customer() {

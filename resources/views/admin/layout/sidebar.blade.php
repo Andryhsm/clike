@@ -312,7 +312,7 @@
             </li>
             @endif -->
             
-            @if(check_user_access(['epartner.index','epartner.index','email-template.index','update_setting', 'setting_update']))
+            @if(check_user_access(['email-template.index','update_setting', 'setting_update']))
             <li class="treeview {{ set_active(['admin/system','admin/system/*','admin/meta_og','admin/meta_og/*', 'admin/epartner','admin/epartner/*','admin/email-template','admin/email-template/*']) }}">
                 <a href="#">
                     <i class="fa fa-wrench"></i>
@@ -325,11 +325,6 @@
                     @if(check_user_access(['update_setting', 'setting_update']))
                         <li class="{{ set_active(['admin/system','admin/system/*']) }}"><a
                                     href="{!! URL::to('/admin/system') !!}"> <i class="fa fa-circle-o"></i> Meta & OG</a>
-                        </li>
-                    @endif
-                    @if(check_user_access('epartner.index'))
-                        <li class="{{ set_active(['admin/epartner','admin/epartner/*']) }}"><a
-                                    href="{!! URL::to('/admin/epartner') !!}"><i class="fa fa-circle-o"></i> Epartner Image</a>
                         </li>
                     @endif
                     <!-- @if(check_user_access('email-template.index'))

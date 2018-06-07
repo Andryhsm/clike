@@ -24,7 +24,7 @@
 <div class="col-lg-12">
     <div class=""> <!-- box-footer -->
         <a href="#tab_2" data-toggle="tab" class="btn btn-merchant-filled">Precedent</a>
-        <a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/facturePdf') !!}" target="_blank" class="btn btn-merchant-filled">
+        <a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/facturePdf') !!}" target="_blank" class="btn btn-merchant-filled hidden">
             Afficher facture
         </a>
         <button type="submit" id="encasement" class="btn btn-merchant-filled pull-right">Encaissement</button>

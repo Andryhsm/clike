@@ -116,6 +116,22 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		return $items;
 	}
 	
+	public function getHistoryItemByMerchant($user_id)
+	{
+		$items = OrderItem::whereHas('itemRequest',function($query) use($user_id){
+			$query->where('merchant_id',$user_id);
+			$query->where('is_added_by','merchant');
+		})
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
+				$query->where('merchant_id',$user_id);
+				$query->where('is_added_by',"merchant");
+			},'coupon'])
+			->where('order_status_id',OrderItem::ORDER_STATUS_FINISHED)
+			->orderBy('order_item_id','desc')
+			->get();
+		return $items;
+		
+	}
 	
 	public function getCount($user_id)
 	{
@@ -168,23 +184,6 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		return $items;
 	}
 	
-	
-	public function getHistoryItemByMerchant($user_id)
-	{
-		$items = OrderItem::whereNotExists(function($query) use ($user_id)
-		{
-			$query->select('*')
-				->from('order_item_request')
-				->whereRaw('order_item_request.item_id = order_item.order_item_id')
-				->where('order_item_request.merchant_id','=',$user_id);
-		})
-			->with(['product', 'attributes'])
-			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_FINISHED,OrderItem::ORDER_STATUS_CANCELED,OrderItem::ORDER_STATUS_NEGATIVE])
-			->get();
-		return $items;
-		
-	}
-
 	public function itemByStatusAndUser($status_id, $user_id)
 	{
 		$status_id = is_array($status_id) ? $status_id : [$status_id];

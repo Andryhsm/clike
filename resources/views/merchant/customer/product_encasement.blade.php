@@ -153,6 +153,6 @@
 </section>
 <div class="footer-button"><!-- box-footer -->
     <a href="#tab_1" data-toggle="tab" class="btn btn-merchant-filled">Precedent</a>
-    <a class="btn btn-merchant-filled pull-right" id="paiement" href="#tab_3" data-toggle="tab"> Paiement </a>
-    
+    <a class="btn btn-merchant-filled pull-right" onclick="validate_product_info();" id="paiement"> Paiement </a>
+    <a type="button"  id="next-in-paiement" class="btn btn-merchant-filled hidden"  href="#tab_3" data-toggle="tab" >Valid</a>
 </div>
