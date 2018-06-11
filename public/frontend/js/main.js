@@ -809,7 +809,7 @@
 		}
 	});
 
-	//Panier
+	//Carte récente
 	footerCardFixed()
 	
 })(jQuery);
