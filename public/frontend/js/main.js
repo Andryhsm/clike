@@ -916,7 +916,7 @@ function close_select_radius() {
 function initMap() {}
 
 function aside_fixed() {
-	console.log('log')
+	//console.log('log')
 	var $aside = $("#aside"),
 		$window = $(window),
 		offset = $aside.offset(),
@@ -925,8 +925,8 @@ function aside_fixed() {
 		topPadding = 15,
 		css = {},
 		animate = {};
-	console.log(content + ' content *******************')
-	console.log($('.main'))
+	//console.log(content + ' content *******************')
+	//console.log($('.main'))
 	if (Modernizr.mq('(max-width: 767px)')) {
 		$window.scroll(function() {
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
@@ -941,8 +941,8 @@ function aside_fixed() {
 	}
 	else {
 		$window.scroll(function() {
-			console.log(content + 'content ***********************')
-			console.log($window.scrollTop() + 'scroll ***********************')
+			//console.log(content + 'content ***********************')
+			//console.log($window.scrollTop() + 'scroll ***********************')
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
 				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
 			}
@@ -962,7 +962,7 @@ function customer_aside_fixed() {
 	var callback = function(mutationsList) {
 	    for(var mutation of mutationsList) {
 	        if (mutation.type == 'childList') {
-	            console.log('child change *********************')
+	            //console.log('child change *********************')
 	            aside_fixed()
 	        }
 	    }

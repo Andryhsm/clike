@@ -2291,6 +2291,7 @@ text-align: center !important;
 .espace-header:not(:first-child) {
   margin-left: 40px;
 }
+
 }
 
 @media (max-width: 480px) {
