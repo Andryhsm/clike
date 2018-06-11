@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front\Merchant;
 
+use App\Repositories\ItemRequestRepository;
 use App\Interfaces\OrderRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\Request;
@@ -20,10 +21,13 @@ class DashboardController extends Controller
 		$this->product_repository = $productRepository;
 		$this->order_repository = $orderRepository;
 		$this->order_item_repository = $orderItemRepository;
-	}
+	}	
 
     public function index()
     {	
+    	/*$test = $this->order_item_repository->getAllRequest();
+    	dd($test);*/
+    	
     	$store_id = \Auth::user()->store->first()->store_id;
     	$user_id = \Auth::user()->user_id;
     	$product_count = $this->product_repository->getCountMerchant($store_id);

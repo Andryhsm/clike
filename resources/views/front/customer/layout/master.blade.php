@@ -47,7 +47,7 @@
                 <div class="aside  col-mm-4 col-lg-4 col-md-4 col-sm-2 col-xs-12" id="aside">
                     @include('front.customer.layout.nav_menu')
                 </div>
-                <div class="main ajax-content col-mm-8 col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                <div class="main ajax-content col-mm-8 col-lg-8 col-md-8 col-sm-10 col-xs-12" id="main">
                     @yield('content')
                 </div>
             </div>
@@ -63,7 +63,7 @@
          <script src="{!! URL::to('/') !!}/frontend/js/customer-area.js"></script>
          <script type="text/javascript">
             // Effet fix du menu gauche 
-            aside_fixed();
+            //aside_fixed();
             Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
             var base_url = {!! "'".URL::to('/')."/'" !!};
             var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};

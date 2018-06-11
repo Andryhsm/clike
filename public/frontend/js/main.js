@@ -916,7 +916,7 @@ function aside_fixed() {
 	var $aside = $("#aside"),
 		$window = $(window),
 		offset = $aside.offset(),
-		content = $('.main')[0].clientHeight,
+		content = $('.main')[0].clientHeight - 130,
 		//content = $('.test')[0].clientHeight,
 		topPadding = 15,
 		css = {},
@@ -937,6 +937,8 @@ function aside_fixed() {
 	}
 	else {
 		$window.scroll(function() {
+			console.log(content + 'content ***********************')
+			console.log($window.scrollTop() + 'scroll ***********************')
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
 				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
 			}
@@ -950,6 +952,22 @@ function aside_fixed() {
 	}
 }
 
+function customer_aside_fixed() {
+	var contentCart = document.getElementById('main');
+
+	var callback = function(mutationsList) {
+	    for(var mutation of mutationsList) {
+	        if (mutation.type == 'childList') {
+	            console.log('child change *********************')
+	            aside_fixed()
+	        }
+	    }
+	}
+
+	var observer = new MutationObserver(callback);
+	observer.observe(contentCart, { childList: true});
+}
+
 function footerCardFixed(){
 	var contentCart = document.getElementById('content-cart');
 
@@ -957,7 +975,7 @@ function footerCardFixed(){
 	    for(var mutation of mutationsList) {
 	        if (mutation.attributeName === 'style') {
 	            var count = $('.cart-list').length
-					childHeight = $('.cart-list')[0].clientHeight *2 + 20;
+					childHeight = $('.cart-list')[0].clientHeight *2 + 17;
 
 	        	if(count > 2){
 					$(".content-cart").css({'height': childHeight, 'overflow-y': 'scroll'});

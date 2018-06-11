@@ -37,8 +37,9 @@ class StoreController extends Controller
 	public function index()
 	{
 		$stores = Datatables::collection($this->store_repository->getAll())->make(true);
-		//dd($stores);
 		$stores = $stores->getData();
+		/*dd($stores);*/
+		
 		return view('admin.store.list', compact('stores'));
 
 	}

@@ -160,6 +160,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
         Route::resource('epartner','EpartnerController');
         Route::resource('invoice','InvoiceController');
         Route::post('remove-product-tag', 'ProductController@removeTag')->name('product_remove_tag');
+        Route::get('accounting','AccountingController@index')->name('accounting_table');
+        Route::get('accounting/{index}','AccountingController@reset')->name('accounting_table_reset');
         Route::get('system','SystemController@index')->name('setting_list');
         Route::post('system','SystemController@store')->name('update_setting');
         Route::get('404',function(){

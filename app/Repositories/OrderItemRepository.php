@@ -165,8 +165,26 @@ class OrderItemRepository implements OrderItemRepositoryInterface
             ->groupBy('month')
             ->get();
 		return $items;
-		
 	}
+	
+	/*public function getAllRequest(){
+		
+		$items = OrderItem::whereHas('itemRequest',function($query){
+			$query->where('is_added_by','merchant');
+			$query->where('is_canceled',0);
+			})
+			->join('order_item_request', 'order_item.order_item_id', '=', 'order_item_request.item_id')
+			->with(['product','itemRequest'=>function($query){
+				$query->where('is_added_by',"merchant");
+				$query->where('is_canceled',0);
+			}])
+			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_FINISHED])
+			->select(\DB::raw('order_item_request.store_id as store_id'), \DB::raw('count(*) as order_count'), \DB::raw('sum(final_price) as total_price'))
+			->groupBy('order_item_request.store_id')
+			->get();
+		return $items;
+		
+    }*/
 	
 	public function getTotalSalesMerchant($user_id)
 	{
@@ -283,4 +301,5 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 			->first();
 		return $items;
 	}
+
 }

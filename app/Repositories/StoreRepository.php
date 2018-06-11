@@ -22,7 +22,7 @@ class StoreRepository implements StoreRepositoryInterface
 
 	public function getAll()
 	{
-		return $this->model->orderBy('store_id', 'desc')->get();
+		return $this->model->with('requests','requests.orderitem','encasements','encasementorderlastreset')->orderBy('store_id', 'desc')->get();
 	}
 
 	public function save($input,$save_from=true)

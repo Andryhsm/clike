@@ -311,7 +311,24 @@
                 <!-- </ul>
             </li>
             @endif -->
-            
+            @if(check_user_access(['accounting_table','accounting_table_reset']))
+            <li class="treeview {{ set_active(['admin/accounting']) }}">
+                <a href="#">
+                    <i class="fa fa-suitcase"></i>
+                    <span>Comptabilité</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @if(check_user_access(['accounting_table','accounting_table_reset']))
+                        <li class="{{ set_active(['admin/accounting']) }}"><a
+                             href="{!! URL::to('/admin/accounting') !!}"> <i class="fa fa-circle-o"></i> Sommes dues aux marchands</a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+            @endif
             @if(check_user_access(['email-template.index','update_setting', 'setting_update']))
             <li class="treeview {{ set_active(['admin/system','admin/system/*','admin/meta_og','admin/meta_og/*', 'admin/epartner','admin/epartner/*','admin/email-template','admin/email-template/*']) }}">
                 <a href="#">
