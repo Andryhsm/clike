@@ -4,6 +4,9 @@ namespace App;
 
 use App\Models\Brand;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\OrderItemRequest;
+use App\Encasement;
+use App\EncasementOrderLastReset;
 
 class Store extends Model
 {
@@ -57,6 +60,21 @@ class Store extends Model
 	public function hours()
 	{
 		return $this->hasMany(\App\StoreOpeningHour::class,'store_id','store_id');	
+	}
+	
+	public function requests()
+	{
+		return $this->hasMany(OrderItemRequest::class,'store_id','store_id');
+	}
+	
+	public function encasements()
+	{
+		return $this->hasMany(Encasement::class,'store_id','store_id');
+	}
+	
+	public function encasementorderlastreset()
+	{
+		return $this->hasOne(EncasementOrderLastReset::class, 'store_id', 'store_id');
 	}
 
 }

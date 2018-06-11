@@ -8,6 +8,7 @@ use App\Interfaces\CustomerRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use PDF;
 
 class CustomerController extends Controller
 {
@@ -172,5 +173,11 @@ class CustomerController extends Controller
     public function facture()
     {
         return view('merchant.customer.facture');
+    }
+    
+    public function facturePdf()
+    {
+        $pdf = PDF::loadView('merchant.customer.facture');
+        return $pdf->stream();
     }
 }

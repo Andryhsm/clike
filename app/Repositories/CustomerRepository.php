@@ -109,6 +109,7 @@ class CustomerRepository implements CustomerRepositoryInterface
 	}
 
 	public function save($input){
+		$input['store_id'] = auth()->user()->store->first()->store_id;
 		if($input['type_customer'] == StoreCustomer::CUSTOMER_SYSTEM_USER && $input['user_id'] != null){
 			$query = \StoreCustomer::where('store_id', $input['store_id'])->where('user_id', $input['user_id'])->where('type_customer', StoreCustomer::CUSTOMER_SYSTEM_USER)->get()->first();
 			if($query == null){
@@ -122,6 +123,8 @@ class CustomerRepository implements CustomerRepositoryInterface
 			$encasement->store_id = $input['store_id'];
 			$encasement->user_id = $input['user_id'];
 			$encasement->total_ht = $input['total_ht'];
+			$encasement->total_ttc = $input['total_ttc'];
+			$encasement->reset_accounting = Encasement::CAN_RESET;
 			$encasement->save();
 		}else {	
 			// Customer local
@@ -138,6 +141,8 @@ class CustomerRepository implements CustomerRepositoryInterface
 					$encasement->store_id = $input['store_id'];
 					$encasement->user_id = $input['customer_id'];
 					$encasement->total_ht = $input['total_ht'];
+					$encasement->total_ttc = $input['total_ttc'];
+					$encasement->reset_accounting = Encasement::CAN_RESET;
 					$encasement->save();
 			}else {							 //store customer local
 					$customer = new Customer();
@@ -160,6 +165,8 @@ class CustomerRepository implements CustomerRepositoryInterface
 					$encasement->store_id = $input['store_id'];
 					$encasement->user_id = $customer->customer_id;
 					$encasement->total_ht = $input['total_ht'];
+					$encasement->total_ttc = $input['total_ttc'];
+					$encasement->reset_accounting = Encasement::CAN_RESET;
 					$encasement->save();
 			}
 		}
@@ -190,5 +197,10 @@ class CustomerRepository implements CustomerRepositoryInterface
 
 	public function getAllCustomersSystem(){
 		return $this->model->with('address')->where('role_id', 1)->get();
+	}
+	
+	public function getTotalEncasement($store_id)
+	{
+		return Encasement::where('store_id', $store_id)->where('reset_accounting', Encasement::CAN_RESET)->sum('total_ttc');
 	}
 }			

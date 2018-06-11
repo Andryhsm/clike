@@ -39,6 +39,7 @@ function start_map($shop_data) {
 
 jQuery(document).ready(function($) {
     change_header_title();
+    aside_fixed();
     $('.nav-menu .list-menu').on('click', '.nav-link', function(event) {
         var content = $(this).attr('id')
         event.preventDefault();
@@ -48,7 +49,7 @@ jQuery(document).ready(function($) {
         var url = $(this).data('url');
         change_header_title();
         change_page(url);
-
+        customer_aside_fixed();
     });
 
     $('.datepicker').datepicker({

@@ -19,13 +19,15 @@ class OrderItemRequest extends Model
     protected $fillable = [
         'item_id',
         'customer_id',
+        'store_id',
         'merchant_id',
         'message',
         'is_added_by',
-        'created_date'
+        'created_date',
+        'reset_accounting'
     ];
 
-    public function orderItem(){
+    public function orderitem(){
         return $this->belongsTo(OrderItem::class,'item_id','order_item_id');
     }
     public function user()

@@ -1,0 +1,40 @@
+SIDEBAR
+- Menu comptable (ok)
+
+MIGRATION 
+1    =>     - Ajout colonne "reset_accounting" dans encasement (ok)
+	        - Ajout colonne "reset_accounting" dans order_item_request (ok)
+
+2    =>     Création table : encasement_order_last_reset   (ok)
+                                - id
+                                - store_id
+                                - total_price
+                                - timestamp
+Iza no manao inona zao ato?
+
+
+INTERFACE
+dans view :
+	- Tableau comptable avec montant encaisser :
+	        - ajout datatable (ok)
+	        - Liste des données  (ok)
+	- Bouton remise à zero (OK)
+
+    
+FONCTIONNALITE
+- Creer : - controlleur =>  - pointer vers view (ok)
+                            - lister vers view 
+	      - repositorie => - fonction pour avoir montant encaisser dans order_item_request (OK)
+	                       - fonction pour avoir montant encaisser dans encasement (OK)
+			=> fonction de remise à zero 
+			               - Modifier tous les valeurs du colonne "reset_accounting" vers 1 dans order_item_request (ok)
+			               - Modifier tous les valeurs du colonne "reset_accounting" vers 1 dans encasement (ok)
+          - date de dernière modification (ok) 
+
+AUTRE
+- Correction bug dans encaissement lors de l'enregistrement (ok)
+- Retout vers le scroll dans customer(en cours)
+
+------------------------------------------------------------------------------------------
+11-06-2018
+-Diagramme vente en ligne local (en cours)

@@ -1,10 +1,4 @@
 {
-    "build": {
-        "@saveall": true
-    },
-    "javascript": {
-        "@formatOnSave": true
-    },
     "language": {
         "tern_defs": {
             "json()": {

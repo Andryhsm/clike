@@ -1,7 +1,7 @@
 @extends('front.customer.layout.master')
 
 @section('content')
-<div class="ajax-content newsletters">
+<div class="ajax-content">
     <div class="newsletter col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="newsletter-containt row">
             <div class="newsletter-item-img col-lg-3 col-md-3 col-sm-3 col-xs-3">

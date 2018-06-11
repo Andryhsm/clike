@@ -160,6 +160,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
         Route::resource('epartner','EpartnerController');
         Route::resource('invoice','InvoiceController');
         Route::post('remove-product-tag', 'ProductController@removeTag')->name('product_remove_tag');
+        Route::get('accounting','AccountingController@index')->name('accounting_table');
+        Route::get('accounting/{index}','AccountingController@reset')->name('accounting_table_reset');
         Route::get('system','SystemController@index')->name('setting_list');
         Route::post('system','SystemController@store')->name('update_setting');
         Route::get('404',function(){
@@ -221,6 +223,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
     Route::get('wishlist','WishlistController@index');
     Route::get('wishlist/{id}','WishlistController@store');
     Route::get('wishlist/remove/{id}','WishlistController@remove');
+    Route::get('wishlist/remove_in_list/{id}','WishlistController@remove_in_list');
     Route::get('wishlist/findid/{idpu}','WishlistController@findIdWishlist');
 
     Route::get('zoom-image-test', 'TestController@imageZoom');
@@ -296,6 +299,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
                     Route::get('product/add', 'ProductController@create')->name('create_product');
                     Route::resource('customer', 'CustomerController');
                     Route::get('facture','CustomerController@facture');
+                    Route::get('facturePdf','CustomerController@facturePdf');
                     Route::get('contact','CustomerController@addContact');
                     Route::post('save_contact','CustomerController@saveContactCustomer');
                     Route::get('encasement', 'CustomerController@encasement')->name('encasement');

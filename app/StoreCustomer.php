@@ -19,4 +19,5 @@ class StoreCustomer extends Model
 
     const CUSTOMER_SYSTEM_USER = 1;
     const CUSTOMER_LOCAL = 2;
+   
 }

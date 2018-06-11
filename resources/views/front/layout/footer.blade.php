@@ -222,7 +222,6 @@
 
 {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js') !!}
 {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js') !!}
-
 <!-- main js -->
 <script src="{!! URL::to('/') !!}/frontend/js/main.js"></script>
 {!! Html::script('frontend/js/validation.js') !!}
@@ -232,8 +231,6 @@
 {!! Html::script('frontend/js/catalog.js') !!}
 <!-- script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script -->
-{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js') !!}
-{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js') !!}
 
 {!! Html::script('frontend/js/my_account.js') !!}
 {!! Html::script('frontend/js/cloud-zoom.js') !!}
@@ -286,6 +283,7 @@
           navText: [$('.pager-left'),$('.pager-right')]
           /*["<img src='{!! URL::to('/') !!}/images/fleche_gauche_bleu.svg'>","<img src='{!! URL::to('/') !!}/images/fleche_droite_bleu.svg'>"]*/
         });
+        
 });
 </script>
 {!! Html::script('frontend/js/style.js') !!}

@@ -45,8 +45,8 @@ class OrderController extends Controller
         $pending_items =$this->getItems($ordered_status_items);
 		$earned_items = $this->order_item_repository->getEarnedItemsByMerchant(\Auth::user()->user_id);
 		$history_items = $this->order_item_repository->getHistoryItemByMerchant(\Auth::user()->user_id);
-		/*dd($history_items);*/
-		return view('merchant.orders.view', compact('pending_items','earned_items'));
+		
+		return view('merchant.orders.view', compact('pending_items','earned_items','history_items'));
     }
 
     /**

@@ -102,4 +102,35 @@ class WishlistController extends Controller
 		}	
 		return response()->json(['success', $response]);
 	}
+	
+	function remove_in_list($id){
+		if(auth()->check()){
+			$wishlist_id = $this->findIdWishlistInList($id);
+			$this->model->destroy($wishlist_id);
+		}else{
+			$id_user = Cookie::get('id_user_browser');
+			$all_wishlist_products = (\Cache::has('wishlist_product')) ? \Cache::get('wishlist_product') : [];
+			if(!empty($all_wishlist_products)){
+				$products_user = (array_key_exists($id_user, $all_wishlist_products)) ? $all_wishlist_products[$id_user] : [];
+				if(!empty($products_user))
+					unset($products_user[$id]);
+				if(array_key_exists($id_user, $all_wishlist_products)){
+					$all_wishlist_products[$id_user] = $products_user;
+				}
+			}
+			\Cache::put('wishlist_product', $all_wishlist_products, \App\Models\Wishlist::CACHE_TIME_FOR_WISHLIST);	
+		}
+		flash()->success(trans('product.wishlist_remove'));
+		return redirect()->to('wishlist');
+	}
+	function findIdWishlistInList($id){
+
+		if(auth()->check()){ 
+		    $id_wishlist = $this->model->select('wishlist_id')->where('product_id','=',$id)->where('user_id','=',\Auth::user()->user_id)->first();
+	    	$response = $id_wishlist->wishlist_id;
+		}else{
+			$response = $id;
+		}	
+		return $response;
+	}
 }

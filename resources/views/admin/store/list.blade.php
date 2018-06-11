@@ -41,7 +41,9 @@
                             @foreach($stores->data as $store)
                                 <tr>
                                     <td>{!! $store->store_name!!}</td>
-                                    <td>{!! $store->registration_number!!}</td>
+                                    <td>
+                                        {!! $store->registration_number!!}
+                                    </td>
                                     <td>{!! $store->phone !!}</td>
                                     <td>{!! $store->email !!}</td>
                                     <td>{!! $store->city !!}</td>

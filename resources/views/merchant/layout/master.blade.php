@@ -48,12 +48,16 @@
                         <div class="header-item">
                             <div class="avatar">
                                 <span class="text-uppercase">
-                                    NM
+                                    <?php 
+                                        $t = explode(" ", Auth::user()->store->first()->store_name);
+                                        $init = (sizeof($t)>1)?$t[0][0].''.$t[1][0]:$t[0][0].''.$t[0][0];
+                                        echo($init);
+                                    ?>
                                 </span>
                             </div> 
                             <div class="hello-avatar">
                                 <div class="text-uppercase text-strong">
-                                    <strong>Nom du magasin</strong>
+                                    <strong>{!! Auth::user()->store->first()->store_name !!}</strong>
                                 </div>
                             </div>
                         </div>

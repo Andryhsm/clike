@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Interfaces\OrderItemRequestInterface;
 use App\Models\OrderItemRequest;
+use App\Encasement;
 
 class ItemRequestRepository implements OrderItemRequestInterface
 {
@@ -45,5 +46,28 @@ class ItemRequestRepository implements OrderItemRequestInterface
     public function getResponseById($ids){
         return OrderItemRequest::with(['orderItem','user','orderItem.product.url','parent'])->whereIn('parent_id',$ids)->get();
     }
-
+    
+    	
+	public function resetOrderItemAccounting($id)
+	{
+		if(isset($id)){
+			$order_item_request = OrderItemRequest::where('store_id', $id)->get();
+			foreach ($order_item_request as $order) {
+				$order->reset_accounting = 1;
+				$order->save();
+			}
+		}
+		
+	}
+	public function resetEncasementAccounting($id)
+	{
+		if(isset($id)){
+			$encasement = Encasement::where('store_id', $id)->get();
+			foreach ($encasement as $encase) {
+				$encase->reset_accounting = 1;
+				$encase->save();
+			}
+		}
+		
+	}
 }

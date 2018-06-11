@@ -18,5 +18,10 @@ interface OrderItemRequestInterface
     public function isExists($requets);
 
     public function getResponseById($response);
+    
+    //public function getAllRequest();
 
+    public function resetOrderItemAccounting($id);
+	
+	public function resetEncasementAccounting($id);
 }
