@@ -1,6 +1,6 @@
 (function($) {
 	"use strict";
-	footerCardFixed()
+	
 	$(".remember-me").click(function() {
 		if ($(".remember-me").hasClass("clicked")) {
 			$('#remember-check').attr('checked', false);
@@ -808,6 +808,10 @@
 			close_select_radius();
 		}
 	});
+
+	//Panier
+	footerCardFixed()
+	
 })(jQuery);
 
 function stopEvent() {
