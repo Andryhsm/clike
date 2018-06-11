@@ -429,20 +429,40 @@
     display: table;
     width: 100%;
 }
-.visa-img img {
-    width: 40%;
+.information-visa .content {
+    margin-bottom: 30px;
+    padding: 4% 0%;
+    min-height: 50px;
+} 
+.information-visa .bottle {
+    content: "";
+    display: table;
+    width: 100%;
+    padding: 2% 10%;
 }
-.visa-img {
-    width: 20%;
-    margin-left: 5%;
+.information-visa .btn-customer-filled {
+    width: 70% !important;
 }
-.customer-informations .visa-expired {
+.information-visa .col-lg-6 {
+    padding-right: 0;
+}
+.visa-expired {
+    width: 100% !important;
     background: #65bb9f;
-    position: absolute;
+    display: inline;
     color: #fff;
-    margin: 0% -6% -4% -6%;
     padding: 2% 0 2% 10% !important;
 }
+.information-visa .btn-icon span {
+    padding-left: 30px;
+    background-size: 22px !important;
+    background-position: 0% 50% !important;
+    height: 25px;
+    line-height: 2;
+    display: inline-block;
+    background: url(../../../images/icon/white-trash.svg) no-repeat 5px -4px;
+}
+
 .customer-file-action span{
     padding-left: 30px;
     background-size: 22px !important;
@@ -780,7 +800,9 @@ td .customer-file-action.download {
     text-transform: uppercase;
     font-weight: 600;
 }
-
+.faq-content .question-area a {
+    width: 50%;
+}
 @media (max-width: 1367px) and (min-width: 992px)
 {
     .avatar {

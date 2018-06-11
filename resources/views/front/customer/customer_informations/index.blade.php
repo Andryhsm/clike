@@ -68,8 +68,8 @@
     </div> 
           
     <div class="information-visa">
-        <div class="content col-lg-12 mb-30">
-            <div class="col-lg-12 mb-10">
+        <div class="content">
+            <div class="bottle">
                 <div class="visa-img">
                     <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/visa.svg"></img>
                 </div>
@@ -78,8 +78,8 @@
                     <p>Exp : 10/19</p>
                     <p>DAVID BOITARD</p>
                 </div>
-                <div class="col-lg-6">
-                    <button class="btn btn-customer-filled pull-right">
+                <div class="col-lg-6 pull-right">
+                    <button class="btn btn-customer-filled btn-icon pull-right">
                         <span>Supprimer</span>
                     </button>
                 </div>
@@ -94,8 +94,8 @@
         </div>
     </div>
     <div class="information-visa">
-        <div class="content col-lg-12 mb-30">
-            <div class="col-lg-12 mb-10">
+        <div class="content">
+            <div class="bottle">
                 <div class="visa-img">
                     <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/visa.svg"></img>
                 </div>
@@ -104,8 +104,8 @@
                     <p>Exp : 10/19</p>
                     <p>DAVID BOITARD</p>
                 </div>
-                <div class="col-lg-6">
-                    <button class="btn btn-customer-filled pull-right">
+                <div class="col-lg-6 pull-right">
+                    <button class="btn btn-customer-filled btn-icon pull-right">
                         <span>Supprimer</span>
                     </button>
                 </div>
