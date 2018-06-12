@@ -1147,7 +1147,9 @@ a#scrollUp {
 .call_add_user, #store_form button#add-role {
   width: 40%;
 }
-
+.tab-panel-customer .nav-tabs, .product-tab-inner .nav-tabs {
+  background-position: 50%;
+}
 }
 
 /* small mobile :320px. */

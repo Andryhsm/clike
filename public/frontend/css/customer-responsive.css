@@ -160,9 +160,12 @@
 	  width: 5.6vw;
 	}
 	.nav-menu .nav>li>a{ 
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0px ;
+		height: 60px;
 	    position: relative;
-	    display: inline;
-	    padding: 14px 0px;
 	    border-bottom: 0px;
 	    cursor: pointer;
 	}
@@ -201,7 +204,9 @@
 	.order-img img {
     	width: 70%;
 	}
-	
+	.customer-encasement .btn-block {
+		width: 90%;
+	}
 }
 
 @media (max-width: 480px) {
@@ -254,9 +259,12 @@
 	    margin: auto;
 	}
 	.nav-menu .nav>li>a{ 
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0px ;
+		height: 40px;
 	    position: relative;
-	    display: inline;
-	    padding: 14px 0px;
 	    border-bottom: 0px;
 	    cursor: pointer;
 	}

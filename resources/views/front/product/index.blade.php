@@ -253,8 +253,7 @@
                                 <a class="share share-to-facebook"  href="https://www.facebook.com/sharer/sharer.php?u=http%3A//clickee.fr/fr/pantalon-coup%25C3%25A9"></a>
                                 <a class="share share-to-twitter"></a>
                                 <a class="share share-to-google"></a>
-                                <g:plusone size="tall"></g:plusone>
-                                
+                                <div class="g-plusone" data-size="standard" data-count="true" data-href="https://alternateeve.com"></div>
                             </div>
 
                             <div class="product-not-avail hide" id="product-not-avail">

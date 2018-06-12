@@ -4,8 +4,11 @@ A FAIRE
 12-06-2018
 - Responsivité mon compte pro (ok)
 - Responsivité encaissement : alignement des boutons dans client (ok)
-- 
+- Aligner l'onglet s'enregistrer dans la page de connexion (responsivité) (ok)
+- Responsivité de la description produit (en cours)
 - Page produit : Fonctionnalité du bouton partage facebook (en attente)
 - Page produit : Fonctionnalité du bouton partage twitter (en attente)
 - Page produit : Fonctionnalité du boutton partage google+ (en cours)
-- Page produit : Deboguage du fonctionnement avis client (en cours)
+
+-> ENLEVEMENT FR
+  - 
