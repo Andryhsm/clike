@@ -170,7 +170,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
     });
 
 });
-Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 'localizationRedirect','language'], 'prefix' => LaravelLocalization::setLocale()], function () {
+Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => ''], function () {
     Route::get('/', 'HomeController@index');
 
     Route::get('login', ['uses' => 'Auth\AuthController@getLogin', "middleware" => 'guest', 'as' => 'login']);
