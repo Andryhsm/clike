@@ -205,6 +205,10 @@
 <!-- meanmenu js -->
 <script src="{!! URL::to('/') !!}/frontend/js/jquery.meanmenu.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+{!! Html::script('frontend/js/validation.js') !!}
+
 {!! Html::script('js/jquery.validate.min.js') !!}
 <!-- bootstrap date -->
 {!! Html::script('backend/plugins/datepicker/bootstrap-datepicker.js') !!}
@@ -224,7 +228,6 @@
 {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js') !!}
 <!-- main js -->
 <script src="{!! URL::to('/') !!}/frontend/js/main.js"></script>
-{!! Html::script('frontend/js/validation.js') !!}
 @if(isset($language) && app('language')->language_code==\App\Models\Language::FRENCH_CODE)
     {!! Html::script('frontend/js/validation_message_fr.js') !!}
 @endif

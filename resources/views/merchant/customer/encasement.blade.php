@@ -44,10 +44,10 @@
                             <div class="title text-center">
                                 <strong class="text-uppercase">Client</strong>
                             </div>
-                            <div class="btn btn-small mt-20 col-sm-6">
+                            <div class="btn btn-small mt-20 col-sm-6 col-xs-6">
                                 <a href="{!! URL::to('merchant/customer') !!}" class="btn btn-block btn-merchant-filled">Dejà Client</a>
                             </div>
-                            <div class="btn btn-small mt-20 col-sm-6">
+                            <div class="btn btn-small mt-20 col-sm-6 col-xs-6">
                                 <a href="{!! URL::to('merchant/customer/create') !!}" class="btn btn-block btn-merchant-filled">Nouveau Client</a>
                             </div>
                         <!--</div>

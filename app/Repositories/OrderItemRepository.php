@@ -9,6 +9,8 @@ use App\Interfaces\OrderItemRepositoryInterface;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderStatusHistory;
+use App\Models\OrderItemRequest;
+use App\Encasement;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cookie;
 
@@ -68,14 +70,14 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		return OrderItem::with(['brand.stores', 'product', 'attributes','itemRequest.user.store'])->whereOrderStatusId($status_id)->get();
 	}
 
-	public function getPendingItemsByMerchant($user_id)
+	public function getPendingItemsByMerchant($store_id)
 	{
-		$items = OrderItem::whereNotExists(function($query) use ($user_id)
+		$items = OrderItem::whereNotExists(function($query) use ($store_id)
 		{
 			$query->select('*')
 				->from('order_item_request')
 				->whereRaw('order_item_request.item_id= order_item.order_item_id')
-				->where('order_item_request.merchant_id','=',$user_id);
+				->where('order_item_request.store_id','=',$store_id);
 		})
 			->with(['brand','brand.stores', 'product', 'product.store.hours', 'attributes'])
 			->where('order_status_id',OrderItem::ORDER_STATUS_ORDERED)
@@ -100,14 +102,14 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		return $items;
 	}
 
-	public function getEarnedItemsByMerchant($user_id)
+	public function getEarnedItemsByMerchant($store_id)
 	{
-		$items = OrderItem::whereHas('itemRequest',function($query) use($user_id){
-			$query->where('merchant_id',$user_id);
+		$items = OrderItem::whereHas('itemRequest',function($query) use($store_id){
+			$query->where('store_id',$store_id);
 			$query->where('is_added_by','merchant');
 		})
-			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
-				$query->where('merchant_id',$user_id);
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($store_id){
+				$query->where('store_id',$store_id);
 				$query->where('is_added_by',"merchant");
 			},'coupon'])
 			->where('order_status_id',OrderItem::ORDER_STATUS_REPLIED)
@@ -116,14 +118,14 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		return $items;
 	}
 	
-	public function getHistoryItemByMerchant($user_id)
+	public function getHistoryItemByMerchant($store_id)
 	{
-		$items = OrderItem::whereHas('itemRequest',function($query) use($user_id){
-			$query->where('merchant_id',$user_id);
+		$items = OrderItem::whereHas('itemRequest',function($query) use($store_id){
+			$query->where('store_id',$store_id);
 			$query->where('is_added_by','merchant');
 		})
-			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
-				$query->where('merchant_id',$user_id);
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($store_id){
+				$query->where('store_id',$store_id);
 				$query->where('is_added_by',"merchant");
 			},'coupon'])
 			->where('order_status_id',OrderItem::ORDER_STATUS_FINISHED)
@@ -133,14 +135,14 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		
 	}
 	
-	public function getCount($user_id)
+	public function getCount($store_id)
 	{
-		$items = OrderItem::whereHas('itemRequest',function($query) use($user_id){
-			$query->where('merchant_id',$user_id);
+		$items = OrderItem::whereHas('itemRequest',function($query) use($store_id){
+			$query->where('store_id',$store_id);
 			$query->where('is_added_by','merchant');
 		})
-			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
-				$query->where('merchant_id',$user_id);
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($store_id){
+				$query->where('store_id',$user_id);
 				$query->where('is_added_by',"merchant");
 			},'coupon'])
 			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_FINISHED])
@@ -149,14 +151,14 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		return $items;
 	}
 	
-	public function getStatSales($user_id)
+	public function getStatSales($store_id)
 	{
-		$items = OrderItem::whereHas('itemRequest',function($query) use($user_id){
-			$query->where('merchant_id',$user_id);
+		$items = OrderItem::whereHas('itemRequest',function($query) use($store_id){
+			$query->where('store_id',$store_id);
 			$query->where('is_added_by','merchant');
 		})
-			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
-				$query->where('merchant_id',$user_id);
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($store_id){
+				$query->where('store_id',$store_id);
 				$query->where('is_added_by',"merchant");
 			},'coupon'])
 			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_FINISHED])
@@ -186,14 +188,14 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		
     }*/
 	
-	public function getTotalSalesMerchant($user_id)
+	public function getTotalSalesMerchant($store_id)
 	{
-		$items = OrderItem::whereHas('itemRequest',function($query) use($user_id){
-			$query->where('merchant_id',$user_id);
+		$items = OrderItem::whereHas('itemRequest',function($query) use($store_id){
+			$query->where('store_id',$store_id);
 			$query->where('is_added_by','merchant');
 		})
-			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($user_id){
-				$query->where('merchant_id',$user_id);
+			->with(['brand','brand.stores', 'product', 'attributes','itemRequest'=>function($query) use($store_id){
+				$query->where('store_id',$store_id);
 				$query->where('is_added_by',"merchant");
 			},'coupon'])
 			->whereIn('order_status_id',[OrderItem::ORDER_STATUS_REPLIED,OrderItem::ORDER_STATUS_FINISHED])
@@ -301,5 +303,27 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 			->first();
 		return $items;
 	}
-
+	
+	public function resetOrderItemAccounting($id)
+	{
+		if(isset($id)){
+			$order_item_request = OrderItemRequest::where('store_id', $id)->get();
+			foreach ($order_item_request as $order) {
+				$order->reset_accounting = 1;
+				$order->save();
+			}
+		}
+		
+	}
+	public function resetEncasementAccounting($id)
+	{
+		if(isset($id)){
+			$encasement = Encasement::where('store_id', $id)->get();
+			foreach ($encasement as $encase) {
+				$encase->reset_accounting = 1;
+				$encase->save();
+			}
+		}
+		
+	}
 }

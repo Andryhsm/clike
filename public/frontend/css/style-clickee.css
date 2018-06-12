@@ -3311,3 +3311,7 @@ a.open-day {
 .cart-info .content-star {
   margin-left: -15px;
 }
+.customer-encasement .btn-block {
+  width: 70%;
+  display: inline-block !important;
+}

@@ -1,9 +1,20 @@
 @extends('front.layout.master')
-   
-@section('content')
+@section('additional-header')
     <?php
         $product_translation = $product->getByLanguageId(2);
     ?>
+        <meta property="og:title" content="Créer un bouton de partage personnalisé pour Facebook - karac blog" /> 
+        <meta property="og:image" content="{!! URL::to('/').'/'.$product->getDefaultImagePath() !!}" /> 
+        <meta property="og:description" content="{!! $product_translation->description !!}" /> 
+        <meta property="og:url" content="{!! URL::current() !!}">
+    
+        <!-- <meta property="og:title" content="Créer un bouton de partage personnalisé pour Facebook - karac blog" /> -->
+        <!--<meta property="og:image" content="https://karac.ch/storage/articles/August2017/pJBVDQrp5BpNriveaDZg.jpg" /> -->
+        <!--<meta property="og:description" content="Dans ce tutoriel, nous allons voir comment ajouter à votre site un joli bouton de partage personnalisé pour Facebook (le fonctionnement est le même pour les autres réseaux sociaux)." /> -->
+        <!--<meta property="og:url" content="https://karac.ch/blog/bouton_partage_personnalise">-->
+@endsection
+@section('content')
+    
     <div class="product-area">
         
         <div class="col-lg-12">
@@ -83,10 +94,10 @@
                 <!-- end: more-images -->
 
             </div>
-            <div class="col-lg-3 col-sm-12 col-xs-12 contain-product-info">
+            <div class="col-lg-3 col-sm-12 col-xs-12 containt-product-info">
                 <div class="product-info">
                     {!! Form::open(['url' => Url(LaravelLocalization::getCurrentLocale()."/cart/add"), 'class' => '','id' =>'product_form']) !!}
-                    <div class="mb-30 mt-10 mr-r-10 vcenter col-lg-12 col-md-6 col-sm-5 col-xs-8">   <!--mb-30 mr-l-20-->
+                    <div class="mb-30 mt-10 mr-r-10 vcenter content-product-attribut col-lg-12 col-md-6 col-sm-5 col-xs-8">   <!--mb-30 mr-l-20-->
                         <img src="{!! ($product->brand->parent_id==null) ? $product->brand->getImagePath() : $product->brand->parent->getImagePath() !!}">
                     </div>
                     <h2 class="mr-l-15">{!! $product_translation->product_name !!}</h2>
@@ -154,16 +165,27 @@
                                         $class = (isset($attr_options[$attribute['id']]) && count($attr_options[$attribute['id']])>1) ? "" : "attribute-select-box" ?>
                                     
                                             <select name="attrs[]" data-placeholder="Choose an option…"
-                                                    class="col-md-11 col-sm-10 col-xs-11  {!! $class !!} product-input-select" tabindex="1" style="color: #42838C!important">
-                                                <option value="" disabled selected>Veuillez choisir</option>
-                                                @foreach($attribute['options'] as $options)
-                                                    @if(in_array($options->attribute_option_id,$attribute_option_id))
-                                                        <?php
-                                                        $product_attribute_option = $product->getProductAttributeOption($options->attribute_option_id);
-                                                        ?>
-                                                        <option value="{!! $product_attribute_option->product_attribute_option_id !!}">{!! $options->getByLanguageid(app('language')->language_id)->option_name !!}</option>
-                                                    @endif
-                                                @endforeach
+                                                    class="col-md-11 col-sm-10 col-xs-11  {!! $class !!} product-input-select required" tabindex="1" style="color: #42838C!important">
+                                                @if(count($attribute['options']) > 1)
+                                                    <option value="default" disabled selected>Veuillez choisir</option>
+                                                    @foreach($attribute['options'] as $options)
+                                                        @if(in_array($options->attribute_option_id,$attribute_option_id))
+                                                            <?php
+                                                            $product_attribute_option = $product->getProductAttributeOption($options->attribute_option_id);
+                                                            ?>
+                                                            <option value="{!! $product_attribute_option->product_attribute_option_id !!}">{!! $options->getByLanguageid(app('language')->language_id)->option_name !!}</option>
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                    @foreach($attribute['options'] as $options)
+                                                        @if(in_array($options->attribute_option_id,$attribute_option_id))
+                                                            <?php
+                                                            $product_attribute_option = $product->getProductAttributeOption($options->attribute_option_id);
+                                                            ?>
+                                                            <option value="{!! $product_attribute_option->product_attribute_option_id !!}" selected>{!! $options->getByLanguageid(app('language')->language_id)->option_name !!}</option>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         
                                 @endif
@@ -213,8 +235,8 @@
                             </div -->
 
                             <div class="row add-cart mb-20" id="add-cart">
-                                <!-- <p> {!! trans('product.product_available_with_selected_area') !!}</p> -->
-                                <button type="submit" class="btn btn-clickee-info col-lg-8 col-md-8 col-sm-8 col-xs-8" id="add-to-cart">{!! trans("product.add_to_cart")!!}</button>
+                                <!-- <p> {!! trans('product.product_available_with_d_area') !!}</p> -->
+                                <button type="button" class="btn btn-clickee-info col-lg-8 col-md-8 col-sm-8 col-xs-8" id="add-to-cart">{!! trans("product.add_to_cart")!!}</button>
 
                                 <?php 
                                         $wishlist_del = (in_array($product->product_id,all_product_id_wishlist())) ? 'coeur_gm' : '';
@@ -228,9 +250,11 @@
                                 <a id="add-to-wishlist" class="wishlist_prd_index col-lg-3 col-md-3 col-sm-3 col-xs-3 wG{!! $product->product_id !!} {!! $wishlist_del !!}" onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}');"></a>
                             </div>
                             <div class="share-social-network" style="margin-top: {!! $value_margin !!}%;">
-                                <a class="share share-to-facebook"></a>
+                                <a class="share share-to-facebook"  href="https://www.facebook.com/sharer/sharer.php?u=http%3A//clickee.fr/fr/pantalon-coup%25C3%25A9"></a>
                                 <a class="share share-to-twitter"></a>
                                 <a class="share share-to-google"></a>
+                                <g:plusone size="tall"></g:plusone>
+                                
                             </div>
 
                             <div class="product-not-avail hide" id="product-not-avail">

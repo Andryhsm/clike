@@ -1141,6 +1141,12 @@ a#scrollUp {
 .point5.left-header { 
   margin-top: 32rem !important;
 }
+.visa-account img {
+  width: 80%;
+}
+.call_add_user, #store_form button#add-role {
+  width: 40%;
+}
 
 }
 
@@ -2102,7 +2108,18 @@ img.equipe-clickee {
 .engagement-menu a:last-child {
   border-right: none;
 }
-
+.counting div:not(.bottle-box) {
+	margin-left: 16.66666667%;
+	margin-bottom: 10px;
+}
+.aside.merchant ul {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+}
+.table > tbody > tr > td {
+  padding-left: 0;
+  padding-right: 0;
+}
 }
 /* end max-width 767px */ 
 /* Large Mobile :480px. */
@@ -2291,7 +2308,12 @@ text-align: center !important;
 .espace-header:not(:first-child) {
   margin-left: 40px;
 }
-
+.call_add_user, #store_form button#add-role {
+  width: 45%;
+}
+.file {
+  background-size: 10%;
+}
 }
 
 @media (max-width: 480px) {
@@ -2555,6 +2577,31 @@ text-align: center !important;
 .shopping-cart .cart-list .pro-del {
   margin-top: -125px;
 }
+.info-one-day {
+  padding-left: 0;
+}
+.w-lg-2 {
+  width: 25% !important;
+}
+.call_add_user, #store_form button#add-role {
+  width: 60%;
+}
+.visa-account img {
+  width: 100%;
+}
+.visa-account .vertically-centered {
+  padding-left: 0;
+  padding-right: 0;
+}
+.visa-account .btn-merchant-filled {
+  padding: 10px 10px;
+}
+.customer-encasement .btn-block {
+  width: 100%;
+}
+/*.box {
+  width: 85%;
+}*/
 }
 
 @media (max-width: 360px) {
@@ -2580,6 +2627,5 @@ text-align: center !important;
 }
 .cart-price .content-star {
   clear: none;
-  
 }
 }

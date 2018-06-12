@@ -32,6 +32,7 @@
             <h1>
                 Promotion
             </h1>
+            
             <div class="header-btn">
                 <div class="clearfix">
                     <div class="btn-group inline pull-right">
@@ -46,7 +47,7 @@
             </div>
         </section>
     
-        <section class="content">
+        <section class=""> <!-- content -->
             @include('admin.layout.notification')
             <div class="">
                 <div class="col-xs-12">

@@ -205,7 +205,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
     Route::get('ask-product/search','ProductController@searchProduct');
     Route::get('ask-product','ProductController@askProduct');
     Route::post('product-available','ProductController@productExistsInLocal');
-    
+    Route::get('share-product-detail-on-facebook', 'ShareController@shareProductDetailOnFacebook');
     Route::get('get-all-product-in-area', 'AutocompleteController@getAllProductInArea');
     
     Route::get('mentions-légales-clickee','PagesController@legalMention');
@@ -281,6 +281,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['localeSessionRedirect', 
                 Route::group(['namespace' => 'Merchant'], function(){
                     Route::get('dashboard','DashboardController@index');
                     Route::get('statistical','DashboardController@statistical');
+                    Route::get('inlineLocal','DashboardController@salesInlineLocal');
                     Route::resource('code_promo','CodePromoController');
                     Route::resource('promotion','PromotionController');
                     Route::resource('orders','OrderController');

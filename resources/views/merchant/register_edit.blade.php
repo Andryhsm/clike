@@ -114,13 +114,13 @@
                                         id="confirm_position">{!! trans('merchant.confirm_position') !!}</button>
                             </div>
                             <div class="">
-                                <div class="col-md-6">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         {!! Form::label('latitude', trans('merchant.latitude'), ['class' => 'control-label']) !!}
                                         {!! Form::text('latitude', ($store) ? $store->latitude :  null, ['class' => 'required form-control','id'=>'latitude']) !!}
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         {!! Form::label('longitude', trans('merchant.longitude'), ['class' => 'control-label']) !!}                                
                                         {!! Form::text('longitude', ($store) ? $store->longitude :  null, ['class' => 'required form-control','id'=>'longitude']) !!}
@@ -140,7 +140,7 @@
                             </div>
                         </div>-->
                         <div class="row mb-20">
-                        	<div class="text-center col-lg-12 col-md-12 mt-40">
+                        	<div class="text-center col-lg-12 col-md-12 col-sm-12 col-xs-12  col-md-12 mt-40">
                                 <strong class="text-uppercase">
                                     Choisisser les horaires d'ouverture de votre magasin
                                 </strong>
@@ -153,35 +153,35 @@
                             $class = ($hour->opening_hour == null)?"fa-square-o":"fa-check-square";  
                             $disable = ($hour->opening_hour == null)?"disabled":"";
                         ?>
-                        <div class="info-one-day col-lg-12 mb-10">
-                            <div class="form-check col-lg-4">
+                        <div class="info-one-day col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-10">
+                            <div class="form-check col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                 <a class="open-day" data-day="monday" href="#"><span class="capitalize-text"><i class="fa {!! $class !!}"></i>&nbsp;&nbsp;&nbsp;&nbsp;{!! $hour->day->day_name !!}</span></a>
                                 <input type="hidden" name="opening_day_id[{!! $i !!}]" class="form-check-input" value="1"/>
                                 <input type="hidden" name="opening_hour_id[{!! $i !!}]" class="form-check-input" value="{!! $hour->opening_hour_id !!}"/>
                             </div>
                             <div style="position: relative">
-                                <input type="text" {!! $disable !!} class="col-lg-2 form-control open-time w-lg-2" name="opening_hour[{!! $i !!}]" value="{!! $hour->opening_hour !!}">
-                            </div><span class="col-lg-2 text-center">à</span>
+                                <input type="text" {!! $disable !!} class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="opening_hour[{!! $i !!}]" value="{!! $hour->opening_hour !!}">
+                            </div><span class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">à</span>
                             <div style="position: relative">
-                                <input type="text" {!! $disable !!} class="col-lg-2 form-control open-time w-lg-2" name="closure_hour[{!! $i !!}]" value="{!! $hour->closure_hour !!}">
+                                <input type="text" {!! $disable !!} class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="closure_hour[{!! $i !!}]" value="{!! $hour->closure_hour !!}">
                             </div>
                         </div>
                         <?php $i++; ?>
                         @endforeach
-                        
+                        <br>
                         <div class="text-center mt-40 mb-20 col-lg-12 col-md-12">
                             <strong class="text-uppercase">
                                 {!! trans('merchant.contact') !!}
                             </strong>
                         </div>  
                         <div class="">
-                            <div class="col-md-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="main_phone">{!! trans('merchant.main_phone') !!} *</label>
                                     {!! Form::text('main_phone', ($store) ? $store->phone :  null  , ['class' => 'required form-control','id'=>'main_phone']) !!}
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="main_email">E-mail principal *</label>
                                     {!! Form::text('main_email',($store) ? $store->email :  null , ['class' => 'required form-control','id'=>'main_email']) !!}
@@ -194,12 +194,11 @@
                             </strong>
                         </div>
                         <div class="">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     {!! Form::label('logo', trans('merchant.logo'), ['class' => '']) !!}
                                     <label class="file vertically-centered " for="logo">
                                         <span class="text-uppercase">Télécharger un fichier</span>
-                                        <!--<img class="pull-right" src="{!! URL::to('/') !!}/images/icon/cloud.svg"/> -->
                                     </label>
                                     {!! Form::file('logo',array('class'=>'form-control','id'=>'logo', 'onchange'=>'fileSelect(this)')) !!}
                                     
@@ -211,7 +210,6 @@
                                     {!! Form::label('shop_image', trans('merchant.shop_picture'), ['class' => '']) !!}
                                     <label class="file vertically-centered " for="shop_image">
                                         <span class="text-uppercase">Télécharger un fichier</span>
-                                        <!--<img class="pull-right" src="{!! URL::to('/') !!}/images/icon/cloud.svg"/>-->
                                     </label>
                                     {!! Form::file('shop_image',array('class'=>'form-control','id'=>'shop_image', 'onchange'=>'fileSelect(this)')) !!}
                                     <!--@if($store && file_exists(public_path('upload/shop/'.$store->shop_image)))
@@ -221,7 +219,7 @@
                             </div>                   
                             
     
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     {!! Form::label('short_description', trans('merchant.short_description'), ['class' => '']) !!}
                                     <textarea class="form-control" id="short_description" cols="30" rows="6" placeholder="Short Description"
@@ -241,7 +239,7 @@
                         </div>
     
                             <div class="row hidden">
-                                <div class="col-md-6 mr-l-25">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mr-l-25">
                                     <div class="form-group">
                                         <div class="checkbox">
                                             <label>
@@ -278,7 +276,7 @@
                                     @endif    
                                 </div>
                                 <div class="">
-                                    <div class="col-md-6">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             {!! Form::label('last_name', trans('merchant.last_name'), ['class' => '']) !!}
                                             {!! Form::text("manager[".$key."][last_name]", ($store && $user!=null) ?$user->last_name:null , ['class' => 'form-control required','id'=>'last_name']) !!}
@@ -293,7 +291,7 @@
                                             {!! Form::password("manager[".$key."][password]", ['class' => "form-control password".$key."",'id'=>'password','onkeyup'=>"confirmPassword(".$key.");"]) !!}
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             {!! Form::label('first_name', trans('merchant.first_name'), ['class' => '']) !!}
                                             {!! Form::text("manager[".$key."][first_name]",($store && $user!=null) ? $user->first_name:null, ['class' => 'form-control required','id'=>'first_name']) !!}
@@ -360,22 +358,22 @@
     <section class="content">
         <div class="bottle">
             <div class="visa-account">
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <img class="pull-right" src="{!! URL::to('/') !!}/images/icon/visa.svg"/>
                 </div>
-                <div class="mini-height-1 col-lg-6">
+                <div class="mini-height-1 col-lg-6 col-md-6 col-sm-6 col-xs-5">
                     <strong>VISA (0623)</strong><br>
                     <span class="expired">Exp : 09/06</span><br>
                     <span class="text-uppercase">DAVID BOITARD</span>
                 </div>
-                <div class="vertically-centered col-lg-4">
+                <div class="vertically-centered col-lg-4 col-md-4 col-sm-4 col-xs-5">
                     <a href="" class="btn-icon btn-merchant-filled">
                         <span>Supprimer</span>
                     </a>
                 </div>
             </div>
-            <span class="col-lg-12 text-center mt-20">Ceci est votre mode de paiement par défaut</span>
-            <div class="visa-expired col-lg-12">
+            <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-20">Ceci est votre mode de paiement par défaut</span>
+            <div class="visa-expired col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <img class="mr-10" src="{!! URL::to('/') !!}/images/icon/information.svg"/>
                 <span>Cette carte a expiré</span>
             </div>
@@ -384,21 +382,21 @@
     <section class="content">
         <div class="bottle">
             <div class="visa-account">
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <img class="pull-right" src="{!! URL::to('/') !!}/images/icon/visa.svg"/>
                 </div>
-                <div class="mini-height-1 col-lg-6">
+                <div class="mini-height-1 col-lg-6 col-md-6 col-sm-6 col-xs-5">
                     <strong>VISA (3485)</strong><br>
                     <span class="expired">Exp : 10/19</span><br>
                     <span class="text-uppercase">DAVID BOITARD</span>
                 </div>
-                <div class="vertically-centered col-lg-4">
+                <div class="vertically-centered col-lg-4 col-md-4 col-sm-4 col-xs-5">
                     <a href="" class="btn-icon btn-merchant-filled">
                         <span>Supprimer</span>
                     </a>
                 </div>
             </div>
-            <span class="default-payment col-lg-12 text-center mt-20">
+            <span class="default-payment col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-20">
                 <i class="fa fa-circle-o mr-10"></i> Définir comme mode de paiement par défaut
             </span>
         </div>

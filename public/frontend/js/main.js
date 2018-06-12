@@ -746,6 +746,10 @@
 	$('.close-article').on('click', function() {
 		$('#2-tab').trigger('click');
 	});
+	
+	/*$('.share-to-google').on('click', function() {
+	   
+	});*/
 
 	//Script of search product
 	$('.search-product').on('click', function() {
@@ -920,29 +924,32 @@ function aside_fixed() {
 	var $aside = $("#aside"),
 		$window = $(window),
 		offset = $aside.offset(),
-		content = $('.main')[0].clientHeight - 130,
+		content = $('.main')[0].clientHeight,
 		//content = $('.test')[0].clientHeight,
 		topPadding = 15,
+		left = $('.nav-menu.content').offset().left + parseInt($('.main').css('padding-left')),
 		css = {},
 		animate = {};
-	//console.log(content + ' content *******************')
-	//console.log($('.main'))
+
 	if (Modernizr.mq('(max-width: 767px)')) {
+		if (Modernizr.mq('(max-width: 480px)')) left = 0;
 		$window.scroll(function() {
+			content = $('.main')[0].clientHeight + offset.top
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
-				$aside.stop().css({ 'position': 'fixed', 'top': '0', 'z-index': '2000' })
+				$aside.stop().css({ 'position': 'fixed', 'top': '0', 'z-index': '2000'});
+				$('.nav-menu.content').css( 'margin-right', left)
 			}
 			else {
 				$aside.stop().animate({
 					marginTop: 0
-				}).css('position', 'relative');
+				}).css({'position': 'relative'});
+				$('.nav-menu.content').css( 'margin-right', '0')
 			}
 		});
 	}
 	else {
 		$window.scroll(function() {
-			//console.log(content + 'content ***********************')
-			//console.log($window.scrollTop() + 'scroll ***********************')
+			
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
 				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
 			}
@@ -954,22 +961,6 @@ function aside_fixed() {
 		});
 
 	}
-}
-
-function customer_aside_fixed() {
-	var contentCart = document.getElementById('main');
-
-	var callback = function(mutationsList) {
-	    for(var mutation of mutationsList) {
-	        if (mutation.type == 'childList') {
-	            //console.log('child change *********************')
-	            aside_fixed()
-	        }
-	    }
-	}
-
-	var observer = new MutationObserver(callback);
-	observer.observe(contentCart, { childList: true});
 }
 
 function footerCardFixed(){

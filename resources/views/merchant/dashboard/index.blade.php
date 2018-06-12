@@ -36,8 +36,8 @@
         	   <div id="salesstat"></div>
             
         
-            	<div class="mt-30">
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            	<div class="counting mt-30">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
                         <div class="bottle-box">
                             <h3><span class="bottle-box-number">{!! $product_count !!}</span></h3>
                             <span class="bottle-box-title">
@@ -45,7 +45,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-sm-4 col-xs-8">
                         <div class="bottle-box">
                             <h3><span class="bottle-box-number">{!! $sales_count !!}</span></h3>
                             <span class="bottle-box-title">
@@ -53,9 +53,9 @@
                         </div>
                     </div>
         
-                    <div class="clearfix visible-sm-block"></div>
+                    <!--<div class="clearfix visible-sm-block"></div>-->
         
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-sm-4 col-xs-8">
                        <div class="bottle-box">
                             <h3><span class="bottle-box-number">{!! $total_sales !!}</span></h3>
                             <span class="bottle-box-title">

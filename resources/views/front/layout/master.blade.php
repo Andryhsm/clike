@@ -8,7 +8,7 @@
         {!! OpenGraph::generate() !!}
     @show
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    @yield('additional-header')
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
 
@@ -64,6 +64,10 @@
     var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
     var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";
 </script>
+
+<script src="https://apis.google.com/js/platform.js" async defer>
+</script>
+
 </head>
 
 <body style="padding-right: 0px !important">

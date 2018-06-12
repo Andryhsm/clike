@@ -41,10 +41,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $ordered_status_items = $this->order_item_repository->getPendingItemsByMerchant(\Auth::user()->user_id);
+        $store_id = \Auth::user()->store->first()->store_id;
+        $ordered_status_items = $this->order_item_repository->getPendingItemsByMerchant($store_id);
         $pending_items =$this->getItems($ordered_status_items);
-		$earned_items = $this->order_item_repository->getEarnedItemsByMerchant(\Auth::user()->user_id);
-		$history_items = $this->order_item_repository->getHistoryItemByMerchant(\Auth::user()->user_id);
+		$earned_items = $this->order_item_repository->getEarnedItemsByMerchant($store_id);
+		$history_items = $this->order_item_repository->getHistoryItemByMerchant($store_id);
 		
 		return view('merchant.orders.view', compact('pending_items','earned_items','history_items'));
     }

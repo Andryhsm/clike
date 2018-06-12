@@ -206,6 +206,7 @@ text {
 .content-header .header-btn {
     top: 0;
     padding: 0 5px;
+    position: relative;
 }
 #code_promo .search-box-container .search-box {
     border: none;
@@ -216,6 +217,7 @@ text {
 .customer-encasement {
     height: 200px;
     padding-top: 30px;
+    text-align: center;
 }
 .select2-container--default .select2-selection--single {
     background-color: #EFEFED;

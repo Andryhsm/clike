@@ -67,7 +67,7 @@
             </div>
          </div>
         <div class="">
-            <div class="aside  col-mm-4 col-lg-4 col-md-4 col-sm-2 col-xs-12" id="aside">
+            <div class="aside merchant  col-mm-4 col-lg-4 col-md-4 col-sm-2 col-xs-12" id="aside">
                 @include('merchant.layout.sidebar')
             </div>
             <div class="main ajax-content col-mm-8 col-lg-8 col-md-8 col-sm-10 col-xs-12">
@@ -78,7 +78,7 @@
     <!--@include('front.layout.section-avantage')-->
     <script src="{!! URL::to('/') !!}/frontend/js/vendor/modernizr-2.8.3.min.js"></script>
     @include('front.layout.footer')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>

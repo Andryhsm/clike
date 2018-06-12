@@ -37,6 +37,32 @@
      .always(function() {
 
      });
+     
+     $.ajax({
+       url: base_url + 'merchant/inlineLocal',
+       type: 'GET',
+     })
+     .done(function(response) {
+       var donut = Morris.Donut({
+          element: 'salescamembert',
+          data: [
+            { label: 'en ligne', value: response.en_ligne.toFixed(2) },
+            { label: 'locale', value: response.local.toFixed(2) }
+          ],
+          backgroundColor: '#ccc',
+          labelColor: '#004857',
+          colors: [
+            '#65BB9F',
+            '#044651'
+          ],
+          formatter: function(x) { return x + "%" }
+        });
+        donutFormat(response.en_ligne.toFixed(2), donut) 
+     })
+     .fail(function(xhr) {})
+     .always(function() {
+
+     });
  });
 
  function splitDataPrice($data) {
@@ -59,21 +85,6 @@
    }
  }
 
- var donut = Morris.Donut({
-   element: 'salescamembert',
-   data: [
-     { label: 'en ligne', value: 70 },
-     { label: 'locale', value: 15 }
-   ],
-   backgroundColor: '#ccc',
-   labelColor: '#004857',
-   colors: [
-     '#65BB9F',
-     '#044651'
-   ],
-   formatter: function(x) { return x + "%" }
- });
- donutFormat()
 
  /*****   Mise en forme Bar chart  *****/
  function barFormat() {
@@ -88,19 +99,17 @@
 
 
  /*****   Mise en forme Donut chart  *****/
- function donutFormat() {
+ function donutFormat(value1, donut) {
    var path1 = $('#salescamembert svg path:nth-of-type(1), #salescamembert svg path:nth-of-type(3)');
    path1.attr('stroke-width', '7')
    var path2 = $('#salescamembert svg path:nth-of-type(2), #salescamembert svg path:nth-of-type(4)');
    path2.attr('stroke', 'none')
-
-   $(document).ready(function() {
-     donut.select(0);
-     $("#salescamembert text:first tspan").html("70%").attr('fill', '#65BB9F');
-     $("#salescamembert text:last tspan").html("en ligne").css({
-       'text-transform': 'uppercase',
-       'font-size': '12px'
-     });
+   
+   donut.select(0);
+   $("#salescamembert text:first tspan").html(value1 + '%').attr('fill', '#65BB9F');
+   $("#salescamembert text:last tspan").html("en ligne").css({
+     'text-transform': 'uppercase',
+     'font-size': '12px'
    });
 
    for (i = 0; i < donut.segments.length; i++) {

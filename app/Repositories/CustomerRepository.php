@@ -200,7 +200,7 @@ class CustomerRepository implements CustomerRepositoryInterface
 	}
 	
 	public function getTotalEncasement($store_id)
-	{
-		return Encasement::where('store_id', $store_id)->where('reset_accounting', Encasement::CAN_RESET)->sum('total_ttc');
+	{ 
+		return Encasement::where('store_id', $store_id)->sum('total_ttc');
 	}
 }			

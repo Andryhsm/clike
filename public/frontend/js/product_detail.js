@@ -122,6 +122,9 @@ $(document).ready(function() {
             type: 'POST',
             url: base_url + language_code + '/submit-review',
             data: data,
+            beforeSend: function() {
+                $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+            },
             success: function(response, status) {
                 if (response.success) {
                     $("#review-success").addClass('alert alert-success').html(response.message);
@@ -130,6 +133,11 @@ $(document).ready(function() {
                 else {
                     $("#review-error").addClass('alert alert-danger').html(response.message);
                 }
+                 $.LoadingOverlay("hide");
+            },
+            error: function(xhr){
+                console.log(xhr.responseText);
+                 $.LoadingOverlay("hide");
             }
         });
     });
@@ -314,7 +322,25 @@ $(document).ready(function() {
         $('.product-big-image .previews-list li').css('margin-right', '30px');
         $('.product-big-image .flexslider-thumb').css('margin-top', '30%');
     }
-
-
-
+    
+    $('#add-to-cart').click(function(){
+        $('.product-input-select').each(function(index, element){
+            if($(element).val() == null){
+                if(!$(this).hasClass('invalid')){
+                    $(element).addClass('invalid');
+                    $(element).parent().append("<label class='error' style='font-size: 14px; font-weight:500 !important; text-transform: lowercase;'>Veuillez sélectionner s'il vous plait</label>");
+                }
+            }
+        });
+        if($('.containt-product-info').find('.invalid').length == 0) {
+            $('#product_form').submit();
+        }
+    });
+    $('.product-input-select').change(function(){
+         if($(this).hasClass('invalid')){
+            $(this).removeClass('invalid');
+            $(this).parent().find('.error').remove();
+        }
+    });
+    
 })
