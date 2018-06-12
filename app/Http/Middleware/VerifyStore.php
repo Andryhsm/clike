@@ -49,9 +49,9 @@ class VerifyStore
             return $language;
         });
         app()->setLocale($language->language_code);
-        if (!$request->hasCookie('language') || ($request->hasCookie('language') && $request->    cookie('language')->language_id != $language->language_id)) {
-            return \Redirect::to($request->url())->withCookie(cookie()->forever('language', $language));
-        }
+        // if (!$request->hasCookie('language') || ($request->hasCookie('language') && $request->    cookie('language')->language_id != $language->language_id)) {
+        //     return \Redirect::to($request->url())->withCookie(cookie()->forever('language', $language));
+        // }
         //dd($request);
         return $next($request);
     }
