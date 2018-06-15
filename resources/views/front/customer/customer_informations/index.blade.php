@@ -4,7 +4,7 @@
 <div class="ajax-content customer_info">
     <div class="customer-informations">
         <div class="content col-lg-12 mb-30">
-            <form class="customer-form" id="customer-form">
+            <form class="customer-form" id="customer-form" action="{!! route('customer-update-info') !!}">
                 <p>
                     <span><a class="gender mt-30 mr-20" id="Femme" onclick="simulateRadioButton(this);">
                         <i class="fa fa-circle-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mme
@@ -73,12 +73,12 @@
                 <div class="visa-img">
                     <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/visa.svg"></img>
                 </div>
-                <div class="visa-information col-lg-4 mini-height">
+                <div class="visa-information col-lg-4 col-md-4 col-sm-4 col-xs-6 mini-height">
                     <p class="title-bold-2">VISA (3485)</p>
                     <p>Exp : 10/19</p>
                     <p>DAVID BOITARD</p>
                 </div>
-                <div class="col-lg-6 pull-right">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4 no-padding pull-right">
                     <button class="btn btn-customer-filled btn-icon pull-right">
                         <span>Supprimer</span>
                     </button>
@@ -87,7 +87,7 @@
             <div class="text-center">
                 <p>Ceci est votre mode de paiement par défaut</p>
             </div>
-            <div class="visa-expired col-lg-12">
+            <div class="visa-expired col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <img class="mr-10" src="{!! URL::to('/') !!}/images/icon/information.svg"/>
                 <span>Cette carte a expiré</span>
             </div>
@@ -99,12 +99,12 @@
                 <div class="visa-img">
                     <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/visa.svg"></img>
                 </div>
-                <div class="visa-information col-lg-4 mini-height">
+                <div class="visa-information col-lg-4 col-md-4 col-sm-4 col-xs-6 mini-height">
                     <p class="title-bold-2">VISA (3485)</p>
                     <p>Exp : 10/19</p>
                     <p>DAVID BOITARD</p>
                 </div>
-                <div class="col-lg-6 pull-right">
+                <div class="col-lg-6  col-md-6 col-sm-6 col-xs-4 no-padding pull-right">
                     <button class="btn btn-customer-filled btn-icon pull-right">
                         <span>Supprimer</span>
                     </button>

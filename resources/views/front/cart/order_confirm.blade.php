@@ -17,7 +17,7 @@
                 </div>
                 <div class="entry-content text-center order-confirm-text">
                     <p class="second-text">{!! trans('common/label.confirmation_text_2') !!} <a class="order-link" href="{!! url('customer/current-order') !!}">{!! trans('common/label.confirmation_link_text') !!}</a></p>
-                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/') !!}" class="btn btn-order-filled mt-20">Retourner à l ' accueil</a>
+                    <a href="{!! route('home') !!}" class="btn btn-order-filled mt-20">Retourner à l ' accueil</a>
                 </div>  
             </div>
         </div>

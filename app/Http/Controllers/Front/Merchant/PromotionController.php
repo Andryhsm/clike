@@ -69,7 +69,7 @@ class PromotionController extends Controller
         );
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return Redirect::to('fr/merchant/promotion/create')->withInput()->withErrors($validator);
+            return Redirect::to('merchant/promotion/create')->withInput()->withErrors($validator);
         } else {
             $promotion = $this->promotion_repository->save($request->all());
             if($promotion){
@@ -82,7 +82,7 @@ class PromotionController extends Controller
                 }*/
 
                 flash()->success(config('message.promotion.add-success'));
-                return Redirect('fr/merchant/promotion');
+                return Redirect('merchant/promotion');
             }
         }
     }

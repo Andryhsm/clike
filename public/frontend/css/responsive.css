@@ -498,7 +498,17 @@ a#scrollUp {
 .section-three-bloc-align {
     height: 52.8rem;
 }
-
+.order-img {
+	width: 140px;
+	/*height: 190px;*/
+	margin-right: 15px;
+}
+.order-img, .order-info, .order-form {
+  height: 20vw;
+}
+.avatar span {
+  line-height: 3 !important;
+}
 }
  
 /* Tablet desktop :768px. */
@@ -1150,6 +1160,33 @@ a#scrollUp {
 .tab-panel-customer .nav-tabs, .product-tab-inner .nav-tabs {
   background-position: 50%;
 }
+.footer-top-area .container {
+  width: 90%;
+}
+.footer-links {
+  display: grid;
+  grid-template-columns: 22% 22% 26% 30%;
+}
+.footer-item {
+  width: 100%;
+}
+.order-img, .order-info, .order-form {
+  height: 22vw;
+}
+.order-img img {
+  width: 85% !important;
+  height: 100%;
+}
+.coupon-product .order-img img {
+  width: 80%;
+}
+.current-coupon .order-img {
+	width: 160px !important;
+}
+.order-img {
+	width: 160px;
+	/*height: 180px;*/
+}
 }
 
 /* small mobile :320px. */
@@ -1305,8 +1342,8 @@ a#scrollUp {
 .single-service {
   margin-bottom: 10px;
 }
-.single-footer {
-  margin-bottom: 30px;
+.footer-item {
+  margin-bottom: 30px !important;
 }
 .footer-menu {
   margin-top: 10px;
@@ -1866,32 +1903,32 @@ a#scrollUp {
     max-height: 70%;
     margin-left: 15%;
 }
-
 .pager-right {
     right: calc(0% + -40px);
 }
 .single-service-3 {
   margin-top: 10px;
-  height: 160px;
-}
-.product-big-image .flexslider-thumb {
-  transform: rotate(0deg) !important;
-}
+  height: 160px;}
+
 .contain-product-info {
   margin-top: 40%;
 }
-.product-big-image .flexslider-thumb li img {
-  transform: rotate(0deg) !important;
-}
-.image-thumb {
-    /* margin-left: -30%; */
+
+/*.image-thumb {
+     margin-left: -30%; 
     position: absolute;
     margin: 113% 0 0 0;
     width: 100%;
 }
+.product-big-image .flexslider-thumb {
+  transform: rotate(0deg) !important;
+}
+.product-big-image .flexslider-thumb li img {
+  transform: rotate(0deg) !important;
+}
 #auto-contain {
   margin-left: 0%;
-}
+}*/
 .add-cart .add-to-cart:first-child {
   margin-top: -8% !important;
 }
@@ -2122,6 +2159,18 @@ img.equipe-clickee {
   padding-left: 0;
   padding-right: 0;
 }
+.footer-item, .information-visa .btn-customer-filled {
+  width: 100% !important;
+}
+.information-visa .bottle {
+  padding: 2% 4%;
+}
+.visa-img img {
+  width: 13%;
+}
+.order-description {
+  line-height: 1 !important;
+}
 }
 /* end max-width 767px */ 
 /* Large Mobile :480px. */
@@ -2211,7 +2260,8 @@ text-align: center !important;
 .logo {
   margin: 0px;
 }
-.container {width:450px}
+.container.section-image-product {width:100%;}
+.container {width: 450px;}
 .service-text h3 {
   font-size: 16px;
 } 
@@ -2313,9 +2363,11 @@ text-align: center !important;
 .call_add_user, #store_form button#add-role {
   width: 45%;
 }
-.file {
-  background-size: 10%;
+.footer-links {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
+
 }
 
 @media (max-width: 480px) {
@@ -2447,6 +2499,24 @@ text-align: center !important;
 }
 .pd5-r-input {
   padding-right: 5%;
+}
+.image-thumb {
+     margin-left: -30%; 
+    position: absolute;
+    margin: 113% 0 0 0;
+    width: 100%;
+}
+.product-big-image .flexslider-thumb {
+  transform: rotate(0deg) !important;
+}
+.product-big-image .flexslider-thumb li img {
+  transform: rotate(0deg) !important;
+}
+#auto-contain {
+  margin-left: 0%;
+}
+.product-big-image .flexslider-thumb {
+  margin-top: 80%;
 }
 .product-tab-inner>.nav-tabs>li>a, .product-tab-inner>.nav-tabs>li>a:hover {
     text-align: center;
@@ -2601,12 +2671,30 @@ text-align: center !important;
 .customer-encasement .btn-block {
   width: 100%;
 }
-/*.box {
-  width: 85%;
-}*/
+.containt-product-info {
+  margin-top: 65%;
+}
+.information-visa .bottle {
+  display: flex !important;
+}
+.visa-img img {
+  width: 80%;
+}
+.information-visa .bottle div:last-child {
+  width: 45% !important;
+}
+.password-form label, .password-form div {
+	width: 100%;
+}
 }
 
 @media (max-width: 360px) {
+.container {
+  width: 100%; 
+}
+.btn {
+  font-size: 14px;
+}
 .engagement-menu .menu a, .menu-pop .point5 {
   width: 50% !important;
 }
@@ -2629,5 +2717,11 @@ text-align: center !important;
 }
 .cart-price .content-star {
   clear: none;
+}
+.visa-img {
+  display: none !important;
+}
+#save_customer, .change-password .btn-customer-filled {
+  width: 50%;
 }
 }

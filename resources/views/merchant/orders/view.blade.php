@@ -57,7 +57,7 @@
                                             <tbody>
                                             @if(count($pending_items)>0)
                                                 @foreach($pending_items as $index=>$item)
-                                                {!! Form::open(['url' =>Url("fr/merchant/orders"), 'id'=>'product_search_form_'.$index, 'method' => 'post','class'=>' form-inline','autocomplete'=>'off']) !!}
+                                                {!! Form::open(['url' => route('commande.store'), 'id'=>'product_search_form_'.$index, 'method' => 'post','class'=>' form-inline','autocomplete'=>'off']) !!}
                                                 <tr>
                                                     <td width="25%">
                                                         <strong>{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong><br><br>
@@ -66,11 +66,11 @@
                                                             <br/>{!! $attribute->attribute_label !!}
                                                             : {!! $attribute->attribute_selected_value !!}
                                                         @endforeach
-                                                        <br/>{!! trans('order.price') !!}: {!! format_price($item->price) !!}
-                                                        <br/>
-                                                        @if($item->order->payment_type=='1')
+                                                        <br/>Prix: {!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)
+                                                        <!--<br/>-->
+                                                        <!--@if($item->order->payment_type=='1')
                                                             {!! trans('order.payment_type') !!}
-                                                        @endif
+                                                        @endif-->
     
                                                     </td>
                                                     <td width="25%">
@@ -131,12 +131,11 @@
                                                     <br/>{!! $attribute->attribute_label !!}
                                                     : {!! $attribute->attribute_selected_value !!}
                                                 @endforeach
-                                                <br/>{!! trans('order.price') !!}: {!! format_price($item->price) !!}
-                                                <br/>
+                                                <br/>Prix: {!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)
                                                 <!--<a href="{!! !empty($item->product_url)?url($item->product_url) :'#' !!}">{!! trans('order.equalize_link') !!}</a><br>-->
-                                                @if($item->order->payment_type=='1')
+                                                <!--@if($item->order->payment_type=='1')
                                                     {!! trans('order.payment_type') !!}
-                                                @endif
+                                                @endif-->
     
                                             </td>
                                             <td width="50%" class="vertical-align">
@@ -151,7 +150,7 @@
                                                     : {!! Carbon\Carbon::parse($item->itemRequest->first()->created_date)->format('d/m/Y')  !!}
                                                 </div>
                                                 <div>
-                                                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/bookedRequest/'.$item->itemRequest->first()->order_item_request_id) !!}" class="btn btn-block btn-merchant-filled pull-right">Terminer</a>
+                                                    <a href="{!! route('merchant-booked-request', ['id' => $item->itemRequest->first()->order_item_request_id]) !!}" class="btn btn-block btn-merchant-filled pull-right">Terminer</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -177,12 +176,11 @@
                                                     <br/>{!! $attribute->attribute_label !!}
                                                     : {!! $attribute->attribute_selected_value !!}
                                                 @endforeach
-                                                <br/>{!! trans('order.price') !!}: {!! format_price($item->price) !!}
-                                                <br/>
+                                                <br/>Prix: {!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)
                                                 <!--<a href="{!! !empty($item->product_url)?url($item->product_url) :'#' !!}">{!! trans('order.equalize_link') !!}</a><br>-->
-                                                @if($item->order->payment_type=='1')
+                                                <!--@if($item->order->payment_type=='1')
                                                     {!! trans('order.payment_type') !!}
-                                                @endif
+                                                @endif-->
     
                                             </td>
                                             <td width="50%" class="vertical-align">

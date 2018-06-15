@@ -11,7 +11,24 @@
 	.title.title-active span {
 		font-size: 32px;	
 	}
+	
 }
+
+@media(min-width: 1024px){
+	.nav-link {
+	    display: flex !important;
+	    align-items: center;
+	}
+	.nav-link span {
+	    margin: auto;
+	}
+	.order-img {
+		width: 150px;
+		margin-right: 5%;
+	}
+	
+}
+
 @media (min-width: 992px) and (max-width: 1367px) {
 	.header-item{
 	    height: 12vw;  
@@ -29,17 +46,12 @@
 	.newsletter-item-img img {
 	    width: 80%;
 	}
-}
-
-@media(min-width: 1024px){
-	.nav-link {
-	    display: flex !important;
-	    align-items: center;
+	/*.coupon-product .order-img img {
+	    width: 100%;
 	}
-	.nav-link span {
-	    margin: auto;
-	}
-	
+	.coupon-product .order-img {
+	    width: 28%;
+	}*/
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -52,10 +64,11 @@
 	    height: 13vw;    
 	}
 	.avatar{
-		font-size: 3.4rem;
+		font-size: 3rem;
 	}
 	.hello-avatar{
 		margin-left: 5%;
+		font-size: 23px;
 	}
 	.section-title img {
 	    width: 7vw;
@@ -79,10 +92,15 @@
 	.Coupon {
 		padding: 10px 0px;
 	}
+	/*.order-img img{
+    	width: 80%;
+	}*/
+	.coupon-product .order-img {
+	    width: 30%;
+	}
 }
 
-/**		Au dessous de 768, cacher des éléments	**/
-@media(max-width: 1023px){
+@media(max-width: 992px){
 	.section-customer {
 		display: none;
 	}
@@ -100,7 +118,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		/*padding: 1em 1.25em 1em 1.25em;*/
 		height: 70px;
 	}
 	.nav-menu .nav>li>a>img {
@@ -121,16 +138,16 @@
 	.customer_bills .btn-customer-filled {
 		padding: 10px;
 	}
-	.Coupon, .Reception{
-	    width: 100%;
-	}
+
 }
 
-@media (min-width: 480px) and (max-width: 767px) {
+@media (min-width: 576px) and (max-width: 767px) {
 	.customer-area {
 	    margin-bottom: 10%;
 	    margin-left: 0%;
 	    margin-right: 0%;
+	    padding-left: 0;
+	    padding-right: 0;
 	}
 	.header-item {
 	    height: 20vw;
@@ -195,21 +212,46 @@
 	.bill span p {
 		display: none;
 	}
-	.btn-customer-filled {
+	/*.btn-customer-filled {
     	padding: 10px 0px 10px 10px !important;
-	}
+	}*/
 	.order-img, .order-info, .order-form {
-	    height: 18vw;
+	    height: 27vw;
 	}
-	.order-img img {
-    	width: 70%;
-	}
+	/*.order-img img {
+    	width: 90%; 
+	}*/
 	.customer-encasement .btn-block {
 		width: 90%;
 	}
+	.order-content {
+		display: grid;
+		grid-template-columns: 30% 30% 30%;
+	}
+	.order-info, .order-form {
+		width: 100%;
+	}
+
+	.order-info {
+		padding: 0 !important;
+	}
+	.current-coupon .order-img {
+		width: 140px!important;
+	}
+	.order-story {
+		display: grid;
+    	grid-template-columns: 30% 30% 40%;
+	}
+	.order-img {
+		width: 125px;
+		/*height: 170px;*/
+	}
+	/*.order-story .order-img img {
+		width: 90%;
+	}*/
 }
 
-@media (max-width: 480px) {
+@media (max-width: 575px) {
 	.logo a img {
 		margin-top: 4%;
 		margin-bottom: 6%;
@@ -295,7 +337,94 @@
 	.bill span p {
 		display: none;
 	}
-	.btn-customer-filled {
+	/*.btn-customer-filled {
     	padding: 5px 0px 5px 5px !important;
+	}*/
+	.order-content {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+	.Coupon, .Reception {
+	    width: 50%;
+	}
+	.order-info {
+		padding: 0 !important;
+	}
+	.order-form {
+		display: grid;
+    	grid-template-columns: 50% 50%;
+    	/*display: block;
+		text-align: center;*/
+	}
+	.order-form div {
+		/*display: inline-block;*/
+		padding: 5px;
+	}
+	.order-img, .order-info {
+		height: 150px; /*35vw*/
+	}
+	
+	.Coupon, .Reception {
+		float: none !important;
+		width: 180px;
+		font-size: 14px;
+	}
+	.order-header .order-item {
+		width: 100% !important;
+		text-align: left;
+		padding: 5px 15px;
+	}
+	.order-description {
+		line-height: 0.5 !important;
+	}
+	.current-coupon .customer {
+		width: 100%;
+	}
+	.coupon-product .order-img {
+	    width: 120px;
+	}
+	.change-password .btn-customer-filled {
+	    width: 50%;
+	}
+	.order-img img {
+		width: 110px;
+		/*height: 150px;*/
+	}
+	.info-2 {
+		padding-left: 15px !important;
+    	padding-top: 15px !important;
+	}
+	.order-img {
+		margin-left: 15px;
+	}
+	.order-content, .order-story {
+		display: block;
+	}
+	.order-form div {
+		margin-bottom: 8px;
+	}
+	.order {
+		padding-bottom: 20px;
+	}
+	
+}
+
+@media (max-width: 340px) {
+	.order-header .order-item {
+		padding: 5px 0;
+	}
+	.order-form {
+	    display: block;
+	    height: 100px;
+	    text-align: center;
+	}
+	.order-form div {
+	    padding: 5px;
+	    display: inline-block;
+	    height: 40px;
+	    width: 70%;
+	}
+	.order-img {
+		margin-right: 0;
 	}
 }

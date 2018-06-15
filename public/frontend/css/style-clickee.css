@@ -850,7 +850,11 @@ ul {
     border-top: 1px solid #D2D2CD;
     border-bottom: 1px solid #ECECEC;
     color: #ffffff;
-}  
+} 
+.footer-item {
+  width: 25%;
+  float: left;
+}
 .footer-logo {
     height: auto;
     width: auto;
@@ -2833,7 +2837,7 @@ span.text-title {
     font-weight: 600;
     color: #65BB9F;
 }
-.tab-panel p {
+#tab-sale p {
     /*margin: 20px 0 20px;*/
     line-height: 1.25;
     margin: auto;
@@ -3314,4 +3318,18 @@ a.open-day {
 .customer-encasement .btn-block {
   width: 70%;
   display: inline-block !important;
+}
+
+.search-box-container .search-box ul li.search-choice {
+    list-style: none;
+    background-color: #044651;
+    border-color: #044651;
+    padding: 1px 10px;
+    color: #fff;
+    border: 1px solid #044651;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
 }

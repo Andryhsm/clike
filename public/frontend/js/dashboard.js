@@ -1,10 +1,11 @@
  jQuery(document).ready(function($) {
+   var url = $('#salesstat').data('url');
    $.ajax({
-       url: base_url + 'merchant/statistical',
+       url: url,
        type: 'GET',
      })
      .done(function(response) {
-       /*console.log(splitDataPrice(response[3]));*/
+       /*console.log(response);*/
        Morris.Bar({
          element: 'salesstat',
          data: [
@@ -37,12 +38,13 @@
      .always(function() {
 
      });
-     
+     var url_salescamembert = $('#salescamembert').data('url');
      $.ajax({
-       url: base_url + 'merchant/inlineLocal',
+       url: url_salescamembert,
        type: 'GET',
      })
      .done(function(response) {
+        /* console.log(response);*/
        var donut = Morris.Donut({
           element: 'salescamembert',
           data: [

@@ -20,7 +20,7 @@ jQuery(document).ready(function() {
                         data: ({
                             datastring: $.trim(req.term),
                         }),
-                        url: base_url + 'fr/merchant/get-product',
+                        url: base_url + 'marchand/get-product',
                         success: function(response) {
                             json_response_array = response['json_array'];
                             var suggestions = [];
@@ -30,7 +30,7 @@ jQuery(document).ready(function() {
                                 if ($.trim(req.term) == value.product_name) {
                                     count = 1;
                                 }
-                                console.log(value.product_name);
+                                /*console.log(value.product_name);*/
                                 suggestions_test.label = value.product_name;
                                 suggestions_test.value = value.product_id;
                                 suggestions.push(suggestions_test);

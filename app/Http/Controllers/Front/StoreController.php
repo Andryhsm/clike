@@ -130,7 +130,7 @@ class StoreController extends Controller
 			}
 		}
 
-		return \Redirect::to('fr/merchant/dashboard');
+		return redirect()->route('merchant-dashboard');
 	}
 
 
@@ -172,7 +172,7 @@ class StoreController extends Controller
 			'main_email' => 'required',
 			'cell_phone' => 'required',
 			'fix_phone' => 'required',
-			/*'g-recaptcha-response'=>'required|recaptcha'*/
+			'g-recaptcha-response'=>'required|recaptcha'
 /*			'last_name' => 'required',
 			'first_name' => 'required',
 			'position' => 'required',
@@ -204,8 +204,7 @@ class StoreController extends Controller
 			$store = $this->store_repository->update($id, $all_input);
 			flash()->success(config('message.store.update-success'));
 		}
-		/*dd($store);*/
-		return Redirect('fr/store/'.$store->store_id.'/edit');
+		return redirect()->route('magasin.edit',['store' => $store->store_id]);
 	}
 
    public function getCoordinates(Request $request)

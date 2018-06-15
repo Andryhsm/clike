@@ -154,10 +154,8 @@ class ProductController extends Controller
 		}
 		$this->product_repository->updateBestPrice($product->product_id);
 		flash()->success(config('message.product.add-success'));
-//		return redirect()->route('product');
 		$product->load('url');
-		return redirect()->route('product_merchant');
-		//return response()->json($product);
+		return redirect()->route('merchant-product');
 	}
 
 	public function ImageUpload($name){
@@ -207,19 +205,18 @@ class ProductController extends Controller
 	}
 
 	public function update($product_id, ProductRequest $product_request)
-	{
+	{	
 		$product = $this->product_repository->updateById($product_id, $product_request->all());
 		//update affiliate products
 		if ($product_request->get('searchproduct')) {
 			$this->saveAffiliateProduct($product_id, $product_request->all());
 		}
-
 		
 		$this->product_repository->updateBestPrice($product_id);
 		flash()->success(config('message.product.update-success'));
 		$product->load('url');
-
-		return redirect()->route('product_merchant');
+		
+		return redirect()->route('merchant-product');
 	}
 
 	public function saveAffiliateProduct($product_id, $input)
@@ -299,7 +296,7 @@ class ProductController extends Controller
 		} else {
 			flash()->error(config('message.product.delete-error'));
 		}
-		return redirect()->route('product_merchant');
+		return redirect()->route('merchant-product');
 	}
 
 

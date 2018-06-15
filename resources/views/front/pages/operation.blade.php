@@ -14,7 +14,7 @@
                         commerçants qui vous entourent et soutenez
                         votre économie locale.</p>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pb-20">
-                            <a href="{!! url(LaravelLocalization::getCurrentLocale().'/search?q=') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
+                            <a href="{!! route('search') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     vous permettra de vous adapter au nouveaux
                     modes de consommations de vos clients.</p>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pb-20">
-                        <a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/login') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
+                        <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@
             
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pb-20">
-                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/search?q=') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
+                    <a href="{!! route('search') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
                 </div>
             </div>
             
@@ -125,7 +125,7 @@
             
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/vendre-avec-nous') !!}" class="btn btn-clickee-info">VENDRE AVEC CLICKEE</a>
+                    <a href="{!! route('vendre-avec-nous') !!}" class="btn btn-clickee-info">VENDRE AVEC CLICKEE</a>
                 </div>
             </div>
         </div>

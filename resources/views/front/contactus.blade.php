@@ -8,7 +8,7 @@
                 @include('notification')
                 
                 <!-- BEGIN FORM-->
-                <form action="{!! url(LaravelLocalization::getCurrentLocale().'/contact-us') !!}" class="default-form" role="form" method="post">
+                <form action="{!! route('contact-us-post') !!}" class="default-form" role="form" method="post">
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                         <div class="bg-grey pd-c">
                             <div class="form-group">
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label for="message" style="margin-bottom: 8px;">Message</label>
                                 <textarea class="form-control" rows="8" id="message" name="message" style="height: 32.7rem; width: 100%; font-size: 14px; line-height: 18px; border: 4px solid rgb(4, 70, 81); padding: 10px; border-radius: 0px;"></textarea>
-                            </div>
+                                </div>
                             <div class="pt-10 pb-77 pull-right">
                                 <button type="submit" class="btn btn-clickee-info">ENVOYER</button>
                             </div>

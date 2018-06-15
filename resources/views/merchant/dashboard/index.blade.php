@@ -33,7 +33,7 @@
         <div class="bottle">
             <div  class="col-lg-12 col-sm-12 text-center">
                <h3><label class="label color-text text-uppercase">Statistiques de vente</label></h3>
-        	   <div id="salesstat"></div>
+        	   <div id="salesstat" data-url="{!! route('merchant-statistical') !!}"></div>
             
         
             	<div class="counting mt-30">
@@ -74,7 +74,7 @@
         <div  class="bottle">
             <div class="col-sm-6 col-sm-offset-3 text-center">
                 <h3><label class="label color-text text-uppercase">Ventes en ligne - locales</label></h3>
-                <div id="salescamembert"></div>
+                <div id="salescamembert" data-url="{!! route('merchant-inlineLocal') !!}"></div>
             </div>
         </div>
         <br>

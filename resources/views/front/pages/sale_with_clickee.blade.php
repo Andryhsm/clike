@@ -28,7 +28,7 @@
             
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pt-20">
-                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/login') !!}" class="btn btn-clickee-info">COMMENCER À VENDRE</a>
+                    <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info">COMMENCER À VENDRE</a>
                     <div class="line-separator"></div>
                     <div class="title ptb-40">
                         <H2 class="p-0">LES CHIFFRES DE CLICKEE</H2>
@@ -99,7 +99,7 @@
             
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pt-20">
-                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/login') !!}" class="btn btn-clickee-info">CRÉEZ VOTRE COMPTE</a>
+                    <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info">CRÉEZ VOTRE COMPTE</a>
                     <div class="line-separator"></div>
                     <div class="title pt-40 pb-10">
                         <H2>NOS PACKS</H2>

@@ -14,7 +14,7 @@
             Vos commerçants locaux vous remercient déjà par avance.
         </p>
         <div class="text-center">
-             <a href="{!! url(LaravelLocalization::getCurrentLocale().'/search?q=') !!}" class="btn btn-filled pl-r-30 mb-40 mt-20" style="font-size:16px; padding:10px 50px;">ACHETER</a>
+             <a href="{!! route('search') !!}" class="btn btn-filled pl-r-30 mb-40 mt-20" style="font-size:16px; padding:10px 50px;">ACHETER</a>
         </div>
          <div class="title title-border-top pt-40 pb-10">
             <h2>NOS SERVICES</h2>

@@ -12,7 +12,7 @@
                 Vous pouvez nous écrire à <strong><a href="mailto:presse@clickee.fr">presse@clickee.fr</a></strong><br>
                 Nous vous répondrons rapidement.
             </div>
-            <a href="{!! url(LaravelLocalization::getCurrentLocale().'/contact-us') !!}" class="btn btn-filled mb-40" style="font-size:16px;">Nous contacter</a>
+            <a href="{!! route('contact-us-get') !!}" class="btn btn-filled mb-40" style="font-size:16px;">Nous contacter</a>
            
         </div>
     </div>

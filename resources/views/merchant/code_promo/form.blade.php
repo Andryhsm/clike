@@ -56,7 +56,7 @@ $selected_category = [];
                 <div class="col-md-12">
                     <!--<div class="box box-primary">
                         <div class="box-body">-->
-                        {!! Form::open(array('url' =>($code_promo) ? Url("fr/merchant/code_promo/$code_promo->code_promo_id") : Url("fr/merchant/code_promo"),'id'=>'code_promo','class'=>'code_promo','method' => ($code_promo)? 'PATCH':'POST')) !!}
+                        {!! Form::open(array('url' =>($code_promo) ? route('code-promo.update',['code_promo' => $code_promo->code_promo_id]) : route('code-promo.store'),'id'=>'code_promo','class'=>'code_promo','method' => ($code_promo)? 'PATCH':'POST')) !!}
                                             
                             <div class="row">
                             	<div class="col-lg-6">
@@ -131,7 +131,7 @@ $selected_category = [];
                         </div>
                         <div class="col-md-12"> <!--box-footer-->
                             <div class="col-lg-6">
-                                 <a href="{!! Url('fr/merchant/code_promo') !!}" class="btn btn-merchant-filled">Annuler</a>
+                                 <a href="{!! route('code-promo.index') !!}" class="btn btn-merchant-filled">Annuler</a>
                             </div>
                             <div class="col-lg-6">
                                 <button type="submit" class="btn btn-merchant-filled pull-right" id="add-role">Enregistrer</button>

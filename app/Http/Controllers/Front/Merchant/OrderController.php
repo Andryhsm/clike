@@ -71,7 +71,6 @@ class OrderController extends Controller
                 Date::setLocale('fr');
                 //cherche les heures d'ouverture
                 foreach($item->product->store->hours as $hour){
-                    
                     $opening_hour = ($hour->opening_hour!=null)?$hour->opening_hour:'';
                     $closure_hour = ($hour->closure_hour!=null)?$hour->closure_hour:'';
                     //condition pour le jour et heure non null

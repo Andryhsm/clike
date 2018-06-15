@@ -1,14 +1,34 @@
 A FAIRE
 - Retour vers le scroll dans customer
+- Responsivité de la description produit
+- Redirection marchant vers login si non connecté
 
-12-06-2018
-- Responsivité mon compte pro (ok)
-- Responsivité encaissement : alignement des boutons dans client (ok)
-- Aligner l'onglet s'enregistrer dans la page de connexion (responsivité) (ok)
-- Responsivité de la description produit (en cours)
-- Page produit : Fonctionnalité du bouton partage facebook (en attente)
-- Page produit : Fonctionnalité du bouton partage twitter (en attente)
-- Page produit : Fonctionnalité du boutton partage google+ (en cours)
 
--> ENLEVEMENT FR
-  - 
+BUG : 
+- Encaissement : choix de produit pour le pyjama rose
+- URL GET -> POST pour plus de sécurité
+
+--------------------------------------------------------------------------
+
+15-06-2018
+- Responsivité et amélioration interface dans l'espace perso:
+        - Historique de mes commandes (ok)
+        - Ajuster la taille des images dans l'espace perso (ok)
+        - 
+- Interface code promo (compte pro) (OK)
+- Page produit : Fonctionnalité du bouton partage facebook (à verifier)
+
+-> REMPLACEMENT ROUTE en FR
+
+  - Compte pro (en cours)
+        => sidebar (OK)
+        => produit (OK)
+        => dans tous les js (en cours)
+  - Compte client (en cours)
+        => dans les js (ok)
+                - script dans commande en cours (ok)
+
+-> Arrangement interface coupon pdf (OK)
+  
+BUG:
+  - Atribut et catalogue dans altee (OK)

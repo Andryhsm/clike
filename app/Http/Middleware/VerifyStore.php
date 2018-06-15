@@ -24,9 +24,8 @@ class VerifyStore
      */
     public function handle($request, Closure $next)
     {
-		if($request->has('language')){
-			LaravelLocalization::setLocale($request->get('language'));
-		}
+		LaravelLocalization::setLocale('fr');
+		
 		$language_code = LaravelLocalization::getCurrentLocale();
 		if(!$request->hasCookie('language') || ($request->cookie('language')->language_code!=$language_code))
 		{

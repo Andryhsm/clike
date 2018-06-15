@@ -46,7 +46,7 @@
     	<div class="row">
     		<div class="col-md-12">
     			<div class="nav-tabs-custom">
-    				{!! Form::open(['url' => route('customer.store') , 'id' =>'customer_form', 'enctype' => 'multipart/form-data', 'method' => 'POST']) !!}
+    				{!! Form::open(['url' => route('client.store') , 'id' =>'customer_form', 'enctype' => 'multipart/form-data', 'method' => 'POST']) !!}
     					<div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
                                 @include('merchant.customer.customer')

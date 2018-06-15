@@ -9,7 +9,7 @@
                         </div> -->
 
                         <p></p>
-                        {!! Form::open(['url' => url(LaravelLocalization::getCurrentLocale().'/merchant/login'), 'id'=>'login_form', 'method' => 'post', 'role' => 'form' ,'class'=>'form-horizontal','autocomplete'=>'off']) !!}
+                        {!! Form::open(['url' => route('merchant-login-post'), 'id'=>'login_form', 'method' => 'post', 'role' => 'form' ,'class'=>'form-horizontal','autocomplete'=>'off']) !!}
                         <div class="form-group row mb-0">
                             <div class="col-sm-12">
                                 {{ Form::text('email', '',['class'=>"form-control required", 'placeholder' => trans("form.email_address") ." *"]) }}
@@ -32,7 +32,7 @@
                             </label>
                         </div>
 
-                        <a href="{{ url(LaravelLocalization::getCurrentLocale().'/forgot-password') }}">{!! trans("form.forgot_password")!!}</a>
+                        <a href="{{ url('/forgot-password') }}">{!! trans("form.forgot_password")!!}</a>
                         <div class="text-center">
                                 <button class="btn btn-clickee-default" type="submit" id="login-btn">{!! trans("form.login")!!}</button>
                         </div>

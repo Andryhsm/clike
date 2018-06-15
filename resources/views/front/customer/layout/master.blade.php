@@ -52,9 +52,6 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-            var base_url = {!! "'".URL::to('/')."/'" !!};
-        </script>
         @include('front.layout.footer')
         @yield('footer-script')
         

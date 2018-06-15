@@ -101,5 +101,6 @@
     var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";  
 </script>
 @yield('footer-scripts')
+@include('merchant.layout.model')
 </body>
 </html>

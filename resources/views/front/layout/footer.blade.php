@@ -13,30 +13,30 @@
                     <a href="{!! URL::to('/') !!}"><img class="footer-area-logo-width" src="{!! URL::to('/') !!}/images/logo_blanc.svg" alt="logo"/></a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-xs-12">
+            <div class="footer-links">
+                <div class="footer-item">
                     <div class="footer-menu">
                          <span class="top-link-footer">CLICKEE</span>
                         <ul>
                             <li class="footer-menu">
-                                <a href="{!! url(LaravelLocalization::getCurrentLocale().'/qui-sommes-nous') !!}">Qui sommes-nous ? </a>
+                                <a href="{!! route('qui-sommes-nous') !!}">Qui sommes-nous ? </a>
                             </li>
                             <li >
-                                <a href="{!! url(LaravelLocalization::getCurrentLocale().'/fonctionnement') !!}">Fonctionnement</a>
+                                <a href="{!! route('fonctionnement') !!}">Fonctionnement</a>
                             </li>
                             <li >
-                                <a href="{!! url(LaravelLocalization::getCurrentLocale().'/presse') !!}">Presse</a>
+                                <a href="{!! route('presse') !!}">Presse</a>
                             </li>
                             <li >
-                                <a href="{!! url(LaravelLocalization::getCurrentLocale().'/mentions-légales-clickee') !!}">Mentions légales</a>
+                                <a href="{!! route('mentions-légales-clickee') !!}">Mentions légales</a>
                             </li>
                             <li >
-                                <a href="{!! url(LaravelLocalization::getCurrentLocale().'/contact-us') !!}">Contactez-nous</a>
+                                <a href="{!! route('contact-us-get') !!}">Contactez-nous</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="footer-item">
                     <!-- single-footer-area-start -->
                     <div class="single-footer">
                         <div class="footer-menu">
@@ -44,52 +44,52 @@
                             <ul>
                                 @if(!$is_user_login || Auth::user()->role_id==1)                                
                                     @if($is_user_login)
-                                        <li class="footer-menu"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/logout') !!}">Déconnexion</a></li>
+                                        <li class="footer-menu"><a href="{!! route('logout') !!}">Déconnexion</a></li>
                                     @else
-                                        <li class="footer-menu"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/login') !!}">Inscription / Connexion</a></li>
+                                        <li class="footer-menu"><a href="{!! route('login') !!}">Inscription / Connexion</a></li>
                                     @endif
                                     <?php $spaceC = ""; ?>
                                 @else
                                     <?php $spaceC = "footer-menu"; ?>
                                 @endif
-                                <li class="{!! $spaceC !!}"> <a href="{!! url(LaravelLocalization::getCurrentLocale().'/acheter-avec-clickee') !!}">Achetez avec Clickee</a></li>
-                                <li> <a href="{!! url(LaravelLocalization::getCurrentLocale().'/faq') !!}">FAQ Clients</a></li>
-                                <li> <a href="{!! url(LaravelLocalization::getCurrentLocale().'/conditions-générales-de-vente') !!}">CGV</a></li>
+                                <li class="{!! $spaceC !!}"> <a href="{!! url('/acheter-avec-clickee') !!}">Achetez avec Clickee</a></li>
+                                <li> <a href="{!! route('faq') !!}">FAQ Clients</a></li>
+                                <li> <a href="{!! route('conditions-générales-de-vente') !!}">CGV</a></li>
                             </ul>
                         </div>
                     </div>
                     <!-- single-footer-area-end -->
                 </div>
-                <div class="col-lg-3 col-md-6 hidden-sm col-xs-12 mt-52 second-footer">
+                <div class="footer-item mt-52 second-footer">
                     <!-- single-footer-area-start -->
                     <div class="single-footer">
                         <div class="">
-                            <div class="col-lg-12 col-md-6 col-xs-12">
+                            <div class="no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="footer-menu">
                                     <span class="top-link-footer">COMMERÇANTS</span>
                                     <ul>
                                         @if(!$is_user_login || Auth::user()->role_id==2)                               
                                             @if($is_user_login)
-                                                <li class="footer-menu"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/dashboard') !!}">Mon compte pro</a></li>
-                                                <li class=""><a href="{!! url(LaravelLocalization::getCurrentLocale().'/logout') !!}">Déconnexion</a></li>
+                                                <li class="footer-menu"><a href="{!! route('merchant-dashboard') !!}">Mon compte pro</a></li>
+                                                <li class=""><a href="{!! url('/logout') !!}">Déconnexion</a></li>
                                             @else
-                                                <li class="footer-menu"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/login') !!}">Inscription / Connexion</a></li>
+                                                <li class="footer-menu"><a href="{!! route('merchant-login') !!}">Inscription / Connexion</a></li>
                                             @endif
                                             <?php $spaceM = "" ; ?>
                                         @else
                                             <?php $spaceM = "footer-menu" ; ?>
                                         @endif
                                         <li class="{!! $spaceM !!}">
-                                            <a href="{!! url(LaravelLocalization::getCurrentLocale().'/vendre-avec-nous') !!}">Vendre avec Clickee</a>
+                                            <a href="{!! route('vendre-avec-nous') !!}">Vendre avec Clickee</a>
                                         </li>
                                         <li>
-                                            <a href="{!! url(LaravelLocalization::getCurrentLocale().'/business-faq') !!}">FAQ Boutiques</a>
+                                            <a href="{!! route('business-faq') !!}">FAQ Boutiques</a>
                                         </li>
                                         <li>
-                                            <a href="{!! url(LaravelLocalization::getCurrentLocale().'/nos-conseils-photo') !!}">Nos conseils photo</a>
+                                            <a href="{!! route('nos-conseils-photo') !!}">Nos conseils photo</a>
                                         </li>
                                         <li>
-                                            <a href="{!! url(LaravelLocalization::getCurrentLocale().'/conditions-générales-d-utilisation') !!}">CGU</a>
+                                            <a href="{!! route('conditions-générales-d-utilisation') !!}">CGU</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 "> <!--  style="margin-top:15px !important;" -->
+                <div class="footer-item"> <!--  style="margin-top:15px !important;" -->
                     <div class="single-footer">
                         <div class="footer-icon"> <!-- block2 -->
                             <!-- <div class="container"> -->
@@ -117,7 +117,7 @@
                             <p>{!! trans("common/label.newsletter_text")!!}</p>
                         </div>
                         <div class="footer-box">
-                            <form action="{!! url(LaravelLocalization::getCurrentLocale().'/subscribe') !!}" method="post">
+                            <form action="{!! url('/subscribe') !!}" method="post">
                                 <input type="text" name="email" class="required email" placeholder='ENTREZ VOTRE E-MAIL ICI'/>
                                 <button type="submit" id="subscribe">OK</button>
                             </form>
@@ -146,9 +146,9 @@
                     <div class="footer-bottom-menu text-right">
                         <nav>
                             <ul>
-                                <li><a href="{!! url(LaravelLocalization::getCurrentLocale().'/about-us') !!}">{!! trans("common/label.about_us")!!}</a></li>
-                                <li><a href="{!! url(LaravelLocalization::getCurrentLocale().'/terms-conditions') !!}">{!! trans("common/label.terms_conditions")!!}</a></li>
-                                <li><a href="{!! url(LaravelLocalization::getCurrentLocale().'/privacy-cookies') !!}">{!! trans("common/label.privacy_cookies")!!}</a></li>
+                                <li><a href="{!! url('/about-us') !!}">{!! trans("common/label.about_us")!!}</a></li>
+                                <li><a href="{!! url('/terms-conditions') !!}">{!! trans("common/label.terms_conditions")!!}</a></li>
+                                <li><a href="{!! url('/privacy-cookies') !!}">{!! trans("common/label.privacy_cookies")!!}</a></li>
                             </ul>
                         </nav>
                     </div>

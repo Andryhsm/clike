@@ -21,7 +21,7 @@ class Order extends Model
     public function customer()
     {
         return $this->hasOne(User::class, 'user_id', 'user_id');
-    }
+    }   
 
     public function billingAddress()
     {

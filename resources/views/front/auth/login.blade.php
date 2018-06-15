@@ -8,17 +8,17 @@
                                     </div> 
                                     <div class="connect-social-media mt-10">   
                                         <div class="col-md-4">
-                                            <button onclick="location.href='{{url(LaravelLocalization::getCurrentLocale().'/auth/facebook')}}'" class="btn btn-lg btn-facebook mt-20 col-xs-12">
+                                            <button onclick="location.href='{{url('/auth/facebook')}}'" class="btn btn-lg btn-facebook mt-20 col-xs-12">
                                                     <i class="fa rs-size fa-facebook pull-left"></i><span>FACEBOOK</span>
                                             </button>
                                         </div>
                                         <div class="col-md-4">
-                                            <button onclick="location.href='{{ url(LaravelLocalization::getCurrentLocale().'/auth/google')}}'" class="btn btn-lg btn-google mt-20 col-xs-12">
+                                            <button onclick="location.href='{{ url('/auth/google')}}'" class="btn btn-lg btn-google mt-20 col-xs-12">
                                                     <i class="fa rs-size fa-google-plus pull-left"></i><span>GOOGLE</span>
                                             </button>
                                         </div>
                                         <div class="col-md-4">
-                                            <button onclick="location.href='{{ url(LaravelLocalization::getCurrentLocale().'/auth/twitter')}}'" class="btn btn-lg btn-twitter mt-20 col-xs-12">
+                                            <button onclick="location.href='{{ url('/auth/twitter')}}'" class="btn btn-lg btn-twitter mt-20 col-xs-12">
                                                     <i class="fa rs-size fa-twitter pull-left"></i><span>TWITTER</span>
                                             </button>
                                         </div>
@@ -44,7 +44,7 @@
                             <h2>{!! trans("form.member_login")!!}</h2>
                         </div -->
                         <p></p>
-                        {!! Form::open(['url' => url(LaravelLocalization::getCurrentLocale().'/login'), 'id'=>'login_form', 'method' => 'post', 'role' => 'form' ,'class'=>'form-horizontal','autocomplete'=>'off']) !!}
+                        {!! Form::open(['url' => route('login-post'), 'id'=>'login_form', 'method' => 'post', 'role' => 'form' ,'class'=>'form-horizontal','autocomplete'=>'off']) !!}
                         <div class="form-group row mb-0">
                              <div class="col-sm-12">
                                 {{ Form::text('email', '',['class'=>"required form-control", 'placeholder' =>  trans("form.email_address")." *"]) }}
@@ -65,7 +65,7 @@
                             </label>
                         </div>    
 
-                        <a href="{{ url(LaravelLocalization::getCurrentLocale().'/forgot-password') }}">{!! trans("form.forgot_password")!!} ? </a>
+                        <a href="{{ url('/forgot-password') }}">{!! trans("form.forgot_password")!!} ? </a>
                         <div class="text-center">
                                 <button type="submit" id="login-btn" class="btn btn-clickee-default">SHOPPER</button>
                         </div>

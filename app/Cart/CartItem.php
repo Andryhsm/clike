@@ -54,7 +54,7 @@ class CartItem implements Arrayable
 
     public function __construct()
     {
-        $this->attributes                       = new Collection();
+        $this->attributes = new Collection();
     }
 
     /**
@@ -87,12 +87,9 @@ class CartItem implements Arrayable
 
     public function init(Product $product, $data)
     {
-       
         $this->id                      = $product->product_id;
-        //$this->quantity                = round($data['qty']);
+        $this->quantity                = $data['qty'];
         $this->parent_row_id = isset($data['parent_row_id']) ? $data['parent_row_id'] : null;
-		//$this->radius = $data['radius'];
-		//$this->postal_code = $data['postal_code'];
 		$this->brand = $product->brand_id;
 
         $user_attrs = [];

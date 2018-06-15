@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>CLICKEE | Client</title>
+        <title>{!! 'coupon_'.Auth::user()->first_name.'_'.Auth::user()->last_name.'_'.$item->order->order_id !!}</title>
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
         
@@ -44,11 +44,11 @@
                                     <p>Votre commande vous attend à la boutique {!! $item->product->store->store_name !!}.</p>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="customer  col-lg-7">
+                                    <div class="col-lg-12" style="border: 4px solid #65bb9f; padding: 2% 0 0 0;float: none; margin-left: 9%; margin-right: 9%;margin-bottom: 10%;">
                                         <span class="mini-height">
                                             @foreach ($item->itemRequest as $index=>$request)
                                             <p>Réservation acceptée par :<pan class="title-bold-2"> {!! $request->merchant->last_name !!} {!! $request->merchant->first_name !!}</pan></p>
-                                            <p>Date d’acceptation :<pan class="title-bold-2"> {!! formatDate($request->booked_date, "M dS, Y") !!} </pan></p>
+                                            <p>Date d’acceptation :<pan class="title-bold-2"> {!! Jenssegers\Date\Date::parse($request->created_date)->format('d-m-Y')!!}se </pan></p>
                                             @endforeach
                                             <p>Adresse :<pan class="title-bold-2"> {!! $item->product->store->address1 !!}</pan></p>
                                             <p>N° de téléphone :<pan class="title-bold-2"> {!! $item->product->store->phone !!}</pan></p>
@@ -57,11 +57,11 @@
                                     </div>
                                 </div>
                                 
-                                <div class="coupon-product text-center col-md-12 col-xs-12 col-sm-12">
+                                <div class="coupon-product text-center col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                     <div class="order_img col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                                        <img style="border: 4px solid #044651;" src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
+                                        <img style="border: 4px solid #044651; max-width:60%;" src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                                     </div>
-                                    <div class="ptb-10 col-lg-8 col-md-8 col-xs-8 col-sm-4" style="padding-left: 170px;text-align:left;">
+                                    <div class="ptb-10 col-lg-8 col-md-8 col-xs-8 col-sm-4" style="padding-left: 185px;text-align:left;">
                                         @if(count($item->brand)>0)
                                             <p class="title-bold-2 mb-30">{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</p>
                                         @endif
@@ -71,7 +71,7 @@
                                                 <p>{!! $attribute->attribute_label !!} {!! $attribute->attribute_selected_value !!}</p>
                                             @endforeach
                                         </span>
-                                        <p><span>Tarif : </span><span class="title-bold-2">{!! format_price($item->price) !!}</span></p>
+                                        <p><span>Tarif : </span><span class="title-bold-2">{!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)</span></p>
                                     </div>
                                 </div>
                                 <br><br><br><br><br><br><br><br><br><br><br>

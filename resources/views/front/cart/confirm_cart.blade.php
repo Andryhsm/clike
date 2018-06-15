@@ -9,7 +9,7 @@
                     @include('notification')
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 pt-40">
-                    {!! Form::open(['url' => url(LaravelLocalization::getCurrentLocale().'/checkout'),'id' =>'cart_form', 'method' => 'POST']) !!}
+                    {!! Form::open(['url' => route('checkout'),'id' =>'cart_form', 'method' => 'POST']) !!}
                         <div class="row">
                              <div class="cart-order col-lg-7 col-md-7 col-sm-7 col-xs-12 mb-20">
                                 <div class="cart-information row">

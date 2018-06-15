@@ -72,7 +72,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
         Route::get('slider', 'BannerController@sliderindex')->name('slider');
         Route::resource('product-rating', 'ProductRatingController');
 
-        Route::get('product/get-data', 'ProductController@getData')->name('product-data');
+        /*Route::get('product/get-data', 'ProductController@getData')->name('product-data');
         Route::get('product', 'ProductController@index')->name('product');
         Route::post('product/attributes', 'ProductController@attributes')->name('get_attribute');
         Route::post('product', 'ProductController@store')->name('save_product');
@@ -81,7 +81,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
         Route::get('product/edit/{product_id}', 'ProductController@edit')->name('edit_product');
         Route::delete('product/{product_id}', 'ProductController@destroy')->name('remove_product');
         Route::post('product/{product_id}', 'ProductController@update')->name('update_product');
-        Route::get('product/add', 'ProductController@create')->name('create_product');
+        Route::get('product/add', 'ProductController@create')->name('create_product');*/
 
 
 
@@ -171,147 +171,148 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
 
 });
 Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => ''], function () {
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')->name('home');
 
-    Route::get('login', ['uses' => 'Auth\AuthController@getLogin', "middleware" => 'guest', 'as' => 'login']);
-    Route::post('login', 'Auth\AuthController@postLogin');
+    Route::get('connexion', ['uses' => 'Auth\AuthController@getLogin', "middleware" => 'guest', 'as' => 'login']);
+    Route::post('authentification', 'Auth\AuthController@postLogin')->name('login-post');
     Route::get('login-merchant', 'Auth\AuthController@loginInMerchant')->name('login-merchant');
     
-    Route::get('sign-up', ['uses' => 'Auth\AuthController@getRegister', "middleware" => 'guest', 'as' => 'customer-sign-up']);
+    /*Route::get('sign-up', ['uses' => 'Auth\AuthController@getRegister', "middleware" => 'guest', 'as' => 'customer-sign-up'])->name('sign-up');*/
  
-    Route::get('merchant/login', ['uses' => 'Auth\AuthController@getMerchantLogin', "middleware" => 'guest', 'as' => 'merchant-login']);
-    Route::post('merchant/login', ['uses' => 'Auth\AuthController@postMerchantLogin', "middleware" => 'guest']);
+    Route::get('marchand/login', ['uses' => 'Auth\AuthController@getMerchantLogin', "middleware" => 'guest', 'as' => 'merchant-login']);
+    Route::post('marchand/login', ['uses' => 'Auth\AuthController@postMerchantLogin', "middleware" => 'guest'])->name('merchant-login-post');
 
-    Route::get('merchant/sign-up', ['uses' => 'StoreController@create', "middleware" => 'guest', 'as' => 'merchant-sign-up']);
-    Route::post('merchant/sign-up', ['uses' => 'StoreController@postRegister', "middleware" => 'guest']);
+    /*Route::get('merchant/sign-up', ['uses' => 'StoreController@create', "middleware" => 'guest', 'as' => 'merchant-sign-up'])->name('merchant-sign-up-get');*/
+    Route::post('merchant/sign-up', ['uses' => 'StoreController@postRegister', "middleware" => 'guest'])->name('merchant-sign-up-post');
 
-    Route::get('get-radio/{zip}','RadioController@getRadioByZip');
+    Route::get('get-radio/{zip}','RadioController@getRadioByZip')->name('get-radio');
 
     Route::post('register', 'Auth\AuthController@saveUser')->name('sign-up');
     Route::get('logout', 'Auth\AuthController@destroy')->name('logout');
-    Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
-    Route::get('forgot-password', ['as' => 'auth.reset.request', 'uses' => 'Auth\PasswordController@getEmail']);
-    Route::post('forgot-password', ['as' => 'auth.reset.submit', 'uses' => 'Auth\PasswordController@postEmail']);
-    Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\PasswordController@getReset']);
-    Route::post('forgot', ['as' => 'auth.reset', 'uses' => 'Auth\PasswordController@postReset']);
-    Route::get('contact-us', 'ContactUsController@index');
-    Route::post('contact-us', 'ContactUsController@send');
-    Route::get('cart', 'CartController@index');
-    Route::post('cart/add','CartController@add');
-    Route::post('cart/update','CartController@update');
-    Route::get('cart/remove/{item_id}','CartController@remove');
-    Route::post('remove-product','ProductController@removeProduct');
-    Route::post('product-sorting','ProductController@getSortByPrice');
-    Route::get('ask-product/search','ProductController@searchProduct');
-    Route::get('ask-product','ProductController@askProduct');
-    Route::post('product-available','ProductController@productExistsInLocal');
-    Route::get('share-product-detail-on-facebook', 'ShareController@shareProductDetailOnFacebook');
-    Route::get('get-all-product-in-area', 'AutocompleteController@getAllProductInArea');
+    Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider')->name('auth');
+    Route::get('forgot-password', ['as' => 'auth.reset.request', 'uses' => 'Auth\PasswordController@getEmail'])->name('forgot-password-get');
+    Route::post('forgot-password', ['as' => 'auth.reset.submit', 'uses' => 'Auth\PasswordController@postEmail'])->name('forgot-password-post');
+    Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\PasswordController@getReset'])->name('password-reset');
+    Route::post('forgot', ['as' => 'auth.reset', 'uses' => 'Auth\PasswordController@postReset'])->name('forgot');
+    Route::get('contacter-nous', 'ContactUsController@index')->name('contact-us-get');
+    Route::post('contact-us', 'ContactUsController@send')->name('contact-us-post');
+    Route::get('panier', 'CartController@index')->name('cart');
+    Route::post('cart/add','CartController@add')->name('cart-add');
+    Route::post('cart/update','CartController@update')->name('cart-update');
+    Route::get('panier/suppression/{item_id}','CartController@remove')->name('cart-remove');
+    Route::post('remove-product','ProductController@removeProduct')->name('remove-product');
+    Route::post('product-sorting','ProductController@getSortByPrice')->name('product-sorting');
+    Route::get('ask-product/search','ProductController@searchProduct')->name('ask-product-search');
+    Route::get('ask-product','ProductController@askProduct')->name('ask-product');
+    Route::post('product-available','ProductController@productExistsInLocal')->name('product-available');
+    Route::get('share-product-detail-on-facebook', 'ShareController@shareProductDetailOnFacebook')->name('share-product-detail-on-facebook');
+    Route::get('get-all-product-in-area', 'AutocompleteController@getAllProductInArea')->name('get-all-product-in-area');
     
-    Route::get('mentions-légales-clickee','PagesController@legalMention');
-    Route::get('conditions-générales-de-vente','PagesController@PageCGV');
-    Route::get('conditions-générales-d-utilisation','PagesController@PageCGU');
-    Route::get('vendre-avec-nous','PagesController@SaleWithUs');
-    Route::get('presse','PagesController@PagePresse');
-    Route::get('qui-sommes-nous', 'PagesController@PageWhoAreWe');
-    Route::get('acheter-avec-clickee', 'PagesController@PageBuyWithClickee');
-    Route::get('nos-conseils-photo','PagesController@PageOurPhotosTips');
-    Route::get('fonctionnement','PagesController@PageOperation');
-    Route::get('test','PagesController@PageTest');
-    Route::get('sendMailTest','TestController@SendMailTest');
+    Route::get('mentions-légales-clickee','PagesController@legalMention')->name('mentions-légales-clickee');
+    Route::get('conditions-générales-de-vente','PagesController@PageCGV')->name('conditions-générales-de-vente');
+    Route::get('conditions-générales-d-utilisation','PagesController@PageCGU')->name('conditions-générales-d-utilisation');
+    Route::get('vendre-avec-nous','PagesController@SaleWithUs')->name('vendre-avec-nous');
+    Route::get('presse','PagesController@PagePresse')->name('presse');
+    Route::get('qui-sommes-nous', 'PagesController@PageWhoAreWe')->name('qui-sommes-nous');
+    Route::get('acheter-avec-clickee', 'PagesController@PageBuyWithClickee')->name('acheter-avec-clickee');
+    Route::get('nos-conseils-photo','PagesController@PageOurPhotosTips')->name('nos-conseils-photo');
+    Route::get('fonctionnement','PagesController@PageOperation')->name('fonctionnement');
+    Route::get('test','PagesController@PageTest')->name('test');
+    Route::get('sendMailTest','TestController@SendMailTest')->name('sendMailTest');
     
-    Route::get('wishlist','WishlistController@index');
-    Route::get('wishlist/{id}','WishlistController@store');
-    Route::get('wishlist/remove/{id}','WishlistController@remove');
-    Route::get('wishlist/remove_in_list/{id}','WishlistController@remove_in_list');
-    Route::get('wishlist/findid/{idpu}','WishlistController@findIdWishlist');
+    Route::get('liste-des-souhaits','WishlistController@index')->name('wishlist');
+    Route::get('souhait/{id}','WishlistController@store')->name('wishlist-store');
+    Route::get('souhait/supprimer/{id}','WishlistController@remove')->name('wishlist-remove');
+    Route::get('souhait/suppression-dans-un-list/{id}','WishlistController@remove_in_list')->name('wishlist-remove-in-list');
+    Route::get('souhait/findid/{idpu}','WishlistController@findIdWishlist')->name('wishlist-findid');
 
-    Route::get('zoom-image-test', 'TestController@imageZoom');
-    Route::get('page-test', 'TestController@styleElement');
+    Route::get('zoom-image-test', 'TestController@imageZoom')->name('zoom-image-test');
+    Route::get('page-test', 'TestController@styleElement')->name('page-test');
 
     Route::group(['middleware' => ['auth']], function () {        
-        Route::post('checkout', 'CheckoutController@storeOrderInfo');
-        Route::get('checkout/order-confirmed', 'CheckoutController@confirmOrder');
-        Route::post('checkout/confirm-cart', 'CheckoutController@confirmCart');
-        Route::get('checkout_store_quantity_session', 'CheckoutController@storeQuantitySession');
+        Route::post('caisse', 'CheckoutController@storeOrderInfo')->name('checkout');
+        Route::get('checkout/order-confirmed', 'CheckoutController@confirmOrder')->name('checkout-order-confirmed');
+        Route::post('caisse/confirmation', 'CheckoutController@confirmCart')->name('checkout-confirm-cart');
+        Route::get('checkout_store_quantity_session', 'CheckoutController@storeQuantitySession')->name('checkout_store_quantity_session');
         Route::group(['middleware' => ['customer']], function () {
             /*Customer specific routes*/
             Route::get('customer', 'CustomerController@index');
-            Route::group(['prefix' => 'customer/'], function () {
-                Route::get('order/completed', 'CustomerController@completedOrders');
-                Route::get('order/pending', 'CustomerController@onGoingOrders');
-                Route::get('request', 'OrderController@getCustomerOrders');
-                Route::get('current-order', 'CustomerController@getCurrentOrder');
-                Route::get('current-coupon/{id}', 'CustomerController@getCurrentCoupon');
-                Route::get('order-story', 'CustomerController@getOrderStory');
-                Route::get('customer-bills', 'CustomerController@getCustomerBills');
-                Route::get('customer-informations', 'CustomerController@getCustomerInformations');
-                Route::get('newsletters', 'CustomerController@getNewsLetter');
-                Route::get('change-password', 'CustomerController@getChangePassword');
-                Route::post('update-password','CustomerController@updatePassword');
-                Route::get('get-distance-store', 'CustomerController@getDistanceStore');
-                Route::get('help-faq', 'CustomerController@getFaq');
-                Route::post('update-customer-info', 'CustomerController@updateCustomerInformations');
-                Route::get('download-pdf/{id}','CustomerController@downloadPdf');
-                Route::get('print-pdf/{id}','CustomerController@printPdf');
-                Route::get('test-pdf','CustomerController@testPdf');
-                Route::get('waiting-order/{id}','CustomerController@waitingOrder');
-                Route::get('canceled-order/{id}','CustomerController@canceledOrder');
+            Route::group(['prefix' => 'client/'], function () {
+                Route::get('order/completed', 'CustomerController@completedOrders')->name('customer-order-completed');
+                Route::get('order/pending', 'CustomerController@onGoingOrders')->name('customer-order-pending');
+                Route::get('request', 'OrderController@getCustomerOrders')->name('customer-request');
+                Route::get('commande-en-cours', 'CustomerController@getCurrentOrder')->name('customer-commande-en-cours');
+                Route::get('coupon-de-reception/{id}', 'CustomerController@getCurrentCoupon')->name('customer-coupon-de-reception');
+                Route::get('historique-commande', 'CustomerController@getOrderStory')->name('customer-historique-commande');
+                Route::get('customer-bills', 'CustomerController@getCustomerBills')->name('customer-customer-bills');
+                Route::get('informations-client', 'CustomerController@getCustomerInformations')->name('customer-informations-client');
+                Route::get('newsletters', 'CustomerController@getNewsLetter')->name('customer-newsletters');
+                Route::get('modification-mot-de-passe', 'CustomerController@getChangePassword')->name('customer-modification-mot-de-passe');
+                Route::post('changer-mot-de-passe','CustomerController@updatePassword')->name('customer-update-password');
+                Route::get('get-distance-store', 'CustomerController@getDistanceStore')->name('customer-get-distance-store');
+                Route::get('aide-et-faq', 'CustomerController@getFaq')->name('customer-aide-et-faq');
+                Route::post('changer-information-client', 'CustomerController@updateCustomerInformations')->name('customer-update-info');
+                Route::get('telecharger-pdf/{id}','CustomerController@downloadPdf')->name('customer-download-pdf');
+                Route::get('imprimer-pdf/{id}','CustomerController@printPdf')->name('customer-print-pdf');
+                Route::get('waiting-order/{id}','CustomerController@waitingOrder')->name('customer-waiting-order');
+                Route::get('canceled-order/{id}','CustomerController@canceledOrder')->name('customer-canceled-order');
             });
-            Route::post('manage-account', 'CustomerController@postManageAccount');
-            Route::post('change-password', 'CustomerController@postResetPassword');
+            /*Route::post('manage-account', 'CustomerController@postManageAccount')->name('manage-account');
+            Route::post('change-password', 'CustomerController@postResetPassword')->name('change-password');
 
-            Route::post('choose-seller/{seller_id}', 'OrderController@chooseSeller');
-            Route::post('booking-request', 'OrderController@bookingRequest');
-            Route::post('cancel-request', 'OrderController@cancelRequest');
+            Route::post('choose-seller/{seller_id}', 'OrderController@chooseSeller')->name('choose-seller');
+            Route::post('booking-request', 'OrderController@bookingRequest')->name('booking-request');
+            Route::post('cancel-request', 'OrderController@cancelRequest')->name('cancel-request');*/
         });
 
         Route::group(['middleware' => ['merchant']], function () {
             /*merchnat specific routes*/
-            Route::get('merchant', 'MerchantController@index');
-            Route::group(['prefix' => 'merchant/'], function () {
+            Route::get('merchant', 'MerchantController@index')->name('merchant');
+            Route::group(['prefix' => 'marchand/'], function () {
                 
-                Route::get('orders', 'MerchantController@getOrders');
-                Route::get('stores', 'MerchantController@getStores');
-                Route::get('request', 'OrderController@getMerchantOrders');
-                Route::get('invoices', 'MerchantController@invoices');
-                Route::post('add-card', 'MerchantController@addCard');
-                Route::post('pay-invoice/{id}', 'MerchantController@payInvoice');
+                Route::get('orders', 'MerchantController@getOrders')->name('orders');
+                Route::get('stores', 'MerchantController@getStores')->name('stores');
+                Route::get('request', 'OrderController@getMerchantOrders')->name('request');
+                Route::get('invoices', 'MerchantController@invoices')->name('invoices');
+                Route::post('add-card', 'MerchantController@addCard')->name('add-card');
+                Route::post('pay-invoice/{id}', 'MerchantController@payInvoice')->name('pay-invoice');
 
                 Route::group(['namespace' => 'Merchant'], function(){
-                    Route::get('dashboard','DashboardController@index');
-                    Route::get('statistical','DashboardController@statistical');
-                    Route::get('inlineLocal','DashboardController@salesInlineLocal');
-                    Route::resource('code_promo','CodePromoController');
+                    Route::get('tableau-de-bord','DashboardController@index')->name('merchant-dashboard');
+                    Route::get('statistical','DashboardController@statistical')->name('merchant-statistical');
+                    Route::get('inlineLocal','DashboardController@salesInlineLocal')->name('merchant-inlineLocal');
+                    Route::resource('code-promo','CodePromoController');
                     Route::resource('promotion','PromotionController');
-                    Route::resource('orders','OrderController');
-                    Route::get('bookedRequest/{id}','OrderController@bookingRequest');
-                    Route::get('product/get-data', 'ProductController@getData')->name('product-data');
-                    Route::get('product', 'ProductController@index')->name('product_merchant');
-                    Route::get('product/attributes', 'ProductController@attributes')->name('get_attribute');
-                    Route::post('product', 'ProductController@store')->name('save_product_merchant');
-                    Route::post('product/upload', 'ProductController@uploadImage')->name('upload_product_media');
-                    Route::get('product/edit/{product_id}', 'ProductController@edit')->name('edit_product');
-                    Route::delete('product/{product_id}', 'ProductController@destroy')->name('remove_product');
-                    Route::post('product/{product_id}', 'ProductController@update')->name('update_product');
-                    Route::get('product/get-product-for-encasement', 'ProductController@getProductForEncasement');
-                    Route::get('product/get-code-promo-by-category', 'ProductController@getCodePromoByCategory');
-                    Route::get('product/remove_product_image', 'ProductController@removeImage')->name('remove_product_image');
-                    Route::get('product/add', 'ProductController@create')->name('create_product');
-                    Route::resource('customer', 'CustomerController');
-                    Route::get('facture','CustomerController@facture');
-                    Route::get('facturePdf','CustomerController@facturePdf');
-                    Route::get('contact','CustomerController@addContact');
-                    Route::post('save_contact','CustomerController@saveContactCustomer');
-                    Route::get('encasement', 'CustomerController@encasement')->name('encasement');
+                    Route::resource('commande','OrderController');
+                    Route::get('terminer-commande/{id}','OrderController@bookingRequest')->name('merchant-booked-request');
+                    Route::get('produit/get-data', 'ProductController@getData')->name('merchant-product-data');
+                    Route::get('produit', 'ProductController@index')->name('merchant-product');
+                    Route::get('produit/attributes', 'ProductController@attributes')->name('get_attribute');
+                    Route::post('produit', 'ProductController@store')->name('save_product_merchant');
+                    Route::post('produit/upload', 'ProductController@uploadImage')->name('upload_product_image');
+                    Route::get('produit/edit/{product_id}', 'ProductController@edit')->name('edit_product');
+                    Route::delete('produit/{product_id}', 'ProductController@destroy')->name('remove_product');
+                    Route::post('produit/{product_id}', 'ProductController@update')->name('update_product');
+                    Route::get('produit/get-product-for-encasement', 'ProductController@getProductForEncasement');
+                    Route::get('produit/get-code-promo-by-category', 'ProductController@getCodePromoByCategory');
+                    Route::get('produit/remove_product_image', 'ProductController@removeImage')->name('remove_product_image');
+                    Route::get('produit/add', 'ProductController@create')->name('create_product');
+                    Route::post('produit/search-product','ProductController@searchProduct')->name('merchant_search_product');
+                    Route::post('produit/remove-product-tag', 'ProductController@removeTag')->name('merchant_product_remove_tag');
+                    Route::resource('client', 'CustomerController');
+                    Route::get('facture','CustomerController@facture')->name('merchant-facture');
+                    Route::get('facturePdf','CustomerController@facturePdf')->name('merchant-facturePdf');
+                    Route::get('contact','CustomerController@addContact')->name('merchant-contact');
+                    Route::post('save_contact','CustomerController@saveContactCustomer')->name('save_contact');
+                    Route::get('encaissement', 'CustomerController@encasement')->name('encasement');
                     Route::post('get-product','CodePromoController@getProduct')->name('get_product');
-                    Route::get('get-customers', 'CustomerController@getAllCustomer');
+                    Route::get('get-customers', 'CustomerController@getAllCustomer')->name('get-customers');
                 }); 
             });
 
-            Route::get('invoice/{id}','MerchantController@viewInvoice');
-            Route::resource('store', 'StoreController');
-            Route::post('response-to-customer', 'OrderController@responseToCustomer');
+            Route::get('invoice/{id}','MerchantController@viewInvoice')->name('invoice');
+            Route::resource('magasin', 'StoreController');
+            Route::post('response-to-customer', 'OrderController@responseToCustomer')->name('response-to-customer');
         });
     });
 
@@ -325,20 +326,20 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
     Route::post('search_store', function () {
         return view('front.store.search_store');
     });
-    Route::get('blog/{blog_id}','BlogController@show');
-    Route::get('faq', 'FaqController@index');
-    Route::get('business-faq', 'FaqController@businessFaq');
-    Route::get('blog-list', 'BlogController@allPost');
-    Route::post('submit-review','ProductController@submitReview');
-    Route::post('get-distance','ProductController@getDistance');
-    Route::get('get-distance-store', 'CatalogController@getDistanceStore');
-    Route::get('add-info-cookie', 'CatalogController@addInfoCookie');
-    Route::get('save-latest-category', 'CatalogController@saveLatestCategory');
-    Route::get('search', 'CatalogController@search')->name('search');
+    Route::get('blog/{blog_id}','BlogController@show')->name('blog');
+    Route::get('faq', 'FaqController@index')->name('faq');
+    Route::get('faq-boutiques', 'FaqController@businessFaq')->name('business-faq');
+    Route::get('blog-list', 'BlogController@allPost')->name('blog-list');
+    Route::post('submit-review','ProductController@submitReview')->name('submit-review');
+    Route::post('get-distance','ProductController@getDistance')->name('get-distance');
+    Route::get('get-distance-store', 'CatalogController@getDistanceStore')->name('get-distance-store');
+    Route::get('add-info-cookie', 'CatalogController@addInfoCookie')->name('add-info-cookie');
+    Route::get('save-latest-category', 'CatalogController@saveLatestCategory')->name('save-latest-category');
+    Route::get('catalogue', 'CatalogController@search')->name('search');
     Route::post('set-location', 'CatalogController@setLocation')->name('set-location');
-    Route::post('subscribe','NewsletterController@subscribe');
+    Route::post('subscribe','NewsletterController@subscribe')->name('subscribe');
     Route::get('crowdfunding', 'CrowdfundingController@index')->name('crowdfunding');
-    Route::get('getLists','NewsletterController@getListMembers');
+    Route::get('getLists','NewsletterController@getListMembers')->name('getLists');
     Route::get('image-color-code/{color_code}', function ($hex_code) {
         $handle = ImageCreate(24, 24);
         $rgb1 = hexdec($hex_code[0] . $hex_code[1]);

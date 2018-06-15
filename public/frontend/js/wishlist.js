@@ -1,11 +1,13 @@
 /*wishlist add*/
-function addwishlist(idP, idU) {
-    console.log("Id product : " + idP);
+function addwishlist(idP, idU, elt) {
+    var $this = $(elt);
     var w_class = '.w' + idP;
     var wG_class = '.wG' + idP;
     /*var url = 'wishlist/' + id_product;*/
     if ($(wG_class).hasClass('coeur_gm') || $(w_class).hasClass('coeur_pm')) {
-        var urlid = base_url + language_code + '/wishlist/findid/' + idP + '§' + idU;
+        //var urlid = base_url + 'wishlist/findid/' + idP + '§' + idU;
+        var urlid = $this.data('url-find-wishlist') + '/' + idP + '§' + idU;
+        
         /*var urlid = 'wishlist/findid/' + idP +'§'+ idU;*/
         /*si local*/
 
@@ -17,12 +19,10 @@ function addwishlist(idP, idU) {
                 $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
             },
             success: function(response, status) {
-                console.log("Toute response : " + response);
-                console.log(response[1]);
-                var urld = base_url + language_code + '/wishlist/remove/' + response[1];
-                /*var urld = 'wishlist/remove/' + response[1];*/
+                //var urld = base_url +  'wishlist/remove/' + response[1];
+                var urld = $this.data('url-remove-wishlist') + '/' + response[1];
+        
                 /*si local*/
-
                 $.ajax({
                     type: 'GET',
                     url: urld,
@@ -53,7 +53,8 @@ function addwishlist(idP, idU) {
 
     }
     else {
-        var url = base_url + language_code + '/wishlist/' + idP;
+        //var url = base_url +  'wishlist/' + idP;
+        var url = $this.data('url-add-wishlist');
         /*var url = 'wishlist/' + idP;*/
         /*si local*/
         $.ajax({

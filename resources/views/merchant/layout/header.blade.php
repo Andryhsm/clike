@@ -44,7 +44,7 @@
                                 @endforeach
                             </div>
                             <div class="pull-right">
-                                <a href="{!! url(LaravelLocalization::getCurrentLocale().'/logout') !!}" class="btn btn-default btn-flat">Déconnexion</a>
+                                <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat">Déconnexion</a>
                             </div>
                         </li>
                     </ul>

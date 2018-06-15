@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="modal-body">
-            <form method="GET" id="form-search" action="search">   
+            <form method="GET" id="form-search" action="{!! route('search') !!}">   
                <input type="text" id="search-product-input" name="q" placeholder="Chercher ..." name="search-product">
                <button type="submit" class="icon btn icon-search search-product btn-search"></button>
             </form>

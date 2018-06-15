@@ -19,11 +19,8 @@
 	                        <button type="button" class="close" href="javascript:history.back()" aria-label="Close">
 	                    </ul>
 	                    <div class="tab-content tab-login">
-	                    
-
-	                        <div role="tabpanel" class="tab-pane active" id="uploadTab">
-	              
-	                        	@include('front.auth.login', ['role_id' => 1])
+	                    	<div role="tabpanel" class="tab-pane active" id="uploadTab">
+	              				@include('front.auth.login', ['role_id' => 1])
 	                        </div>
 	                        <div role="tabpanel" class="tab-pane" id="browseTab">
 	                        	@include('front.auth.register', ['role_id' => 1])

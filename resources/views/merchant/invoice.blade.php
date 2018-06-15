@@ -34,7 +34,7 @@
 
                 <div class="row">
                     <a class="btn btn-default default-btn"
-                       href="{!! url(LaravelLocalization::getCurrentLocale().'/invoice/'.$invoice->id) !!}">{!! trans('merchant.view_invoice') !!}</a>
+                       href="{!! url('/invoice/'.$invoice->id) !!}">{!! trans('merchant.view_invoice') !!}</a>
                 </div>
             </div>
         @endforeach

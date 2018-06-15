@@ -16,39 +16,39 @@
                     </div>
                 </div>
                 <div class="row">
-                <div class="order-containt col-lg-12">
-                    <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="order-content col-lg-12">
+                    <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                     </div>
-                    <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-5">
                         @if(count($item->brand)>0)
                             <div><strong class="text-uppercase">{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong></div>
                         @endif
-                        <div class="">
+                        <div class="order-description">
                             <p>{!! $item->product_name !!}</p>
                             @foreach($item->attributes as $index=>$attribute)
                                 <p>{!! $attribute->attribute_label !!} {!! $attribute->attribute_selected_value !!}</p>
                             @endforeach
                         </div>
                         <div>
-                            <div class="title-bold-2">{!! format_price($item->price) !!}</div>
+                            <div class="title-bold-2">{!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)</div>
                         </div>
                     </div>
-                    <div class="order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         @if($item->order_status_id == 3)
                             <div>
-                                <button class="btn btn-customer-filled pull-right" id="{!! $item->order_item_id !!}" type="button" onclick="waiting_order({!! $item->itemRequest->first()->order_item_request_id !!},this);">
+                                <button class="btn btn-customer-filled pull-right" data-url="{!! route('customer-waiting-order', ['id' => $item->itemRequest->first()->order_item_request_id]) !!}" id="{!! $item->order_item_id !!}" type="button" onclick="waiting_order(this);">
                                     <span>Attendre</span>
                                 </button>
                             </div>
                             <div>
-                                <button class="btn btn-customer-filled pull-right" id="{!! $item->order_item_id !!}" type="button" onclick="canceled_order({!! $item->itemRequest->first()->order_item_request_id !!},this);">
+                                <button class="btn btn-customer-filled pull-right" data-url="{!! route('customer-canceled-order', ['id' => $item->itemRequest->first()->order_item_request_id]) !!}" id="{!! $item->order_item_id !!}" type="button" onclick="canceled_order(this);">
                                     <span>Annuler</span>
                                 </button>
                             </div>
                         @else
                             <div>
-                                <a href="{!! url(LaravelLocalization::getCurrentLocale().'/customer/current-coupon/'.$item->order_item_id) !!}" class="Coupon btn btn-customer-filled pull-right">Coupon à présenter</a>
+                                <a href="{!! route('customer-coupon-de-reception',['id' => $item->order_item_id]) !!}" class="Coupon btn btn-customer-filled pull-right">Coupon à présenter</a>
                             </div>
                             <div>
                                 <button class="Reception btn btn-customer-filled pull-right" type="button" onclick="reception(this);">
@@ -69,7 +69,7 @@
                             <?php $store = $item->product->store; ?>
                             <span class="mini-height">
                                 <strong class="text-uppercase">{!! $store->store_name !!}</strong>
-                                <p class="shop-data" data-store_name="{{ $store->store_name }}" data-short_description="{{ $store->short_description }}" data-latitude="{{ $store->latitude }}" data-longitude="{{ $store->longitude }}" data-shop_image="{{ $store->shop_image }}" data-registration_number="{{ $store->registration_number }}">{!! $store->store_name !!} {!! $store->city !!}</p>
+                                <p class="shop-data" data-url="{!! route('get-distance-store') !!}" data-store_name="{{ $store->store_name }}" data-short_description="{{ $store->short_description }}" data-latitude="{{ $store->latitude }}" data-longitude="{{ $store->longitude }}" data-shop_image="{{ $store->shop_image }}" data-registration_number="{{ $store->registration_number }}" data-country="{{ $store->country->name }}">{!! $store->store_name !!} {!! $store->city !!}</p>
                                 <p>{!! $store->zip !!}</p>
                                 <p class="store-distance">À 0,0km de chez vous</p>
                             </span>
@@ -91,25 +91,25 @@
                     </div>
                 </div>
                 <div class="row">
-                <div class="order-containt col-lg-12">
-                    <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="order-content col-lg-12">
+                    <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                     </div>
-                    <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         @if(count($item->brand)>0)
                             <div><strong class="text-uppercase">{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong></div>
                         @endif
-                        <div class="">
+                        <div class="order-description">
                             <p>{!! $item->product_name !!}</p>
                             @foreach($item->attributes as $index=>$attribute)
                                 <p>{!! $attribute->attribute_label !!} {!! $attribute->attribute_selected_value !!}</p>
                             @endforeach
                         </div>
                         <div>
-                            <div class="title-bold-2">{!! format_price($item->price) !!}</div>
+                            <div class="title-bold-2">{!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)</div>
                         </div>
                     </div>
-                    <div class="order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div>
                             <a disabled="disabled" class="Coupon btn btn-customer-filled pull-right">Coupon à présenter</a>
                         </div>
@@ -131,7 +131,7 @@
                             <?php $store = $item->product->store; ?>
                             <span class="mini-height">
                                 <strong class="text-uppercase">{!! $store->store_name !!}</strong>
-                                <p class="shop-data" data-store_name="{{ $store->store_name }}" data-short_description="{{ $store->short_description }}" data-latitude="{{ $store->latitude }}" data-longitude="{{ $store->longitude }}" data-shop_image="{{ $store->shop_image }}" data-registration_number="{{ $store->registration_number }}">{!! $store->store_name !!} {!! $store->city !!}</p>
+                                <p class="shop-data" data-store_name="{{ $store->store_name }}" data-short_description="{{ $store->short_description }}" data-latitude="{{ $store->latitude }}" data-longitude="{{ $store->longitude }}" data-shop_image="{{ $store->shop_image }}" data-registration_number="{{ $store->registration_number }}" data-country="{{ $store->country->name }}">{!! $store->store_name !!} {!! $store->city !!}</p>
                                 <p>{!! $store->zip !!}</p>
                                 <p class="store-distance">À 0,0km de chez vous</p>
                             </span>

@@ -25,6 +25,14 @@ class CheckoutController extends Controller
 	{
 		$cart_product_info = Session::get('cart_product_info');
 		$this->cart->setCustomer(Auth::user());
+		foreach ($request->input("qty", []) as $item_id => $qty) {
+			$item = $this->cart->item($item_id);
+			if ($qty == 0) {
+				$this->cart->remove($item_id);
+			} else {
+				$item->setQuantity($qty);
+			}
+		}
 		try {
 			$order = $this->order_processor->placeOrder($this->cart, $request->all());
 			$this->cart->clear();

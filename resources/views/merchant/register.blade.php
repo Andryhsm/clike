@@ -16,11 +16,11 @@
                 <div class="register-area register-area-merchant">
                     <?php
                         if($store){
-                            $url = url(LaravelLocalization::getCurrentLocale()."/store/$store->store_id");
+                            $url = route('store.edit', ['id' => $store->store_id]);
                         }elseif(Auth::check()){
-                            $url = url(LaravelLocalization::getCurrentLocale()."/store");
+                            $url = route("store");
                         }else{
-                            $url = url(LaravelLocalization::getCurrentLocale().'/merchant/sign-up');
+                            $url = route('merchant-sign-up-post');
                         }
                     ?>
                     

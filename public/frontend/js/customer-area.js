@@ -94,11 +94,12 @@ function reception(box) {
 };
 
 function get_distance_store($shop_data) {
+    var url = $shop_data.data('url');
     $.ajax({
-            url: base_url + 'customer/get-distance-store',
+            url: url,
             type: 'GET',
             dataType: 'json',
-            data: { latitude: $shop_data.data('latitude'), longitude: $shop_data.data('longitude') },
+            data: { latitude: $shop_data.data('latitude'), longitude: $shop_data.data('longitude'), country: $shop_data.data('country') },
         })
         .done(function(data) {
             $('.store-distance').html('À ' + data.distance + ' km de chez vous');
@@ -230,13 +231,13 @@ function togglePassword(pass) {
 function changepassword() {
     var old = $('#password-old').val();
     var news = $('#password-new').val();
+    url = $('#form-update-password').attr('action');
     $.ajax({
-            url: 'update-password',
+            url: url,
             type: 'POST',
             data: { old_password: old, new_password: news },
         })
         .done(function(datas) {
-            console.log(datas);
             if (datas.success) {
                 toastr.success(datas.message);
             }
@@ -265,8 +266,9 @@ function updateCustomerInfo() {
     });
     if (form_customer.valid()) {
         $data = form_customer.serialize();
+        var url = $('#customer-form').attr('action');
         $.ajax({
-                url: 'update-customer-info',
+                url: url,
                 type: 'POST',
                 data: $data
             })
@@ -282,10 +284,12 @@ function updateCustomerInfo() {
 
 }
 
-function waiting_order(id, classe) {
+function waiting_order(classe) {
+    var $this = $(classe);
     var cle = $(classe).attr("id");
+    var url = $this.data('url');
     $.ajax({
-            url: base_url + 'customer/waiting-order/' + id,
+            url: url,
             type: 'GET',
             dataType: 'json',
         })
@@ -299,9 +303,12 @@ function waiting_order(id, classe) {
         });
 }
 
-function canceled_order(id, classe) {
+function canceled_order(classe) {
+    var $this = $(classe);
+    var url = $this.data('url');
+    
     $.ajax({
-            url: base_url + 'customer/canceled-order/' + id,
+            url: url,
             type: 'GET',
             dataType: 'json',
         })

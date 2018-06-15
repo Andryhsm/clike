@@ -38,6 +38,6 @@ class ContactUsController extends Controller
 		$mail_params_array = ['to' => $contact_email_address, 'from' => env('MAIL_FROM_ADDRESS')];
 		$send_email = $this->email_service->sendEmail($mail_params_array, config("email_template.CONTACT_US"), $content_var_values);
 		flash()->success(trans('contact.success_msg'));
-		return \Redirect::to('contact-us');
+		return redirect()->route('contact-us-get');
 	}
 }

@@ -89,29 +89,29 @@
                                 <ul class="dropdown-menu {!! $dropdown !!}">
                                     @if(!$is_user_login || Auth::user()->role_id==1)
                                         <!-- Pour les customers -->
-                                        <li><a class="dropdown-menu-border" href="{!! url(LaravelLocalization::getCurrentLocale().'/customer/customer-informations') !!}">{!! trans('common/label.your_account') !!}</a></li>
-                                        <li><a class="dropdown-menu-border" href="{!! url(LaravelLocalization::getCurrentLocale().'/customer/current-order') !!}">{!! trans('common/label.your_orders') !!}</a></li>
+                                        <li><a class="dropdown-menu-border" href="{!! route('customer-informations-client') !!}">{!! trans('common/label.your_account') !!}</a></li>
+                                        <li><a class="dropdown-menu-border" href="{!! route('customer-commande-en-cours') !!}">{!! trans('common/label.your_orders') !!}</a></li>
                                         @if($is_user_login)
-                                            <li><a href="{!! url(LaravelLocalization::getCurrentLocale().'/logout') !!}">{!! trans('common/label.sign_out')!!}</a></li>
+                                            <li><a href="{!! route('logout') !!}">{!! trans('common/label.sign_out')!!}</a></li>
                                         @else
-                                            <li><a href="{!! url(LaravelLocalization::getCurrentLocale().'/login') !!}">{!! trans('common/label.sign_in') !!}</a></li>
+                                            <li><a href="{!! route('login') !!}">{!! trans('common/label.sign_in') !!}</a></li>
                                         @endif
                                     @else
                                         <!-- Pour les merchants -->
-                                        <li><a class="dropdown-menu-border" href="{!! url(LaravelLocalization::getCurrentLocale().'/store/'.Session::get('store_to_user').'/edit') !!}">{!! trans('common/label.shop_account') !!}</a></li>
-                                        <li><a class="dropdown-menu-border" href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/dashboard') !!}"> Tableau de bord </a></li>
-                                        <li><a class="dropdown-menu-border" href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/product') !!}">Gérer les produits </a></li>
-                                        <li><a class="dropdown-menu-border" href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/code_promo') !!}">Gérer les code promos </a></li>
+                                        <li><a class="dropdown-menu-border" href="{!! route('store.edit', ['id' => Session::get('store_to_user')]) !!}">{!! trans('common/label.shop_account') !!}</a></li>
+                                        <li><a class="dropdown-menu-border" href="{!! route('merchant-dashboard') !!}"> Tableau de bord </a></li>
+                                        <li><a class="dropdown-menu-border" href="{!! route('merchant-product') !!}">Gérer les produits </a></li>
+                                        <li><a class="dropdown-menu-border" href="{!! route('code_promo.index') !!}">Gérer les code promos </a></li>
                                         @if($is_user_login)
-                                            <li><a href="{!! url(LaravelLocalization::getCurrentLocale().'/logout') !!}"> {!! trans('common/label.sign_out')!!} </a></li>
+                                            <li><a href="{!! route('logout') !!}"> {!! trans('common/label.sign_out')!!} </a></li>
                                         @else
-                                            <li><a href="{!! url(LaravelLocalization::getCurrentLocale().'/login') !!}">{!! trans('common/label.sign_in') !!}</a></li>
+                                            <li><a href="{!! route('login') !!}">{!! trans('common/label.sign_in') !!}</a></li>
                                         @endif
                                     @endif
                                 </ul>
                             </li>
                             <li class="dropdown espace-header">
-                                <a href="#" onclick="location.href='{!! url(LaravelLocalization::getCurrentLocale().'/wishlist') !!}';" class="ddropdown-menu-border" data-toggle="dropdown">
+                                <a href="#" onclick="location.href='{!! route('wishlist') !!}';" class="dropdown-menu-border" data-toggle="dropdown">
                                     <?php 
                                         $classc = (count_wishlist() > 0) ? "icon-heart-not-empty" : "icon-heart";
                                     ?>

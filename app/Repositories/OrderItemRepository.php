@@ -45,7 +45,7 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		$order_item->product_url = $cart_item->getProduct()->url;
 		$order_item->order_item_date = Carbon::now();
 		$order->orderItems()->save($order_item);
-
+		
 		foreach ($cart_item->getAttributes() as $cart_item_attribute) {
 			$this->order_item_attribute_repository->saveAttribute($cart_item_attribute, $order_item);
 		}

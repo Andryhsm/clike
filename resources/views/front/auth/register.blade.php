@@ -10,17 +10,17 @@
                                     </div>    
                                      <div class="connect-social-media mt-10">   
                                         <div class="col-md-4">
-                                            <button onclick="location.href='{{url(LaravelLocalization::getCurrentLocale().'/auth/facebook')}}'" class="btn btn-lg btn-facebook mt-20 col-xs-12">
+                                            <button onclick="location.href='{{url('/auth/facebook')}}'" class="btn btn-lg btn-facebook mt-20 col-xs-12">
                                                     <i class="fa rs-size fa-facebook pull-left"></i><span>FACEBOOK</span>
                                             </button>
                                         </div>
                                         <div class="col-md-4">
-                                            <button onclick="location.href='{{ url(LaravelLocalization::getCurrentLocale().'/auth/google')}}'" class="btn btn-lg btn-google mt-20 col-xs-12">
+                                            <button onclick="location.href='{{ url('/auth/google')}}'" class="btn btn-lg btn-google mt-20 col-xs-12">
                                                     <i class="fa rs-size fa-google-plus pull-left"></i><span>GOOGLE</span>
                                             </button>
                                         </div>
                                         <div class="col-md-4">
-                                            <button onclick="location.href='{{ url(LaravelLocalization::getCurrentLocale().'/auth/twitter')}}'" class="btn btn-lg btn-twitter mt-20 col-xs-12">
+                                            <button onclick="location.href='{{ url('/auth/twitter')}}'" class="btn btn-lg btn-twitter mt-20 col-xs-12">
                                                     <i class="fa rs-size fa-twitter pull-left"></i><span>TWITTER</span>
                                             </button>
                                         </div>
@@ -39,7 +39,7 @@
             <div class="row">
                 @include('notification')
                 <div class="register-area">
-                    {!! Form::open(['url' => url(LaravelLocalization::getCurrentLocale().'/register'), 'id'=>'account_form', 'method' => 'post', 'role' => 'form','class'=>'form-horizontal','autocomplete'=>'off']) !!}
+                    {!! Form::open(['url' => route('sign-up'), 'id'=>'account_form', 'method' => 'post', 'role' => 'form','class'=>'form-horizontal','autocomplete'=>'off']) !!}
                     <input type="hidden" name="role_id" value="{!! $role_id !!}">
                     <div class="member-title text-blue title text-uppercase text-center mb-40">
                             <h2>informations membre</h2>

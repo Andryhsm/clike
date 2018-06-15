@@ -39,8 +39,8 @@
                 <div class=""> <!-- box box-primary -->
                     
                     <div class="box-body">   
-                        <form action="{!! url(LaravelLocalization::getCurrentLocale().'/subscribe') !!}" method="post" class="" id="add_contact">
-                            <input type="text" name="email" class="form-control required email" placeholder='entrer votre E-MAIL ici'/>
+                        <form action="{!! url('/subscribe') !!}" method="post" class="" id="add_contact">
+                            <input type="text" name="email" class="form-control required email" placeholder='email*'/>
                             <button style="margin:10px 0 0 40%;" type="submit" id="subscribe" class="col-lg-2 btn btn-merchant-filled">Ajouter</button>
                         </form>
                     </div>    

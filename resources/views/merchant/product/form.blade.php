@@ -88,7 +88,7 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs" style="text-align: left !important;">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Général</a></li>
-                        <li><a href="{!! Url('merchant/product/attributes') !!}" data-toggle="tabajax"
+                        <li><a href="{!! route('get_attribute') !!}" data-toggle="tabajax"
                                data-target="#attributes">Attributes</a></li>
                         <li><a href="#tab_2" data-toggle="tab">Images</a></li>
                         <li><a href="#tab_3" data-toggle="tab">Catégorie</a></li>
@@ -96,7 +96,7 @@
                         <li><a href="#tab_5" data-toggle="tab">Filiale</a></li> -->
                         <li><a href="#tab_6" data-toggle="tab">Meta Info</a></li>
                     </ul>
-                    {!! Form::open(['url' => ($product) ? Url("fr/merchant/product/$product->product_id") : route('save_product_merchant'), 'class' => 'form-horizontal','id' =>'product_form', 'enctype' => 'multipart/form-data']) !!}
+                    {!! Form::open(['url' => ($product) ? route('update_product',['product_id' => $product->product_id]) : route('save_product_merchant'), 'class' => 'form-horizontal','id' =>'product_form', 'enctype' => 'multipart/form-data']) !!}
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <section class="content">
@@ -469,7 +469,7 @@
 
 
                         <div class="box-footer">
-                            <a href="{!! route('product') !!}" class="btn btn-merchant-filled">Annuler</a>
+                            <a href="{!! route('merchant-product') !!}" class="btn btn-merchant-filled">Annuler</a>
                             <button type="submit" class="btn btn-merchant-filled pull-right" id="add-product">Sauvegarder
                             </button>
                         </div>
@@ -517,7 +517,13 @@
 @section('footer-scripts')
     <script type="application/javascript" language="JavaScript">
         var category_tree_data = '{!! json_encode($categories['tree_data'],JSON_HEX_APOS) !!}';
-        var selected_category = '{!! json_encode($selected_category,JSON_HEX_APOS) !!}'
+        var selected_category = '{!! json_encode($selected_category,JSON_HEX_APOS) !!}';
+        var url_redirect = '{!! route('merchant-product') !!}';
+        var url_get_data_product = '{!! route('merchant-product-data') !!}';
+        var url_remove_image = '{!! route('remove_product_image') !!}';
+        var url_upload_image = '{!! route('upload_product_image') !!}';
+        var url_search_product = '{!! route('merchant_search_product') !!}';
+        var url_remove_product_tag = '{!! route('merchant_product_remove_tag') !!}';
     </script>
 
 @stop

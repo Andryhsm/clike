@@ -40,7 +40,7 @@
         </div>
         <div class="{!! ((app('language')->language_id==2)? "col-lg-8 col-md-offset-2 ": "col-lg-4 col-md-offset-4") !!}">
             <div class="question-area pb-40 text-center">
-                <a class="btn btn-customer-filled" href="{!! url('contact-us') !!}">{!! trans('faq.contact_us') !!}</a>
+                <a class="btn btn-customer-filled" href="{!! route('contact-us-get') !!}">{!! trans('faq.contact_us') !!}</a>
             </div>
         </div>
     </div>

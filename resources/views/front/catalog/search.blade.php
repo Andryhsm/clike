@@ -2,7 +2,7 @@
  
 @section('content')
     <div class="product-area ptb-10 product-list"> <!-- ptb-20 inter-ligne entre categorie des produits et recherche -->
-        <div class="category-url" data-url="{!! url(LaravelLocalization::getCurrentLocale().'/search?q=') !!}"></div>
+        <div class="category-url" data-url="{!! route('search', ['q' => '']) !!}"></div>
         <div class="category-index-header">
             <?php 
                 if(Input::has('category')){
@@ -153,7 +153,7 @@
                                             $class = (($key+1)%4 ==1) ? "clear" : ""; //On affiche 4 produit par ligne
 
                                         ?>
-                                        <div class="col-lg-3 col-md-2 col-sm-3 col-xs-10 {!! $class !!}">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-10 {!! $class !!}">
                                            <div class="product-wrapper-home mb-30">
                                                 <div class="product-img product-pic-catalog img_btn">
                                                      <a href="{!! !empty($product->url) ? url($product->url->target_url) : '' !!}">   
@@ -171,7 +171,11 @@
                                                                 $idU = '';
                                                             }                                            
                                                         ?>
-                                                    <a class="wishlist_prd_home wishlist_prd w{!! $product->product_id !!} {!! $wishlist_del !!}" onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}');"> &nbsp; </a>
+                                                    <a class="wishlist_prd_home wishlist_prd w{!! $product->product_id !!} {!! $wishlist_del !!}" 
+                                                    data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
+                                                    data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
+                                                    data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
+                                                    onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                                     </div>
                                                     <span>{!! 
                                                     (isset($product->brand)) ? ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name : "" !!}</span>

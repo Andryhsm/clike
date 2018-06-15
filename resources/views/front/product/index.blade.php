@@ -3,7 +3,7 @@
     <?php
         $product_translation = $product->getByLanguageId(2);
     ?>
-        <meta property="og:title" content="Créer un bouton de partage personnalisé pour Facebook - karac blog" /> 
+        <meta property="og:title" content="Produit clickee" /> 
         <meta property="og:image" content="{!! URL::to('/').'/'.$product->getDefaultImagePath() !!}" /> 
         <meta property="og:description" content="{!! $product_translation->description !!}" /> 
         <meta property="og:url" content="{!! URL::current() !!}">
@@ -23,14 +23,14 @@
         <div class="container">
             <div class="col-lg-12 category-parent-product ptb-30">
                 @foreach($categories as $category)
-                    <a href="{!! url(LaravelLocalization::getCurrentLocale().'/search?q=&category='.$category->category_id) !!}" >{!! $category->getByLanguage(2)->category_name !!}</a>&nbsp;&nbsp;<i class="fa fa-chevron-right" style="font-size: 11px;"></i>&nbsp;&nbsp;
+                    <a href="{!! route('search', ['category' => $category->category_id]) !!}" >{!! $category->getByLanguage(2)->category_name !!}</a>&nbsp;&nbsp;<i class="fa fa-chevron-right" style="font-size: 11px;"></i>&nbsp;&nbsp;
                 @endforeach
                 <span>{!! $product->brand->brand_name !!} - {!! $product_translation->product_name !!}</span>
             </div>
         </div>
         <div class="category-link"><p id="category-parent" data-latest-category=""></p></div>
         <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> -->
-        <div class="container">
+        <div class="container section-image-product">
             <div class="row">
                 <div class="product-big-image col-xs-12 col-sm-12 col-lg-8 col-md-12">
                     {{--<div class="icon-sale-label sale-left">Sale</div>--}}
@@ -96,7 +96,7 @@
             </div>
             <div class="col-lg-3 col-sm-12 col-xs-12 containt-product-info">
                 <div class="product-info">
-                    {!! Form::open(['url' => Url(LaravelLocalization::getCurrentLocale()."/cart/add"), 'class' => '','id' =>'product_form']) !!}
+                    {!! Form::open(['url' => route("cart-add"), 'class' => '','id' =>'product_form']) !!}
                     <div class="mb-30 mt-10 mr-r-10 vcenter content-product-attribut col-lg-12 col-md-6 col-sm-5 col-xs-8">   <!--mb-30 mr-l-20-->
                         <img src="{!! ($product->brand->parent_id==null) ? $product->brand->getImagePath() : $product->brand->parent->getImagePath() !!}">
                     </div>
@@ -247,13 +247,16 @@
                                         }                                            
                                     ?>    
 
-                                <a id="add-to-wishlist" class="wishlist_prd_index col-lg-3 col-md-3 col-sm-3 col-xs-3 wG{!! $product->product_id !!} {!! $wishlist_del !!}" onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}');"></a>
+                                <a id="add-to-wishlist" class="wishlist_prd_index col-lg-3 col-md-3 col-sm-3 col-xs-3 wG{!! $product->product_id !!} {!! $wishlist_del !!}"
+                                    data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
+                                    data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
+                                    data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
+                                onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"></a>
                             </div>
                             <div class="share-social-network" style="margin-top: {!! $value_margin !!}%;">
-                                <a class="share share-to-facebook"  href="https://www.facebook.com/sharer/sharer.php?u=http%3A//clickee.fr/fr/pantalon-coup%25C3%25A9"></a>
-                                <a class="share share-to-twitter"></a>
-                                <a class="share share-to-google"></a>
-                                <div class="g-plusone" data-size="standard" data-count="true" data-href="https://alternateeve.com"></div>
+                                <a class="share share-to-facebook"  href="https://www.facebook.com/sharer/sharer.php?u={!! urlencode(URL::current()) !!}"></a>
+                                <a href="https://twitter.com/intent/tweet?text={!! URL::current() !!}" class="share share-to-twitter twitter-share-button" data-count="vertical" data-via="Clickee"></a>
+                                <a class="share share-to-google" href="https://plus.google.com/share?url={!! URL::current() !!}" onclick="window.open(this.href, 'Google+', 'width=490,height=530'); return false;"></a>
                             </div>
 
                             <div class="product-not-avail hide" id="product-not-avail">
@@ -533,10 +536,6 @@
                 </div>
             </div>
         </div>    
-                                        
-        <!-- <div class="share-community mr-l-15">
-            <p style="line-height: 0;">{!! trans('product.find_better_deal') !!} <a href="{!! url('contact-us') !!}">{!! trans('product.share_with_us') !!}</a></p>
-        </div> -->
         <div class="tabs-more-details tabs-details">
             <input type="button" id="btn_details" class="btn-clickee-info" value="{!! trans('product.more_details') !!}">
         </div>
@@ -560,7 +559,7 @@
                         <div class="product-wrapper">
                             <div class="product-img-connexe product-pic">
                                 <a href="{!! $related_product->url->target_url !!}">
-                                    <img src="{!! url($related_product->getDefaultImagePath()) !!}" alt="{!! $related_product_translation->product_name !!}"
+                                    <img src="{!! url($related_product->getDefaultImagePath()) !!}" alt="{!! (isset($related_product_translation->product_name)) ? $related_product_translation->product_name : '' !!}"
                                          class=""/>
                                 </a>
                             </div>
@@ -577,7 +576,11 @@
                                         }                                            
                                     ?>
 
-                                    <a class="wishlist_prd_home w{!! $related_product->product_id !!} {!! $wishlist_del !!}" onclick="addwishlist('{!! $related_product->product_id !!}','{!! $idU !!}');"> &nbsp; </a>
+                                    <a class="wishlist_prd_home w{!! $related_product->product_id !!} {!! $wishlist_del !!}"
+                                    data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
+                                    data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
+                                    data-url-add-wishlist="{!! route('wishlist-store', ['id' => $related_product->product_id]) !!}"
+                                    onclick="addwishlist('{!! $related_product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                     
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -587,7 +590,7 @@
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{!! $related_product->url->target_url !!}">{!! $product_translation->product_name !!}</a>
+                                    <a href="{!! $related_product->url->target_url !!}">{!! (isset($related_product_translation->product_name)) ? $related_product_translation->product_name : '' !!}</a>
                                 </div>
                                 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

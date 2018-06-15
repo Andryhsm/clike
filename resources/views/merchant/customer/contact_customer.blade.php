@@ -1,4 +1,4 @@
-@extends('merchant.layout.master')
+<!--@extends('merchant.layout.master')
 
 @section('additional-styles')
     {!! Html::style('backend/plugins/datatables/dataTables.bootstrap.css') !!}
@@ -37,7 +37,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
-                {!! Form::open(['url' => ($customer) ? route('customer.update', ['id' => $customer->customer_id]) : Url("fr/merchant/save_contact"), 'id' =>'customer_form', 'enctype' => 'multipart/form-data', 'method' => ($customer) ? 'PATCH' : 'POST']) !!}
+                {!! Form::open(['url' => ($customer) ? route('customer.update', ['id' => $customer->customer_id]) : Url("merchant/save_contact"), 'id' =>'customer_form', 'enctype' => 'multipart/form-data', 'method' => ($customer) ? 'PATCH' : 'POST']) !!}
                 <div class="box-body">                    
                     <div class="row">
                         <div class="form-group col-sm-6">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a href="{!! Url('fr/merchant/promotion') !!}" class="btn btn-default">Annuler</a>
+                    <a href="{!! Url('merchant/promotion') !!}" class="btn btn-default">Annuler</a>
                     <button type="submit" class="btn btn-primary pull-right" id="add-role">Enregistrer</button>
                 </div>
                 {!! Form::close() !!}
@@ -107,4 +107,4 @@
         </div>
     </div>
 </section>
-@stop
+@stop-->

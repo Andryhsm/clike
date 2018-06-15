@@ -183,8 +183,9 @@ class CustomerController extends Controller
 
         $store_lat = \Input::get('latitude');
         $store_lng = \Input::get('longitude');
+        $store_country = \Input::get('country');
         $zip_code = auth()->user()->address->zip;
-        $distance = getDistanceStore($store_lat, $store_lng, $zip_code);
+        $distance = getDistanceStore($store_lat, $store_lng, $zip_code, $store_country);
         return response()->json(['distance' => $distance]);
         
     }
@@ -228,11 +229,5 @@ class CustomerController extends Controller
         $item = $this->order_item_repository->getItemById($id);
         $pdf = PDF::loadView('front.customer.current_order.couponfile',compact('item'));
         return $pdf->stream();
-    }
-    
-    public function testPdf(){
-        $id='41';
-        $item = $this->order_item_repository->getItemById($id);
-        return view('front.customer.current_order.couponfile',compact('item'));
     }
 }

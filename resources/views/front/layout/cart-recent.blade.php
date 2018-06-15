@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="pro-del col-lg-1">
-                            <a href="{!! url("cart/remove/$item_id") !!}"><i  class="fa fa-times"></i></a>
+                            <a href="{!! route('cart-remove', ['item_id' => $item_id]) !!}"><i  class="fa fa-times"></i></a>
                         </div>
                     </fieldset>
                     @endforeach
@@ -52,7 +52,7 @@
                         <span class="total-price" style="float: right;">{!! format_price($cart_total) !!} ({!! $nombre !!})</span>
                     </div>
                     <div class="cart-button text-center text-uppercase mb-10">
-                        <a class="btn btn-clickee-default" href="{!! URL::to('/') !!}/cart" title="Cart">VOIR PANIER</a>
+                        <a class="btn btn-clickee-default" href="{!! route('cart') !!}" title="Cart">VOIR PANIER</a>
                     </div>
                 </div>                
             </div>

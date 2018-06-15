@@ -64,12 +64,12 @@ class CodePromoController extends Controller
         );
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return Redirect::to('fr/merchant/code_promo/create')->withInput()->withErrors($validator);
+            return Redirect::back()->withInput()->withErrors($validator);
         } else {
             $code_promo=$this->code_promo_repository->save($request->all());
             if($code_promo){
                 flash()->success(config('message.code_promo.add-success'));
-                return Redirect('fr/merchant/code_promo');
+                return redirect()->route('code-promo.index');
             }
         }
     }
@@ -121,7 +121,7 @@ class CodePromoController extends Controller
             $code_promo=$this->code_promo_repository->updateById($id,$request->all());
             if($code_promo){
                 flash()->success(config('message.code_promo.update-success'));
-                return Redirect('fr/merchant/code_promo');
+                return redirect()->route('code-promo.index');
             }
         }
     }
@@ -139,7 +139,7 @@ class CodePromoController extends Controller
         }else {
             flash()->error(config('message.code_promo.delete-error'));
         }
-        return redirect('fr/merchant/code_promo');
+        return redirect()->route('code-promo.index');
     }
     
     public function getProduct(Request $request){

@@ -28,7 +28,7 @@
 @section('content')
 <section class="content">
     <div class="bottle">
-        <section class="content-header">
+        <section class="header-code-promo">
             <h1>
                 Mes codes promo
             </h1>
@@ -36,16 +36,15 @@
                 <div class="clearfix">
                     <div class="btn-group inline pull-right">
                         <div class="btn btn-small">
-                            <a href="{!! Url('fr/merchant/code_promo/create') !!}" class="btn btn-block btn-merchant-filled">Créer un code</a>
+                            <a href="{!! route('code-promo.create') !!}" class="btn btn-block btn-merchant-filled">Créer un code</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    
-        <section class="content">
-            @include('admin.layout.notification')
-            <div class="">
+        @include('admin.layout.notification')
+        
+  
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
@@ -82,10 +81,10 @@
     	                                    </td>
     	                                    <td>
     	                                        <div class="btn-group">
-    	                                            <a href="{{ URL::to('fr/merchant/code_promo/' . $code_promo->code_promo_id . '/edit') }}"
+    	                                            <a href="{{ URL::to('merchant/code_promo/' . $code_promo->code_promo_id . '/edit') }}"
     	                                               class="btn btn-default btn-sm" style="" title="Edit"><i
     	                                                        class="fa fa-fw fa-edit"></i></a>
-    	                                            {!! Form::open(array('url' => 'fr/merchant/code_promo/' . $code_promo->code_promo_id
+    	                                            {!! Form::open(array('url' => 'merchant/code_promo/' . $code_promo->code_promo_id
     	                                            , 'class' => 'pull-right')) !!}
     	                                            {!! Form::hidden('_method', 'DELETE') !!}
     	                                            {!! Form::button('<i class="fa fa-fw fa-trash"></i>', ['type' => 'submit', 'class' => 'btn delete-btn btn-default btn-sm'] ) !!}
@@ -99,8 +98,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            
     </div>
 </section>
 @stop

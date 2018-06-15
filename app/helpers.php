@@ -550,8 +550,8 @@ function getChildCategory($categories, $category_parent_id,$selected_category,$n
         if($index == 0){
             $selected_class=($selected_category==$category['parent_ids'])?'selected':'';
             $title_all = ($category['parent_ids'] == 782 || $category['parent_ids'] == 781 || $category['parent_ids'] == 783) ? "Toute la collection" : "Tout";
-            echo '<div class=" mt-5 mb-10">';
-            echo "<a data-id='' href='#' onclick='window.location.href=\"".Url::to('/search?q=&category='.$category['parent_ids'])."\"'  class='filter $selected_class' data-toggle='collapse' data-parent-ids='' data-parent='#' data-type='category-filter'> ".$title_all." </a> 
+            echo '<div class=" mt-5 mb-10">'; 
+            echo "<a data-id='' href='#' onclick='window.location.href=\"".route('search', ['category' => $category['parent_ids']])."\"'  class='filter $selected_class' data-toggle='collapse' data-parent-ids='' data-parent='#' data-type='category-filter'> ".$title_all." </a> 
                   ";  
             echo '</div>';
             $index++;
@@ -560,7 +560,7 @@ function getChildCategory($categories, $category_parent_id,$selected_category,$n
             $cat_title = strtolower(str_replace(' ', '-', $category['title']));
             $selected_class=($selected_category==$category['key'])?'selected':'';
             echo '<div class=" mt-5 mb-10">';
-            echo "<a data-id='" . $category['key'] . "' href='#' onclick='window.location.href=\"".Url::to('/search?q=&category='.$category['key'])."\"'  class='filter $selected_class' data-toggle='collapse' data-parent-ids='".$category['parent_ids']."' data-parent='#" . $cat_title . "' data-type='category-filter'>" . $category['french_title'] . "</a> 
+            echo "<a data-id='" . $category['key'] . "' href='#' onclick='window.location.href=\"".route('search', ['category' => $category['key']])."\"'  class='filter $selected_class' data-toggle='collapse' data-parent-ids='".$category['parent_ids']."' data-parent='#" . $cat_title . "' data-type='category-filter'>" . $category['french_title'] . "</a> 
                   ";   
             echo '</div>';
             if($selected_category==$category['key']){

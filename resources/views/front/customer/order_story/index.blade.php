@@ -6,32 +6,32 @@
     @if(count($items) > 0) 
         @foreach($items as $item)
         <div class="order col-lg-12 ">
-            <div class="order-containt">
+            <div class="">
                 <div class="row">
-                    <div class="order-img1 col-lg-3">
-                        <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
+                    <div class="text-center col-lg-12 pt-20">
+                        <?php 
+                            switch ($item->order_status_id) {
+                                case 3:
+                                    $status = "PRODUIT NON DISPONIBLE";
+                                    break;
+                                case 5:
+                                    $status = "TERMINER";
+                                    break;
+                                case 6:
+                                    $status = "ANNULER";
+                                    break;
+                                default:
+                                    $status = "";
+                            }
+                        ?>
+                        <p ><span class="title-bold-2">STATUS : </span> {!! $status !!} </p>
                     </div>
-                    <div class="col-lg-9">
-                        <div class="text-center col-lg-12 pt-20">
-                            <?php 
-                                switch ($item->order_status_id) {
-                                    case 3:
-                                        $status = "PRODUIT NON DISPONIBLE";
-                                        break;
-                                    case 5:
-                                        $status = "TERMINER";
-                                        break;
-                                    case 6:
-                                        $status = "ANNULER";
-                                        break;
-                                    default:
-                                        $status = "";
-                                }
-                            ?>
-                            <p ><span class="title-bold-2">STATUS : </span> {!! $status !!} </p>
+                    
+                    <div class="order-story col-lg-12">
+                        <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                         </div>
-                        
-                        <div class="order-info1 ptb-10 col-lg-5">
+                        <div class="order-info ptb-10 col-lg-3 col-md-3 col-sm-3 col-xs-5">
                             @if(count($item->brand)>0)
                                 <div><strong class="text-uppercase">{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong></div>
                             @endif
@@ -46,10 +46,10 @@
                             </div>
                             
                         </div>
-                        <div class="order-info2 ptb-10 col-lg-7">
-                            <p ><span class="title-bold-2">N° DE COMMANDE : </span>{!! $item->order->order_id !!}</p>
-                            <p ><span class="title-bold-2">DATE DE COMMANDE : </span>{!! formatDate($item->order->order_date, "M dS, Y") !!}</p>
-                            <p ><span class="title-bold-2">BOUTIQUE : </span>{!! $item->product->store->store_name !!}</p>
+                        <div class="order-info info-2 ptb-10 col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <div><p><span class="title-bold-2">N° DE COMMANDE : </span>{!! $item->order->order_id !!}</p></div>
+                            <div><p><span class="title-bold-2">DATE DE COMMANDE : </span>{!! formatDate($item->order->order_date, "M dS, Y") !!}</p></div>
+                            <div><p><span class="title-bold-2">BOUTIQUE : </span>{!! $item->product->store->store_name !!}</p></div>
                         </div>
                     </div>
                 </div>

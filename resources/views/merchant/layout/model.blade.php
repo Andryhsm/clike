@@ -2,12 +2,11 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
-                Are you sure want to delete?
+                Voulez-vous vraiment supprimer?
             </div>
             <div class="modal-footer">
-                <i class="fa fa-"></i>
-                <button type="button" data-dismiss="modal" class="btn" id="delete"><i class="fa fa-times"></i></button>
-                <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+                <button type="button" data-dismiss="modal" class="btn btn-block btn-merchant-filled" id="delete">Supprimer</button>
+                <button type="button" data-dismiss="modal" class="btn btn-block btn-merchant-filled">Annuler</button>
             </div>
         </div>
         <!-- /.modal-content -->

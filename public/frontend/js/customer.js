@@ -65,10 +65,10 @@ jQuery(document).ready(function() {
         get_product_data(product_id, content_range);
     });
     $document.on('change', '.select-parent-category', function(event) {
-        console.log("Bonjour tous le monde");
+        /*console.log("Bonjour tous le monde");*/
         var index = $(this).data('content-range');
         $.ajax({
-                url: base_url + 'fr/merchant/product/get-code-promo-by-category',
+                url: base_url + 'marchand/produit/get-code-promo-by-category',
                 type: 'GET',
                 dataType: 'json',
                 data: { category_id: $(this).val() },
@@ -78,7 +78,7 @@ jQuery(document).ready(function() {
                     $('#promo_code' + index).html('<option value="0">Séléctionner une code</option>')
                     for (var i = data.code_promos.length - 1; i >= 0; i--) {
                         var code_promo = data.code_promos[i];
-                        console.log("index : " + index);
+                        /*console.log("index : " + index);*/
                         $('#promo_code' + index).append('<option value="' + code_promo.code_promo_id + '">' + code_promo.code_promo_name + '</option>')
                     }
                 }
@@ -111,15 +111,15 @@ jQuery(document).ready(function() {
             total_price_product += parseFloat($(this).val());
         });
         $('.select-parent-category').each(function(index, el) {
-            console.log($(this).find('option:selected').text());
+            /*console.log($(this).find('option:selected').text());*/
         });
         console.log("sub-category");
         $('.select-sub-category').each(function(index, el) {
-            console.log($(this).find('option:selected').text());
+            /*console.log($(this).find('option:selected').text());*/
         });
         console.log("product-color");
         $('.select-product-color').each(function(index, el) {
-            console.log($(this).find('option:selected').text());
+           /* console.log($(this).find('option:selected').text());*/
         });
         $('.input-discount').each(function(index, el) {
             var parent = $(this).parents('.product-content');
@@ -130,7 +130,7 @@ jQuery(document).ready(function() {
             total_discount_price += discount_price;
         });
         $('.select-promo-code').each(function(index, el) {
-            console.log($(this).val());
+            /*console.log($(this).val());*/
         });
 
         total_price_product_ttc = total_price_product - total_discount_price;
@@ -195,7 +195,7 @@ function get_product_data(product_id, content_range) {
     }
 
     $.ajax({
-            url: base_url + 'fr/merchant/product/get-product-for-encasement',
+            url: base_url + 'marchand/produit/get-product-for-encasement',
             type: 'GET',
             dataType: 'json',
             data: { product_id: product_id },
@@ -222,7 +222,7 @@ function get_product_data(product_id, content_range) {
                 if (attribute.type == "1") {
                     if (options_color.length == 0) {
                         options_color = attribute.options;
-                        console.log(options_color);
+                        /*console.log(options_color);*/
                         if (options_color.length > 0)
                             $('#product_color' + content_range).html("<option>Séléctionner une couleur</option>");
                         for (var k = options_color.length - 1; k >= 0; k--) {
@@ -233,7 +233,7 @@ function get_product_data(product_id, content_range) {
                     }
                 }
             }
-            console.log(data);
+            /*console.log(data);*/
             var category_arr = data.category_arr;
             var parent_categorie = data.parent_categorie;
             if (Object.keys(category_arr).length > 0) {
@@ -300,7 +300,7 @@ function validate_product_info() {
 function autocomplete_list_customer() {
     users = [];
     $.ajax({
-            url: base_url + 'fr/merchant/get-customers',
+            url: base_url + 'marchand/get-customers',
             type: 'GET',
             dataType: 'json'
         })

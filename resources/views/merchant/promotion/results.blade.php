@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a href="{!! Url('fr/merchant/promotion') !!}" class="btn btn-primary pull-right">Retour</a>
+                    <a href="{!! Url('marchand/promotion') !!}" class="btn btn-primary pull-right">Retour</a>
                 </div>
             </div>
         </div>

@@ -26,16 +26,16 @@
 	});
 
 	if (jQuery('.delete-btn').length > 0) {
-		jQuery('.delete-btn').off('click');
-		jQuery('.delete-btn').on('click', function(e) {
-			var $form = jQuery(this).closest('form');
-			e.preventDefault();
-			$('#confirm').modal({ backdrop: 'static', keyboard: false })
-				.one('click', '#delete', function() {
-					$form.trigger('submit'); // submit the form
-				});
-		});
-	}
+        jQuery('.delete-btn').off('click');
+        jQuery('.delete-btn').on('click', function (e) {
+            var $form = jQuery(this).closest('form');
+            e.preventDefault();
+            $('#confirm').modal({backdrop: 'static', keyboard: false})
+                .one('click', '#delete', function () {
+                    $form.trigger('submit'); // submit the form
+                });
+        });
+    }
 	/*----------------------------
 	 TOP Menu Stick
 	------------------------------ */
@@ -613,11 +613,11 @@
 
 
 	//Show the modal if no info user location
-	var current_url = 'http://' + window.location.hostname + window.location.pathname;
+	var current_url = 'https://' + window.location.hostname + window.location.pathname;
 	setTimeout(function() {
-		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url + "fr") {
+		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url) {
 			$('#area-modal').modal('show');
-		}
+		}	
 	}, 3000);
 
 	//Show the modal area information
@@ -839,13 +839,16 @@ function searchRadio() {
 }
 
 function change_area_information() {
-	$('#input-radius').val($('.option-area.selected').data('id'));
-	var current_url = 'http://' + window.location.hostname + window.location.pathname;
-	if (current_url == base_url + "fr/search")
+	console.log("$('.option-area.selected').data('id')");
+	console.log($('.option-area.selected').data('id'));
+	if($('.option-area.selected').data('id') != null)
+		$('#input-radius').val($('.option-area.selected').data('id'));
+	var current_url = 'https://' + window.location.hostname + window.location.pathname;
+	if (current_url == base_url + "search")
 		$('#searc-store').submit();
 
 	$.ajax({
-			url: base_url + 'fr/set-location',
+			url: base_url + 'set-location',
 			type: 'POST',
 			dataType: 'json',
 			data: $('#search-store').serialize(),
@@ -860,27 +863,43 @@ function change_area_information() {
 				$('#area-modal').modal('hide')
 			}
 		})
-		.fail(function() {
-			console.log("error");
+		.fail(function(xhr) {
+			console.log("Une erreur d'action après le popup");
+			console.log(xhr.responseText);
 		})
 		.always(function() {
-			console.log("complete");
 		});
 
 }
 
 function show_option_radius(element) {
 	var $icon = $(element).find("i");
-	if ($icon.hasClass('fa-angle-down')) {
-		$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
-		$(element).addClass('active');
+	var current_url = 'https://' + window.location.hostname + window.location.pathname;
+	if(current_url == base_url){
+		if ($icon.hasClass('fa-angle-down')) {
+		//	$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+			$(element).addClass('active');
+		}
+		else {
+		//	$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+			$(element).removeClass('active');
+		}	
+	}else{
+			if ($icon.hasClass('fa-angle-down')) {
+				$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+				$(element).addClass('active');
+			}
+			else {
+				$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+				$(element).removeClass('active');
+			}
+		
+			$(element).parent().toggleClass('open');
 	}
-	else {
-		$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
-		$(element).removeClass('active');
-	}
+	
+	
 
-	$(element).parent().toggleClass('open');
+	
 }
 
 function check_icon_round_if_select(element) {
@@ -928,6 +947,7 @@ function aside_fixed() {
 		//content = $('.test')[0].clientHeight,
 		topPadding = 15,
 		left = $('.nav-menu.content').offset().left + parseInt($('.main').css('padding-left')),
+		//left = '30px',
 		css = {},
 		animate = {};
 
@@ -937,7 +957,7 @@ function aside_fixed() {
 			content = $('.main')[0].clientHeight + offset.top
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
 				$aside.stop().css({ 'position': 'fixed', 'top': '0', 'z-index': '2000'});
-				$('.nav-menu.content').css( 'margin-right', left)
+				$('.nav-menu.content').css( 'margin-right', '0')
 			}
 			else {
 				$aside.stop().animate({
@@ -981,9 +1001,9 @@ function footerCardFixed(){
 	        }
 	    }
 	}
-
-	var observer = new MutationObserver(callback);
-	observer.observe(contentCart, { attributes: true});
+	//Commenteko kely vetivety
+	// var observer = new MutationObserver(callback);
+	// observer.observe(contentCart, { attributes: true});
 
 	$(".content-cart").scroll(function() {
 		var y = $(".content-cart").scrollTop();

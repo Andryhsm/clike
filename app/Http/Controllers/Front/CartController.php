@@ -57,7 +57,8 @@ class CartController extends Controller
 		}
 		\Log::info("Enregistrement avec success !");
 		flash()->success(trans('cart.item_added_success'));
-		return redirect('cart');
+		
+		return redirect()->route('cart');
 	}
 
 
@@ -71,7 +72,7 @@ class CartController extends Controller
 		}
 		$this->cart->refresh($this->product_repository);
 		flash()->success(trans('cart.item_removed_success'));
-		return redirect('cart');
+		return redirect()->route('cart');
 	}
 
 	public function update(Request $request)
@@ -93,7 +94,7 @@ class CartController extends Controller
 		if ($request->has('update_cart')) {
 			if ($request->input('update_cart') == 'Update Cart') {
 				flash()->success(trans('cart.item_updated_success'));
-				return redirect("cart");
+				return redirect()->route('cart');
 			}
 		} else {
 			return Redirect::to("checkout/shipping-info")->with(['initiatepurchase' => true]);

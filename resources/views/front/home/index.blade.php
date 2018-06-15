@@ -21,7 +21,7 @@
                             <h1>ON A</h1>
                             <h1>DU NEUF</h1>
                         </div>
-                        <button type="button" class="btn btn-clickee-default btn-slider">SHOPPER</button>
+                        <button type="button" class="btn btn-clickee-default btn-slider" onclick="location.href = '{!! route('search') !!}';">SHOPPER</button>
                     </div>
                 </div>
             </div>
@@ -161,7 +161,11 @@
                                                                 $idU = '';
                                                             }                                            
                                                         ?>
-                                                    <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}" onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}');"> &nbsp; </a>
+                                                    <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}"
+                                                    data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
+                                                    data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
+                                                    data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
+                                                    onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                                     </div>
                                                     <span>{!! 
                                                     (isset($product->brand)) ? ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name : "" !!}</span>
@@ -217,7 +221,11 @@
                                                 }                                            
                                             ?>
 
-                                            <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}" onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}');"> &nbsp; </a>
+                                            <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}" 
+                                            data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
+                                            data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
+                                            data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
+                                            onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <span>{!! 
@@ -276,7 +284,11 @@
                                                     $idU = '';
                                                 }                                            
                                             ?>
-                                        <a class="wishlist_prd_home wishlist_prd w{!! $product->product_id !!} {!! $wishlist_del !!}" onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}');"> &nbsp; </a>
+                                        <a class="wishlist_prd_home wishlist_prd w{!! $product->product_id !!} {!! $wishlist_del !!}" 
+                                        data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
+                                    data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
+                                    data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
+                                        onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                         </div>
                                         <span>{!! 
                                         (isset($product->brand)) ? ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name : "" !!}</span>

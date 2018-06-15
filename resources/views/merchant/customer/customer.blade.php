@@ -53,7 +53,7 @@
             </div>
             <div class="col-lg-12 col-md-12">
                 <div class="box-body">
-                    <a href="{!! Url('merchant/customer') !!}" class="btn btn-merchant-filled">Annuler</a>
+                    <a href="{!! route('client.index') !!}" class="btn btn-merchant-filled">Annuler</a>
                     <button type="button" class="btn btn-merchant-filled pull-right" onclick="validate_customer_info();"> {!! ($customer) ? "Confirmer client" : "Ajouter client"!!}
                     </button>
                     <button type="button" class="btn hidden" id="add-customer" href="#tab_2" data-toggle="tab"> {!! ($customer) ? "Confirmer client" : "Ajouter client"!!}

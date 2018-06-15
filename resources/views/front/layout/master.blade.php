@@ -64,10 +64,6 @@
     var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
     var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";
 </script>
-
-<script src="https://apis.google.com/js/platform.js" async defer>
-</script>
-
 </head>
 
 <body style="padding-right: 0px !important">
@@ -83,7 +79,8 @@
 @yield('additional-script')
 
 @yield('footer-script')
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </body>
 <!-- END BODY -->
 </html>

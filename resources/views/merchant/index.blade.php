@@ -10,7 +10,7 @@
                 </div>
             @endif
             <div class="header-title text-center">
-                <a href="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/request') !!}">{!! trans('customer.request_management') !!}</a>
+                <a href="{!! url('/merchant/request') !!}">{!! trans('customer.request_management') !!}</a>
             </div>
             <div class="row">
                 @include('notification')
@@ -47,7 +47,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/add-card') !!}" class="form-horizontal" role="form" id="card_form" method="post">
+                        <form action="{!! url('/merchant/add-card') !!}" class="form-horizontal" role="form" id="card_form" method="post">
                             <span class="payment-errors"></span>
                             <fieldset>
                                 <legend>{!! trans('merchant.card_info') !!}</legend>

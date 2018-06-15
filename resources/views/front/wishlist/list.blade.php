@@ -13,7 +13,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <!-- ?php dd($products);? -->
                 @foreach($products as $product)
                     <?php     $product_translation = $product->product->getByLanguageId(app('language')->language_id) ?>
                 <tr>

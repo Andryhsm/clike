@@ -85,7 +85,7 @@
 
             <div class="row">
                 @if($invoice->status=='0')
-                <form action="{!! url(LaravelLocalization::getCurrentLocale().'/merchant/pay-invoice/'.$invoice->id) !!}" method="post" name="invoice_pay">
+                <form action="{!! url('/merchant/pay-invoice/'.$invoice->id) !!}" method="post" name="invoice_pay">
                     <div class="col-xs-12 margin-top btn-group">
                         <button type="submit" id="action_create_invoice"
                                 class="mr-b-15 mr-r-5 btn btn-success pull-right">{!! trans('merchant.pay') !!}</button>

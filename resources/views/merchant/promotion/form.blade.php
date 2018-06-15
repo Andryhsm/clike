@@ -48,7 +48,7 @@ if(count($code_promos) > 0){
             <div class="col-md-12">
                 <div class=""> <!-- box box-primary -->
                     <div class=""> <!-- box-body -->
-                    {!! Form::open(array('url' =>($promotion) ? Url("fr/merchant/promotion/$promotion->promotion_id") : Url("fr/merchant/promotion"),'id'=>'promotion','class'=>'promotion','method' => ($promotion)? 'PATCH':'POST')) !!}
+                    {!! Form::open(array('url' =>($promotion) ? Url("marchand/promotion/$promotion->promotion_id") : Url("marchand/promotion"),'id'=>'promotion','class'=>'promotion','method' => ($promotion)? 'PATCH':'POST')) !!}
                                         
                         <div class="row">
                         	<div class="col-lg-6">
@@ -80,7 +80,7 @@ if(count($code_promos) > 0){
                         </div>
                     </div>
                     <div class="col-lg-12"> <!-- box-footer -->
-                        <a href="{!! Url('fr/merchant/promotion') !!}" class="btn btn-merchant-filled">Annuler</a>
+                        <a href="{!! Url('marchand/promotion') !!}" class="btn btn-merchant-filled">Annuler</a>
                         <button type="submit" class="btn btn-merchant-filled pull-right" id="add-role">Envoyer</button>
                     </div>
                     {!! Form::close() !!}

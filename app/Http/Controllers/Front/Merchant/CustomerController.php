@@ -67,7 +67,7 @@ class CustomerController extends Controller
             $customer = $this->customer_repository->save($request->all());
             flash()->success(config('message.customer.add-success'));
         }
-        return \Redirect('merchant/customer');
+        return redirect()->route('client.index');
     }
 
     /**
@@ -134,7 +134,7 @@ class CustomerController extends Controller
     {
         $customer = $this->customer_repository->deleteById($id);
         flash()->success(config('message.customer.delete-success'));
-        return \Redirect('merchant/customer');
+        return redirect()->route('client.index');
     }
 
     public function encasement()
@@ -161,7 +161,7 @@ class CustomerController extends Controller
             $customer = $this->customer_repository->saveContactCustomer($request->all());
             flash()->success("Enregistrement avec succèss !");
         }
-        return \Redirect('merchant/promotion');
+        return redirect()->route('promotion.index');
     }
     
     public function getAllCustomer(Request $request)

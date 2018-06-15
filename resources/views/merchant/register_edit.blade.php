@@ -33,11 +33,8 @@
         <div class="bottle">
             <div class="col-md-12">
                 <div class="">
-                	<?php
-                        $url = url(LaravelLocalization::getCurrentLocale()."/store/$store->store_id");
-                	?>  
-    
-                    {!! Form::open(['url' =>$url , 'id'=>'store_form', 'method' => 'PATCH', 'role' => 'form','class'=>'edit_product','enctype' => 'multipart/form-data']) !!}
+                	
+                    {!! Form::open(['url' => route('magasin.update',['store' => $store->store_id]) , 'id'=>'store_form', 'method' => 'PATCH', 'role' => 'form','class'=>'edit_product','enctype' => 'multipart/form-data']) !!}
                     <div class="">                    
                         <div class="row mb-20">
                         	<div class="text-center col-lg-12 col-md-12">

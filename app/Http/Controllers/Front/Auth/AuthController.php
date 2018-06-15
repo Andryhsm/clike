@@ -16,6 +16,7 @@ use App\Interfaces\BrandRepositoryInterface;
 use App\Interfaces\RegionRepositoryInterface;
 use App\BrandTag;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -60,7 +61,8 @@ class AuthController extends Controller
 			if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password'), 'status' => '1','role_id'=>'2'])) {
 				$user = Auth::getLastAttempted();
 				Auth::login($user, $request->has('memory'));
-				return Redirect::to('fr/merchant/dashboard');
+				Session::put('store_to_user', $user->store[0]->store_id);
+				return redirect()->route('merchant-dashboard');
 			}
 		}
 		return Redirect::back()
@@ -92,7 +94,7 @@ class AuthController extends Controller
                 //add_info_cookie_area($user->address->zip, $user->radius);
                 Auth::login($user, $request->has('memory'));
 				$intended_url = \Session::get('url.intended', '');
-				 if(!Cookie::has('zip-code') && !Cookie::has('radius')){
+				if(!Cookie::has('zip-code') && !Cookie::has('radius')){
 				    add_area_in_cookie($user->address->zip, $user->radius);
                 }else{
                     $user = \App\User::find(auth()->user()->user_id);
@@ -102,16 +104,15 @@ class AuthController extends Controller
                     $user_address->zip = Cookie::get('zip-code');
                     $user_address->save();
                 }
-				if (ends_with($intended_url, 'checkout/confirm-cart')) {
-					return Redirect::to('cart');
+				if (ends_with($intended_url, 'caisse/confirmation')) {
+					return redirect()->route('cart');
 				}
 				if(\Session::has('ask-product')){
 					$ask_product = \Session::get('ask-product');
-					return Redirect::to('ask-product/search?keyword='.$ask_product['keyword']);
+					return redirect()->route('ask-product-search', ['keyword' => $ask_product['keyword']]);
+					//return Redirect::to('ask-product/search?keyword='.$ask_product['keyword']);
 				}
-
-
-				return Redirect::to('/customer/current-order');
+				return redirect()->route('customer-commande-en-cours');
             }
         }
         return Redirect::back()
@@ -143,7 +144,7 @@ class AuthController extends Controller
                 return Redirect::back();
                 //dd($e->getMessage());
             }
-            return Redirect::to('/customer/current-order');
+            return redirect()->route('customer-commande-en-cours');
         }
     }
 
@@ -163,7 +164,7 @@ class AuthController extends Controller
         Auth::login($authUser, true);
         flash()->success(config('message.user.success-login'));
         \Session::forget('role_id');
-        return Redirect::to('/');
+        return redirect()->route('home');
     }
 
     public function findOrCreateUser($user, $provider)
@@ -221,9 +222,9 @@ class AuthController extends Controller
 		flash()->success(config('message.user.success-logout'));
 		if($user->role_id=='2')
 		{
-			return Redirect::to(url(LaravelLocalization::getCurrentLocale().'/merchant/login'));
+			return redirect()->route('merchant-login');
 		} else {
-			return Redirect::to(url(LaravelLocalization::getCurrentLocale().'/login'));
+			return redirect()->route('login');
 		}
     }
     
@@ -232,7 +233,7 @@ class AuthController extends Controller
         Auth::logout();
     	\Session::flush();
     	flash()->success(config('message.user.success-logout'));
-    	return Redirect::to(url(LaravelLocalization::getCurrentLocale().'/merchant/login'));
+    	return redirect()->route('merchant-login');
     }
 }
 

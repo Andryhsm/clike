@@ -86,7 +86,7 @@ h3 .bottle-box-number {
     background: #EFEFED;
     color: #D2D2CD !important;
     background: url(../../../images/icon/cloud.svg) no-repeat 0 -4px;
-    background-size: 13%;
+    background-size: 45px;
     background-position: 95% 50%;
 }
 .file span {
@@ -95,6 +95,10 @@ h3 .bottle-box-number {
 .file img {
     width: 35px;
     right: 0;
+}
+#code_promo_wrapper #code_promo tr th, #code_promo tr td {
+    padding-right: 0px;
+    padding-left: 0px;
 }
 input#logo, input#shop_image {
     width: 0.1px;
@@ -213,6 +217,9 @@ text {
 }
 #code_promo .search-box-container .search-box ul {
     padding: 0;
+}
+.header-code-promo {
+    padding: 15px 15px 0 15px;;
 }
 .customer-encasement {
     height: 200px;

@@ -9,7 +9,7 @@
                     @include('notification')
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 pt-40">
-                    {!! Form::open(['url' => url(LaravelLocalization::getCurrentLocale().'/checkout/confirm-cart'),'id' =>'cart_form', 'method' => 'POST']) !!}
+                    {!! Form::open(['url' => route('checkout-confirm-cart'),'id' =>'cart_form', 'method' => 'POST']) !!}
                         <div class="row">
                             <div class="cart-product-list col-lg-7 col-md-7 col-sm-7 col-xs-12 mb-20">
                                 <div class="content-cart-product">
@@ -21,7 +21,7 @@
                                  
                                     <div class="cart-product row">
                                         <div class="col-lg-4 mb-20">
-                                            <div class="product-image"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/'.$item->getUrl()) !!}"><img src="{!! URL::to('/').'/'.\App\Product::PRODUCT_IMAGE_PATH.$item->getImage() !!}" alt="{!! $item->getImageAlt() !!}"></a>
+                                            <div class="product-image"><a href="{!! url($item->getUrl()) !!}"><img src="{!! URL::to('/').'/'.\App\Product::PRODUCT_IMAGE_PATH.$item->getImage() !!}" alt="{!! $item->getImageAlt() !!}"></a>
                                             </div>
                                         </div>
                                         <div class="col-lg-7">
@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="col-lg-1 product-remove pull-right">
                                                 <!--<a href="{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"><i class="fa fa-times"></i></a>-->
-                                                <button type="button" onclick="location.href = '".{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}."'" class="close">×</button>
+                                                <button type="button" onclick="location.href = '{!! route('cart-remove', ['item_id' => $item_id]) !!}';" class="close">×</button>
                     
                                         </div>
                                     </div>
