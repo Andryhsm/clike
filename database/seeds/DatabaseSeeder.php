@@ -27,33 +27,46 @@ class DatabaseSeeder extends Seeder
         //     'status' => 'Désactivé'
         // ]);
        
-        factory(\App\StoreOpeningDay::class)->create([
-            'opening_day_id' => 1,
-            'day_name' => 'lundi'
+        // factory(\App\StoreOpeningDay::class)->create([
+        //     'opening_day_id' => 1,
+        //     'day_name' => 'lundi'
+        // ]);
+        // factory(\App\StoreOpeningDay::class)->create([
+        //     'opening_day_id' => 2,
+        //     'day_name' => 'mardi'
+        // ]);
+        // factory(\App\StoreOpeningDay::class)->create([
+        //     'opening_day_id' => 3,
+        //     'day_name' => 'mercredi'
+        // ]);
+        // factory(\App\StoreOpeningDay::class)->create([
+        //     'opening_day_id' => 4,
+        //     'day_name' => 'jeudi'
+        // ]);
+        // factory(\App\StoreOpeningDay::class)->create([
+        //     'opening_day_id' => 5,
+        //     'day_name' => 'vendredi'
+        // ]);
+        // factory(\App\StoreOpeningDay::class)->create([
+        //     'opening_day_id' => 6,
+        //     'day_name' => 'samedi'
+        // ]);
+        // factory(\App\StoreOpeningDay::class)->create([
+        //     'opening_day_id' => 7,
+        //     'day_name' => 'dimanche'
+        // ]);
+        
+        factory(\App\Models\ProductStockStatus::class)->create([
+            'product_stock_status_id' => 1,
+            'status_name' => 'En Stock'
         ]);
-        factory(\App\StoreOpeningDay::class)->create([
-            'opening_day_id' => 2,
-            'day_name' => 'mardi'
+        factory(\App\Models\ProductStockStatus::class)->create([
+            'product_stock_status_id' => 2,
+            'status_name' => 'Dernier article'
         ]);
-        factory(\App\StoreOpeningDay::class)->create([
-            'opening_day_id' => 3,
-            'day_name' => 'mercredi'
-        ]);
-        factory(\App\StoreOpeningDay::class)->create([
-            'opening_day_id' => 4,
-            'day_name' => 'jeudi'
-        ]);
-        factory(\App\StoreOpeningDay::class)->create([
-            'opening_day_id' => 5,
-            'day_name' => 'vendredi'
-        ]);
-        factory(\App\StoreOpeningDay::class)->create([
-            'opening_day_id' => 6,
-            'day_name' => 'samedi'
-        ]);
-        factory(\App\StoreOpeningDay::class)->create([
-            'opening_day_id' => 7,
-            'day_name' => 'dimanche'
+        factory(\App\Models\ProductStockStatus::class)->create([
+            'product_stock_status_id' => 3,
+            'status_name' => 'En Rupture'
         ]);
     }
 }

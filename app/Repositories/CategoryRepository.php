@@ -47,6 +47,14 @@ class CategoryRepository implements CategoryRepositoryInterface
 		return $categories;
 
 	}
+	
+	public function getChildCategory($parent_id)
+	{
+		$categories = Category::where('parent_id', $parent_id)->orderBY('sort_order')->get();
+		$categories = $this->addRelation($categories);
+
+		return $categories;
+	}
 
 	public function getParentCategories($language_id)
 	{

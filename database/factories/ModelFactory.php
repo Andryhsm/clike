@@ -104,3 +104,9 @@ $factory->define(\App\ProductStatus::class, function(Faker\Generator $faker){
                     'day_name' => $faker->name
                 ];
    });
+   $factory->define(\App\Models\ProductStockStatus::class, function (Faker\Generator $faker) {
+                return [
+                    'product_stock_status_id' => $faker->name,
+                    'status_name' => $faker->name
+                ];
+   });

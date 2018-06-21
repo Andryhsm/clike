@@ -287,7 +287,9 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::get('terminer-commande/{id}','OrderController@bookingRequest')->name('merchant-booked-request');
                     Route::get('produit/get-data', 'ProductController@getData')->name('merchant-product-data');
                     Route::get('produit', 'ProductController@index')->name('merchant-product');
-                    Route::get('produit/attributes', 'ProductController@attributes')->name('get_attribute');
+                    Route::resource('article', 'ArticleController');
+                    Route::get('child-category','ArticleController@getChild')->name('get-child-category');
+                    Route::get('produit/attributes', 'ArticleController@attributes')->name('get_attribute');
                     Route::post('produit', 'ProductController@store')->name('save_product_merchant');
                     Route::post('produit/upload', 'ProductController@uploadImage')->name('upload_product_image');
                     Route::get('produit/edit/{product_id}', 'ProductController@edit')->name('edit_product');

@@ -17,4 +17,5 @@ interface CategoryRepositoryInterface
 
 	public function getParentCategories($language_id);
 	
+	public function getChildCategory($parent_id);
 }

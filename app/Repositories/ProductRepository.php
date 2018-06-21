@@ -26,18 +26,13 @@ class ProductRepository implements ProductRepositoryInterface
     public function save($input)
     {
         try {
-            $this->model->sku = $input['serial_number'];
             $this->model->brand_id = $input['brand_id'];
             $this->model->is_active = $input['is_active'];
             $this->model->original_price = $input['original_price'];
-            //$this->model->best_price = $input['best_price'];
-            $this->model->attribute_set_id = $input['attribute_set'];
-            //$this->model->responsible = $input['responsible'];
-            $this->model->question_note = $input['question_note'];
             $this->model->created_by = Session::get('store_to_user');
             $this->model->save();
 
-            if (!empty($input['fr_product_name']) || !empty($input['fr_summary']) || !empty($input['fr_description']) || !empty($input['fr_title']) ||
+            if (!empty($input['fr_product_name']) || !empty($input['fr_description']) ||
 				!empty($input['fr_meta_description']) || !empty($input['fr_meta_keywords']) || !empty($input['fr_og_title']) || !empty($input['fr_og_description'])) {
                 $product_translation = new ProductTranslation();
                 $product_translation->product_id = $this->model->product_id;

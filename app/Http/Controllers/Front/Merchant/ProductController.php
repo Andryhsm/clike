@@ -127,8 +127,9 @@ class ProductController extends Controller
 		}else{	
 			$product_attributes = [];
 		}
-		\Log::debug($product_attributes);
-		return view('merchant.product.attributes',compact('attribute_set','product_attributes'));
+		/*\Log::debug($product_attributes);*/
+		
+		/*return view('merchant.product.attributes',compact('attribute_set','product_attributes'));*/
 	}
 
 	public function create()
@@ -424,4 +425,5 @@ class ProductController extends Controller
 		$code_promos = $category->code_promos->where('user_id', auth()->user()->user_id)->where('date_debut', '<', \Carbon\Carbon::now())->where('date_fin', '>', \Carbon\Carbon::now());
 		return response()->json(['code_promos' => $code_promos]);
 	}
+	
 }

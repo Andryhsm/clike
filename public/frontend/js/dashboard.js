@@ -103,7 +103,7 @@
  /*****   Mise en forme Donut chart  *****/
  function donutFormat(value1, donut) {
    var path1 = $('#salescamembert svg path:nth-of-type(1), #salescamembert svg path:nth-of-type(3)');
-   path1.attr('stroke-width', '7')
+   path1.attr('stroke-width', '8')
    var path2 = $('#salescamembert svg path:nth-of-type(2), #salescamembert svg path:nth-of-type(4)');
    path2.attr('stroke', 'none')
    

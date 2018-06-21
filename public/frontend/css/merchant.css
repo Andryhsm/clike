@@ -63,8 +63,8 @@ h3 .bottle-box-number {
 #code_promo input, #code_promo select,
 #customer_form input,  #customer_form select, #customer_form .select2,
 #promotion input, #promotion .select2, #promotion textarea, 
-#add_contact input,
-.merchant-order-list textarea{
+#add_contact input, #product_sold, #stock_manage,
+.merchant-order-list textarea, #product_description, #product_advice {
     border: 4px solid rgb(4, 70, 81);
     display: block;
     width: 100%;
@@ -113,7 +113,8 @@ input#logo, input#shop_image {
 #code_promo input, #code_promo select,
 #customer_form input, #customer_form select, #customer_form .select2,
 #promotion input, #promotion .select2,
-#add_contact input {
+#add_contact input, 
+#product_sold, #stock_manage {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -121,16 +122,17 @@ input#logo, input#shop_image {
     height: 5rem;
 }
  #store_form select, #product select,  #customer_form select, #customer_form .select2, 
-#promotion select {
+#promotion select, #product_sold, #stock_manage {
     background: url(../../../images/arrow_select.svg) no-repeat 0 -4px;
     background-size: 17px;
     background-position: 95% 50%;
  }
-  #store_form textarea, #code_promo select#categories, #promotion textarea {
+  #store_form textarea, #code_promo select#categories, #promotion textarea, textarea {
     height: 14.3rem !important;
     resize: none;
   }
-#store_form label, #code_promo label, .customer_encasement label {
+/*#store_form label, #code_promo label, .customer_encasement label, .article-details label,
+.stock-management*/ label {
     font-weight: normal;
 }
 .btn-merchant-filled {
@@ -241,3 +243,126 @@ text {
 .nav-tabs-custom>.nav-tabs>li.active{
     border-top-color: #044651 !important;
 }
+.list-article-header  {
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+#article_list thead tr {
+    display: grid;
+    grid-template-columns: 45% 20% 20% 15%;
+}
+#article_list tbody {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    display: block;
+    width: 100%;
+}
+#article_list .article i, .blocs-3 i, .stock-types i {
+    font-size: 22px;
+    font-weight: 600;
+}
+.action i {
+    font-size: 22px;
+}
+#article_list .article {
+    width: 39%;
+    text-align: left;
+}
+#article_list .article_price {
+    width: 20%;
+}
+#article_list .inventory {
+    width: 20%;
+}
+#article_list .action {
+    width: 10%;
+}
+#article_list td {
+    padding: 15px 0;
+    border-bottom: 1px solid #044651;
+}
+.blocs-3, .stock-types {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.bloc {
+    width: 30%;
+}
+#article_list {
+    width: 100%;
+}
+#article_list thead {
+    background-color: #65bb9f;
+}
+#article_list th {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    color: white !important;
+}
+.article-img {
+    border: 4px solid #044651;
+    width: 60px;
+    height: 80px;
+    margin-right: 15px;
+}
+.article-form .content {
+    padding: 4% 7%;
+}
+.title {
+    font-size: 15px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.article-add-img .add-img1 {
+    width: 60%;
+    height: 150px;
+    border: 4px solid #044651;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.article-add-img .add-img2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.add-img2 .nav-img {
+    display: flex;
+    flex-direction: column;
+}
+.add-img2 .nav-img img {
+    margin-bottom: 5px;
+    margin-right: 0 !important;
+}
+.add-img2 .center-img {
+    width: 150px;
+    height: 200px;
+    max-width: 150px;
+    max-height: 200px;
+    overflow: hidden;
+    border: 4px solid #044651;
+}
+.add-img2 .nav-img img {
+    width: 70px;
+    height: 90px;
+    max-width: 70px;
+    max-height: 90px;
+    overflow: hidden;
+    border: 4px solid #044651;
+}
+.add-img2 .add-bouton {
+    border: 4px solid #044651;
+    width: 60px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-img2 .add-bouton a {
+    color: #65bb9f !important;
+}
+
