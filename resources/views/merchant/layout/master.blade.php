@@ -91,7 +91,6 @@
 {!! Html::script('backend/js/validation.js') !!}
 {!! Html::script('backend/js/jquery.form.js') !!}
 {!! Html::script('backend/js/functions.js') !!}
-{{ HTML::script('frontend/js/dashboard.js') }}
 <script type="text/javascript">
     // Effet fix du menu gauche 
     aside_fixed();

@@ -344,3 +344,26 @@ $(document).ready(function() {
     });
     
 })
+
+function changeAttribute(box, product_id) {
+    var attribute_option_id = $(box).val();
+    console.log(attribute_option_id + '*******')
+    data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
+    $.ajax({
+        type: 'POST',
+        url: base_url +'/',
+        data: data,
+        beforeSend: function() {
+            $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+        },
+        success: function(response, status) {
+            if (response.success) {
+                console.log('SUCCES');
+            }
+            else {
+                console.log('FAILED');
+            }
+             $.LoadingOverlay("hide");
+        }
+    });
+}

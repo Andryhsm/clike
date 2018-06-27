@@ -66,7 +66,7 @@ class SpecialProductRepository implements SpecialProductRepositoryInterface
 
     public function getProducts($keyword)
     {
-        return ProductTranslation::where('product_name', 'like', "%$keyword%")->where('language_id',2)->groupBy('product_id')->get();
+        return ProductTranslation::where('product_name', 'like', "%$keyword%")->groupBy('product_id')->get();
     }
 
     public function getspecialProducts(){
@@ -80,7 +80,7 @@ class SpecialProductRepository implements SpecialProductRepositoryInterface
     {
         $product_ids = $this->model->where('type', $type)->pluck('product_id')->toArray();
         if (!empty($product_ids)) {
-            return Product::with(['translation', 'brand','images','url'])->where('is_active', 1)->whereIn('product_id', $product_ids)->take(6)->get();
+            return Product::with(['translation', 'brand','images','url'])->where('is_active', 1)->whereIn('product_id', $product_ids)->take(4)->get();
         }
         return [];
     }

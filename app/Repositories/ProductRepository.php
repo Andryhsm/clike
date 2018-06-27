@@ -5,12 +5,15 @@ use App\AttributeSet;
 use App\Interfaces\ProductRepositoryInterface;
 use App\Models\AffiliateProduct;
 use App\Models\ProductTranslation;
+use App\Models\ProductStock;
+use App\Models\ProductStockAttributeOption;
 use App\Product;
 use App\ProductAttributeValue;
 use App\ProductImage;
 use App\Url;
 use Illuminate\Support\Facades\Session;
 use App\Models\ProductVideo;
+use Illuminate\Support\Facades\Auth;
 
 class ProductRepository implements ProductRepositoryInterface
 {
@@ -21,6 +24,169 @@ class ProductRepository implements ProductRepositoryInterface
     {
         $this->model = $product;
         $this->modelAffiliate = $affiliate;
+    }
+    
+    public function saveArticle($input,$product_images)
+    {
+        //dd($input);
+        try {
+            $this->model->brand_name = $input['brand_name'];
+            $this->model->is_active = $input['is_active'];
+            $this->model->original_price = $input['original_price'];
+            $this->model->created_by = Session::get('store_to_user');
+            $this->model->store_id = auth()->user()->store->first()->store_id;
+            $this->model->attribute_set_id = $input['attribute_set_id'];
+            $this->model->range = $input['attribute_set_id'];
+            $this->model->balance = "1";
+            $this->model->discount = $input['discount'];
+            $this->model->promotional_price = $input['promotional_price'];
+            $this->model->save();
+            
+            //product translation
+            $product_translation = new ProductTranslation();
+            $product_translation->product_id = $this->model->product_id;
+            $product_translation->product_name = $input['product_name'];
+            $product_translation->description = $input['description'];
+			$product_translation->meta_title = $input['product_name'];
+			$product_translation->meta_description = $input['brand_name'].''.$input['product_name'];
+			$product_translation->meta_advice = $input['meta_advice'];
+			$product_translation->user_id = auth()->user()->user_id;
+            $product_translation->save();    
+            
+            //product_stock
+            $counts = $input['product_inventory'];
+            $status = $input['stock-types'];
+            $attributes = $input['attributes'];
+            $attribute_id = $input['attribute_id'];
+            
+            foreach ($counts as $key=>$count) {
+                $product_stock = new ProductStock();
+                $product_stock->product_id = $this->model->product_id;
+                $product_stock->store_id = auth()->user()->store->first()->store_id;
+                $product_stock->product_count = $count;
+                $product_stock->product_stock_status_id = $status[$key];
+                $product_stock->save();
+                 
+                //product_stock_attribute_option
+                foreach ($attributes[$key] as $key1=>$attribute) {
+                    $product_stock_attribute_option = new ProductStockAttributeOption();
+                    $product_stock_attribute_option->product_stock_id = $product_stock->product_stock_id;
+                    $product_stock_attribute_option->attribute_option_id = $attribute;
+                    $product_stock_attribute_option->attribute_id = $attribute_id[$key][$key1];
+                    $product_stock_attribute_option->save();
+                }
+            }
+            
+            //category
+            $this->model->categories()->attach($input['categories_id']);
+            $this->model->categories()->attach($input['category_child_id']);
+            
+            //product image
+            foreach ($product_images as $index=>$image) {
+                $product_image = new ProductImage();
+                $product_image->product_id = $this->model->product_id;
+                $product_image->image_name = $image;
+                $product_image->alt = $input['product_name'];
+                $product_image->title = $input['product_name'];
+                $product_image->sort_order = $index + 1;
+                $product_image->save();
+            }
+            
+            //url
+            $url = new Url();
+            $url->request_url = $input['product_name'];
+            $url->target_url = $input['product_name'];
+            $url->type = '2';
+            $url->target_id = $this->model->product_id;
+            $url->save();
+            
+            return $this->model;
+            
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return false;
+        }
+    }
+
+    public function updateArticle($input,$product_images)
+    {
+        try {
+            //product
+            $product_id = $input['product_id'];
+            $product = $this->model->findOrNew($product_id);
+            $product->brand_name = $input['brand_name'];
+            $product->is_active = $input['is_active'];
+            $product->original_price = $input['original_price'];
+            $product->created_by = Session::get('store_to_user');
+            $product->store_id = auth()->user()->store->first()->store_id;
+            $product->attribute_set_id = $input['attribute_set_id'];
+            $product->range = $input['attribute_set_id'];
+            $product->balance = "1";
+            $product->discount = $input['discount'];
+            $product->promotional_price = $input['promotional_price'];
+            $product->save();
+            
+            //translation
+            ProductTranslation::updateOrCreate(['product_id' => $product_id],
+                [
+                    'product_name' => $input['product_name'],
+                    'description' => $input['description'],
+					'meta_title'=>$input['product_name'],
+					'meta_description'=>$input['brand_name'].''.$input['product_name'],
+					'meta_advice'=>$input['meta_advice'],
+				]
+            );
+            
+            
+            //update
+            //product_stock
+            $counts = $input['product_inventory'];
+            $status = $input['stock-types'];
+            $attributes = $input['attributes'];
+            $attribute_id = $input['attribute_id'];
+            $product_stock_ids = $input['product_stock_id'];
+            $product_stock_attribute_option_ids = $input['product_stock_attribute_option_id'];
+            
+            foreach ($counts as $key=>$count) {
+                $product_stock = ProductStock::findOrNew($product_stock_ids[$key]);
+                $product_stock->product_id = $product_id;
+                $product_stock->store_id = auth()->user()->store->first()->store_id;
+                $product_stock->product_count = $count;
+                $product_stock->product_stock_status_id = $status[$key];
+                $product_stock->save();
+                 
+                //product_stock_attribute_option
+                foreach ($attributes[$key] as $key1=>$attribute) {
+                    $product_stock_attribute_option = ProductStockAttributeOption::findOrNew($product_stock_attribute_option_ids[$key][$key1]);
+                    $product_stock_attribute_option->product_stock_id = $product_stock->product_stock_id;
+                    $product_stock_attribute_option->attribute_option_id = $attribute;
+                    $product_stock_attribute_option->attribute_id = $attribute_id[$key][$key1];
+                    $product_stock_attribute_option->save();
+                }
+            }
+            
+            //category
+            $product->categories()->detach();
+            $product->categories()->attach($input['categories_id']);
+            $product->categories()->attach($input['category_child_id']);
+            
+            //product image
+            foreach ($product_images as $index=>$image) {
+                $product_image = new ProductImage();
+                $product_image->product_id = $product_id;
+                $product_image->image_name = $image;
+                $product_image->alt = $input['product_name'];
+                $product_image->title = $input['product_name'];
+                $product_image->sort_order = $index + 1;
+                $product_image->save();
+            }
+            
+            return $this->model;
+            
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return false;
+        }
     }
 
     public function save($input)
@@ -281,16 +447,16 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function getById($product_id)
     {
-        return $this->model->with('english', 'french', 'admin', 'url', 'images','brand')->where('product_id', $product_id)->first();
+        return $this->model->with('translation','admin', 'url', 'images','categories','stocks','stocks.options')->where('product_id', $product_id)->first();
     }
 
     public function getAll()
     {
-        return $this->model->with('english', 'french', 'admin', 'tags')->orderBy('product_id', 'desc')->get();
+        return $this->model->with('french', 'admin', 'tags')->orderBy('product_id', 'desc')->get();
     }
 
     public function getByStore($store_id){
-        return $this->model->with('english', 'french', 'admin', 'tags')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
+        return $this->model->with('images','translation','admin', 'tags')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
     }
 
     public function deleteById($product_id)
@@ -469,7 +635,7 @@ class ProductRepository implements ProductRepositoryInterface
 
 	public function getDashboardProduct()
 	{
-		return $this->model->with('english','images')->orderBy('product_id','desc')->limit(3)->get();
+		return $this->model->with('translation','images')->orderBy('product_id','desc')->limit(3)->get();
 	}
 	public function updateBestPrice($product_id)
 	{
@@ -482,5 +648,10 @@ class ProductRepository implements ProductRepositoryInterface
 			return Product::where('product_id',$product_id)->update(['best_price'=>$product->original_price]);
 		}
 		return;
+	}
+	
+	public function getProductAttributeOption($product_id)
+	{
+	    return $product_stocks = ProductStock::with('options')->where('product_id', $product_id)->get();
 	}
 }

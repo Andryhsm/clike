@@ -14,7 +14,7 @@
                         $category = $category->parent;
                         $categories_name_selected[] = $category->translation[1]->category_name;
                     }
-                    echo "<div class='container'>";
+                    echo "<div class='container'>"; 
                     for($i = sizeof($categories_name_selected) - 1; $i >= 0 ; $i--){
                             echo "<a href='#'>".$categories_name_selected[$i]."</a> ";
                             echo ($i > 0) ? "&nbsp;&nbsp;&nbsp;&nbsp;<i class='fa fa-angle-right'></i>&nbsp;&nbsp;&nbsp;&nbsp;" : "";
@@ -147,7 +147,7 @@
 
                                     @foreach($products as $key=>$product)
                                         <?php
-                                            $product_translation = $product->getByLanguageId(app('language')->language_id);
+                                            $product_translation = $product->french;
                                             $product_image = !empty($product->images[0]) ? $product->getDefaultImagePath() : '';
                                             $alt = !empty($product->images[0]) ? $product->images[0]->alt : '';
                                             $class = (($key+1)%4 ==1) ? "clear" : ""; //On affiche 4 produit par ligne
@@ -177,8 +177,7 @@
                                                     data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
                                                     onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                                     </div>
-                                                    <span>{!! 
-                                                    (isset($product->brand)) ? ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name : "" !!}</span>
+                                                    <span>{!! $product->brand_name !!}</span>
                                                     
                                                     @if(!empty($product->url))
                                                         <h4>
@@ -193,7 +192,7 @@
 
                                     <!-- @foreach($products as $key=>$product)
                                         <?php
-                                        $product_translation = $product->getByLanguageId(app('language')->language_id);
+                                        $product_translation = $product->french;
                                         $product_image = !empty($product->images[0]) ? $product->getDefaultCdnImagesPath() : '';
                                         $alt = !empty($product->images[0]) ? $product->images[0]->alt : '';
                                         $class = (($key+1)%4 ==1) ? "clear" : ""; //On affiche 4 produit par ligne

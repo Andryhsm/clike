@@ -169,7 +169,7 @@ jQuery(document).ready(function() {
         }
     */
     
-    console.log("ici pas de bug ");
+    console.log("ici pas de bug "); 
     $document.on('keyup keypress change', "#en_product_name", function(e) {
         console.log("Nous devons faire une autocompletion ");
         var clone_text = $("#fr_product_name").val();

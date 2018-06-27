@@ -80,3 +80,6 @@
         <br>
     </section>
 @stop
+@section('additional-script')
+    {{ HTML::script('frontend/js/dashboard.js') }}
+@endsection

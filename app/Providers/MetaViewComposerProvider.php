@@ -41,7 +41,7 @@ class MetaViewComposerServiceProvider extends ServiceProvider
         View::composer('front.product.index', function ($view) {
             $view_data = $view->getData();
             $product = $view_data['product'];
-            $product = $product->getByLanguageId(app('language')->language_id);
+            $product = $product->translation; 
 			SEOMeta::setTitle($product->meta_title);
 			SEOMeta::setDescription($product->meta_description);
 			SEOMeta::setKeywords($product->meta_keywords);

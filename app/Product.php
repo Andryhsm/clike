@@ -9,6 +9,7 @@ use App\Models\Brand;
 use App\Models\CodePromo;
 use App\Models\ProductTranslation;
 use App\Models\ProductVideo;
+use App\Models\ProductStock;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Input;
 
@@ -83,24 +84,30 @@ class Product extends Model
 		return $this->belongsToMany(Tag::class, 'product_tag', 'product_id', 'tag_id');
 	}
 
-	public function translation($language=null)
+	public function translation()
+	{
+		return $this->hasOne(ProductTranslation::class,'product_id');
+	}
+	
+	/*public function translation($language=null)
 	{
 		if($language==null){
 			return $this->hasMany(ProductTranslation::class,'product_id');
 		} else {
 			return $this->hasOne(ProductTranslation::class,'product_id')->where('language_id',$language);
 		}
-	}
+	}*/
 
-	public function english()
+	/*public function english()
 	{
 		return $this->translation(1);
 	}
+	*/
 	public function french()
 	{
 		return $this->translation(2);
 	}
-
+	
 	public function video()
 	{
 		return $this->hasMany(ProductVideo::class, 'product_id', 'product_id');
@@ -195,9 +202,9 @@ class Product extends Model
 			->leftjoin('product_attribute_value as p2', function ($query) {
 				$query->on('p2.product_id', '=', 'product.product_id');
 			})
-			->leftjoin('brand as b', function ($query) {
-				$query->on('b.brand_id', '=', 'product.brand_id');
-			})
+			// ->leftjoin('brand as b', function ($query) {
+			// 	$query->on('b.brand_id', '=', 'product.brand_id');
+			// })
 			->leftjoin('product_rating as pr', function ($query) {
 				$query->on('pr.product_id', '=', 'product.product_id');
 			})
@@ -214,7 +221,7 @@ class Product extends Model
 					$query->whereIn('tag.tag_id', [$tag_id]);
 				}
 				if (!empty($start_price) && !empty($end_price)) {
-					$query->whereBetween('best_price', [$start_price, $end_price]);
+					$query->whereBetween('original_price', [$start_price, $end_price]);
 				}
 				if (!empty($color_option_id)) {
 					$query->whereIn('p1.attribute_option_id', $color_option_id);
@@ -225,7 +232,7 @@ class Product extends Model
 				if (!empty($category_id)) {
 					$query->where('product_category.category_id', $category_id);
 				}
-				$query->where('product_translation.language_id', app('language')->language_id);
+				//$query->where('product_translation.language_id', app('language')->language_id);
 				if(!empty($discount)){
 					$query->whereRaw('((100 * (product.original_price - product.best_price))/product.original_price) >='.$discount);
 				}
@@ -238,8 +245,13 @@ class Product extends Model
 	{
     	return $this->hasMany(AffiliateProduct::class,'product_id','product_id')->orderBy('price');
 	}
-	public function code_promos(){
+	public function code_promos()
+	{
     	return $this->belongsToMany(CodePromo::class,'code_promo_product','product_id','code_promo_id');
+    }
+    public function stocks()
+    {
+    	return $this->hasMany(ProductStock::class,'product_id','product_id');
     }
 
 }

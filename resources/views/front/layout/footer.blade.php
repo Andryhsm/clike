@@ -193,7 +193,7 @@
 {!! Html::script('frontend/js/product_detail.js') !!}
 {!! Html::script('frontend/js/jquery.flexslider.js') !!}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js"></script>-->
 
 <!-- Loading overlay -->
 <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.0/dist/loadingoverlay.min.js"></script>

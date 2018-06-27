@@ -101,7 +101,7 @@
                                         <li><a class="dropdown-menu-border" href="{!! route('store.edit', ['id' => Session::get('store_to_user')]) !!}">{!! trans('common/label.shop_account') !!}</a></li>
                                         <li><a class="dropdown-menu-border" href="{!! route('merchant-dashboard') !!}"> Tableau de bord </a></li>
                                         <li><a class="dropdown-menu-border" href="{!! route('merchant-product') !!}">Gérer les produits </a></li>
-                                        <li><a class="dropdown-menu-border" href="{!! route('code_promo.index') !!}">Gérer les code promos </a></li>
+                                        <li><a class="dropdown-menu-border" href="{!! route('code-promo.index') !!}">Gérer les code promos </a></li>
                                         @if($is_user_login)
                                             <li><a href="{!! route('logout') !!}"> {!! trans('common/label.sign_out')!!} </a></li>
                                         @else

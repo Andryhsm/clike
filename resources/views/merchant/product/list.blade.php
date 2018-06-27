@@ -78,12 +78,12 @@
     {!! Html::script('backend/plugins/dropzone/dropzone.js') !!}
     {!! Html::script('backend/js/tableExport.js') !!}
     <script type="application/javascript" language="JavaScript">
-        var url_redirect = '{!! route('merchant-product') !!}';
-        var url_get_data_product = '{!! route('merchant-product-data') !!}';
-        var url_remove_image = '{!! route('remove_product_image') !!}';
-        var url_upload_image = '{!! route('upload_product_image') !!}';
-        var url_search_product = '{!! route('merchant_search_product') !!}';
-        var url_remove_product_tag = '{!! route('merchant_product_remove_tag') !!}';
+        var url_redirect = "{!! route('merchant-product') !!}";
+        var url_get_data_product = "{!! route('merchant-product-data') !!}";
+        var url_remove_image = "{!! route('remove_product_image') !!}";
+        var url_upload_image = "{!! route('upload_product_image') !!}";
+        var url_search_product = "{!! route('merchant_search_product') !!}";
+        var url_remove_product_tag = "{!! route('merchant_product_remove_tag') !!}";
     </script>
     {!! Html::script('frontend/js/product_merchant.js') !!}
 @stop

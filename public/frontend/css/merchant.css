@@ -64,7 +64,7 @@ h3 .bottle-box-number {
 #customer_form input,  #customer_form select, #customer_form .select2,
 #promotion input, #promotion .select2, #promotion textarea, 
 #add_contact input, #product_sold, #stock_manage,
-.merchant-order-list textarea, #product_description, #product_advice {
+.merchant-order-list textarea, #description, #meta_advice {
     border: 4px solid rgb(4, 70, 81);
     display: block;
     width: 100%;
@@ -265,7 +265,7 @@ text {
     font-size: 22px;
 }
 #article_list .article {
-    width: 39%;
+    width: 32%;
     text-align: left;
 }
 #article_list .article_price {
@@ -364,5 +364,8 @@ text {
 }
 .add-img2 .add-bouton a {
     color: #65bb9f !important;
+}
+a.checkbox:hover {
+    color: #65bb9f;  
 }
 

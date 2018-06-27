@@ -105,10 +105,10 @@
                                                 @endif
                                             </div>
                                             <div class="product-info">
-                                                <a href="javascript:void(0)" class="product-title">{!! $product->french->product_name !!}
+                                                <a href="javascript:void(0)" class="product-title">{!! $product->translation->product_name !!}
                                                     <span class="label label-warning pull-right">{!! format_price($product->original_price) !!}</span></a>
                                                 <span class="product-description">
-                                                    {!! str_limit($product->french->description,80) !!}
+                                                    {!! str_limit($product->translation->description,80) !!}
                                                 </span>
                                             </div>
                                         </li>

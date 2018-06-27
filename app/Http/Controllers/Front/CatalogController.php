@@ -139,11 +139,11 @@ class CatalogController extends Controller
             $prices_array = $prices;
             Session::put('prices_array', $prices_array);   
         }
-
         $attributes['color'] = $attribute['size'] = [];
         $attributes = $this->product_repository->getAttributeByProducts(array_unique($product_ids));
         $attribute = $this->getAttribute($attributes);
         $title_name=(app('language')->language_code=='en')?'english_':'french_';
+        
         return view('front.catalog.search', compact('products', 'category_id', 'product_brands', 'product_tags', 'title_name', 'prices_array'))->with('colors', (!empty($attribute['color'])) ? $attribute['color'] : [])->with('sizes', (!empty($attribute['size'])) ? $attribute['size'] : [])->withCookie(cookie('coupon', "je suis la cookie", 3600));
     }
 
@@ -151,7 +151,7 @@ class CatalogController extends Controller
     {
         $attribute_options = [];
         foreach ($attributes as $attribute) {
-            if(isset($attribute->option)){
+            if(isset($attribute->option) && isset($attribute->attribute)){
                 $options = $attribute->option->getByLanguageid(2);
                 if(empty($options)){
                     continue;

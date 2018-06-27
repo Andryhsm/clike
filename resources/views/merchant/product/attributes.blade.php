@@ -19,7 +19,7 @@
                     <div class="form-group">
                         {!! Form::label('attribute_name', $attribute->french->attribute_name, ['class' => 'col-sm-2 control-label']) !!}
                         <div class="col-sm-10">
-                            <select class="form-control select2" multiple="multiple"
+                            <select class="form-control" multiple="multiple"
                                     name="attributes[{!! $attribute->attribute_id !!}][]"
                                     data-placeholder="Select option" style="width: 100%;">
                                 @foreach($attribute->options as $option)

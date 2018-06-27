@@ -1,17 +1,13 @@
 @extends('front.layout.master')
 @section('additional-header')
     <?php
-        $product_translation = $product->getByLanguageId(2);
+        $product_translation = $product->translation;
     ?>
         <meta property="og:title" content="Produit clickee" /> 
         <meta property="og:image" content="{!! URL::to('/').'/'.$product->getDefaultImagePath() !!}" /> 
         <meta property="og:description" content="{!! $product_translation->description !!}" /> 
         <meta property="og:url" content="{!! URL::current() !!}">
-    
-        <!-- <meta property="og:title" content="Créer un bouton de partage personnalisé pour Facebook - karac blog" /> -->
-        <!--<meta property="og:image" content="https://karac.ch/storage/articles/August2017/pJBVDQrp5BpNriveaDZg.jpg" /> -->
-        <!--<meta property="og:description" content="Dans ce tutoriel, nous allons voir comment ajouter à votre site un joli bouton de partage personnalisé pour Facebook (le fonctionnement est le même pour les autres réseaux sociaux)." /> -->
-        <!--<meta property="og:url" content="https://karac.ch/blog/bouton_partage_personnalise">-->
+
 @endsection
 @section('content')
     
@@ -25,7 +21,7 @@
                 @foreach($categories as $category)
                     <a href="{!! route('search', ['category' => $category->category_id]) !!}" >{!! $category->getByLanguage(2)->category_name !!}</a>&nbsp;&nbsp;<i class="fa fa-chevron-right" style="font-size: 11px;"></i>&nbsp;&nbsp;
                 @endforeach
-                <span>{!! $product->brand->brand_name !!} - {!! $product_translation->product_name !!}</span>
+                <span>{!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!} - {!! $product_translation->product_name !!}</span>
             </div>
         </div>
         <div class="category-link"><p id="category-parent" data-latest-category=""></p></div>
@@ -47,11 +43,11 @@
                             <div class="flexslider flexslider-thumb">
                                 <ul class="previews-list slides">
                                     @foreach($product->images as $product_image)
-                                    <li class="{!! (count($product->images)==2)?'fixed-width':'' !!}">
-                                        <a class="thumb-image" href='{!! $product->getImagesPath($product_image) !!}'>
-                                            <img class="{!! ($loop->first) ? 'active' : '' !!}" data-image="{!! url($product->getImagesPath($product_image)) !!}" src="{!! url($product->thumb($product_image)) !!}" alt = "{!! $product_image->alt !!}" title="{!! $product_image->title !!}"/>
-                                        </a>
-                                    </li>
+                                        <li class="{!! (count($product->images)==2)?'fixed-width':'' !!}">
+                                            <a class="thumb-image" href='{!! $product->getImagesPath($product_image) !!}'>
+                                                <img class="{!! ($loop->first) ? 'active' : '' !!}" data-image="{!! url($product->getImagesPath($product_image)) !!}" src="{!! url($product->thumb($product_image)) !!}" alt = "{!! $product_image->alt !!}" title="{!! $product_image->title !!}"/>
+                                            </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -91,24 +87,23 @@
                         </div>
                     </div>
                 </div>
-                <!-- end: more-images -->
-
             </div>
+            
             <div class="col-lg-3 col-sm-12 col-xs-12 containt-product-info">
                 <div class="product-info">
                     {!! Form::open(['url' => route("cart-add"), 'class' => '','id' =>'product_form']) !!}
-                    <div class="mb-30 mt-10 mr-r-10 vcenter content-product-attribut col-lg-12 col-md-6 col-sm-5 col-xs-8">   <!--mb-30 mr-l-20-->
-                        <img src="{!! ($product->brand->parent_id==null) ? $product->brand->getImagePath() : $product->brand->parent->getImagePath() !!}">
+                    <div class="mb-30 mt-10 mr-r-10 vcenter content-product-attribut col-lg-12 col-md-6 col-sm-5 col-xs-8"> 
+                        <h1>{!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}</h1>
                     </div>
                     <h2 class="mr-l-15">{!! $product_translation->product_name !!}</h2>
                     <div class="price">
-                        @if($product->original_price != $product->best_price)
-                                            <span class="new-price fs-25">{!! format_price($product->best_price) !!}</span>
-                                             <span class="old-price fs-25">&nbsp;<del>{!! format_price($product->original_price) !!}</del></span>
-                                            <span class="old-price percentage ml-10 fs-25">{!! getRebate($product->best_price,$product->original_price) !!} OFF</span>
-                                        @else
-                                            <span class="price-exact fs-25">{!! format_price($product->original_price) !!}</span>
-                                        @endif
+                        @if($product->promotional_price != null)
+                            <span class="new-price fs-25">{!! format_price($product->promotional_price) !!}</span>
+                            <span class="old-price fs-25">&nbsp;<del>{!! format_price($product->original_price) !!}</del></span>
+                            <span class="old-price percentage ml-10 fs-25">{!! $product->discount !!} OFF</span>
+                        @else
+                            <span class="price-exact fs-25">{!! format_price($product->original_price) !!}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="review-total ptb-10">   
@@ -123,7 +118,7 @@
                         </div>
                 </div>
                 <!-- start attribute -->
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-lg-12 col-sm-8 col-md-10 col-xs-10 pb-10 pt-0 p-lr-0 vcenter mt-0 mr-l-20">
                         <?php 
                             $value_margin = 40; //valeur du margin top pour les researux sociaux
@@ -192,8 +187,31 @@
                             </div>
                         @endforeach
                              
-                    </div>
+                    </div>-->
                     <!-- end attribute -->
+                    
+                    
+                    <!--test-->
+                     @if($attribute_set)
+                        @foreach($attribute_set->attributes as $key=>$attribute)
+                            <div class="form-group">
+                                {!! Form::label('attribute_name', $attribute->french->attribute_name, ['class' => 'control-label']) !!}
+                                <div class="">
+                                    <select name="attrs[]" data-placeholder="Choose an option…" class="col-md-11 col-sm-10 col-xs-11 
+                                        product-input-select required" tabindex="1" style="color: #42838C!important" onchange="changeAttribute(this, {!! $product->product_id !!})">
+                                        <option value="default" disabled selected>Veuillez choisir</option>
+                                        @foreach($attribute->options as $option)
+                                            @if(in_array($option->attribute_option_id,$attribute_option_ids))
+                                                <option value="{!! $option->attribute_option_id !!}" >{!! $option->french->option_name !!}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                    <!--end test-->
+                    
 
                     </div>
                     <div class="clear"></div>
@@ -552,7 +570,7 @@
                 </div>
                 <div class="related-products-active">
                     @foreach($related_products as $related_product)
-                     <?php $related_product_translation = $related_product->getByLanguageId(app('language')->language_id); ?>
+                     <?php $related_product_translation = $related_product->translation; ?>
 
                         <div class="col-lg-12">
                         <!-- single-product-start -->

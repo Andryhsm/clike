@@ -140,7 +140,7 @@
                             <?php } ?>-->
                             
                             @foreach($special_products['heart_stroke'] as $product)
-                            <?php $product_translation=$product->getByLanguageId(app('language')->language_id);?>
+                            <?php $product_translation=$product->translation; ?>
                             
                             <div class="col-lg-12">
                                 <!-- single-product-start -->
@@ -167,8 +167,9 @@
                                                     data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
                                                     onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                                     </div>
-                                                    <span>{!! 
-                                                    (isset($product->brand)) ? ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name : "" !!}</span>
+                                                    <span>
+                                                        {!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}
+                                                    </span>
                                                     
                                                     @if(!empty($product->url))
                                                         <h4>
@@ -198,7 +199,7 @@
                         <div class="related-products-active">
                 
                             @foreach($special_products['best_sale'] as $product)
-                            <?php $product_translation=$product->getByLanguageId(app('language')->language_id);?>
+                            <?php $product_translation=$product->translation; ?>
                             
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <!-- single-product-start -->
@@ -228,8 +229,8 @@
                                             onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <span>{!! 
-                                            (isset($product->brand)) ? ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name : "&nbsp;" !!}
+                                            <span>
+                                                {!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}
                                             </span>
                                         </div>
 
@@ -262,7 +263,7 @@
                         <div class="related-products-active">
                 
                             @foreach($special_products['best_rated'] as $product)
-                            <?php $product_translation=$product->getByLanguageId(app('language')->language_id);?>
+                            <?php $product_translation=$product->translation; ?>
                             
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <!-- single-product-start -->
@@ -290,9 +291,9 @@
                                     data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
                                         onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                         </div>
-                                        <span>{!! 
-                                        (isset($product->brand)) ? ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name : "" !!}</span>
-                                        
+                                        <span>
+                                            {!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}
+                                        </span>
                                         @if(!empty($product->url))
                                             <h4>
                                                 <a href="{!! url($product->url->target_url) !!}">{!! $product_translation->product_name !!}</a>

@@ -38,6 +38,7 @@ class ProductController extends Controller
     }
     public function index($product_id)
 	{
+	    
         $parent_category = [];
         $product = $this->product_repository->getProductById($product_id);
         $attributes=$this->product_repository->getAttributesByProductId($product_id);
@@ -54,7 +55,19 @@ class ProductController extends Controller
         $categories = $product->categories;
         $categories_id = $product->categories->pluck('category_id')->all();
     	$related_products = $this->product_repository->getByCategories($categories_id);
+        $attribute_set = $this->product_repository->getAttributesBySetId($product->attribute_set_id);
         
+        $product_attribute_options = $this->product_repository->getProductAttributeOption($product_id);
+
+        $attribute_option_ids = [];
+        foreach ($product_attribute_options as $value) {
+            foreach($value->options as $option){
+                if(!in_array($option->attribute_option_id,$attribute_option_ids)){
+                    $attribute_option_ids[] = $option->attribute_option_id;
+                }
+    	    }
+        }
+
         return view('front.product.index')
             ->with('product', $product)
             ->with('affiliate_products', $affiliate_products)
@@ -64,7 +77,9 @@ class ProductController extends Controller
             ->with('attr_options', $product_attributes['attr_options'])
             ->with('related_products', $related_products)
             ->with('attribute_option_id', $product_attributes['attribute_option'])
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('attribute_set', $attribute_set)
+            ->with('attribute_option_ids',$attribute_option_ids);
     }
 
     public function getProductAttribute($attribute_values)

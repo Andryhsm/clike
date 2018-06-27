@@ -11,13 +11,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ set_active(['marchand/produit', 'marchand/produit/*']) }}" href="{!! route('merchant-product') !!}">
-                <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/my_product.svg"/><span>Mes produits</span>
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link {{ set_active(['marchand/article', 'marchand/article/*']) }}" href="{!! route('article.index') !!}">
-                <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/my_product.svg"/><span>Mes articles</span>
+                <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/my_product.svg"/><span>Mes produits</span>
             </a>
         </li>
         <li class="nav-item">
