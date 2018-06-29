@@ -359,13 +359,19 @@ function changeAttribute(box, product_id) {
             $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
         },
         success: function(response, status) {
-            console.log(response)
-            
+            console.log(response);
+            // $.each(response, function(key, value){
+            //     console.log(key + ' ***** ' + value);
+            // })
+            $.each(response, function(key, value){
+                    
+            })
             $.LoadingOverlay("hide");
+            
         },
         error: function(xhr){
             console.log('Erreur' + xhr.responseText);
-             $.LoadingOverlay("hide");
+            $.LoadingOverlay("hide");
         }
     });
 }

@@ -193,19 +193,13 @@ $('.check-all').click(function(e){
     var thisIcon = $(this).find('i');
     $('.checkbox').each(function(index, el) {
         var icon = $(el).find('i');
-       // removeSelection(icon, $(this));
+        removeSelection(icon, $(this));
         changeCircle(icon, $(this));
         changeCircle(thisIcon, $(this));
     });
 });
 
 function changeCircle(icon, parent){
-    if(parent.hasClass('check-all')){
-        if(parent.hasClass('checked'))
-            $('.buttons-selection .deletes').removeClass('hidden');
-        else
-            $('.buttons-selection .deletes').addClass('hidden');
-    }
     if(icon.hasClass('fa-circle-o')){
         icon.removeClass('fa-circle-o');
         icon.addClass('fa-dot-circle-o');
@@ -215,10 +209,16 @@ function changeCircle(icon, parent){
         icon.removeClass('fa-dot-circle-o');
         parent.removeClass('checked');
     }
+    if(parent.hasClass('check-all')){
+        if(parent.hasClass('checked'))
+            $('.buttons-selection .deletes').removeClass('hidden');
+        else
+            $('.buttons-selection .deletes').addClass('hidden');
+    }
 }
 
 function removeSelection(icon, parent){
-    if(parent.hasClass('checked')){   
+    if(parent.hasClass('checked') && !parent.hasClass('check-all')){   
         icon.addClass('fa-circle-o');
         icon.removeClass('fa-dot-circle-o');
         parent.removeClass('checked');

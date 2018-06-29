@@ -411,8 +411,10 @@ class ProductController extends Controller
        $atribute_options = $this->product_repository->getRelatedAttributeOption($product_id, $product_stock_ids);
        $product_attribute_options = [];
        foreach ($atribute_options as $option) {
-           $product_attribute_options[$option->attribute_option_id] = $option->french->option_name;
+           if($option->attribute_option_id != $attribute_option_id){
+                $product_attribute_options[$option->attribute_option_id] = $option->option_name;
+           }
        }
-       return response ()->json (['product_attribute_options' => $product_attribute_options]);
+       return response ()->json ($atribute_options);
    }
 }
