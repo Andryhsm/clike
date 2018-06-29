@@ -205,7 +205,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
     Route::get('ask-product/search','ProductController@searchProduct')->name('ask-product-search');
     Route::get('ask-product','ProductController@askProduct')->name('ask-product');
     Route::post('product-available','ProductController@productExistsInLocal')->name('product-available');
-    Route::post('produit/options/{product_id}/{attribute_option_id}', 'ProductController@getOptions')->name('get_options');
+    Route::post('produit/options', 'ProductController@getOptions')->name('get_options');
     Route::get('share-product-detail-on-facebook', 'ShareController@shareProductDetailOnFacebook')->name('share-product-detail-on-facebook');
     Route::get('get-all-product-in-area', 'AutocompleteController@getAllProductInArea')->name('get-all-product-in-area');
     

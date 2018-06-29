@@ -654,4 +654,12 @@ class ProductRepository implements ProductRepositoryInterface
 	{
 	    return $product_stocks = ProductStock::with('options')->where('product_id', $product_id)->get();
 	}
+	
+	public function getRelatedAttributeOption($product_id, $attribute_option_id){
+	    $product_stocks = ProductStock::with('options')->where('product_id', $product_id)->where('attribute_option_id', $attribute_option_id)->get();
+	   // foreach($product_stoks as $stock){
+	   //     $product_stock_id[] = $stock->product_stock_id;
+	   // }
+        return $product_stocks;
+	}
 }

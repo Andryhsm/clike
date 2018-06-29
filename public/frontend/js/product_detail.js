@@ -342,27 +342,29 @@ $(document).ready(function() {
             $(this).parent().find('.error').remove();
         }
     });
-    
+  
 })
 
 function changeAttribute(box, product_id) {
     var attribute_option_id = $(box).val();
+    var url = $(box).attr('data-route');
     console.log(attribute_option_id + '*******')
     data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
     $.ajax({
+        dataType: 'json',
         type: 'POST',
-        url: base_url +'/',
+        url: url,
         data: data,
         beforeSend: function() {
             $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
         },
         success: function(response, status) {
-            if (response.success) {
-                console.log('SUCCES');
-            }
-            else {
-                console.log('FAILED');
-            }
+            console.log(response)
+            
+            $.LoadingOverlay("hide");
+        },
+        error: function(xhr){
+            console.log('Erreur' + xhr.responseText);
              $.LoadingOverlay("hide");
         }
     });

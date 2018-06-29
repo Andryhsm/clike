@@ -399,5 +399,11 @@ class ProductController extends Controller
         return $location;
     }
 
-   
+   public function getOptions(Request $request)
+   {
+       $product_id = $request->get('product_id');
+       $attribute_option_id = $request->get('attribute_option_id');
+       $products = $this->product_repository->getRelatedAttributeOption($product_id, $attribute_option_id);
+       return response ()->json (['products' => $products]);
+   }
 }
