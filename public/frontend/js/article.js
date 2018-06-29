@@ -200,12 +200,6 @@ $('.check-all').click(function(e){
 });
 
 function changeCircle(icon, parent){
-    if(parent.hasClass('check-all')){
-        if(parent.hasClass('checked'))
-            $('.buttons-selection .deletes').removeClass('hidden');
-        else
-            $('.buttons-selection .deletes').addClass('hidden');
-    }
     if(icon.hasClass('fa-circle-o')){
         icon.removeClass('fa-circle-o');
         icon.addClass('fa-dot-circle-o');
@@ -214,6 +208,12 @@ function changeCircle(icon, parent){
         icon.addClass('fa-circle-o');
         icon.removeClass('fa-dot-circle-o');
         parent.removeClass('checked');
+    }
+    if(parent.hasClass('check-all')){
+        if(parent.hasClass('checked'))
+            $('.buttons-selection .deletes').removeClass('hidden');
+        else
+            $('.buttons-selection .deletes').addClass('hidden');
     }
 }
 
