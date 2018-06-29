@@ -655,11 +655,19 @@ class ProductRepository implements ProductRepositoryInterface
 	    return $product_stocks = ProductStock::with('options')->where('product_id', $product_id)->get();
 	}
 	
-	public function getRelatedAttributeOption($product_id, $attribute_option_id){
-	    $product_stocks = ProductStock::with('options')->where('product_id', $product_id)->where('attribute_option_id', $attribute_option_id)->get();
-	   // foreach($product_stoks as $stock){
-	   //     $product_stock_id[] = $stock->product_stock_id;
-	   // }
-        return $product_stocks;
+	public function getRelatedProductStock($product_id, $attribute_option_id){
+	    return $products = \DB::table('product_stock_attribute_option')
+          ->join('product_stock', 'product_stock.product_stock_id', '=', 'product_stock_attribute_option.product_stock_id')
+ 		  ->where('product_stock.product_id',$product_id)
+ 		  ->where('product_stock_attribute_option.attribute_option_id', $attribute_option_id)
+ 		  ->get();
+	}
+	
+	public function getRelatedAttributeOption($product_id, $product_stock_ids){
+	    return $attributeOptions = ProductStockAttributeOption::with('french')
+          ->join('product_stock', 'product_stock.product_stock_id', '=', 'product_stock_attribute_option.product_stock_id')
+ 		  ->where('product_stock.product_id',$product_id)
+ 		  ->whereIn('product_stock_attribute_option.product_stock_id', $product_stock_ids)
+ 		  ->get();
 	}
 }

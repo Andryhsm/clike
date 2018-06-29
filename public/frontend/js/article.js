@@ -181,3 +181,46 @@ $('#add-article').click(function() {
         console.log("Notre form n'est pas valid");
     }
 });
+
+$('.checkbox').click(function(e){
+    e.preventDefault();
+    var $icon = $(this).find('i');
+    changeCircle($icon, $(this));
+});
+
+$('.check-all').click(function(e){
+    e.preventDefault();
+    var thisIcon = $(this).find('i');
+    $('.checkbox').each(function(index, el) {
+        var icon = $(el).find('i');
+       // removeSelection(icon, $(this));
+        changeCircle(icon, $(this));
+        changeCircle(thisIcon, $(this));
+    });
+});
+
+function changeCircle(icon, parent){
+    if(parent.hasClass('check-all')){
+        if(parent.hasClass('checked'))
+            $('.buttons-selection .deletes').removeClass('hidden');
+        else
+            $('.buttons-selection .deletes').addClass('hidden');
+    }
+    if(icon.hasClass('fa-circle-o')){
+        icon.removeClass('fa-circle-o');
+        icon.addClass('fa-dot-circle-o');
+        parent.addClass('checked');
+    }else {
+        icon.addClass('fa-circle-o');
+        icon.removeClass('fa-dot-circle-o');
+        parent.removeClass('checked');
+    }
+}
+
+function removeSelection(icon, parent){
+    if(parent.hasClass('checked')){   
+        icon.addClass('fa-circle-o');
+        icon.removeClass('fa-dot-circle-o');
+        parent.removeClass('checked');
+    }
+}

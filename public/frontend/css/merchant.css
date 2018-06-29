@@ -368,4 +368,7 @@ text {
 a.checkbox:hover {
     color: #65bb9f;  
 }
+.buttons-selection {
+    font-size: 30px;
+}
 

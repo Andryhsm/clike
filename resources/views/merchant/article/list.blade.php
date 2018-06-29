@@ -30,6 +30,9 @@
     <section class="content">
         <div class="bottle">
             <section class="list-article-header">
+                <div class="pull-left buttons-selection ptb-20">
+                    <a class="delete-selected"><i class="fa fa-trash deletes hidden"></i></a>
+                </div>
                 <div class="pull-right ptb-20">
                     <a href="{!! route('article.create') !!}" class="btn btn-block btn-merchant-filled">
                         <i class="fa fa-plus"></i>
@@ -101,6 +104,7 @@
 @section('additional-script')
     {!! Html::script('backend/plugins/datatables/jquery.dataTables.min.js') !!}
     {!! Html::script('backend/plugins/datatables/dataTables.bootstrap.min.js') !!}
+    {{ HTML::script('frontend/js/article.js') }}
 @stop
 @section('footer-scripts')
     <script>
@@ -150,34 +154,7 @@
         if (jQuery('.dataTables_filter').length > 0) {
             jQuery('.dataTables_filter').find('input').addClass('form-control')
         }
-        
-        $('.checkbox').click(function(e){
-            e.preventDefault();
-            var $icon = $(this).find('i');
-            changeCircle($icon, $(this));
-        });
-
-        $('.check-all').click(function(e){
-            e.preventDefault();
-            var thisIcon = $(this).find('i');
-            $('.checkbox').each(function(index, el) {
-                var icon = $(el).find('i');
-                changeCircle(icon, $(this));
-                changeCircle(thisIcon, $(this));
-            });
-        });
-
-        function changeCircle(icon, parent){
-            if(icon.hasClass('fa-circle-o')){
-                icon.removeClass('fa-circle-o');
-                icon.addClass('fa-dot-circle-o');
-                parent.addClass('checked');
-            }else {
-                icon.addClass('fa-circle-o');
-                icon.removeClass('fa-dot-circle-o');
-                parent.removeClass('checked');
-            }
-        }
+       
     </script>
     <script type="text/javascript">
         function delete_article(product_id){
