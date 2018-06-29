@@ -18,7 +18,7 @@ class UpdateProductTableAddColumnBalance extends Migration
             $table->string('range')->nullable();  // (Gamme)
             $table->tinyInteger('balance')->nullable(); // (Soldé)
             $table->tinyInteger('discount')->nullable(); // (Réduction)
-            $table->decimal('promotional_price', 12, 2)->after('original_price'); // (Tarif promotionnel) 
+            $table->decimal('promotional_price', 12, 2)->nullable()->after('original_price'); // (Tarif promotionnel) 
         });
     }
 

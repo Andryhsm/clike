@@ -38,7 +38,7 @@
                 </div>
                 <div class="blocs-3 pb-10">
                     <div class="" style="line-height: 5rem; width:160px;">
-                        <a href="#" class="check-all"><i class="fa fa-circle-o mr-10"></i> <span>Tout sélectionner</span></a>
+                        <a href="#" class="check-all checkbox"><i class="fa fa-circle-o mr-10"></i> <span>Tout sélectionner</span></a>
                     </div>
                     <div class="bloc">
                         <select id="product_sold" name="">
@@ -154,29 +154,30 @@
         $('.checkbox').click(function(e){
             e.preventDefault();
             var $icon = $(this).find('i');
-            if($icon.hasClass('fa-circle-o')){
-                $icon.removeClass('fa-circle-o');
-                $icon.addClass('fa-dot-circle-o');
-                $(this).addClass('checked');
-            }else {
-                $icon.addClass('fa-circle-o');
-                $icon.removeClass('fa-dot-circle-o');
-                $(this).removeClass('checked');
-            }
+            changeCircle($icon, $(this));
         });
+
         $('.check-all').click(function(e){
             e.preventDefault();
-            var $icon = $('.checkbox').find('i');
-            if($icon.hasClass('fa-circle-o')){
-                $icon.removeClass('fa-circle-o');
-                $icon.addClass('fa-dot-circle-o');
-                $(this).addClass('checked');
-            }else {
-                $icon.addClass('fa-circle-o');
-                $icon.removeClass('fa-dot-circle-o');
-                $(this).removeClass('checked');
-            }
+            var thisIcon = $(this).find('i');
+            $('.checkbox').each(function(index, el) {
+                var icon = $(el).find('i');
+                changeCircle(icon, $(this));
+                changeCircle(thisIcon, $(this));
+            });
         });
+
+        function changeCircle(icon, parent){
+            if(icon.hasClass('fa-circle-o')){
+                icon.removeClass('fa-circle-o');
+                icon.addClass('fa-dot-circle-o');
+                parent.addClass('checked');
+            }else {
+                icon.addClass('fa-circle-o');
+                icon.removeClass('fa-dot-circle-o');
+                parent.removeClass('checked');
+            }
+        }
     </script>
     <script type="text/javascript">
         function delete_article(product_id){
