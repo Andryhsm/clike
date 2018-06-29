@@ -403,16 +403,19 @@ class ProductController extends Controller
    {
        $product_id = $request->get('product_id');
        $attribute_option_id = $request->get('attribute_option_id');
+       $next_select_attribute = $request->get('next_select_attribute');
        $products = $this->product_repository->getRelatedProductStock($product_id, $attribute_option_id);
        $product_stock_ids = [];
        foreach ($products as $product) {
           $product_stock_ids[] = $product->product_stock_id; 
        }
-       $atribute_options = $this->product_repository->getRelatedAttributeOption($product_id, $product_stock_ids);
+       $atribute_options = $this->product_repository->getRelatedAttributeOption($product_id, $product_stock_ids, $next_select_attribute);
        $product_attribute_options = [];
        foreach ($atribute_options as $option) {
-           $product_attribute_options[$option->attribute_option_id] = $option->french->option_name;
+           if($option->attribute_option_id != $attribute_option_id){
+                $product_attribute_options[$option->attribute_option_id] = $option->option_name;
+           }
        }
-       return response ()->json (['product_attribute_options' => $product_attribute_options]);
+       return response ()->json ($product_attribute_options);
    }
 }

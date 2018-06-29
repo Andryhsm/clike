@@ -196,17 +196,15 @@
                         @foreach($attribute_set->attributes as $key=>$attribute)
                             <div class="form-group">
                                 {!! Form::label('attribute_name', $attribute->french->attribute_name, ['class' => 'control-label']) !!}
-                                <div class="">
-                                    <select name="attrs[]" data-placeholder="Choose an option…" data-route="{!! route('get_options') !!}" class="col-md-11 col-sm-10 col-xs-11 
-                                        product-input-select required" tabindex="1" style="color: #42838C!important" onchange="changeAttribute(this, {!! $product->product_id !!})">
-                                        <option value="default" disabled selected>Veuillez choisir</option>
-                                        @foreach($attribute->options as $option)
-                                            @if(in_array($option->attribute_option_id,$attribute_option_ids))
-                                                <option value="{!! $option->attribute_option_id !!}" >{!! $option->french->option_name !!}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <select name="attrs[]" data-placeholder="Choose an option…" data-attribute="{!! $attribute->attribute_id !!}" data-route="{!! route('get_options') !!}" class="col-md-11 col-sm-10 col-xs-11 
+                                    product-input-select required" tabindex="1" style="color: #42838C!important" onchange="changeAttribute(this, {!! $product->product_id !!})">
+                                    <option value="default" disabled selected>Veuillez choisir</option>
+                                    @foreach($attribute->options as $option)
+                                        @if(in_array($option->attribute_option_id,$attribute_option_ids))
+                                            <option value="{!! $option->attribute_option_id !!}" >{!! $option->french->option_name !!}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                         @endforeach
                     @endif

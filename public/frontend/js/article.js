@@ -191,12 +191,12 @@ $('.checkbox').click(function(e){
 $('.check-all').click(function(e){
     e.preventDefault();
     var thisIcon = $(this).find('i');
+    removeAllSelection();
     $('.checkbox').each(function(index, el) {
         var icon = $(el).find('i');
-       // removeSelection(icon, $(this));
-        changeCircle(icon, $(this));
-        changeCircle(thisIcon, $(this));
+        changeCircle(icon, $(el));
     });
+    changeCircle(thisIcon, $(this));
 });
 
 function changeCircle(icon, parent){
@@ -217,10 +217,14 @@ function changeCircle(icon, parent){
     }
 }
 
-function removeSelection(icon, parent){
-    if(parent.hasClass('checked')){   
-        icon.addClass('fa-circle-o');
-        icon.removeClass('fa-dot-circle-o');
-        parent.removeClass('checked');
+function removeAllSelection(){
+    $('.checkbox').each(function(index, el) {
+        var icon = $(el).find('i');
+        if(parent.hasClass('checked') && !parent.hasClass('check-all')){   
+           icon.addClass('fa-circle-o');
+           icon.removeClass('fa-dot-circle-o');
+           $(el).removeClass('checked');
+        }    
     }
+    
 }
