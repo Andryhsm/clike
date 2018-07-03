@@ -351,13 +351,13 @@ $(document).ready(function() {
     $('.product-input-select').val('default');
   
     $('[name="attrs[]"]').bind('change', function() {
-        console.log('$$$$$' + $('[data-attribute="83"').html())
+        //console.log('$$$$$' + $('[data-attribute="83"').html())
         FIRST_CLICKED_ATTRIBUTE = $(this).attr('data-attribute');
         FIRST_CLICKED_ATTRIBUTE_OPTION = $(this).val();
         $('.product-input-select option').removeAttr('selected');
         $(this).find('[value = ' + FIRST_CLICKED_ATTRIBUTE_OPTION + ']').attr('selected', 'selected');
         FIRST_CLICKED_HTML = $(this).html();
-        changeAttribute($(this), $('[name="product_id"]').val());
+        //changeAttribute($(this), $('[name="product_id"]').val());
         
         //$('[name="attrs[]"]').unbind('change');
     });
@@ -383,20 +383,21 @@ function changeAttribute(box, product_id) {
     var key = '';
     $('[name="attrs[]"]').each(function( index ) {
         key = $(this).attr('data-attribute');
+        console.log(key + ' ' + $(this).val())
         select_value[key] = $(this).val();
     });
     
-    console.log(JSON.stringify(select_value))
-    var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
-    
+    console.log('select_value' + JSON.stringify(select_value))
     // Vérifie si c'est le dernier select key = last key
     var next_select = $(box).parent().next('.form-group').find('select');
     var last_empty = not_empty_except_last(select_value, key);
     if(next_select.length == 0 && last_empty) {
         // ne fait rien
-        console.log('dernier select ');
+        //$(box).unbind('change');
+        console.log('dernier select ' + $(box).val());
     }
     else{
+        var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
         $.ajax({
             dataType: 'json',
             type: 'POST',
@@ -406,14 +407,13 @@ function changeAttribute(box, product_id) {
                 $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
             },
             success: function(response, status) {
-                console.log(response);
+               // console.log(response);
                 $('[name="attrs[]"]').html('');
                 $.each(response, function(key, value){
-                    
-                    if(isInMap(value.attribute_option_id, select_value)){
-                        $('[data-attribute="'+ value.attribute_id +'"]').append('<option value="' + value.attribute_option_id + '" selected="selected">' + value.option_name + '</option>') 
+                    //console.log('value.option_name' + value.option_name)
+                    if(isInMap(value.attribute_option_id, select_value))
+                        $('[data-attribute="'+ value.attribute_id +'"]').append('<option value="' + value.attribute_option_id + '" selected="selected">' + value.option_name + '</option>');
                         
-                    }
                     else 
                         $('[data-attribute="'+ value.attribute_id +'"]').append('<option value="' + value.attribute_option_id + '" >' + value.option_name + '</option>')    
                 })
@@ -442,7 +442,7 @@ function not_empty_except_last(tab, last_key){
 function isInMap(value, tab){
     var resp = false;
     $.map( tab, function( val, i ) {
-      if(i == value){ resp = true;console.log(i + '******');}
+      if(i == value) resp = true;
     });
     return resp;
 }

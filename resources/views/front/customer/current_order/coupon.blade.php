@@ -33,9 +33,9 @@
                     <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                 </div>
                 <div class="order-info">
-                    @if(count($item->brand)>0)
-                        <div class="title-bold-2">{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</div>
-                    @endif
+                    
+                    <div class="title-bold-2">{!! $item->product->brand_name !!}</div>
+                    
                     <div class="mini-height">
                         <p>{!! $item->product_name !!}</p>
                         @foreach($item->attributes as $index=>$attribute)

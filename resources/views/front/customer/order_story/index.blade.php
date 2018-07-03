@@ -32,9 +32,9 @@
                             <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                         </div>
                         <div class="order-info ptb-10 col-lg-3 col-md-3 col-sm-3 col-xs-5">
-                            @if(count($item->brand)>0)
-                                <div><strong class="text-uppercase">{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong></div>
-                            @endif
+                            
+                            <div><strong class="text-uppercase">{!! $item->product->brand_name !!}</strong></div>
+                            
                             <div class="">
                                 <p>{!! $item->product_name !!}</p>
                                 @foreach($item->attributes as $index=>$attribute)

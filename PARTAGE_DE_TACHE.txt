@@ -17,10 +17,10 @@ BUG :
 
 BUG causé par la nouvelle maquette produit:
 - product (front) (en cours)
-- commande (compte pro) (en cours)
-- ajout au pannier (front) (en cours)
-- commande en cours (customer)
-- historique commande (customer)
+- ajout au pannier (front) (OK)
+- commande en cours (customer) (OK)
+- historique commande (customer) (OK)
+- coupon (OK)
 )
 --------------------------------------------------------------------------
 
@@ -28,37 +28,17 @@ BUG causé par la nouvelle maquette produit:
 
 COMPTE PRO : MES PRODUITS 
 
-
 LISTE DES PRODUITS
 
-- Integartion interface:
-        -> interface liste (OK)*
-        
 - Fonctionnalité:
         -> ajout filtre dans liste produit
-        -> bouton voir (OK)****
-        -> bouton supprimer (OK)***
         
 ENREGISTREMENT DU PRODUIT
 
 - Integartion interface:
-        -> interface formulaire :
-            - upload image (OK)**
-            - ajout declinaison (OK)**
-            - gamme et attribute (OK)**
-            - solde (OK)*
-            - visibilité et categorie (OK)*
+        -> amelioration interface formulaire:
             - Suppression image
             - suppression declinaison
-        
-- Fonctionnalité:   
-        -> upload image (OK)**
-        -> ajout liste (OK)***
-        -> bouton enregistrement produit (OK)***
-        -> creation des modèles (ok)*  
-        -> bouton modification produit (OK)****
-        -> validation form (OK) 
-
 
 
     REQUETE KELY :

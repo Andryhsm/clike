@@ -62,9 +62,9 @@
                                         <img style="border: 4px solid #044651; max-width:60%;" src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                                     </div>
                                     <div class="ptb-10 col-lg-8 col-md-8 col-xs-8 col-sm-4" style="padding-left: 185px;text-align:left;">
-                                        @if(count($item->brand)>0)
-                                            <p class="title-bold-2 mb-30">{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</p>
-                                        @endif
+                                        
+                                        <p class="title-bold-2 mb-30">{!! $item->product->brand_name !!}</p>
+                                        
                                         <span class="mini-height">
                                             <p>{!! $item->product_name !!}</p>
                                             @foreach($item->attributes as $index=>$attribute)

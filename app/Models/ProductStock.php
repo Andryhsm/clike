@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ProductStockAttributeOption;
+use App\Attribute;
 
 class ProductStock extends Model
 {
@@ -20,13 +21,13 @@ class ProductStock extends Model
     
     public function attribute_option($attribute_option_ids = []){
         return $this->join('product_stock_attribute_option', function($query){
-                    $query->on('product_stock_id', '=', 'product_stock_id');
-                })
-                ->where(function($query){
-                   foreach($attribute_option_ids as $attribute_option_id){
-                       $query->where('product_stock_attribute_option_id', '=', $attribute_option_id);
-                   }
-                })->first();
+            $query->on('product_stock_id', '=', 'product_stock_id');
+        })
+        ->where(function($query){
+           foreach($attribute_option_ids as $attribute_option_id){
+               $query->where('product_stock_attribute_option_id', '=', $attribute_option_id);
+           }
+        })->first();
     }
     /**
      * The attributes that are mass assignable.

@@ -508,6 +508,8 @@ class ProductRepository implements ProductRepositoryInterface
 			'stocks.options.option',
 			'stocks.options.option.translation',
 			'stocks.options.stock',
+			'stocks.options.attribute',
+			'stocks.options.attribute.translation',
 			/*'attributeValues',
 			'attributeValues.option',
 			'attributeValues.option.translation',

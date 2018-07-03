@@ -187,6 +187,7 @@ class CartItemAttribute
         $cart_item_attribute = new CartItemAttribute();
         $cart_item_attribute->setId($product_attr->stock->product_id."_".$product_attr->attribute_id);
         $cart_item_attribute->setProductAttributeOptionId($product_attr->product_stock_attribute_option_id);
+        $cart_item_attribute->setLabel($product_attr->attribute->french->attribute_name);
         $cart_item_attribute->setAttributeOptionId($product_attr->attribute_option_id);
         $cart_item_attribute->setName($product_attr->option->french->option_name);
         $cart_item_attribute->setValue($product_attr->option->option_value);

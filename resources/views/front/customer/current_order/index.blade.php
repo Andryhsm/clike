@@ -21,13 +21,13 @@
                         <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                     </div>
                     <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-5">
-                        @if(count($item->brand)>0)
-                            <div><strong class="text-uppercase">{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong></div>
-                        @endif
+                        
+                        <div><strong class="text-uppercase">{!! $item->product->brand_name !!}</strong></div>
+                        
                         <div class="order-description">
                             <p>{!! $item->product_name !!}</p>
                             @foreach($item->attributes as $index=>$attribute)
-                                <p>{!! $attribute->attribute_label !!} {!! $attribute->attribute_selected_value !!}</p>
+                                <p>{!! $attribute->attribute_label !!}: {!! $attribute->attribute_selected_value !!}</p>
                             @endforeach
                         </div>
                         <div>
@@ -96,13 +96,13 @@
                         <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                     </div>
                     <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                        @if(count($item->brand)>0)
-                            <div><strong class="text-uppercase">{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong></div>
-                        @endif
+                        
+                        <div><strong class="text-uppercase">{!! $item->product->brand_name !!}</strong></div>
+                       
                         <div class="order-description">
                             <p>{!! $item->product_name !!}</p>
                             @foreach($item->attributes as $index=>$attribute)
-                                <p>{!! $attribute->attribute_label !!} {!! $attribute->attribute_selected_value !!}</p>
+                                <p>{!! $attribute->attribute_label !!}: {!! $attribute->attribute_selected_value !!}</p>
                             @endforeach
                         </div>
                         <div>

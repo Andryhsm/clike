@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\AttributeOptionTranslation;
 use App\AttributeOption;
 use App\Models\ProductStock;
+use App\Attribute;
 
 class ProductStockAttributeOption extends Model
 {
@@ -23,5 +24,7 @@ class ProductStockAttributeOption extends Model
 	{
 		return $this->hasOne(ProductStock::class, 'product_stock_id','product_stock_id');
 	}
-    
+    public function attribute(){
+        return $this->hasOne(Attribute::class, 'attribute_id','attribute_id');
+    }
 }
