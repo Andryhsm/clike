@@ -348,11 +348,11 @@ $(document).ready(function() {
 function changeAttribute(box, product_id) {
     var attribute_option_id = $(box).val();
     var url = $(box).attr('data-route');
-    var next_select_attribute = $(box).parent().next('.form-group').find('select').attr('data-attribute')
+    //var next_select_attribute = $(box).parent().next('.form-group').find('select').attr('data-attribute')
     console.log(attribute_option_id + '*******')
-    console.log(next_select_attribute + ' next_select_attribute')
-    var next_select = $('[data-attribute='+ next_select_attribute +']');
-    var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id, 'next_select_attribute': next_select_attribute};
+    //console.log(next_select_attribute + ' next_select_attribute')
+    //var next_select = $('[data-attribute='+ next_select_attribute +']');
+    var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
     $.ajax({
         dataType: 'json',
         type: 'POST',
@@ -363,12 +363,13 @@ function changeAttribute(box, product_id) {
         },
         success: function(response, status) {
             console.log(response);
+            $('[name="attrs[]"]').html('');
             // $.each(response, function(key, value){
             //     console.log(key + ' ***** ' + value);
             // })
-            next_select.html('');
+            // next_select.html('');
             $.each(response, function(key, value){
-                next_select.append('<option value="' + key + '" >' + value + '</option>')    
+                $('[data-attribute='+ value.attribute_id +']').append('<option value="' + value.attribute_option_id + '" >' + value.option_name + '</option>')    
             })
             $.LoadingOverlay("hide");
             
