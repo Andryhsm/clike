@@ -350,17 +350,17 @@ $(document).ready(function() {
     
     $('.product-input-select').val('default');
   
-    $('[name="attrs[]"]').bind('change', function() {
-        //console.log('$$$$$' + $('[data-attribute="83"').html())
-        FIRST_CLICKED_ATTRIBUTE = $(this).attr('data-attribute');
-        FIRST_CLICKED_ATTRIBUTE_OPTION = $(this).val();
-        $('.product-input-select option').removeAttr('selected');
-        $(this).find('[value = ' + FIRST_CLICKED_ATTRIBUTE_OPTION + ']').attr('selected', 'selected');
-        FIRST_CLICKED_HTML = $(this).html();
-        //changeAttribute($(this), $('[name="product_id"]').val());
+    // $('[name="attrs[]"]').bind('change', function() {
+    //     //console.log('$$$$$' + $('[data-attribute="83"').html())
+    //     FIRST_CLICKED_ATTRIBUTE = $(this).attr('data-attribute');
+    //     FIRST_CLICKED_ATTRIBUTE_OPTION = $(this).val();
+    //     $('.product-input-select option').removeAttr('selected');
+    //     $(this).find('[value = ' + FIRST_CLICKED_ATTRIBUTE_OPTION + ']').attr('selected', 'selected');
+    //     FIRST_CLICKED_HTML = $(this).html();
+    //     //changeAttribute($(this), $('[name="product_id"]').val());
         
-        //$('[name="attrs[]"]').unbind('change');
-    });
+    //     //$('[name="attrs[]"]').unbind('change');
+    // });
 })
 
 function changeAttribute(box, product_id) {
@@ -394,6 +394,8 @@ function changeAttribute(box, product_id) {
     if(next_select.length == 0 && last_empty) {
         // ne fait rien
         //$(box).unbind('change');
+        // $(box).find('option').removeAttr('selected');
+        // $(box).find('[value = ' + attribute_option_id + ']').attr('selected', 'selected');
         console.log('dernier select ' + $(box).val());
     }
     else{
