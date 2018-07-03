@@ -186,45 +186,80 @@ $('.checkbox').click(function(e){
     e.preventDefault();
     var $icon = $(this).find('i');
     changeCircle($icon, $(this));
+    if($('.checked').length > 0){
+        $('.buttons-selection .deletes').removeClass('hidden');
+    }else{
+        $('.buttons-selection .deletes').addClass('hidden');
+        if($('.check-all').hasClass('checked-all')){
+            var icon = $('.check-all').find('i');
+            icon.addClass('fa-circle-o');
+            icon.removeClass('fa-dot-circle-o');
+            $('.check-all').removeClass('checked-all');    
+        }   
+    }
 });
 
 $('.check-all').click(function(e){
     e.preventDefault();
     var thisIcon = $(this).find('i');
-    removeAllSelection();
-    $('.checkbox').each(function(index, el) {
-        var icon = $(el).find('i');
-        changeCircle(icon, $(el));
-    });
     changeCircle(thisIcon, $(this));
+    if($(this).hasClass('checked-all')){
+        $('.buttons-selection .deletes').removeClass('hidden');
+        $('.checkbox').each(function(index, el) {
+            var icon = $(el).find('i');
+            if(icon.hasClass('fa-circle-o')){
+                icon.removeClass('fa-circle-o');
+                icon.addClass('fa-dot-circle-o');
+                $(el).addClass('checked');
+            }
+        });
+    }else{
+        $('.buttons-selection .deletes').addClass('hidden');
+        $('.checkbox').each(function(index, el) {
+            var icon = $(el).find('i');
+            if(icon.hasClass('fa-dot-circle-o')){
+                icon.addClass('fa-circle-o');
+                icon.removeClass('fa-dot-circle-o');
+                $(el).removeClass('checked');       
+            }
+        });
+    }
+});
+
+$('.deletes').click(function(event) {
+    event.preventDefault();
+    console.log("avoir liste des produits");
+    $('#article_list .checked').each(function(index, el) {
+        console.log("Produit valable");
+        console.log($(el).data('product-id'));     
+    });
 });
 
 function changeCircle(icon, parent){
     if(icon.hasClass('fa-circle-o')){
         icon.removeClass('fa-circle-o');
         icon.addClass('fa-dot-circle-o');
-        parent.addClass('checked');
-    }else {
+        if(!parent.hasClass('check-all'))
+            parent.addClass('checked');
+        else
+            parent.addClass('checked-all');
+    }else{
         icon.addClass('fa-circle-o');
         icon.removeClass('fa-dot-circle-o');
-        parent.removeClass('checked');
-    }
-    if(parent.hasClass('check-all')){
-        if(parent.hasClass('checked'))
-            $('.buttons-selection .deletes').removeClass('hidden');
+        if(!parent.hasClass('check-all'))
+            parent.removeClass('checked');
         else
-            $('.buttons-selection .deletes').addClass('hidden');
+            parent.removeClass('checked-all');
     }
 }
 
 function removeAllSelection(){
     $('.checkbox').each(function(index, el) {
         var icon = $(el).find('i');
-        if(parent.hasClass('checked') && !parent.hasClass('check-all')){   
+        if($(el).hasClass('checked') && !$(el).hasClass('check-all')){   
            icon.addClass('fa-circle-o');
            icon.removeClass('fa-dot-circle-o');
            $(el).removeClass('checked');
         }    
-    }
-    
+    });    
 }

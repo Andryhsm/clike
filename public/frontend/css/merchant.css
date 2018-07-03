@@ -255,9 +255,9 @@ text {
     margin-left: 6rem;
     margin-right: 6rem;
     display: block;
-    width: 100%;
+    /*width: 100%;*/
 }
-#article_list .article i, .blocs-3 i, .stock-types i {
+#article_list .checkbox i, .blocs-3 i, .stock-types i {
     font-size: 22px;
     font-weight: 600;
 }
@@ -265,21 +265,28 @@ text {
     font-size: 22px;
 }
 #article_list .article {
-    width: 32%;
+    width: 15%;
+    /* text-align: left; */
+}
+#article_list .product_name {
+    width: 35%;
     text-align: left;
 }
-#article_list .article_price {
+/*#article_list .article_price {
     width: 20%;
-}
-#article_list .inventory {
+}*/
+/*#article_list .inventory {
     width: 20%;
-}
-#article_list .action {
+}*/
+/*#article_list .action {
     width: 10%;
-}
+}*/
 #article_list td {
     padding: 15px 0;
     border-bottom: 1px solid #044651;
+}
+#article_list td:first-child {
+    width: 2%;
 }
 .blocs-3, .stock-types {
     display: flex;

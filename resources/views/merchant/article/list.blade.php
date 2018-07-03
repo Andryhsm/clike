@@ -31,7 +31,7 @@
         <div class="bottle">
             <section class="list-article-header">
                 <div class="pull-left buttons-selection ptb-20">
-                    <a class="delete-selected"><i class="fa fa-trash deletes hidden"></i></a>
+                    <a class="delete-selected" href="#"><i class="fa fa-trash deletes hidden"></i></a>
                 </div>
                 <div class="pull-right ptb-20">
                     <a href="{!! route('article.create') !!}" class="btn btn-block btn-merchant-filled">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="blocs-3 pb-10">
                     <div class="" style="line-height: 5rem; width:160px;">
-                        <a href="#" class="check-all checkbox"><i class="fa fa-circle-o mr-10"></i> <span>Tout sélectionner</span></a>
+                        <a href="#" class="check-all"><i class="fa fa-circle-o mr-10"></i> <span>Tout sélectionner</span></a>
                     </div>
                     <div class="bloc">
                         <select id="product_sold" name="">
@@ -65,6 +65,7 @@
                     <table id="article_list" class="article">
                         <thead class="text-uppercase">
                             <tr>
+                                <th></th>
                                 <th>ARTICLE</th>
                                 <th>PRIX</th>
                                 <th>INVENTAIRE</th>
@@ -74,14 +75,15 @@
                         <tbody>
                             @foreach($products->data as $product)
                             <tr>
+                                <td>  <a href="#" class="checkbox" data-product-id="{!! $product->product_id !!}"><i class="fa fa-circle-o mr-10"></i></a>
+                                </td>
                                 <td class="article">
-                                    <a href="#" class="checkbox"><i class="fa fa-circle-o mr-10"></i></a>
                                     <?php 
                                         $url_image = isset($product->images[0]) ? 'upload/product/'.$product->images[0]->image_name : '';
                                     ?>
                                     <img class="article-img" src="{!! url($url_image) !!}"></img>
-                                    <span>{!! isset($product->translation->product_name) ? $product->translation->product_name : '' !!}</span>
                                 </td>
+                                <td class="product_name"><span>{!! isset($product->translation->product_name) ? $product->translation->product_name : '' !!}</span></td>
                                 <td class="article_price">{!! format_price($product->original_price) !!}</td>
                                 <td class="inventory">en stock</td>
                                 <td class="action">
