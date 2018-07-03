@@ -428,7 +428,9 @@ class ProductController extends Controller
 	
 	public function deletes(Request $request)
 	{
-		\Log::info('Delete multiple product');	
+		$product_ids = $request->get('product_ids');
+		$response = $this->product_repository->deleteMultipleProducts($product_ids);
+		return response()->json(['response' => $response]);
 	}
 	
 }

@@ -100,6 +100,7 @@
     var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";  
 </script>
 @yield('footer-scripts')
-@include('merchant.layout.model')
+@include('merchant.layout.model', ['delete_multiple' => false])
+@include('merchant.layout.model', ['delete_multiple' => true])
 </body>
 </html>

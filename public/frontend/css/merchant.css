@@ -308,6 +308,18 @@ text {
     padding-bottom: 15px !important;
     color: white !important;
 }
+#article_list .btn-default {
+    color: #0f4651;
+    padding: 0px;
+    background: none;
+    border: none;
+}
+#article_list .btn-default:hover {
+    color: #65bb9f;
+    padding: 0px;
+    background: none;
+    border: none;
+}
 .article-img {
     border: 4px solid #044651;
     width: 60px;
@@ -378,4 +390,3 @@ a.checkbox:hover {
 .buttons-selection {
     font-size: 30px;
 }
-
