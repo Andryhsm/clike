@@ -222,19 +222,51 @@ $('.check-all').click(function(e){
                 icon.removeClass('fa-dot-circle-o');
                 $(el).removeClass('checked');       
             }
-        });
+        }); 
     }
 });
 
-$('.deletes').click(function(event) {
-    event.preventDefault();
+jQuery('.deletes').on('click', function (e) {
+    e.preventDefault();
+    $('#confirm_delete_multiple').modal({backdrop: 'static', keyboard: false})
+        .one('click', '#delete', function () {
+            delete_selected_product();
+        });
+});
+
+function delete_selected_product(){
     var product_ids = [];
     $('#article_list .checked').each(function(index, el) {
-        console.log($(el).data('product-id'));
         product_ids.push($(el).data('product-id'));
     });
-    
-});
+    $.ajax({
+        url: url_deletes_product,
+        type: 'GET',
+        data: {product_ids: product_ids},
+    })  
+    .done(function(response) {
+        console.log(response);
+        var article_check = $('#article_list .checked');
+        if(response == true){
+            article_check.each(function(index, el) {
+                $(el).parents('.content-product').remove();
+            });
+            console.log("Suppression du produit avec success ! ");
+            if(article_check.length > 1 )
+                toastr["success"]("Suppression des produits avec success !");
+            else
+                toastr["success"]("Suppression du produit avec success !");
+        }else{
+            if(article_check.length > 1 )
+                toastr["success"]("Erreur de suppression des produits !");
+            else
+                toastr["success"]("Erreur de suppression du produit !");
+        }
+    })
+    .fail(function(xhr) {
+        console.log("Erreur dans la suppression multiple des produits : " + xhr.responseText);
+    });
+}
 
 function changeCircle(icon, parent){
     if(icon.hasClass('fa-circle-o')){
@@ -244,7 +276,7 @@ function changeCircle(icon, parent){
             parent.addClass('checked');
         else
             parent.addClass('checked-all');
-    }else{
+    } else {
         icon.addClass('fa-circle-o');
         icon.removeClass('fa-dot-circle-o');
         if(!parent.hasClass('check-all'))
@@ -257,7 +289,7 @@ function changeCircle(icon, parent){
 function removeAllSelection(){
     $('.checkbox').each(function(index, el) {
         var icon = $(el).find('i');
-        if($(el).hasClass('checked') && !$(el).hasClass('check-all')){   
+        if($(el).hasClass('checked') && !$(el).hasClass('check-all')){ 
            icon.addClass('fa-circle-o');
            icon.removeClass('fa-dot-circle-o');
            $(el).removeClass('checked');

@@ -678,5 +678,14 @@ class ProductRepository implements ProductRepositoryInterface
  		  ->whereIn('product_stock_attribute_option.product_stock_id', $product_stock_ids)
  		  ->distinct()->get(['attribute_id', 'product_stock_attribute_option.attribute_option_id', 'option_name']);
 	}
+
+    public function deleteMultipleProducts($product_ids){
+        foreach ($product_ids as $product_id) {
+            $product = $this->model->find($product_id);
+            $product->url()->delete();
+            $product->images()->delete();
+        }
+        return $this->model->whereIn('product_id', $product_ids)->delete();
+    }
 	
 }

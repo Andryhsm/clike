@@ -1,8 +1,12 @@
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="confirm">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="{!! ($delete_multiple == false) ? 'confirm' : 'confirm_delete_multiple' !!}">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
-                Voulez-vous vraiment supprimer?
+                @if($delete_multiple == false)
+                    Voulez-vous vraiment supprimer?
+                @else
+                    Voulez-vous vraiment supprimer ces produits sélectionner?
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-block btn-merchant-filled" id="delete">Supprimer</button>

@@ -40,4 +40,6 @@ interface ProductRepositoryInterface
 	public function getByCategories($categories);
 
 	public function getAffiliates($product_id);
+
+	public function deleteMultipleProducts($product_ids);
 }

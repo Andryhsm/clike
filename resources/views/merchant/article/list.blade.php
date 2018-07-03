@@ -60,6 +60,9 @@
                 </div>             
             </section>
             @include('admin.layout.notification')
+            <div class="notification">
+                
+            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <table id="article_list" class="article">
@@ -74,7 +77,7 @@
                         </thead>
                         <tbody>
                             @foreach($products->data as $product)
-                            <tr>
+                            <tr class="content-product">
                                 <td>  <a href="#" class="checkbox" data-product-id="{!! $product->product_id !!}"><i class="fa fa-circle-o mr-10"></i></a>
                                 </td>
                                 <td class="article">
@@ -88,8 +91,8 @@
                                 <td class="inventory">en stock</td>
                                 <td class="action">
                                     <a href="{!! route('article.edit',['article'=>$product->product_id]) !!}" class=""><i class="fa fa-eye"></i></a>
-                                    <a class="pull-right" onclick="delete_article({!! $product->product_id !!});"><i class="fa fa-trash click-delete"></i></a>
-                                    {!! Form::open(array('url' => route('article.destroy',['article'=>$product->product_id]), 'class' => 'pull-right hidden')) !!}
+                                    
+                                    {!! Form::open(array('url' => route('article.destroy',['article'=>$product->product_id]), 'class' => 'pull-right')) !!}
                                     {!! Form::hidden('_method', 'DELETE') !!}
                                     {!! Form::button('<i class="fa fa-fw fa-trash"></i>', ['type' => 'submit', 'class' => 'btn delete-btn delete-btn'.$product->product_id.' btn-default btn-sm'] ) !!}
                                     {{ Form::close() }}
@@ -104,6 +107,9 @@
     </section>
 @stop
 @section('additional-script')
+    <script>
+        var url_deletes_product =   "{!! route('delete_products') !!}";
+    </script>
     {!! Html::script('backend/plugins/datatables/jquery.dataTables.min.js') !!}
     {!! Html::script('backend/plugins/datatables/dataTables.bootstrap.min.js') !!}
     {{ HTML::script('frontend/js/article.js') }}
