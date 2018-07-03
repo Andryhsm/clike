@@ -302,6 +302,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::get('produit/add', 'ProductController@create')->name('create_product');
                     Route::post('produit/search-product','ProductController@searchProduct')->name('merchant_search_product');
                     Route::post('produit/remove-product-tag', 'ProductController@removeTag')->name('merchant_product_remove_tag');
+                    Route::post('produit/deletes', 'ProductController@deletes')->name('deletes');
                     Route::resource('client', 'CustomerController');
                     Route::get('facture','CustomerController@facture')->name('merchant-facture');
                     Route::get('facturePdf','CustomerController@facturePdf')->name('merchant-facturePdf');

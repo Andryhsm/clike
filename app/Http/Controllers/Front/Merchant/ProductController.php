@@ -426,4 +426,9 @@ class ProductController extends Controller
 		return response()->json(['code_promos' => $code_promos]);
 	}
 	
+	public function deletes(Request $request)
+	{
+		\Log::info('Delete multiple product');	
+	}
+	
 }

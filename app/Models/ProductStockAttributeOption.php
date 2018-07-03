@@ -12,16 +12,16 @@ class ProductStockAttributeOption extends Model
     protected $table = 'product_stock_attribute_option';
     protected $primaryKey = 'product_stock_attribute_option_id';
     
-    protected $fillable = ['product_stock_id'];
+    protected $fillable = ['product_stock_id','attribute_option_id','attribute_id'];
     public $timestamps = false;
     
     public function option()
 	{
-		return $this->hasOne(AttributeOption::class, 'attribute_option_id');
+		return $this->hasOne(AttributeOption::class, 'attribute_option_id', 'attribute_option_id');
 	}
 	public function stock()
 	{
-		return $this->hasOne(ProductStock::class, 'product_stock_id');
+		return $this->hasOne(ProductStock::class, 'product_stock_id','product_stock_id');
 	}
     
 }

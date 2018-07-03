@@ -499,15 +499,20 @@ class ProductRepository implements ProductRepositoryInterface
 		$base_relationships = [
 			'translation',
 			'url',
-			'video',
-			'tags',
+			/*'video',
+			'tags',*/
 			'categories.translation',
 			'images',
-			'attributeValues',
+			'stocks',
+			'stocks.options',
+			'stocks.options.option',
+			'stocks.options.option.translation',
+			'stocks.options.stock',
+			/*'attributeValues',
 			'attributeValues.option',
 			'attributeValues.option.translation',
 			'attributeValues.attribute',
-			'attributeValues.attribute.translation',
+			'attributeValues.attribute.translation',*/
 		];
 		return $this->model->with($base_relationships)->where('product_id', $product_id)->whereIsActive(1)->first();
 	}

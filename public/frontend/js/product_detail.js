@@ -351,12 +351,15 @@ $(document).ready(function() {
     $('.product-input-select').val('default');
   
     $('[name="attrs[]"]').bind('change', function() {
+        console.log('$$$$$' + $('[data-attribute="83"').html())
         FIRST_CLICKED_ATTRIBUTE = $(this).attr('data-attribute');
         FIRST_CLICKED_ATTRIBUTE_OPTION = $(this).val();
+        $('.product-input-select option').removeAttr('selected');
         $(this).find('[value = ' + FIRST_CLICKED_ATTRIBUTE_OPTION + ']').attr('selected', 'selected');
         FIRST_CLICKED_HTML = $(this).html();
         changeAttribute($(this), $('[name="product_id"]').val());
-        $('[name="attrs[]"]').unbind('change');
+        
+        //$('[name="attrs[]"]').unbind('change');
     });
 })
 
@@ -365,11 +368,14 @@ function changeAttribute(box, product_id) {
     // console.log(FIRST_CLICKED_ATTRIBUTE_OPTION);
     // console.log(FIRST_CLICKED_HTML);
     
-    $(box).find('option').removeAttr('selected');
+    // $(box).find('option').removeAttr('selected');
+    // console.log('********' + $(box).html());
+    // var attribute_option = $(box).val();
+    // console.log('########' + attribute_option);
+    // $(box).find('[value = ' + attribute_option + ']').attr('selected', 'selected');
+    
     console.log('********' + $(box).html());
-    var attribute_option = $(box).val();
-    $(box).find('[value = ' + attribute_option + ']').attr('selected', 'selected');
-    console.log('********' + $(box).html());
+    console.log('$$$$$$$$$$$' + $(box).val())
     var attribute_option_id = $(box).val();
     var url = $(box).attr('data-route');
     var parent = $(box).attr('data-attribute');
@@ -380,6 +386,7 @@ function changeAttribute(box, product_id) {
         select_value[key] = $(this).val();
     });
     
+    console.log(JSON.stringify(select_value))
     var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
     
     // Vérifie si c'est le dernier select key = last key
@@ -402,8 +409,11 @@ function changeAttribute(box, product_id) {
                 console.log(response);
                 $('[name="attrs[]"]').html('');
                 $.each(response, function(key, value){
-                    if($.inArray(value.attribute_id, select_value)) 
+                    
+                    if(isInMap(value.attribute_option_id, select_value)){
                         $('[data-attribute="'+ value.attribute_id +'"]').append('<option value="' + value.attribute_option_id + '" selected="selected">' + value.option_name + '</option>') 
+                        
+                    }
                     else 
                         $('[data-attribute="'+ value.attribute_id +'"]').append('<option value="' + value.attribute_option_id + '" >' + value.option_name + '</option>')    
                 })
@@ -425,6 +435,14 @@ function not_empty_except_last(tab, last_key){
     var resp = true;
     $.map( tab, function( val, i ) {
       if(!val && i!=last_key) resp = false;
+    });
+    return resp;
+}
+
+function isInMap(value, tab){
+    var resp = false;
+    $.map( tab, function( val, i ) {
+      if(i == value){ resp = true;console.log(i + '******');}
     });
     return resp;
 }

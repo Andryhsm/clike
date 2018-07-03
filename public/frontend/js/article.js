@@ -228,11 +228,12 @@ $('.check-all').click(function(e){
 
 $('.deletes').click(function(event) {
     event.preventDefault();
-    console.log("avoir liste des produits");
+    var product_ids = [];
     $('#article_list .checked').each(function(index, el) {
-        console.log("Produit valable");
-        console.log($(el).data('product-id'));     
+        console.log($(el).data('product-id'));
+        product_ids.push($(el).data('product-id'));
     });
+    
 });
 
 function changeCircle(icon, parent){

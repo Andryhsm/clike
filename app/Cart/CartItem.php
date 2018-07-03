@@ -120,8 +120,7 @@ class CartItem implements Arrayable
         foreach($product->stocks as $stock){
             foreach($stock->options as $option){
                 if(in_array($option->attribute_option_id,$user_attrs)){
-                    $cart_item_attribute = CartItemAttribute::make($option);//eto n bug amzao
-                    dd('ici');
+                    $cart_item_attribute = CartItemAttribute::make($option);
     				$list_cart_item_attribute[] = $cart_item_attribute;
                     $this->attributes->put($cart_item_attribute->getId(), $cart_item_attribute); 
                 }
