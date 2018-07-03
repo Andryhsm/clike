@@ -107,38 +107,6 @@
                     @if(!empty($special_products['heart_stroke']) && count($special_products['heart_stroke'])>0)
                     <div class="related-products-area ptb-30">
                         <div class="related-products-active">
-                            
-                            <!--<?php for ($i = 1; $i <= 5; $i++) { ?>
-                            <div class="col-lg-12">
-                                
-                                <div class="product-wrapper-home pb-5">
-                                    <div class="product-img-connexe product-pic">
-                                        <a href="houdini-jacket">
-                                            <img src="{!! URL::to('/') !!}/upload/product/h{!! $i !!}.png" alt="" class="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content pt-10">
-                                        
-                                        <div class="wishlist_prd_place_home">
-                                            <a class="wishlist_prd_home" onclick=""> &nbsp; </a>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <span>NOM MARQUE</span>
-                                        </div>
-
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <a href="houdini-jacket">Nom produit</a>
-                                        </div>
-                                        
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <span class="new-price">00,00 €</span>         
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <?php } ?>-->
-                            
                             @foreach($special_products['heart_stroke'] as $product)
                             <?php $product_translation=$product->translation; ?>
                             
@@ -152,32 +120,32 @@
                                         </a>
                                     </div>
                                     <div class="product-content p-lr-10 mt-10">
-                                                    <div class="wishlist_prd_place_home">
-                                                        <?php 
-                                                         $wishlist_del = (in_array($product->product_id,all_product_id_wishlist())) ? 'coeur_pm' : '';
-                                                            if ($is_user_login) {
-                                                                $idU = \Auth::user()->user_id;
-                                                            }else{
-                                                                $idU = '';
-                                                            }                                            
-                                                        ?>
-                                                    <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}"
-                                                    data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
-                                                    data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
-                                                    data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
-                                                    onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
-                                                    </div>
-                                                    <span>
-                                                        {!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}
-                                                    </span>
-                                                    
-                                                    @if(!empty($product->url))
-                                                        <h4>
-                                                            <a href="{!! url($product->url->target_url) !!}">{!! $product_translation->product_name !!}</a>
-                                                        </h4>
-                                                    @endif
-                                                    <span class="new-price fs-14">{!! format_price($product->original_price) !!}</span>
-                                                </div>
+                                        <div class="wishlist_prd_place_home">
+                                            <?php 
+                                             $wishlist_del = (in_array($product->product_id,all_product_id_wishlist())) ? 'coeur_pm' : '';
+                                                if ($is_user_login) {
+                                                    $idU = \Auth::user()->user_id;
+                                                }else{
+                                                    $idU = '';
+                                                }                                            
+                                            ?>
+                                            <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}"
+                                            data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
+                                            data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
+                                            data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
+                                            onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
+                                        </div>
+                                        <span>
+                                            {!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}
+                                        </span>
+                                        
+                                        @if(!empty($product->url))
+                                            <h4>
+                                                <a href="{!! url($product->url->target_url) !!}">{!! $product_translation->product_name !!}</a>
+                                            </h4>
+                                        @endif
+                                        <span class="new-price fs-14">{!! format_price($product->original_price) !!}</span>
+                                    </div>
                                 </div>
                                 <!-- single product end -->
                             </div>
@@ -239,7 +207,7 @@
                                         </div>
                                         
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <span class="new-price">{!! format_price($product->best_price) !!}</span>      
+                                            <span class="new-price">{!! format_price($product->original_price) !!}</span>      
                                         </div>
                                         
                                     </div>

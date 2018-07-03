@@ -2,6 +2,7 @@
 namespace ShoppingCart;
 
 use App\ProductAttributeValue;
+use App\Models\ProductStockAttributeOption;
 
 class CartItemAttribute
 {
@@ -181,13 +182,13 @@ class CartItemAttribute
     {
         return $this->attribute_type;
     }
-    public static function make(ProductAttributeValue $product_attr)
+    public static function make(ProductStockAttributeOption $product_attr)
     {
+        dd($product_attr);
         $cart_item_attribute = new CartItemAttribute();
-        $cart_item_attribute->setId($product_attr->product_id."_".$product_attr->attribute_id);
-        $cart_item_attribute->setProductAttributeOptionId($product_attr->product_attribute_option_id);
+        $cart_item_attribute->setId($product_attr->stock->product_id."_".$product_attr->attribute_id);
+        $cart_item_attribute->setProductAttributeOptionId($product_attr->product_stock_attribute_option_id);
         $cart_item_attribute->setAttributeOptionId($product_attr->attribute_option_id);
-        //$cart_item_attribute->setSku($product_attr->option->sku);
         $cart_item_attribute->setName($product_attr->option->french->option_name);
         $cart_item_attribute->setValue($product_attr->option->option_value);
         $cart_item_attribute->setAttributeId($product_attr->attribute_id);

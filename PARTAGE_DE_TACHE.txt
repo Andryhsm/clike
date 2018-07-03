@@ -16,15 +16,11 @@ BUG :
 - URL GET -> POST pour plus de sécurité (2)
 
 BUG causé par la nouvelle maquette produit:
-- Encaissement (compte pro) (OK)
-- Dashboard (OK)****
-- home (front) (OK)
 - product (front) (en cours)
-- catalogue (front) (OK)
-- ajout au pannier (front)
+- commande (compte pro) (en cours)
+- ajout au pannier (front) (en cours)
 - commande en cours (customer)
 - historique commande (customer)
-- special product (backoffice) (OK) 
 )
 --------------------------------------------------------------------------
 
@@ -69,7 +65,7 @@ ENREGISTREMENT DU PRODUIT
          select  * from product_stock_attribute_option join product_stock on product_stock.product_stock_id = product_stock_attribute_option.product_stock_id
         where product_id=4418 and product_stock_attribute_option.product_stock_id in(49, 51, 52)
 
-   QUELQUE DESCRIPTION DES TABLES                   
+    QUELQUE DESCRIPTION DES TABLES                   
            
                         ** product **
                         +-------------------+------------------+------+-----+---------+----------------+

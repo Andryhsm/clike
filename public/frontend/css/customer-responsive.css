@@ -26,7 +26,10 @@
 		width: 150px;
 		margin-right: 5%;
 	}
-	
+	/*.current_order .order-img, .coupon-product .order-img {*/
+	/*	width: 140px;*/
+	/*	margin-right: 5%;*/
+	/*}*/
 }
 
 @media (min-width: 992px) and (max-width: 1367px) {

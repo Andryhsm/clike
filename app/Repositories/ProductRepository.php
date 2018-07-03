@@ -669,6 +669,7 @@ class ProductRepository implements ProductRepositoryInterface
           ->join('attribute_option_translation','attribute_option_translation.attribute_option_id', '=', 'product_stock_attribute_option.attribute_option_id')
  		  ->where('product_stock.product_id',$product_id)
  		  ->whereIn('product_stock_attribute_option.product_stock_id', $product_stock_ids)
- 		  ->get();
+ 		  ->distinct()->get(['attribute_id', 'product_stock_attribute_option.attribute_option_id', 'option_name']);
 	}
+	
 }

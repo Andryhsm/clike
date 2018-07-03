@@ -96,16 +96,17 @@ class CartItem implements Arrayable
         if (isset($data['attrs']) && is_array($data['attrs'])) {
             $user_attrs = $data['attrs'];
         }
+        
         $this->category_ids = [];
         $this->categories_name = [];
         $this->categories=$product->categories;
+        
         foreach ($product->categories as $category) {
             $this->category_ids[] = $category->category_id;
             $this->categories_name[] = $category->category_name;
         }
         
-           $this->initAttributes($product, $user_attrs);
-        
+        $this->initAttributes($product, $user_attrs);
         $this->refresh($product);
         
     }
@@ -115,14 +116,26 @@ class CartItem implements Arrayable
      * @param $user_attrs
      */
     public function initAttributes(Product $product, $user_attrs)
-    {
+    {   
+        foreach($product->stocks as $stock){
+            foreach($stock->options as $option){
+                if(in_array($option->attribute_option_id,$user_attrs)){
+                    $cart_item_attribute = CartItemAttribute::make($option);//eto n bug amzao
+                    dd('ici');
+    				$list_cart_item_attribute[] = $cart_item_attribute;
+                    $this->attributes->put($cart_item_attribute->getId(), $cart_item_attribute); 
+                }
+            }
+        }
+        
+        /*dd($this->attributes);
         foreach ($product->attributeValues as $product_attr) {
     		if (in_array($product_attr->product_attribute_option_id,$user_attrs)) {
 				$cart_item_attribute = CartItemAttribute::make($product_attr);
 				$list_cart_item_attribute[] = $cart_item_attribute;
                 $this->attributes->put($cart_item_attribute->getId(), $cart_item_attribute);
 		    }
-        }
+        }*/
     }
 
     public function refresh(Product $product, $init_grouped_items = true)

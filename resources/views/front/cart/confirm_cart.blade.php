@@ -39,8 +39,6 @@
                                             ?>
                                       <div class="info-facture mt-40">
                                           <p>{!! ucfirst($current_user->first_name)." ".strtoupper($current_user->last_name) !!}</p>
-                                          <!--<p>60 chemin d’Odos</p>-->
-                                          <!--<p>TARBES</p>-->
                                           <p>{!! $address_current_user->zip !!}</p>
                                           <p>{!! $address_current_user->city !!}</p>
                                           <p>{!! $current_user->phone_number !!}</p>
@@ -110,10 +108,10 @@
                                             <span><a href="#">{!! $item->getName() !!}</a></span>
                                             <div class="product-price">
                                                     <?php $product = $item->getProduct();?>
-                                                    @if($product->original_price != $product->best_price)
-                                                        <span class="old-price" style="color: rgb(67, 223, 230);">({!! getPercentage($product->original_price,$product->best_price) !!})</span>
+                                                    @if($product->promotional_price != null)
+                                                        <span class="old-price" style="color: rgb(67, 223, 230);">({!! $product->discount !!})</span>
                                                         <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
-                                                        <span class="new-price real-price" data-price="{!! $product->best_price !!}">{!! format_price($product->best_price) !!}</span>
+                                                        <span class="new-price real-price" data-price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
                                                     @else
                                                         <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
                                                     @endif
@@ -129,8 +127,8 @@
                                                 </div>
                                             </div>
                                             <div class="product-quantity">
-                                                   @foreach($item->getAttributes() as $attribute)
-                                                            <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>&nbsp;&nbsp;&nbsp;
+                                                    @foreach($item->getAttributes() as $attribute)
+                                                        <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>&nbsp;&nbsp;&nbsp;
                                                     @endforeach
                                                 <select  class="quantity form-control form-select" name="qty[{!! $item_id !!}]">
                                                     @for($i=1; $i<=10 ; $i++)    

@@ -118,8 +118,8 @@
                         </div>
                 </div>
                 <!-- start attribute -->
-                <!--<div class="row">
-                    <div class="col-lg-12 col-sm-8 col-md-10 col-xs-10 pb-10 pt-0 p-lr-0 vcenter mt-0 mr-l-20">
+                <div class="row">
+                    <!--<div class="col-lg-12 col-sm-8 col-md-10 col-xs-10 pb-10 pt-0 p-lr-0 vcenter mt-0 mr-l-20">
                         <?php 
                             $value_margin = 40; //valeur du margin top pour les researux sociaux
                         ?>
@@ -269,9 +269,9 @@
                                     data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
                                 onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"></a>
                             </div>
-                            <div class="share-social-network" style="margin-top: {!! $value_margin !!}%;">
+                            <div class="share-social-network" style="margin-top: {!! $value_margin-10 !!}%;">
                                 <a class="share share-to-facebook"  href="https://www.facebook.com/sharer/sharer.php?u={!! urlencode(URL::current()) !!}"></a>
-                                <a href="https://twitter.com/intent/tweet?text={!! URL::current() !!}" class="share share-to-twitter twitter-share-button" data-count="vertical" data-via="Clickee"></a>
+                                <a href="https://twitter.com/intent/tweet?text={!! URL::current() !!}" class="share share-to-twitter" data-count="vertical" data-via="Clickee"></a> <!--twitter-share-button-->
                                 <a class="share share-to-google" href="https://plus.google.com/share?url={!! URL::current() !!}" onclick="window.open(this.href, 'Google+', 'width=490,height=530'); return false;"></a>
                             </div>
 

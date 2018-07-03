@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\AttributeOptionTranslation;
 use App\AttributeOption;
+use App\Models\ProductStock;
 
 class ProductStockAttributeOption extends Model
 {
@@ -17,6 +18,10 @@ class ProductStockAttributeOption extends Model
     public function option()
 	{
 		return $this->hasOne(AttributeOption::class, 'attribute_option_id');
+	}
+	public function stock()
+	{
+		return $this->hasOne(ProductStock::class, 'product_stock_id');
 	}
     
 }

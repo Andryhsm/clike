@@ -1,3 +1,8 @@
+// GLOBAL VARIABLE for the changeAttribute function
+    FIRST_CLICKED_ATTRIBUTE = '';
+    FIRST_CLICKED_ATTRIBUTE_OPTION = '';
+    FIRST_CLICKED_HTML = '';
+    
 $(document).ready(function() {
 
     var main_image = "";
@@ -342,41 +347,84 @@ $(document).ready(function() {
             $(this).parent().find('.error').remove();
         }
     });
+    
+    $('.product-input-select').val('default');
   
+    $('[name="attrs[]"]').bind('change', function() {
+        FIRST_CLICKED_ATTRIBUTE = $(this).attr('data-attribute');
+        FIRST_CLICKED_ATTRIBUTE_OPTION = $(this).val();
+        $(this).find('[value = ' + FIRST_CLICKED_ATTRIBUTE_OPTION + ']').attr('selected', 'selected');
+        FIRST_CLICKED_HTML = $(this).html();
+        changeAttribute($(this), $('[name="product_id"]').val());
+        $('[name="attrs[]"]').unbind('change');
+    });
 })
 
 function changeAttribute(box, product_id) {
+    // console.log(FIRST_CLICKED_ATTRIBUTE);
+    // console.log(FIRST_CLICKED_ATTRIBUTE_OPTION);
+    // console.log(FIRST_CLICKED_HTML);
+    
+    $(box).find('option').removeAttr('selected');
+    console.log('********' + $(box).html());
+    var attribute_option = $(box).val();
+    $(box).find('[value = ' + attribute_option + ']').attr('selected', 'selected');
+    console.log('********' + $(box).html());
     var attribute_option_id = $(box).val();
     var url = $(box).attr('data-route');
-    //var next_select_attribute = $(box).parent().next('.form-group').find('select').attr('data-attribute')
-    console.log(attribute_option_id + '*******')
-    //console.log(next_select_attribute + ' next_select_attribute')
-    //var next_select = $('[data-attribute='+ next_select_attribute +']');
-    var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
-    $.ajax({
-        dataType: 'json',
-        type: 'POST',
-        url: url,
-        data: data,
-        beforeSend: function() {
-            $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
-        },
-        success: function(response, status) {
-            console.log(response);
-            $('[name="attrs[]"]').html('');
-            // $.each(response, function(key, value){
-            //     console.log(key + ' ***** ' + value);
-            // })
-            // next_select.html('');
-            $.each(response, function(key, value){
-                $('[data-attribute='+ value.attribute_id +']').append('<option value="' + value.attribute_option_id + '" >' + value.option_name + '</option>')    
-            })
-            $.LoadingOverlay("hide");
-            
-        },
-        error: function(xhr){
-            console.log('Erreur' + xhr.responseText);
-            $.LoadingOverlay("hide");
-        }
+    var parent = $(box).attr('data-attribute');
+    var select_value = {};
+    var key = '';
+    $('[name="attrs[]"]').each(function( index ) {
+        key = $(this).attr('data-attribute');
+        select_value[key] = $(this).val();
     });
+    
+    var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
+    
+    // Vérifie si c'est le dernier select key = last key
+    var next_select = $(box).parent().next('.form-group').find('select');
+    var last_empty = not_empty_except_last(select_value, key);
+    if(next_select.length == 0 && last_empty) {
+        // ne fait rien
+        console.log('dernier select ');
+    }
+    else{
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: url,
+            data: data,
+            beforeSend: function() {
+                $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+            },
+            success: function(response, status) {
+                console.log(response);
+                $('[name="attrs[]"]').html('');
+                $.each(response, function(key, value){
+                    if($.inArray(value.attribute_id, select_value)) 
+                        $('[data-attribute="'+ value.attribute_id +'"]').append('<option value="' + value.attribute_option_id + '" selected="selected">' + value.option_name + '</option>') 
+                    else 
+                        $('[data-attribute="'+ value.attribute_id +'"]').append('<option value="' + value.attribute_option_id + '" >' + value.option_name + '</option>')    
+                })
+                
+                $('[data-attribute="'+ FIRST_CLICKED_ATTRIBUTE +'"]').html(FIRST_CLICKED_HTML);
+                $.LoadingOverlay("hide");
+                
+            },
+            error: function(xhr){
+                console.log('Erreur' + xhr.responseText);
+                $.LoadingOverlay("hide");
+            }
+        }); 
+    }
+    
+}
+
+function not_empty_except_last(tab, last_key){
+    var resp = true;
+    $.map( tab, function( val, i ) {
+      if(!val && i!=last_key) resp = false;
+    });
+    return resp;
 }

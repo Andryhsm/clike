@@ -60,7 +60,7 @@
                                                 {!! Form::open(['url' => route('commande.store'), 'id'=>'product_search_form_'.$index, 'method' => 'post','class'=>' form-inline','autocomplete'=>'off']) !!}
                                                 <tr>
                                                     <td width="25%">
-                                                        <strong>{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong><br><br>
+                                                        <strong>{!! $item->product->brand_name !!}</strong><br><br>
                                                         <a href="{!! (!empty($item->product)>0 && !empty($item->product->url)) ? url($item->product->url->target_url): "#" !!}">{!! $item->product_name !!}</a>
                                                         @foreach($item->attributes as $index=>$attribute)
                                                             <br/>{!! $attribute->attribute_label !!}
@@ -125,7 +125,7 @@
                                         @foreach($earned_items as $index=>$item)
                                         <tr>
                                             <td width="50%" class="vertical-align">
-                                                <strong>{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong><br><br>
+                                                <strong>{!! $item->product->brand_name !!}</strong><br><br>
                                                 <a href="{!! (!empty($item->product)>0 && !empty($item->product->url)) ? url($item->product->url->target_url): "#" !!}">{!! $item->product_name !!}</a>
                                                 @foreach($item->attributes as $index=>$attribute)
                                                     <br/>{!! $attribute->attribute_label !!}
@@ -170,7 +170,7 @@
                                         @foreach($history_items as $index=>$item)
                                         <tr>
                                             <td width="50%" class="vertical-align">
-                                                <strong>{!! ($item->brand->parent_id==null) ? $item->brand->brand_name : $item->brand->parent->brand_name !!}</strong><br><br>
+                                                <strong>{!! $item->product->brand_name !!}</strong><br><br>
                                                 <a href="{!! (!empty($item->product)>0 && !empty($item->product->url)) ? url($item->product->url->target_url): "#" !!}">{!! $item->product_name !!}</a>
                                                 @foreach($item->attributes as $index=>$attribute)
                                                     <br/>{!! $attribute->attribute_label !!}
