@@ -1187,6 +1187,13 @@ a#scrollUp {
 	width: 160px;
 	/*height: 180px;*/
 }
+
+}
+
+@media (min-width: 768px) {
+  .engagement-menu#uploadTab, #engagement-menu-content {
+    display: none;
+  }
 }
 
 /* small mobile :320px. */
@@ -2171,6 +2178,7 @@ img.equipe-clickee {
 .order-description {
   line-height: 1 !important;
 }
+
 }
 /* end max-width 767px */ 
 /* Large Mobile :480px. */
