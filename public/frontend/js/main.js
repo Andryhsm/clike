@@ -943,7 +943,7 @@ function aside_fixed() {
 	var $aside = $("#aside"),
 		$window = $(window),
 		offset = $aside.offset(),
-		content = $('.main')[0].clientHeight,
+		content = $('.main')[0].clientHeight - 140,
 		//content = $('.test')[0].clientHeight,
 		topPadding = 15,
 		left = $('.nav-menu.content').offset().left + parseInt($('.main').css('padding-left')),
@@ -951,32 +951,35 @@ function aside_fixed() {
 		css = {},
 		animate = {};
 
-	if (Modernizr.mq('(max-width: 767px)')) {
+	if (Modernizr.mq('(max-width: 767px)')) {	
 		if (Modernizr.mq('(max-width: 480px)')) left = 0;
 		$window.scroll(function() {
-			content = $('.main')[0].clientHeight + offset.top
+			content = $('.main')[0].clientHeight + offset.top 
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
 				$aside.stop().css({ 'position': 'fixed', 'top': '0', 'z-index': '2000'});
-				$('.nav-menu.content').css( 'margin-right', '0')
+				$('.nav-menu.content').css( 'margin-right', '0');
 			}
 			else {
 				$aside.stop().animate({
 					marginTop: 0
 				}).css({'position': 'relative'});
-				$('.nav-menu.content').css( 'margin-right', '0')
+				$('.nav-menu.content').css( 'margin-right', '0');
 			}
 		});
 	}
 	else {
 		$window.scroll(function() {
-			
+			var window_last_scroll;
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
-				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding)
+				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding);
+				$window_last_scroll = $window.scrollTop() - offset.top + topPadding;
+				console.log("scroll bottom");
 			}
 			else {
 				$aside.stop().animate({
-					marginTop: 0
+					marginTop: window_last_scroll
 				});
+				console.log(window_last_scroll);
 			}
 		});
 

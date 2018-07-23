@@ -19,7 +19,6 @@ class RadioController extends Controller
     {
         $radio = $this->radio_repository->findRadio($zip);
         if(stristr($radio->url, "http://") === TRUE  || stristr($radio->url, "https://") === TRUE) {
-            dd($radio->url);
             return \Redirect::to($radio->url);
         }else{
             return \Redirect::to('http://'.$radio->url);

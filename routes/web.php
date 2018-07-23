@@ -38,7 +38,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
     Route::post('/ckeditor/upload', 'FileController@uploadCKeditor');
     Route::post('/ckeditor/browse', 'FileController@browse');
 
-
     Route::get('/', 'LoginController@index');
     Route::get('login', 'LoginController@index')->name('login');
     Route::post('login', 'LoginController@store');

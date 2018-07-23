@@ -81,10 +81,10 @@
     	                                    </td>
     	                                    <td>
     	                                        <div class="btn-group">
-    	                                            <a href="{{ URL::to('merchant/code_promo/' . $code_promo->code_promo_id . '/edit') }}"
+                                                    <a href="{{ route('code-promo.edit', ['id' => $code_promo->code_promo_id]) }}"
     	                                               class="btn btn-default btn-sm" style="" title="Edit"><i
     	                                                        class="fa fa-fw fa-edit"></i></a>
-    	                                            {!! Form::open(array('url' => 'marchand/code_promo/' . $code_promo->code_promo_id
+    	                                            {!! Form::open(array('url' => route('code-promo.destroy', ['id' => $code_promo->code_promo_id])
     	                                            , 'class' => 'pull-right')) !!}
     	                                            {!! Form::hidden('_method', 'DELETE') !!}
     	                                            {!! Form::button('<i class="fa fa-fw fa-trash"></i>', ['type' => 'submit', 'class' => 'btn delete-btn btn-default btn-sm'] ) !!}
