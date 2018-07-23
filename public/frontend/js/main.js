@@ -977,9 +977,8 @@ function aside_fixed() {
 			}
 			else {
 				$aside.stop().animate({
-					marginTop: window_last_scroll
+					marginTop: window_last_scroll 
 				});
-				console.log(window_last_scroll);
 			}
 		});
 
