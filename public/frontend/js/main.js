@@ -1004,8 +1004,8 @@ function footerCardFixed(){
 	    }
 	}
 	
-	var observer = new MutationObserver(callback);
-	observer.observe(contentCart, { attributes: true});
+	// var observer = new MutationObserver(callback);
+	// observer.observe(contentCart, { attributes: true});
 
 	$(".content-cart").scroll(function() {
 		var y = $(".content-cart").scrollTop();

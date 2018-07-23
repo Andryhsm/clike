@@ -1,4 +1,4 @@
-<div class="user-zone-info" data-radius="{!! Cookie::has('radius') ? Cookie::get('radius') : 'null' !!}" data-zip-code="{!! Cookie::has('zip-code') ? Cookie::get('zip-code') : 'null' !!}"/>
+<div class="user-zone-info" style="display: none;" data-radius="{!! Cookie::has('radius') ? Cookie::get('radius') : 'null' !!}" data-zip-code="{!! Cookie::has('zip-code') ? Cookie::get('zip-code') : 'null' !!}"/>
 <div class="modal fade" id="area-modal" role="dialog" data-backdrop="false">
     <div class="modal-dialog" role="document">
             <div class="modal-header">                                                                

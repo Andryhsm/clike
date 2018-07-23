@@ -3370,3 +3370,6 @@ a.open-day {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+#user-zone-info {
+  display: none !important;
+}
