@@ -615,7 +615,7 @@
 	//Show the modal if no info user location
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
 	setTimeout(function() {
-		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url) {
+		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url) {  
 			$('#area-modal').modal('show');
 		}	
 	}, 3000);
@@ -938,6 +938,7 @@ function close_select_radius() {
 
 function initMap() {}
 
+
 function aside_fixed() {
 	//console.log('log')
 	var $aside = $("#aside"),
@@ -954,7 +955,7 @@ function aside_fixed() {
 	if (Modernizr.mq('(max-width: 767px)')) {	
 		if (Modernizr.mq('(max-width: 480px)')) left = 0;
 		$window.scroll(function() {
-			content = $('.main')[0].clientHeight + offset.top 
+			content = $('.main')[0].clientHeight + offset.top ;
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
 				$aside.stop().css({ 'position': 'fixed', 'top': '0', 'z-index': '2000'});
 				$('.nav-menu.content').css( 'margin-right', '0');
@@ -970,16 +971,14 @@ function aside_fixed() {
 	else {
 		$window.scroll(function() {
 			var window_last_scroll;
-			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
+			if ($window.scrollTop() > (offset.top - 20) && $window.scrollTop() < content) {
 				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding);
 				$window_last_scroll = $window.scrollTop() - offset.top + topPadding;
-				console.log("scroll bottom");
 			}
 			else {
 				$aside.stop().animate({
-					marginTop: window_last_scroll
+					marginTop: window_last_scroll 
 				});
-				console.log(window_last_scroll);
 			}
 		});
 
@@ -987,7 +986,7 @@ function aside_fixed() {
 }
 
 function footerCardFixed(){
-	var contentCart = document.getElementById('content-cart');
+	var contentCart = document.getElementById('content_cart');
 
 	var callback = function(mutationsList) {
 	    for(var mutation of mutationsList) {
@@ -1004,9 +1003,9 @@ function footerCardFixed(){
 	        }
 	    }
 	}
-	//Commenteko kely vetivety
-	// var observer = new MutationObserver(callback);
-	// observer.observe(contentCart, { attributes: true});
+	
+	var observer = new MutationObserver(callback);
+	observer.observe(contentCart, { attributes: true});
 
 	$(".content-cart").scroll(function() {
 		var y = $(".content-cart").scrollTop();
