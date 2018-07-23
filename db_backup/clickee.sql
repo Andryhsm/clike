@@ -1,13 +1,13 @@
--- MySQL dump 10.15  Distrib 10.0.34-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
 --
--- Host: localhost    Database: clikee
+-- Host: localhost    Database: clickee
 -- ------------------------------------------------------
--- Server version	10.0.34-MariaDB-0ubuntu0.16.04.1
+-- Server version	5.7.22-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -50,7 +50,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (2,'David','Boitard','db@alternateeve.com','$2y$10$Kj5haYOKitqkFKSkpFEr1.lemb507tMt/g1tFE1yvPEiE4g0LFeZ2',1,'2017-06-05-17-17-57-11916_10200958671030404_1511614316_n.jpg','sgfUWNWFVGpzwmEzS7YdLw8ulS0MpYyBvrJrw3p0amIg2lWEGyGUeIdknhCq',1,'2017-05-16 13:40:22','2017-10-17 20:25:57',1),(26,'Radomalala','Eugene','re@alternateeve.com','$2y$10$lvdlQnqUL2W4B5pRoHUwiuxuqIrpKqhMfrCIvTDO4zcFpFSt3LOFW',1,NULL,'VJLXG3REQLio1iEg3D2Qe3MwqPulbjcQAhT3Rx1Ik3iE4LNjwuqgnnG5wx38',2,'2017-09-26 14:40:45','2017-10-15 15:32:39',1),(37,'TEST','clickee','test@clickee.com','$2y$10$VwEigVp7qqQOZzNTq/gUHOAQEBH1Z7rRcJb2nXTOBWGkYl.4.dElW',1,'2018-05-02-16-18-37-batman-for-facebook.jpg','hvQDXpzZkfrtrcA1YlfchwGRZpU39gGd6WwBstjJLR6Voju4gthRaHZYJot8',26,'2018-03-02 06:54:08','2018-05-02 16:18:37',1),(38,'ANDRIANAIVO','Andry','aa@alternateeve.com','$2y$10$Xy.T.Bdzi7h/tqDji1OHk./iVSEI5JNt6ZNhk/QbOrmBwi2BLt4OS',1,'2018-04-05-12-46-34-about-icon-md.png','sLlSdtLMqAEnxGvyi4BgUWkyEXzxHcO6Ef9whMkmH7vCFg348LwRsBvQL3IJ',26,'2018-04-05 12:46:34','2018-04-05 12:46:34',1);
+INSERT INTO `admin` VALUES (2,'David','Boitard','db@alternateeve.com','$2y$10$Kj5haYOKitqkFKSkpFEr1.lemb507tMt/g1tFE1yvPEiE4g0LFeZ2',1,'2017-06-05-17-17-57-11916_10200958671030404_1511614316_n.jpg','sgfUWNWFVGpzwmEzS7YdLw8ulS0MpYyBvrJrw3p0amIg2lWEGyGUeIdknhCq',1,'2017-05-16 13:40:22','2017-10-17 20:25:57',1),(26,'Radomalala','Eugene','re@alternateeve.com','$2y$10$lvdlQnqUL2W4B5pRoHUwiuxuqIrpKqhMfrCIvTDO4zcFpFSt3LOFW',1,NULL,'qnb2ix2e59QzbWkWR8iEHxco7DtDaVSm6VFZSYcv63BkPnyFCoOFl3tB3Upg',2,'2017-09-26 14:40:45','2017-10-15 15:32:39',1),(37,'TEST','clickee','test@clickee.com','$2y$10$VwEigVp7qqQOZzNTq/gUHOAQEBH1Z7rRcJb2nXTOBWGkYl.4.dElW',1,'2018-05-02-16-18-37-batman-for-facebook.jpg','hvQDXpzZkfrtrcA1YlfchwGRZpU39gGd6WwBstjJLR6Voju4gthRaHZYJot8',26,'2018-03-02 06:54:08','2018-05-02 16:18:37',1),(38,'ANDRIANAIVO','Andry','aa@alternateeve.com','$2y$10$Xy.T.Bdzi7h/tqDji1OHk./iVSEI5JNt6ZNhk/QbOrmBwi2BLt4OS',1,'2018-04-05-12-46-34-about-icon-md.png','sLlSdtLMqAEnxGvyi4BgUWkyEXzxHcO6Ef9whMkmH7vCFg348LwRsBvQL3IJ',26,'2018-04-05 12:46:34','2018-04-05 12:46:34',1);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -656,7 +656,7 @@ CREATE TABLE `code_promo` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`code_promo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -665,7 +665,7 @@ CREATE TABLE `code_promo` (
 
 LOCK TABLES `code_promo` WRITE;
 /*!40000 ALTER TABLE `code_promo` DISABLE KEYS */;
-INSERT INTO `code_promo` VALUES (1,'VraieBelleDynamique','2018-04-19','2018-04-19',5,'2018-04-08 16:26:44','2018-04-08 16:26:44',11),(40,'Test code','2018-05-30','2018-05-31',12,'2018-05-29 08:17:21','2018-05-29 08:17:21',11),(41,'Test code 2','2018-05-24','2018-05-31',50,'2018-05-29 08:18:31','2018-05-29 08:18:31',11),(42,'Test code 2','2018-05-24','2018-05-31',50,'2018-05-29 08:24:49','2018-05-29 08:24:49',11),(43,'Test code 2','2018-05-24','2018-05-31',50,'2018-05-29 08:25:05','2018-05-29 08:25:05',11),(44,'Test code 3','2018-05-26','2018-05-31',20,'2018-05-29 08:31:17','2018-05-29 08:31:17',11),(45,'Test code 4','2018-05-26','2018-05-31',50,'2018-05-29 08:31:56','2018-05-29 08:31:56',11),(46,'Test code 5','2018-05-25','2018-05-30',40,'2018-05-29 08:32:35','2018-05-29 08:32:35',11);
+INSERT INTO `code_promo` VALUES (1,'VraieBelleDynamique','2018-04-19','2018-04-19',5,'2018-04-08 16:26:44','2018-04-08 16:26:44',11),(44,'Test code 3','2018-05-26','2018-05-31',25,'2018-05-29 08:31:17','2018-06-14 13:51:04',11),(46,'Test code 5','2018-05-25','2018-05-30',40,'2018-05-29 08:32:35','2018-05-29 08:32:35',11),(48,'mon code test 1','2018-06-14','2018-06-14',10,'2018-06-12 15:05:29','2018-06-12 15:05:29',11),(49,'mon code test 1','2018-06-14','2018-06-14',20,'2018-06-12 15:07:42','2018-06-12 15:07:42',11),(50,'mon code test 1','2018-06-14','2018-06-14',20,'2018-06-12 15:08:00','2018-06-12 15:08:00',11),(52,'test','2018-06-12','2018-07-11',12,'2018-06-13 12:31:30','2018-06-13 12:31:30',11),(54,'test','2018-06-26','2018-06-28',12,'2018-06-13 12:40:02','2018-06-13 12:40:02',11),(56,'Listify','2018-07-27','2018-08-04',18,'2018-07-20 09:36:17','2018-07-20 09:36:17',11);
 /*!40000 ALTER TABLE `code_promo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -692,7 +692,7 @@ CREATE TABLE `code_promo_category` (
 
 LOCK TABLES `code_promo_category` WRITE;
 /*!40000 ALTER TABLE `code_promo_category` DISABLE KEYS */;
-INSERT INTO `code_promo_category` VALUES (1,781),(44,781),(46,786);
+INSERT INTO `code_promo_category` VALUES (1,781),(46,786),(48,781),(48,783),(49,783),(49,784),(50,786),(52,784),(52,785),(44,781),(56,782);
 /*!40000 ALTER TABLE `code_promo_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -719,7 +719,6 @@ CREATE TABLE `code_promo_product` (
 
 LOCK TABLES `code_promo_product` WRITE;
 /*!40000 ALTER TABLE `code_promo_product` DISABLE KEYS */;
-INSERT INTO `code_promo_product` VALUES (NULL,4385),(NULL,4391),(NULL,4384),(NULL,4389),(NULL,4389),(NULL,4385),(40,4392),(44,4392),(45,4392);
 /*!40000 ALTER TABLE `code_promo_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -769,7 +768,7 @@ CREATE TABLE `customer` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -778,7 +777,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'bb','bb','bb','b','bb','0344630738','bb@alternateeve.com','0000-00-00','2018-05-09 14:22:33','2018-05-09 14:22:33'),(2,'Dad','ola','11525','110','Oslo','032','ola@gmail.com','0000-00-00','2018-05-25 08:40:45','2018-05-25 08:40:45'),(3,'feno','Ola','11525','110','Oslo','032','ola@gmail.com','0000-00-00','2018-05-25 08:51:30','2018-05-25 08:51:30');
+INSERT INTO `customer` VALUES (1,'bb','bb','bb','b','bb','0344630738','bb@alternateeve.com','0000-00-00','2018-05-09 14:22:33','2018-05-09 14:22:33'),(2,'Dad','ola','11525','110','Oslo','032','ola@gmail.com','0000-00-00','2018-05-25 08:40:45','2018-05-25 08:40:45'),(3,'feno','Ola','11525','110','Oslo','032','ola@gmail.com','0000-00-00','2018-05-25 08:51:30','2018-05-25 08:51:30'),(4,'bbb','bbb','bbb','bbb','bbb','bbb','bbb@bbb.com','0000-00-00','2018-06-08 09:12:49','2018-06-08 09:12:49'),(5,'cccc','ccc','ccc','ccc','ccc','cc','cc@gmail.com','0000-00-00','2018-06-13 06:41:12','2018-06-13 06:41:12'),(6,'Andry','ANDRIANAIVO','aaa','aaa','aaa','0344630738','aa@alternateeve.com','0000-00-00','2018-06-13 06:41:57','2018-06-13 06:41:57'),(7,'test2728','test1718','rue radama','110','Antsirabe','424242424242','test@test.com','0000-00-00','2018-07-20 06:50:07','2018-07-20 06:50:07');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -901,15 +900,16 @@ CREATE TABLE `encasement` (
   `encasement_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `store_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned DEFAULT NULL,
-  `total_ht` int(11) NOT NULL,
-  `total_ttc` int(11) NOT NULL,
+  `total_ht` decimal(10,2) NOT NULL,
+  `total_ttc` decimal(10,2) NOT NULL,
   `discount` int(11) NOT NULL,
   `tva` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `reset_accounting` smallint(6) NOT NULL,
   PRIMARY KEY (`encasement_id`),
   KEY `idx_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -918,8 +918,37 @@ CREATE TABLE `encasement` (
 
 LOCK TABLES `encasement` WRITE;
 /*!40000 ALTER TABLE `encasement` DISABLE KEYS */;
-INSERT INTO `encasement` VALUES (1,0,NULL,4,4,0,0,'2018-04-19 05:59:03','2018-04-19 05:59:03'),(2,0,NULL,44,35,0,0,'2018-05-08 09:17:05','2018-05-08 09:17:05'),(3,11,1,44,0,0,0,'2018-05-09 14:22:33','2018-05-09 14:22:33');
+INSERT INTO `encasement` VALUES (12,11,5,50.00,45.00,0,0,'2018-06-25 08:57:40','2018-06-25 08:57:40',0),(13,11,7,10.00,8.50,0,0,'2018-07-20 06:50:07','2018-07-20 06:50:07',0),(14,11,7,10.00,10.00,0,0,'2018-07-20 06:51:15','2018-07-20 06:51:15',0);
 /*!40000 ALTER TABLE `encasement` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `encasement_order_last_reset`
+--
+
+DROP TABLE IF EXISTS `encasement_order_last_reset`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `encasement_order_last_reset` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `total_price` decimal(10,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `store_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_store_id` (`store_id`),
+  CONSTRAINT `encasement_order_last_reset_store_id_foreign` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `encasement_order_last_reset`
+--
+
+LOCK TABLES `encasement_order_last_reset` WRITE;
+/*!40000 ALTER TABLE `encasement_order_last_reset` DISABLE KEYS */;
+INSERT INTO `encasement_order_last_reset` VALUES (5,0.00,'2018-06-08 14:07:19','2018-06-11 12:03:23',14),(6,0.00,'2018-06-08 14:07:23','2018-06-08 14:07:33',11);
+/*!40000 ALTER TABLE `encasement_order_last_reset` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -948,7 +977,7 @@ CREATE TABLE `encasement_product` (
   KEY `idx_parent_category` (`parent_category`),
   KEY `idx_sub_category` (`sub_category`),
   CONSTRAINT `encasement_product_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -957,7 +986,7 @@ CREATE TABLE `encasement_product` (
 
 LOCK TABLES `encasement_product` WRITE;
 /*!40000 ALTER TABLE `encasement_product` DISABLE KEYS */;
-INSERT INTO `encasement_product` VALUES (2,2,4391,NULL,NULL,0,0,NULL,NULL,'2018-04-03 17:14:22','2018-04-03 17:14:22',1),(4,4,4391,0,0,798,790,NULL,10,'2018-04-09 11:36:41','2018-04-09 11:36:41',1),(5,5,4391,0,0,781,790,NULL,10,'2018-04-10 14:10:10','2018-04-10 14:10:10',1),(6,6,4392,NULL,NULL,783,0,NULL,20,'2018-04-11 13:45:46','2018-04-11 13:45:46',0),(7,6,4391,0,0,790,790,NULL,10,'2018-04-11 13:45:46','2018-04-11 13:45:46',0),(8,7,4392,NULL,NULL,783,783,NULL,20,'2018-04-11 13:57:04','2018-04-11 13:57:04',1),(9,7,4391,0,0,0,0,NULL,13,'2018-04-11 13:57:04','2018-04-11 13:57:04',1),(10,1,4391,0,NULL,782,798,NULL,2,'2018-04-18 09:17:48','2018-04-18 09:17:48',0),(11,2,4392,NULL,NULL,783,805,NULL,NULL,'2018-04-18 12:31:10','2018-04-18 12:31:10',1),(12,1,4392,NULL,NULL,783,805,NULL,2,'2018-04-19 05:59:03','2018-04-19 05:59:03',1),(13,2,4390,NULL,NULL,792,792,NULL,20,'2018-05-08 09:17:05','2018-05-08 09:17:05',1),(14,3,4390,NULL,NULL,792,792,NULL,NULL,'2018-05-09 14:22:33','2018-05-09 14:22:33',0);
+INSERT INTO `encasement_product` VALUES (26,13,4419,NULL,NULL,782,802,NULL,15,'2018-07-20 06:50:07','2018-07-20 06:50:07',0),(27,14,4419,NULL,NULL,0,0,NULL,NULL,'2018-07-20 06:51:15','2018-07-20 06:51:15',0);
 /*!40000 ALTER TABLE `encasement_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -977,7 +1006,7 @@ CREATE TABLE `encasement_store_customer` (
   KEY `idx_store_id` (`store_id`),
   KEY `idx_user_id` (`user_id`),
   CONSTRAINT `store_customer_store_id_foreign` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -986,7 +1015,7 @@ CREATE TABLE `encasement_store_customer` (
 
 LOCK TABLES `encasement_store_customer` WRITE;
 /*!40000 ALTER TABLE `encasement_store_customer` DISABLE KEYS */;
-INSERT INTO `encasement_store_customer` VALUES (1,2,11,1);
+INSERT INTO `encasement_store_customer` VALUES (4,2,11,4),(5,2,11,5),(6,2,11,6),(7,2,11,7);
 /*!40000 ALTER TABLE `encasement_store_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1184,7 +1213,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=171 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1193,7 +1222,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_100000_create_password_resets_table',1),(2,'2017_04_16_025659_create_admin_table',1),(3,'2017_05_05_063230_user_role',1),(4,'2017_05_07_000000_create_users_table',1),(5,'2017_05_08_082959_create_attribute_table',1),(6,'2017_05_08_083632_create_attribute_option_table',1),(7,'2017_05_08_083952_create_attribute_set_table',1),(8,'2017_05_08_084226_create_attribute_set_to_attribute_table',1),(9,'2017_05_08_085044_create_banner_table',1),(10,'2017_05_08_085437_create_brand_table',1),(11,'2017_05_08_085906_create_brand_category_table',1),(12,'2017_05_08_090155_create_brand_to_brand_category_table',1),(13,'2017_05_08_090512_create_brand_tag_table',1),(14,'2017_05_08_090633_create_brand_request_tag_table',1),(15,'2017_05_08_091315_create_category_table',1),(16,'2017_05_08_091744_create_countries_table',1),(17,'2017_05_08_091843_create_email_template_table',1),(18,'2017_05_08_092150_create_email_template_variables_table',1),(19,'2017_05_08_092315_create_language_table',1),(20,'2017_05_08_092423_create_link_adjustment_table',1),(21,'2017_05_08_092723_create_order_table',1),(22,'2017_05_08_093553_create_order_billing_table',1),(23,'2017_05_08_094012_create_order_item_table',1),(24,'2017_05_08_100719_create_page_table',1),(25,'2017_05_08_110508_create_product_table',1),(26,'2017_05_08_111053_create_product_attribute_value_table',1),(27,'2017_05_08_111607_create_product_category_table',1),(28,'2017_05_08_111910_create_product_image_table',1),(29,'2017_05_08_112141_create_product_price_adjustment_table',1),(30,'2017_05_08_112442_create_product_rating_table',1),(31,'2017_05_08_115205_create_tag_table',1),(32,'2017_05_08_115442_create_product_tag_table',1),(33,'2017_05_08_115633_create_product_video_table',1),(34,'2017_05_08_115814_create_regions_table',1),(35,'2017_05_08_120029_create_request_brand_table',1),(36,'2017_05_08_120206_create_store_table',1),(37,'2017_05_08_120547_create_store_brands_table',1),(38,'2017_05_08_120746_create_store_users_table',1),(39,'2017_05_08_121014_create_sys_url_rewrite_table',1),(40,'2017_05_08_121232_create_user_address_table',1),(41,'2017_05_08_121512_create_order_item_attribute_table',1),(42,'2017_05_08_122507_create_order_item_coupon_table',1),(43,'2017_05_08_122809_create_order_status_table',1),(44,'2017_05_08_123354_create_order_transaction_table',1),(45,'2017_05_11_130030_add_sub_banner_column_banner_table',1),(46,'2017_05_12_150316_create_special_product_table',1),(47,'2017_05_13_080130_create_product_translation_table',1),(48,'2017_05_13_080659_create_attribute_translation_table',1),(49,'2017_05_13_081126_create_attribute_option_translation_table',1),(50,'2017_05_13_081622_create_category_translation_table',1),(51,'2017_05_13_082027_create_email_template_translation_table',1),(52,'2017_05_13_082529_create_page_translation_table',1),(53,'2017_05_15_023859_create_admin_role_table',1),(54,'2017_05_15_023950_create_permission_table',1),(55,'2017_05_15_024048_create_role_permission_table',1),(56,'2017_05_15_024424_add_role_id_admin_table',1),(57,'2017_05_15_101355_create_brand_category_to_tag_table',1),(58,'2017_05_16_105626_add_route_column_in_permission_table',2),(59,'2017_05_18_120338_add_social_media_column_user_table',3),(60,'2017_05_21_081600_add_brand_id_to_product',4),(61,'2017_05_21_084231_create_order_status_history_table',4),(62,'2017_05_21_111922_update_order_table',4),(63,'2017_05_22_013113_add_nullable_column_rating_table',4),(64,'2017_05_22_045336_update_brand_table',4),(65,'2017_05_22_045902_create_brand_to_brand_tag_table',4),(66,'2017_05_27_091437_add_category_sort_order',5),(67,'2017_05_31_094426_create_blog_category_table',6),(68,'2017_05_31_094805_create_blog_post_table',6),(69,'2017_05_31_095415_create_blog_tag_table',6),(70,'2017_05_31_095801_create_blog_post_to_tag_table',6),(71,'2017_05_31_144604_update_column_in_users_table',6),(72,'2017_06_08_081226_add_display_home_page_blog_setting',7),(73,'2017_06_08_085257_add_blog_url_support',7),(74,'2017_06_08_095430_create_related_post_table',8),(75,'2017_06_09_145805_add_french_banner_in_banner_table',9),(76,'2017_06_12_122632_add_banner_url',10),(77,'2017_06_13_111853_add_publish_date_blog',10),(78,'2017_06_15_155620_create_order_item_request_table',11),(79,'2017_06_20_042812_add_column_in_order_item_table',11),(80,'2017_06_20_122612_add_is_type_in_order_table',11),(81,'2017_06_21_165116_update_message_column_request_table',12),(82,'2017_06_23_190157_create_faqs_table',13),(83,'2017_06_25_154403_add_status_id_order_item',14),(84,'2017_06_26_120020_update_column_in_order_item',15),(85,'2017_06_28_164534_add_type_in_faqs',16),(86,'2017_06_29_091257_add_sms_content_email',17),(87,'2017_06_28_104408_create_affiliate_product_table',18),(88,'2017_07_01_130926_update_email_template',18),(89,'2017_07_05_061333_update_order_item_request',19),(90,'2017_07_07_062525_create-epartner_media_table',20),(91,'2017_07_09_051422_update_product_affiliate_table',20),(92,'2017_07_09_183735_create_invoices_table',20),(93,'2017_07_09_183955_create_invoice_items_table',20),(94,'2017_07_10_063525_add_stripe_id_user',20),(95,'2017_07_11_074411_create_wishlists_table',21),(96,'2017_07_13_174802_add_columns_order_item_request',21),(97,'2017_07_17_084921_add_title_product_image',22),(98,'2017_07_21_090856_add_url_order_item',23),(99,'2017_08_05_100136_create_setting_table',24),(100,'2017_08_09_120603_add_meta_in_product',25),(101,'2017_08_10_074743_add_meta_page',25),(102,'2017_08_10_083053_add_meta_blog_post',25),(103,'2017_08_16_175007_add_payment_type_order',26),(104,'2017_08_20_132423_add_expiry_date_coupon',27),(105,'2017_09_15_081704_add_is_cancel_item_request',28),(106,'2017_10_16_090509_update_product_table_column',29),(107,'2017_10_16_090656_create_table_product_status',29),(108,'2017_10_19_070104_update_product_table_add_column_modified_by',30),(109,'2017_12_11_043436_update_brand_table_add_column_order_brand',31),(112,'2017_12_30_074727_update_attribute_option_add_column_attribute_num',32),(113,'2017_12_30_110617_update_attribute_option_translation_add_column_attribute_translation_numero',32),(114,'2018_03_05_091001_create_table_code_promo_table',33),(149,'2018_05_09_064712_create_table_customer',45),(116,'2018_03_12_133522_update_table_users_store',33),(117,'2018_03_12_145327_update_table_users',33),(118,'2018_03_12_172147_update_table_store_date_creation_nullable',33),(119,'2018_03_13_223244_create_table_ecasement',34),(120,'2018_03_14_100421_create_table_promotion',34),(121,'2018_03_14_214414_create_table_encasement_product',34),(122,'2018_03_15_143130_update_column_encasement_product',34),(123,'2018_03_15_145927_create_table_customer_status',34),(124,'2018_03_15_150313_update_columnn_customer',34),(125,'2018_03_15_151615_update_customer_add_column_type',34),(126,'2018_03_15_212302_update_table_product_set_question_not_to_null',34),(127,'2018_03_27_143554_update_store_and_user_table',35),(128,'2018_04_09_074235_update_table_store_merchant',36),(135,'2018_04_10_072830_code_promo_products_pivot',37),(136,'2018_04_10_131928_update_table_product_translation_to_add_user',38),(137,'2018_04_12_130058_update_table_banner_add_title_hover',39),(139,'2018_04_16_144259_update_table_code_promo_promotion',40),(140,'2018_03_13_223245_create_table_ecasement',41),(141,'2018_03_13_223246_create_table_ecasement',42),(142,'2017_05_08_121233_create_user_address_table',43),(143,'2018_04_25_110219_update_2_columns_in_users_table',44),(147,'2018_05_08_072807_create_table_store_customer',45),(148,'2018_05_08_190420_update_encasement_add_store_id',45),(150,'2018_05_10_193547_rename_store_customer_to_encasement_store_customer',46),(151,'2018_05_16_074845_update_order_item_table_add_column_date',46),(152,'2018_05_16_145802_create_table_radio',47),(153,'2018_05_17_074953_update_table_radio',48),(155,'2018_05_31_080948_create_table_opening_day_and_table_opening_hour',49);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_100000_create_password_resets_table',1),(2,'2017_04_16_025659_create_admin_table',1),(3,'2017_05_05_063230_user_role',1),(4,'2017_05_07_000000_create_users_table',1),(5,'2017_05_08_082959_create_attribute_table',1),(6,'2017_05_08_083632_create_attribute_option_table',1),(7,'2017_05_08_083952_create_attribute_set_table',1),(8,'2017_05_08_084226_create_attribute_set_to_attribute_table',1),(9,'2017_05_08_085044_create_banner_table',1),(10,'2017_05_08_085437_create_brand_table',1),(11,'2017_05_08_085906_create_brand_category_table',1),(12,'2017_05_08_090155_create_brand_to_brand_category_table',1),(13,'2017_05_08_090512_create_brand_tag_table',1),(14,'2017_05_08_090633_create_brand_request_tag_table',1),(15,'2017_05_08_091315_create_category_table',1),(16,'2017_05_08_091744_create_countries_table',1),(17,'2017_05_08_091843_create_email_template_table',1),(18,'2017_05_08_092150_create_email_template_variables_table',1),(19,'2017_05_08_092315_create_language_table',1),(20,'2017_05_08_092423_create_link_adjustment_table',1),(21,'2017_05_08_092723_create_order_table',1),(22,'2017_05_08_093553_create_order_billing_table',1),(23,'2017_05_08_094012_create_order_item_table',1),(24,'2017_05_08_100719_create_page_table',1),(25,'2017_05_08_110508_create_product_table',1),(26,'2017_05_08_111053_create_product_attribute_value_table',1),(27,'2017_05_08_111607_create_product_category_table',1),(28,'2017_05_08_111910_create_product_image_table',1),(29,'2017_05_08_112141_create_product_price_adjustment_table',1),(30,'2017_05_08_112442_create_product_rating_table',1),(31,'2017_05_08_115205_create_tag_table',1),(32,'2017_05_08_115442_create_product_tag_table',1),(33,'2017_05_08_115633_create_product_video_table',1),(34,'2017_05_08_115814_create_regions_table',1),(35,'2017_05_08_120029_create_request_brand_table',1),(36,'2017_05_08_120206_create_store_table',1),(37,'2017_05_08_120547_create_store_brands_table',1),(38,'2017_05_08_120746_create_store_users_table',1),(39,'2017_05_08_121014_create_sys_url_rewrite_table',1),(40,'2017_05_08_121232_create_user_address_table',1),(41,'2017_05_08_121512_create_order_item_attribute_table',1),(42,'2017_05_08_122507_create_order_item_coupon_table',1),(43,'2017_05_08_122809_create_order_status_table',1),(44,'2017_05_08_123354_create_order_transaction_table',1),(45,'2017_05_11_130030_add_sub_banner_column_banner_table',1),(46,'2017_05_12_150316_create_special_product_table',1),(47,'2017_05_13_080130_create_product_translation_table',1),(48,'2017_05_13_080659_create_attribute_translation_table',1),(49,'2017_05_13_081126_create_attribute_option_translation_table',1),(50,'2017_05_13_081622_create_category_translation_table',1),(51,'2017_05_13_082027_create_email_template_translation_table',1),(52,'2017_05_13_082529_create_page_translation_table',1),(53,'2017_05_15_023859_create_admin_role_table',1),(54,'2017_05_15_023950_create_permission_table',1),(55,'2017_05_15_024048_create_role_permission_table',1),(56,'2017_05_15_024424_add_role_id_admin_table',1),(57,'2017_05_15_101355_create_brand_category_to_tag_table',1),(58,'2017_05_16_105626_add_route_column_in_permission_table',2),(59,'2017_05_18_120338_add_social_media_column_user_table',3),(60,'2017_05_21_081600_add_brand_id_to_product',4),(61,'2017_05_21_084231_create_order_status_history_table',4),(62,'2017_05_21_111922_update_order_table',4),(63,'2017_05_22_013113_add_nullable_column_rating_table',4),(64,'2017_05_22_045336_update_brand_table',4),(65,'2017_05_22_045902_create_brand_to_brand_tag_table',4),(66,'2017_05_27_091437_add_category_sort_order',5),(67,'2017_05_31_094426_create_blog_category_table',6),(68,'2017_05_31_094805_create_blog_post_table',6),(69,'2017_05_31_095415_create_blog_tag_table',6),(70,'2017_05_31_095801_create_blog_post_to_tag_table',6),(71,'2017_05_31_144604_update_column_in_users_table',6),(72,'2017_06_08_081226_add_display_home_page_blog_setting',7),(73,'2017_06_08_085257_add_blog_url_support',7),(74,'2017_06_08_095430_create_related_post_table',8),(75,'2017_06_09_145805_add_french_banner_in_banner_table',9),(76,'2017_06_12_122632_add_banner_url',10),(77,'2017_06_13_111853_add_publish_date_blog',10),(78,'2017_06_15_155620_create_order_item_request_table',11),(79,'2017_06_20_042812_add_column_in_order_item_table',11),(80,'2017_06_20_122612_add_is_type_in_order_table',11),(81,'2017_06_21_165116_update_message_column_request_table',12),(82,'2017_06_23_190157_create_faqs_table',13),(83,'2017_06_25_154403_add_status_id_order_item',14),(84,'2017_06_26_120020_update_column_in_order_item',15),(85,'2017_06_28_164534_add_type_in_faqs',16),(86,'2017_06_29_091257_add_sms_content_email',17),(87,'2017_06_28_104408_create_affiliate_product_table',18),(88,'2017_07_01_130926_update_email_template',18),(89,'2017_07_05_061333_update_order_item_request',19),(90,'2017_07_07_062525_create-epartner_media_table',20),(91,'2017_07_09_051422_update_product_affiliate_table',20),(92,'2017_07_09_183735_create_invoices_table',20),(93,'2017_07_09_183955_create_invoice_items_table',20),(94,'2017_07_10_063525_add_stripe_id_user',20),(95,'2017_07_11_074411_create_wishlists_table',21),(96,'2017_07_13_174802_add_columns_order_item_request',21),(97,'2017_07_17_084921_add_title_product_image',22),(98,'2017_07_21_090856_add_url_order_item',23),(99,'2017_08_05_100136_create_setting_table',24),(100,'2017_08_09_120603_add_meta_in_product',25),(101,'2017_08_10_074743_add_meta_page',25),(102,'2017_08_10_083053_add_meta_blog_post',25),(103,'2017_08_16_175007_add_payment_type_order',26),(104,'2017_08_20_132423_add_expiry_date_coupon',27),(105,'2017_09_15_081704_add_is_cancel_item_request',28),(106,'2017_10_16_090509_update_product_table_column',29),(107,'2017_10_16_090656_create_table_product_status',29),(108,'2017_10_19_070104_update_product_table_add_column_modified_by',30),(109,'2017_12_11_043436_update_brand_table_add_column_order_brand',31),(112,'2017_12_30_074727_update_attribute_option_add_column_attribute_num',32),(113,'2017_12_30_110617_update_attribute_option_translation_add_column_attribute_translation_numero',32),(114,'2018_03_05_091001_create_table_code_promo_table',33),(149,'2018_05_09_064712_create_table_customer',45),(116,'2018_03_12_133522_update_table_users_store',33),(117,'2018_03_12_145327_update_table_users',33),(118,'2018_03_12_172147_update_table_store_date_creation_nullable',33),(119,'2018_03_13_223244_create_table_ecasement',34),(120,'2018_03_14_100421_create_table_promotion',34),(121,'2018_03_14_214414_create_table_encasement_product',34),(122,'2018_03_15_143130_update_column_encasement_product',34),(123,'2018_03_15_145927_create_table_customer_status',34),(124,'2018_03_15_150313_update_columnn_customer',34),(125,'2018_03_15_151615_update_customer_add_column_type',34),(126,'2018_03_15_212302_update_table_product_set_question_not_to_null',34),(127,'2018_03_27_143554_update_store_and_user_table',35),(128,'2018_04_09_074235_update_table_store_merchant',36),(135,'2018_04_10_072830_code_promo_products_pivot',37),(136,'2018_04_10_131928_update_table_product_translation_to_add_user',38),(137,'2018_04_12_130058_update_table_banner_add_title_hover',39),(139,'2018_04_16_144259_update_table_code_promo_promotion',40),(140,'2018_03_13_223245_create_table_ecasement',41),(141,'2018_03_13_223246_create_table_ecasement',42),(142,'2017_05_08_121233_create_user_address_table',43),(143,'2018_04_25_110219_update_2_columns_in_users_table',44),(147,'2018_05_08_072807_create_table_store_customer',45),(148,'2018_05_08_190420_update_encasement_add_store_id',45),(150,'2018_05_10_193547_rename_store_customer_to_encasement_store_customer',46),(151,'2018_05_16_074845_update_order_item_table_add_column_date',46),(152,'2018_05_16_145802_create_table_radio',47),(153,'2018_05_17_074953_update_table_radio',48),(155,'2018_05_31_080948_create_table_opening_day_and_table_opening_hour',49),(156,'2018_06_08_073812_add_column_reset_accounting_in_encasement_and_order_item_request',50),(157,'2018_06_08_090816_update_column_total_ht_and_total_ttc_in_encasement',51),(158,'2018_06_08_133044_create_table_encasement_order_last_reset',52),(164,'2018_06_19_090131_update_product_table_add_column_balance',53),(165,'2018_06_19_090213_update_product_translation_add_meta_advice',53),(166,'2018_06_19_112529_create_table_product_stock_status',53),(167,'2018_06_19_112550_create_table_product_stock_attribute',53),(168,'2018_06_19_112832_create_table_product_stock',53),(169,'2018_06_21_063614_update_table_product_set_brand_id_to_brand_name',54),(170,'2018_06_21_080701_update_table_product_stock_attribute_option',55);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1221,7 +1250,7 @@ CREATE TABLE `order` (
   KEY `idx_order_status_id` (`order_status_id`),
   KEY `idx_order_date` (`order_date`),
   KEY `idx_is_type` (`is_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1230,7 +1259,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (92,91,'2018-05-16 11:49:39',1,132.00,0.00,0.00,132.00,NULL,0,'1'),(93,91,'2018-05-16 13:52:02',1,120.00,0.00,0.00,120.00,NULL,0,''),(94,91,'2018-05-16 14:11:18',1,122.00,0.00,0.00,122.00,NULL,0,''),(95,91,'2018-05-22 12:21:33',1,252.00,0.00,0.00,252.00,NULL,0,''),(96,91,'2018-05-28 13:12:06',1,88.50,0.00,0.00,88.50,NULL,0,''),(97,91,'2018-05-28 13:57:46',1,45.00,0.00,0.00,45.00,NULL,0,''),(98,91,'2018-05-29 06:53:42',1,75.00,0.00,0.00,75.00,NULL,0,''),(99,91,'2018-05-29 08:40:03',1,45.00,0.00,0.00,45.00,NULL,0,''),(100,91,'2018-05-29 08:40:36',1,44.00,0.00,0.00,44.00,NULL,0,''),(101,91,'2018-05-29 11:42:22',1,165.50,0.00,0.00,165.50,NULL,0,''),(102,91,'2018-05-29 11:54:19',1,286.00,0.00,0.00,286.00,NULL,0,''),(103,91,'2018-05-29 12:08:58',1,197.00,0.00,0.00,197.00,NULL,0,''),(104,91,'2018-05-29 13:44:05',1,30.00,0.00,0.00,30.00,NULL,0,''),(105,77,'2018-06-01 14:06:39',1,165.50,0.00,0.00,165.50,NULL,0,''),(106,77,'2018-06-01 14:09:48',1,199.00,0.00,0.00,199.00,NULL,0,''),(107,91,'2018-06-04 08:52:53',1,118.00,0.00,0.00,118.00,NULL,0,''),(108,91,'2018-06-04 08:52:54',1,0.00,0.00,0.00,0.00,NULL,0,''),(109,91,'2018-06-04 11:43:51',1,44.00,0.00,0.00,44.00,NULL,0,''),(110,91,'2018-06-04 12:13:08',1,88.50,0.00,0.00,88.50,NULL,0,''),(111,91,'2018-06-04 13:14:29',1,120.00,0.00,0.00,120.00,NULL,0,''),(112,91,'2018-06-04 13:25:23',1,45.00,0.00,0.00,45.00,NULL,0,''),(113,91,'2018-06-04 13:27:02',1,44.00,0.00,0.00,44.00,NULL,0,''),(114,91,'2018-06-04 13:32:02',1,77.00,0.00,0.00,77.00,NULL,0,''),(115,91,'2018-06-04 13:35:22',1,30.00,0.00,0.00,30.00,NULL,0,''),(116,91,'2018-06-04 13:45:06',1,88.50,0.00,0.00,88.50,NULL,0,''),(117,77,'2018-06-04 14:08:07',1,329.50,0.00,0.00,329.50,NULL,0,''),(118,91,'2018-06-04 14:08:36',1,122.00,0.00,0.00,122.00,NULL,0,''),(119,91,'2018-06-04 14:30:57',1,77.00,0.00,0.00,77.00,NULL,0,''),(120,91,'2018-06-04 14:38:41',1,165.50,0.00,0.00,165.50,NULL,0,''),(121,91,'2018-06-04 14:39:45',1,30.00,0.00,0.00,30.00,NULL,0,''),(122,91,'2018-06-05 08:21:42',1,283.00,0.00,0.00,283.00,NULL,0,''),(123,91,'2018-06-05 08:26:11',1,165.50,0.00,0.00,165.50,NULL,0,''),(124,91,'2018-06-05 08:28:11',1,243.00,0.00,0.00,243.00,NULL,0,''),(125,91,'2018-06-05 08:32:33',1,195.00,0.00,0.00,195.00,NULL,0,''),(126,91,'2018-06-05 13:45:25',1,150.00,0.00,0.00,150.00,NULL,0,'');
+INSERT INTO `order` VALUES (143,91,'2018-06-13 14:42:23',1,150.00,0.00,0.00,150.00,NULL,0,''),(144,91,'2018-06-13 14:42:27',1,1194.00,0.00,0.00,1194.00,NULL,0,''),(145,91,'2018-06-13 14:57:59',1,120.00,0.00,0.00,120.00,NULL,0,''),(146,91,'2018-06-14 08:31:51',1,45.00,0.00,0.00,45.00,NULL,0,''),(147,91,'2018-06-14 11:14:15',1,196.00,0.00,0.00,196.00,NULL,0,''),(148,91,'2018-06-14 12:19:00',1,88.50,0.00,0.00,88.50,NULL,0,''),(149,77,'2018-07-20 05:52:59',1,50.00,0.00,0.00,50.00,NULL,0,''),(150,91,'2018-07-20 09:08:49',1,160.00,0.00,0.00,160.00,NULL,0,''),(151,91,'2018-07-20 09:13:34',1,0.00,0.00,0.00,0.00,NULL,0,''),(152,91,'2018-07-20 09:13:41',1,0.00,0.00,0.00,0.00,NULL,0,''),(153,91,'2018-07-20 09:14:06',1,0.00,0.00,0.00,0.00,NULL,0,''),(154,91,'2018-07-20 09:23:50',1,50.00,0.00,0.00,50.00,NULL,0,''),(155,91,'2018-07-20 09:26:02',1,100.00,0.00,0.00,100.00,NULL,0,''),(156,77,'2018-07-20 13:27:27',1,0.00,0.00,0.00,0.00,NULL,0,'');
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1304,7 +1333,7 @@ CREATE TABLE `order_item` (
   KEY `idx_radius` (`radius`),
   KEY `idx_order_status_id` (`order_status_id`),
   CONSTRAINT `order_item_order` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1313,7 +1342,7 @@ CREATE TABLE `order_item` (
 
 LOCK TABLES `order_item` WRITE;
 /*!40000 ALTER TABLE `order_item` DISABLE KEYS */;
-INSERT INTO `order_item` VALUES (124,126,4383,'Capichon chinois','mon code bar','{\"sys_url_rewrite_id\":5251,\"request_url\":\"capichon-chinois\",\"target_url\":\"capichon-chinois\",\"type\":\"2\",\"target_id\":4383}',1,120.00,0.00,120.00,'',0.00,0.00,50,'65000',3991,2,'2018-06-05 13:46:12'),(125,126,4384,'Pantalon coupé','bar code','{\"sys_url_rewrite_id\":5252,\"request_url\":\"pantalon-coup\\u00e9\",\"target_url\":\"pantalon-coup\\u00e9\",\"type\":\"2\",\"target_id\":4384}',1,30.00,0.00,30.00,'',0.00,0.00,50,'65000',3991,2,'2018-06-05 13:46:05');
+INSERT INTO `order_item` VALUES (152,149,4418,'Grand pull',NULL,'{\"sys_url_rewrite_id\":5313,\"request_url\":\"Grand pull\",\"target_url\":\"Grand pull\",\"type\":\"2\",\"target_id\":4418}',1,20.00,0.00,20.00,'',0.00,0.00,0,'',NULL,5,'2018-07-20 08:52:11'),(153,149,4418,'Grand pull',NULL,'{\"sys_url_rewrite_id\":5313,\"request_url\":\"Grand pull\",\"target_url\":\"Grand pull\",\"type\":\"2\",\"target_id\":4418}',1,20.00,0.00,20.00,'',0.00,0.00,0,'',NULL,2,'2018-07-20 08:13:34'),(154,149,4419,'Pijama',NULL,'{\"sys_url_rewrite_id\":5314,\"request_url\":\"Pijama\",\"target_url\":\"Pijama\",\"type\":\"2\",\"target_id\":4419}',1,10.00,0.00,10.00,'',0.00,0.00,0,'',NULL,2,'2018-07-20 08:13:34'),(155,150,4418,'Grand pull',NULL,'{\"sys_url_rewrite_id\":5313,\"request_url\":\"Grand pull\",\"target_url\":\"Grand pull\",\"type\":\"2\",\"target_id\":4418}',8,20.00,0.00,160.00,'',0.00,0.00,0,'',NULL,5,'2018-07-20 13:34:24'),(156,154,4419,'Pijama',NULL,'{\"sys_url_rewrite_id\":5314,\"request_url\":\"Pijama\",\"target_url\":\"Pijama\",\"type\":\"2\",\"target_id\":4419}',5,10.00,0.00,50.00,'',0.00,0.00,0,'',NULL,5,'2018-07-20 13:34:14'),(157,155,4418,'Grand pull',NULL,'{\"sys_url_rewrite_id\":5313,\"request_url\":\"Grand pull\",\"target_url\":\"Grand pull\",\"type\":\"2\",\"target_id\":4418}',5,20.00,0.00,100.00,'',0.00,0.00,0,'',NULL,5,'2018-07-20 11:29:09');
 /*!40000 ALTER TABLE `order_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1347,7 +1376,7 @@ CREATE TABLE `order_item_attribute` (
 
 LOCK TABLES `order_item_attribute` WRITE;
 /*!40000 ALTER TABLE `order_item_attribute` DISABLE KEYS */;
-INSERT INTO `order_item_attribute` VALUES (99,82,'Couleur',27438,'Couleur','Noir',0.00,'-',445),(99,83,'Taille',27441,'Taille','M',0.00,'-',440),(101,82,'Couleur',27412,'Couleur','Noir',0.00,'-',445),(101,83,'Taille',27415,'Taille','XL',0.00,'-',442),(105,82,'Couleur',27412,'Couleur','Noir',0.00,'-',445),(105,83,'Taille',27415,'Taille','XL',0.00,'-',442);
+INSERT INTO `order_item_attribute` VALUES (152,82,'Couleur',97,'Couleur','Gris',0.00,'-',450),(152,83,'Taille',96,'Taille','S',0.00,'-',439),(153,83,'Taille',88,'Taille','XXS',0.00,'-',435),(153,82,'Couleur',95,'Couleur','Jaune',0.00,'-',448),(154,82,'Couleur',98,'Couleur','Bleu',0.00,'-',446),(154,83,'Taille',99,'Taille','XXS',0.00,'-',435),(155,82,'Couleur',95,'Couleur','Jaune',0.00,'-',448),(155,83,'Taille',92,'Taille','M',0.00,'-',440),(156,82,'Couleur',98,'Couleur','Bleu',0.00,'-',446),(156,83,'Taille',99,'Taille','XXS',0.00,'-',435),(157,82,'Couleur',97,'Couleur','Gris',0.00,'-',450),(157,83,'Taille',96,'Taille','S',0.00,'-',439);
 /*!40000 ALTER TABLE `order_item_attribute` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1374,7 +1403,7 @@ CREATE TABLE `order_item_coupon` (
 
 LOCK TABLES `order_item_coupon` WRITE;
 /*!40000 ALTER TABLE `order_item_coupon` DISABLE KEYS */;
-INSERT INTO `order_item_coupon` VALUES (125,'yvElVhMe90oHNIaz',30.00,'2018-06-05'),(124,'j82pIxK4WQYHumRW',120.00,'2018-06-05');
+INSERT INTO `order_item_coupon` VALUES (154,'W8y1LNfQLbhQM050',10.00,'2018-07-20'),(153,'Ukz2IJeFF8oz9gy6',20.00,'2018-07-20'),(152,'o779UnZGzgwlhCmb',20.00,'2018-07-20'),(155,'tMCdi6AUpLAo997C',160.00,'2018-07-20'),(157,'Xm6HePOmw6zPJ0R2',100.00,'2018-07-20'),(156,'9RG1wIaBAWbeONXL',50.00,'2018-07-20');
 /*!40000 ALTER TABLE `order_item_coupon` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1402,6 +1431,7 @@ CREATE TABLE `order_item_request` (
   `product_link` varchar(191) DEFAULT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `booked_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `reset_accounting` smallint(6) NOT NULL,
   PRIMARY KEY (`order_item_request_id`),
   KEY `idx_item_id` (`item_id`),
   KEY `idx_customer_id` (`customer_id`),
@@ -1413,7 +1443,7 @@ CREATE TABLE `order_item_request` (
   KEY `idx_available_type` (`available_type`),
   KEY `idx_created_date` (`created_date`),
   KEY `idx_booked_date` (`booked_date`)
-) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1422,7 +1452,7 @@ CREATE TABLE `order_item_request` (
 
 LOCK TABLES `order_item_request` WRITE;
 /*!40000 ALTER TABLE `order_item_request` DISABLE KEYS */;
-INSERT INTO `order_item_request` VALUES (121,125,91,77,11,NULL,'merchant',NULL,0,0,1,NULL,NULL,NULL,'2018-06-05 13:46:05','0000-00-00 00:00:00'),(122,124,91,77,11,NULL,'merchant',NULL,0,0,1,NULL,NULL,NULL,'2018-06-05 13:46:12','0000-00-00 00:00:00');
+INSERT INTO `order_item_request` VALUES (146,154,77,77,11,NULL,'merchant',NULL,0,0,2,NULL,NULL,NULL,'2018-07-20 06:13:34','0000-00-00 00:00:00',0),(147,153,77,77,11,NULL,'merchant',NULL,0,0,2,NULL,NULL,NULL,'2018-07-20 06:13:34','0000-00-00 00:00:00',0),(148,152,77,77,11,NULL,'merchant',NULL,1,0,2,NULL,NULL,NULL,'2018-07-20 08:52:11','2018-07-20 06:52:11',0),(149,155,91,77,11,NULL,'merchant',NULL,1,0,2,NULL,NULL,NULL,'2018-07-20 13:34:24','2018-07-20 11:34:24',0),(150,157,91,77,11,NULL,'merchant',NULL,1,0,2,NULL,NULL,NULL,'2018-07-20 11:29:09','2018-07-20 09:29:09',0),(151,156,91,77,11,NULL,'merchant',NULL,1,0,2,NULL,NULL,NULL,'2018-07-20 13:34:14','2018-07-20 11:34:14',0);
 /*!40000 ALTER TABLE `order_item_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1454,7 +1484,6 @@ CREATE TABLE `order_status` (
 
 LOCK TABLES `order_status` WRITE;
 /*!40000 ALTER TABLE `order_status` DISABLE KEYS */;
-INSERT INTO `order_status` VALUES (1,'Ordered','Ordered',1,'1',NULL,'2017-05-23 16:03:43','2017-05-23 16:03:43'),(2,'Replied','Replied',2,'0',NULL,'2017-05-23 16:03:43','2017-05-23 16:03:43'),(3,'Negative','Negative',3,'0',NULL,NULL,NULL),(4,'Without_answer','Without_answer',0,'0',NULL,NULL,'2018-05-28 13:36:50'),(5,'Finished','Finished',5,'0',NULL,NULL,NULL),(6,'Canceled','Canceled',0,'0',1,'2017-09-16 17:20:54','2017-09-16 17:20:54');
 /*!40000 ALTER TABLE `order_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1480,7 +1509,7 @@ CREATE TABLE `order_status_history` (
   KEY `idx_order_item_id` (`order_item_id`),
   KEY `idx_order_status_id` (`order_status_id`),
   KEY `idx_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1489,7 +1518,7 @@ CREATE TABLE `order_status_history` (
 
 LOCK TABLES `order_status_history` WRITE;
 /*!40000 ALTER TABLE `order_status_history` DISABLE KEYS */;
-INSERT INTO `order_status_history` VALUES (52,92,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-16 11:49:39'),(53,93,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-16 13:52:02'),(54,94,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-16 14:11:18'),(55,95,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-22 12:21:33'),(56,96,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-28 13:12:06'),(57,97,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-28 13:57:46'),(58,98,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-29 06:53:42'),(59,99,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-29 08:40:03'),(60,100,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-29 08:40:36'),(61,101,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-29 11:42:22'),(62,102,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-29 11:54:19'),(63,103,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-29 12:08:58'),(64,104,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-05-29 13:44:05'),(65,105,NULL,1,'On Going','New Order Placed',77,'Ali Mohamed','2018-06-01 14:06:39'),(66,106,NULL,1,'On Going','New Order Placed',77,'Ali Mohamed','2018-06-01 14:09:48'),(67,107,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 08:52:53'),(68,108,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 08:52:54'),(69,109,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 11:43:51'),(70,110,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 12:13:08'),(71,111,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 13:14:29'),(72,112,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 13:25:23'),(73,113,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 13:27:02'),(74,114,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 13:32:02'),(75,115,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 13:35:22'),(76,116,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 13:45:06'),(77,117,NULL,1,'On Going','New Order Placed',77,'Ali Mohamed','2018-06-04 14:08:07'),(78,118,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 14:08:36'),(79,119,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 14:30:57'),(80,120,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 14:38:41'),(81,121,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-04 14:39:45'),(82,122,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-05 08:21:42'),(83,123,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-05 08:26:11'),(84,124,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-05 08:28:11'),(85,125,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-05 08:32:33'),(86,126,NULL,1,'On Going','New Order Placed',91,'feno gmail','2018-06-05 13:45:25');
+INSERT INTO `order_status_history` VALUES (100,143,NULL,1,'On Going','New Order Placed',91,'Feno Gmail','2018-06-13 14:42:23'),(101,144,NULL,1,'On Going','New Order Placed',91,'Feno Gmail','2018-06-13 14:42:27'),(102,145,NULL,1,'On Going','New Order Placed',91,'Feno Gmail','2018-06-13 14:57:59'),(103,146,NULL,1,'On Going','New Order Placed',91,'Feno Gmail','2018-06-14 08:31:51'),(104,147,NULL,1,'On Going','New Order Placed',91,'Feno Gmail','2018-06-14 11:14:15'),(105,148,NULL,1,'On Going','New Order Placed',91,'Feno Gmail','2018-06-14 12:19:00'),(106,149,NULL,1,'On Going','New Order Placed',77,'Ali Mohamed','2018-07-20 05:53:00'),(107,150,NULL,1,'On Going','New Order Placed',91,'Feno Dev Gmail compte','2018-07-20 09:08:49'),(108,151,NULL,1,'On Going','New Order Placed',91,'Feno Dev Gmail compte','2018-07-20 09:13:34'),(109,152,NULL,1,'On Going','New Order Placed',91,'Feno Dev Gmail compte','2018-07-20 09:13:41'),(110,153,NULL,1,'On Going','New Order Placed',91,'Feno Dev Gmail compte','2018-07-20 09:14:07'),(111,154,NULL,1,'On Going','New Order Placed',91,'Feno Dev Gmail compte','2018-07-20 09:23:51'),(112,155,NULL,1,'On Going','New Order Placed',91,'Feno Dev Gmail compte','2018-07-20 09:26:02'),(113,156,NULL,1,'On Going','New Order Placed',77,'Ali Mohamed','2018-07-20 13:27:27');
 /*!40000 ALTER TABLE `order_status_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1508,7 +1537,7 @@ CREATE TABLE `order_transaction` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`order_transaction_id`),
   KEY `idx_order_id` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1517,7 +1546,7 @@ CREATE TABLE `order_transaction` (
 
 LOCK TABLES `order_transaction` WRITE;
 /*!40000 ALTER TABLE `order_transaction` DISABLE KEYS */;
-INSERT INTO `order_transaction` VALUES (60,92,'Cash',132.00,'2018-05-16 11:49:39'),(61,93,'Cash',120.00,'2018-05-16 13:52:02'),(62,94,'Cash',122.00,'2018-05-16 14:11:18'),(63,95,'Cash',252.00,'2018-05-22 12:21:33'),(64,96,'Cash',88.50,'2018-05-28 13:12:06'),(65,97,'Cash',45.00,'2018-05-28 13:57:46'),(66,98,'Cash',75.00,'2018-05-29 06:53:42'),(67,99,'Cash',45.00,'2018-05-29 08:40:03'),(68,100,'Cash',44.00,'2018-05-29 08:40:36'),(69,101,'Cash',165.50,'2018-05-29 11:42:22'),(70,102,'Cash',286.00,'2018-05-29 11:54:19'),(71,103,'Cash',197.00,'2018-05-29 12:08:58'),(72,104,'Cash',30.00,'2018-05-29 13:44:05'),(73,105,'Cash',165.50,'2018-06-01 14:06:39'),(74,106,'Cash',199.00,'2018-06-01 14:09:48'),(75,107,'Cash',118.00,'2018-06-04 08:52:53'),(76,108,'Cash',0.00,'2018-06-04 08:52:54'),(77,109,'Cash',44.00,'2018-06-04 11:43:51'),(78,110,'Cash',88.50,'2018-06-04 12:13:08'),(79,111,'Cash',120.00,'2018-06-04 13:14:29'),(80,112,'Cash',45.00,'2018-06-04 13:25:23'),(81,113,'Cash',44.00,'2018-06-04 13:27:02'),(82,114,'Cash',77.00,'2018-06-04 13:32:02'),(83,115,'Cash',30.00,'2018-06-04 13:35:22'),(84,116,'Cash',88.50,'2018-06-04 13:45:06'),(85,117,'Cash',329.50,'2018-06-04 14:08:07'),(86,118,'Cash',122.00,'2018-06-04 14:08:36'),(87,119,'Cash',77.00,'2018-06-04 14:30:57'),(88,120,'Cash',165.50,'2018-06-04 14:38:41'),(89,121,'Cash',30.00,'2018-06-04 14:39:45'),(90,122,'Cash',283.00,'2018-06-05 08:21:42'),(91,123,'Cash',165.50,'2018-06-05 08:26:11'),(92,124,'Cash',243.00,'2018-06-05 08:28:11'),(93,125,'Cash',195.00,'2018-06-05 08:32:33'),(94,126,'Cash',150.00,'2018-06-05 13:45:25');
+INSERT INTO `order_transaction` VALUES (107,141,'Cash',30.00,'2018-06-13 13:45:54'),(108,143,'Cash',150.00,'2018-06-13 14:42:23'),(109,144,'Cash',1194.00,'2018-06-13 14:42:27'),(110,145,'Cash',120.00,'2018-06-13 14:57:59'),(111,146,'Cash',45.00,'2018-06-14 08:31:51'),(112,147,'Cash',196.00,'2018-06-14 11:14:15'),(113,148,'Cash',88.50,'2018-06-14 12:19:00'),(114,149,'Cash',50.00,'2018-07-20 05:53:00'),(115,150,'Cash',160.00,'2018-07-20 09:08:49'),(116,151,'Cash',0.00,'2018-07-20 09:13:34'),(117,152,'Cash',0.00,'2018-07-20 09:13:41'),(118,153,'Cash',0.00,'2018-07-20 09:14:06'),(119,154,'Cash',50.00,'2018-07-20 09:23:51'),(120,155,'Cash',100.00,'2018-07-20 09:26:02'),(121,156,'Cash',0.00,'2018-07-20 13:27:27');
 /*!40000 ALTER TABLE `order_transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1623,7 +1652,7 @@ CREATE TABLE `permission` (
   `parent_id` int(11) DEFAULT NULL,
   `route` varchar(191) DEFAULT NULL,
   PRIMARY KEY (`permission_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1632,7 +1661,7 @@ CREATE TABLE `permission` (
 
 LOCK TABLES `permission` WRITE;
 /*!40000 ALTER TABLE `permission` DISABLE KEYS */;
-INSERT INTO `permission` VALUES (1,'Dashboard',NULL,'dashboard,profile'),(3,'Content',NULL,NULL),(4,'Account',NULL,NULL),(5,'Communications',NULL,NULL),(6,'Statistics',NULL,NULL),(7,'Sales',NULL,NULL),(10,'Category Manager',40,'category,save_category,update_category,edit_category,delete_category'),(11,'Brand Manager',40,'brand.index,brand.create,brand.edit'),(12,'Attribute',40,'attribute,create_attribute,edit_attribute'),(13,'Attribute Set',40,'attribute_set,create_attribute_set,edit_attribute_set'),(15,'Page Manager',3,'page.index,page.create,page.edit'),(16,'Email/SMS Template',39,'email-template.index,email-template.create,email-template.edit'),(18,'Slider Manager',3,'banner.index,banner.create,banner.edit,slider'),(19,'Customer',4,'customer.index,customer.create,customer.edit'),(20,'Merchant',4,'store.index,store.create,store.edit'),(21,'Admin system',4,'administrator,add_administrator,edit_administrator'),(22,'Role manager',4,'role.index,role.create,role.edit'),(25,'Radio',5,'radio.index,radio.create,radio.edit'),(26,'Sales',6,'product_billed'),(27,'Finance',6,NULL),(29,'Ongoing',45,'orders,orders_detail'),(30,'Completed',45,'orders,orders_detail'),(31,'Special Ask',45,'orders'),(32,'Status Manager',7,'order-status.index,order-status.create,order-status.edit'),(33,'Blog Management',NULL,NULL),(34,'Blog Category',33,'blog-category.index,blog-category.create,blog-category.edit'),(35,'Blog Post',33,'blog.index,blog.create,blog.edit'),(36,'FAQ Manager',3,'faq.index,faq.create,faq.edit'),(39,'System',NULL,''),(40,'Catalogue',NULL,NULL),(42,'Products On Home',3,'special-product.index,special-product.create,special-product.edit'),(43,'Epartner Image',39,'epartner.index,epartner.create,epartner.edit'),(44,'Meta & OG',39,'setting_list,update_setting'),(45,'All orders',7,NULL),(46,'Brand Tag',40,'brand_tag,brand_save_tag_french');
+INSERT INTO `permission` VALUES (1,'Dashboard',NULL,'dashboard,profile'),(3,'Content',NULL,NULL),(4,'Account',NULL,NULL),(5,'Communications',NULL,NULL),(6,'Statistics',NULL,NULL),(7,'Sales',NULL,NULL),(10,'Category Manager',40,'category,save_category,update_category,edit_category,delete_category'),(11,'Brand Manager',40,'brand.index,brand.create,brand.edit'),(12,'Attribute',40,'attribute,create_attribute,edit_attribute'),(13,'Attribute Set',40,'attribute_set,create_attribute_set,edit_attribute_set'),(15,'Page Manager',3,'page.index,page.create,page.edit'),(16,'Email/SMS Template',39,'email-template.index,email-template.create,email-template.edit'),(18,'Slider Manager',3,'banner.index,banner.create,banner.edit,slider'),(19,'Customer',4,'customer.index,customer.create,customer.edit'),(20,'Merchant',4,'store.index,store.create,store.edit'),(21,'Admin system',4,'administrator,add_administrator,edit_administrator'),(22,'Role manager',4,'role.index,role.create,role.edit'),(25,'Radio',5,'radio.index,radio.create,radio.edit'),(26,'Sales',6,'product_billed'),(27,'Finance',6,NULL),(29,'Ongoing',45,'orders,orders_detail'),(30,'Completed',45,'orders,orders_detail'),(31,'Special Ask',45,'orders'),(32,'Status Manager',7,'order-status.index,order-status.create,order-status.edit'),(33,'Blog Management',NULL,NULL),(34,'Blog Category',33,'blog-category.index,blog-category.create,blog-category.edit'),(35,'Blog Post',33,'blog.index,blog.create,blog.edit'),(36,'FAQ Manager',3,'faq.index,faq.create,faq.edit'),(39,'System',NULL,''),(40,'Catalogue',NULL,NULL),(42,'Products On Home',3,'special-product.index,special-product.create,special-product.edit'),(43,'Epartner Image',39,'epartner.index,epartner.create,epartner.edit'),(44,'Meta & OG',39,'setting_list,update_setting'),(45,'All orders',7,NULL),(46,'Brand Tag',40,'brand_tag,brand_save_tag_french'),(47,'Accounting',40,'accounting_table,accounting_table_reset');
 /*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1646,26 +1675,25 @@ DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `store_id` int(11) DEFAULT NULL,
-  `brand_id` int(10) unsigned DEFAULT NULL,
-  `sku` varchar(191) NOT NULL,
   `original_price` decimal(12,2) NOT NULL,
-  `best_price` decimal(12,2) DEFAULT NULL,
+  `promotional_price` decimal(12,2) NOT NULL,
   `is_active` tinyint(4) NOT NULL,
   `attribute_set_id` int(10) unsigned DEFAULT NULL,
   `created_by` int(10) unsigned DEFAULT NULL,
   `modified_by` int(10) unsigned DEFAULT NULL,
-  `responsible` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `question_note` text,
+  `range` varchar(191) DEFAULT NULL,
+  `balance` tinyint(4) DEFAULT NULL,
+  `discount` tinyint(4) DEFAULT NULL,
+  `brand_name` varchar(191) DEFAULT NULL,
   PRIMARY KEY (`product_id`),
   KEY `idx_attribute_set_id` (`attribute_set_id`),
   KEY `idx_created_by` (`created_by`),
-  KEY `product_brand_id_foreign` (`brand_id`),
   KEY `idx_is_active` (`is_active`),
   KEY `idx_modified_by` (`modified_by`),
   CONSTRAINT `product_modified_by_foreign` FOREIGN KEY (`modified_by`) REFERENCES `admin` (`admin_id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4393 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4420 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1674,7 +1702,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (4383,11,3991,'mon code bar',120.00,120.00,1,31,11,NULL,10,'2018-03-31 22:24:59','2018-04-05 13:38:01',NULL),(4384,11,3991,'bar code',30.00,30.00,1,31,11,NULL,10,'2018-03-31 22:37:06','2018-04-10 11:22:31','question note'),(4385,11,3991,'45646488',88.00,88.00,1,32,11,NULL,10,'2018-03-31 22:41:19','2018-04-10 11:21:59','question note'),(4387,11,3991,'44465656',45.00,45.00,1,31,11,NULL,10,'2018-03-31 22:47:54','2018-04-10 11:21:21','question note'),(4388,11,3991,'6565656',88.50,88.50,1,31,11,NULL,10,'2018-03-31 22:56:37','2018-04-10 11:20:42','question note'),(4389,11,3991,'454465646',77.00,77.00,1,31,11,NULL,10,'2018-03-31 22:58:49','2018-04-10 11:20:09','ma question et note ici'),(4390,11,3991,'5646546465',44.00,44.00,1,32,11,NULL,10,'2018-03-31 23:17:01','2018-04-17 13:13:22','question and note'),(4391,11,3991,'89898989',199.00,199.00,1,32,11,NULL,10,'2018-03-31 23:18:58','2018-04-17 13:10:23',NULL),(4392,11,3991,'4754654646',4.00,4.00,2,26,11,NULL,10,'2018-04-01 00:02:49','2018-04-04 12:23:12',NULL);
+INSERT INTO `product` VALUES (4418,11,20.00,16.00,1,31,11,NULL,'2018-06-27 13:44:50','2018-06-27 13:44:50','31',1,2,'Pull'),(4419,11,10.00,8.00,1,31,11,NULL,'2018-06-27 13:56:11','2018-06-27 13:56:11','31',1,2,'Pijama');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1698,7 +1726,7 @@ CREATE TABLE `product_attribute_value` (
   KEY `idx_product_id` (`product_id`),
   KEY `idx_attribute_id` (`attribute_id`),
   KEY `idx_attribute_option_id` (`attribute_option_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27446 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27462 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1707,7 +1735,7 @@ CREATE TABLE `product_attribute_value` (
 
 LOCK TABLES `product_attribute_value` WRITE;
 /*!40000 ALTER TABLE `product_attribute_value` DISABLE KEYS */;
-INSERT INTO `product_attribute_value` VALUES (27408,4391,82,447,'',0.00,'0',0),(27409,4391,82,449,'',0.00,'0',0),(27410,4391,83,435,'',0.00,'0',0),(27411,4391,83,438,'',0.00,'0',0),(27412,4389,82,445,'',0.00,'0',0),(27413,4389,82,447,'',0.00,'0',0),(27414,4389,83,439,'',0.00,'0',0),(27415,4389,83,442,'',0.00,'0',0),(27416,4389,83,443,'',0.00,'0',0),(27417,4389,83,444,'',0.00,'0',0),(27418,4388,82,433,'',0.00,'0',0),(27419,4388,82,445,'',0.00,'0',0),(27420,4388,82,450,'',0.00,'0',0),(27421,4388,83,435,'',0.00,'0',0),(27422,4388,83,438,'',0.00,'0',0),(27423,4388,83,439,'',0.00,'0',0),(27424,4388,83,440,'',0.00,'0',0),(27426,4387,82,445,'',0.00,'0',0),(27427,4387,82,447,'',0.00,'0',0),(27428,4387,83,442,'',0.00,'0',0),(27429,4387,83,443,'',0.00,'0',0),(27430,4387,83,444,'',0.00,'0',0),(27431,4385,83,438,'',0.00,'0',0),(27432,4385,83,439,'',0.00,'0',0),(27433,4384,82,446,'',0.00,'0',0),(27434,4384,82,450,'',0.00,'0',0),(27435,4384,83,439,'',0.00,'0',0),(27436,4384,83,441,'',0.00,'0',0),(27437,4383,82,433,'',0.00,'0',0),(27438,4383,82,445,'',0.00,'0',0),(27439,4383,82,446,'',0.00,'0',0),(27440,4383,83,439,'',0.00,'0',0),(27441,4383,83,440,'',0.00,'0',0),(27442,4383,83,441,'',0.00,'0',0),(27443,4387,82,446,'',0.00,'0',0),(27444,4387,82,448,'',0.00,'0',0),(27445,4387,82,449,'',0.00,'0',0);
+INSERT INTO `product_attribute_value` VALUES (27454,4406,0,440,'',0.00,'0',0),(27455,4406,0,448,'',0.00,'0',0),(27456,4406,1,438,'',0.00,'0',0),(27457,4406,1,448,'',0.00,'0',0),(27458,4406,2,441,'',0.00,'0',0),(27459,4406,2,448,'',0.00,'0',0),(27460,4406,3,444,'',0.00,'0',0),(27461,4406,3,448,'',0.00,'0',0);
 /*!40000 ALTER TABLE `product_attribute_value` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1732,7 +1760,7 @@ CREATE TABLE `product_category` (
 
 LOCK TABLES `product_category` WRITE;
 /*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
-INSERT INTO `product_category` VALUES (781,4378),(789,4378),(783,4379),(794,4379),(783,4380),(794,4380),(781,4381),(789,4381),(782,4382),(799,4382),(782,4394),(791,4394),(783,4392),(834,4392),(805,4392),(782,4383),(792,4383),(799,4383),(782,4389),(799,4389),(872,4389),(782,4388),(792,4388),(799,4388),(872,4388),(782,4387),(799,4387),(874,4387),(782,4385),(792,4385),(881,4385),(882,4385),(782,4384),(792,4384),(799,4384),(876,4384),(782,4391),(792,4391),(881,4391),(882,4391),(781,4391),(790,4391),(798,4391),(782,4390),(792,4390),(806,4390),(886,4390);
+INSERT INTO `product_category` VALUES (782,4419),(802,4419),(782,4418),(802,4418);
 /*!40000 ALTER TABLE `product_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1753,7 +1781,7 @@ CREATE TABLE `product_image` (
   PRIMARY KEY (`product_image_id`),
   KEY `idx_product_id` (`product_id`),
   KEY `idx_sort_order` (`sort_order`)
-) ENGINE=InnoDB AUTO_INCREMENT=47539 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47606 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1762,7 +1790,7 @@ CREATE TABLE `product_image` (
 
 LOCK TABLES `product_image` WRITE;
 /*!40000 ALTER TABLE `product_image` DISABLE KEYS */;
-INSERT INTO `product_image` VALUES (47465,4392,'1099582397.png',1,'1','1'),(47497,4383,'688940954.png',1,'capichon','capichon chinois'),(47498,4383,'35397238.png',2,'capichon','capichon chinois'),(47499,4383,'698036729.png',3,'capichon','capichon chinois'),(47509,4389,'1659910295.png',1,'1','1'),(47510,4389,'1420286070.png',2,'2','2'),(47511,4388,'1887248584.png',1,'1','1'),(47512,4388,'1574317873.png',2,'2','2'),(47513,4388,'120586762.png',3,'3','3'),(47514,4388,'1102618431.png',4,'4','4'),(47515,4387,'822654761.png',1,'3','3'),(47516,4387,'1678182921.png',2,'2','1'),(47517,4387,'552454073.png',3,'1','1'),(47518,4385,'2127076326.png',1,'Cartable texas','Cartable texas'),(47519,4385,'120577182.png',2,'Cartable texas','Cartable texas'),(47520,4385,'2016216744.png',3,'Cartable texas','Cartable texas'),(47521,4384,'1795511314.png',1,'Pantalon coupé','Pantalon coupé'),(47522,4384,'1671807745.png',2,'Pantalon coupé','Pantalon coupé'),(47523,4384,'1485751208.png',3,'Pantalon coupé','Pantalon coupé'),(47535,4391,'1778336701.png',1,'1','1'),(47536,4391,'453919246.png',2,'2','2'),(47537,4390,'24370755.png',1,'1','1'),(47538,4390,'606103351.png',2,'2','2');
+INSERT INTO `product_image` VALUES (47602,4418,'1377544208.png',1,'Grand pull','Grand pull'),(47603,4418,'1868330902.png',2,'Grand pull','Grand pull'),(47604,4419,'865212605.png',1,'Pijama','Pijama'),(47605,4419,'1032455521.png',2,'Pijama','Pijama');
 /*!40000 ALTER TABLE `product_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1818,7 +1846,7 @@ CREATE TABLE `product_rating` (
   PRIMARY KEY (`product_rating_id`),
   KEY `idx_product_id` (`product_id`),
   KEY `idx_user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1827,6 +1855,7 @@ CREATE TABLE `product_rating` (
 
 LOCK TABLES `product_rating` WRITE;
 /*!40000 ALTER TABLE `product_rating` DISABLE KEYS */;
+INSERT INTO `product_rating` VALUES (1,4387,'0',91,'feno gmail',NULL,'Soummettre son avis','2018-06-12 08:31:13',3,NULL,NULL),(2,4387,'0',91,'feno gmail',NULL,'test avis produit','2018-06-12 08:33:38',4,NULL,NULL),(3,4387,'0',91,'feno gmail',NULL,'Un test  avis','2018-06-12 08:35:24',0,NULL,NULL),(4,4387,'0',91,'feno gmail',NULL,'Soummetre son avis','2018-06-12 08:39:20',0,NULL,NULL);
 /*!40000 ALTER TABLE `product_rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1851,6 +1880,87 @@ LOCK TABLES `product_status` WRITE;
 /*!40000 ALTER TABLE `product_status` DISABLE KEYS */;
 INSERT INTO `product_status` VALUES (1,'Activé'),(2,'Désactivé');
 /*!40000 ALTER TABLE `product_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_stock`
+--
+
+DROP TABLE IF EXISTS `product_stock`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_stock` (
+  `product_stock_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `store_id` int(10) unsigned NOT NULL,
+  `product_count` int(11) NOT NULL,
+  `product_stock_status_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`product_stock_id`),
+  KEY `product_stock_product_id_foreign` (`product_id`),
+  KEY `product_stock_store_id_foreign` (`store_id`),
+  CONSTRAINT `product_stock_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
+  CONSTRAINT `product_stock_store_id_foreign` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_stock`
+--
+
+LOCK TABLES `product_stock` WRITE;
+/*!40000 ALTER TABLE `product_stock` DISABLE KEYS */;
+INSERT INTO `product_stock` VALUES (49,4418,11,50,1),(50,4418,11,100,1),(51,4418,11,43,1),(52,4418,11,30,1),(53,4418,11,100,1),(54,4419,11,100,1);
+/*!40000 ALTER TABLE `product_stock` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_stock_attribute_option`
+--
+
+DROP TABLE IF EXISTS `product_stock_attribute_option`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_stock_attribute_option` (
+  `product_stock_attribute_option_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_stock_id` int(10) unsigned NOT NULL,
+  `attribute_option_id` int(10) unsigned NOT NULL,
+  `attribute_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`product_stock_attribute_option_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_stock_attribute_option`
+--
+
+LOCK TABLES `product_stock_attribute_option` WRITE;
+/*!40000 ALTER TABLE `product_stock_attribute_option` DISABLE KEYS */;
+INSERT INTO `product_stock_attribute_option` VALUES (88,49,435,83),(89,49,448,82),(90,50,440,83),(91,50,450,82),(92,51,440,83),(93,51,448,82),(94,52,442,83),(95,52,448,82),(96,53,439,83),(97,53,450,82),(98,54,435,83),(99,54,446,82);
+/*!40000 ALTER TABLE `product_stock_attribute_option` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_stock_status`
+--
+
+DROP TABLE IF EXISTS `product_stock_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_stock_status` (
+  `product_stock_status_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `status_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`product_stock_status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_stock_status`
+--
+
+LOCK TABLES `product_stock_status` WRITE;
+/*!40000 ALTER TABLE `product_stock_status` DISABLE KEYS */;
+INSERT INTO `product_stock_status` VALUES (1,'En Stock'),(2,'Dernier article'),(3,'En Rupture');
+/*!40000 ALTER TABLE `product_stock_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1888,19 +1998,14 @@ CREATE TABLE `product_translation` (
   `product_translation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `product_id` int(10) unsigned NOT NULL,
   `product_name` varchar(191) DEFAULT NULL,
-  `summary` text,
   `description` longtext,
   `meta_title` varchar(191) DEFAULT NULL,
   `meta_description` text,
-  `meta_keywords` text,
-  `og_title` varchar(191) DEFAULT NULL,
-  `og_description` text,
-  `language_id` int(10) unsigned NOT NULL,
   `user_id` int(11) NOT NULL,
+  `meta_advice` text,
   PRIMARY KEY (`product_translation_id`),
-  KEY `idx_product_id` (`product_id`),
-  KEY `idx_language_id` (`language_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8755 DEFAULT CHARSET=utf8;
+  KEY `idx_product_id` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8780 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1909,7 +2014,7 @@ CREATE TABLE `product_translation` (
 
 LOCK TABLES `product_translation` WRITE;
 /*!40000 ALTER TABLE `product_translation` DISABLE KEYS */;
-INSERT INTO `product_translation` VALUES (8738,4378,'ds','<p>dsds</p>','<p>dsds</p>','dsds','ds','ds','ds','ds',2,77),(8739,4379,'test','<p>dsqdsq</p>','<p>dsqdsq</p>',NULL,NULL,NULL,NULL,NULL,2,77),(8740,4380,'test','<p>dsqdsq</p>','<p>dsqdsq</p>',NULL,NULL,NULL,NULL,NULL,2,77),(8741,4381,'test2','<p style=\"text-align:center\">test2</p>','<p style=\"text-align:center\">test2</p>',NULL,NULL,NULL,NULL,NULL,2,77),(8742,4382,'nom du produit','<p>R&eacute;sum&eacute; de mes produit</p>','<p>Les description de mes produits</p>','titre de mes produits','mes description','mes mot clé','titre du produit','les description',2,77),(8743,4383,'Capichon chinois',NULL,'<h1>UN CAPICHON POUR FEMME&nbsp;AVEC DES D&Eacute;TAILS PREMIUM.</h1>\r\n\r\n<p>Un style adidas d&#39;archives revisit&eacute; avec une touche streetwear. Inspir&eacute; des mod&egrave;les r&eacute;tro, ce t-shirt hommes affiche une coupe longue &agrave; l&#39;arri&egrave;re. Il pr&eacute;sente une coupe slim et profil&eacute;e ultra tendance. La touche premium : les empi&egrave;cements en maille &agrave; 3 bandes.</p>\r\n\r\n<ul>\r\n	<li>Encolure ras-du-cou c&ocirc;tel&eacute;e.</li>\r\n	<li>Coupe longue &agrave; l&#39;arri&egrave;re.</li>\r\n	<li>Logo Tr&egrave;fle lin&eacute;aire sur la poitrine.</li>\r\n	<li>3 bandes en maille sur les manches.</li>\r\n	<li>adidas s&rsquo;engage avec &laquo;&nbsp;Better Cotton Initiative&nbsp;&raquo; pour am&eacute;liorer les conditions de production mondiale de coton.</li>\r\n	<li>Coupe slim.</li>\r\n	<li>Interlock 65&nbsp;% coton&nbsp;/ 35&nbsp;% polyester.</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>','capichon chinois','capichon chinois','capichon chinois','capichon chinois','capichon chinois',2,77),(8744,4384,'Pantalon coupé',NULL,'<h1>PANTALON COUPE&nbsp;AU LOOK VINTAGE MODERNIS&Eacute; AVEC DES D&Eacute;TAILS PREMIUM.</h1>\r\n\r\n<p>Un style adidas d&#39;archives revisit&eacute; avec une touche streetwear. Inspir&eacute; des mod&egrave;les r&eacute;tro, ce t-shirt hommes affiche une coupe longue &agrave; l&#39;arri&egrave;re. Il pr&eacute;sente une coupe slim et profil&eacute;e ultra tendance. La touche premium : les empi&egrave;cements en maille &agrave; 3 bandes.</p>\r\n\r\n<ul>\r\n	<li>Encolure ras-du-cou c&ocirc;tel&eacute;e.</li>\r\n	<li>Coupe longue &agrave; l&#39;arri&egrave;re.</li>\r\n	<li>Logo Tr&egrave;fle lin&eacute;aire sur la poitrine.</li>\r\n	<li>3 bandes en maille sur les manches.</li>\r\n	<li>adidas s&rsquo;engage avec &laquo;&nbsp;Better Cotton Initiative&nbsp;&raquo; pour am&eacute;liorer les conditions de production mondiale de coton.</li>\r\n	<li>Coupe slim.</li>\r\n	<li>Interlock 65&nbsp;% coton&nbsp;/ 35&nbsp;% polyester.</li>\r\n</ul>','Pantalon coupé','Pantalon coupé','Pantalon coupé','Pantalon coupé','Pantalon coupé',2,77),(8745,4385,'Cartable texas',NULL,'<h1>CARTABLE TEXAS.</h1>\r\n\r\n<p>Un style adidas d&#39;archives revisit&eacute; avec une touche streetwear. Inspir&eacute; des mod&egrave;les r&eacute;tro, ce t-shirt hommes affiche une coupe longue &agrave; l&#39;arri&egrave;re. Il pr&eacute;sente une coupe slim et profil&eacute;e ultra tendance. La touche premium : les empi&egrave;cements en maille &agrave; 3 bandes.</p>\r\n\r\n<ul>\r\n	<li>Encolure ras-du-cou c&ocirc;tel&eacute;e.</li>\r\n	<li>Coupe longue &agrave; l&#39;arri&egrave;re.</li>\r\n	<li>Logo Tr&egrave;fle lin&eacute;aire sur la poitrine.</li>\r\n	<li>3 bandes en maille sur les manches.</li>\r\n	<li>adidas s&rsquo;engage avec &laquo;&nbsp;Better Cotton Initiative&nbsp;&raquo; pour am&eacute;liorer les conditions de production mondiale de coton.</li>\r\n	<li>Coupe slim.</li>\r\n	<li>Interlock 65&nbsp;% coton&nbsp;/ 35&nbsp;% polyester.</li>\r\n</ul>','Cartable texas','Cartable texas','Cartable texas','Cartable texas','Cartable texas',2,77),(8746,4386,'Pyjama rose',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,77),(8747,4387,'Pyjama rose',NULL,'<h1>UN T-SHIRT AU LOOK VINTAGE MODERNIS&Eacute; AVEC DES D&Eacute;TAILS PREMIUM.</h1>\r\n\r\n<p>Un style adidas d&#39;archives revisit&eacute; avec une touche streetwear. Inspir&eacute; des mod&egrave;les r&eacute;tro, ce t-shirt hommes affiche une coupe longue &agrave; l&#39;arri&egrave;re. Il pr&eacute;sente une coupe slim et profil&eacute;e ultra tendance. La touche premium : les empi&egrave;cements en maille &agrave; 3 bandes.</p>\r\n\r\n<ul>\r\n	<li>Encolure ras-du-cou c&ocirc;tel&eacute;e.</li>\r\n	<li>Coupe longue &agrave; l&#39;arri&egrave;re.</li>\r\n	<li>Logo Tr&egrave;fle lin&eacute;aire sur la poitrine.</li>\r\n	<li>3 bandes en maille sur les manches.</li>\r\n	<li>adidas s&rsquo;engage avec &laquo;&nbsp;Better Cotton Initiative&nbsp;&raquo; pour am&eacute;liorer les conditions de production mondiale de coton.</li>\r\n	<li>Coupe slim.</li>\r\n	<li>Interlock 65&nbsp;% coton&nbsp;/ 35&nbsp;% polyester.</li>\r\n</ul>',NULL,NULL,NULL,NULL,NULL,2,77),(8748,4388,'Bas Sandra',NULL,'<h1>BAS SANDRA&nbsp;AVEC DES D&Eacute;TAILS PREMIUM.</h1>\r\n\r\n<p>Un style adidas d&#39;archives revisit&eacute; avec une touche streetwear. Inspir&eacute; des mod&egrave;les r&eacute;tro, ce t-shirt hommes affiche une coupe longue &agrave; l&#39;arri&egrave;re. Il pr&eacute;sente une coupe slim et profil&eacute;e ultra tendance. La touche premium : les empi&egrave;cements en maille &agrave; 3 bandes.</p>\r\n\r\n<ul>\r\n	<li>Encolure ras-du-cou c&ocirc;tel&eacute;e.</li>\r\n	<li>Coupe longue &agrave; l&#39;arri&egrave;re.</li>\r\n	<li>Logo Tr&egrave;fle lin&eacute;aire sur la poitrine.</li>\r\n	<li>3 bandes en maille sur les manches.</li>\r\n	<li>adidas s&rsquo;engage avec &laquo;&nbsp;Better Cotton Initiative&nbsp;&raquo; pour am&eacute;liorer les conditions de production mondiale de coton.</li>\r\n	<li>Coupe slim.</li>\r\n	<li>Interlock 65&nbsp;% coton&nbsp;/ 35&nbsp;% polyester.</li>\r\n</ul>',NULL,NULL,NULL,NULL,NULL,2,77),(8749,4389,'Pyjama neerlandais',NULL,'<h1>UN T-SHIRT AU LOOK VINTAGE MODERNIS&Eacute; AVEC DES D&Eacute;TAILS PREMIUM.</h1>\r\n\r\n<p>Un style adidas d&#39;archives revisit&eacute; avec une touche streetwear. Inspir&eacute; des mod&egrave;les r&eacute;tro, ce t-shirt hommes affiche une coupe longue &agrave; l&#39;arri&egrave;re. Il pr&eacute;sente une coupe slim et profil&eacute;e ultra tendance. La touche premium : les empi&egrave;cements en maille &agrave; 3 bandes.</p>\r\n\r\n<ul>\r\n	<li>Encolure ras-du-cou c&ocirc;tel&eacute;e.</li>\r\n	<li>Coupe longue &agrave; l&#39;arri&egrave;re.</li>\r\n	<li>Logo Tr&egrave;fle lin&eacute;aire sur la poitrine.</li>\r\n	<li>3 bandes en maille sur les manches.</li>\r\n	<li>adidas s&rsquo;engage avec &laquo;&nbsp;Better Cotton Initiative&nbsp;&raquo; pour am&eacute;liorer les conditions de production mondiale de coton.</li>\r\n	<li>Coupe slim.</li>\r\n	<li>Interlock 65&nbsp;% coton&nbsp;/ 35&nbsp;% polyester.</li>\r\n</ul>',NULL,NULL,NULL,NULL,NULL,2,77),(8750,4390,'Lunnettes de soleil',NULL,'<h1>UN T-SHIRT AU LOOK VINTAGE MODERNISÉ AVEC DES DÉTAILS PREMIUM.</h1>\r\n\r\n<p>Un style adidas d\'archives revisité avec une touche streetwear. Inspiré des modèles rétro, ce t-shirt hommes affiche une coupe longue à l\'arrière. Il présente une coupe slim et profilée ultra tendance. La touche premium : les empiècements en maille à 3 bandes.</p>\r\n\r\n<ul>\r\n	<li>Encolure ras-du-cou côtelée.</li>\r\n	<li>Coupe longue à l\'arrière.</li>\r\n	<li>Logo Trèfle linéaire sur la poitrine.</li>\r\n	<li>3 bandes en maille sur les manches.</li>\r\n	<li>adidas s’engage avec « Better Cotton Initiative » pour améliorer les conditions de production mondiale de coton.</li>\r\n	<li>Coupe slim.</li>\r\n	<li>Interlock 65 % coton / 35 % polyester.</li>\r\n</ul>',NULL,NULL,NULL,NULL,NULL,2,77),(8751,4391,'Super cartable',NULL,'<h1>UN T-SHIRT AU LOOK VINTAGE MODERNISÉ AVEC DES DÉTAILS PREMIUM.</h1>\r\n\r\n<p>Un style adidas d\'archives revisité avec une touche streetwear. Inspiré des modèles rétro, ce t-shirt hommes affiche une coupe longue à l\'arrière. Il présente une coupe slim et profilée ultra tendance. La touche premium : les empiècements en maille à 3 bandes.</p>\r\n\r\n<ul>\r\n	<li>Encolure ras-du-cou côtelée.</li>\r\n	<li>Coupe longue à l\'arrière.</li>\r\n	<li>Logo Trèfle linéaire sur la poitrine.</li>\r\n	<li>3 bandes en maille sur les manches.</li>\r\n	<li>adidas s’engage avec « Better Cotton Initiative » pour améliorer les conditions de production mondiale de coton.</li>\r\n	<li>Coupe slim.</li>\r\n	<li>Interlock 65 % coton / 35 % polyester.</li>\r\n</ul>','Super cartable',NULL,NULL,NULL,NULL,2,77),(8752,4392,'test de mon produit',NULL,'<p>dsfsdqzer</p>','fjdlk','fjdk','lkfd','fdlkj','fdljfd',2,77),(8753,4393,'test de mon produit',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,77),(8754,4394,'Autre test de produit',NULL,'<p>dsdsds</p>','ds','ds','ds','ds','ds',2,77);
+INSERT INTO `product_translation` VALUES (8778,4418,'Grand pull','Pull en laine','Grand pull','PullGrand pull',77,'Pull en laine'),(8779,4419,'Pijama','Pijama','Pijama','PijamaPijama',77,'Pijama');
 /*!40000 ALTER TABLE `product_translation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1960,7 +2065,7 @@ CREATE TABLE `promotion` (
   PRIMARY KEY (`promotion_id`),
   KEY `idx_code_promo_id` (`code_promo_id`),
   CONSTRAINT `promotion_code_promo_id_foreign` FOREIGN KEY (`code_promo_id`) REFERENCES `code_promo` (`code_promo_id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1969,6 +2074,7 @@ CREATE TABLE `promotion` (
 
 LOCK TABLES `promotion` WRITE;
 /*!40000 ALTER TABLE `promotion` DISABLE KEYS */;
+INSERT INTO `promotion` VALUES (1,'Tee-shirt',50,'mode 2018','tee-shirt dernier creation',75,'2018-07-20 06:41:23','2018-07-20 06:41:23',11);
 /*!40000 ALTER TABLE `promotion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2102,7 +2208,7 @@ CREATE TABLE `role_permission` (
 
 LOCK TABLES `role_permission` WRITE;
 /*!40000 ALTER TABLE `role_permission` DISABLE KEYS */;
-INSERT INTO `role_permission` VALUES (11,3),(2,2),(8,2),(2,4),(8,4),(9,4),(10,4),(11,4),(12,4),(13,4),(42,4),(43,4),(1,1),(3,1),(15,1),(18,1),(36,1),(42,1),(4,1),(19,1),(20,1),(21,1),(22,1),(5,1),(25,1),(6,1),(26,1),(27,1),(7,1),(32,1),(45,1),(29,1),(30,1),(31,1),(33,1),(34,1),(35,1),(39,1),(16,1),(43,1),(44,1),(40,1),(10,1),(11,1),(12,1),(13,1);
+INSERT INTO `role_permission` VALUES (11,3),(2,2),(8,2),(2,4),(8,4),(9,4),(10,4),(11,4),(12,4),(13,4),(42,4),(43,4),(1,1),(3,1),(15,1),(18,1),(36,1),(42,1),(4,1),(19,1),(20,1),(21,1),(22,1),(5,1),(25,1),(6,1),(26,1),(27,1),(7,1),(32,1),(45,1),(29,1),(30,1),(31,1),(33,1),(34,1),(35,1),(39,1),(16,1),(43,1),(44,1),(40,1),(10,1),(11,1),(12,1),(13,1),(47,1);
 /*!40000 ALTER TABLE `role_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2147,7 +2253,7 @@ CREATE TABLE `special_product` (
   `product_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`special_product_id`),
   KEY `idx_product_id` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2156,7 +2262,7 @@ CREATE TABLE `special_product` (
 
 LOCK TABLES `special_product` WRITE;
 /*!40000 ALTER TABLE `special_product` DISABLE KEYS */;
-INSERT INTO `special_product` VALUES (55,'1',4383),(56,'1',4385),(57,'1',4390);
+INSERT INTO `special_product` VALUES (58,'1',4404),(59,'1',4405),(60,'1',4406);
 /*!40000 ALTER TABLE `special_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2192,7 +2298,7 @@ CREATE TABLE `store` (
   `tva` varchar(191) DEFAULT NULL,
   PRIMARY KEY (`store_id`),
   KEY `idx_created_by` (`created_by`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2201,7 +2307,7 @@ CREATE TABLE `store` (
 
 LOCK TABLES `store` WRITE;
 /*!40000 ALTER TABLE `store` DISABLE KEYS */;
-INSERT INTO `store` VALUES (11,'Mon magasin',470014242,'monmagasin@clickee.com','2018-05-24-06-44-11-Jean-Joseph_Rabearivelo.jpg','adresse 1',NULL,'2018-03-27 13:56:03','2018-05-24 06:44:11',0,'2018-05-24-06-44-11-images5.jpeg','Une brève description','adresse 1','Ville','65000',69,1015,43.233234,0.070153,2147483647,444,'444444'),(13,'5',5,'5@5.com','2018-06-01-13-07-49-price.PNG','5',NULL,'2018-06-01 13:07:49','2018-06-01 13:07:49',5,'2018-06-01-13-07-49-info.PNG','5555555555','5','5','5',129,2175,0.213245,12.324565,5,5,'5');
+INSERT INTO `store` VALUES (11,'Mon magasin',470014242,'monmagasin@clickee.com','2018-05-24-06-44-11-Jean-Joseph_Rabearivelo.jpg','adresse de mon magasin 11',NULL,'2018-03-27 13:56:03','2018-06-14 14:56:10',1111,'2018-05-24-06-44-11-images5.jpeg','Une brève description','adresse de mon magasin 22','Ville','65000',69,1015,43.233234,0.070153,2147483647,444,'444444'),(14,'514',5,'5@5.5','2018-06-07-13-25-08-info.PNG','5',NULL,'2018-06-07 13:25:08','2018-06-14 14:56:33',514,'2018-06-07-13-25-08-info.PNG','5','5','5','00110',129,2175,0.232323,2.121222,5,5,'5'),(15,'aaaaaaaa',2147483647,'aaaaaa@gmail.com','2018-06-14-15-01-27-modele_de_facture.png','aaaaa',NULL,'2018-06-14 15:01:27','2018-06-14 15:01:27',0,'2018-06-14-15-01-27-Capture du 2018-05-14 13-42-17.png','ffsdfsfsfsfsfd','aaaaaa','aaaaaa','aaaaaa',17,233,0,0,0,0,'aaaaaa');
 /*!40000 ALTER TABLE `store` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2271,7 +2377,7 @@ CREATE TABLE `store_opening_hour` (
   KEY `idx_opening_day_id` (`opening_day_id`),
   KEY `idx_store_id` (`store_id`),
   CONSTRAINT `store_opening_hour_store_id_foreign` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2280,7 +2386,7 @@ CREATE TABLE `store_opening_hour` (
 
 LOCK TABLES `store_opening_hour` WRITE;
 /*!40000 ALTER TABLE `store_opening_hour` DISABLE KEYS */;
-INSERT INTO `store_opening_hour` VALUES (1,'08:00:00','18:00:00',1,11),(2,'08:00:00','18:00:00',2,11),(3,'08:00:00','18:00:00',3,11),(4,'08:00:00','18:00:00',4,11),(5,'08:00:00','18:00:00',5,11),(6,NULL,NULL,6,11),(7,NULL,NULL,7,11);
+INSERT INTO `store_opening_hour` VALUES (1,'08:00:00','18:00:00',1,11),(2,'08:00:00','18:00:00',2,11),(3,'08:00:00','18:00:00',3,11),(4,'08:00:00','18:00:00',4,11),(5,'08:00:00','18:00:00',5,11),(6,NULL,NULL,6,11),(7,NULL,NULL,7,11),(8,'08:00:00','18:00:00',1,14),(9,NULL,NULL,2,14),(10,NULL,NULL,3,14),(11,NULL,NULL,4,14),(12,NULL,NULL,5,14),(13,NULL,NULL,6,14),(14,NULL,NULL,7,14),(15,'17:00:00','17:00:00',1,15),(16,'17:00:00','17:00:00',2,15),(17,'17:00:00','17:00:00',3,15),(18,NULL,NULL,4,15),(19,NULL,NULL,5,15),(20,NULL,NULL,6,15),(21,NULL,NULL,7,15);
 /*!40000 ALTER TABLE `store_opening_hour` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2309,7 +2415,7 @@ CREATE TABLE `store_users` (
 
 LOCK TABLES `store_users` WRITE;
 /*!40000 ALTER TABLE `store_users` DISABLE KEYS */;
-INSERT INTO `store_users` VALUES (1,1,'0','0','0','0'),(4,25,'1','0','1','1'),(5,60,'0','0','1','0'),(2,18,'1','0','1','1'),(3,23,'1','0','1','1'),(6,62,'1','0','1','1'),(7,64,'0','0','1','0'),(7,65,'0','0','1','1'),(8,66,'0','0','1','1'),(8,67,'1','0','0','0'),(8,70,'0','0','1','0'),(8,71,'0','0','0','0'),(9,74,NULL,NULL,NULL,NULL),(10,75,'1','0','1','1'),(10,76,'1','0','1','1'),(13,79,'1','0','1','1'),(14,80,'1','0','1','1'),(15,81,'1','0','1','1'),(16,82,'1','0','1','1'),(17,83,'1','0','1','1'),(19,87,'1','0','1','1'),(18,88,'1','0','1','1'),(18,84,'1','0','1','1'),(18,85,'1','0','1','1'),(18,86,'1','0','1','1'),(12,97,'1','0','1','1'),(13,98,'1','0','1','1'),(11,77,'1','0','1','1'),(11,89,'1','0','1','1');
+INSERT INTO `store_users` VALUES (1,1,'0','0','0','0'),(4,25,'1','0','1','1'),(5,60,'0','0','1','0'),(2,18,'1','0','1','1'),(3,23,'1','0','1','1'),(6,62,'1','0','1','1'),(7,64,'0','0','1','0'),(7,65,'0','0','1','1'),(8,66,'0','0','1','1'),(8,67,'1','0','0','0'),(8,70,'0','0','1','0'),(8,71,'0','0','0','0'),(9,74,NULL,NULL,NULL,NULL),(10,75,'1','0','1','1'),(10,76,'1','0','1','1'),(13,79,'1','0','1','1'),(15,81,'1','0','1','1'),(16,82,'1','0','1','1'),(17,83,'1','0','1','1'),(19,87,'1','0','1','1'),(18,88,'1','0','1','1'),(18,84,'1','0','1','1'),(18,85,'1','0','1','1'),(18,86,'1','0','1','1'),(12,97,'1','0','1','1'),(13,98,'1','0','1','1'),(11,77,'1','0','1','1'),(11,89,'1','0','1','1'),(14,99,'1','0','1','1'),(15,101,'1','0','1','1');
 /*!40000 ALTER TABLE `store_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2329,7 +2435,7 @@ CREATE TABLE `sys_url_rewrite` (
   PRIMARY KEY (`sys_url_rewrite_id`),
   KEY `idx_target_id` (`target_id`),
   KEY `idx_type` (`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=5301 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5315 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2338,7 +2444,7 @@ CREATE TABLE `sys_url_rewrite` (
 
 LOCK TABLES `sys_url_rewrite` WRITE;
 /*!40000 ALTER TABLE `sys_url_rewrite` DISABLE KEYS */;
-INSERT INTO `sys_url_rewrite` VALUES (89,'this-is-thetest-title','this-is-thetest-title','4',1),(90,'test','test','4',2),(91,'evive-cubes-de-smoothies','evive-cubes-de-smoothies','4',3),(92,'blog-test-3','blog-test-3','4',4),(93,'how-it-work','how-it-work','3',1),(94,'ask-a-product','ask-a-product','3',2),(95,'make-money-with-us','make-money-with-us','3',3),(96,'knowledge-center','knowledge-center','3',4),(97,'fondation','fondation','3',5),(98,'news-media','news-media','3',6),(99,'investors','investors','3',7),(100,'about-us','about-us','3',8),(101,'terms-conditions','terms-conditions','3',9),(102,'privacy-cookies','privacy-cookies','3',10),(446,'sarah-dans-la-lune-ecodesign-mode','sarah-dans-la-lune-ecodesign-mode','4',5),(494,'dans-le-sac','dans-le-sac','4',6),(772,'training','training','3',11),(5239,'url_de_la_page','url_de_la_page','3',12),(5240,'page-de-blogue','page-de-blogue','3',13),(5244,'fondation-url','fondation-url','3',14),(5245,'investisseurs','investisseurs','3',15),(5246,'vendre avec nous','vendre avec nous','3',16),(5248,'fonctionnement','fonctionnement','3',17),(5251,'capichon-chinois','capichon-chinois','2',4383),(5252,'pantalon-coupé','pantalon-coupé','2',4384),(5253,'cartable-texas','cartable-texas','2',4385),(5255,'pyjama-rose','pyjama-rose','2',4387),(5256,'eos-rebel-t5','eos-rebel-t5','2',4388),(5257,'pyjama neerlandais','pyjama neerlandais','2',4389),(5258,'ma-super-lunettes','ma-super-lunettes','2',4390),(5259,'super-cartable','super-cartable','2',4391),(5260,'mon-rurl','mon-rurl','2',4392),(5263,'fille','fille','1',834),(5264,'garcon','garcon','1',835),(5265,'bebe','bebe','1',836),(5267,'parapharmacie','parapharmacie','1',838),(5268,'soins-corps-visage','soins-corps-visage','1',839),(5269,'soins-cheveux-barbe','soins-cheveux-barbe','1',840),(5270,'parfums','parfums','1',841),(5271,'maquillages','maquillages','1',842),(5272,'accessoiresbeaute','accessoiresbeaute','1',843),(5274,'vins-champagnes','vins-champagnes','1',845),(5275,'bieres-cidres','bieres-cidres','1',846),(5276,'alcools-spiritueux','alcools-spiritueux','1',847),(5277,'thes-cafes','thes-cafes','1',848),(5278,'epicerie-salee','epicerie-salee','1',849),(5279,'epicerie-sucree','epicerie-sucree','1',850),(5280,'fruits-legumes','fruits-legumes','1',851),(5282,'electromenager','electromenager','1',853),(5283,'art','art','1',854),(5284,'arts-de-la-table','arts-de-la-table','1',855),(5285,'lampes-luminaires','lampes-luminaires','1',856),(5286,'vasesplantes-fleurs','vasesplantes-fleurs','1',857),(5288,'voyages','voyages','1',859),(5289,'sportsloisir','sportsloisir','1',860),(5290,'loisirs','loisirs','1',861),(5291,'diy-loisirs-cratifs','diy-loisirs-cratifs','1',862),(5292,'musiques','musiques','1',863),(5293,'lecture','lecture','1',864),(5294,'numerique','numerique','1',865),(5296,'accessoires-maison','accessoires-maison','1',867),(5297,'bijoux-montres','bijoux-montres','1',868),(5298,'cadeaux-originaux','cadeaux-originaux','1',869),(5300,'cadeaux-pour-elle','cadeaux-pour-elle','1',871);
+INSERT INTO `sys_url_rewrite` VALUES (89,'this-is-thetest-title','this-is-thetest-title','4',1),(90,'test','test','4',2),(91,'evive-cubes-de-smoothies','evive-cubes-de-smoothies','4',3),(92,'blog-test-3','blog-test-3','4',4),(93,'how-it-work','how-it-work','3',1),(94,'ask-a-product','ask-a-product','3',2),(95,'make-money-with-us','make-money-with-us','3',3),(96,'knowledge-center','knowledge-center','3',4),(97,'fondation','fondation','3',5),(98,'news-media','news-media','3',6),(99,'investors','investors','3',7),(100,'about-us','about-us','3',8),(101,'terms-conditions','terms-conditions','3',9),(102,'privacy-cookies','privacy-cookies','3',10),(446,'sarah-dans-la-lune-ecodesign-mode','sarah-dans-la-lune-ecodesign-mode','4',5),(494,'dans-le-sac','dans-le-sac','4',6),(772,'training','training','3',11),(5239,'url_de_la_page','url_de_la_page','3',12),(5240,'page-de-blogue','page-de-blogue','3',13),(5244,'fondation-url','fondation-url','3',14),(5245,'investisseurs','investisseurs','3',15),(5246,'vendre avec nous','vendre avec nous','3',16),(5248,'fonctionnement','fonctionnement','3',17),(5263,'fille','fille','1',834),(5264,'garcon','garcon','1',835),(5265,'bebe','bebe','1',836),(5267,'parapharmacie','parapharmacie','1',838),(5268,'soins-corps-visage','soins-corps-visage','1',839),(5269,'soins-cheveux-barbe','soins-cheveux-barbe','1',840),(5270,'parfums','parfums','1',841),(5271,'maquillages','maquillages','1',842),(5272,'accessoiresbeaute','accessoiresbeaute','1',843),(5274,'vins-champagnes','vins-champagnes','1',845),(5275,'bieres-cidres','bieres-cidres','1',846),(5276,'alcools-spiritueux','alcools-spiritueux','1',847),(5277,'thes-cafes','thes-cafes','1',848),(5278,'epicerie-salee','epicerie-salee','1',849),(5279,'epicerie-sucree','epicerie-sucree','1',850),(5280,'fruits-legumes','fruits-legumes','1',851),(5282,'electromenager','electromenager','1',853),(5283,'art','art','1',854),(5284,'arts-de-la-table','arts-de-la-table','1',855),(5285,'lampes-luminaires','lampes-luminaires','1',856),(5286,'vasesplantes-fleurs','vasesplantes-fleurs','1',857),(5288,'voyages','voyages','1',859),(5289,'sportsloisir','sportsloisir','1',860),(5290,'loisirs','loisirs','1',861),(5291,'diy-loisirs-cratifs','diy-loisirs-cratifs','1',862),(5292,'musiques','musiques','1',863),(5293,'lecture','lecture','1',864),(5294,'numerique','numerique','1',865),(5296,'accessoires-maison','accessoires-maison','1',867),(5297,'bijoux-montres','bijoux-montres','1',868),(5298,'cadeaux-originaux','cadeaux-originaux','1',869),(5300,'cadeaux-pour-elle','cadeaux-pour-elle','1',871),(5301,'Un-test-de-produit-1','Un-test-de-produit-1','2',4393),(5302,'test-1','test-1','2',4394),(5307,'Pijama à rayure','Pijama à rayure','2',4404),(5308,'Pantalon coué','Pantalon coué','2',4405),(5309,'Grand pull bas','Grand pull bas','2',4406),(5311,'Super cartable noir','Super cartable noir','2',4408),(5312,'Super cartable gris','Super cartable gris','2',4409),(5313,'Grand pull','Grand pull','2',4418),(5314,'Pijama','Pijama','2',4419);
 /*!40000 ALTER TABLE `sys_url_rewrite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2392,7 +2498,7 @@ CREATE TABLE `user_address` (
   `zip` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`user_address_id`),
   KEY `idx_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2401,7 +2507,7 @@ CREATE TABLE `user_address` (
 
 LOCK TABLES `user_address` WRITE;
 /*!40000 ALTER TABLE `user_address` DISABLE KEYS */;
-INSERT INTO `user_address` VALUES (1,93,'la','la',NULL,0,'',NULL,'',0,0,NULL),(2,94,'zaho','zaho',NULL,0,'',NULL,'',0,0,NULL),(3,77,'Ali','Mohamed',NULL,32,'',NULL,'Antsirabe',0,0,'110'),(4,91,'feno','gmail',NULL,324562254,'',NULL,'Vermont',0,0,'65000'),(5,95,'Andry','ANDRIANAIVO',NULL,0,'',NULL,'',0,0,NULL),(6,96,'test','test',NULL,345212542,'',NULL,'test',0,0,'tet');
+INSERT INTO `user_address` VALUES (1,93,'la','la',NULL,0,'',NULL,'',0,0,NULL),(2,94,'zaho','zaho',NULL,0,'',NULL,'',0,0,NULL),(3,77,'Ali','Mohamed',NULL,32,'',NULL,'Antsirabe',0,0,'110'),(4,91,'Feno Dev','Gmail compte',NULL,324562254,'',NULL,'Vermont',0,0,'nice'),(5,95,'Andry','ANDRIANAIVO',NULL,0,'',NULL,'',0,0,NULL),(6,96,'test','test',NULL,345212542,'',NULL,'test',0,0,'tet'),(7,100,'test2','test2',NULL,0,'',NULL,'',0,0,NULL);
 /*!40000 ALTER TABLE `user_address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2461,7 +2567,7 @@ CREATE TABLE `users` (
   `birthday` date DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   KEY `idx_role_id` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2470,7 +2576,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,1,'test','test','test@gmail.com','$2y$10$jlK6YOM6ft3BfGGXyQyr/ey6QwPIFnu0D4kyQn3nbxK4.VbKPPUGW','1','03382','ukUwii1Vnnj0Aow5ax8wPSSV8Hlx9MNpNN2vs9EqdVhNgtw50f3YcJOPlcEI','2017-05-20 14:31:19','2018-05-02 15:21:23',NULL,NULL,NULL,NULL,NULL,50,NULL,NULL),(15,2,'test','tezt','test@test1.com','$2y$10$H5cSmK5TqQxWUm0PR.4vXeZqOhOsLOe4U7xdqybT8TZkxozfj3JtC','1',NULL,'dIyI0jy2P6i7DYOZVcziRLeLqglBlEq59SwU2nJTP1vhLFTnKzCff62raexP','2017-06-15 14:05:16','2017-06-15 14:05:16',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(20,2,'David','test business','david.boitard@gmail.com','$2y$10$7o3CMSKIxbagWrMk9LQBXuJ3FhB9ndQfwx22BTmCGorFvXPIfLDRC','1','514-692-3002','61Wb2wmSbcdkjqCp7yTJLdAawfMNVVRuyHO2DFxK8VU7KSYs8LWBaHhZLlvg','2017-06-28 14:31:29','2017-06-28 14:31:29',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(21,2,'1er nom company','2eme nom company','dc@alternateeve.com','$2y$10$5JRtk.H4/FqnwneOZ2IxCudDl4E4clf4DTnjIPwFA1j88CZO2SiNi','1','514-692-3002','8XCGGuCmOBfJ717DuXN0xUWCwHoJtKOFyU1O6zadv2fDVhwGt9zjODr4he6O','2017-06-30 23:53:22','2017-06-30 23:53:22',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(22,2,'test nom1','test nom2','sansrapport@gmail.com','$2y$10$.neLBkzwNMQaZMvghaug6O2dfU886ozVW1nGPWaqZdPO76Gnj85R.','1',NULL,'R4l20zirTl7yP0xXBLNo44EEJVIy0ETHG1Tg3GJleRe6rnB2A9OZhcmrL2t1','2017-06-30 23:55:32','2017-06-30 23:55:32',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(69,2,'Andry','ANDRIANAIVO','andryhsm@gmail.com','$2y$10$rCvo1PUxlyFfAew1TdVlKOHbcJjAYRIRrgclbC/bqF/8G9ePu/cjC','1',NULL,'GQgSXSxbJhVQiiTnteihJPgbSjwlsOm7aK7bvEXyw7HRGlNHGNn7TuvdIzS1','2018-01-18 17:24:25','2018-01-18 17:24:25',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(77,2,'Ali','Mohamed','1@1.com','$2y$10$7soVlSQVVCXkqMNlNPMmyOvgcdNBGcxMDDUIyzM37TGLP09DzGbdy','1','032','N69qcgdEPf77YU5WgWHeGGxaFSd3m9QfM7TVo64zMqdncUEUOsFqbDDBn5IY','2018-03-27 13:56:03','2018-04-25 09:11:09',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL),(89,2,'test','test','t@t.com','$2y$10$BJ0xdiOobuk0Ncx7GRah.e0zTKrEtTCc8qJCBIAap66bzgxRQSJFC','1','0344630738','lRCzDQz8PTXdjQvwR1XW2bNuewG8jVItABS5xdUEfasehSSlStPT3gVsRa8n','2018-04-16 15:04:50','2018-04-16 15:04:50',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL),(91,1,'feno','gmail','feno1@gmail.com','$2y$10$KTAqt31LLkkFHaaVNT8kJOlGkOLxeb5WzhihbaEXjc7r7TFTFWtsG','1','0324562254','vLyqdXXRJNwmSPSNjX4MiVDfnoNtht5jyCAF9Nd8mlMEO0bnPEkf8eltK4vm','2018-04-19 08:02:29','2018-05-22 06:36:14',NULL,NULL,NULL,NULL,NULL,50,'Homme','1919-07-12'),(92,1,'feno','feno1','feno2@gmail.com','$2y$10$KTAqt31LLkkFHaaVNT8kJOlGkOLxeb5WzhihbaEXjc7r7TFTFWtsG','1','033',NULL,'2018-04-19 11:31:49','2018-04-19 11:31:49',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(93,1,'la','la','la@gmail.com','$2y$10$3Flijq3Lq6abT7mF/ysiROJrrwhV.Pe2cg1Gn5P56hWpdXRK1Aq5G','1','033','ajn6ghCVR36Q8JOZKIbZ5EbXWDiwmMPeCADUup5zhVVqC6VFHNfEEciirGkA','2018-04-19 11:53:19','2018-04-19 11:53:19',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(94,1,'zaho','zaho','rey@gmail.com','$2y$10$FLesU/S9ucEY/KDE3fDfWu8KnWJeAJROEePcmTqsfJWELwsocfPB.','1','03382','n0HHJmPtb9KAB6QXRWRY9qUmlubEoX1dv461Q8LoQxFLqGiEzPMzR7Lgxttj','2018-04-19 12:00:29','2018-04-19 12:00:29',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(95,1,'Andry','ANDRIANAIVO','aa@alternateeve.com','$2y$10$wmpPF.PvFwNKrM9pCJD36..Ox28jGjUjFqrkK1y5jv/KnbL199vLO','1','0344630738',NULL,'2018-04-26 06:39:35','2018-04-26 06:39:35',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(96,1,'test','test','tset@gmail.com','$2y$10$o0sOhex8I/Va9B1suJpr4uIN2x3DXb7/KnC/roasQ/fLmKGA/tz3W','1','0345212542','HK4YqUHQvLswMjPUfHdW6WzDW6bDqEoy6TYUbp2PJN8cPuiauf0B7HVNYn1Z','2018-04-27 13:42:19','2018-04-27 13:45:15',NULL,NULL,NULL,NULL,NULL,NULL,'Femme','1990-12-05'),(97,2,'5','5','5@5.com','$2y$10$w33aZsf2/57UbZY7NXM7Fe3hGOkGcfTxFqJmUk.hRmdLxo9CDolQy','1','5','7ulq82PJnvE3x5uyjwti9bCWC35gKXs7J8HCNj6Sb7UGXmAaGXa4mMZ5Oopg','2018-05-31 14:19:27','2018-05-31 14:19:27','cus_CxnD2uGcML0NIt','',NULL,NULL,NULL,NULL,NULL,NULL),(98,2,'5','5','5@5.com','$2y$10$cw5vVLxQxCvrIbm4vm9ZBu3e9lfF8LSBnX7eij4qbz6m2ND1t2xD6','1','5','uZ8dpIHnbXSOIQpSoqQeEh7t0MXvWxLQHnM3OXBz64xuWbjUd6H4CUW1mo1q','2018-06-01 13:07:49','2018-06-01 13:07:49','cus_Cy9H6qmUfPzhpe','',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (2,1,'test','test','test@gmail.com','$2y$10$jlK6YOM6ft3BfGGXyQyr/ey6QwPIFnu0D4kyQn3nbxK4.VbKPPUGW','1','03382','ukUwii1Vnnj0Aow5ax8wPSSV8Hlx9MNpNN2vs9EqdVhNgtw50f3YcJOPlcEI','2017-05-20 14:31:19','2018-05-02 15:21:23',NULL,NULL,NULL,NULL,NULL,50,NULL,NULL),(15,2,'test','tezt','test@test1.com','$2y$10$H5cSmK5TqQxWUm0PR.4vXeZqOhOsLOe4U7xdqybT8TZkxozfj3JtC','1',NULL,'dIyI0jy2P6i7DYOZVcziRLeLqglBlEq59SwU2nJTP1vhLFTnKzCff62raexP','2017-06-15 14:05:16','2017-06-15 14:05:16',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(20,2,'David','test business','david.boitard@gmail.com','$2y$10$7o3CMSKIxbagWrMk9LQBXuJ3FhB9ndQfwx22BTmCGorFvXPIfLDRC','1','514-692-3002','61Wb2wmSbcdkjqCp7yTJLdAawfMNVVRuyHO2DFxK8VU7KSYs8LWBaHhZLlvg','2017-06-28 14:31:29','2017-06-28 14:31:29',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(21,2,'1er nom company','2eme nom company','dc@alternateeve.com','$2y$10$5JRtk.H4/FqnwneOZ2IxCudDl4E4clf4DTnjIPwFA1j88CZO2SiNi','1','514-692-3002','8XCGGuCmOBfJ717DuXN0xUWCwHoJtKOFyU1O6zadv2fDVhwGt9zjODr4he6O','2017-06-30 23:53:22','2017-06-30 23:53:22',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(22,2,'test nom1','test nom2','sansrapport@gmail.com','$2y$10$.neLBkzwNMQaZMvghaug6O2dfU886ozVW1nGPWaqZdPO76Gnj85R.','1',NULL,'R4l20zirTl7yP0xXBLNo44EEJVIy0ETHG1Tg3GJleRe6rnB2A9OZhcmrL2t1','2017-06-30 23:55:32','2017-06-30 23:55:32',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(69,2,'Andry','ANDRIANAIVO','andryhsm@gmail.com','$2y$10$rCvo1PUxlyFfAew1TdVlKOHbcJjAYRIRrgclbC/bqF/8G9ePu/cjC','1',NULL,'GQgSXSxbJhVQiiTnteihJPgbSjwlsOm7aK7bvEXyw7HRGlNHGNn7TuvdIzS1','2018-01-18 17:24:25','2018-01-18 17:24:25',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(77,2,'Ali','Mohamed','1@1.com','$2y$10$7soVlSQVVCXkqMNlNPMmyOvgcdNBGcxMDDUIyzM37TGLP09DzGbdy','1','032','9gSsBxOY8PaAI8zkgEMbVqlWjYpOC5XQ5Yc0rL2HFUJFCkhX2A534M1vizru','2018-03-27 13:56:03','2018-04-25 09:11:09',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL),(89,2,'test','test','t@t.com','$2y$10$BJ0xdiOobuk0Ncx7GRah.e0zTKrEtTCc8qJCBIAap66bzgxRQSJFC','1','0344630738','lRCzDQz8PTXdjQvwR1XW2bNuewG8jVItABS5xdUEfasehSSlStPT3gVsRa8n','2018-04-16 15:04:50','2018-04-16 15:04:50',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL),(91,1,'Feno Dev','Gmail compte','feno1@gmail.com','$2y$10$lyUN0iZKf8w0XFDnUOF6YeH8q8Rxut7X3kvaZADMoI35As/KOGJbC','1','0324562254','lfQc2KyQzmssrdDgefK561KktHwu27jnxeZEstjQBynaXje4ajUx1GSEJ9JI','2018-04-19 08:02:29','2018-07-20 11:25:50',NULL,NULL,NULL,NULL,NULL,35,'Homme','1919-07-12'),(92,1,'feno','feno1','feno2@gmail.com','$2y$10$KTAqt31LLkkFHaaVNT8kJOlGkOLxeb5WzhihbaEXjc7r7TFTFWtsG','1','033',NULL,'2018-04-19 11:31:49','2018-04-19 11:31:49',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(93,1,'la','la','la@gmail.com','$2y$10$3Flijq3Lq6abT7mF/ysiROJrrwhV.Pe2cg1Gn5P56hWpdXRK1Aq5G','1','033','ajn6ghCVR36Q8JOZKIbZ5EbXWDiwmMPeCADUup5zhVVqC6VFHNfEEciirGkA','2018-04-19 11:53:19','2018-04-19 11:53:19',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(94,1,'zaho','zaho','rey@gmail.com','$2y$10$FLesU/S9ucEY/KDE3fDfWu8KnWJeAJROEePcmTqsfJWELwsocfPB.','1','03382','n0HHJmPtb9KAB6QXRWRY9qUmlubEoX1dv461Q8LoQxFLqGiEzPMzR7Lgxttj','2018-04-19 12:00:29','2018-04-19 12:00:29',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(95,1,'Andry','ANDRIANAIVO','aa@alternateeve.com','$2y$10$wmpPF.PvFwNKrM9pCJD36..Ox28jGjUjFqrkK1y5jv/KnbL199vLO','1','0344630738',NULL,'2018-04-26 06:39:35','2018-04-26 06:39:35',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(96,1,'test','test','tset@gmail.com','$2y$10$o0sOhex8I/Va9B1suJpr4uIN2x3DXb7/KnC/roasQ/fLmKGA/tz3W','1','0345212542','HK4YqUHQvLswMjPUfHdW6WzDW6bDqEoy6TYUbp2PJN8cPuiauf0B7HVNYn1Z','2018-04-27 13:42:19','2018-04-27 13:45:15',NULL,NULL,NULL,NULL,NULL,NULL,'Femme','1990-12-05'),(99,2,'5','5','5@5.com','$2y$10$HW9IPuf5LpMHSWHvnScVMOU3J3kRpIENmhO.qU9ylrmvrrJF9NQ9i','1','5','JPMdtSyWVv2P3IMXaUZVGaFSoICwUJMsmrvR6Gytl1vApKnLotW6Nuq9JnWv','2018-06-07 13:25:08','2018-06-07 13:25:08','cus_D0Ou9qSC0zIFHy','',NULL,NULL,NULL,NULL,NULL,NULL),(100,1,'test2','test2','test2@gmail.com','$2y$10$tpyr14i7xWyvOHUiX5BhGu5U7wAPdxdUizr1RCO7g5aAPzF3ei2tG','1','5645640654','jTbl4TUyivEuL4GK9JMwBcafH90gUto27VLeCdwbibgJAwSKS3347USFxhjM','2018-06-14 14:11:17','2018-06-14 14:11:17',NULL,NULL,NULL,NULL,NULL,NULL,'Femme','2018-06-16'),(101,2,'aaaaaa','aaaaaa','aaaaaa@gmail.com','$2y$10$iOgoT/FT/91afjichHw9A./JAvYsCv44jh06WvjDaCYiUd4XKOCyy','1','aaaaaa',NULL,'2018-06-14 15:01:27','2018-06-14 15:01:28','cus_D333zjdYu1M9ZD','',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2490,7 +2596,7 @@ CREATE TABLE `wishlists` (
   PRIMARY KEY (`wishlist_id`),
   KEY `idx_user_id` (`user_id`),
   KEY `idx_product_id` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2499,7 +2605,7 @@ CREATE TABLE `wishlists` (
 
 LOCK TABLES `wishlists` WRITE;
 /*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
-INSERT INTO `wishlists` VALUES (1,19,10,'2017-07-22 01:14:38','2017-07-22 01:14:38'),(2,19,9,'2017-07-22 01:15:39','2017-07-22 01:15:39'),(3,24,13,'2017-08-02 17:58:52','2017-08-02 17:58:52'),(4,61,1069,'2018-01-16 14:14:50','2018-01-16 14:14:50'),(5,61,1077,'2018-01-16 14:15:18','2018-01-16 14:15:18'),(6,77,4384,'2018-04-04 08:09:01','2018-04-04 08:09:01'),(7,77,4388,'2018-04-04 12:17:20','2018-04-04 12:17:20'),(8,91,4388,'2018-05-16 12:01:14','2018-05-16 12:01:14');
+INSERT INTO `wishlists` VALUES (13,77,4418,'2018-07-20 05:56:18','2018-07-20 05:56:18'),(16,91,4419,'2018-07-20 06:09:29','2018-07-20 06:09:29'),(17,91,4418,'2018-07-20 09:07:07','2018-07-20 09:07:07'),(18,77,4419,'2018-07-20 13:26:42','2018-07-20 13:26:42');
 /*!40000 ALTER TABLE `wishlists` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -2512,4 +2618,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-05 20:41:06
+-- Dump completed on 2018-07-23 12:45:01
