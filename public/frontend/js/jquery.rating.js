@@ -110,6 +110,7 @@
         },
         click: function(e) {
             e.preventDefault();
+
             var el = $(e.target),
                 container = el.parent().parent(),
                 inputs = container.children('input'),
@@ -129,6 +130,16 @@
             container
                 .trigger('set.rating', matchInput.val())
                 .data('rating').callback(rate, e);
+
+            // Extension pour permettre l'évaluation 0
+            if($('.fullStar').length == 1) $(this).toggleClass('one')
+            if($('.fullStar').length == 1 && !$(this).hasClass('one')) {
+                $(this).removeClass('fullStar');
+                matchInput
+                    .prop('checked', false)
+                    .siblings('input').prop('checked', false);
+            }
+            
         }
     });
 
