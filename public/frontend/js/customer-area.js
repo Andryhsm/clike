@@ -40,17 +40,17 @@ function start_map($shop_data) {
 jQuery(document).ready(function($) {
     change_header_title();
     aside_fixed();
-    $('.nav-menu .list-menu').on('click', '.nav-link', function(event) {
-        var content = $(this).attr('id')
-        event.preventDefault();
-        var menu_active = $('.nav-menu .list-menu').find('.active');
-        menu_active.removeClass('active');
-        $(this).addClass('active');
-        var url = $(this).data('url');
-        change_header_title();
-        change_page(url);
-        customer_aside_fixed();
-    });
+    // $('.nav-menu .list-menu').on('click', '.nav-link', function(event) {
+    //     var content = $(this).attr('id')
+    //     event.preventDefault();
+    //     var menu_active = $('.nav-menu .list-menu').find('.active');
+    //     menu_active.removeClass('active');
+    //     $(this).addClass('active');
+    //     var url = $(this).data('url');
+    //     change_header_title();
+    //     change_page(url);
+    //     customer_aside_fixed();
+    // });
 
     $('.datepicker').datepicker({
         todayHighlight: true
