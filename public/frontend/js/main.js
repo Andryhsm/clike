@@ -938,6 +938,7 @@ function close_select_radius() {
 
 function initMap() {}
 
+
 function aside_fixed() {
 	//console.log('log')
 	var $aside = $("#aside"),
@@ -954,7 +955,7 @@ function aside_fixed() {
 	if (Modernizr.mq('(max-width: 767px)')) {	
 		if (Modernizr.mq('(max-width: 480px)')) left = 0;
 		$window.scroll(function() {
-			content = $('.main')[0].clientHeight + offset.top 
+			content = $('.main')[0].clientHeight + offset.top ;
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
 				$aside.stop().css({ 'position': 'fixed', 'top': '0', 'z-index': '2000'});
 				$('.nav-menu.content').css( 'margin-right', '0');
@@ -970,10 +971,9 @@ function aside_fixed() {
 	else {
 		$window.scroll(function() {
 			var window_last_scroll;
-			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
+			if ($window.scrollTop() > (offset.top - 20) && $window.scrollTop() < content) {
 				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding);
 				$window_last_scroll = $window.scrollTop() - offset.top + topPadding;
-				console.log("scroll bottom");
 			}
 			else {
 				$aside.stop().animate({

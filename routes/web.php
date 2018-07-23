@@ -381,8 +381,8 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     return $controller->callAction('show', [$value->target_id]);
             }
         } catch (Exception $e) {
-            // return view('front.404');
-            return redirect()->route('crowdfunding');
+            return view('front.404');
+           // return redirect()->route('crowdfunding');
         }
     });
 });
