@@ -615,7 +615,7 @@
 	//Show the modal if no info user location
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
 	setTimeout(function() {
-		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url) {
+		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url) {  
 			$('#area-modal').modal('show');
 		}	
 	}, 3000);
@@ -986,7 +986,7 @@ function aside_fixed() {
 }
 
 function footerCardFixed(){
-	var contentCart = document.getElementById('content-cart');
+	var contentCart = document.getElementById('content_cart');
 
 	var callback = function(mutationsList) {
 	    for(var mutation of mutationsList) {
@@ -1003,9 +1003,9 @@ function footerCardFixed(){
 	        }
 	    }
 	}
-	//Commenteko kely vetivety
-	// var observer = new MutationObserver(callback);
-	// observer.observe(contentCart, { attributes: true});
+	
+	var observer = new MutationObserver(callback);
+	observer.observe(contentCart, { attributes: true});
 
 	$(".content-cart").scroll(function() {
 		var y = $(".content-cart").scrollTop();

@@ -23,6 +23,7 @@
                 <p>
                     <a onclick="checka(this);"  id="new-desactivate" class="desactivate"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Désactiver</a>
                 </p>
+                <input type="text" class="hidden newsletter" name="news">
             </div>
         </div>
     </div>
@@ -47,6 +48,7 @@
                 <p>
                     <a onclick="checka(this);"  id="special-desactivate" class="desactivate"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Désactiver</a>
                 </p>
+                <input type="text" class="hidden newsletter" name="promo">
             </div>
         </div>
     </div>
@@ -71,8 +73,10 @@
                 <p>
                     <a onclick="checka(this);"  id="exclusive-desactivate" class="desactivate"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Désactiver</a>
                 </p>
+                <input type="text" class="hidden newsletter" name="exclusive-tailored">
             </div>
         </div>
     </div>
+
 </div>    
 @endsection
