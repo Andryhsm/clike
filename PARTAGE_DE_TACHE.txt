@@ -6,9 +6,13 @@ ORDRE DE PRIORITE
 -------------------------------------------------------------------------
 
 A FAIRE
-- Retour vers le scroll dans customer (3)
+- Le scroll dans customer (3)
 - Responsivité de la description produit (2)
 - Redirection marchant vers login si non connecté (3)
+- Liste des souhaits bug quand elle n'est pas vide
+- Ne peut pas scroller avant le popup area => Centrer le popup
+- 
+
 
 
 BUG : 
@@ -31,7 +35,8 @@ COMPTE PRO : MES PRODUITS
 LISTE DES PRODUITS
 
 - Fonctionnalité:
-        -> ajout filtre dans liste produit
+      
+      -  -> ajout filtre dans liste produit
         
 ENREGISTREMENT DU PRODUIT
 
