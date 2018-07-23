@@ -69,12 +69,6 @@
                                                     {{Form::text('verif_code', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
                                                 </div>
                                             </div>
-                                            <div class="form-group row mb-0">
-                                                <label class="col-lg-5 fw-400" for="cart_number">Numéro de carte *</label>
-                                                <div class="col-sm-7">     
-                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
-                                                </div>
-                                            </div>
                                             
                                             <a href="#" class="save-cart fw-400"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Sauvegarder cette carte pour la prochaine fois.</a>
                                         </div>

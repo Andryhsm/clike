@@ -41,12 +41,6 @@
                                                     {{Form::text('verif_code', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
                                                 </div>
                                             </div>
-                                            <div class="form-group row mb-0">
-                                                <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 fw-400" for="cart_number">Numéro de carte *</label>
-                                                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">     
-                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
-                                                </div>
-                                            </div>
                                             
                                             <a href="#" class="save-cart fw-400"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Sauvegarder cette carte pour recevoir vos recettes.</a>
                                         </div>
