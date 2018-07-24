@@ -617,6 +617,7 @@
 	setTimeout(function() {
 		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url) {   
 			$('#area-modal').modal('show');
+			verify_radio();
 			$('#area-modal').addClass('flex-centered');
 		}	
 	}, 3000);
@@ -624,6 +625,7 @@
 	//Show the modal area information
 	$('.change-your-area').on('click', function() {
 		$('#area-modal').modal('show');
+		verify_radio();
 		$('#area-modal').addClass('flex-centered');
 		//Change value of the select area in modal popup
 		var $new_selected = $('.select-area').find('.selected');
@@ -1031,4 +1033,22 @@ function footerCardFixed(){
 			} 
 		}
 	})
+}
+
+function verify_radio()
+{
+	var zip_code = $('#zip-code').val();
+	var loadurl = $('#zip-code').attr('data-url-verify-radio');
+	$.ajax({
+        type: "POST",
+        url: loadurl,
+        data: "zip_code=" + zip_code
+    }).done(function(data) {
+    	console.log(data.radio);
+    	if(data.radio != null){
+    		$('.search-radio').removeAttr('disabled');
+    	}else{
+    		$('.search-radio').attr('disabled','disabled');
+    	}
+    });
 }
