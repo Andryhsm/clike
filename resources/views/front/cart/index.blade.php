@@ -44,10 +44,13 @@
                                             </div>
                                             <div class="product-quantity">
                                                 <?php $count_item = count($item->getAttributes()); ?>
-                                                   @foreach($item->getAttributes() as $attribute)
+                                                   <!-- @foreach($item->getAttributes() as $attribute)
                                                         @if($loop->first)
                                                             <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>
                                                         @endif
+                                                    @endforeach -->
+                                                    @foreach($item->getAttributes() as $attribute)
+                                                        <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>
                                                     @endforeach
                                                 <select  class="quantity form-control form-select {!! ($count_item == 0) ? 'mlp--2v5' : '' !!}" name="qty[{!! $item_id !!}]">
                                                     @for($i=1; $i<=10 ; $i++)    
