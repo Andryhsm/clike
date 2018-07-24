@@ -18,10 +18,12 @@ class RadioController extends Controller
     public function getRadioByZip($zip)
     {
         $radio = $this->radio_repository->findRadio($zip);
-        if(stristr($radio->url, "http://") === TRUE  || stristr($radio->url, "https://") === TRUE) {
-            return \Redirect::to($radio->url);
-        }else{
-            return \Redirect::to('http://'.$radio->url);
+        if($radio){
+            if(stristr($radio->url, "http://") === TRUE  || stristr($radio->url, "https://") === TRUE) {
+                return \Redirect::to($radio->url);
+            }else{
+                return \Redirect::to('http://'.$radio->url);
+            }
         }
     }
 }
