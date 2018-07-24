@@ -772,6 +772,8 @@
 			dataType: 'json'
 		})
 		.done(function(data) {
+			console.log("All product");
+			console.log(data);
 			var all_products = data.products;
 			var options = {
 				data: all_products,
@@ -784,7 +786,7 @@
 						return "<div class='row content-result-autocompletion' style='padding: 0px 20px;'> " +
 							"<div class='col-xs-2'><img src='" + base_url + 'upload/product/thumb/' + item.images[0].image_name + "' /></div> " +
 							"<div class='col-xs-8'>" +
-							"<span class='brand-name text-uppercase'>" + item.brand.brand_name + "</span><br>" +
+							"<span class='brand-name text-uppercase'>" + item.brand_name + "</span><br>" +
 							"<span>" + value + "</span>" +
 							"</div>" +
 							"</div>";

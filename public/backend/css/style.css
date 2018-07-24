@@ -222,3 +222,7 @@ label.error {
 .option_row:last-child a.down {
   display: none;
 }
+
+select#attribute {
+    min-height: 100vh !important;
+}

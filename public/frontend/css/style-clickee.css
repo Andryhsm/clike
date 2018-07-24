@@ -2715,8 +2715,8 @@ input.clickee-input:focus, input.clickee-input:active {
     font-weight: 500;
 }
 .modal-header .close {
-    margin-top: -7px;
-    font-size: 33px;
+    margin-top: 0px;
+    font-size: 22px;
     margin-right: -4px;
     font-weight: 200;
 }
@@ -2825,7 +2825,7 @@ button.btn.btn-clickee-info.search-radio.text-uppercase {
 }
 .search-product-modal .btn-search {
     float: left;
-    margin-top: -30px;
+    margin-top: -38px;
     border: none;
 }
 .search-product-modal .btn-search:active, .search-product-modal .btn-search:focus {
@@ -3375,6 +3375,6 @@ a.open-day {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-#user-zone-info {
-  display: none !important;
-}
+/*div#area-modal {
+    display: none;
+}*/
