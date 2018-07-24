@@ -349,7 +349,6 @@ text {
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
-    cursor: pointer;
 }
 .add-img2 .nav-img {
     display: flex;
@@ -382,6 +381,7 @@ text {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .add-img2 .add-bouton a {
     color: #65bb9f !important;
@@ -391,4 +391,7 @@ a.checkbox:hover {
 }
 .buttons-selection {
     font-size: 30px;
+}
+label#add-img1 {
+    cursor: pointer;
 }
