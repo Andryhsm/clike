@@ -2710,8 +2710,8 @@ input.clickee-input:focus, input.clickee-input:active {
     font-weight: 500;
 }
 .modal-header .close {
-    margin-top: -7px;
-    font-size: 33px;
+    margin-top: 0px;
+    font-size: 22px;
     margin-right: -4px;
     font-weight: 200;
 }
