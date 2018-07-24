@@ -178,7 +178,7 @@
                                                  class=""/>
                                         </a>
                                     </div>
-                                    <div class="product-content pt-10">
+                                    <div class="product-content p-lr-10 mt-10">
                                         <!-- whishlist add/remove -->
                                         <div class="wishlist_prd_place_home">
                                             <?php 
@@ -190,7 +190,7 @@
                                                 }                                            
                                             ?>
 
-                                            <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}" 
+                                            <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}"
                                             data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
                                             data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
                                             data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
@@ -250,11 +250,10 @@
                                                     $idU = '';
                                                 }                                            
                                             ?>
-                                        <a class="wishlist_prd_home wishlist_prd w{!! $product->product_id !!} {!! $wishlist_del !!}" 
-                                        data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
-                                    data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
-                                    data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
-                                        onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
+                                            <a class="wishlist_prd_home wishlist_prd w{!! $product->product_id !!} {!! $wishlist_del !!}" 
+                                            data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
+                                            data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
+                                            data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}" onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                         </div>
                                         <span>
                                             {!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}
