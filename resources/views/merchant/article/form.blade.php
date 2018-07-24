@@ -110,6 +110,17 @@
                             
                         </div>
                         
+                        <?php 
+                            if($product){
+                                $class = ($product->discount != null) ? '':'hidden';
+                                $solde_class = ($product->discount != null) ? 'fa-dot-circle-o':'fa-circle-o';
+                                }
+                            else {
+                                $class = 'hidden';
+                                $solde_class = 'fa-circle-o';
+                            }
+                        ?>
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -119,16 +130,10 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="pull-right pt-30">
-                                    <a onclick="solde(this);" id="solde" class="solde">Soldé<i class="fa fa-circle-o pl-10"></i></a>
+                                    <a onclick="solde(this);" id="solde" class="solde">Soldé<i class="fa {!! $solde_class !!} pl-10"></i></a>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <?php 
-                            if($product)
-                                $class = ($product->discount != null) ? '':'hidden';
-                            else $class = 'hidden';
-                        ?>
+                        </div>                     
                         
                         <div class="solde-content row {!! $class !!}">
                             <div class="col-lg-6">

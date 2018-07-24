@@ -91,6 +91,27 @@ class WishlistController extends Controller
 		return redirect()->to('wishlist');*/
 	}
 
+	function remove_in_list($id){
+		if(auth()->check()){
+			$this->model->destroy($id);
+		}else{
+			$id_user = Cookie::get('id_user_browser');
+			$all_wishlist_products = (\Cache::has('wishlist_product')) ? \Cache::get('wishlist_product') : [];
+			if(!empty($all_wishlist_products)){
+				$products_user = (array_key_exists($id_user, $all_wishlist_products)) ? $all_wishlist_products[$id_user] : [];
+				if(!empty($products_user))
+					unset($products_user[$id]);
+				if(array_key_exists($id_user, $all_wishlist_products)){
+					$all_wishlist_products[$id_user] = $products_user;
+				}
+			}
+			\Cache::put('wishlist_product', $all_wishlist_products, \App\Models\Wishlist::CACHE_TIME_FOR_WISHLIST);	
+		}
+		$nbr_wishlist = (count_wishlist() < 10) ? '0'.count_wishlist() : count_wishlist();
+		flash()->success(trans('product.wishlist_remove'));
+		return redirect()->route('wishlist');
+	}
+
 	function findIdWishlist($ids){
 		$tri_id = explode('§',$ids);
 		$response = '';   

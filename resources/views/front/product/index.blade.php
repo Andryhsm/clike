@@ -100,7 +100,7 @@
                         @if($product->promotional_price != null)
                             <span class="new-price fs-25">{!! format_price($product->promotional_price) !!}</span>
                             <span class="old-price fs-25">&nbsp;<del>{!! format_price($product->original_price) !!}</del></span>
-                            <span class="old-price percentage ml-10 fs-25">{!! $product->discount !!} OFF</span>
+                            <span class="old-price percentage ml-10 fs-25">{!! $product->discount !!}% OFF</span>
                         @else
                             <span class="price-exact fs-25">{!! format_price($product->original_price) !!}</span>
                         @endif
@@ -118,11 +118,12 @@
                         </div>
                 </div>
                 <!-- start attribute -->
+                <?php 
+                    $value_margin = 40; //valeur du margin top pour les researux sociaux
+                ?>
                 <div class="row">
                     <!--<div class="col-lg-12 col-sm-8 col-md-10 col-xs-10 pb-10 pt-0 p-lr-0 vcenter mt-0 mr-l-20">
-                        <?php 
-                            $value_margin = 40; //valeur du margin top pour les researux sociaux
-                        ?>
+                        
                         @foreach($attribute_value as $attribute)
                             <div class="color-box">
                                 <label class="color-label" style="color: #42838C; ">{!! $attribute['name'] !!} : </label> 
@@ -190,26 +191,24 @@
                     </div>-->
                     <!-- end attribute -->
                     
-                    
-                    <!--test-->
-                     @if($attribute_set)
-                        @foreach($attribute_set->attributes as $key=>$attribute)
-                            <div class="form-group">
-                                {!! Form::label('attribute_name', $attribute->french->attribute_name, ['class' => 'control-label']) !!}
-                                <select name="attrs[]" data-placeholder="Choose an option…" data-attribute="{!! $attribute->attribute_id !!}" data-route="{!! route('get_options') !!}" class="col-md-11 col-sm-10 col-xs-11 
-                                    product-input-select required" tabindex="1" style="color: #42838C!important" onchange="changeAttribute(this, {!! $product->product_id !!})" autocomplete="off">
-                                    <option value="default" disabled selected>Veuillez choisir</option>
-                                    @foreach($attribute->options as $option)
-                                        @if(in_array($option->attribute_option_id,$attribute_option_ids))
-                                            <option value="{!! $option->attribute_option_id !!}" >{!! $option->french->option_name !!}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        @endforeach
-                    @endif
-                    <!--end test-->
-                    
+                        <div class="col-lg-12 col-sm-8 col-md-10 col-xs-10 pb-10 pt-0 p-lr-0 vcenter mt-0 mr-l-20">
+                         @if($attribute_set)
+                            @foreach($attribute_set->attributes as $key=>$attribute)
+                                <div class="form-group">
+                                    {!! Form::label('attribute_name', $attribute->french->attribute_name, ['class' => 'control-label col-md-11 col-sm-10 col-xs-11']) !!}
+                                    <select name="attrs[]" data-placeholder="Choose an option…" data-attribute="{!! $attribute->attribute_id !!}" data-route="{!! route('get_options') !!}" class="col-md-11 col-sm-10 col-xs-11 
+                                        product-input-select required" tabindex="1" style="color: #42838C!important" onchange="changeAttribute(this, {!! $product->product_id !!})" autocomplete="off">
+                                        <option value="default" disabled selected>Veuillez choisir</option>
+                                        @foreach($attribute->options as $option)
+                                            @if(in_array($option->attribute_option_id,$attribute_option_ids))
+                                                <option value="{!! $option->attribute_option_id !!}" >{!! $option->french->option_name !!}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @endforeach
+                        @endif
+                        </div>
 
                     </div>
                     <div class="clear"></div>
