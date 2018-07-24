@@ -615,7 +615,7 @@
 	//Show the modal if no info user location
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
 	setTimeout(function() {
-		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null) {  //  && current_url == base_url
+		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url) {    
 			$('#area-modal').modal('show');
 		}	
 	}, 3000);
