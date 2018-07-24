@@ -343,11 +343,13 @@ text {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    cursor: pointer;
 }
 .article-add-img .add-img2 {
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
+    cursor: pointer;
 }
 .add-img2 .nav-img {
     display: flex;
