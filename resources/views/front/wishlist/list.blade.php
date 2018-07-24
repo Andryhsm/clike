@@ -31,7 +31,7 @@
                             <td data-th="Subtotal"><p class="pt-35">{!! ($product->product->promotional_price != null) ? format_price($product->product->promotional_price) : '' !!}</p></td>
                             <td class="actions" data-th="">
                                 <p class="pt-25">
-                                    <a class="btn btn-clickee-info" href="{!! route('wishlist-remove-in-list', ['id' => $product->wishlist_id]) !!}"><i class="fa fa-trash-o"></i></a>
+                                    <a class="btn btn-clickee-info" href="{!! (auth()->check()) ? route('wishlist-remove-in-list', ['id' => $product->wishlist_id]) : route('wishlist-remove-in-list', ['id' => $product->product_id]) !!}"><i class="fa fa-trash-o"></i></a>
                                     <a class="btn btn-clickee-info" href="{!! url($product->product->url->target_url) !!}">{!! trans('product.buy') !!}</a>
                                 </p>    
                             </td>
