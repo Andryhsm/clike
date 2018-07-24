@@ -233,7 +233,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
     Route::group(['middleware' => ['auth']], function () {        
         Route::post('caisse', 'CheckoutController@storeOrderInfo')->name('checkout');
         Route::get('checkout/order-confirmed', 'CheckoutController@confirmOrder')->name('checkout-order-confirmed');
-        Route::post('caisse/confirmation', 'CheckoutController@confirmCart')->name('checkout-confirm-cart');
+        Route::get('caisse/confirmation', 'CheckoutController@confirmCart')->name('checkout-confirm-cart');
         Route::get('checkout_store_quantity_session', 'CheckoutController@storeQuantitySession')->name('checkout_store_quantity_session');
         Route::group(['middleware' => ['customer']], function () {
             /*Customer specific routes*/

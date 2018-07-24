@@ -140,7 +140,7 @@
                                 <div class="form-group">
                                     <label for="discount">Réduction</label>
                                     <div class="input-group">
-                                        <input type="number" name="discount" class="form-control required" id="reduction" value="{!!($product) ? $product->discount: null !!}" placeholder="Réduction">
+                                        <input type="number" name="discount" class="form-control" id="reduction" value="{!!($product) ? $product->discount: null !!}" placeholder="Réduction">
                                         <span class="input-group-addon color-white fs-25">
                                             %
                                         </span>
@@ -151,7 +151,7 @@
                                 
                                 <div class="form-group">
                                     <label for="promotional_price">Tarif promotionnel</label>
-                                    <input type="text" name="promotional_price" class="form-control required" id="promotional_price" value="{!!($product) ? $product->promotional_price: null !!}" placeholder="Tarif promotionnel">
+                                    <input type="text" name="promotional_price" class="form-control" id="promotional_price" value="{!!($product) ? $product->promotional_price: null !!}" placeholder="Tarif promotionnel">
                                 </div>
                             </div>
                         </div>
