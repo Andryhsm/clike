@@ -88,13 +88,29 @@ $('#reduction').on('blur',function(){
    }
 });
 
-$('#add-img2').click(function(){
+$(document).on('click', '.add-bouton', function(event) {
+    console.log("row index "+ row_index);
     var input_div = $('#add-img-input');
     var row_count = parseInt($('.input-img:last').attr('id'));
     var row_index = row_count + 1;
     input_div.append("<input type=\"file\" class=\"input-img\" id=\""+ row_index +"\" name=\"images["+ row_index +"]\" />");
     $('#' + row_index).trigger('click');
     load_left_img('.input-img#'+row_index);
+});
+
+$(document).on('click', '.add-img1', function(event) {
+    event.preventDefault();
+    $('.input-img#1').trigger('click');
+});
+
+$('.input-img#1').change(function(){
+    var center = $('.center-img img');
+    $('.nav-img').append('<img src=""></img>');
+    var navimg = $('.nav-img img');
+    $('.add-img1').addClass('hidden');
+    $('.add-img2').removeClass('hidden');
+    readURL(this, center);
+    readURL(this, navimg);
 });
 
 function load_left_img(div){
@@ -148,16 +164,6 @@ $('#add-decline').click(function(){
     html_data.attr('data-count', row_count + 1);
     html_data.insertAfter('.decline:last');
 })
-
-$('.input-img#1').change(function(){
-    var center = $('.center-img img');
-    $('.nav-img').append('<img src=""></img>');
-    var navimg = $('.nav-img img');
-    $('.add-img1').addClass('hidden');
-    $('.add-img2').removeClass('hidden');
-    readURL(this, center);
-    readURL(this, navimg);
-});
 
 function set_stock_type(stock)
 {
