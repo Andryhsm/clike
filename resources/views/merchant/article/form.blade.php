@@ -126,7 +126,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="pull-right pt-30">
-                                    <a onclick="solde(this);" id="solde" class="solde">Soldé<i class="fa fa-circle-o pl-10"></i></a>
+                                    <a onclick="solde(this);" id="solde" class="solde">Soldé<i class="fa {!! $solde_class !!} pl-10"></i></a>
                                 </div>
                             </div>
                         </div>                     
