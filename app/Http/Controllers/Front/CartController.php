@@ -64,6 +64,7 @@ class CartController extends Controller
 
 	public function remove($item_id)
 	{
+
 		try {
 			$this->cart->remove($item_id);
 		} catch (CartException $e) {
@@ -72,6 +73,10 @@ class CartController extends Controller
 		}
 		$this->cart->refresh($this->product_repository);
 		flash()->success(trans('cart.item_removed_success'));
+		$intended_url = \Session::get('url.intended', '');
+		if (ends_with($intended_url, 'caisse/confirmation')) {
+			return redirect()->route('checkout-confirm-cart');
+		}
 		return redirect()->route('cart');
 	}
 
