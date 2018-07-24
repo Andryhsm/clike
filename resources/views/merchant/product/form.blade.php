@@ -525,5 +525,4 @@
         var url_search_product = '{!! route('merchant_search_product') !!}';
         var url_remove_product_tag = '{!! route('merchant_product_remove_tag') !!}';
     </script>
-
 @stop

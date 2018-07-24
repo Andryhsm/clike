@@ -173,7 +173,8 @@ function set_stock_type(stock)
     $(stock).closest('.stock-types').find('input').val(type);    
 }
 
-$('#add-article').click(function() {
+$('#add-article').click(function(e) {
+    e.preventDefault();
     var form = $('#product');
     $('#attribute_set_').attr('disabled', false);
     form.validate({
@@ -182,6 +183,7 @@ $('#add-article').click(function() {
        } 
     });
     if(form.valid()){
+        $('#product').submit();
         console.log("Notre form est bien valid");
     }else{
         console.log("Notre form n'est pas valid");
@@ -301,4 +303,13 @@ function removeAllSelection(){
            $(el).removeClass('checked');
         }    
     });    
+}
+
+function checkBlank(){
+    var required_inputs = $('.article-form').find('input.required');
+    var i = 0;
+    required_inputs.each(function(index, element){
+        if($(element).val() == null) i++;
+    })
+    return i;
 }

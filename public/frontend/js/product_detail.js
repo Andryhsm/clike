@@ -357,7 +357,7 @@ $(document).ready(function() {
 function changeAttribute(box, product_id) {    
     var attribute_option_id = $(box).val();
     console.log('****' + attribute_option_id)
-    if(!isLastChoosed()) {
+    if(isLastChoosed() != 0 || $(box).hasClass('first')) {
         var url = $(box).attr('data-route');
         var i = 0; 
         var values = [];
