@@ -1,5 +1,5 @@
 @if($cart_count > 0)
-    <div class="dropdown-menu cart-total text-right" id="content_cart" style="width: 365px;border: 1px solid #7fa6aa; display: none;">
+    <div class="dropdown-menu cart-total text-right" id="content-cart" style="width: 365px;border: 1px solid #7fa6aa; display: none;">
     <ul class="cart-menu">
         <?php
             $nombre = ($cart_count < 10) ? '0'.$cart_count : $cart_count;

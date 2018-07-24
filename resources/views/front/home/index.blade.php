@@ -178,7 +178,7 @@
                                                  class=""/>
                                         </a>
                                     </div>
-                                    <div class="product-content pt-10">
+                                    <div class="product-content p-lr-10 mt-10">
                                         <!-- whishlist add/remove -->
                                         <div class="wishlist_prd_place_home">
                                             <?php 
@@ -190,25 +190,22 @@
                                                 }                                            
                                             ?>
 
-                                            <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}" 
+                                            <a class="wishlist_prd_home w{!! $product->product_id !!} {!! $wishlist_del !!}"
                                             data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
                                             data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
                                             data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
                                             onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <span>
-                                                {!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}
-                                            </span>
-                                        </div>
-
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <a href="{!! $product->url->target_url !!}">{!! $product_translation->product_name !!}</a>
-                                        </div>
+                                        <span>
+                                            {!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}
+                                        </span>
                                         
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <span class="new-price">{!! format_price($product->original_price) !!}</span>      
-                                        </div>
+                                        @if(!empty($product->url))
+                                            <h4>
+                                                <a href="{!! url($product->url->target_url) !!}">{!! $product_translation->product_name !!}</a>
+                                            </h4>
+                                        @endif
+                                        <span class="new-price fs-14">{!! format_price($product->original_price) !!}</span>
                                         
                                     </div>
                                 </div>
@@ -253,15 +250,15 @@
                                                     $idU = '';
                                                 }                                            
                                             ?>
-                                        <a class="wishlist_prd_home wishlist_prd w{!! $product->product_id !!} {!! $wishlist_del !!}" 
-                                        data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
-                                    data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
-                                    data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}"
-                                        onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
+                                            <a class="wishlist_prd_home wishlist_prd w{!! $product->product_id !!} {!! $wishlist_del !!}" 
+                                            data-url-find-wishlist="{!! route('wishlist-findid', ['idpu' => '']) !!}" 
+                                            data-url-remove-wishlist="{!! route('wishlist-remove', ['id' => '']) !!}"
+                                            data-url-add-wishlist="{!! route('wishlist-store', ['id' => $product->product_id]) !!}" onclick="addwishlist('{!! $product->product_id !!}','{!! $idU !!}', this);"> &nbsp; </a>
                                         </div>
                                         <span>
                                             {!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}
                                         </span>
+                                        
                                         @if(!empty($product->url))
                                             <h4>
                                                 <a href="{!! url($product->url->target_url) !!}">{!! $product_translation->product_name !!}</a>
@@ -351,6 +348,7 @@
 <!-- start section avantage -->
 
 @include('front.layout.section-avantage')
-@include('front.modals.store-area.choose-area')
+
+
 <!-- end section avantage -->
 @stop
