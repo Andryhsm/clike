@@ -2621,6 +2621,11 @@ li.menu-large.selected {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
+  -webkit-box-align-items: center;
+  -moz-box-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
   position: fixed;
 }
 .modal.in .modal-dialog {

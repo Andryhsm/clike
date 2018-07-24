@@ -26,4 +26,13 @@ class RadioController extends Controller
             }
         }
     }
+
+    public function verifyRadio(Request $request)
+    {
+        $zip_code = $request->get('zip_code');
+
+        $radio = $this->radio_repository->findRadio($zip_code);
+
+        return response()->json(['radio' => $radio]);
+    }
 }

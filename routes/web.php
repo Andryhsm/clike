@@ -185,6 +185,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
     Route::post('merchant/sign-up', ['uses' => 'StoreController@postRegister', "middleware" => 'guest'])->name('merchant-sign-up-post');
 
     Route::get('get-radio/{zip}','RadioController@getRadioByZip')->name('get-radio');
+    Route::post('verify-radio','RadioController@verifyRadio')->name('verify-radio');
 
     Route::post('register', 'Auth\AuthController@saveUser')->name('sign-up');
     Route::get('logout', 'Auth\AuthController@destroy')->name('logout');

@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <label class="" for="sel1">autour du</label>
-                        <input type="text" class="clickee-input" id="zip-code" placeholder="{!! trans('product.postal_code') !!}" name="zip-code" value="{!! Cookie::has('zip-code') ? Cookie::get('zip-code') : ''  !!}">
+                        <input type="text" class="clickee-input" id="zip-code" onkeyup="verify_radio();" placeholder="{!! trans('product.postal_code') !!}" name="zip-code" value="{!! Cookie::has('zip-code') ? Cookie::get('zip-code') : ''  !!} " data-url-verify-radio="{!! route('verify-radio') !!}">
                         <input type="text" class="hidden" name="radius" id="input-radius" value="5"/>
                         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                         <button type="button" id="check-area-info" onclick="change_area_information(this);" class="col-lg-2 btn btn-clickee-info">OK</button>

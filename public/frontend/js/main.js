@@ -617,6 +617,7 @@
 	setTimeout(function() {
 		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url) {   
 			$('#area-modal').modal('show');
+			verify_radio();
 			$('#area-modal').addClass('flex-centered');
 		}	
 	}, 3000);
@@ -624,6 +625,7 @@
 	//Show the modal area information
 	$('.change-your-area').on('click', function() {
 		$('#area-modal').modal('show');
+		verify_radio();
 		$('#area-modal').addClass('flex-centered');
 		//Change value of the select area in modal popup
 		var $new_selected = $('.select-area').find('.selected');
@@ -828,10 +830,11 @@ function stopEvent() {
 
 function removePaddingBody() {
 	$('body').css('padding', '0px !important');
+	$('#area-modal').removeClass('flex-centered');
 }
 
 function searchRadio() {
-
+	
 	$zip = $('#zip-code').val();
 	if ($zip == "") {
 		$('#zip-code').css('border', '4px solid red');
@@ -845,6 +848,7 @@ function searchRadio() {
 function change_area_information() {
 	console.log("$('.option-area.selected').data('id')");
 	console.log($('.option-area.selected').data('id'));
+
 	if($('.option-area.selected').data('id') != null)
 		$('#input-radius').val($('.option-area.selected').data('id'));
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
@@ -864,7 +868,8 @@ function change_area_information() {
 				$('.area-information').html('<p class="area">' +
 					'Votre zone d\'achat est : ' + '<strong>' + radius + ' KM</strong> autour du <strong>' + zip_code + '</strong>' +
 					'</p>');
-				$('#area-modal').modal('hide')
+				$('#area-modal').modal('hide');
+				$('#area-modal').removeClass('flex-centered');
 			}
 		})
 		.fail(function(xhr) {
@@ -1028,4 +1033,22 @@ function footerCardFixed(){
 			} 
 		}
 	})
+}
+
+function verify_radio()
+{
+	var zip_code = $('#zip-code').val();
+	var loadurl = $('#zip-code').attr('data-url-verify-radio');
+	$.ajax({
+        type: "POST",
+        url: loadurl,
+        data: "zip_code=" + zip_code
+    }).done(function(data) {
+    	console.log(data.radio);
+    	if(data.radio != null){
+    		$('.search-radio').removeAttr('disabled');
+    	}else{
+    		$('.search-radio').attr('disabled','disabled');
+    	}
+    });
 }
