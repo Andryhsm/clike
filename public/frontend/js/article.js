@@ -23,7 +23,7 @@ function checka(box) {
         .done(function(data) {
             /*console.log(data);*/
             if (data.length > 0) {
-                $('#category_child').html('<option value="0">Onglets</option>')
+                $('#category_child').html('<option value="">Onglets</option>')
                 for (var i = data.length - 1; i >= 0; i--) {
                     var childs = data[i];
                     $('#category_child').append('<option value="' + splitDataId(childs) + '">' + splitDataName(childs) + '</option>')
@@ -175,18 +175,19 @@ function set_stock_type(stock)
 
 $('#add-article').click(function(e) {
     e.preventDefault();
+    $.validator.messages.required = '';
     var form = $('#product');
     $('#attribute_set_').attr('disabled', false);
     form.validate({
-       rules: {
-           product_name: "required"
-       } 
+        rules: {
+           product_name: "required",
+        },
+        ignore: []
     });
     if(form.valid()){
         $('#product').submit();
-        console.log("Notre form est bien valid");
     }else{
-        console.log("Notre form n'est pas valid");
+        toastr.error("Erreur! Valeur non valide détectée!");
     }
 });
 
