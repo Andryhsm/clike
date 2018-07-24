@@ -50,7 +50,7 @@
                                                         @endif
                                                     @endforeach -->
                                                     @foreach($item->getAttributes() as $attribute)
-                                                        <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>
+                                                        <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>&nbsp;&nbsp;&nbsp;
                                                     @endforeach
                                                 <select  class="quantity form-control form-select {!! ($count_item == 0) ? 'mlp--2v5' : '' !!}" name="qty[{!! $item_id !!}]">
                                                     @for($i=1; $i<=10 ; $i++)    
