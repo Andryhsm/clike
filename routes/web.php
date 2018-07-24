@@ -224,7 +224,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
     Route::get('liste-des-souhaits','WishlistController@index')->name('wishlist');
     Route::get('souhait/{id}','WishlistController@store')->name('wishlist-store');
     Route::get('souhait/supprimer/{id}','WishlistController@remove')->name('wishlist-remove');
-    Route::get('souhait/suppression-dans-un-list/{id}','WishlistController@remove_in_list')->name('wishlist-remove-in-list');
+    Route::get('souhait/suppression-de/{id}','WishlistController@remove_in_list')->name('wishlist-remove-in-list');
     Route::get('souhait/findid/{idpu}','WishlistController@findIdWishlist')->name('wishlist-findid');
 
     Route::get('zoom-image-test', 'TestController@imageZoom')->name('zoom-image-test');
