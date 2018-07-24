@@ -19,7 +19,7 @@ class ReCaptcha
             'https://www.google.com/recaptcha/api/siteverify',
             ['form_params'=>
                 [
-                    'secret'=>'6LdYJE8UAAAAAAFd9qLkFl4aTA0UqPGi435rEAvo',
+                    'secret'=>'6Le5eVsUAAAAAJEb0VJZXM1wsJilrQGXpgAOZiWA',
                     'response'=>$value
                  ]
             ]

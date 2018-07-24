@@ -121,6 +121,7 @@ class AuthController extends Controller
 
     public function saveUser(Request $request)
     {
+        dd($request);
         $rules = array(
             'first_name' => 'required',
             'last_name' => 'required',
