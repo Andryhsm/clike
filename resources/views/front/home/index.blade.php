@@ -351,6 +351,7 @@
 <!-- start section avantage -->
 
 @include('front.layout.section-avantage')
-@include('front.modals.store-area.choose-area')
+
+
 <!-- end section avantage -->
 @stop

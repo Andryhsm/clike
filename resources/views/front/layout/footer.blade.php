@@ -252,7 +252,7 @@
 <!--<script src="{!! URL::to('/') !!}/frontend/js/bootstrap-dropdownhover.js"></script>-->
 @yield('additional-script')
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src='https://www.google.com/recaptcha/api.js?hl={!! app('language')->language_code !!}'></script>
+<script src="https://www.google.com/recaptcha/api.js?hl={!! app('language')->language_code !!}"></script>
 <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
     var $section = $('#auto-contain');
