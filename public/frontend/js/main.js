@@ -826,10 +826,11 @@ function stopEvent() {
 
 function removePaddingBody() {
 	$('body').css('padding', '0px !important');
+	$('#area-modal').removeClass('flex-centered');
 }
 
 function searchRadio() {
-
+	
 	$zip = $('#zip-code').val();
 	if ($zip == "") {
 		$('#zip-code').css('border', '4px solid red');
@@ -843,6 +844,7 @@ function searchRadio() {
 function change_area_information() {
 	console.log("$('.option-area.selected').data('id')");
 	console.log($('.option-area.selected').data('id'));
+
 	if($('.option-area.selected').data('id') != null)
 		$('#input-radius').val($('.option-area.selected').data('id'));
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
@@ -862,7 +864,8 @@ function change_area_information() {
 				$('.area-information').html('<p class="area">' +
 					'Votre zone d\'achat est : ' + '<strong>' + radius + ' KM</strong> autour du <strong>' + zip_code + '</strong>' +
 					'</p>');
-				$('#area-modal').modal('hide')
+				$('#area-modal').modal('hide');
+				$('#area-modal').removeClass('flex-centered');
 			}
 		})
 		.fail(function(xhr) {
