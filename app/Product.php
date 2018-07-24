@@ -115,10 +115,11 @@ class Product extends Model
 
 	public function getByLanguageId($language_id)
 	{
-		$product_translation = $this->translation->filter(function ($value, $key) use ($language_id) {
-			return ($value->language_id == $language_id);
-		});
-		return (count($product_translation) == 0)?$this->translation()->first():$product_translation->first();
+		// \Log::debug($this->translation);
+		// $product_translation = $this->translation->filter(function ($value, $key) use ($language_id) {
+		// 	return ($value->language_id == $language_id);
+		// });
+		return $this->translation()->first();
 	}
 
 	public function getDefaultImagePath()
