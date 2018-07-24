@@ -2820,7 +2820,7 @@ button.btn.btn-clickee-info.search-radio.text-uppercase {
 }
 .search-product-modal .btn-search {
     float: left;
-    margin-top: -30px;
+    margin-top: -38px;
     border: none;
 }
 .search-product-modal .btn-search:active, .search-product-modal .btn-search:focus {
@@ -3370,6 +3370,6 @@ a.open-day {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-#user-zone-info {
-  display: none !important;
+div#area-modal {
+    display: none;
 }
