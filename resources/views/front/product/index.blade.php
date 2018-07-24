@@ -483,7 +483,7 @@
                                                 ?>
                                                 <div class="review-login {!! $class_height_review !!}">
                                                 {!! trans("product.review_login_message")!!} <a
-                                                        href="{!! URL::to('login') !!}">{!!
+                                                        href="{!! route('login') !!}">{!!
                                                     trans("product.review_click_here")!!}</a>
                                                 </div>
                                             @endif

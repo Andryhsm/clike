@@ -360,8 +360,8 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
         try {
             $value = \App\Url::where('target_url', $slug)->first();
             if ($value == null) {
-               // return view('front.404');
-               return redirect()->route('crowdfunding');
+                return view('front.404');
+               //return redirect()->route('crowdfunding');
             }
             $app = app();
             //dd($value);
