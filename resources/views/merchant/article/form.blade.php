@@ -111,10 +111,14 @@
                         </div>
                         
                         <?php 
-                            if($product)
+                            if($product){
                                 $class = ($product->discount != null) ? '':'hidden';
                                 $solde_class = ($product->discount != null) ? 'fa-dot-circle-o':'fa-circle-o';
-                            else $class = 'hidden';
+                                }
+                            else {
+                                $class = 'hidden';
+                                $solde_class = 'fa-circle-o';
+                            }
                         ?>
 
                         <div class="row">
