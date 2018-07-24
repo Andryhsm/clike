@@ -618,6 +618,7 @@
 		if ($('.user-zone-info').data('radius') == null && $('.user-zone-info').data('zip-code') == null && current_url == base_url) {   
 			$('#area-modal').modal('show');
 			verify_radio();
+			$('#area-modal').addClass('flex-centered');
 		}	
 	}, 3000);
 
@@ -625,6 +626,7 @@
 	$('.change-your-area').on('click', function() {
 		$('#area-modal').modal('show');
 		verify_radio();
+		$('#area-modal').addClass('flex-centered');
 		//Change value of the select area in modal popup
 		var $new_selected = $('.select-area').find('.selected');
 		var new_val = $new_selected.find('span').html();
@@ -772,6 +774,8 @@
 			dataType: 'json'
 		})
 		.done(function(data) {
+			console.log("All product");
+			console.log(data);
 			var all_products = data.products;
 			var options = {
 				data: all_products,
@@ -784,7 +788,7 @@
 						return "<div class='row content-result-autocompletion' style='padding: 0px 20px;'> " +
 							"<div class='col-xs-2'><img src='" + base_url + 'upload/product/thumb/' + item.images[0].image_name + "' /></div> " +
 							"<div class='col-xs-8'>" +
-							"<span class='brand-name text-uppercase'>" + item.brand.brand_name + "</span><br>" +
+							"<span class='brand-name text-uppercase'>" + item.brand_name + "</span><br>" +
 							"<span>" + value + "</span>" +
 							"</div>" +
 							"</div>";
@@ -826,10 +830,11 @@ function stopEvent() {
 
 function removePaddingBody() {
 	$('body').css('padding', '0px !important');
+	$('#area-modal').removeClass('flex-centered');
 }
 
 function searchRadio() {
-
+	
 	$zip = $('#zip-code').val();
 	if ($zip == "") {
 		$('#zip-code').css('border', '4px solid red');
@@ -843,6 +848,7 @@ function searchRadio() {
 function change_area_information() {
 	console.log("$('.option-area.selected').data('id')");
 	console.log($('.option-area.selected').data('id'));
+
 	if($('.option-area.selected').data('id') != null)
 		$('#input-radius').val($('.option-area.selected').data('id'));
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
@@ -862,7 +868,8 @@ function change_area_information() {
 				$('.area-information').html('<p class="area">' +
 					'Votre zone d\'achat est : ' + '<strong>' + radius + ' KM</strong> autour du <strong>' + zip_code + '</strong>' +
 					'</p>');
-				$('#area-modal').modal('hide')
+				$('#area-modal').modal('hide');
+				$('#area-modal').removeClass('flex-centered');
 			}
 		})
 		.fail(function(xhr) {
