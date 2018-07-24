@@ -26,8 +26,8 @@
     </div>
 @stop
 @section('content')
-
-{!! Form::open(array('url' =>($product) ? route('article.update',['product' => $product->product_id]) : route('article.store'),'id'=>'product','class'=>'product','method' => ($product)? 'PATCH':'POST', 'enctype' => 'multipart/form-data')) !!}
+<?php     $rules = ['images' => 'required', 'original_price' => 'required|numeric', 'discount' => 'required|numeric', 'product_inventory' => 'required|numeric']; ?>
+{!! Form::open(array('url' =>($product) ? route('article.update',['product' => $product->product_id]) : route('article.store'),'id'=>'product','class'=>'product','method' => ($product)? 'PATCH':'POST', 'enctype' => 'multipart/form-data'), $rules) !!}
 
 <div class="row pt-0">
     <div class="article-form col-lg-8">
@@ -83,7 +83,7 @@
                         @if($product)
                             <input type="file" class="input-img" id="0"/>
                         @else
-                            <input type="file" class="input-img" id="1" name="images[1]"/>
+                            <input type="file" class="input-img required" id="1" name="images[1]"/>
                         @endif
                         
                     </div>    

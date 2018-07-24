@@ -1949,6 +1949,7 @@ element.style {
 
 .price {
   font-weight: 600;
+  font-size: 7px;
 }
 .color-box .color {
     display: inline-block;
