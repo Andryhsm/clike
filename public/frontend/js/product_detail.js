@@ -128,7 +128,6 @@ $(document).ready(function() {
                 $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
             },
             success: function(response, status) {
-                console.log('here+++++++++')
                 if (response.success) {
                     var html = '<div class="alert alert-success">' + response.message + '</div>';
                     $("#review-message").html(html);

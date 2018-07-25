@@ -433,7 +433,7 @@
                                                     {!! Form::open(array('url' => 'submit-review','id' =>'review_form','class'=>'')) !!}
 
                                                     <div class="row rating-area">
-                                                        <label class="col-lg-3">Your Rating</label>
+                                                        <label class="col-lg-3">Votre évaluation</label>
                                                         <div class="rating-container col-lg-9 mb-10">
                                                             <input type="radio" name="rating" class="rating" value="1" />
                                                             <input type="radio" name="rating" class="rating" value="2" />

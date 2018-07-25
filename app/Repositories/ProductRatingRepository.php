@@ -47,7 +47,7 @@ class ProductRatingRepository implements ProductRatingRepositoryInterface
         $this->model->rating =  $input['rating'];;
         $this->model->status =  '0';
         $this->model->save();
-        return ["success" => false, "message" => 'Your review has been added  successfully'];
+        return ["success" => false, "message" => 'Votre avis a été ajouté avec succès.'];
 
     }
 
