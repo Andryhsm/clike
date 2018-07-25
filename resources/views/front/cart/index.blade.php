@@ -52,7 +52,7 @@
                                                     @foreach($item->getAttributes() as $attribute)
                                                         <span>{!! $attribute->getName() !!}</span>&nbsp;&nbsp;&nbsp;<span> | </span>&nbsp;&nbsp;&nbsp;
                                                     @endforeach
-                                                <select  class="quantity form-control form-select {!! ($count_item == 0) ? 'mlp--2v5' : '' !!}" name="qty[{!! $item_id !!}]">
+                                                <select data-url="{!! route('checkout_store_quantity_session') !!}"  class="quantity form-control form-select {!! ($count_item == 0) ? 'mlp--2v5' : '' !!}" name="qty[{!! $item_id !!}]">
                                                     @for($i=1; $i<=10 ; $i++)    
                                                         <option value="{!!$i!!}" {!! (Session::has($item_id) && Session::get($item_id) == $i) ? 'selected' : '' !!}>Qté {!! $i !!}</option>
                                                     @endfor
@@ -62,14 +62,14 @@
                                         </div>
                                         <div class="col-lg-1 product-remove pull-right">
                                                 <!--<a href="{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"><i class="fa fa-times"></i></a>-->
-                                                <button type="button" onclick="location.href = '{!! route('cart-remove', ['item_id' => $item_id]) !!}';" class="close">×</button>
+                                                <button data-url="{!! route('cart-remove', ['item_id' => $item_id]) !!}" type="button" class="close cart-remove">×</button>
                     
                                         </div>
                                     </div>
                                     @endforeach
                                     @else
-                                    <tr>
-                                        <td colspan="7">
+                                        <tr>
+                                            <td colspan="7">
                                                {!! trans('cart.no_item') !!}
                                             </td>
                                         </tr>
@@ -124,3 +124,6 @@
     </div>
     @include('front.layout.section-avantage')    
 @stop
+@section('footer-script')
+    <!-- Les script sont dans order.js -->
+@endsection

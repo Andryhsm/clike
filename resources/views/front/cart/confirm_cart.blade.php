@@ -135,7 +135,7 @@
                                         
                                         <div class="col-lg-1 product-remove pull-right">
                                                 <!--<a href="{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"><i class="fa fa-times"></i></a>-->
-                                                <button type="button" onclick='location.href = "{!! route('cart-remove', ['item_id' => $item_id]) !!}"' class="close">×</button>
+                                                <button data-url="{!! route('cart-remove', ['item_id' => $item_id]) !!}" type="button" class="close cart-remove">×</button>
                     
                                         </div>
                                     </div>

@@ -64,20 +64,14 @@ class CartController extends Controller
 
 	public function remove($item_id)
 	{
-
 		try {
 			$this->cart->remove($item_id);
-		} catch (CartException $e) {
+		} catch (\Exception $e) {
 			flash()->error($e->getMessage());
-			return redirect()->back();
+			return response()->json(['response' => 'error']);
 		}
 		$this->cart->refresh($this->product_repository);
-		flash()->success(trans('cart.item_removed_success'));
-		$intended_url = \Session::get('url.intended', '');
-		if (ends_with($intended_url, 'caisse/confirmation')) {
-			return redirect()->route('checkout-confirm-cart');
-		}
-		return redirect()->route('cart');
+		return response()->json(['response' => 'success']);
 	}
 
 	public function update(Request $request)

@@ -103,10 +103,11 @@ class AuthController extends Controller
                     $user_address = $user->address;
                     $user_address->zip = Cookie::get('zip-code');
                     $user_address->save();
+                }  
+                $last_url = preg_replace('#(\?.+)#', '', $intended_url);
+                if (ends_with($last_url, 'caisse/confirmation')) {
+                    return redirect()->route('cart');
                 }
-				if (ends_with($intended_url, 'caisse/confirmation')) {
-					return redirect()->route('cart');
-				}
 				if(\Session::has('ask-product')){
 					$ask_product = \Session::get('ask-product');
 					return redirect()->route('ask-product-search', ['keyword' => $ask_product['keyword']]);

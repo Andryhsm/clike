@@ -59,16 +59,30 @@ $(function() {
 
     }
     calcul_total_price();
+
     $('.cart-product').on('change', '.quantity', function(event) {
-        store_quantity_in_session();
+        store_quantity_in_session($(this).data('url'));
         calcul_total_price();
     });
 
+    $('.cart-remove').click(function(event) {
+        var $this = $(this);
+        var url = $this.data('url');
+        $.get(url, function(data) {
+            if(data.response == "success"){
+                $this.parents('.cart-product').remove();
+                toastr.success("L'article du panier a été retiré avec succès");
+                if($('.cart-product').length == 0){
+                    $('.content-cart-product').append("<tr> <td colspan=\"7\">Vous n'avez aucun article dans votre panier.</td></tr>");
+                }
+            }
+        });            
+    });
 })
 
-function store_quantity_in_session() {
+function store_quantity_in_session(url) {
     $.ajax({
-            url: base_url + '/checkout_store_quantity_session',
+            url: url,
             type: 'GET',
             dataType: 'json',
             data: $('#cart_form').serialize()

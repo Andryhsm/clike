@@ -229,12 +229,11 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
 
     Route::get('zoom-image-test', 'TestController@imageZoom')->name('zoom-image-test');
     Route::get('page-test', 'TestController@styleElement')->name('page-test');
-
+    Route::get('checkout_store_quantity_session', 'CheckoutController@storeQuantitySession')->name('checkout_store_quantity_session');
     Route::group(['middleware' => ['auth']], function () {        
         Route::post('caisse', 'CheckoutController@storeOrderInfo')->name('checkout');
         Route::get('checkout/order-confirmed', 'CheckoutController@confirmOrder')->name('checkout-order-confirmed');
         Route::get('caisse/confirmation', 'CheckoutController@confirmCart')->name('checkout-confirm-cart');
-        Route::get('checkout_store_quantity_session', 'CheckoutController@storeQuantitySession')->name('checkout_store_quantity_session');
         Route::group(['middleware' => ['customer']], function () {
             /*Customer specific routes*/
             Route::get('customer', 'CustomerController@index');
