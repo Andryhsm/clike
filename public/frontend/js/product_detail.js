@@ -340,18 +340,22 @@ $(document).ready(function() {
             $('#product_form').submit();
         }
     });
+  
     $('.product-input-select').change(function(){
-         if($(this).hasClass('invalid')){
+        if($(this).hasClass('invalid')){
             $(this).removeClass('invalid');
             $(this).parent().find('.error').remove();
         }
     });
-  
+
     $('.product-input-select').one('change', function(event) {
         $(this).addClass('first');
         $('.product-input-select').each(function(index, element){
             $(element).unbind();
         })
+        
+        $('.product-input-select').removeClass('invalid');
+        $('.product-input-select').parent().find('.error').remove();
     });
     
     $( "#product_form" ).on( "submit", function( event ) {
@@ -379,7 +383,8 @@ $(document).ready(function() {
     });
 })
 
-function changeAttribute(box, product_id) {    
+function changeAttribute(box, product_id) { 
+       
     var attribute_option_id = $(box).val();
     console.log('****' + attribute_option_id)
     if(isLastChoosed() != 0 || $(box).hasClass('first')) {

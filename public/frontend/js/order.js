@@ -68,15 +68,38 @@ $(function() {
     $('.cart-remove').click(function(event) {
         var $this = $(this);
         var url = $this.data('url');
-        $.get(url, function(data) {
-            if(data.response == "success"){
-                $this.parents('.cart-product').remove();
-                toastr.success("L'article du panier a été retiré avec succès");
+        var attr_src = $this.parents('.cart-product').find('img').attr('src');
+        var img_dropdown_cart = $('.shopping-cart').find('img[src="'+attr_src+'"]');
+        img_dropdown_cart.parents('.cart-list').remove();
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+        })
+        .done(function(data) {
+             if(data.response == "success"){
+                 $this.parents('.cart-product').remove();
+                 var product_count = $('.cart-product').length;
+                 if(product_count < 10)
+                    $('.sell_pannier').html('0'+product_count);
+                 else
+                    $('.sell_pannier').html(product_count);
+
+                 toastr.success("L'article du panier a été retiré avec succès");
                 if($('.cart-product').length == 0){
                     $('.content-cart-product').append("<tr> <td colspan=\"7\">Vous n'avez aucun article dans votre panier.</td></tr>");
+                    $('.shopping-cart').html('<h4 class="ct mt-20 mb--10">VOTRE PANIER EST VIDE!</h4>'+
+                                                '<span class="al">Continuez à shopper</span>  ').addClass('text-center');                 
+                    $('.icon-panier-not-empty').removeClass('icon-panier-not-empty').addClass('icon-panier');
+                    $('.sell_pannier').html('');
                 }
-            }
-        });            
+                calcul_total_price();  
+                restore_total_price_for_dropdown();
+            }   
+        })
+        .fail(function() {
+            console.log("error");
+        });       
     });
 })
 
@@ -108,6 +131,13 @@ function calcul_total_price() {
     total_amount = total_amount.round(2);
     $('.total_original_amount').html(fixed_two_after_dot(total_amount) + '<i class="fa fa-eur"></i>');
 
+}
+
+function restore_total_price_for_dropdown() {
+    var product_count = $('.cart-product').length;
+    var str_product_count = (product_count < 10) ? '0'+product_count : product_count
+    var total_amount = $('.total_original_amount').html();
+    $('.shopping-cart').find('.total-price').html(total_amount + '('+str_product_count+')');
 }
 
 function fixed_two_after_dot(number) {
