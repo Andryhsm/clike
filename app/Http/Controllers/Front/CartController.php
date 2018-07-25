@@ -57,7 +57,7 @@ class CartController extends Controller
 		}
 		
 		//flash()->success(trans('cart.item_added_success'));
-		return response()->json(['success'=> false,'message' => trans('cart.item_added_success')]);
+		return response()->json(['success'=> true,'message' => trans('cart.item_added_success')]);
 		//return redirect()->route('cart');
 	}
 
