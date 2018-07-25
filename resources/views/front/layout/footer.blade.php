@@ -104,7 +104,7 @@
                             <!-- <div class="container"> -->
                                 <div class="row">
                                     
-                                    <a class="fb col-lg-3 col-md-3 col-sm-6 col-xs-12" href="#" data-toggle="tooltip">&nbsp;</a>
+                                    <a class="fb col-lg-3 col-md-3 col-sm-6 col-xs-12" data-toggle="tooltip" href="https://www.facebook.com/clickee.fr/" target="_blank">&nbsp;</a>
                                     <a class="tt col-lg-3 col-md-3 col-sm-6 col-xs-12" href="#" data-toggle="tooltip">&nbsp;</a>
                                     <a class="pt col-lg-3 col-md-3 col-sm-6 col-xs-12" href="#" data-toggle="tooltip">&nbsp;</a>
                                     <a class="gg col-lg-3 col-md-3 col-sm-6 col-xs-12" href="#" data-toggle="tooltip">&nbsp;</a>
