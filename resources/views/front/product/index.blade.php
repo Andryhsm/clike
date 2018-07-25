@@ -115,6 +115,7 @@
                                 <a title="1" class="star"></a>
                             @endfor
                             <span style="font-size: 15px;">&nbsp;&nbsp;{!! (count($reviews) > 0) ? "(".count($reviews). " avis)" : "" !!}</span>
+                            <?php echo $average_rating; ?>
                         </div>
                 </div>
                 <!-- start attribute -->
