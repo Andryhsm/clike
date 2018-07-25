@@ -55,10 +55,9 @@ class CartController extends Controller
 		}*/ catch (\Exception $e) {
 			\Log::info($e->getMessage()." error");
 		}
-		/*\Log::info('ici');
-		\Log::info($request->all());*/
+		
 		//flash()->success(trans('cart.item_added_success'));
-		return response()->json(['success'=> false,'message' => trans('cart.item_added_success')]);
+		return response()->json(['success'=> true,'message' => trans('cart.item_added_success')]);
 		//return redirect()->route('cart');
 	}
 

@@ -93,13 +93,15 @@
                 <div class="product-info">
                     {!! Form::open(['url' => route("cart-add"), 'class' => '','id' =>'product_form']) !!}
                     <div class="mb-30 pl-0 mt-10 mr-r-10 vcenter content-product-attribut col-lg-12 col-md-6 col-sm-5 col-xs-8"> 
-                        <h1>{!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}</h1>
+                        <h1 class="product_brand_name">{!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}</h1>
                     </div>
-                    <h2 class="mr-l-15">{!! $product_translation->product_name !!}</h2>
+                    <h2 class="mr-l-15 product_translation_name">{!! $product_translation->product_name !!}</h2>
                     <div class="price">
                         @if($product->promotional_price != null)
                             <span class="new-price fs-25">{!! format_price($product->promotional_price) !!}</span>
                             <span class="old-price fs-25">&nbsp;<del>{!! format_price($product->original_price) !!}</del></span>
+                            <span class="price-exact hidden">{!! format_price($product->original_price) !!}</span>
+                            <span class="price-exact-price hidden">{!! $product->original_price !!}</span>
                             <span class="old-price percentage ml-10 fs-25">{!! $product->discount !!}% OFF</span>
                         @else
                             <span class="price-exact fs-25">{!! format_price($product->original_price) !!}</span>
@@ -113,9 +115,9 @@
                             @endfor
                             @for($i=4;$i>=$average_rating;$i--)
                                 <a title="1" class="star"></a>
-                            @endfor
-                            <span style="font-size: 19px;">&nbsp;&nbsp;{!! (count($reviews) > 0) ? "(".count($reviews). " avis)" : "" !!}</span>
+                            @endfor                            
                         </div>
+                        <span style="font-size: 19px;">&nbsp;&nbsp;{!! (count($reviews) > 0) ? "(".count($reviews). " avis)" : "" !!}</span>
                 </div>
                 <!-- start attribute -->
                 <?php 
