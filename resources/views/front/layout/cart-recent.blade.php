@@ -21,7 +21,7 @@
                                 <h4 class="mb-10"><a class="cart_item_name" href="#">{!! $item->getName() !!}</a></h4>
                                 <div class="cart-price">
                                     <div class="content-new-price">
-                                        <span class="new-price">{!! format_price($item->getOriginalPrice()) !!}</span>         
+                                        <span class="new-price" data-price="{!! $item->getOriginalPrice() !!}">{!! format_price($item->getOriginalPrice()) !!}</span>         
                                     </div>
                                     <div class="col-lg-1 col-xs-1 text-center">|</div>
                                     <div class="col-lg-7 content-star">
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="pro-del col-lg-1">
-                            <a href="{!! route('cart-remove', ['item_id' => $item_id]) !!}"><i  class="fa fa-times"></i></a>
+                            <a href="#" class="cart-remove cart-dropdown" data-url="{!! route('cart-remove', ['item_id' => $item_id]) !!}"><i  class="fa fa-times"></i></a>
                         </div>
                     </fieldset>
                     @endforeach
