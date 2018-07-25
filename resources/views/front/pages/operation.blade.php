@@ -45,7 +45,7 @@
                         @if(Auth::user()->role_id==2)    
                             <a href="{!! route('merchant-dashboard') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
                         @elseif(Auth::user()->role_id==1)
-                            <a class="btn btn-clickee-info link-to-merchant">EN SAVOIR PLUS</a>
+                            <a class="btn btn-clickee-info link-to-merchant"> EN SAVOIR PLUS </a>
                         @else
                             <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
                         @endif

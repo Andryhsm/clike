@@ -31,7 +31,7 @@
                     @if($is_user_login && Auth::user()->role_id==2)   
                         <a href="{!! route('merchant-dashboard') !!}" class="btn btn-clickee-info">COMMENCER À VENDRE</a>
                     @elseif(Auth::user()->role_id==1)
-                        <a class="btn btn-clickee-info link-to-merchant">COMMENCER À VENDRE</a>    
+                        <a class="btn btn-clickee-info link-to-merchant"> COMMENCER À VENDRE </a>    
                     @else
                         <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info">COMMENCER À VENDRE</a>
                     @endif
@@ -108,7 +108,7 @@
                     @if($is_user_login && Auth::user()->role_id==2)    
                         <a href="{!! route('merchant-dashboard') !!}" class="btn btn-clickee-info">CRÉEZ VOTRE COMPTE</a>
                     @elseif(Auth::user()->role_id==1)
-                        <a class="btn btn-clickee-info link-to-merchant">CRÉEZ VOTRE COMPTE</a>
+                        <a class="btn btn-clickee-info link-to-merchant"> CRÉEZ VOTRE COMPTE </a>
                     @else
                         <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info">CRÉEZ VOTRE COMPTE</a>
                     @endif
