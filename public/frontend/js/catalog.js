@@ -2,6 +2,7 @@ $(".select-tri").on('change', '.filter', function(event) {
     var url = get_filter_url();
     apply_filter(url);  
 });
+
 $(".dropdown > button").click(function() {}, function() {
     var $icon = $(this).find("i");
     if ($icon.hasClass('fa-angle-down')) {
@@ -44,11 +45,12 @@ $(".container-filter").on('click', '.filter', function(e) {
         $icon.removeClass('fa-dot-circle-o').addClass('fa-circle-o');
     }
     var filter_url = get_filter_url();
+    console.log(filter_url);
     apply_filter(filter_url);
 });
 
 //Avoir le resultat du produit par page
-function changeNumberProduct() {
+function changeNumberProduct() {    
     if ($(".product-container").parents('.category-filter').find('.selected').length > 0) {
         $(".product-container").parents('.category-filter').find('a').removeClass('selected');
     }
@@ -138,6 +140,9 @@ function get_filter_url() {
     });
     $(".color-filter").find(".selected").each(function() {
         color.push($.trim($(this).data('id')));
+    });
+    $(".category-filter").find(".selected").each(function() {
+        category.push($.trim($(this).data('id')));
     });
 
     $(".size-filter").find(".selected").each(function() {

@@ -47,7 +47,7 @@
                         <button class="btn btn-secondary dropdown-toggle dropdown-filter" type="button" aria-haspopup="true" aria-expanded="false">
                             <span>TYPE DE PRODUIT</span><i class="fa fa-angle-down pull-rigth"></i>
                         </button>
-                        <div class="dropdown-menu mb-30 sort-filter" id="product_types">
+                        <div class="dropdown-menu mb-30 category-filter" id="product_types">
                             
                         </div>
                     </div>

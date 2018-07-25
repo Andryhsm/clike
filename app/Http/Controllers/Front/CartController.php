@@ -49,10 +49,10 @@ class CartController extends Controller
 			} else {
 				$cart_item = $this->cart_service->update($item_id, $product, $request->all());
 			}
-		} catch (CartException $e) {
+		}/* catch (CartException $e) {
 			flash()->error($e->getMessage());
 			return redirect()->back([400]);
-		} catch (\Exception $e) {
+		}*/ catch (\Exception $e) {
 			\Log::info($e->getMessage()." error");
 		}
 		\Log::info("Enregistrement avec success !");
