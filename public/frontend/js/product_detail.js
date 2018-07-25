@@ -340,12 +340,6 @@ $(document).ready(function() {
             $('#product_form').submit();
         }
     });
-    $('.product-input-select').change(function(){
-         if($(this).hasClass('invalid')){
-            $(this).removeClass('invalid');
-            $(this).parent().find('.error').remove();
-        }
-    });
   
     $('.product-input-select').one('change', function(event) {
         $(this).addClass('first');
@@ -356,7 +350,11 @@ $(document).ready(function() {
     
 })
 
-function changeAttribute(box, product_id) {    
+function changeAttribute(box, product_id) { 
+    if($(box).hasClass('invalid')){
+        $(box).removeClass('invalid');
+        $(box).parent().find('.error').remove();
+    }   
     var attribute_option_id = $(box).val();
     console.log('****' + attribute_option_id)
     if(isLastChoosed() != 0 || $(box).hasClass('first')) {
