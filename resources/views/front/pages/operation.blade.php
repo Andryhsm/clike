@@ -42,7 +42,13 @@
                     vous permettra de vous adapter au nouveaux
                     modes de consommations de vos clients.</p>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pb-20">
-                        <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
+                        @if(Auth::user()->role_id==2)    
+                            <a href="{!! route('merchant-dashboard') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
+                        @elseif(Auth::user()->role_id==1)
+                            <a class="btn btn-clickee-info link-to-merchant">EN SAVOIR PLUS</a>
+                        @else
+                            <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info">EN SAVOIR PLUS</a>
+                        @endif
                     </div>
                 </div>
             </div>

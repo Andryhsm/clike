@@ -518,6 +518,10 @@
 		}
 	})
 
+	$(".link-to-merchant").click(function(){
+		toastr.error("Vous devez vous deconnecter");
+	});
+
 	/*---------------------------------------------
 	Image-animation-hover
 	---------------------------------------------*/
