@@ -394,7 +394,7 @@ $(document).ready(function() {
                 html_data.find('.cart-img img').attr('src',img_src);
                 html_data.find('.cart_brand_name').html(brand_name);
                 html_data.find('.cart_item_name').html(product_name);
-                html_data.find('.content-new-price .new-price').html(price);
+                html_data.find('.content-new-price .new-price').attr('data-price',total_price2).html(price);
                 html_data.find('.content-star').html(star_review);
                 if(cart_count == 0){
                     $(document).find('.icon-panier').removeClass('icon-panier').addClass('icon-panier-not-empty');
