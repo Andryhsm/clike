@@ -1673,11 +1673,17 @@ element.style {
     font-weight: 600;
     width: 245px;
 }
+.shopping-cart .cart-list .cart-info .cart-price .fullStar {
+    width: 15px;
+    height: 15px;
+    margin: 0px 3px 3px 3px;
+    background-position-y: 0px !important;
+}
 .shopping-cart .cart-list .cart-info .cart-price .star {
     width: 15px;
     height: 15px;
     margin: 0px 3px 3px 3px;
-    /*background-position-y: -20px;*/
+    background-position-y: -20px;
 }
 .shopping-cart .cart-list .cart-info .cart-price .content-new-price {
    width: auto;
