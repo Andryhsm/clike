@@ -92,7 +92,7 @@
             <div class="col-lg-3 col-sm-12 col-xs-12 containt-product-info">
                 <div class="product-info">
                     {!! Form::open(['url' => route("cart-add"), 'class' => '','id' =>'product_form']) !!}
-                    <div class="mb-30 mt-10 mr-r-10 vcenter content-product-attribut col-lg-12 col-md-6 col-sm-5 col-xs-8"> 
+                    <div class="mb-30 pl-0 mt-10 mr-r-10 vcenter content-product-attribut col-lg-12 col-md-6 col-sm-5 col-xs-8"> 
                         <h1>{!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}</h1>
                     </div>
                     <h2 class="mr-l-15">{!! $product_translation->product_name !!}</h2>
@@ -114,7 +114,7 @@
                             @for($i=4;$i>=$average_rating;$i--)
                                 <a title="1" class="star"></a>
                             @endfor
-                            <span style="font-size: 15px;">&nbsp;&nbsp;{!! (count($reviews) > 0) ? "(".count($reviews). " avis)" : "" !!}</span>
+                            <span style="font-size: 19px;">&nbsp;&nbsp;{!! (count($reviews) > 0) ? "(".count($reviews). " avis)" : "" !!}</span>
                         </div>
                 </div>
                 <!-- start attribute -->
@@ -600,7 +600,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <span>{!! 
-                                    (isset($related_product->brand)) ? ($related_product->brand->parent_id==null) ? $related_product->brand->brand_name : $related_product->brand->parent->brand_name : "&nbsp;" !!}
+                                    (isset($related_product->brand_name)) ? $related_product->brand_name : "&nbsp;" !!}
                                     </span>
                                 </div>
 

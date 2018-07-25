@@ -332,7 +332,7 @@ $(document).ready(function() {
             if($(element).val() == null){
                 if(!$(this).hasClass('invalid')){
                     $(element).addClass('invalid');
-                    $(element).parent().append("<label class='error' style='font-size: 14px; font-weight:500 !important; text-transform: lowercase;'>Veuillez sélectionner s'il vous plait</label>");
+                    $(element).parent().append("<label class='error' style='font-size: 14px; margin-left: 15px; font-weight:500 !important; text-transform: lowercase;'>Veuillez sélectionner s'il vous plait</label>");
                 }
             }
         });
@@ -354,6 +354,29 @@ $(document).ready(function() {
         })
     });
     
+    $( "#product_form" ).on( "submit", function( event ) {
+      event.preventDefault();
+      var load_url = $( "#product_form" ).attr('action');
+
+        $.ajax({
+            type: "POST",
+            url: load_url,
+            data: $( this ).serialize(),
+            beforeSend: function() {
+                $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+            }, 
+            success: function(data)
+            {
+                toastr.success(data.message);
+                $.LoadingOverlay("hide");
+            },
+            error: function(xhr){
+                console.log('Erreur' + xhr.responseText);
+                $.LoadingOverlay("hide");
+            }
+        });
+
+    });
 })
 
 function changeAttribute(box, product_id) {    

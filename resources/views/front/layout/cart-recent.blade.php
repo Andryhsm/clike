@@ -17,7 +17,7 @@
                         </div>
                         <div class="cart-info col-lg-8">
                             <div>
-                                <h4 class="text-uppercase">{!! (isset($item->getProduct()->brand)) ? ($item->getProduct()->brand->parent_id==null) ? $item->getProduct()->brand->brand_name : $item->getProduct()->brand->parent->brand_name : "" !!}</h4>
+                                <h4 class="text-uppercase">{!! (isset($item->getProduct()->brand_name)) ? $item->getProduct()->brand_name : "&nbsp;" !!}</h4>
                                 <h4 class="mb-10"><a href="#">{!! $item->getName() !!}</a></h4>
                                 <div class="cart-price">
                                     <div class="content-new-price">

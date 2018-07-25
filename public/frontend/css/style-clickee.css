@@ -1677,7 +1677,7 @@ element.style {
     width: 15px;
     height: 15px;
     margin: 0px 3px 3px 3px;
-    background-position-y: -20px;
+    /*background-position-y: -20px;*/
 }
 .shopping-cart .cart-list .cart-info .cart-price .content-new-price {
    width: auto;

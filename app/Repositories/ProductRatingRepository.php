@@ -45,7 +45,7 @@ class ProductRatingRepository implements ProductRatingRepositoryInterface
         $this->model->nickname =  $input['user_name'];
         $this->model->review = $input['comment'];
         $this->model->rating =  $input['rating'];;
-        $this->model->status =  '0';
+        $this->model->status =  '1';
         $this->model->save();
         return ["success" => false, "message" => 'Votre avis a été ajouté avec succès.'];
 
