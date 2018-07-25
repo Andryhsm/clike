@@ -190,6 +190,9 @@
 {!! Html::script('frontend/js/jquery-ui.js') !!}
 
 {!! Html::script('frontend/js/search-local-product.js') !!}
+<script type="text/javascript">
+    var cart_count = {!! $cart_count !!};
+</script>
 {!! Html::script('frontend/js/product_detail.js') !!}
 {!! Html::script('frontend/js/jquery.flexslider.js') !!}
 

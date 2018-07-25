@@ -1,5 +1,5 @@
 @if($cart_count > 0)
-    <div class="dropdown-menu cart-total text-right" id="content-cart" style="width: 365px;border: 1px solid #7fa6aa; display: none;">
+<div class="dropdown-menu cart-total text-right" id="content-cart" style="width: 365px;border: 1px solid #7fa6aa; display: none;">
     <ul class="cart-menu">
         <?php
             $nombre = ($cart_count < 10) ? '0'.$cart_count : $cart_count;
@@ -17,8 +17,8 @@
                         </div>
                         <div class="cart-info col-lg-8">
                             <div>
-                                <h4 class="text-uppercase">{!! (isset($item->getProduct()->brand_name)) ? $item->getProduct()->brand_name : "&nbsp;" !!}</h4>
-                                <h4 class="mb-10"><a href="#">{!! $item->getName() !!}</a></h4>
+                                <h4 class="cart_brand_name text-uppercase">{!! (isset($item->getProduct()->brand_name)) ? $item->getProduct()->brand_name : "&nbsp;" !!}</h4>
+                                <h4 class="mb-10"><a class="cart_item_name" href="#">{!! $item->getName() !!}</a></h4>
                                 <div class="cart-price">
                                     <div class="content-new-price">
                                         <span class="new-price">{!! format_price($item->getOriginalPrice()) !!}</span>         
@@ -50,6 +50,8 @@
                     <div class="mini-cart-total mt--10">
                         <span>{!! trans('cart.total') !!}</span>
                         <span class="total-price" style="float: right;">{!! format_price($cart_total) !!} ({!! $nombre !!})</span>
+                        <span class="hidden cart_total_price">{!! $cart_total !!}</span>
+                        <span class="hidden number_item">{!! $nombre !!}</span>
                     </div>
                     <div class="cart-button text-center text-uppercase mb-10">
                         <a class="btn btn-clickee-default" href="{!! route('cart') !!}" title="Cart">VOIR PANIER</a>
@@ -68,4 +70,52 @@
     </div>
 </div>
 
+<div class="dropdown-menu cart-total text-right hidden" id="content-cart" style="width: 365px;border: 1px solid #7fa6aa; display: none;">
+    <ul class="cart-menu">
+        <?php
+            $nombre = ($cart_count < 10) ? '0'.$cart_count : $cart_count;
+        ?> 
+        <li>        
+            <div class="shopping-cart">
+                <div class="content-cart"> 
+                    <fieldset class="cart-list row hidden">
+                        <legend></legend>
+                        <div class="cart-img col-lg-3">
+                            <a href="#" title=""><img src="" alt=""/></a>
+                        </div>
+                        <div class="cart-info col-lg-8">
+                            <div>
+                                <h4 class="cart_brand_name text-uppercase"></h4>
+                                <h4 class="mb-10"><a class="cart_item_name" href="#"></a></h4>
+                                <div class="cart-price">
+                                    <div class="content-new-price">
+                                        <span class="new-price"></span>         
+                                    </div>
+                                    <div class="col-lg-1 col-xs-1 text-center">|</div>
+                                    <div class="col-lg-7 content-star">
+                                          
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-del col-lg-1">
+                            <a href=""><i  class="fa fa-times"></i></a>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="footer-cart">
+                    <div class="mini-cart-total mt--10">
+                        <span>{!! trans('cart.total') !!}</span>
+                        <span class="total-price" style="float: right;"></span>
+                        <span class="hidden cart_total_price">{!! $cart_total !!}</span>
+                        <span class="hidden number_item">{!! $nombre !!}</span>
+                    </div>
+                    <div class="cart-button text-center text-uppercase mb-10">
+                        <a class="btn btn-clickee-default" href="{!! route('cart') !!}" title="Cart">VOIR PANIER</a>
+                    </div>
+                </div>                
+            </div>
+        </li> 
+    </ul>
+</div>
 @endif
