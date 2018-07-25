@@ -39,9 +39,9 @@
                                             ?>
                                       <div class="info-facture mt-40">
                                           <p>{!! ucfirst($current_user->first_name)." ".strtoupper($current_user->last_name) !!}</p>
-                                          <p>{!! $address_current_user->zip !!}</p>
-                                          <p>{!! $address_current_user->city !!}</p>
-                                          <p>{!! $current_user->phone_number !!}</p>
+                                          <p>{!! ($address_current_user->zip != null) ? $address_current_user->zip:'' !!}</p>
+                                          <p>{!! ($address_current_user->city != null) ? $address_current_user->city:''  !!}</p>
+                                          <p>{!! ($current_user->phone_number != null) ? $current_user->phone_number:'' !!}</p>
                                       </div>
                                   </div>    
                                     <div class="cart-product row">
@@ -135,7 +135,7 @@
                                         
                                         <div class="col-lg-1 product-remove pull-right">
                                                 <!--<a href="{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"><i class="fa fa-times"></i></a>-->
-                                                <button type="button" onclick='location.href = "{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"' class="close">×</button>
+                                                <button type="button" onclick='location.href = "{!! route('cart-remove', ['item_id' => $item_id]) !!}"' class="close">×</button>
                     
                                         </div>
                                     </div>
