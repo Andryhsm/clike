@@ -28,7 +28,7 @@
             
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pt-20">
-                    @if(Auth::user()->role_id==2)   
+                    @if($is_user_login && Auth::user()->role_id==2)   
                         <a href="{!! route('merchant-dashboard') !!}" class="btn btn-clickee-info">COMMENCER À VENDRE</a>
                     @elseif(Auth::user()->role_id==1)
                         <a class="btn btn-clickee-info link-to-merchant">COMMENCER À VENDRE</a>    
@@ -105,7 +105,7 @@
             
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pt-20">
-                    @if(Auth::user()->role_id==2)    
+                    @if($is_user_login && Auth::user()->role_id==2)    
                         <a href="{!! route('merchant-dashboard') !!}" class="btn btn-clickee-info">CRÉEZ VOTRE COMPTE</a>
                     @elseif(Auth::user()->role_id==1)
                         <a class="btn btn-clickee-info link-to-merchant">CRÉEZ VOTRE COMPTE</a>
