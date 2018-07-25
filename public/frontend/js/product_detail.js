@@ -341,20 +341,27 @@ $(document).ready(function() {
         }
     });
   
+    $('.product-input-select').change(function(){
+        if($(this).hasClass('invalid')){
+            $(this).removeClass('invalid');
+            $(this).parent().find('.error').remove();
+        }
+    });
+
     $('.product-input-select').one('change', function(event) {
         $(this).addClass('first');
         $('.product-input-select').each(function(index, element){
             $(element).unbind();
         })
+        
+        $('.product-input-select').removeClass('invalid');
+        $('.product-input-select').parent().find('.error').remove();
     });
     
 })
 
 function changeAttribute(box, product_id) { 
-    if($(box).hasClass('invalid')){
-        $(box).removeClass('invalid');
-        $(box).parent().find('.error').remove();
-    }   
+       
     var attribute_option_id = $(box).val();
     console.log('****' + attribute_option_id)
     if(isLastChoosed() != 0 || $(box).hasClass('first')) {
