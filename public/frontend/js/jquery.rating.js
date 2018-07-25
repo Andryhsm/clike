@@ -132,7 +132,7 @@
                 .data('rating').callback(rate, e);
 
             // Extension pour permettre l'évaluation 0
-            if($('.fullStar').length == 1) $(this).toggleClass('one')
+            if($('.fullStar').length == 1) $(this).toggleClass('one');
             if($('.fullStar').length == 1 && !$(this).hasClass('one')) {
                 $(this).removeClass('fullStar');
                 matchInput

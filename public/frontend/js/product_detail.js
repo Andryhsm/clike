@@ -122,18 +122,21 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: base_url + language_code + '/submit-review',
+            url: base_url + '/submit-review',
             data: data,
             beforeSend: function() {
                 $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
             },
             success: function(response, status) {
+                console.log('here+++++++++')
                 if (response.success) {
-                    $("#review-success").addClass('alert alert-success').html(response.message);
-                    $('#comment').val('');
+                    var html = '<div class="alert alert-success">' + response.message + '</div>';
+                    $("#review-message").html(html);
+                    $('#comment').val('');                    
                 }
                 else {
-                    $("#review-error").addClass('alert alert-danger').html(response.message);
+                    var html = '<div class="alert alert-danger">' + response.message + '</div>';
+                    $("#review-message").html(html);
                 }
                  $.LoadingOverlay("hide");
             },

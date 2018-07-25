@@ -52,7 +52,7 @@ class ProductRatingRepository implements ProductRatingRepositoryInterface
     }
 
     public function getReviewById($input){
-        return $this->model->where('product_id',$input['product_id'])->where('user_id',Auth::id())->count();
+        return $this->model->where('product_id',$input['rating_product_id'])->where('user_id',Auth::id())->count();
     }
 
     public function getApprovedReview($product_id)
