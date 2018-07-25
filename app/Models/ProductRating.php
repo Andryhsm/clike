@@ -16,8 +16,8 @@ class ProductRating extends Model
     protected $table = 'product_rating';
     protected $primaryKey = 'product_rating_id';
     public $timestamps = false;
-    const SUCCESS_MESSAGE='Product rating successfully save.';
-    const ALREADY_SUBMIT_REVIEW='You have already submit the review.';
+    const SUCCESS_MESSAGE='Evaluation du produit avec succès.'; // Product rating successfully save.
+    const ALREADY_SUBMIT_REVIEW="Vous avez déjà soumis un avis sur ce produit."; // You have already submit the review.
     /**
      * The attributes that are mass assignable.
      *

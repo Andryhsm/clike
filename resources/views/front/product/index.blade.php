@@ -428,18 +428,18 @@
                                                 </div>
 
                                                 <div class="content-review-form">
-                                                    <div id="review-success" class=""></div>
-                                                    <div id="review-error" class=""></div>
+                                                    <div id="review-message" class=""></div>
+                                                    
                                                     {!! Form::open(array('url' => 'submit-review','id' =>'review_form','class'=>'')) !!}
 
                                                     <div class="row rating-area">
-                                                        <label class="col-lg-3">Your Rating</label>
+                                                        <label class="col-lg-3">Votre évaluation</label>
                                                         <div class="rating-container col-lg-9 mb-10">
-                                                            <input type="radio" name="example" class="rating" value="1" />
-                                                            <input type="radio" name="example" class="rating" value="2" />
-                                                            <input type="radio" name="example" class="rating" value="3" />
-                                                            <input type="radio" name="example" class="rating" value="4" />
-                                                            <input type="radio" name="example" class="rating" value="5" />
+                                                            <input type="radio" name="rating" class="rating" value="1" />
+                                                            <input type="radio" name="rating" class="rating" value="2" />
+                                                            <input type="radio" name="rating" class="rating" value="3" />
+                                                            <input type="radio" name="rating" class="rating" value="4" />
+                                                            <input type="radio" name="rating" class="rating" value="5" />
                                                         </div>
                                                     </div>
                                                     {!! Form::hidden('rating_product_id',$product->product_id, ['class' => 'form-control ','id'=>'url_key','placeholder'=>""]) !!}

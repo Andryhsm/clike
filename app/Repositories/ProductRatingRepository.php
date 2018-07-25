@@ -47,12 +47,12 @@ class ProductRatingRepository implements ProductRatingRepositoryInterface
         $this->model->rating =  $input['rating'];;
         $this->model->status =  '0';
         $this->model->save();
-        return ["success" => false, "message" => 'Your review has been added  successfully'];
+        return ["success" => false, "message" => 'Votre avis a été ajouté avec succès.'];
 
     }
 
     public function getReviewById($input){
-        return $this->model->where('product_id',$input['product_id'])->where('user_id',Auth::id())->count();
+        return $this->model->where('product_id',$input['rating_product_id'])->where('user_id',Auth::id())->count();
     }
 
     public function getApprovedReview($product_id)
