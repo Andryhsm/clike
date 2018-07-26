@@ -46,8 +46,8 @@ return [
         'redirect'      => env('FACEBOOK_URL','https://www.clickee.fr/auth/facebook/callback')
     ],
     'google' => [
-        'client_id' => '497562851263-mr9g20bpoemh7smq6vfhvrssoop5tjbu.apps.googleusercontent.com',
-        'client_secret' => '2Jb69A77PG1UiW14XpDXwgww',
+        'client_id' => '497562851263-fla7fka6hd0juafvmt9ak9gg7b2r5vsg.apps.googleusercontent.com',
+        'client_secret' => '5RsTwVYpKsDmhFFmP-fW1TpM',
         'redirect' => 'https://www.clickee.fr/auth/google/callback'
     ],
 	'stripe' => [
