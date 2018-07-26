@@ -104,7 +104,7 @@
                             <!-- <div class="container"> -->
                                 <div class="row">
                                     
-                                    <a class="fb col-lg-3 col-md-3 col-sm-6 col-xs-12" href="#" data-toggle="tooltip">&nbsp;</a>
+                                    <a class="fb col-lg-3 col-md-3 col-sm-6 col-xs-12" data-toggle="tooltip" href="https://www.facebook.com/clickee.fr/" target="_blank">&nbsp;</a>
                                     <a class="tt col-lg-3 col-md-3 col-sm-6 col-xs-12" href="#" data-toggle="tooltip">&nbsp;</a>
                                     <a class="pt col-lg-3 col-md-3 col-sm-6 col-xs-12" href="#" data-toggle="tooltip">&nbsp;</a>
                                     <a class="gg col-lg-3 col-md-3 col-sm-6 col-xs-12" href="#" data-toggle="tooltip">&nbsp;</a>
@@ -190,7 +190,9 @@
 {!! Html::script('frontend/js/jquery-ui.js') !!}
 
 {!! Html::script('frontend/js/search-local-product.js') !!}
-{!! Html::script('frontend/js/product_detail.js') !!}
+<script type="text/javascript">
+    var cart_count = {!! $cart_count !!};
+</script>
 {!! Html::script('frontend/js/jquery.flexslider.js') !!}
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js"></script>-->
@@ -244,6 +246,7 @@
 
 {!! Html::script('frontend/js/product_search.js') !!}
 {!! Html::script('frontend/js/order.js') !!}
+{!! Html::script('frontend/js/product_detail.js') !!}
 
 {!! Html::script('frontend/js/search-local-product.js') !!}
 {!! Html::script('frontend/js/wishlist.js') !!}

@@ -87,7 +87,7 @@
                             <div class="cart-product-list col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
                                 <div class="content-cart-product">
                                     <div class="cart-title">
-                                        <h2>{!! (count($cart->items()) == 0) ? count($cart->items()).' ARTICLE' : count($cart->items()).' ARTICLES' !!} </h2>
+                                        <h2>{!! (count($cart->items()) < 2) ? count($cart->items()).' ARTICLE' : count($cart->items()).' ARTICLES' !!} </h2>
                                     </div>
                                     @if(count($cart->items())>0)
                                     @foreach($cart->items() as $item_id=>$item)
@@ -135,7 +135,7 @@
                                         
                                         <div class="col-lg-1 product-remove pull-right">
                                                 <!--<a href="{!! url(LaravelLocalization::getCurrentLocale()."/cart/remove/$item_id") !!}"><i class="fa fa-times"></i></a>-->
-                                                <button data-url="{!! route('cart-remove', ['item_id' => $item_id]) !!}" type="button" class="close cart-remove">×</button>
+                                                <button data-url="{!! route('cart-remove', ['item_id' => $item_id]) !!}" type="button" class="close cart-remove confirm-cart">×</button>
                     
                                         </div>
                                     </div>

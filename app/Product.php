@@ -173,7 +173,7 @@ class Product extends Model
 		$attrs = isset($param['attrs']) ? $param['attrs'] : [];	//Input::get('attrs');
 		$attrs = explode_multi(',', $attrs);
 		$color_option_id = isset($param['color']) ? explode(',', $param['color']) : [];  //Input::get('color');
-		$category_id = (!empty($param['category']) ? $param['category']: '');	//(Input::has('category')) ? Input::get('category') : $category;
+		$category_id = isset($param['category']) ? explode(',', $param['category']) : [];	//(Input::has('category')) ? Input::get('category') : $category;
 		$search_parameter = Input::get('q');
 		$discount = isset($param['discount']) ? $param['discount'] : '';	//Input::get('discount');
 		//$store_ids = isset($param['brand']) ? explode(',', $param['brand']) : $store_ids;
@@ -231,7 +231,7 @@ class Product extends Model
 					$query->whereIn('p2.attribute_option_id', $attrs);
 				}
 				if (!empty($category_id)) {
-					$query->where('product_category.category_id', $category_id);
+					$query->whereIn('product_category.category_id', $category_id);
 				}
 				//$query->where('product_translation.language_id', app('language')->language_id);
 				if(!empty($discount)){

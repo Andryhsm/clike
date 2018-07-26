@@ -5,6 +5,7 @@
         <div class="category-url" data-url="{!! route('search', ['q' => '']) !!}"></div>
         <div class="category-index-header">
             <?php 
+                $category_name_title = "TOUT";
                 if(Input::has('category')){
                     $categories_name_selected = [];
                     $selected_category = Input::get('category'); 
@@ -20,11 +21,12 @@
                             echo ($i > 0) ? "&nbsp;&nbsp;&nbsp;&nbsp;<i class='fa fa-angle-right'></i>&nbsp;&nbsp;&nbsp;&nbsp;" : "";
                     }
                     echo "</div>";
+                    $category_name_title = $categories_name_selected[0];
                 }
             ?>
         </div>
-        <div class="category-title text-center">
-            <span>VÊTEMENTS</span>
+        <div class="category-title text-center text-uppercase   ">
+            <span>{!! $category_name_title !!}</span>
         </div>
         <div class="select-tri">
             <div class="container container-filter">
@@ -47,7 +49,7 @@
                         <button class="btn btn-secondary dropdown-toggle dropdown-filter" type="button" aria-haspopup="true" aria-expanded="false">
                             <span>TYPE DE PRODUIT</span><i class="fa fa-angle-down pull-rigth"></i>
                         </button>
-                        <div class="dropdown-menu mb-30 sort-filter" id="product_types">
+                        <div class="dropdown-menu mb-30 category-filter" id="product_types">
                             
                         </div>
                     </div>

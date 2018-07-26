@@ -6,6 +6,7 @@ use App\Cart\Interfaces\CartServiceInterface;
 use App\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 Use Cart;
 
 class CartController extends Controller
@@ -49,16 +50,16 @@ class CartController extends Controller
 			} else {
 				$cart_item = $this->cart_service->update($item_id, $product, $request->all());
 			}
-		} catch (CartException $e) {
+		}/* catch (CartException $e) {
 			flash()->error($e->getMessage());
 			return redirect()->back([400]);
-		} catch (\Exception $e) {
+		}*/ catch (\Exception $e) {
 			\Log::info($e->getMessage()." error");
 		}
-		\Log::info("Enregistrement avec success !");
-		flash()->success(trans('cart.item_added_success'));
-		
-		return redirect()->route('cart');
+		//\Log::info(Session::get('row_id_cart'));
+		//flash()->success(trans('cart.item_added_success'));
+		return response()->json(['success'=> true,'message' => trans('cart.item_added_success'), 'row_id_cart' => Session::get('row_id_cart')]);
+		//return redirect()->route('cart');
 	}
 
 

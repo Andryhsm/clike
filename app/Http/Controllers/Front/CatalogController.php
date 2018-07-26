@@ -90,12 +90,6 @@ class CatalogController extends Controller
                 }
                 
             }
-            /*$brands_param = [];
-            If(Input::has('brand'))
-                $brands_param = explode(',', Input::get('brand'));
-            else
-                $brands_param = $brand_ids;*/
-            //dd($brand_ids);
             if(!empty($store_ids)){
                 $products = $this->product_repository->getByCategory(Input::all(), $store_ids);
                 $all_products = $this->product_repository->getProductByCategory(Input::all(), $store_ids);

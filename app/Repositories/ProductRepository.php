@@ -540,7 +540,7 @@ class ProductRepository implements ProductRepositoryInterface
     {
         $number_per_page = (array_key_exists('nb', $input)) ? $input['nb'] : \App\Product::DEFAULT_NUMBER_PRODUCT_PAGE;
         $order = (array_key_exists('vp', $input)) ? $input['vp'] :  \App\Product::DEFAULT_ORDER;
-
+        
         $product_entities = [
             "images",
             "url",
@@ -556,22 +556,22 @@ class ProductRepository implements ProductRepositoryInterface
                 return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->paginate($number_per_page);
                 break;
             case 'low_price_to_high':
-                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('best_price','asc')->paginate($number_per_page);
+                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('original_price','asc')->paginate($number_per_page);
                 break;
             case 'high_price_to_low':
-                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('best_price','desc')->paginate($number_per_page);
+                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('original_price','desc')->paginate($number_per_page);
                 break;
             case 'best_rating':
                 return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('rating','desc')->paginate($number_per_page);
                 break;
             case 'discount':
-                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderByRaw("(((original_price - best_price) * 100) /original_price) DESC")->paginate($number_per_page);
+                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderByRaw("(((original_price - promotional_price) * 100) /original_price) DESC")->paginate($number_per_page);
                 break;
             case 'brand_a_z':
-                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('order_brand_by','asc')->paginate($number_per_page);
+                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('brand_name','asc')->paginate($number_per_page);
                 break;
             case 'brand_z_a':
-                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('order_brand_by','desc')->paginate($number_per_page);
+                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('brand_name','desc')->paginate($number_per_page);
                 break;
             default:
                 break;

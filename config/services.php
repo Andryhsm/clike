@@ -41,9 +41,9 @@ return [
         'scope'         =>'email'
     ],
     'facebook' => [
-        'client_id'     => env('FACEBOOK_ID', '454775958253469'),
-        'client_secret' => env('FACEBOOK_SECRET', '89377702b8a56fc6acec6772e2d13a4a'),
-        'redirect'      => env('FACEBOOK_URL','https://www.alternateeve.com/auth/facebook/callback')
+        'client_id'     => env('FACEBOOK_ID', '445515659297561'),
+        'client_secret' => env('FACEBOOK_SECRET', '2bed1b6b8bbd91419471fb94f0f6bebc'),
+        'redirect'      => env('FACEBOOK_URL','https://www.clickee.fr/auth/facebook/callback')
     ],
     'google' => [
         'client_id' => '522242092653-8o7qpi17q3cko0ndmlgip2sp9vs5ugtq.apps.googleusercontent.com',
