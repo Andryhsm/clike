@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="pro-del col-lg-1">
-                            <a href="#" class="cart-remove cart-dropdown" data-url="{!! route('cart-remove', ['item_id' => $item_id]) !!}"><i  class="fa fa-times"></i></a>
+                            <a href="#" onclick="delete_cart(this);" class="cart-remove cart-dropdown" data-url="{!! route('cart-remove', ['item_id' => $item_id]) !!}"><i  class="fa fa-times"></i></a>
                         </div>
                     </fieldset>
                     @endforeach
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="pro-del col-lg-1">
-                            <a href=""><i  class="fa fa-times"></i></a>
+                            <a class="cart-remove cart-dropdown" onclick="delete_cart(this);"><i  class="fa fa-times"></i></a>
                         </div>
                     </fieldset>
                 </div>

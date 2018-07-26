@@ -388,7 +388,7 @@ $(document).ready(function() {
             success: function(data)
             {
                 toastr.success(data.message);
-
+                var url_del = base_url+'panier/suppression/'+data.row_id_cart;
                 var html_data = $(document).find('.cart-list:first').clone();
                 html_data.removeClass('hidden');
                 html_data.find('.cart-img img').attr('src',img_src);
@@ -396,15 +396,20 @@ $(document).ready(function() {
                 html_data.find('.cart_item_name').html(product_name);
                 html_data.find('.content-new-price .new-price').attr('data-price',total_price2).html(price);
                 html_data.find('.content-star').html(star_review);
-                if(cart_count == 0){
-                    $(document).find('.icon-panier').removeClass('icon-panier').addClass('icon-panier-not-empty');
-                    $(document).find('.cart-none').remove();
-                    $(document).find('#content-cart').removeClass('hidden');
-                }
+                html_data.find('.cart-remove').attr('data-url',url_del);
+
                 $(document).find('.sell_pannier').html(count);
                 $(document).find('.mini-cart-total .total-price').html(res_total);
 
                 html_data.insertAfter('.cart-list:last');
+
+                if(cart_count == 0){
+                    $(document).find('.icon-panier').removeClass('icon-panier').addClass('icon-panier-not-empty');
+                    $(document).find('.cart-none').remove();
+                    $(document).find('#content-cart').removeClass('hidden');
+                    //removeClass if cirst in cart
+                    $(document).find('.cart-list:first').remove();
+                }
 
                 $.LoadingOverlay("hide");
             },

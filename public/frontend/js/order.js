@@ -65,71 +65,71 @@ $(function() {
         calcul_total_price();
     });
 
-    $('.cart-remove').click(function(event) {
+    /*$('.cart-remove').click(function(event) {
         event.preventDefault();
-        var $this = $(this);
-        var url = $this.data('url');
-        var attr_src = $this.parents('.cart-product').find('img').attr('src');
-        var img_dropdown_cart = $('.shopping-cart').find('img[src="'+attr_src+'"]');
-        img_dropdown_cart.parents('.cart-list').remove();
-
-        $.ajax({
-            url: url,
-            type: 'GET',
-        })
-        .done(function(data) {
-             if(data.response == "success"){
-                 $this.parents('.cart-product').remove();
-                 $this.parents('.cart-list').remove();
-                 var product_count = $('.cart-list').length;
-                 if(product_count < 10)
-                    $('.sell_pannier').html('0'+product_count);
-                 else
-                    $('.sell_pannier').html(product_count);
-
-                 toastr.success("L'article du panier a été retiré avec succès");
-                if($('.cart-product').length == 0){
-                    $('.content-cart-product').append("<tr> <td colspan=\"7\">Vous n'avez aucun article dans votre panier.</td></tr>");
-                    // $('.shopping-cart').html('<h4 class="ct mt-20 mb--10">VOTRE PANIER EST VIDE!</h4>'+
-                    //                             '<span class="al">Continuez à shopper</span>  ').addClass('text-center');                 
-                    // $('.icon-panier-not-empty').removeClass('icon-panier-not-empty').addClass('icon-panier');
-                    // $('.sell_pannier').html('');
-                }
-                if($('.cart-list').length == 0){
-                    $('.shopping-cart').html('<h4 class="ct mt-20 mb--10">VOTRE PANIER EST VIDE!</h4>'+
-                                                '<span class="al">Continuez à shopper</span>  ').addClass('text-center');                 
-                    $('.icon-panier-not-empty').removeClass('icon-panier-not-empty').addClass('icon-panier');
-                    $('.sell_pannier').html('');
-                }
-                calcul_total_price();  
-                restore_total_price_for_dropdown();
-                if($this.hasClass('cart-dropdown')){
-                    calcul_total_price_dropdown();
-                }
-                if($this.hasClass('confirm-cart')){
-                    var title = "";
-                    var cart_count = $('.cart-list').length;
-                    if(cart_count < 2)
-                        title = '<h2>'+cart_count+' ARTICLE</h2>';
-                    else
-                        title = '<h2>'+cart_count+' ARTICLES</h2>';
-                    $('.cart-title').html(title);
-                    if(cart_count == 0){
-                        var p = '';
-                            p+=        '<div class="cart-title">';
-                            p+=            '<h2>0 ARTICLE </h2>';
-                            p+=        '</div>';
-                            p+=            'Vous n\'avez aucun article dans votre panier.';
-                        $('.content-cart-product').html(p);
-                    }
-                }
-            }   
-        })
-        .fail(function() {
-            console.log("Erreur lors du suppression du produit dans le panier");
-        });       
-    });
+              
+    });*/
 })
+
+function delete_cart(box) {
+    var $this = $(box);
+    var url = $this.data('url');
+    var attr_src = $this.parents('.cart-product').find('img').attr('src');
+    var img_dropdown_cart = $('.shopping-cart').find('img[src="'+attr_src+'"]');
+    img_dropdown_cart.parents('.cart-list').remove();
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+    })
+    .done(function(data) {
+         if(data.response == "success"){
+             $this.parents('.cart-product').remove();
+             $this.parents('.cart-list').remove();
+             var product_count = $('.cart-list').length;
+             if(product_count < 10)
+                $('.sell_pannier').html('0'+product_count);
+             else
+                $('.sell_pannier').html(product_count);
+
+            toastr.success("L'article du panier a été retiré avec succès");
+            if($('.cart-product').length == 0){
+                $('.content-cart-product').append("<tr> <td colspan=\"7\">Vous n'avez aucun article dans votre panier.</td></tr>");
+            }
+            if($('.cart-list').length == 0){
+                $('.shopping-cart').html('<h4 class="ct mt-20 mb--10">VOTRE PANIER EST VIDE!</h4>'+
+                                            '<span class="al">Continuez à shopper</span>  ').addClass('text-center');                 
+                $('.icon-panier-not-empty').removeClass('icon-panier-not-empty').addClass('icon-panier');
+                $('.sell_pannier').html('');
+            }
+            calcul_total_price();  
+            restore_total_price_for_dropdown();
+            if($this.hasClass('cart-dropdown')){
+                calcul_total_price_dropdown();
+            }
+            if($this.hasClass('confirm-cart')){
+                var title = "";
+                var cart_count = $('.cart-list').length;
+                if(cart_count < 2)
+                    title = '<h2>'+cart_count+' ARTICLE</h2>';
+                else
+                    title = '<h2>'+cart_count+' ARTICLES</h2>';
+                $('.cart-title').html(title);
+                if(cart_count == 0){
+                    var p = '';
+                        p+=        '<div class="cart-title">';
+                        p+=            '<h2>0 ARTICLE </h2>';
+                        p+=        '</div>';
+                        p+=            'Vous n\'avez aucun article dans votre panier.';
+                    $('.content-cart-product').html(p);
+                }
+            }
+        }   
+    })
+    .fail(function() {
+        console.log("Erreur lors du suppression du produit dans le panier");
+    }); 
+}
 
 function store_quantity_in_session(url) {
     $.ajax({
