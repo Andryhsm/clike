@@ -193,7 +193,6 @@
 <script type="text/javascript">
     var cart_count = {!! $cart_count !!};
 </script>
-{!! Html::script('frontend/js/product_detail.js') !!}
 {!! Html::script('frontend/js/jquery.flexslider.js') !!}
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js"></script>-->
@@ -247,6 +246,7 @@
 
 {!! Html::script('frontend/js/product_search.js') !!}
 {!! Html::script('frontend/js/order.js') !!}
+{!! Html::script('frontend/js/product_detail.js') !!}
 
 {!! Html::script('frontend/js/search-local-product.js') !!}
 {!! Html::script('frontend/js/wishlist.js') !!}

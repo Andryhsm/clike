@@ -16,7 +16,7 @@ use Exception;
 use App\StoreConfig;
 use Cache;
 use Hash;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class Cart implements Arrayable
 {
@@ -339,6 +339,8 @@ class Cart implements Arrayable
     public function add(CartItem $item)
     {
         $row_id = $this->addSilently($item);
+        //session pour le row id
+        Session::put('row_id_cart', $row_id);
         $this->fire('added', [$this->item($row_id),
             $this]);
     }
