@@ -3379,21 +3379,19 @@ a.open-day {
 div#area-modal {
     display: none;
 }
-.left_img .close {
-  background: #606061;
-  color: #FFFFFF;
-  line-height: 25px;
+.nav-img-item {
+  position: relative;
+}
+.nav-img-item:hover .close-thik:after {
+  content: '✖'; /* UTF-8 symbol */
+  color: #fff;
+  font: 14px/100% arial, sans-serif;
   position: absolute;
-  right: -12px;
-  text-align: center;
-  top: -10px;
-  width: 24px;
+  right: 5px;
   text-decoration: none;
-  font-weight: bold;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  border-radius: 12px;
-  -moz-box-shadow: 1px 1px 3px #000;
-  -webkit-box-shadow: 1px 1px 3px #000;
-  box-shadow: 1px 1px 3px #000;
+  text-shadow: 0 1px 0 #fff;
+  top: 5px;
+}
+.close-thik {
+  cursor: pointer;
 }

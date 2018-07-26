@@ -1,3 +1,7 @@
+$( document ).ready(function(){
+    if($('.decline').length > 1) $('#remove-decline').removeClass('hidden');
+}) 
+
 
 function checka(box) {
     var id = $(box).attr("id");
@@ -89,13 +93,12 @@ $('#reduction').on('blur',function(){
 });
 
 $(document).on('click', '.add-bouton', function(event) {
-    console.log("row index "+ row_index);
     var input_div = $('#add-img-input');
     var row_count = parseInt($('.input-img:last').attr('id'));
     var row_index = row_count + 1;
-    input_div.append("<input type=\"file\" class=\"input-img\" id=\""+ row_index +"\" name=\"images["+ row_index +"]\" />");
+    input_div.append('<input type="file" class="input-img" id="'+ row_index +'" name="images[]" />');
     $('#' + row_index).trigger('click');
-    load_left_img('.input-img#'+row_index);
+    load_left_img('.input-img#'+row_index, row_index);
 });
 
 $(document).on('click', '.add-img1', function(event) {
@@ -105,7 +108,7 @@ $(document).on('click', '.add-img1', function(event) {
 
 $('.input-img#1').change(function(){
     var center = $('.center-img img');
-    $('.nav-img').append('<img src=""></img>');
+    $('.nav-img').append('<div class="nav-img-item"><img src="" data-file="1"></img><a class="close-thik"></a></div>');
     var navimg = $('.nav-img img');
     $('.add-img1').addClass('hidden');
     $('.add-img2').removeClass('hidden');
@@ -113,11 +116,27 @@ $('.input-img#1').change(function(){
     readURL(this, navimg);
 });
 
-function load_left_img(div){
+$(document).on('click', '.close-thik', function(event) {
+    $(this).closest('.nav-img-item').remove();
+    if($(this).siblings('img').attr('data-image-id')) {
+        var id = $(this).siblings('img').attr('data-image-id');
+        console.log(id + '***')
+        console.log('++++' + id);
+        var values = $('#remove_img').val();
+        if($('#remove_img').val() == '') $('#remove_img').val(values + id);
+        else $('#remove_img').val(values + ',' + id);
+    }
+    else{
+        var file = $(this).siblings('img').attr('data-file');
+        $('#' + file).remove();
+    }
+});
+
+function load_left_img(div, row_index){
     $(div).change(function() {
         var center = $('.center-img img');
-        $('.nav-img').append('<img src=""></img>');
-        var navimg = $('.nav-img img:last-child');
+        $('.nav-img').append('<div class="nav-img-item"><img src="" data-file="' + row_index + '"></img><a class="close-thik"></a></div>');
+        var navimg = $('.nav-img div:last-child img');
         readURL(this, center);
         readURL(this, navimg);
     });
@@ -163,7 +182,27 @@ $('#add-decline').click(function(){
     html_data.find('.product_stock_attribute_option_id').attr('value','').attr('name','product_stock_attribute_option_id['+ row_count +'][]');
     html_data.attr('data-count', row_count + 1);
     html_data.insertAfter('.decline:last');
+    
+    if($('.decline').length > 1) $('#remove-decline').removeClass('hidden');
 })
+
+$(document).on('click', '#remove-decline', function(event) {
+   $('.decline:last').remove();
+   if($('.decline').length == 1) $('#remove-decline').addClass('hidden');
+
+   if($('.decline:last').find('.product_stock_attribute_option_id').val()) {
+        var product_stock_id = $('.decline:last').find('.product_stock_id').val();
+        var product_stock_attribute_option_id = $('.decline:last').find('.product_stock_attribute_option_id').val();
+
+        var product_stock_attribute_option_id_val = $('#remove_attribute_option').val();
+        if($('#remove_attribute_option').val() == '') $('#remove_attribute_option').val(product_stock_attribute_option_id);
+        else $('#remove_attribute_option').val(product_stock_attribute_option_id_val + ',' + product_stock_attribute_option_id);
+    }
+    else{
+        var file = $(this).siblings('img').attr('data-file');
+        $('#' + file).remove();
+    }
+});
 
 function set_stock_type(stock)
 {

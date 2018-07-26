@@ -61,13 +61,16 @@
                             <div class="nav-img">
                                 @if($product)
                                     @foreach($product->images as $image)
-                                        <img src="{!! URL::to('/') !!}/upload/product/{!! $image->image_name !!}" alt='{!! $image->image_name !!}'></img>
+                                        <div class="nav-img-item">
+                                            <img src="{!! URL::to('/') !!}/upload/product/{!! $image->image_name !!}" alt='{!! $image->image_name !!}' data-image-id="{!! $image->product_image_id !!}"></img>
+                                            <a class="close-thik"></a>
+                                        </div>
                                     @endforeach
                                 @endif
                             </div>
                             <div class="center-img">
-                                @if($product)
-                                    <img src="{!! URL::to('/') !!}/upload/product/{!! $product->images->first()->image_name !!}" alt='{!! $product->images->first()->image_name !!}'></img>
+                                @if($product)                                    
+                                    <img src="{!! URL::to('/') !!}/upload/product/{!! $product->images->first()->image_name !!}" alt='{!! $product->images->first()->image_name !!}'></img>                                
                                 @else
                                     <img class="" src=""></img>
                                 @endif
@@ -82,8 +85,9 @@
                     <div id="add-img-input" class="hidden">
                         @if($product)
                             <input type="file" class="input-img" id="0"/>
+                            <input type="text" name="remove_img" id="remove_img" autocomplete="off"/>
                         @else
-                            <input type="file" class="input-img required" id="1" name="images[1]"/>
+                            <input type="file" class="input-img required" id="1" name="images[]"/>
                         @endif
                         
                     </div>    
@@ -169,7 +173,9 @@
                     
                     <div class="stock-management">
                         <p class="title"><bold>Gestion des stock</bold></p>
-                        
+                        <?php 
+                            //dd($attribute_set->attributes);
+                        ?>
                         @if($product) 
                             @foreach($product->stocks as $key=>$stock)
                                 <div class="decline" data-count="{!! $key + 1 !!}">
@@ -180,17 +186,20 @@
                                             foreach($stock->options as $key1=>$option){
                                                 $stock_option_ids[] = $option->attribute_option_id;
                                             }
-                                            /*dd($stock->options[0]->product_stock_attribute_option_id);*/
                                         ?>
                                         @if($attribute_set)
+                                            
                                             @foreach($attribute_set->attributes as $key1=>$attribute)
                                                 <div class="form-group">
+                                                    <?php 
+                                                        //dd($stock->options);
+                                                    ?>
                                                     {!! Form::label('attribute_name', $attribute->french->attribute_name, ['class' => 'control-label']) !!}
                                                     <div class="">
                                                         <input type="text" name="attribute_id[{!! $key !!}][]" class="hidden attribute_id" value="{!! $attribute->attribute_id !!}" />
                                                         
                                                         <input type="text" name="product_stock_attribute_option_id[{!! $key !!}][]" class="hidden product_stock_attribute_option_id" value="{!! $stock->options[$key1]->product_stock_attribute_option_id !!}" />
-                                                        
+                                                
                                                             <select class="form-control attribute_option"
                                                                     name="attributes[{!! $key !!}][]"
                                                                     data-placeholder="Select option" style="width: 100%;">
@@ -200,13 +209,12 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        @endif
-                                        
+                                            @endforeach                                            
+                                        @endif                                        
                                         
                                     </div>
                                     
-                                    <div class="form-group">
+                                    <div class="form-group">                                       
                                         <label for="product_inventory">Inventaire</label>
                                         <input type="text" name="product_inventory[]" class="product_inventory form-control required" value="{!! $stock->product_count !!}" placeholder="Inventaire">
                                     </div>
@@ -253,10 +261,11 @@
                                 </div>
                             </div>
                         @endif
-                        
+                        <input type="text" id="remove_attribute_option" class="hidden" name="remove_attribute_option" autocomplete="off">
                     </div>
                     <div class="text-center">
                         <a class="btn btn-merchant-filled" id="add-decline">Ajouter déclinaison</a>
+                        <a class="btn btn-merchant-filled hidden" id="remove-decline">Supprimer déclinaison</a>
                     </div>
                 </div>
             </div>
@@ -302,6 +311,7 @@
                             @if($product)
                                 @foreach($category_childs as $child)
                                     <?php 
+                                        //dd($product->categories[1]->category_id);
                                         $attr_selected = ($product->categories[1]->category_id == $child->category_id) ? "selected='selected'" : '';
                                     ?>
                                     <option value="{!! $child->category_id !!}" {!! $attr_selected !!}> {!! $child->getByLanguage(2)->category_name !!} </option> 
