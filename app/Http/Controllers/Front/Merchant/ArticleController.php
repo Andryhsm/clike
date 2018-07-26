@@ -175,8 +175,7 @@ class ArticleController extends Controller
         $thumb_path = public_path(Product::PRODUCT_IMAGE_PATH.'thumb/'.$productImage->image_name);
         if (file_exists($path) && file_exists($thumb_path)) {
            unlink($thumb_path);           
-           $resp = unlink($path);
-           if($resp) dd('ok');
+           unlink($path);
         }
     }
 

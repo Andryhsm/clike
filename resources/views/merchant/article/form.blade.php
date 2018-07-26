@@ -84,7 +84,7 @@
                     <!--input image file-->    
                     <div id="add-img-input" class="hidden">
                         @if($product)
-                            <input type="file" class="input-img" id="0"/>
+                            <input type="file" class="input-img" id="1"/>
                             <input type="text" name="remove_img" id="remove_img" autocomplete="off"/>
                         @else
                             <input type="file" class="input-img required" id="1" name="images[]"/>
