@@ -133,8 +133,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function saveUserBySocialMedia($input, $provider)
     {
-        dd(Session::get('role_user'));
-        $this->model->role_id = Session::get('role_user');
+        $this->model->role_id = 1;
         $this->model->first_name = (!empty($input['first_name']))?$input['first_name']:$input['name'];
         $this->model->last_name =  (!empty($input['last_name']))?$input['last_name']:$input['name'];
         $this->model->email = $input['email'];
