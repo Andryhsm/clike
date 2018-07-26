@@ -130,9 +130,10 @@ class ArticleController extends Controller
         
         $category_id = $product->categories->first()->category_id;
         $attribute_set = $this->product_repository->getAttributesBySetId($product->attribute_set_id);
-        
+       // dd($attribute_set->attributes);
         $categories = $this->category_repository->getParentCategories(2);
         $attribute_sets = $this->attribute_set_repository->getAll();
+        //dd($product->stocks);
         $category_childs = $this->category_repository->getChildCategory($category_id);
         
         return view('merchant.article.form',compact('product','categories','attribute_sets','category_childs','attribute_set'));
@@ -156,10 +157,27 @@ class ArticleController extends Controller
                 $product_images[] = $this->uploadImage($image);
             }
         }
+        if($request['remove_img']){
+            $remove_images = explode(',', $request['remove_img']);
+            foreach ($remove_images as $remove_image_id) {
+                $this->deleteUploadedImage($remove_image_id);
+            }
+        }
         $product = $this->product_repository->updateArticle($request->all(),$product_images);
 		$product->load('url');
 		flash()->success(config('message.product.update-success'));
 		return redirect()->route('article.index');
+    }
+
+    public function deleteUploadedImage($id){
+        $productImage = $this->product_repository->getProductImageById($id);
+        $path = public_path(Product::PRODUCT_IMAGE_PATH.$productImage->image_name);
+        $thumb_path = public_path(Product::PRODUCT_IMAGE_PATH.'thumb/'.$productImage->image_name);
+        if (file_exists($path) && file_exists($thumb_path)) {
+           unlink($thumb_path);           
+           $resp = unlink($path);
+           if($resp) dd('ok');
+        }
     }
 
     /**

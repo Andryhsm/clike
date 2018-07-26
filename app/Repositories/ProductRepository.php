@@ -110,6 +110,7 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function updateArticle($input,$product_images)
     {
+
         try {
             //product
             $product_id = $input['product_id'];
@@ -180,7 +181,22 @@ class ProductRepository implements ProductRepositoryInterface
                 $product_image->sort_order = $index + 1;
                 $product_image->save();
             }
+            if(!empty($input['remove_img'])){
+                $remove_images = explode(',', $input['remove_img']);
+                foreach ($remove_images as $remove_image_id) {
+                    ProductImage::destroy($remove_image_id);
+                }
+            }             
             
+            if(!empty($input['remove_attribute_option'])){
+                $attribute_option_ids = explode(',', $input['remove_attribute_option']);
+                foreach ($attribute_option_ids as $attribute_option_id) { 
+                    $ProductStockAttributeOption = ProductStockAttributeOption::find($attribute_option_id);
+                    $ProductStockAttributeOption->stock()->delete();
+                    return $ProductStockAttributeOption->delete();
+                }
+            }
+
             return $this->model;
             
         } catch (\Exception $e) {
@@ -687,6 +703,10 @@ class ProductRepository implements ProductRepositoryInterface
             $product->images()->delete();
         }
         return $this->model->whereIn('product_id', $product_ids)->delete();
+    }
+
+    public function getProductImageById($id){
+        return $productImage = ProductImage::where('product_image_id', $id)->get()->first();
     }
 	
 }

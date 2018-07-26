@@ -46,9 +46,9 @@ return [
         'redirect'      => env('FACEBOOK_URL','https://www.clickee.fr/auth/facebook/callback')
     ],
     'google' => [
-        'client_id' => '522242092653-8o7qpi17q3cko0ndmlgip2sp9vs5ugtq.apps.googleusercontent.com',
-        'client_secret' => 'llDbISXQuOi_ZV_TZx1mZd2h',
-        'redirect' => 'http://www.alternateeve.com/auth/google/callback'
+        'client_id' => '497562851263-fla7fka6hd0juafvmt9ak9gg7b2r5vsg.apps.googleusercontent.com',
+        'client_secret' => '5RsTwVYpKsDmhFFmP-fW1TpM',
+        'redirect' => 'https://www.clickee.fr/auth/google/callback'
     ],
 	'stripe' => [
 	    'model' => App\User::class,

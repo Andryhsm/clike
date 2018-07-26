@@ -435,7 +435,7 @@ function changeAttribute(box, product_id) {
             values[i] = $(element).val();
             i++;            
         }) 
-        
+        console.log(values);
         var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
         $.ajax({
             dataType: 'json',
@@ -451,6 +451,7 @@ function changeAttribute(box, product_id) {
                     var element = $('[data-attribute='+ value.attribute_id +']');
                     var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
                     if(!element.hasClass('first')){ 
+
                         element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
                         element.addClass('has-product-stock-id');
                     }
