@@ -193,7 +193,7 @@ class ProductRepository implements ProductRepositoryInterface
                 foreach ($attribute_option_ids as $attribute_option_id) { 
                     $ProductStockAttributeOption = ProductStockAttributeOption::find($attribute_option_id);
                     $ProductStockAttributeOption->stock()->delete();
-                    return $ProductStockAttributeOption->delete();
+                    $ProductStockAttributeOption->delete();
                 }
             }
 
