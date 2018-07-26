@@ -420,7 +420,6 @@ $(document).ready(function() {
 function changeAttribute(box, product_id) { 
        
     var attribute_option_id = $(box).val();
-    console.log('****' + attribute_option_id)
     if(isLastChoosed() != 0 || $(box).hasClass('first')) {
         var url = $(box).attr('data-route');
         var i = 0; 
@@ -440,12 +439,13 @@ function changeAttribute(box, product_id) {
                 $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
             },
             success: function(response, status) {
+                console.log(response);
                 $('[name="attrs[]"]:not(.first)').html('');                      
                 $.each(response, function(key, value){
                     var element = $('[data-attribute='+ value.attribute_id +']');
                     var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
                     if(!element.hasClass('first')) 
-                        element.append('<option value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
+                        element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
                 })
                  
                 $.LoadingOverlay("hide");            
@@ -464,4 +464,8 @@ function isLastChoosed() {
         if($(element).val() == null) i++;
     })
     return i;
+}
+
+function refresh_product_stock_id() {
+    
 }

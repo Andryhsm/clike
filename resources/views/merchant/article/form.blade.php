@@ -38,7 +38,7 @@
                         <label for="product_name">Nom de l'article</label>
                         <input type="text" name="product_name" class="form-control required" id="product_name"
                                value="{!! ($product) ? $product->translation->product_name : null !!}"
-                               placeholder="Nom de l'article">
+                               placeholder="Nom de l'article">2
                         <input type="text" name="product_id" value="{!! ($product) ? $product->product_id : null !!}" class="hidden"/>
                         <a href="{!! route('get_attribute') !!}" id="get_attributes" class="hidden"></a>
                     </div>
@@ -191,7 +191,7 @@
                                                         
                                                         <input type="text" name="product_stock_attribute_option_id[{!! $key !!}][]" class="hidden product_stock_attribute_option_id" value="{!! $stock->options[$key1]->product_stock_attribute_option_id !!}" />
                                                         
-                                                            <select class="form-control attribute_option"
+                                                        <select class="form-control attribute_option"
                                                                     name="attributes[{!! $key !!}][]"
                                                                     data-placeholder="Select option" style="width: 100%;">
                                                             @foreach($attribute->options as $option)
