@@ -5,6 +5,8 @@
         @foreach($pending_items as $item)
          @if(count($item->itemRequest)>0)
         @foreach($item->itemRequest as $index=>$request)
+
+        @if($item->product != null)
         <div class="ajax-content current_order">
             <div class="order col-lg-12">
                 <div class="order-header">
@@ -78,6 +80,8 @@
                 </div>
             </div>
         </div>
+
+            @endif
         @endforeach
         @else
         <div class="ajax-content">
