@@ -28,21 +28,15 @@ return [
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
     ],
-
-    /*'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
-    ],*/
     'twitter' => [
         'client_id'     => env('TWITTER_ID','nMF6CrRFecJjbXklkIsKm4Xdv  '),
         'client_secret' => env('TWITTER_SECRET','JFgCxlGohhx11vvuBzSIH1Lalte6csxjZLGBcpnYhVWrQdZ6ED'),
-        'redirect'      => env('TWITTER_URL','https://www.alternateeve.com/auth/twitter/callback'),
+        'redirect'      => env('TWITTER_URL','https://www.clickee.fr/auth/twitter/callback'),
         'scope'         =>'email'
     ],
     'facebook' => [
-        'client_id'     => env('FACEBOOK_ID', '445515659297561'),
-        'client_secret' => env('FACEBOOK_SECRET', '2bed1b6b8bbd91419471fb94f0f6bebc'),
+        'client_id'     => env('FACEBOOK_ID'),
+        'client_secret' => env('FACEBOOK_SECRET'),
         'redirect'      => env('FACEBOOK_URL','https://www.clickee.fr/auth/facebook/callback')
     ],
     'google' => [

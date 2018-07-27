@@ -165,7 +165,7 @@ class AuthController extends Controller
         Auth::login($authUser, true);
         flash()->success(config('message.user.success-login'));
         \Session::forget('role_id');
-        return redirect()->route('home');
+        return redirect()->route('customer-commande-en-cours');
     }
 
     public function findOrCreateUser($user, $provider)

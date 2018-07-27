@@ -18,7 +18,7 @@
                 <div class="row">
                 <div class="order-content col-lg-12">
                     <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                        <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
+                        <img src="{!!($item->product != null) ? URL::to('/').'/'.$item->product->getDefaultImagePath() : '' !!}"></img>
                     </div>
                     <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-5">
                         

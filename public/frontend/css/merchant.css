@@ -249,7 +249,9 @@ text {
 }
 #article_list thead tr {
     display: grid;
-    grid-template-columns: 45% 20% 20% 15%;
+    grid-template-columns: 55% 15% 20% 20%;
+    margin-left: 6rem;
+    margin-right: 6rem;
 }
 #article_list tbody {
     margin-left: 6rem;

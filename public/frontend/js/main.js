@@ -30,12 +30,16 @@
         jQuery('.delete-btn').on('click', function (e) {
             var $form = jQuery(this).closest('form');
             e.preventDefault();
-            $('#confirm').modal({backdrop: 'static', keyboard: false})
+            $('#confirm').addClass('flex-centered');
+            $('#confirm').modal({backdrop: 'static', keyboard: false})            	
                 .one('click', '#delete', function () {
                     $form.trigger('submit'); // submit the form
                 });
         });
     }
+    $('#confirm').on('hidden.bs.modal', function () {
+	    $('#confirm').removeClass('flex-centered');
+	});
 	/*----------------------------
 	 TOP Menu Stick
 	------------------------------ */

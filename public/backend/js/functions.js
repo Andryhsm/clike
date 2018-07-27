@@ -14,6 +14,7 @@ jQuery(document).ready(function () {
         jQuery('.delete-btn').on('click', function (e) {
             var $form = jQuery(this).closest('form');
             e.preventDefault();
+            $('#confirm').addClass('flex-centered');
             $('#confirm').modal({backdrop: 'static', keyboard: false})
                 .one('click', '#delete', function () {
                     $form.trigger('submit'); // submit the form
@@ -21,6 +22,10 @@ jQuery(document).ready(function () {
         });
     }
 
+    $('#confirm').on('hidden.bs.modal', function () {
+        $('#confirm').removeClass('flex-centered');
+    });
+    
     if($(".textarea").length > 0){
 
         $('.textarea').each( function () {
