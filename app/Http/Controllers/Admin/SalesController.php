@@ -24,8 +24,7 @@ class SalesController extends Controller
 	{
 		$title = [
 			'1' => 'Ventes en cours',
-			'2' => 'Ventes terminées',
-			'3' => 'Demande spéciale'
+			'5' => 'Ventes terminées'
 		];
 		return view('admin.sales.list', ['title' => $title[$status],'status'=>$status]);
 	}
