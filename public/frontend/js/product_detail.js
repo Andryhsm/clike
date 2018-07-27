@@ -174,8 +174,6 @@ $(document).ready(function() {
                     $("#radius").val($("#distance").val());
                     $("#postal_code").val($("#zip_code").val());
                     $("#zip_code").val('');
-                    // $("#add-to-cart").removeClass('hidden').show();
-                    // $("#check-product, #zip-code-error").hide();
                     $(product_conatainer).find('#buying_label,#buying_area,#product-not-avail').removeClass('hide').addClass('hide');
                     $(product_conatainer).find('#add-cart').removeClass('hide');
                     $(product_conatainer).find('#see_best_price').removeClass('hide');
@@ -328,6 +326,7 @@ $(document).ready(function() {
     }
     
     $('#add-to-cart').click(function(){
+
         $('.product-input-select').each(function(index, element){
             if($(element).val() == null){
                 if(!$(this).hasClass('invalid')){
@@ -336,6 +335,10 @@ $(document).ready(function() {
                 }
             }
         });
+
+        var selected = $('select.has-product-stock-id.product-input-select').find('option:selected');
+        var product_stock_id = selected.data('product_stock_id');
+        $('#product-stock-id').val(product_stock_id);
         if($('.containt-product-info').find('.invalid').length == 0) {
             $('#product_form').submit();
         }
@@ -356,7 +359,6 @@ $(document).ready(function() {
         
         $('.product-input-select').removeClass('invalid');
         $('.product-input-select').parent().find('.error').remove();
-
         // if($(this).hasClass('has-product-stock-id')){
         //     var selected = $(this).find('option:selected');
         //     var product_stock_id = selected.data('product_stock_id');
@@ -396,7 +398,6 @@ $(document).ready(function() {
             success: function(data)
             {
                 toastr.success(data.message);
-
                 var html_data = $(document).find('.cart-list:first').clone();
                 html_data.removeClass('hidden');
                 html_data.find('.cart-img img').attr('src',img_src);
@@ -451,7 +452,6 @@ function changeAttribute(box, product_id) {
                     var element = $('[data-attribute='+ value.attribute_id +']');
                     var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
                     if(!element.hasClass('first')){ 
-
                         element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
                         element.addClass('has-product-stock-id');
                     }

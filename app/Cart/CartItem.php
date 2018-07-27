@@ -34,6 +34,7 @@ class CartItem implements Arrayable
     protected $error_flag;
     protected $categories;
     protected $item_type;
+    protected $product_stock_id;
 // 	protected $radius;
 // 	protected $postal_code;
 	protected $brand;
@@ -85,10 +86,16 @@ class CartItem implements Arrayable
         return $this->categories_name;
     }
 
+    public function getProductStockId()
+    {
+        return $this->product_stock_id;
+    }
+
     public function init(Product $product, $data)
     {
         $this->id                      = $product->product_id;
         $this->quantity                = $data['qty'];
+        $this->product_stock_id        = $data['product_stock_id'];
         $this->parent_row_id = isset($data['parent_row_id']) ? $data['parent_row_id'] : null;
 		$this->brand = $product->brand_id;
 

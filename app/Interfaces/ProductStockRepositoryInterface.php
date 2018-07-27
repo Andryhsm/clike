@@ -14,4 +14,6 @@ interface ProductStockRepositoryInterface
 
     public function getAll();
 
+    public function updateProductCount($id, $count_request);
+
 }
