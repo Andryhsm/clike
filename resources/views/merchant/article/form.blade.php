@@ -38,7 +38,7 @@
                         <label for="product_name">Nom de l'article</label>
                         <input type="text" name="product_name" class="form-control required" id="product_name"
                                value="{!! ($product) ? $product->translation->product_name : null !!}"
-                               placeholder="Nom de l'article">2
+                               placeholder="Nom de l'article">
                         <input type="text" name="product_id" value="{!! ($product) ? $product->product_id : null !!}" class="hidden"/>
                         <a href="{!! route('get_attribute') !!}" id="get_attributes" class="hidden"></a>
                     </div>
@@ -265,7 +265,7 @@
                     </div>
                     <div class="text-center">
                         <a class="btn btn-merchant-filled" id="add-decline">Ajouter déclinaison</a>
-                        <a class="btn btn-merchant-filled hidden" id="remove-decline">Supprimer déclinaison</a>
+                        <a class="btn btn-merchant-filled mt-10 hidden" id="remove-decline">Supprimer déclinaison</a>
                     </div>
                 </div>
             </div>

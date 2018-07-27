@@ -194,6 +194,7 @@
                     <!-- end attribute -->
                     
                         <div class="col-lg-12 col-sm-8 col-md-10 col-xs-10 pb-10 pt-0 p-lr-0 vcenter mt-0 mr-l-20">
+                         <input type="text" class="hidden" value="" id="product-stock-id" name="product_stock_id">
                          @if($attribute_set)
                             @foreach($attribute_set->attributes as $key=>$attribute)
                                 <div class="form-group">
@@ -202,7 +203,7 @@
                                         product-input-select required" tabindex="1" style="color: #42838C!important" onchange="changeAttribute(this, {!! $product->product_id !!})" autocomplete="off">
                                         <option value="default" disabled selected>Veuillez choisir</option>
                                         @foreach($attribute->options as $option)
-                                            @if(in_array($option->attribute_option_id,$attribute_option_ids))
+                                            @if(in_array($option->  attribute_option_id,$attribute_option_ids))
                                                 <option value="{!! $option->attribute_option_id !!}" >{!! $option->french->option_name !!}</option>
                                             @endif
                                         @endforeach

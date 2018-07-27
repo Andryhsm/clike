@@ -35,4 +35,9 @@ class ProductStockRepository implements ProductStockRepositoryInterface
         return $this->model->all();
     }
 
+    public function updateProductCount($id, $count_request) {
+        $product_stock = $this->model->find($id);
+        $product_stock->product_count = $product_stock->product_count - $count_request;
+        $product_stock->save();
+    }
 }

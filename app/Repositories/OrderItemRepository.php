@@ -6,6 +6,7 @@ namespace App\Repositories;
 use App\Interfaces\OrderItemAttributeInterface;
 use App\Interfaces\OrderItemCouponInterface;
 use App\Interfaces\OrderItemRepositoryInterface;
+use App\Interfaces\ProductStockRepositoryInterface;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderStatusHistory;
@@ -18,11 +19,13 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 {
 	protected $order_item_attribute_repository;
 	protected $order_item_coupon_repository;
+	protected $product_stock_repository;
 
-	public function __construct(OrderItemAttributeInterface $order_item_attribute, OrderItemCouponInterface $order_item_coupon)
+	public function __construct(OrderItemAttributeInterface $order_item_attribute, OrderItemCouponInterface $order_item_coupon, ProductStockRepositoryInterface $product_stock_repo)
 	{
 		$this->order_item_attribute_repository = $order_item_attribute;
 		$this->order_item_coupon_repository = $order_item_coupon;
+		$this->product_stock_repository = $product_stock_repo;
 	}
 
 	public function saveItem($cart_item, $order)
@@ -44,6 +47,8 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		$order_item->order_status_id = '1';
 		$order_item->product_url = $cart_item->getProduct()->url;
 		$order_item->order_item_date = Carbon::now();
+		//Update the quantity of the product in the stock
+		$this->product_stock_repository->updateProductCount($cart_item->getProductStockId(), $cart_item->getQuantity());
 		$order->orderItems()->save($order_item);
 		foreach ($cart_item->getAttributes() as $cart_item_attribute) {
 			$this->order_item_attribute_repository->saveAttribute($cart_item_attribute, $order_item);
