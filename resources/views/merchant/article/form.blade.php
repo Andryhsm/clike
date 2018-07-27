@@ -264,13 +264,9 @@
                         <input type="text" id="remove_attribute_option" class="hidden" name="remove_attribute_option" autocomplete="off">
                     </div>
                     <div class="text-center">
-<<<<<<< HEAD
-                        <a class="btn btn-merchant-filled" id="add-decline">Ajouter déclinaison</a>
-                        <a class="btn btn-merchant-filled mt-10 hidden" id="remove-decline">Supprimer déclinaison</a>
-=======
-                        <a class="btn btn-merchant-filled" id="add-decline" style="margin-bottom: 10px;">Ajouter déclinaison</a>
-                        <a class="btn btn-merchant-filled hidden" id="remove-decline" style="margin-bottom: 10px;">Supprimer déclinaison</a>
->>>>>>> 0a58a44bd7df40f8913c98598f4e0ef80902acc4
+
+                        <a class="btn btn-merchant-filled mb-10" id="add-decline">Ajouter déclinaison</a>
+                        <a class="btn btn-merchant-filled hidden mb-10" id="remove-decline">Supprimer déclinaison</a>
                     </div>
                 </div>
             </div>

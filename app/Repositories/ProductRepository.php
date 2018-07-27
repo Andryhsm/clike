@@ -468,11 +468,11 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function getAll()
     {
-        return $this->model->with('french', 'admin', 'tags')->orderBy('product_id', 'desc')->get();
+        return $this->model->with('french', 'admin', 'tags', 'images')->orderBy('product_id', 'desc')->get();
     }
 
     public function getByStore($store_id){
-        return $this->model->with('french', 'admin', 'tags')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
+        return $this->model->with('french', 'admin', 'tags', 'images')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
     }
 
     public function deleteById($product_id)
