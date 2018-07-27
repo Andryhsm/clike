@@ -30,5 +30,7 @@ interface OrderItemRepositoryInterface
 	public function getAllBookedItems();
 
 	public function getBookedItemById($id);
+
+	public function getItemByOrderId($order_id);
 	
 }

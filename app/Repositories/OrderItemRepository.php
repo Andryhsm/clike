@@ -330,4 +330,8 @@ class OrderItemRepository implements OrderItemRepositoryInterface
 		}
 		
 	}
+
+	public function getItemByOrderId($order_id){
+		return OrderItem::where('order_id',$order_id)->get();
+	}
 }
