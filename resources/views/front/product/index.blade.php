@@ -194,7 +194,7 @@
                     <!-- end attribute -->
                     
                         <div class="col-lg-12 col-sm-8 col-md-10 col-xs-10 pb-10 pt-0 p-lr-0 vcenter mt-0 mr-l-20">
-                         <input type="text" class="hidden" value="" id="product-stock-id" name="product_stock_id">
+                         <input type="text" class="hidden" value="" id="product-stock-id" name="product_stock_id">  
                          @if($attribute_set)
                             @foreach($attribute_set->attributes as $key=>$attribute)
                                 <div class="form-group">

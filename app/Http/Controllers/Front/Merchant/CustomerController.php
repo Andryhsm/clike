@@ -42,7 +42,8 @@ class CustomerController extends Controller
     public function create()
     {
         $customer = [];
-        $product_is_active = $this->product_repository->getAll();
+        $store_id = auth()->user()->store[0]->store_id;
+        $product_is_active = $this->product_repository->getByStore($store_id);
         return view('merchant.customer.form', compact('customer','product_is_active'));
     }
 
@@ -96,8 +97,9 @@ class CustomerController extends Controller
             $customer = $this->customer_repository->getCustomerLocalById($id);
         }
 
-        $products = $this->product_repository->getAll();
-        return view('merchant.customer.form')->with('customer', $customer)->with('product_is_active', $products)->with('type_customer', $type_customer);
+        $store_id = auth()->user()->store[0]->store_id;
+        $product_is_active = $this->product_repository->getByStore($store_id);
+        return view('merchant.customer.form')->with('customer', $customer)->with('product_is_active', $product_is_active)->with('type_customer', $type_customer);
     }
 
     /**

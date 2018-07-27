@@ -472,7 +472,7 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     public function getByStore($store_id){
-        return $this->model->with('images','translation','admin', 'tags')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
+        return $this->model->with('french', 'admin', 'tags')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
     }
 
     public function deleteById($product_id)
@@ -496,7 +496,7 @@ class ProductRepository implements ProductRepositoryInterface
 
 	public function getAttributesByProductId($product_id)
 	{
-		return $this->model->with(['attributeValues', 'attributeValues.attribute.translation', 'attributeValues.attribute.options.translation'])->where('product_id', $product_id)->first();
+		return $this->model->with(['attributeValues', 'attributeValues.attribute.translation', 'attributeValues.attribute.options.translation', 'attributeValues.attribute.french'])->where('product_id', $product_id)->first();
 	}
 
 	public function deleteVideoById($product_id)

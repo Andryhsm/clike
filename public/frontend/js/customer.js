@@ -59,11 +59,11 @@ jQuery(document).ready(function() {
 
     });
 
-    $('.select-product-name').change(function(event) {
-        var product_id = $(this).val();
-        var content_range = $(this).data('content-range');
-        get_product_data(product_id, content_range);
-    });
+    // $('.select-product-name').change(function(event) {
+    //     var product_id = $(this).val();
+    //     var content_range = $(this).data('content-range');
+    //     get_product_data(product_id, content_range);
+    // });
     $document.on('change', '.select-parent-category', function(event) {
         /*console.log("Bonjour tous le monde");*/
         var index = $(this).data('content-range');
@@ -204,6 +204,8 @@ function get_product_data(product_id, content_range) {
             var attribute_values = data.attribute.attribute_values;
             var product = data.product;
             var code_promo_arr = data.code_promo_arr;
+            var attributes = data.attribute_set.attributes;
+            clone_select_box(attributes);
 
             for (var i = attribute_values.length - 1; i >= 0; i--) {
                 var attribute = attribute_values[i].attribute;
@@ -255,6 +257,18 @@ function get_product_data(product_id, content_range) {
         .fail(function(xhr, options) {
             console.log(xhr.responseText);
         });
+}
+
+function clone_select_box(attributes) {
+    $('.content-attribute').html('');
+    for (var i = attributes.length - 1; i >= 0; i--) {
+        var attribute = attributes[i];
+        console.log(attribute);
+       // console.log(attribute.french.attribute_name);
+    }
+    var html_data = $(document).find('.select-attribute-to-clone').clone();
+    html_data.removeClass('select-attribute-to-clone').removeClass('hidden');
+    html_data.appendTo('.content-attribute');
 }
 
 function validate_customer_info() {

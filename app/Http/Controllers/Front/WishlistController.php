@@ -109,9 +109,6 @@ class WishlistController extends Controller
 		}
 		$nbr_wishlist = (count_wishlist() < 10) ? '0'.count_wishlist() : count_wishlist();
 		flash()->success(trans('product.wishlist_remove'));
-		if (ends_with($intended_url, 'caisse/confirmation')) {
-					return redirect()->route('cart');
-				}
 		return redirect()->route('wishlist');
 	}
 

@@ -3,6 +3,7 @@
     <section class="ptb-30">
         <div class="container">
             @include('notification')
+
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                 <tr class="fs-20">
@@ -38,10 +39,18 @@
                         </tr>
                      @endif
                  @endforeach
-                </tbody>
+
+                 </tbody>
+                 
                 <tfoot>
                 </tfoot>
             </table>
+
+            @if(count($products) == 0)
+               <div>
+                <h3 class="text-center" style="margin: 50px 0">Vous n'avez aucun liste de souhait</h3>
+               </div>
+            @endif
         </div>
     </section>
 @stop

@@ -128,6 +128,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-xs-12 content-attribute">
+
+                    </div>
+                </div>
+                <div class="row">
                     <div class="product_price hidden">  
                         <input type="text" name="product_price[1]" id="product_price1" class="input-product-price form-control required" placeholder="price" />
                     </div>
@@ -140,6 +145,13 @@
         </div>
     </div>
 </section>
+<div class="select-attribute-to-clone hidden form-group">
+    <label for="product_size" class="control-label"></label>
+    <select name="attrs[]" data-placeholder="Choose an option…" data-attribute="" data-route="{!! route('get_options') !!}" class="col-md-11 col-sm-10 col-xs-11 
+                                        product-input-select required" tabindex="1" onchange="changeAttribute(this)" autocomplete="off">
+                                        
+    </select>
+</div>
 <input type="text" class="hidden" id="total_ht" name="total_ht"/>
  <input type="text" class="hidden" id="total_ttc" name="total_ttc"/>
 <section>
