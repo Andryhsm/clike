@@ -124,7 +124,7 @@ function changeGender() {
 
 function simulateRadioButton(box) {
     var id = $(box).attr("id");
-    checka(box);
+    //checka(box);
     if (id == "Femme") {
         $('#Homme i').removeClass('fa-dot-circle-o');
         $('#Homme i').addClass('fa-circle-o');

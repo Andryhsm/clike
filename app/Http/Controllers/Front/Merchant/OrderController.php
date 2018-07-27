@@ -12,6 +12,7 @@ use App\Interfaces\OrderItemRequestInterface;
 use App\Interfaces\OrderRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
 use App\Models\Coupon;
+use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderItemCoupon;
 use App\Models\OrderItemRequest;
@@ -204,11 +205,25 @@ class OrderController extends Controller
     
     public function bookingRequest($id)
     {
+        $b = false;
         $item_request = OrderItemRequest::find($id);
         $item_request->is_booked = 1;
         $item_request->booked_date = Carbon::now();
         $item_request->save();
         $this->order_item_repository->updateStatus(OrderItem::ORDER_STATUS_FINISHED, $item_request->orderItem->order_item_id);
+        $order_id = $item_request->orderItem->order_id;
+        $order_data = $this->order_item_repository->getItemByOrderId($order_id);
+        foreach ($order_data as $key => $item) {
+            if($item->order_status_id != 5){
+                $b = true;
+            }
+        }
+        if($b == false){
+            $order = Order::find($order_id);
+            $order->order_status_id = 5;
+            $order->save();
+        }
+
 		flash()->success("Commande terminer avec succées !");
         return \Redirect::back();
     }
