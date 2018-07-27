@@ -1,6 +1,10 @@
 (function($) {
 	"use strict";
-	
+	FB.getLoginStatus(function(response) {
+	  if (response.status === 'connected') {
+	    console.log(response.authResponse.accessToken);
+	  }
+	});
 	$(".remember-me").click(function() {
 		if ($(".remember-me").hasClass("clicked")) {
 			$('#remember-check').attr('checked', false);

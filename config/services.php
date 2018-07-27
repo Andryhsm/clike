@@ -37,7 +37,7 @@ return [
     'twitter' => [
         'client_id'     => env('TWITTER_ID','nMF6CrRFecJjbXklkIsKm4Xdv  '),
         'client_secret' => env('TWITTER_SECRET','JFgCxlGohhx11vvuBzSIH1Lalte6csxjZLGBcpnYhVWrQdZ6ED'),
-        'redirect'      => env('TWITTER_URL','https://www.alternateeve.com/auth/twitter/callback'),
+        'redirect'      => env('TWITTER_URL','https://www.clickee.fr/auth/twitter/callback'),
         'scope'         =>'email'
     ],
     'facebook' => [
