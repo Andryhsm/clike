@@ -68,7 +68,6 @@
                     <table id="article_list" class="article">
                         <thead class="text-uppercase">
                             <tr>
-                                <th></th>
                                 <th>ARTICLE</th>
                                 <th>PRIX</th>
                                 <th>INVENTAIRE</th>
