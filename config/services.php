@@ -35,8 +35,8 @@ return [
         'scope'         =>'email'
     ],
     'facebook' => [
-        'client_id'     => env('FACEBOOK_ID', '445515659297561'),
-        'client_secret' => env('FACEBOOK_SECRET', '2bed1b6b8bbd91419471fb94f0f6bebc'),
+        'client_id'     => env('FACEBOOK_ID'),
+        'client_secret' => env('FACEBOOK_SECRET'),
         'redirect'      => env('FACEBOOK_URL','https://www.clickee.fr/auth/facebook/callback')
     ],
     'google' => [
