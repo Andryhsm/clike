@@ -5,6 +5,8 @@
         @foreach($pending_items as $item)
          @if(count($item->itemRequest)>0)
         @foreach($item->itemRequest as $index=>$request)
+
+        @if($item->product != null)
         <div class="ajax-content current_order">
             <div class="order col-lg-12">
                 <div class="order-header">
@@ -17,7 +19,6 @@
                 </div>
                 <div class="row">
                 <div class="order-content col-lg-12">
-                    @if($item->product != null)
                     <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                     </div>
@@ -35,7 +36,6 @@
                             <div class="title-bold-2">{!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)</div>
                         </div>
                     </div>
-                    @endif
                     <div class="order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         @if($item->order_status_id == 3)
                             <div>
@@ -80,6 +80,8 @@
                 </div>
             </div>
         </div>
+
+            @endif
         @endforeach
         @else
         <div class="ajax-content">
