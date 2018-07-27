@@ -28,12 +28,6 @@ return [
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
     ],
-
-    /*'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
-    ],*/
     'twitter' => [
         'client_id'     => env('TWITTER_ID','nMF6CrRFecJjbXklkIsKm4Xdv  '),
         'client_secret' => env('TWITTER_SECRET','JFgCxlGohhx11vvuBzSIH1Lalte6csxjZLGBcpnYhVWrQdZ6ED'),
