@@ -17,8 +17,9 @@
                 </div>
                 <div class="row">
                 <div class="order-content col-lg-12">
+                    @if($item->product != null)
                     <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                        <img src="{!!($item->product != null) ? URL::to('/').'/'.$item->product->getDefaultImagePath() : '' !!}"></img>
+                        <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                     </div>
                     <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-5">
                         
@@ -34,6 +35,7 @@
                             <div class="title-bold-2">{!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)</div>
                         </div>
                     </div>
+                    @endif
                     <div class="order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         @if($item->order_status_id == 3)
                             <div>
