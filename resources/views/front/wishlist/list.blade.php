@@ -48,7 +48,7 @@
 
             @if(count($products) == 0)
                <div>
-                <h3 class="text-center" style="margin: 50px 0">Vous n'avez aucun liste de souhait</h3>
+                <h3 class="text-center" style="margin: 50px 0">Votre liste de souhait est vide</h3>
                </div>
             @endif
         </div>
