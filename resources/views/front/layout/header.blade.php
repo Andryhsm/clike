@@ -27,7 +27,7 @@
                     </div>
                 </a>
             </div>
-            <a href="#" class="find-your-shop">
+            <a href="#" class="find-your-shop hidden">
                 <span class="icon-shop"></span>Retrouver nos boutiques
             </a>   
         </div>

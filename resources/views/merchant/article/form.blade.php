@@ -38,7 +38,7 @@
                         <label for="product_name">Nom de l'article</label>
                         <input type="text" name="product_name" class="form-control required" id="product_name"
                                value="{!! ($product) ? $product->translation->product_name : null !!}"
-                               placeholder="Nom de l'article">2
+                               placeholder="Nom de l'article">
                         <input type="text" name="product_id" value="{!! ($product) ? $product->product_id : null !!}" class="hidden"/>
                         <a href="{!! route('get_attribute') !!}" id="get_attributes" class="hidden"></a>
                     </div>
@@ -84,7 +84,7 @@
                     <!--input image file-->    
                     <div id="add-img-input" class="hidden">
                         @if($product)
-                            <input type="file" class="input-img" id="0"/>
+                            <input type="file" class="input-img" id="1"/>
                             <input type="text" name="remove_img" id="remove_img" autocomplete="off"/>
                         @else
                             <input type="file" class="input-img required" id="1" name="images[]"/>
@@ -264,8 +264,8 @@
                         <input type="text" id="remove_attribute_option" class="hidden" name="remove_attribute_option" autocomplete="off">
                     </div>
                     <div class="text-center">
-                        <a class="btn btn-merchant-filled" id="add-decline">Ajouter déclinaison</a>
-                        <a class="btn btn-merchant-filled hidden" id="remove-decline">Supprimer déclinaison</a>
+                        <a class="btn btn-merchant-filled" id="add-decline" style="margin-bottom: 10px;">Ajouter déclinaison</a>
+                        <a class="btn btn-merchant-filled hidden" id="remove-decline" style="margin-bottom: 10px;">Supprimer déclinaison</a>
                     </div>
                 </div>
             </div>

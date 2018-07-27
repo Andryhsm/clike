@@ -130,6 +130,17 @@ $(document).on('click', '.close-thik', function(event) {
         var file = $(this).siblings('img').attr('data-file');
         $('#' + file).remove();
     }
+    var img_src = $('.nav-img-item:first img').attr('src');
+    var src = '';
+    if(img_src != null) {
+        src = img_src;
+        $('.center-img img').attr('src', src);
+    }
+    else {
+        console.log('XXXXXXXXXXXXXXXXXXXXXXX')
+        $('.add-img1').removeClass('hidden');
+        $('.add-img2').addClass('hidden');
+    }    
 });
 
 function load_left_img(div, row_index){

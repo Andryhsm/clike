@@ -195,7 +195,6 @@
                     
                         <div class="col-lg-12 col-sm-8 col-md-10 col-xs-10 pb-10 pt-0 p-lr-0 vcenter mt-0 mr-l-20">
                          @if($attribute_set)
-                            <input type="text" name="product-stock-id" id="product-stock-id" value="">
                             @foreach($attribute_set->attributes as $key=>$attribute)
                                 <div class="form-group">
                                     {!! Form::label('attribute_name', $attribute->french->attribute_name, ['class' => 'control-label col-md-11 col-sm-10 col-xs-11']) !!}
