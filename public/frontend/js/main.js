@@ -987,18 +987,26 @@ function aside_fixed() {
 	else {
 		$window.scroll(function() {
 			var window_last_scroll;
-			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
-				$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding);
-				$window_last_scroll = $window.scrollTop() - offset.top + topPadding;
-				console.log("scroll bottom");
+
+			if ($window.scrollTop() > offset.top) {
+				if($window.scrollTop() < content){
+					$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding);
+					$window_last_scroll = $window.scrollTop() - offset.top + topPadding;
+					console.log("scroll bottom");
+					console.log('*****************' + $window_last_scroll)
+				}
+				else {
+					$aside.stop().animate({
+						marginTop: $window_last_scroll
+					});
+				}
 			}
 			else {
 				$aside.stop().animate({
-					marginTop: window_last_scroll 
+					marginTop: 0
 				});
 			}
 		});
-
 	}
 }
 
