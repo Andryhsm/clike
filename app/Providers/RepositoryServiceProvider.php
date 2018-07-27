@@ -32,6 +32,7 @@ use App\Interfaces\SpecialProductRepositoryInterface;
 use App\Interfaces\StoreRepositoryInterface;
 use App\Interfaces\TagRepositoryInterface;
 use App\Interfaces\CustomerRepositoryInterface;
+use App\Interfaces\ProductStockRepositoryInterface;
 use App\Repositories\AttributeRepository;
 use App\Repositories\AttributeSetRepository;
 use app\Repositories\admin\BrandRepository;
@@ -69,6 +70,7 @@ use App\Interfaces\CodePromoRepositoryInterface;
 use App\Repositories\ProductStatusRepository;
 use App\Repositories\CustomerRepository;
 use App\Repositories\CodePromoRepository;
+use App\Repositories\ProductStockRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -153,7 +155,8 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(OrderItemRepositoryInterface::class,function ($app){
 			return new OrderItemRepository(
 				$app->make(OrderItemAttributeInterface::class),
-				$app->make(OrderItemCouponInterface::class)
+				$app->make(OrderItemCouponInterface::class),
+				$app->make(ProductStockRepositoryInterface::class)
 			);
 		});
 		$this->app->bind(OrderItemAttributeInterface::class,function ($app){
@@ -205,6 +208,10 @@ class RepositoryServiceProvider extends ServiceProvider
 
 		$this->app->bind(CodePromoRepositoryInterface::class, function($app){
 			return $app->make(CodePromoRepository::class);
+		});
+
+		$this->app->bind(ProductStockRepositoryInterface::class, function($app){
+			return $app->make(ProductStockRepository::class);
 		});
 	}
 }

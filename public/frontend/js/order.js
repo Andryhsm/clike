@@ -65,10 +65,10 @@ $(function() {
         calcul_total_price();
     });
 
-    /*$('.cart-remove').click(function(event) {
+    $('.cart-remove').click(function(event) {
         event.preventDefault();
-              
-    });*/
+        delete_cart($(this));
+    });
 })
 
 function delete_cart(box) {
