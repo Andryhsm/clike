@@ -8,15 +8,9 @@ function checka(box) {
     
     $('#category_id').val(id);
     
-    /*var last_val = $('#categories_id').val();
-    var new_val = last_val + ',' + $(bloc).attr('id');
-    $('#categories_id').val(new_val);
-    
-    if ($('#' + id + ' i').hasClass('fa-circle-o')) {*/
-        $('.category_parent i').addClass('fa-circle-o').removeClass('fa-dot-circle-o');
-        $('#' + id + ' i').removeClass('fa-circle-o');
-        $('#' + id + ' i').addClass('fa-dot-circle-o');
-    /*} */ 
+    $('.category_parent i').addClass('fa-circle-o').removeClass('fa-dot-circle-o');
+    $('#' + id + ' i').removeClass('fa-circle-o');
+    $('#' + id + ' i').addClass('fa-dot-circle-o');     
     
     $.ajax({
             url: base_url + 'marchand/child-category',
