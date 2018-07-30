@@ -38,7 +38,7 @@
                                             <li class="search-choice"
                                                 id="{!! $products->product_id!!}">
                                                 <span class="search-box-remove">×</span>
-                                                {!! $products->productTranslation->first()->product_name !!}
+                                                {!! ($products->productTranslation->first()!=null)?$products->productTranslation->first()->product_name:'' !!}
                                             </li>
 
                                             <?php }

@@ -15,4 +15,6 @@ interface SpecialProductRepositoryInterface
 
     public function getspecialProducts();
 
+    public function deleteByProductId($id);
+
 }
