@@ -52,7 +52,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <section id="auto-contain" class="col-lg-9 col-md-9">
+                        <section id="auto-contain" class="col-lg-8 col-md-8">
                             <div class="parent" style="overflow: hidden !important;">
                                 <div class="panzoom" id="image_main">
                                     <img class="main-image" src="{!! url($product->getDefaultImagePath()) !!}" alt="{!! $product_translation->product_name !!}" data-zoom-image="{!! url($product->getDefaultImagePath()) !!}" width="600" height="500">
@@ -569,7 +569,7 @@
                     </div>
                 </div>
                 <div class="related-products-active">
-                    @foreach($related_products as $related_product)
+                    @foreach($related_products as $related_product) 
                      <?php $related_product_translation = $related_product->translation; ?>
 
                         <div class="col-lg-12">

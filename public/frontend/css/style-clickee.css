@@ -1818,7 +1818,7 @@ element.style {
 }
 .product-pic-catalog {
     width: 255px;
-    height: 340px;
+    height: 365px;
     font-weight: bold;
 }
 /*category end*/
@@ -2319,7 +2319,7 @@ element.style {
   text-transform: uppercase;
 }
 .main-image {
-    height: 100% !important;
+    /*height: 100% !important;*/
     width: auto !important;
 }
 .main-image:hover {
