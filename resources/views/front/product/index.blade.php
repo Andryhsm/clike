@@ -98,13 +98,13 @@
                     <h2 class="mr-l-15 product_translation_name">{!! $product_translation->product_name !!}</h2>
                     <div class="price mt-30 mb-20">
                         @if($product->promotional_price != null)
-                            <span class="new-price fs-23">{!! format_price($product->promotional_price) !!}</span>
-                            <span class="old-price fs-23">&nbsp;<del>{!! format_price($product->original_price) !!}</del></span>
+                            <span class="new-price fs-20">{!! format_price($product->promotional_price) !!}</span>
+                            <span class="old-price fs-20">&nbsp;<del>{!! format_price($product->original_price) !!}</del></span>
                             <span class="price-exact hidden">{!! format_price($product->original_price) !!}</span>
                             <span class="price-exact-price hidden">{!! $product->original_price !!}</span>
-                            <span class="old-price percentage ml-10 fs-23">{!! $product->discount !!}% OFF</span>
+                            <span class="old-price percentage ml-10 fs-20">{!! $product->discount !!}% OFF</span>
                         @else
-                            <span class="price-exact fs-23">{!! format_price($product->original_price) !!}</span>
+                            <span class="price-exact fs-20">{!! format_price($product->original_price) !!}</span>
                         @endif
                     </div>
                 </div>
