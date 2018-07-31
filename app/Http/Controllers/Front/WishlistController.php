@@ -45,7 +45,7 @@ class WishlistController extends Controller
 			$products_user = [];
 			$num_of_minutes = 60 * 24 * 7 * 4 * 6; 
 			\Log::info("ici1");
-			if(Cookie::has('id_user_browser')){
+			if(Cookie::has('id_user_browser') && isset($all_wishlist_products[Cookie::get('id_user_browser')])){
 				\Log::info("ici2");
 				$id_user = Cookie::get('id_user_browser');
 				$products_user = $all_wishlist_products[$id_user]; 	
