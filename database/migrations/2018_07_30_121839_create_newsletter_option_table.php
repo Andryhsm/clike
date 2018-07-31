@@ -21,7 +21,6 @@ class CreateNewsletterOptionTable extends Migration
                 ->onDelete('cascade');
             $table->string('key')->nullable();
             $table->string('value')->nullable();
-            $table->timestamps();
         });
     }
 
