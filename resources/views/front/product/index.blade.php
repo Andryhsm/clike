@@ -39,7 +39,7 @@
                             <span class="reset"><i class="fa fa-refresh" aria-hidden="true"></i></span>
                         </div>--}}
                      <div class="row">
-                        <div class="image-thumb hidden">
+                        <div class="image-thumb hidden {!! (count($product->images) < 2) ? 'ml-0' '' !!}">
                             <div class="flexslider flexslider-thumb">
                                 <ul class="previews-list slides">
                                     @foreach($product->images as $product_image)
