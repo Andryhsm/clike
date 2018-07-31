@@ -890,9 +890,11 @@ function change_area_information() {
 }
 
 function show_option_radius(element) {
-	console.log("Pop up")
+	
 	var $icon = $(element).find("i");
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
+	console.log("Pop up " + current_url);
+	console.log("Base " + base_url)
 	if(current_url == base_url){
 		if ($icon.hasClass('fa-angle-down')) {
 		//	$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
