@@ -130,6 +130,14 @@ $(document).ready(function() {
             success: function(response, status) {
                 if (response.success) {
                     var html = '<div class="alert alert-success">' + response.message + '</div>';
+                    //console.log(response.average_rating);
+                    $(".stars_review").html('');
+                    for (var i = 1; i <= response.average_rating; i++) {
+                        $(".stars_review").append('<a title="1" class="star fullStar"></a>');
+                    }
+                    for (var i = 4; i >= response.average_rating; i--) {
+                        $(".stars_review").append('<a title="1" class="star"></a>');
+                    }
                     $("#review-message").html(html);
                     $('#comment').val('');                    
                 }

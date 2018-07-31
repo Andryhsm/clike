@@ -1679,6 +1679,10 @@ element.style {
     margin: 0px 3px 3px 3px;
     background-position-y: 0px !important;
 }
+.fullStar {
+    background-position-y: 0px !important;
+}
+
 .shopping-cart .cart-list .cart-info .cart-price .star {
     width: 15px;
     height: 15px;

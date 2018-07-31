@@ -117,7 +117,7 @@
                                                     @endfor
                                                     @for($i=5 ;$i > average_rating($product->product_id);$i--)
                                                         <a title="1" class="star"></a>
-                                                    @endfor
+                                                    @endfor 
                                                 </div>
                                             </div>
                                             <div class="product-quantity">

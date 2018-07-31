@@ -155,7 +155,7 @@
                                 
                                 <div class="form-group">
                                     <label for="promotional_price">Tarif promotionnel</label>
-                                    <input type="text" name="promotional_price" class="form-control" id="promotional_price" value="{!!($product) ? $product->promotional_price: null !!}" placeholder="Tarif promotionnel">
+                                    <input type="text" readonly="true" name="promotional_price" class="form-control" id="promotional_price" value="{!!($product) ? $product->promotional_price: null !!}" placeholder="Tarif promotionnel">
                                 </div>
                             </div>
                         </div>
