@@ -94,6 +94,18 @@
             @if($newsletter_option)
                 <div class="newsletter-item checkbox col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <p>
+                        <a onclick="updateNewsletter(this, 'personal', 'e-mail');" id="exclusive-received-email" class="received-email"><i class="fa {!! ($newsletter_option['personal']->value == 'e-mail') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;E-mail</a>
+                    </p>
+                    <p>
+                        <a onclick="updateNewsletter(this, 'personal', 'sms');" id="exclusive-received-notification" class="received-notification"><i class="fa {!! ($newsletter_option['personal']->value == 'sms') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;SMS</a>
+                    </p>
+                    <p>
+                        <a onclick="updateNewsletter(this, 'personal', 'desactivate');"  id="exclusive-desactivate" class="desactivate"><i class="fa {!! ($newsletter_option['personal']->value == 'desactivate') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;Désactiver</a>
+                    </p>
+                </div>
+            @else
+                <div class="newsletter-item checkbox col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <p>
                         <a onclick="updateNewsletter(this, 'personal', 'e-mail');" id="exclusive-received-email" class="received-email"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;E-mail</a>
                     </p>
                     <p>
@@ -104,7 +116,6 @@
                     </p>
                 </div>
             @else
-
             @endif
         </div>
     </div>
