@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use Input;
 use PDF;
 use App\Models\OrderItemRequest;
+use App\Interfaces\CustomerRepositoryInterface;
 
 class CustomerController extends Controller
 {
@@ -28,13 +29,14 @@ class CustomerController extends Controller
 	protected $order_item_repository;
 	protected $faq_repository;
 
-    public function __construct(UserRepositoryInterface $user_repository,FaqRepositoryInterface $faq_repository, OrderRepositoryInterface $order_repository, StoreRepositoryInterface $store_repository, OrderItemRepositoryInterface $order_item_repo)
+    public function __construct(UserRepositoryInterface $user_repository,FaqRepositoryInterface $faq_repository, OrderRepositoryInterface $order_repository, StoreRepositoryInterface $store_repository, OrderItemRepositoryInterface $order_item_repo, CustomerRepositoryInterface $customer_repository)
     {
         $this->user_repository = $user_repository;
         $this->order_repository = $order_repository;
         $this->store_repository = $store_repository;
 		$this->order_item_repository = $order_item_repo;
 		$this->faq_repository = $faq_repository;
+        $this->customer_repository = $customer_repository;
     }
     public function index(){
         $user_id = Auth::id();
@@ -191,7 +193,18 @@ class CustomerController extends Controller
     }
     
     public function getNewsLetter(){
-        return view('front.customer.newsletters.index');
+        $newsletter_options = $this->customer_repository->getNewsletterOption();
+        $newsletter_option = array();
+        foreach ($newsletter_options as $option) {
+            $newsletter_option[$option->key] = $option;
+        }
+        //dd($newsletter_option);
+        return view('front.customer.newsletters.index', compact('newsletter_option'));
+    }
+
+    public function updateNewsletter(Request $request){
+        $newsletter_option = $this->customer_repository->saveNewsletterOption($request);
+        return response()->json(['key' => $newsletter_option]);
     }
     
     public function getChangePassword(){
