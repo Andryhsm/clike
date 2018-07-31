@@ -151,6 +151,8 @@ jQuery(document).ready(function() {
     });
 
     autocomplete_list_customer();
+
+    
 });
 
 function fixed_two_after_dot(number) {

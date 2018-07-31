@@ -992,8 +992,7 @@ function aside_fixed() {
 				if($window.scrollTop() < content){
 					$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding);
 					$window_last_scroll = $window.scrollTop() - offset.top + topPadding;
-					console.log("scroll bottom");
-					console.log('*****************' + $window_last_scroll)
+					//console.log("scroll bottom");
 				}
 				else {
 					$aside.stop().animate({

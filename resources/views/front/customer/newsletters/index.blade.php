@@ -1,7 +1,9 @@
 @extends('front.customer.layout.master')
 
 @section('content')
+<?php //dd($newsletter_option['news']->value); ?>
 <div class="ajax-content">
+    <a class="hidden newsletter_action" href="{!! route('update-newsletters') !!}"></a>
     <div class="newsletter col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="newsletter-containt row">
             <div class="newsletter-item-img col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -15,15 +17,14 @@
             </div>
             <div class="newsletter-item checkbox col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <p>
-                    <a onclick="checka(this);" id="new-received-email" class="received-email"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;E-mail</a>
+                    <a onclick="updateNewsletter(this, 'news', 'e-mail');" id="new-received-email" class="received-email"><i class="fa {!! ($newsletter_option['news']->value == 'e-mail') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;E-mail</a>
                 </p>
                 <p>
-                    <a onclick="checka(this);" id="new-received-notification" class="received-notification"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;SMS</a>
+                    <a onclick="updateNewsletter(this, 'news', 'sms');" id="new-received-notification" class="received-notification"><i class="fa {!! ($newsletter_option['news']->value == 'sms') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;SMS</a>
                 </p>
                 <p>
-                    <a onclick="checka(this);"  id="new-desactivate" class="desactivate"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Désactiver</a>
-                </p>
-                <input type="text" class="hidden newsletter" name="news">
+                    <a onclick="updateNewsletter(this, 'news', 'desactivate');"  id="new-desactivate" class="desactivate"><i class="fa {!! ($newsletter_option['news']->value == 'desactivate') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;Désactiver</a>
+                </p>               
             </div>
         </div>
     </div>
@@ -40,15 +41,14 @@
             </div>
             <div class="newsletter-item checkbox col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <p>
-                    <a onclick="checka(this);" id="special-received-email" class="received-email"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;E-mail</a>
+                    <a onclick="updateNewsletter(this, 'promo_sold', 'e-mail');" id="special-received-email" class="received-email"><i class="fa {!! ($newsletter_option['promo_sold']->value == 'e-mail') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;E-mail</a>
                 </p>
                 <p>
-                    <a onclick="checka(this);" id="special-received-notification" class="received-notification"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;SMS</a>
+                    <a onclick="updateNewsletter(this, 'promo_sold', 'sms');" id="special-received-notification" class="received-notification"><i class="fa {!! ($newsletter_option['promo_sold']->value == 'sms') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;SMS</a>
                 </p>
                 <p>
-                    <a onclick="checka(this);"  id="special-desactivate" class="desactivate"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Désactiver</a>
+                    <a onclick="updateNewsletter(this, 'promo_sold', 'desactivate');"  id="special-desactivate" class="desactivate"><i class="fa {!! ($newsletter_option['promo_sold']->value == 'desactivate') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;Désactiver</a>
                 </p>
-                <input type="text" class="hidden newsletter" name="promo">
             </div>
         </div>
     </div>
@@ -65,15 +65,14 @@
             </div>
             <div class="newsletter-item checkbox col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <p>
-                    <a onclick="checka(this);" id="exclusive-received-email" class="received-email"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;E-mail</a>
+                    <a onclick="updateNewsletter(this, 'personal', 'e-mail');" id="exclusive-received-email" class="received-email"><i class="fa {!! ($newsletter_option['personal']->value == 'e-mail') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;E-mail</a>
                 </p>
                 <p>
-                    <a onclick="checka(this);" id="exclusive-received-notification" class="received-notification"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;SMS</a>
+                    <a onclick="updateNewsletter(this, 'personal', 'sms');" id="exclusive-received-notification" class="received-notification"><i class="fa {!! ($newsletter_option['personal']->value == 'sms') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;SMS</a>
                 </p>
                 <p>
-                    <a onclick="checka(this);"  id="exclusive-desactivate" class="desactivate"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Désactiver</a>
+                    <a onclick="updateNewsletter(this, 'personal', 'desactivate');"  id="exclusive-desactivate" class="desactivate"><i class="fa {!! ($newsletter_option['personal']->value == 'desactivate') ? 'fa-dot-circle-o' : 'fa-circle-o' !!}"></i>&nbsp;&nbsp;Désactiver</a>
                 </p>
-                <input type="text" class="hidden newsletter" name="exclusive-tailored">
             </div>
         </div>
     </div>

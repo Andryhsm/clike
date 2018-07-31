@@ -20,5 +20,9 @@ interface CustomerRepositoryInterface
 	public function getAllCustomersSystem();
 
 	public function getTotalEncasement($store_id);
+
+	public function getNewsletterOption();
+
+	public function saveNewsletterOption($input);
 	
 }
