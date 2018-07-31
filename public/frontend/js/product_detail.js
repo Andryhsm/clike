@@ -444,7 +444,6 @@ function changeAttribute(box, product_id) {
             values[i] = $(element).val();
             i++;            
         }) 
-        console.log(values);
         var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
         $.ajax({
             dataType: 'json',
@@ -483,3 +482,42 @@ function isLastChoosed() {
     return i;
 }
 
+function change_attribute(box, product_id) { 
+    var attribute_option_id = $(box).val();
+    if(isLastChoosed() != 0 || $(box).hasClass('first')) {
+        var url = $(box).attr('data-route');
+        var i = 0; 
+        var values = [];
+        $('[name="attrs[]"]').each(function(index, element){
+            values[i] = $(element).val();
+            i++;            
+        }) 
+        var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: url,
+            data: data,
+            beforeSend: function() {
+                $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+            },
+            success: function(response, status) {
+                $('[name="attrs[]"]:not(.first)').html('');                      
+                $.each(response, function(key, value){
+                    var element = $('[data-attribute='+ value.attribute_id +']');
+                    var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
+                    if(!element.hasClass('first')){ 
+                        element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
+                        element.addClass('has-product-stock-id');
+                    }
+                })
+                 
+                $.LoadingOverlay("hide");            
+            },
+            error: function(xhr){
+                console.log('Erreur' + xhr.responseText);
+                $.LoadingOverlay("hide");
+            }
+        });
+    }    
+}
