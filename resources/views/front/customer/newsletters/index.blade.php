@@ -115,7 +115,6 @@
                         <a onclick="updateNewsletter(this, 'personal', 'desactivate');"  id="exclusive-desactivate" class="desactivate"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Désactiver</a>
                     </p>
                 </div>
-            @else
             @endif
         </div>
     </div>
