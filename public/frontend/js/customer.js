@@ -156,8 +156,6 @@ jQuery(document).ready(function() {
     });
 
     autocomplete_list_customer();
-
-
     
 });
 

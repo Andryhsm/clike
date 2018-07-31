@@ -247,6 +247,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                 Route::get('customer-bills', 'CustomerController@getCustomerBills')->name('customer-customer-bills');
                 Route::get('informations-client', 'CustomerController@getCustomerInformations')->name('customer-informations-client');
                 Route::get('newsletters', 'CustomerController@getNewsLetter')->name('customer-newsletters');
+                Route::post('updateNewsletter', 'CustomerController@updateNewsletter')->name('update-newsletters');
                 Route::get('modification-mot-de-passe', 'CustomerController@getChangePassword')->name('customer-modification-mot-de-passe');
                 Route::post('changer-mot-de-passe','CustomerController@updatePassword')->name('customer-update-password');
                 Route::get('get-distance-store', 'CustomerController@getDistanceStore')->name('customer-get-distance-store');
