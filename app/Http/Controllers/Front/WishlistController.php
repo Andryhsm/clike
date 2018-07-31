@@ -34,6 +34,7 @@ class WishlistController extends Controller
 
 	public function store($id,Request $request)
 	{ 
+		\Log::info("ici0");
 		if(auth()->check()){
 			$this->model->user_id = \Auth::user()->user_id;
 			$this->model->product_id = $id;
@@ -43,7 +44,9 @@ class WishlistController extends Controller
 			$id_user = "";
 			$products_user = [];
 			$num_of_minutes = 60 * 24 * 7 * 4 * 6; 
+			\Log::info("ici1");
 			if(Cookie::has('id_user_browser')){
+				\Log::info("ici2");
 				$id_user = Cookie::get('id_user_browser');
 				$products_user = $all_wishlist_products[$id_user]; 	
 				$product = new Wishlist();
@@ -51,6 +54,7 @@ class WishlistController extends Controller
 				$products_user[$id] = $product;
 				$all_wishlist_products[$id_user] = $products_user;
 			}else{
+				\Log::info("ici3");
 				$id_user = strval(mt_rand());
 				$product = new Wishlist();
 				$product->product_id = $id;	
@@ -63,8 +67,6 @@ class WishlistController extends Controller
 		$nbr_wishlist = (count_wishlist() < 10) ? '0'.count_wishlist() : count_wishlist();
 		$nombre_wishlist = (count_wishlist() == 0) ? '01' : $nbr_wishlist;
 		return response()->json(['success', $nombre_wishlist]);
-		/*flash()->success(trans('product.wishlist_success'));
-		return redirect()->back();*/
 	}
 
 	public function remove($id)
@@ -109,9 +111,6 @@ class WishlistController extends Controller
 		}
 		$nbr_wishlist = (count_wishlist() < 10) ? '0'.count_wishlist() : count_wishlist();
 		flash()->success(trans('product.wishlist_remove'));
-		if (ends_with($intended_url, 'caisse/confirmation')) {
-					return redirect()->route('cart');
-				}
 		return redirect()->route('wishlist');
 	}
 

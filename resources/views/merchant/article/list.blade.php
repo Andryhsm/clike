@@ -82,10 +82,11 @@
                                 <td class="article">
                                     <?php 
                                         $url_image = isset($product->images[0]) ? 'upload/product/'.$product->images[0]->image_name : '';
+                                        //$url_image = !empty($product->images[0]) ? $product->getDefaultImagePath() : '';
                                     ?>
                                     <img class="article-img" src="{!! url($url_image) !!}"></img>
                                 </td>
-                                <td class="product_name"><span>{!! isset($product->translation->product_name) ? $product->translation->product_name : '' !!}</span></td>
+                                <td class="product_name"><span>{!! isset($product->french->product_name) ? $product->french->product_name : '' !!}</span></td>
                                 <td class="article_price">{!! format_price($product->original_price) !!}</td>
                                 <td class="inventory">en stock</td>
                                 <td class="action">

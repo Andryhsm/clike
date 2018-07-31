@@ -58,7 +58,7 @@
         @endforeach
     @else
         <div class="order">
-            <p class="title-bold-2 text-uppercase text-center">Aucun commande trouvé</p>&nbsp;
+            <p class="title-bold-2 text-uppercase text-center">Aucune commande trouvée</p>&nbsp;
         </div>
     @endif
 </div>

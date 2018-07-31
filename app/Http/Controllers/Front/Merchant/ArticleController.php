@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Interfaces\CategoryRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
 use App\Repositories\AttributeSetRepository;
+use App\Repositories\SpecialProductRepository;
 use Yajra\Datatables\Facades\Datatables;
 use App\Service\UploadService;
 use App\Product;
@@ -18,13 +19,15 @@ class ArticleController extends Controller
     protected $upload_service;
     protected $attribute_set_repository;
     protected $product_repository;
+    protected $special_product_repository;
     
-    public function __construct(ProductRepositoryInterface $product_repo, CategoryRepositoryInterface $category_repo,UploadService $uploadservice, AttributeSetRepository $attribute_set_repo)
+    public function __construct(ProductRepositoryInterface $product_repo, CategoryRepositoryInterface $category_repo,UploadService $uploadservice, AttributeSetRepository $attribute_set_repo, SpecialProductRepository $Special_product_repo)
     {
         $this->category_repository = $category_repo;
         $this->product_repository = $product_repo;
         $this->upload_service = $uploadservice;
         $this->attribute_set_repository = $attribute_set_repo;
+        $this->special_product_repository = $Special_product_repo;
     }
     /**
      * Display a listing of the resource.
@@ -188,6 +191,7 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         if ($this->product_repository->deleteById($id)) {
+            $this->special_product_repository->deleteByProductId($id);
 			flash()->success(config('message.product.delete-success'));
 		} else {
 			flash()->error(config('message.product.delete-error'));

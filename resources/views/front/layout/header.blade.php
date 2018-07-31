@@ -98,7 +98,7 @@
                                         @endif
                                     @else
                                         <!-- Pour les merchants -->
-                                        <li><a class="dropdown-menu-border" href="{!! route('store.edit', ['id' => Session::get('store_to_user')]) !!}">{!! trans('common/label.shop_account') !!}</a></li>
+                                        <li><a class="dropdown-menu-border" href="{!! route('magasin.edit', ['id' => Session::get('store_to_user')]) !!}">{!! trans('common/label.shop_account') !!}</a></li>
                                         <li><a class="dropdown-menu-border" href="{!! route('merchant-dashboard') !!}"> Tableau de bord </a></li>
                                         <li><a class="dropdown-menu-border" href="{!! route('article.index') !!}">Gérer les produits </a></li>
                                         <li><a class="dropdown-menu-border" href="{!! route('code-promo.index') !!}">Gérer les code promos </a></li>

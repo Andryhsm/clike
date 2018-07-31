@@ -214,7 +214,7 @@
                       <li class="treeview {{ set_active(['admin/sales/*']) }}">
                         <a href="#">
                             <i class="fa fa-sticky-note-o"></i>
-                            <span>Tous les ordres</span>
+                            <span>Toutes les commandes</span>
                             <span class="pull-right-container">
                               <i class="fa fa-angle-left pull-right"></i>
                             </span>
@@ -225,12 +225,12 @@
                                         href="{!! Url('/admin/sales/1') !!}"><i class="fa fa-circle-o"></i> En cours</a></li>
                             @endif
                             @if(check_user_access('orders'))
-                            <li class="{{ set_active(['admin/sales/2','admin/sales/view/2']) }}"><a
-                                        href="{!! Url('/admin/sales/2') !!}"><i class="fa fa-circle-o"></i> Terminé</a></li>
+                            <li class="{{ set_active(['admin/sales/5','admin/sales/view/5']) }}"><a
+                                        href="{!! Url('/admin/sales/5') !!}"><i class="fa fa-circle-o"></i> Terminé</a></li>
                             @endif
-                            @if(check_user_access('orders'))
+                            <!-- @if(check_user_access('orders'))
                             <li><a href="{!! Url('/admin/sales/3') !!}"><i class="fa fa-circle-o"></i> Demande spéciale</a></li>
-                            @endif
+                            @endif -->
                         </ul>
                     </li>
                     @if(check_user_access('order-status.index'))

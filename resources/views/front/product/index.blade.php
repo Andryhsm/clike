@@ -39,7 +39,7 @@
                             <span class="reset"><i class="fa fa-refresh" aria-hidden="true"></i></span>
                         </div>--}}
                      <div class="row">
-                        <div class="image-thumb hidden">
+                        <div class="image-thumb hidden {!! (count($product->images) < 2) ? 'ml-0' : '' !!}">
                             <div class="flexslider flexslider-thumb">
                                 <ul class="previews-list slides">
                                     @foreach($product->images as $product_image)
@@ -52,7 +52,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <section id="auto-contain" class="col-lg-9 col-md-9">
+                        <section id="auto-contain" class="col-lg-8 col-md-8">
                             <div class="parent" style="overflow: hidden !important;">
                                 <div class="panzoom" id="image_main">
                                     <img class="main-image" src="{!! url($product->getDefaultImagePath()) !!}" alt="{!! $product_translation->product_name !!}" data-zoom-image="{!! url($product->getDefaultImagePath()) !!}" width="600" height="500">
@@ -92,19 +92,19 @@
             <div class="col-lg-3 col-sm-12 col-xs-12 containt-product-info">
                 <div class="product-info">
                     {!! Form::open(['url' => route("cart-add"), 'class' => '','id' =>'product_form']) !!}
-                    <div class="mb-30 pl-0 mt-10 mr-r-10 vcenter content-product-attribut col-lg-12 col-md-6 col-sm-5 col-xs-8"> 
+                    <div class="mb-20 pl-0 mt-10 mr-r-10 vcenter content-product-attribut col-lg-12 col-md-6 col-sm-5 col-xs-8"> 
                         <h1 class="product_brand_name">{!! (isset($product->brand_name)) ? $product->brand_name : "&nbsp;" !!}</h1>
                     </div>
                     <h2 class="mr-l-15 product_translation_name">{!! $product_translation->product_name !!}</h2>
-                    <div class="price">
+                    <div class="price mt-30 mb-20">
                         @if($product->promotional_price != null)
-                            <span class="new-price fs-25">{!! format_price($product->promotional_price) !!}</span>
-                            <span class="old-price fs-25">&nbsp;<del>{!! format_price($product->original_price) !!}</del></span>
+                            <span class="new-price fs-20">{!! format_price($product->promotional_price) !!}</span>
+                            <span class="old-price fs-20">&nbsp;<del>{!! format_price($product->original_price) !!}</del></span>
                             <span class="price-exact hidden">{!! format_price($product->original_price) !!}</span>
                             <span class="price-exact-price hidden">{!! $product->original_price !!}</span>
-                            <span class="old-price percentage ml-10 fs-25">{!! $product->discount !!}% OFF</span>
+                            <span class="old-price percentage ml-10 fs-20">{!! $product->discount !!}% OFF</span>
                         @else
-                            <span class="price-exact fs-25">{!! format_price($product->original_price) !!}</span>
+                            <span class="price-exact fs-20">{!! format_price($product->original_price) !!}</span>
                         @endif
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                     <!-- end attribute -->
                     
                         <div class="col-lg-12 col-sm-8 col-md-10 col-xs-10 pb-10 pt-0 p-lr-0 vcenter mt-0 mr-l-20">
-                         <input type="text" class="hidden" value="" id="product-stock-id" name="product_stock_id">
+                         <input type="text" class="hidden" value="" id="product-stock-id" name="product_stock_id">  
                          @if($attribute_set)
                             @foreach($attribute_set->attributes as $key=>$attribute)
                                 <div class="form-group">
@@ -569,7 +569,7 @@
                     </div>
                 </div>
                 <div class="related-products-active">
-                    @foreach($related_products as $related_product)
+                    @foreach($related_products as $related_product) 
                      <?php $related_product_translation = $related_product->translation; ?>
 
                         <div class="col-lg-12">
