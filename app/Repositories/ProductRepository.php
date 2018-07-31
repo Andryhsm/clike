@@ -565,7 +565,7 @@ class ProductRepository implements ProductRepositoryInterface
                 return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('rating','desc')->paginate($number_per_page);
                 break;
             case 'discount':
-                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderByRaw("(((original_price - promotional_price) * 100) /original_price) DESC")->paginate($number_per_page);
+                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->where('product.discount', '>', 0)->orderByRaw("(((original_price - promotional_price) * 100) /original_price) DESC")->paginate($number_per_page);
                 break;
             case 'brand_a_z':
                 return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('brand_name','asc')->paginate($number_per_page);
