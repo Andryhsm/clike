@@ -34,6 +34,7 @@ class WishlistController extends Controller
 
 	public function store($id,Request $request)
 	{ 
+		\Log::info("ici0");
 		if(auth()->check()){
 			$this->model->user_id = \Auth::user()->user_id;
 			$this->model->product_id = $id;
