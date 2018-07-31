@@ -890,6 +890,7 @@ function change_area_information() {
 }
 
 function show_option_radius(element) {
+	console.log("Pop up")
 	var $icon = $(element).find("i");
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
 	if(current_url == base_url){
