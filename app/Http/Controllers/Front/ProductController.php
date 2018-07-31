@@ -123,6 +123,7 @@ class ProductController extends Controller
 
     public function submitReview(Request $request)
     {
+        $product_id = $request->get('rating_product_id');
         $is_review_exists = $this->product_rating_repository->getReviewById($request);
         if ($is_review_exists > 0) {
             return response()->json(['success' => false, "message" => ProductRating::ALREADY_SUBMIT_REVIEW]);
@@ -133,7 +134,12 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             $message = $e->getMessage();
         }
-        return response()->json(['success' => true, "message" => $message]);
+
+        $all_reviews = $this->product_rating_repository->getApprovedAllReview($product_id);
+        $total_ratings = $this->product_rating_repository->getApprovedRating($product_id);
+        $average_rating = count($all_reviews) > 0 ?round($total_ratings/count($all_reviews)): 0;
+
+        return response()->json(['success' => true, "message" => $message, "average_rating"=>$average_rating]);
     }
 
     public function getDistance(Request $request)

@@ -88,7 +88,7 @@ function splitDataName($data) {
     var result = $data.split('$');
     return result[1];
 }
-$('#reduction').on('blur',function(){
+$('#reduction').on('keyup',function(){
    if($('#product_rate').val() != ''){
        var res = $('#original_price').val()-$('#reduction').val()*$('#original_price').val()/100;
        $('#promotional_price').val(res.toFixed(2));
