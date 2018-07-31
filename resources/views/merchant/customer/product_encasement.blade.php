@@ -16,11 +16,7 @@
                                 <option></option>
                             </select>
                         </div>
-                        <div class="form-group product_size">
-                            <label for="product_size" class="control-label">Taille</label>
-                            <select class="form-control required">
-                                <option></option>
-                            </select>
+                        <div class="content-attribute">
                         </div>
                         <div class="form-group discount">
                             <label for="discount" class="control-label">Rémise</label>
@@ -38,12 +34,6 @@
                         </div>
                         <div class="form-group sub_category">
                             <label for="sub_category" class="control-label">Sous catégorie</label>
-                            <select class="form-control required">
-                                <option></option>
-                            </select>
-                        </div>
-                        <div class="form-group product_color">
-                            <label for="product_color" class="control-label">Couleur</label>
                             <select class="form-control required">
                                 <option></option>
                             </select>
@@ -87,12 +77,14 @@
                                 <option></option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="content-attribute">
+                        </div>
+                        <!-- <div class="form-group content-attribute">
                             <label for="product_size" class="control-label">Taille</label>
                             <select id="product_size1" name="product_size[1]" class="select-product-size form-control required">
                                 <option></option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="discount" class="control-label">Rémise</label>
                             <div class="input-group">
@@ -114,12 +106,12 @@
                                 <option></option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="product_color" class="control-label">Couleur</label>
                             <select id="product_color1" name="product_color[1]" class="select-product-color form-control required">
                                 <option></option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="promo_code" class="control-label">Code promo</label>
                             <select name="promo_code[1]"  id="promo_code1" class="select-promo-code form-control required">
@@ -127,11 +119,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-xs-12 content-attribute">
 
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="product_price hidden">  
                         <input type="text" name="product_price[1]" id="product_price1" class="input-product-price form-control required" placeholder="price" />
@@ -145,13 +137,6 @@
         </div>
     </div>
 </section>
-<div class="select-attribute-to-clone hidden form-group">
-    <label for="product_size" class="control-label"></label>
-    <select name="attrs[]" data-placeholder="Choose an option…" data-attribute="" data-route="{!! route('get_options') !!}" class="col-md-11 col-sm-10 col-xs-11 
-                                        product-input-select required" tabindex="1" onchange="changeAttribute(this)" autocomplete="off">
-                                        
-    </select>
-</div>
 <input type="text" class="hidden" id="total_ht" name="total_ht"/>
  <input type="text" class="hidden" id="total_ttc" name="total_ttc"/>
 <section>

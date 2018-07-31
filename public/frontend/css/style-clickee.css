@@ -1817,8 +1817,8 @@ element.style {
     padding: 6px 12px;
 }
 .product-pic-catalog {
-    /*height: 205px;
-    width: 205px;*/
+    width: 255px;
+    height: 340px;
     font-weight: bold;
 }
 /*category end*/
