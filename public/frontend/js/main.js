@@ -895,16 +895,16 @@ function show_option_radius(element) {
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
 	console.log("Pop up " + current_url);
 	console.log("Base " + base_url)
-	if(current_url == base_url){
-		if ($icon.hasClass('fa-angle-down')) {
-		//	$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
-			$(element).addClass('active');
-		}
-		else {
-		//	$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
-			$(element).removeClass('active');
-		}	
-	}else{
+	// if(current_url == base_url){
+	// 	if ($icon.hasClass('fa-angle-down')) {
+	// 		$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+	// 		$(element).addClass('active');
+	// 	}
+	// 	else {
+	// 		$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+	// 		$(element).removeClass('active');
+	// 	}	
+	// }else{
 			if ($icon.hasClass('fa-angle-down')) {
 				$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
 				$(element).addClass('active');
@@ -915,7 +915,7 @@ function show_option_radius(element) {
 			}
 		
 			$(element).parent().toggleClass('open');
-	}
+	// }
 	
 	
 
