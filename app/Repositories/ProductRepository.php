@@ -94,8 +94,8 @@ class ProductRepository implements ProductRepositoryInterface
             
             //url
             $url = new Url();
-            $url->request_url = $input['product_name'];
-            $url->target_url = $input['product_name'];
+            $url->request_url = $input['product_url'];
+            $url->target_url = $input['product_url'];
             $url->type = '2';
             $url->target_id = $this->model->product_id;
             $url->save();

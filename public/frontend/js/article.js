@@ -1,5 +1,14 @@
+var $document = $(document);
 $( document ).ready(function(){
     if($('.decline').length > 1) $('#remove-decline').removeClass('hidden');
+
+    $document.on('keyup keypress change', "#product_name", function (e) {
+        var clone_text = $("#product_name").val();
+        clone_text = $.trim(clone_text);
+        clone_text = normalize_string(clone_text);
+        clone_text = clone_text.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-').replace(/\_/g, '');
+        $("#product_url").val(clone_text);
+    });
 }) 
 
 

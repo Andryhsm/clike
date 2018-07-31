@@ -40,6 +40,7 @@
                                value="{!! ($product) ? $product->translation->product_name : null !!}"
                                placeholder="Nom de l'article">
                         <input type="text" name="product_id" value="{!! ($product) ? $product->product_id : null !!}" class="hidden"/>
+                        <input type="text" name="product_url" value="" id="product_url" class="hidden"/>
                         <a href="{!! route('get_attribute') !!}" id="get_attributes" class="hidden"></a>
                     </div>
                     
@@ -188,12 +189,9 @@
                                             }
                                         ?>
                                         @if($attribute_set)
-                                            
                                             @foreach($attribute_set->attributes as $key1=>$attribute)
+                                                @if(isset($stock->options[$key1]))
                                                 <div class="form-group">
-                                                    <?php 
-                                                        //dd($stock->options);
-                                                    ?>
                                                     {!! Form::label('attribute_name', $attribute->french->attribute_name, ['class' => 'control-label']) !!}
                                                     <div class="">
                                                         <input type="text" name="attribute_id[{!! $key !!}][]" class="hidden attribute_id" value="{!! $attribute->attribute_id !!}" />
@@ -209,6 +207,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach                                            
                                         @endif                                        
                                         
