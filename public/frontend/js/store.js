@@ -32,6 +32,7 @@ jQuery(document).ready(function() {
                 }
             }
         });
+        $('.open-time').removeAttr('disabled');
         if (form.valid()) {
             $('#store_form').submit();
         }

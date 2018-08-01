@@ -416,6 +416,7 @@ class StoreRepository implements StoreRepositoryInterface
 			$store_opening_hour->opening_hour = (isset($opening_hour_array[$key])) ? $opening_hour_array[$key] : null;
 			$store_opening_hour->closure_hour = (isset($closure_hour_array[$key])) ? $closure_hour_array[$key] : null;
 			$store_opening_hour->opening_day_id = $key;
+			$store_opening_hour->store_id = $store_model->store_id;
 			$store_opening_hour->save();
 		}
 		

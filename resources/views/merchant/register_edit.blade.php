@@ -144,7 +144,7 @@
                             </div>
                         </div>
                         <?php $i=1; ?>
-                        
+                        @if(count($store->hours) > 0)
                         @foreach($store->hours as $hour)
                         <?php 
                             $class = ($hour->opening_hour == null)?"fa-square-o":"fa-check-square";  
@@ -164,7 +164,101 @@
                             </div>
                         </div>
                         <?php $i++; ?>
-                        @endforeach
+                        @endforeach 
+                        @else
+                        <div class="info-one-day col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-10">
+                            <div class="form-check col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <a class="open-day" data-day="monday" href="#"><span><i class="fa fa-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Lundi</span></a>
+                                <input type="hidden" name="opening_day_id[1]" class="form-check-input required" id="monday" value="1">
+                                <input type="hidden" name="opening_hour_id[1]" class="form-check-input required" id="monday" value="">
+                            </div>
+                            <div style="position: relative">
+                                <input type="text" disabled="" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="opening_hour[1]" value="null">
+                            </div><span class="col-lg-2 text-center">à</span>
+                            <div style="position: relative">
+                                <input type="text" disabled="" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="closure_hour[1]" value="null">
+                            </div>
+                        </div>
+
+                        <div class="info-one-day col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-10">
+                            <div class="form-check col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <a class="open-day" data-day="tuesday" href="#"><span><i class="fa fa-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mardi</span></a>
+                                <input type="hidden" name="opening_day_id[2]" class="form-check-input required" id="tuesday" value="2"/>
+                                <input type="hidden" name="opening_hour_id[2]" class="form-check-input required" id="tuesday" value=""/>
+                            </div>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="opening_hour[2]" value="null">
+                            </div><span class="col-lg-2 text-center">à</span>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="closure_hour[2]" value="null">
+                            </div>
+                        </div>
+                        <div class="info-one-day col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-10">
+                            <div class="form-check col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <a class="open-day" data-day="wednesday" href="#"><span><i class="fa fa-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mercredi</span></a>
+                                <input type="hidden" name="opening_day_id[3]" class="form-check-input required" id="wednesday" value="3"/>
+                                <input type="hidden" name="opening_hour_id[3]" class="form-check-input required" id="wednesday" value=""/>
+                            </div>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="opening_hour[3]" value="null">
+                            </div><span class="col-lg-2 text-center">à</span>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="closure_hour[3]" value="null">
+                            </div>
+                        </div>
+                        <div class="info-one-day col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-10">
+                            <div class="form-check col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <a class="open-day" data-day="thursday" href="#"><span><i class="fa fa-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Jeudi</span></a>
+                                <input type="hidden" name="opening_day_id[4]" class="form-check-input required" id="thursday" value="4"/>
+                                <input type="hidden" name="opening_hour_id[4]" class="form-check-input required" id="thursday" value=""/>
+                            </div>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="opening_hour[4]" value="null">
+                            </div><span class="col-lg-2 text-center">à</span>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="closure_hour[4]" value="null">
+                            </div>
+                        </div>
+                        <div class="info-one-day col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-10">
+                            <div class="form-check col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <a class="open-day" data-day="friday" href="#"><span><i class="fa fa-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Vendredi</span></a>
+                                <input type="hidden" name="opening_day_id[5]" class="form-check-input required" id="friday" value="5"/>
+                                <input type="hidden" name="opening_hour_id[5]" class="form-check-input required" id="friday" value=""/>
+                            </div>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="opening_hour[5]" value="null">
+                            </div><span class="col-lg-2 text-center">à</span>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="closure_hour[5]" value="null">
+                            </div>
+                        </div>
+                        <div class="info-one-day col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-10">
+                            <div class="form-check col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <a class="open-day" data-day="saturday" href="#"><span><i class="fa fa-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Samedi</span></a>
+                                <input type="hidden" name="opening_day_id[6]" class="form-check-input" id="saturday" value="6"/>
+                                <input type="hidden" name="opening_hour_id[6]" class="form-check-input" id="saturday" value=""/>
+                            </div>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="opening_hour[6]" value="null">
+                            </div><span class="col-lg-2 text-center">à</span>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="closure_hour[6]" value="null">
+                            </div>
+                        </div>
+                        <div class="info-one-day col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-10">
+                            <div class="form-check col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <a class="open-day" data-day="sunday" href="#"><span><i class="fa fa-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Dimanche</span></a>
+                                <input type="hidden" name="opening_day_id[7]" class="form-check-input" id="sunday" value="7"/>
+                                <input type="hidden" name="opening_hour_id[7]" class="form-check-input" id="sunday" value=""/>
+                            </div>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="opening_hour[7]" value="null">
+                            </div><span class="col-lg-2 text-center">à</span>
+                            <div style="position: relative">
+                                <input type="text" disabled class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control open-time w-lg-2" name="closure_hour[7]" value="null">
+                            </div>
+                        </div>
+                        @endif
                         <br>
                         <div class="text-center mt-40 mb-20 col-lg-12 col-md-12">
                             <strong class="text-uppercase">
