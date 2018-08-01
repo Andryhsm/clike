@@ -14,6 +14,7 @@ class NewsletterOption extends Model
     protected $table = 'newsletter_option';
     protected $primaryKey = 'newsletter_option_id';
     protected $fillable = ['user_id', 'key', 'value'];
+    public $timestamps = false;
 
     public function user()
 	{

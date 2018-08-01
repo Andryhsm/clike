@@ -609,8 +609,43 @@
 		$a.css('color', '#fff !important');
 	});
 
+/*************************Boutton More Details Avis client ********************************/
+var buttonTextM = "";
+var buttonTextL = "";
+if ($('#language').val() == "fr") {
+	buttonTextM = "More details";
+	buttonTextL = "Less details";
+}
+else {
+	buttonTextM = "Plus de détails";
+	buttonTextL = "Moins de détails";
+}
+
+var reviews_length = $('#reviews').text().length ;
+
+/************************** End More Detail ******************************/
+
 	$('.flip').on('click', function() {
 		console.log("We need to flip");
+		// chargement boutton more information
+		if (reviews_length > 1200) {
+			$('#btn_details').show();
+			$('#btn_details').click(function(e) {
+				if ($('#productTabContent').hasClass('height-content')) {
+					$('#productTabContent').removeClass('height-content');
+					$('.tabs-limit').addClass('hidden');
+					$("#btn_details").val(buttonTextL);
+				}
+				else {
+					$('#productTabContent').addClass('height-content');
+					$("#btn_details").val(buttonTextM);
+					$('.tabs-limit').removeClass('hidden');
+				}
+			});
+			}else{
+			$('#btn_details').hide();
+			}
+		// end more information
 		var parent_nav = $(this).parents('.nav-tabs');
 		if (!parent_nav.hasClass('inverse'))
 			$(this).parents('.nav-tabs').addClass('inverse');
@@ -890,18 +925,21 @@ function change_area_information() {
 }
 
 function show_option_radius(element) {
+	
 	var $icon = $(element).find("i");
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
-	if(current_url == base_url){
-		if ($icon.hasClass('fa-angle-down')) {
-		//	$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
-			$(element).addClass('active');
-		}
-		else {
-		//	$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
-			$(element).removeClass('active');
-		}	
-	}else{
+	console.log("Pop up " + current_url);
+	console.log("Base " + base_url)
+	// if(current_url == base_url){
+	// 	if ($icon.hasClass('fa-angle-down')) {
+	// 		$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+	// 		$(element).addClass('active');
+	// 	}
+	// 	else {
+	// 		$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+	// 		$(element).removeClass('active');
+	// 	}	
+	// }else{
 			if ($icon.hasClass('fa-angle-down')) {
 				$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
 				$(element).addClass('active');
@@ -912,7 +950,7 @@ function show_option_radius(element) {
 			}
 		
 			$(element).parent().toggleClass('open');
-	}
+	// }
 	
 	
 
