@@ -107,7 +107,7 @@
     
                         <div class="">
                             <div class="mtb-20 col-md-12 text-center">
-                                <button type="button" class="btn btn-merchant-filled"
+                                <button data-url="{!! route('get-coordinates') !!}" type="button" class="btn btn-merchant-filled"
                                         id="confirm_position">{!! trans('merchant.confirm_position') !!}</button>
                             </div>
                             <div class="">
@@ -254,7 +254,7 @@
                              <?php $key = $index+1;
                                    $old_manager_id[] =  $user->user_id;
                              ?>
-                            <div class="master_manager" id="{!! $key !!}">
+                            <div class="master_manager master_manager_to_clone" id="{!! $key !!}">
                                 <div class="hidden">
                                     <div class="add-user">
                                         @if($key=='1')
@@ -276,30 +276,30 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             {!! Form::label('last_name', trans('merchant.last_name'), ['class' => '']) !!}
-                                            {!! Form::text("manager[".$key."][last_name]", ($store && $user!=null) ?$user->last_name:null , ['class' => 'form-control required','id'=>'last_name']) !!}
-                                            <input type="hidden" name="manager[{!! $key !!}][manager_id]" value="{!! ($store && $user!=null) ? $user->user_id:null  !!}">
+                                            {!! Form::text("manager[".$key."][last_name]", ($store && $user!=null) ?$user->last_name:null , ['class' => 'form-control required','id'=>'last_name'.$key]) !!}
+                                            <input type="hidden" id="manager_id1" name="manager[{!! $key !!}][manager_id]" value="{!! ($store && $user!=null) ? $user->user_id:null  !!}">
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('sms', trans('merchant.phone'), ['class' => '']) !!}
-                                            {!! Form::text("manager[".$key."][sms]", ($store && $user!=null) ? $user->phone_number:null, ['class' => 'required form-control','id'=>'sms']) !!}
+                                            {!! Form::text("manager[".$key."][sms]", ($store && $user!=null) ? $user->phone_number:null, ['class' => 'required form-control','id'=>'sms'.$key]) !!}
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('password', trans('merchant.password'), ['class' => '']) !!}
-                                            {!! Form::password("manager[".$key."][password]", ['class' => "form-control password".$key."",'id'=>'password','onkeyup'=>"confirmPassword(".$key.");"]) !!}
+                                            {!! Form::password("manager[".$key."][password]", ['class' => "form-control password".$key."",'id'=>'password'.$key,'onkeyup'=>"confirmPassword(".$key.");"]) !!}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             {!! Form::label('first_name', trans('merchant.first_name'), ['class' => '']) !!}
-                                            {!! Form::text("manager[".$key."][first_name]",($store && $user!=null) ? $user->first_name:null, ['class' => 'form-control required','id'=>'first_name']) !!}
+                                            {!! Form::text("manager[".$key."][first_name]",($store && $user!=null) ? $user->first_name:null, ['class' => 'form-control required','id'=>'first_name'.$key]) !!}
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('email', 'E-mail', ['class' => '']) !!}
-                                            {!! Form::text("manager[".$key."][email]", ($store && $user !=null) ? $user->email:null, ['class' => 'required form-control','id'=>'email']) !!}
+                                            {!! Form::text("manager[".$key."][email]", ($store && $user !=null) ? $user->email:null, ['class' => 'required form-control','id'=>'email'.$key]) !!}
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('confirm_password', trans('merchant.confirm_password'), ['class' => '']) !!}
-                                            {!! Form::password("manager[".$key."][confirm_password]", ['class' => "form-control confirm_password".$key."",'id'=>'confirm_password','onkeyup'=>"confirmPassword(".$key.");"]) !!}
+                                            {!! Form::password("manager[".$key."][confirm_password]", ['class' => "form-control confirm_password".$key."",'id'=>'confirm_password'.$key,'onkeyup'=>"confirmPassword(".$key.");"]) !!}
                                         </div>
                                     </div>
                                 </div>                            
@@ -310,7 +310,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" checked="checked" name="manager[{!! $key !!}][global_manager]" id="global_manager" value="1" {!! ($user->pivot->is_global_manager=='1') ? "checked":'' !!}>
+                                                    <input type="checkbox" checked="checked" name="manager[{!! $key !!}][global_manager]" id="global_manager{!! $key !!}" value="1" {!! ($user->pivot->is_global_manager=='1') ? "checked":'' !!}>
                                                     {!! trans('merchant.main_account_owner') !!}
                                                 </label>
                                             </div>
@@ -318,7 +318,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" checked="checked" name="manager[{!! $key !!}][receive_request]" id="receive_request" {!! ($user->pivot->receive_request=='1') ? "checked":'' !!} value="1">
+                                                    <input type="checkbox" checked="checked" name="manager[{!! $key !!}][receive_request]" id="receive_request{!! $key !!}" {!! ($user->pivot->receive_request=='1') ? "checked":'' !!} value="1">
                                                     {!! trans('merchant.receive_purchase_request') !!}
                                                 </label>
                                             </div>
@@ -326,7 +326,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" checked="checked" name="manager[{!! $key !!}][reply_request]" id="reply_request" value="1" {!! ($user->pivot->reply_request=='1') ? "checked":'' !!}>
+                                                    <input type="checkbox" checked="checked" name="manager[{!! $key !!}][reply_request]" id="reply_request{!! $key !!}" value="1" {!! ($user->pivot->reply_request=='1') ? "checked":'' !!}>
                                                     {!! trans('merchant.can_reply_to_request') !!}
                                                 </label>
                                             </div>
@@ -338,13 +338,15 @@
                             <input type="hidden" name="old_manager_id" value="{!! implode(',',$old_manager_id) !!}">
                             
                             @endif
+                            <div class="content-test">
+                            </div>
                             <div class="col-lg-12 mtb-20 text-center">
-                                <button type="button" class="btn btn-merchant-filled call_add_user">{!! trans('merchant.add_user') !!}</button>
+                                <button type="button" class="btn btn-merchant-filled call_add_user add_user">{!! trans('merchant.add_user') !!}</button>
                             </div>
                     		               
                     </div>
                     <div class="text-center mt-20 col-lg-12">
-                        <button type="submit" class="btn btn-merchant-filled" id="add-role">Sauvegarder</button>
+                        <button type="button" class="btn btn-merchant-filled" id="add-store">Sauvegarder</button>
                     </div>
                     {!! Form::close() !!}
                 </div>

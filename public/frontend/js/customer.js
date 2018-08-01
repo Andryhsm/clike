@@ -52,7 +52,7 @@ jQuery(document).ready(function() {
         $(this).parents('.product-content').remove();
     });
 
-    $('document').one('change', '.input-select-product', function(event) {
+    $('.product-content').one('change', '.input-select-product', function(event) {
         $(this).addClass('first');
         $('.product-input-select').each(function(index, element) {
             $(element).unbind();

@@ -351,7 +351,8 @@ class StoreRepository implements StoreRepositoryInterface
 				$user->first_name = $manager['first_name'];
 				$user->last_name = $manager['last_name'];
 				$user->email = $manager['email'];
-				$user->password = (!empty($manager['password']) && $manager['password'] != null) ?  Hash::make($manager['password']) : $user->password;;
+				$user->password = (!empty($manager['password']) && $manager['password'] != null) ?  Hash::make($manager['password']) : $user->password;
+
 				$user->phone_number = $manager['sms'];
 				$user->status = '1';
 				$user->profile_image = '';

@@ -79,7 +79,7 @@ class StoreController extends Controller
 			'main_email' => 'required',
 			'cell_phone' => 'required',
 			'fix_phone' => 'required',
-			//'g-recaptcha-response'=>'required|recaptcha'
+			'g-recaptcha-response'=>'required|recaptcha'
 /*			'last_name' => 'required',
 			'first_name' => 'required',
 			'position' => 'required',
@@ -171,8 +171,7 @@ class StoreController extends Controller
 			'main_phone' => 'required',
 			'main_email' => 'required',
 			'cell_phone' => 'required',
-			'fix_phone' => 'required',
-			'g-recaptcha-response'=>'required|recaptcha'
+			'fix_phone' => 'required'
 /*			'last_name' => 'required',
 			'first_name' => 'required',
 			'position' => 'required',
