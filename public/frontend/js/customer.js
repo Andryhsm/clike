@@ -52,25 +52,62 @@ jQuery(document).ready(function() {
         $(this).parents('.product-content').remove();
     });
 
-    $('.product-content').one('change', '.input-select-product', function(event) {
-        $(this).addClass('first');
-        $('.product-input-select').each(function(index, element) {
-            $(element).unbind();
-        });
-    });
-
     $document.on('change.select2', '.product_name select', function(e) {
         var product_id = $(this).val();
         var content_range = $(this).data('content-range');
-        get_product_data(product_id, content_range);
+        get_product_data($(this), product_id, content_range);
 
     });
 
-    // $('.select-product-name').change(function(event) {
-    //     var product_id = $(this).val();
-    //     var content_range = $(this).data('content-range');
-    //     get_product_data(product_id, content_range);
-    // });
+    $(document).on('change', '.input-select-attribute', function(event) {
+        var parent_element = $(this).parents('.product-content');
+        console.log("On change in the input");
+        if(!parent_element.hasClass('selected-input')){
+            parent_element.addClass('selected-input');
+            $(this).addClass('first');
+        }
+        var box = $(this);
+        var attribute_option_id = $(box).val();
+        var product_id = parent_element.find('.select-product-name').val();
+        console.log(product_id);
+        if($(box).hasClass('first')) {
+            var url = $(box).attr('data-route');
+            var i = 0; 
+            var values = [];
+            parent_element.find('[name="attrs[]"]').each(function(index, element){
+                values[i] = $(element).val();
+                i++;            
+            });
+            var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
+            $.ajax({
+                dataType: 'json',
+                type: 'POST',
+                url: url,
+                data: data,
+                beforeSend: function() {
+                    $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+                },
+                success: function(response, status) {
+                    parent_element.find('[name*="attrs"]:not(.first)').html('');                      
+                    $.each(response, function(key, value){
+                        var element = parent_element.find('[data-attribute='+ value.attribute_id +']');
+                        var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
+                        if(!element.hasClass('first')){ 
+                            element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
+                            element.addClass('has-product-stock-id');
+                        }
+                    })
+                     
+                    $.LoadingOverlay("hide");            
+                },
+                error: function(xhr){
+                    console.log('Erreur' + xhr.responseText);
+                    $.LoadingOverlay("hide");
+                }
+            });
+        }    
+    });
+
     $document.on('change', '.select-parent-category', function(event) {
         /*console.log("Bonjour tous le monde");*/
         var index = $(this).data('content-range');
@@ -175,7 +212,7 @@ function fixed_two_after_dot(number) {
 }
 
 
-function get_product_data(product_id, content_range) {
+function get_product_data(box, product_id, content_range) {
     var options_size = [];
     var options_color = [];
     var select_option_size = [];
@@ -211,7 +248,7 @@ function get_product_data(product_id, content_range) {
             var product = data.product;
             var code_promo_arr = data.code_promo_arr;
             var attributes = data.attribute_set.attributes;
-            paste_select_html(data.select_html);
+            paste_select_html(box, data.select_html, content_range);
             add_option_select_category(data, content_range);
             
             $('#product_price' + content_range).val(product.original_price);
@@ -222,9 +259,10 @@ function get_product_data(product_id, content_range) {
         });
 }
 
-function paste_select_html(select_html_data) {
+function paste_select_html(box, select_html_data, content_range) {
     var html_data = $.parseHTML(select_html_data);
-    $('.content-attribute').html(html_data);
+    box.parents('.product-content').find('.content-attribute').html(html_data);
+    box.parents('.product-content').find('.input-select-attribute').attr('name', 'attrs['+content_range+'][]');
 }
 
 function add_option_select_category(data, content_range) {
@@ -305,15 +343,19 @@ function autocomplete_list_customer() {
                 },
                 list: {
                     onSelectItemEvent: function() {
+                        console.log($('#last_name').getSelectedItemData());
                         $('#user_id').val($('#last_name').getSelectedItemData().user_id);
                         $('#first_name').val($('#last_name').getSelectedItemData().first_name);
-                        $('#address').val($('#last_name').getSelectedItemData().address.address1);
-                        $('#postal_code').val($('#last_name').getSelectedItemData().address.zip);
-                        $('#country').val($('#last_name').getSelectedItemData().address.city);
                         $('#phone_number').val($('#last_name').getSelectedItemData().phone_number);
                         $('#birthday').val($('#last_name').getSelectedItemData().birthday);
                         $('#email').val($('#last_name').getSelectedItemData().email);
                         $('#last_name').val($('#last_name').getSelectedItemData().last_name);
+                        var address = $('#last_name').getSelectedItemData().address;
+                        if(address != null){
+                            $('#postal_code').val($('#last_name').getSelectedItemData().address.zip);
+                            $('#address').val($('#last_name').getSelectedItemData().address.address1);
+                            $('#country').val($('#last_name').getSelectedItemData().address.city);
+                        }
                     },
                     onChooseEvent: function() {
                         $('#type_customer').val(1);
@@ -326,54 +368,4 @@ function autocomplete_list_customer() {
         }) 
         .fail(function() {})
         .always(function() {});
-
-
-}
-
-function change_attribute(box, product_id) { 
-    var attribute_option_id = $(box).val();
-    if(is_last_choosed() != 0 || $(box).hasClass('first')) {
-        var url = $(box).attr('data-route');
-        var i = 0; 
-        var values = [];
-        $('[name="attrs[]"]').each(function(index, element){
-            values[i] = $(element).val();
-            i++;            
-        });
-        var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
-        $.ajax({
-            dataType: 'json',
-            type: 'POST',
-            url: url,
-            data: data,
-            beforeSend: function() {
-                $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
-            },
-            success: function(response, status) {
-                $('[name="attrs[]"]:not(.first)').html('');                      
-                $.each(response, function(key, value){
-                    var element = $('[data-attribute='+ value.attribute_id +']');
-                    var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
-                    if(!element.hasClass('first')){ 
-                        element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
-                        element.addClass('has-product-stock-id');
-                    }
-                })
-                 
-                $.LoadingOverlay("hide");            
-            },
-            error: function(xhr){
-                console.log('Erreur' + xhr.responseText);
-                $.LoadingOverlay("hide");
-            }
-        });
-    }    
-}
-
-function is_last_choosed() { 
-    var i = 0;
-    $('[name="attrs[]"]').each(function(index, element){
-        if($(element).val() == null) i++;
-    })
-    return i;
 }

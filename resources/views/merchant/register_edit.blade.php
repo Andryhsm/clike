@@ -139,7 +139,7 @@
                         <div class="row mb-20">
                         	<div class="text-center col-lg-12 col-md-12 col-sm-12 col-xs-12  col-md-12 mt-40">
                                 <strong class="text-uppercase">
-                                    Choisisser les horaires d'ouverture de votre magasin
+                                    Choisissez les horaires d'ouverture de votre magasin
                                 </strong>
                             </div>
                         </div>
