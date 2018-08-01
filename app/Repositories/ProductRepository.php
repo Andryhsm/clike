@@ -94,8 +94,8 @@ class ProductRepository implements ProductRepositoryInterface
             
             //url
             $url = new Url();
-            $url->request_url = $input['product_name'];
-            $url->target_url = $input['product_name'];
+            $url->request_url = $input['product_url'];
+            $url->target_url = $input['product_url'];
             $url->type = '2';
             $url->target_id = $this->model->product_id;
             $url->save();
@@ -468,11 +468,11 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function getAll()
     {
-        return $this->model->with('french', 'admin', 'tags')->orderBy('product_id', 'desc')->get();
+        return $this->model->with('french', 'admin', 'tags', 'images')->orderBy('product_id', 'desc')->get();
     }
 
     public function getByStore($store_id){
-        return $this->model->with('images','translation','admin', 'tags')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
+        return $this->model->with('french', 'admin', 'tags', 'images')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
     }
 
     public function deleteById($product_id)
@@ -496,7 +496,7 @@ class ProductRepository implements ProductRepositoryInterface
 
 	public function getAttributesByProductId($product_id)
 	{
-		return $this->model->with(['attributeValues', 'attributeValues.attribute.translation', 'attributeValues.attribute.options.translation'])->where('product_id', $product_id)->first();
+		return $this->model->with(['attributeValues', 'attributeValues.attribute.translation', 'attributeValues.attribute.options.translation', 'attributeValues.attribute.french'])->where('product_id', $product_id)->first();
 	}
 
 	public function deleteVideoById($product_id)
@@ -565,7 +565,7 @@ class ProductRepository implements ProductRepositoryInterface
                 return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('rating','desc')->paginate($number_per_page);
                 break;
             case 'discount':
-                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderByRaw("(((original_price - promotional_price) * 100) /original_price) DESC")->paginate($number_per_page);
+                return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->where('product.discount', '>', 0)->orderByRaw("(((original_price - promotional_price) * 100) /original_price) DESC")->paginate($number_per_page);
                 break;
             case 'brand_a_z':
                 return Product::filter($input, $array_store_ids)->with($product_entities)->select('product.*','product_translation.*')->orderBy('brand_name','asc')->paginate($number_per_page);

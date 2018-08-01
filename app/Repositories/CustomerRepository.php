@@ -10,6 +10,7 @@ use App\Encasement;
 use App\Customer;
 use App\EncasementProduct;
 use Carbon\Carbon;
+use App\Models\NewsletterOption;
 /**
  * Class CustomerRepository
  *
@@ -202,5 +203,17 @@ class CustomerRepository implements CustomerRepositoryInterface
 	public function getTotalEncasement($store_id)
 	{ 
 		return Encasement::where('store_id', $store_id)->sum('total_ttc');
+	}
+
+	public function getNewsletterOption() {
+		return NewsletterOption::where('user_id', \Auth::user()->user_id)->get();
+	}
+
+	public function saveNewsletterOption($input) {
+		$newsletter_option = NewsletterOption::updateOrCreate(
+			['user_id'=> \Auth::user()->user_id, 'key' => $input['key']],
+			['value' => $input['value']]
+		);
+		return $newsletter_option;
 	}
 }			

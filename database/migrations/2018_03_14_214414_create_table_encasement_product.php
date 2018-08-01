@@ -17,8 +17,6 @@ class CreateTableEncasementProduct extends Migration
             $table->increments('encasement_product_id');
             $table->integer('encasement_id')->index('idx_encasement_id')->unsigned()->nullable();
             $table->integer('product_id')->index('idx_product_id')->unsigned()->nullable();
-            $table->foreign('product_id')
-                ->references('product_id')->on('product');
             $table->integer('attribute_size_id')->unsigned()->nullable();
             $table->integer('attribute_color_id')->unsigned()->nullable();
             $table->integer('parent_category')->index('idx_parent_category')->unsigned()->nullable();

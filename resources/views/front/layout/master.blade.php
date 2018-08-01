@@ -11,7 +11,7 @@
     @yield('additional-header')
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-
+    <meta name="google-site-verification" content="rY-LzHIFf4dJ_kxyK_MltppUfpiA_SAm3BkSydl6CsQ" />
     <!-- all css here -->
     <!-- bootstrap v3.3.6 css -->
 

@@ -925,18 +925,21 @@ function change_area_information() {
 }
 
 function show_option_radius(element) {
+	
 	var $icon = $(element).find("i");
 	var current_url = 'https://' + window.location.hostname + window.location.pathname;
-	if(current_url == base_url){
-		if ($icon.hasClass('fa-angle-down')) {
-		//	$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
-			$(element).addClass('active');
-		}
-		else {
-		//	$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
-			$(element).removeClass('active');
-		}	
-	}else{
+	console.log("Pop up " + current_url);
+	console.log("Base " + base_url)
+	// if(current_url == base_url){
+	// 	if ($icon.hasClass('fa-angle-down')) {
+	// 		$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+	// 		$(element).addClass('active');
+	// 	}
+	// 	else {
+	// 		$icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+	// 		$(element).removeClass('active');
+	// 	}	
+	// }else{
 			if ($icon.hasClass('fa-angle-down')) {
 				$icon.removeClass('fa-angle-down').addClass('fa-angle-up');
 				$(element).addClass('active');
@@ -947,7 +950,7 @@ function show_option_radius(element) {
 			}
 		
 			$(element).parent().toggleClass('open');
-	}
+	// }
 	
 	
 
@@ -1027,8 +1030,6 @@ function aside_fixed() {
 				if($window.scrollTop() < content){
 					$aside.stop().css('margin-top', $window.scrollTop() - offset.top + topPadding);
 					$window_last_scroll = $window.scrollTop() - offset.top + topPadding;
-					console.log("scroll bottom");
-					console.log('*****************' + $window_last_scroll)
 				}
 				else {
 					$aside.stop().animate({

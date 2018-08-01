@@ -401,6 +401,7 @@ class ProductController extends Controller
 		$category_arr = [];
 		$product_id = $request->get('product_id');
 		$product = $this->product_repository->getById($product_id);
+		$attribute_set = $this->product_repository->getAttributesBySetId($product->attribute_set_id);
 		$categories = $product->categories;
 		$parent_categorie = [];
 
@@ -414,8 +415,41 @@ class ProductController extends Controller
 		if($product_id > 0){
 			$product_attributes = $this->product_repository->getAttributesByProductId($product_id);
 		}
+		
+		$product_attribute_options = $this->product_repository->getProductAttributeOption($product_id);
+		$attribute_option_ids = [];
+        foreach ($product_attribute_options as $value) {
+            foreach($value->options as $option){
+                if(!in_array($option->attribute_option_id,$attribute_option_ids)){
+                    $attribute_option_ids[] = $option->attribute_option_id;
+                }
+    	    }	
+        }
 
-		return response()->json(['product' => $product, 'attribute' => $product_attributes, 'category_arr' => $category_arr, 'parent_categorie' => $parent_categorie]);
+		$select_html = self::getSelectHtml($attribute_set, $product, $attribute_option_ids);
+
+		return response()->json(['product' => $product, 'attribute' => $product_attributes, 'category_arr' => $category_arr, 'parent_categorie' => $parent_categorie, 'attribute_set' => $attribute_set, 'select_html' => $select_html]);
+	}
+
+	public static function getSelectHtml($attribute_set, $product, $attribute_option_ids) {
+		$select_html = '';
+		if($attribute_set){
+            foreach($attribute_set->attributes as $key=>$attribute) { 
+                        $select_html .= '<div class="form-group">
+                                    <label for="">'.$attribute->french->attribute_name.'</label>
+                                    <select name="attrs[]" data-placeholder="Choose an option…" data-attribute="'.$attribute->attribute_id.'" data-route="'.route('get_options').'" class=" 
+                                        input-select-product form-control required" tabindex="1" style="color: #42838C!important" onchange="change_attribute(this, '. $product->product_id .')" autocomplete="off">
+                                        <option value="default" disabled selected>Veuillez choisir</option>';
+                                        foreach($attribute->options as $option) {
+                                            if(in_array($option->attribute_option_id,$attribute_option_ids)) {
+                                                $select_html .= '<option value="'.$option->attribute_option_id .'" >'.$option->french->option_name .'</option>';
+                                            }
+                                        }
+                        $select_html .= '</select>
+                                </div>';
+           }
+        }
+        return $select_html;
 	}
 
 	public function getCodePromoByCategory(Request $request)

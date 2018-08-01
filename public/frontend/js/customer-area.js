@@ -96,18 +96,18 @@ function reception(box) {
 function get_distance_store($shop_data) {
     var url = $shop_data.data('url');
     $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'json',
-            data: { latitude: $shop_data.data('latitude'), longitude: $shop_data.data('longitude'), country: $shop_data.data('country') },
-        })
-        .done(function(data) {
-            $('.store-distance').html('À ' + data.distance + ' km de chez vous');
-        })
-        .fail(function(xhr) {})
-        .always(function() {
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        data: { latitude: $shop_data.data('latitude'), longitude: $shop_data.data('longitude'), country: $shop_data.data('country') },
+    })
+    .done(function(data) {
+        $('.store-distance').html('À ' + data.distance + ' km de chez vous');
+    })
+    .fail(function(xhr) {})
+    .always(function() {
 
-        });
+    });
 }
 
 function activate(ids) {
@@ -124,7 +124,7 @@ function changeGender() {
 
 function simulateRadioButton(box) {
     var id = $(box).attr("id");
-    checka(box);
+    //checka(box);
     if (id == "Femme") {
         $('#Homme i').removeClass('fa-dot-circle-o');
         $('#Homme i').addClass('fa-circle-o');
@@ -191,6 +191,7 @@ function change_page(url) {
 
 function checka(box) {
     var id = $(box).attr("id");
+    var index = $(box).parent('p').index();
     if ($('#' + id + ' i').hasClass('fa-circle-o')) {
         $('#' + id + ' i').removeClass('fa-circle-o');
         $('#' + id + ' i').addClass('fa-dot-circle-o');
@@ -199,6 +200,14 @@ function checka(box) {
         $('#' + id + ' i').removeClass('fa-dot-circle-o');
         $('#' + id + ' i').addClass('fa-circle-o');
     }
+    $(box).closest('.newsletter-item').find('i').each(function(i, el){
+        if($(el).hasClass('fa-dot-circle-o') && $(el).closest('p').index() != index) {
+            $(el).removeClass('fa-dot-circle-o');
+            $(el).addClass('fa-circle-o');
+        }
+    });
+
+
 }
 
 function iconeyes(icon) {
@@ -321,3 +330,28 @@ function canceled_order(classe) {
 
         });
 }
+
+function updateNewsletter(box, key, value) {
+    checka($(box));
+    var url = $('.newsletter_action').attr('href');
+    $.ajax({
+        url: url,
+        type: 'POST',
+        dataType: 'json',
+        data: { 'key': key, 'value': value },
+        beforeSend: function() {
+            $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+        },
+        success: function(response, status) {
+            //console.log(response);
+            $.LoadingOverlay("hide");
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+            
+        }
+    });
+
+}
+
+

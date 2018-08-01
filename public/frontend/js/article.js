@@ -1,5 +1,14 @@
+var $document = $(document);
 $( document ).ready(function(){
     if($('.decline').length > 1) $('#remove-decline').removeClass('hidden');
+
+    $document.on('keyup keypress change', "#product_name", function (e) {
+        var clone_text = $("#product_name").val();
+        clone_text = $.trim(clone_text);
+        clone_text = normalize_string(clone_text);
+        clone_text = clone_text.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-').replace(/\_/g, '');
+        $("#product_url").val(clone_text);
+    });
 }) 
 
 
@@ -8,15 +17,9 @@ function checka(box) {
     
     $('#category_id').val(id);
     
-    /*var last_val = $('#categories_id').val();
-    var new_val = last_val + ',' + $(bloc).attr('id');
-    $('#categories_id').val(new_val);
-    
-    if ($('#' + id + ' i').hasClass('fa-circle-o')) {*/
-        $('.category_parent i').addClass('fa-circle-o').removeClass('fa-dot-circle-o');
-        $('#' + id + ' i').removeClass('fa-circle-o');
-        $('#' + id + ' i').addClass('fa-dot-circle-o');
-    /*} */ 
+    $('.category_parent i').addClass('fa-circle-o').removeClass('fa-dot-circle-o');
+    $('#' + id + ' i').removeClass('fa-circle-o');
+    $('#' + id + ' i').addClass('fa-dot-circle-o');     
     
     $.ajax({
             url: base_url + 'marchand/child-category',
@@ -85,7 +88,7 @@ function splitDataName($data) {
     var result = $data.split('$');
     return result[1];
 }
-$('#reduction').on('blur',function(){
+$('#reduction').on('keyup',function(){
    if($('#product_rate').val() != ''){
        var res = $('#original_price').val()-$('#reduction').val()*$('#original_price').val()/100;
        $('#promotional_price').val(res.toFixed(2));

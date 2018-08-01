@@ -40,6 +40,7 @@
                                value="{!! ($product) ? $product->translation->product_name : null !!}"
                                placeholder="Nom de l'article">
                         <input type="text" name="product_id" value="{!! ($product) ? $product->product_id : null !!}" class="hidden"/>
+                        <input type="text" name="product_url" value="" id="product_url" class="hidden"/>
                         <a href="{!! route('get_attribute') !!}" id="get_attributes" class="hidden"></a>
                     </div>
                     
@@ -155,7 +156,7 @@
                                 
                                 <div class="form-group">
                                     <label for="promotional_price">Tarif promotionnel</label>
-                                    <input type="text" name="promotional_price" class="form-control" id="promotional_price" value="{!!($product) ? $product->promotional_price: null !!}" placeholder="Tarif promotionnel">
+                                    <input type="text" readonly="true" name="promotional_price" class="form-control" id="promotional_price" value="{!!($product) ? $product->promotional_price: null !!}" placeholder="Tarif promotionnel">
                                 </div>
                             </div>
                         </div>
@@ -188,12 +189,9 @@
                                             }
                                         ?>
                                         @if($attribute_set)
-                                            
                                             @foreach($attribute_set->attributes as $key1=>$attribute)
+                                                @if(isset($stock->options[$key1]))
                                                 <div class="form-group">
-                                                    <?php 
-                                                        //dd($stock->options);
-                                                    ?>
                                                     {!! Form::label('attribute_name', $attribute->french->attribute_name, ['class' => 'control-label']) !!}
                                                     <div class="">
                                                         <input type="text" name="attribute_id[{!! $key !!}][]" class="hidden attribute_id" value="{!! $attribute->attribute_id !!}" />
@@ -209,6 +207,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach                                            
                                         @endif                                        
                                         
@@ -264,13 +263,8 @@
                         <input type="text" id="remove_attribute_option" class="hidden" name="remove_attribute_option" autocomplete="off">
                     </div>
                     <div class="text-center">
-<<<<<<< HEAD
-                        <a class="btn btn-merchant-filled" id="add-decline">Ajouter déclinaison</a>
-                        <a class="btn btn-merchant-filled mt-10 hidden" id="remove-decline">Supprimer déclinaison</a>
-=======
                         <a class="btn btn-merchant-filled" id="add-decline" style="margin-bottom: 10px;">Ajouter déclinaison</a>
                         <a class="btn btn-merchant-filled hidden" id="remove-decline" style="margin-bottom: 10px;">Supprimer déclinaison</a>
->>>>>>> 0a58a44bd7df40f8913c98598f4e0ef80902acc4
                     </div>
                 </div>
             </div>
