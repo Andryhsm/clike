@@ -103,10 +103,12 @@ jQuery(document).ready(function() {
                 if (result.status) {
                     parent_element.find("#latitude").val(result.latitude);
                     parent_element.find("#longitude").val(result.longitude);
+                    $('.ajax-request-alert').removeClass('hidden').addClass('alert-success');
+                    $('.alert-message').text("Position trouvée");
                 }
                 else {
                     $('.ajax-request-alert').removeClass('hidden').addClass('alert-danger');
-                    $('.alert-message').text(result.msg);
+                    $('.alert-message').text("Position non trouvée");
                 }
             }
         });
