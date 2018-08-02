@@ -79,10 +79,10 @@ $selected_category = [];
         	                                   placeholder="Date fin">
         	                        </div>	
         	                        <div class="form-group col-lg-12">
-        	                            <label for="quantity_max">Quantité max</label>
-        	                            <input type="number" name="quantity_max" class="form-control required" id="quantity_max"
-        	                                   value="{!! ($code_promo) ? $code_promo->quantity_max : null !!}"
-        	                                   placeholder="Quantité max">
+        	                            <label for="discount">Pourcentage de rabais</label>
+        	                            <input type="text" name="discount" class="form-control required" id="discount"
+        	                                   value="{!! ($code_promo) ? $code_promo->discount : null !!}"
+        	                                   placeholder="Rabais">
         	                        </div>
                             	</div>
                             	<div class="col-lg-6">	
@@ -124,6 +124,12 @@ $selected_category = [];
                                         @else
                                             <input type="hidden" name="product" value="" id="product">
                                         @endif    
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label for="quantity_max">Quantité max</label>
+                                        <input type="number" name="quantity_max" class="form-control required" id="quantity_max"
+                                               value="{!! ($code_promo) ? $code_promo->quantity_max : null !!}"
+                                               placeholder="Quantité max">
                                     </div>
                             	</div>
                             	

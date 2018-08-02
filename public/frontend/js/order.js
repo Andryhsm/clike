@@ -69,7 +69,57 @@ $(function() {
         event.preventDefault();
         delete_cart($(this));
     });
-})
+
+    $('.cart-paye[name="cart_number"]').blur(function(){
+        var code_promo_name = $(this).val();
+        var url = $('.content-cart-product').attr('data-url');
+        console.log('url ' + url );
+        if(code_promo_name != ''){
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {'code_promo_name' : code_promo_name},
+                dataType: 'json',
+                beforeSend: function() {
+                    $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+                },
+                success: function(response, status) {
+                    if(response.discount != null) {
+                        $('.article:not(:last-child)').each(function(i, el) {
+                            //console.log($(el).find('.original_price').attr('value'));
+                            console.log($(el))
+                            if($(el).find('.discount').text()) {                          
+                                var promotional_price = parseFloat($(el).find('input.promotional_price').attr('value'));
+                                var price = promotional_price - ((promotional_price * response.discount) / 100);
+                                price = price.round(2);                        
+                            }
+                            else {                            
+                                //console.log($(el).clone().find('input.original_price').attr('value') + '$$$$$');
+                                var original_price = parseFloat($(el).find('input.original_price').attr('value'));
+                                var price = original_price - ((original_price * response.discount) / 100);
+                            }
+                            console.log('price ' + price)
+                            $(el).find('.real-price').text('' + price);
+                            $(el).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
+                            $(el).find('.real-price').data('price', '' + fixed_two_after_dot(price));
+                           
+                        });
+                        
+                        calcul_total_price();
+                        toastr.success("Code appliqué avec succès!");
+                    }
+                    else {
+                        toastr.error(response.error);
+                    }
+                    $.LoadingOverlay("hide");                    
+                },
+                error: function(xhr, status, error){
+                    console.log(xhr.responseText);
+                }
+            });
+        }           
+    });
+});
 
 function delete_cart(box) {
     var $this = $(box);

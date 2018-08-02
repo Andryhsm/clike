@@ -25,7 +25,7 @@
                                         </div>
                                       <div class="info-facture mt-40">
                                           <div class="col-sm-7">     
-                                                {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "autocomplete" => "off" ])}}
                                            </div>
                                       </div>
                                      
@@ -85,14 +85,14 @@
                                 </div>
                             </div>
                             <div class="cart-product-list col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
-                                <div class="content-cart-product">
+                                <div class="content-cart-product" data-url="{!! route('get_discount') !!}">
                                     <div class="cart-title">
                                         <h2>{!! (count($cart->items()) < 2) ? count($cart->items()).' ARTICLE' : count($cart->items()).' ARTICLES' !!} </h2>
                                     </div>
                                     @if(count($cart->items())>0)
                                     @foreach($cart->items() as $item_id=>$item)
                                  
-                                    <div class="cart-product row">
+                                    <div class="cart-product article row">
                                         <div class="col-lg-4">
                                             <div class="product-image"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/'.$item->getUrl()) !!}"><img src="{!! URL::to('/').'/'.\App\Product::PRODUCT_IMAGE_PATH.$item->getImage() !!}" alt="{!! $item->getImageAlt() !!}"></a>
                                             </div>
@@ -103,11 +103,13 @@
                                             <div class="product-price">
                                                     <?php $product = $item->getProduct();?>
                                                     @if($product->promotional_price != null)
-                                                        <span class="old-price" style="color: rgb(67, 223, 230);">({!! $product->discount !!})</span>
+                                                        <span class="old-price discount" style="color: rgb(67, 223, 230);">({!! $product->discount !!})</span>
                                                         <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
                                                         <span class="new-price real-price" data-price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
+                                                        <input type="text" class="hidden promotional_price" value="{!! $product->promotional_price !!}" >
                                                     @else
                                                         <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
+                                                        <input type="text" class="hidden original_price" value="{!! $product->original_price !!}" >
                                                     @endif
                                             </div>
                                             <div class="reviews-total">

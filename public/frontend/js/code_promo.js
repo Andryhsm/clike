@@ -6,6 +6,7 @@ jQuery(document).ready(function() {
             return false;
         }
         else {
+            console.log('ici ++++' + base_url + 'marchand/get-product')
             $(this).autocomplete({
                 minLength: 2,
                 source: function(req, add) {
@@ -22,6 +23,7 @@ jQuery(document).ready(function() {
                         }),
                         url: base_url + 'marchand/get-product',
                         success: function(response) {
+                            console.log('******* ' + response)
                             json_response_array = response['json_array'];
                             var suggestions = [];
                             var count = 0;
