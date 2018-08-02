@@ -3413,3 +3413,8 @@ div#area-modal {
 .close-thik {
   cursor: pointer;
 }
+label.error_ {
+    color: red;
+    font-style: italic;
+    font-weight: normal;
+}
