@@ -288,6 +288,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::get('produit/get-data', 'ProductController@getData')->name('merchant-product-data');
                     Route::get('produit', 'ProductController@index')->name('merchant-product');
                     Route::resource('article', 'ArticleController');
+                    Route::post('get-data-article', 'ArticleController@getData')->name('merchant-article-data');
                     Route::get('child-category','ArticleController@getChild')->name('get-child-category');
                     Route::get('produit/attributes', 'ArticleController@attributes')->name('get_attribute');
                     Route::post('produit', 'ProductController@store')->name('save_product_merchant');

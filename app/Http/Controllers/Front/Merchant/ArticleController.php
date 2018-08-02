@@ -9,6 +9,7 @@ use App\Interfaces\ProductRepositoryInterface;
 use App\Repositories\AttributeSetRepository;
 use App\Repositories\SpecialProductRepository;
 use Yajra\Datatables\Facades\Datatables;
+use Illuminate\Support\Facades\Input;
 use App\Service\UploadService;
 use App\Product;
 
@@ -36,10 +37,32 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        return view('merchant.article.list');
+    }
+    public function getData(Request $request)
+    {   
         $store_id = auth()->user()->store->first()->store_id;
-        $products = Datatables::collection($this->product_repository->getByStore($store_id))->make(true);
-		$products = $products->getData();
-        return view('merchant.article.list',compact('products'));
+        if(Input::has('article_filter')){
+            $products = $this->product_repository->getByStoreFilter($request->all(),$store_id);
+        }
+        $data_tables = Datatables::collection($products);
+        $data_tables->EditColumn('check', function ($product) {
+            return '<a href="#" class="checkbox" data-product-id="'. $product->product_id.'"><i class="fa fa-circle-o mr-10"></i></a>';
+        })->EditColumn('product_image', function ($product) {
+            $url_image = isset($product->images[0]) ? 'upload/product/'.$product->images[0]->image_name : '';
+            return '<img class="article-img" src=" '.url($url_image).' "></img>';
+        })->EditColumn('product_name', function ($product) {
+            if(isset($product->french->product_name))  
+                return $product->french->product_name;
+        })->EditColumn('product_price', function ($product) {
+            if(isset($product->original_price))  
+                return format_price($product->original_price);
+        })->EditColumn('inventory', function ($product) {
+            return "en stock";
+        })->EditColumn('action', function ($product) {
+            return view("merchant.article.action", ['product' => $product]);
+        });
+        return $data_tables->rawColumns(['check','product_price','product_image','inventory','action'])->make(true);
     }
 
     /**

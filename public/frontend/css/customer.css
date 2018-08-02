@@ -599,7 +599,7 @@ td .customer-file-action.download {
     width: 100%;
     text-align: center;
 }
-.customer-area table#product_list .btn.btn-default,
+.customer-area table#article_list .btn.btn-default,
 .customer-area table#code_promo .btn.btn-default,
 .customer-area form#product_form .btn.btn-default,
 .customer-area table#customer .btn.btn-primary,
@@ -610,7 +610,7 @@ td .customer-file-action.download {
     border-color: #0f4651;
     margin: 1px;
 }
-.customer-area table#product_list .btn.btn-default:hover,
+.customer-area table#article_list .btn.btn-default:hover,
 .customer-area table#code_promo .btn.btn-default:hover,
 .customer-area form#product_form .btn.btn-default:hover,
 .customer-area table#customer .btn.btn-primary:hover,
