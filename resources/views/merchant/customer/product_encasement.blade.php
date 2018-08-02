@@ -30,7 +30,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group product_reference">
                             <label for="product_reference" class="control-label">Référence</label>
-                            <input type="text" placeholder="Référence" class=" form-control required"/>
+                            <input type="text" placeholder="Référence" class=" form-control"/>
                         </div>
                         <div class="form-group sub_category">
                             <label for="sub_category" class="control-label">Sous catégorie</label>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group promo_code">
                             <label for="promo_code" class="control-label">Code promo</label>
-                            <select class="form-control required">
+                            <select class="form-control">
                             </select>
                         </div>
                         <div class="form-group product_quantity">  
@@ -102,7 +102,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label for="product_reference" class="control-label">Référence</label>
-                            <input type="text" name="product_reference[1]" placeholder="Référence" id="product_reference1" class="input-product-reference form-control required"/>
+                            <input type="text" name="product_reference[1]" placeholder="Référence" id="product_reference1" class="input-product-reference form-control"/>
                            
                         </div>
                         <div class="form-group">
@@ -119,7 +119,7 @@
                         </div> -->
                         <div class="form-group">
                             <label for="promo_code" class="control-label">Code promo</label>
-                            <select name="promo_code[1]"  id="promo_code1" class="select-promo-code form-control required">
+                            <select name="promo_code[1]"  id="promo_code1" class="select-promo-code form-control">
                             </select>
                         </div>
                         <div class="form-groupe product_quantity">  
@@ -159,6 +159,6 @@
 </section>
 <div class="footer-button"><!-- box-footer -->
     <a href="#tab_1" data-toggle="tab" class="btn btn-merchant-filled">Precedent</a>
-    <a class="btn btn-merchant-filled pull-right" onclick="validate_product_info();" id="paiement"> Paiement </a>
+    <a class="btn btn-merchant-filled pull-right" id="paiement"> Paiement </a>
     <a type="button"  id="next-in-paiement" class="btn btn-merchant-filled hidden"  href="#tab_3" data-toggle="tab" >Valid</a>
 </div>

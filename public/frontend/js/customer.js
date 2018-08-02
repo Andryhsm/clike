@@ -190,10 +190,10 @@ jQuery(document).ready(function() {
             var quantity_in_stock = parseInt(data.quantity);
             console.log("quantity_in_stock "+ quantity_in_stock + " product_quantity "+ product_quantity);
             if(quantity_in_stock < product_quantity) {
-                $product_quantity.find('.error').remove();
-                $product_quantity.append('<label class="error">Le stock est insuffisant!</label>')
+                $product_quantity.find('.error_').remove();
+                $product_quantity.append('<label class="error_">Le stock est insuffisant!</label>')
             } else {
-                $product_quantity.find('.error').remove();
+                $product_quantity.find('.error_').remove();
             }
         })
         .fail(function() {
@@ -206,59 +206,67 @@ jQuery(document).ready(function() {
     });
 
     $('#paiement').click(function(event) {
-        var info_product_customer = $('#customer_form').serializeArray();
-        var total_price_product = 0;
-        var total_price_product_ttc = 0;
-        var total_discount_price = 0;
-        var tab_tr = {};
-        $('.table-content-paiement').html('');
-        $('.select-product-name').each(function(index, el) {
-            $('.table-content-paiement').append("<tr class='tr" + index + "'><th>" + $(this).find('option:selected').text() + "</th><tr/>");
+        var form = $("#customer_form");
+        form.validate({
+            rules: {}
         });
-        $('.input-product-reference').each(function(index, el) {
-            $('.table-content-paiement').find('.tr' + index).append('<th>' + $(this).val() + '</th>');
-        });
+        validate_customer_info();
+        if (form.valid()) {
+                if($('.error_').length == 0){
+                    $('#next-in-paiement').trigger('click');
+                    var info_product_customer = $('#customer_form').serializeArray();
+                    var total_price_product = 0;
+                    var total_price_product_ttc = 0;
+                    var total_discount_price = 0;
+                    var tab_tr = {};
+                    $('.table-content-paiement').html('');
+                    $('.select-product-name').each(function(index, el) {
+                        $('.table-content-paiement').append("<tr class='tr" + index + "'><th>" + $(this).find('option:selected').text() + "</th><tr/>");
+                    });
+                    $('.input-product-reference').each(function(index, el) {
+                        $('.table-content-paiement').find('.tr' + index).append('<th>' + $(this).val() + '</th>');
+                    });
 
-        $('.input-product-quantity').each(function(index, el) {
-            $('.table-content-paiement').find('.tr' + (index-1)).append('<th>' + $(this).val() + '</th>');
-        });
-        $('.input-product-price').each(function(index, el) {
-            var product_quantity = parseInt($(this).parents('.product-content').find('.input-product-quantity').val());
-            var price = parseInt($(this).val());
-            $('.table-content-paiement').find('.tr' + index).append('<th>' + fixed_two_after_dot(price*product_quantity) + ' <i class="fa fa-eur" aria-hidden="true"></i></th>');
-            total_price_product += parseFloat($(this).val());
-        });
-        $('.select-parent-category').each(function(index, el) {
-            /*console.log($(this).find('option:selected').text());*/
-        });
-        $('.input-discount').each(function(index, el) {
-            var parent = $(this).parents('.product-content');
-            var percent = ($(this).val() != '') ? $(this).val() : 0;
-            var price = parent.find('.input-product-price').val();
-            price = (price != '') ? price : 0;
-            var discount_price = parseFloat(price) * (parseInt(percent) / 100);
-            total_discount_price += discount_price;
-        });
-        $('.select-promo-code').each(function(index, el) {
-            /*console.log($(this).val());*/
-        });
+                    $('.input-product-quantity').each(function(index, el) {
+                        $('.table-content-paiement').find('.tr' + (index-1)).append('<th>' + $(this).val() + '</th>');
+                    });
+                    $('.input-product-price').each(function(index, el) {
+                        var product_quantity = parseInt($(this).parents('.product-content').find('.input-product-quantity').val());
+                        var price = parseInt($(this).val());
+                        $('.table-content-paiement').find('.tr' + index).append('<th>' + fixed_two_after_dot(price*product_quantity) + ' <i class="fa fa-eur" aria-hidden="true"></i></th>');
+                        total_price_product += parseFloat($(this).val());
+                    });
+                    $('.select-parent-category').each(function(index, el) {
+                        /*console.log($(this).find('option:selected').text());*/
+                    });
+                    $('.input-discount').each(function(index, el) {
+                        var parent = $(this).parents('.product-content');
+                        var percent = ($(this).val() != '') ? $(this).val() : 0;
+                        var price = parent.find('.input-product-price').val();
+                        price = (price != '') ? price : 0;
+                        var discount_price = parseFloat(price) * (parseInt(percent) / 100);
+                        total_discount_price += discount_price;
+                    });
+                    $('.select-promo-code').each(function(index, el) {
+                        /*console.log($(this).val());*/
+                    });
 
-        total_price_product_ttc = total_price_product - total_discount_price;
-        var discount_total = (total_discount_price * 100) / total_price_product;
-        discount_total = discount_total.round(2);
-        total_price_product_ttc = total_price_product_ttc.round(2);
-        $('.table-content-paiement').append('<tr class="total"><th></th><th></th><th>Montant total HT</th><th>' + fixed_two_after_dot(total_price_product) + ' <i class="fa fa-eur" aria-hidden="true"></i></th></tr>');
-        $('.table-content-paiement').append('<tr class="total"><th></th><th></th><th>Remise</th><th>' + discount_total + '%</th></tr>');
-        $('.table-content-paiement').append('<tr class="total"><th></th><th></th><th>TVA</th><th>0%</th></tr>');
-        $('.table-content-paiement').append('<tr class="total"><th></th><th></th><th>Montant total TTC</th><th>' + fixed_two_after_dot(total_price_product_ttc) + ' <i class="fa fa-eur" aria-hidden="true"></i></th></tr>');
-        $('#total_ht').val(total_price_product);
-        $('#total_ttc').val(total_price_product_ttc);
+                    total_price_product_ttc = total_price_product - total_discount_price;
+                    var discount_total = (total_discount_price * 100) / total_price_product;
+                    discount_total = discount_total.round(2);
+                    total_price_product_ttc = total_price_product_ttc.round(2);
+                    $('.table-content-paiement').append('<tr class="total"><th></th><th></th><th>Montant total HT</th><th>' + fixed_two_after_dot(total_price_product) + ' <i class="fa fa-eur" aria-hidden="true"></i></th></tr>');
+                    $('.table-content-paiement').append('<tr class="total"><th></th><th></th><th>Remise</th><th>' + discount_total + '%</th></tr>');
+                    $('.table-content-paiement').append('<tr class="total"><th></th><th></th><th>TVA</th><th>0%</th></tr>');
+                    $('.table-content-paiement').append('<tr class="total"><th></th><th></th><th>Montant total TTC</th><th>' + fixed_two_after_dot(total_price_product_ttc) + ' <i class="fa fa-eur" aria-hidden="true"></i></th></tr>');
+                    $('#total_ht').val(total_price_product);
+                    $('#total_ttc').val(total_price_product_ttc);
+                }
+        }
+        
+  
     });
-
-    
-
     autocomplete_list_customer();
-    
 });
 
 function fixed_two_after_dot(number) {
@@ -366,26 +374,24 @@ function validate_customer_info() {
     }
 }
 
-function validate_product_info() {
-    var form = $("#customer_form");
-    form.validate();
-    $('.select-product-name').each(function(index, element) {
-        $element_parent = $(element).parents('.product_name');
-        if ($(element).val() == 0) {
-            if(!$(element).hasClass('invalid')){
-                $(element).addClass('invalid');
-                $element_parent.append("<label class='error'>Veuillez sélectionner un produit</label>");
+function valid_product_name() {
+        $('.select-product-name').each(function(index, element) {
+            $element_parent = $(element).parents('.product_name');
+            if ($(element).val() == 0) {
+                if(!$(element).hasClass('invalid_')){
+                    $(element).addClass('invalid_');
+                    $element_parent.append("<label class='error'>Veuillez sélectionner un produit</label>");
+                }
             }
+            else {
+                $(element).removeClass('invalid_');
+                $element_parent.find('.error').remove();
+            }
+        });
+        if($('#size_list_input').find('.invalid').length == 0){
+            if($('.error').length == 0)    
+                $('#next-in-paiement').trigger('click');
         }
-        else {
-            $(element).removeClass('invalid');
-            $element_parent.find('.error').remove();
-        }
-    });
-    if($('#size_list_input').find('.invalid').length == 0){
-        if($('.error').length == 0)    
-            $('#next-in-paiement').trigger('click');
-    }
 }
 
 function autocomplete_list_customer() {
