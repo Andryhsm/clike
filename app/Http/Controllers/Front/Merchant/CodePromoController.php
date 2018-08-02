@@ -150,14 +150,14 @@ class CodePromoController extends Controller
         return response()->json($products);
     }
 
-    public function getDiscount(Request $request){
+    public function getDiscount(Request $request){ 
         $code_promo = $this->code_promo_repository->getByPromoName($request);
         
         if($code_promo){
             $begin_date = \Carbon\Carbon::parse($code_promo->date_debut)->format('d-m-Y');
             $end_date = \Carbon\Carbon::parse($code_promo->date_fin)->format('d-m-Y');
             $now = \Carbon\Carbon::now()->format('d-m-Y');
-            if($now >= $begin_date || $now <= $end_date) return response()->json(['error' => "La durée d'utilisation du code a expirée."]);
+            if($now > $end_date) return response()->json(['error' => "La durée d'utilisation du code a expirée."]);
             else return response()->json(['discount' => $code_promo->discount]);
         } 
         else return response()->json(['error' => "Code inexistant."]);
