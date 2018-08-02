@@ -1,6 +1,7 @@
 jQuery(document).ready(function() {
     var $document = $(document);
 
+    var form = $('#store_form');
     // title_brands_select = "MARQUES RÉPERTORIÉES DANS NOTRE SYSTÈME";
     var lang = {};
 
@@ -9,9 +10,11 @@ jQuery(document).ready(function() {
     }
 
     $('#add-store').click(function() {
-
-        $('#store_form').validate({
-            rules: {},
+        var form = $('#store_form');
+        form.validate({
+            rules: {
+                shop_name: "required"
+            },
             invalidHandler: function(e, validator) {
                 if (validator.errorList.length)
                     $('#myTab a[href="#' + jQuery(validator.errorList[0].element).closest(".tab-pane").attr('id') + '"]').tab('show')
@@ -29,11 +32,11 @@ jQuery(document).ready(function() {
                 }
             }
         });
-        if ($('#add-store').valid()) {
+        $('.open-time').removeAttr('disabled');
+        if (form.valid()) {
             $('#store_form').submit();
         }
     });
-
 
     $document.on('change', '#country', function() {
         var country_id = $(this).val();
@@ -81,6 +84,7 @@ jQuery(document).ready(function() {
     $document.on('click', '#confirm_position', function() {
         var button = $(this);
         button.attr("disabled", true);
+        var url = $(this).data("url");
         var parent_element = $(document);
         var address1 = parent_element.find("#address1").val();
         var address2 = parent_element.find("#address2").val();
@@ -90,7 +94,7 @@ jQuery(document).ready(function() {
         var state = parent_element.find("#state option:selected").text();
         $.ajax({
             type: "POST",
-            url: base_url + 'admin/get-coordinates',
+            url: url,
             data: "address1=" + address1 + "&address2=" + address2 + "&city=" + city + "&zip=" + zip + "&country=" + country + "&state=" + state,
             beforeSend: function() {},
             complete: function(response) {
@@ -99,10 +103,12 @@ jQuery(document).ready(function() {
                 if (result.status) {
                     parent_element.find("#latitude").val(result.latitude);
                     parent_element.find("#longitude").val(result.longitude);
+                    $('.ajax-request-alert').removeClass('hidden').addClass('alert-success');
+                    $('.alert-message').text("Position trouvée");
                 }
                 else {
                     $('.ajax-request-alert').removeClass('hidden').addClass('alert-danger');
-                    $('.alert-message').text(result.msg);
+                    $('.alert-message').text("Position non trouvée");
                 }
             }
         });
@@ -134,33 +140,28 @@ jQuery(document).ready(function() {
     $document.on('click', '.add_user', function() {
         var row_count = parseInt($document.find('.master_manager:last').attr('id'));
         var row_index = row_count + 1;
-        var master_div = $(this).parents('.master_manager').clone();
+        var master_div = $('.master_manager#1').clone();
         master_div.attr('id', row_index);
-        master_div.find('#last_name').val('').attr('name', "manager[" + row_index + "][last_name]");
-        master_div.find('#first_name').val('').attr('name', "manager[" + row_index + "][first_name]");
-        master_div.find('#sms').val('').attr('name', "manager[" + row_index + "][sms]");
-        master_div.find('#email').val('').attr('name', "manager[" + row_index + "][email]");
-        master_div.find('#password').val('').removeClass('password1').addClass('password' + row_index + '').attr('name', "manager[" + row_index + "][password]").attr('onkeyup', "confirmPassword('" + row_index + "');");
-        master_div.find('#confirm_password').val('').removeClass('confirm_password1').addClass('confirm_password' + row_index + '').attr('onkeyup', "confirmPassword('" + row_index + "');");
-        master_div.find('#global_manager').prop('checked', true).attr('name', "manager[" + row_index + "][global_manager]");
-        master_div.find('#compte_principle').prop('checked', true).attr('name', "manager[" + row_index + "][compte_principle]");
-        master_div.find('#receive_request').prop('checked', true).attr('name', "manager[" + row_index + "][receive_request]");
-        master_div.find('#reply_request').prop('checked', true).attr('name', "manager[" + row_index + "][reply_request]");
-        master_div.find('#manager_id').val('').attr('name', "manager[" + row_index + "][manager_id]");
+        master_div.find('#last_name1').val('').attr('name', "manager[" + row_index + "][last_name]").attr('id', "last_name"+row_index);
+        master_div.find('#first_name1').val('').attr('name', "manager[" + row_index + "][first_name]").attr('id', "first_name"+row_index);
+        master_div.find('#sms1').val('').attr('name', "manager[" + row_index + "][sms]").attr('id', "sms"+row_index);
+        master_div.find('#email1').val('').attr('name', "manager[" + row_index + "][email]").attr('id', "email"+row_index);
+        master_div.find('#password1').val('').removeClass('password1').addClass('password' + row_index + '').attr('name', "manager[" + row_index + "][password]").attr('onkeyup', "confirmPassword('" + row_index + "');").attr('id', "password"+row_index).addClass('required');
+        master_div.find('#confirm_password1').val('').removeClass('confirm_password1').addClass('confirm_password' + row_index + '').attr('name', "manager[" + row_index + "][confirm_password]").attr('onkeyup', "confirmPassword('" + row_index + "');").attr('id', 'confirm_password'+row_index).attr('id', "confirm_password"+row_index).addClass('required');
+        master_div.find('#global_manager1').prop('checked', true).attr('name', "manager[" + row_index + "][global_manager]").attr('id', "global_manager"+row_index);
+        master_div.find('#compte_principle1').prop('checked', true).attr('name', "manager[" + row_index + "][compte_principle]").attr('id', "compte_principle"+row_index);
+        master_div.find('#receive_request1').prop('checked', true).attr('name', "manager[" + row_index + "][receive_request]").attr('id', "receive_request"+row_index);
+        master_div.find('#reply_request1').prop('checked', true).attr('name', "manager[" + row_index + "][reply_request]").attr('id', "reply_request"+row_index);
+        master_div.find('#manager_id1').val('').attr('name', "manager[" + row_index + "][manager_id]").attr('id', "manager_id"+row_index);
         master_div.find('.add-user button').removeClass('add_user btn-primary').addClass('remove_user btn-danger').text('Remove User');
         master_div.find('.line-separator').removeClass('hidden');
-        if (language_code == 'fr') {
-            master_div.find('.title-master-manager>span').html('Compte #' + row_index + '&nbsp;&nbsp;&nbsp;&nbsp; <a class="remove_user"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
-        }
-        else {
-            master_div.find('.title-master-manager>span').html('Account #' + row_index + '&nbsp;&nbsp;&nbsp;&nbsp; <a class="remove_user"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
-        }
-
+        master_div.find('.title-master-manager>span').html('Compte #' + row_index + '&nbsp;&nbsp;&nbsp;&nbsp; <a class="remove_user"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
+         console.log(row_index);
         master_div.insertAfter($document.find('.master_manager:last'));
-    });
-
-    $document.on('click', '.call_add_user', function() {
-        $('.add_user').trigger('click');
+        $('.master_manager:last input').val('');
+        $('input[name="manager[' + row_index + '][reply_request]"]').val("1");
+        $('input[name="manager[' + row_index + '][receive_request]"]').val("1");
+        $('input[name="manager[' + row_index + '][global_manager]"]').val("1");
     });
 
     $document.on('click', '.remove_user ', function() {

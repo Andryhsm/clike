@@ -23,6 +23,7 @@ class CodePromoRepository implements CodePromoRepositoryInterface
         $this->model->date_debut = Carbon::parse($input['date_debut']);
         $this->model->date_fin = Carbon::parse($input['date_fin']);
         $this->model->quantity_max = $input['quantity_max'];
+        $this->model->discount = $input['discount'];
         $this->model->save();
         if (isset($input['categories'])) {
             foreach ($input['categories'] as $category) {
@@ -48,6 +49,7 @@ class CodePromoRepository implements CodePromoRepositoryInterface
         $code_promo->date_debut = Carbon::parse($input['date_debut']);
         $code_promo->date_fin = Carbon::parse($input['date_fin']);
         $code_promo->quantity_max = $input['quantity_max'];
+        $code_promo->discount = $input['discount'];
         $code_promo->save();
         $code_promo->categories()->detach();
         if (isset($input['categories'])) {
@@ -80,5 +82,9 @@ class CodePromoRepository implements CodePromoRepositoryInterface
     public function getProducts($keyword,$user_id)
     {
         return ProductTranslation::where('product_name', 'like', "%$keyword%")->where('user_id',$user_id)->where('language_id',2)->groupBy('product_id')->get();
+    }
+
+    public function getByPromoName($input) {
+        return $this->model->where('code_promo_name', $input['code_promo_name'])->first();
     }
 }

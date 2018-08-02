@@ -50,7 +50,7 @@ $(document).ready(function() {
     $('.more').find('td').css({ "padding": "0px 10px 16px 10px", "border": "1px solid #212b52" });
     //$('.more').find('td>p>span>span>strong>span').css("font-size", "15px");
 
-
+/*************************Boutton More Details ********************************/
     var buttonTextM = "";
     var buttonTextL = "";
     if ($('#language').val() == "fr") {
@@ -62,6 +62,13 @@ $(document).ready(function() {
         buttonTextL = "Moins de détails";
     }
 
+
+
+// More details pour le description
+var description_length = $('#description').text().length ;
+
+if (description_length > 1200) {
+    $('#btn_details').show();
     $('#btn_details').click(function(e) {
         if ($('#productTabContent').hasClass('height-content')) {
             $('#productTabContent').removeClass('height-content');
@@ -74,6 +81,12 @@ $(document).ready(function() {
             $('.tabs-limit').removeClass('hidden');
         }
     });
+}else{
+    $('#btn_details').hide();
+}
+
+/************************** End More Detail ******************************/
+
     $('.review-make').click(function(e) {
         $('.content-review-form').removeClass('hidden');
     });

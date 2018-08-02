@@ -6,7 +6,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ set_active(['magasin','magasin/*']) }}" href="{!! route('magasin.edit',['store' => Session::get('store_to_user')]) !!}">
+            <a class="nav-link {{ set_active(['magasin','magasin/*']) }}" href="{!! route('magasin.edit',['store' => auth()->user()->store->first()->store_id]) !!}">
                 <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/my_account.svg"/><span>Mon compte</span>
             </a>
         </li>

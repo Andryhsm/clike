@@ -20,7 +20,8 @@ class CodePromo extends Model
         'user_id',
 		'date_debut',
 		'date_fin',
-		'quantity_max'
+		'quantity_max',
+        'discount'
     ];
 
     public function categories(){

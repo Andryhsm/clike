@@ -17,7 +17,7 @@ class EncasementProduct extends Model
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['encasement_id', 'attribute_size_id', 'attribute_color_id', 'parent_category', 'sub_category', 'promo_code_id'];
+	protected $fillable = ['encasement_id', 'parent_category', 'sub_category', 'promo_code_id', 'product_stock_id', 'quantity'];
 
 	public function encasement()
 	{

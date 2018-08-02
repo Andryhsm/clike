@@ -68,7 +68,7 @@
 
 @endsection
 @section('additional-script')    
-    <script>
+    <script class="script-content">
         var product_is_active = [
                         {
                             id : 0,

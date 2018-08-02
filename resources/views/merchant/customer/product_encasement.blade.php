@@ -21,7 +21,7 @@
                         <div class="form-group discount">
                             <label for="discount" class="control-label">Rémise</label>
                             <div class="input-group">
-                                <input type="number" placeholder="Rémise" class="form-control required"/>
+                                <input type="number" placeholder="Rémise" class="form-control"/>
                                  <span class="input-group-addon"> % </span>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group product_reference">
                             <label for="product_reference" class="control-label">Référence</label>
-                            <input type="text" placeholder="Référence" class=" form-control required"/>
+                            <input type="text" placeholder="Référence" class=" form-control"/>
                         </div>
                         <div class="form-group sub_category">
                             <label for="sub_category" class="control-label">Sous catégorie</label>
@@ -40,8 +40,15 @@
                         </div>
                         <div class="form-group promo_code">
                             <label for="promo_code" class="control-label">Code promo</label>
-                            <select class="form-control required">
+                            <select class="form-control">
                             </select>
+                        </div>
+                        <div class="form-group product_quantity">  
+                            <label for="product_quantity" class="control-label">Quantité</label>
+                            <input type="number" disabled="disabled" class="form-control required input-product-quantity " data-url="{!! route('get-quantity-by-stock-id') !!}" placeholder="price" />
+                        </div>
+                        <div class="product_stock_id hidden">
+                            <input type="text" class="control-label">
                         </div>
                     </div>
                 
@@ -49,9 +56,7 @@
                     <div class="product_price hidden">  
                         <input type="text" placeholder="price" />
                     </div>
-                    <div class="product_quantity hidden">  
-                        <input type="text" class="form-control required" placeholder="price" />
-                    </div>
+                    
                 </div>
                 <div class="col-sm-12 mt-10 button">
                     <button type="button" style="float:right;" class="btn btn-danger remove_size_input">Annuler ce produit</button>
@@ -88,7 +93,7 @@
                         <div class="form-group">
                             <label for="discount" class="control-label">Rémise</label>
                             <div class="input-group">
-                                <input type="number" name="discount[1]" placeholder="Rémise" id="discount1" class="input-discount form-control required"/>
+                                <input type="number" name="discount[1]" placeholder="Rémise" id="discount1" class="input-discount form-control"/>
                                 <span class="input-group-addon"> % </span>
                             </div>
                         </div>
@@ -97,7 +102,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label for="product_reference" class="control-label">Référence</label>
-                            <input type="text" name="product_reference[1]" placeholder="Référence" id="product_reference1" class="input-product-reference form-control required"/>
+                            <input type="text" name="product_reference[1]" placeholder="Référence" id="product_reference1" class="input-product-reference form-control"/>
                            
                         </div>
                         <div class="form-group">
@@ -114,8 +119,15 @@
                         </div> -->
                         <div class="form-group">
                             <label for="promo_code" class="control-label">Code promo</label>
-                            <select name="promo_code[1]"  id="promo_code1" class="select-promo-code form-control required">
+                            <select name="promo_code[1]"  id="promo_code1" class="select-promo-code form-control">
                             </select>
+                        </div>
+                        <div class="form-groupe product_quantity">  
+                            <label for="product_quantity" class="control-label">Quantité</label>
+                            <input type="number" name="product_quantity[1]" data-url="{!! route('get-quantity-by-stock-id') !!}" id="product_quantity1" disabled="disabled" class="input-product-quantity form-control required" placeholder="quantity" />
+                        </div>
+                        <div class="product_stock_id hidden">
+                            <input type="text" name="product_stock_id[1]" class="control-label">
                         </div>
                     </div>
                 </div>
@@ -127,9 +139,6 @@
                 <div class="row">
                     <div class="product_price hidden">  
                         <input type="text" name="product_price[1]" id="product_price1" class="input-product-price form-control required" placeholder="price" />
-                    </div>
-                    <div class="product_quantity hidden">  
-                        <input type="text" name="product_quantity[1]" id="product_quantity1" class="input-product-quantity form-control required" placeholder="price" />
                     </div>
                 </div>
                 
@@ -150,6 +159,6 @@
 </section>
 <div class="footer-button"><!-- box-footer -->
     <a href="#tab_1" data-toggle="tab" class="btn btn-merchant-filled">Precedent</a>
-    <a class="btn btn-merchant-filled pull-right" onclick="validate_product_info();" id="paiement"> Paiement </a>
+    <a class="btn btn-merchant-filled pull-right" id="paiement"> Paiement </a>
     <a type="button"  id="next-in-paiement" class="btn btn-merchant-filled hidden"  href="#tab_3" data-toggle="tab" >Valid</a>
 </div>

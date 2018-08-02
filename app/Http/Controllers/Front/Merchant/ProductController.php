@@ -427,7 +427,7 @@ class ProductController extends Controller
         }
 
 		$select_html = self::getSelectHtml($attribute_set, $product, $attribute_option_ids);
-
+		
 		return response()->json(['product' => $product, 'attribute' => $product_attributes, 'category_arr' => $category_arr, 'parent_categorie' => $parent_categorie, 'attribute_set' => $attribute_set, 'select_html' => $select_html]);
 	}
 
@@ -437,8 +437,8 @@ class ProductController extends Controller
             foreach($attribute_set->attributes as $key=>$attribute) { 
                         $select_html .= '<div class="form-group">
                                     <label for="">'.$attribute->french->attribute_name.'</label>
-                                    <select name="attrs[]" data-placeholder="Choose an option…" data-attribute="'.$attribute->attribute_id.'" data-route="'.route('get_options').'" class=" 
-                                        input-select-product form-control required" tabindex="1" style="color: #42838C!important" onchange="change_attribute(this, '. $product->product_id .')" autocomplete="off">
+                                    <select name="attrs[]['.$key.']" data-placeholder="Choose an option…" data-attribute="'.$attribute->attribute_id.'" data-route="'.route('get_options').'" class=" 
+                                        input-select-attribute form-control required" tabindex="1" style="color: #42838C!important" autocomplete="off">
                                         <option value="default" disabled selected>Veuillez choisir</option>';
                                         foreach($attribute->options as $option) {
                                             if(in_array($option->attribute_option_id,$attribute_option_ids)) {

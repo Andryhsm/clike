@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Interfaces\CustomerRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
+use App\Interfaces\ProductStockRepositoryInterface;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use PDF;
@@ -20,10 +21,12 @@ class CustomerController extends Controller
     
     protected $customer_repository;
     protected $product_repository;
+    protected $product_stock_repository;
 
-    public function __construct(CustomerRepositoryInterface $customer_rep_interface, ProductRepositoryInterface $product_repos){
+    public function __construct(CustomerRepositoryInterface $customer_rep_interface, ProductRepositoryInterface $product_repos, ProductStockRepositoryInterface $product_stock_repo){
         $this->customer_repository = $customer_rep_interface;
         $this->product_repository = $product_repos;
+        $this->product_stock_repository = $product_stock_repo;
     }
 
     public function index()
@@ -181,5 +184,12 @@ class CustomerController extends Controller
     {
         $pdf = PDF::loadView('merchant.customer.facture');
         return $pdf->stream();
+    }
+
+    public function getQuantityByProductStockId(Request $request) 
+    {
+        $product_stock_id = $request->get('product_stock_id');
+        $product_stock = $this->product_stock_repository->getById($product_stock_id);
+        return response()->json(['quantity' => $product_stock->product_count]);
     }
 }

@@ -2286,7 +2286,7 @@ element.style {
     margin: 0 -5.5px;
 }
 .height-content{
-  height:45rem;
+  height:20rem;
   overflow:hidden;
 }
 .more {
@@ -3412,4 +3412,9 @@ div#area-modal {
 }
 .close-thik {
   cursor: pointer;
+}
+label.error_ {
+    color: red;
+    font-style: italic;
+    font-weight: normal;
 }
