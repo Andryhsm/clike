@@ -196,7 +196,7 @@ class CustomerRepository implements CustomerRepositoryInterface
 			$encasement_product->parent_category = $input['parent_category'][$i];
 			$encasement_product->sub_category = $input['sub_category'][$i];
 			$encasement_product->product_stock_id = $input['product_stock_id'][$i];
-			$encasement_product->quantity = ($input['product_quantity'][$i] && isset($input['product_quantity'][$i])) ? $input['product_quantity'][$i] : 1;
+			$encasement_product->quantity = (isset($input['product_quantity'][$i]) && $input['product_quantity'][$i]) ? $input['product_quantity'][$i] : 1;
 			$encasement_product->save();
 			
 			//Update the quantity of the product in the stock
