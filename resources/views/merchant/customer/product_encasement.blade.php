@@ -21,7 +21,7 @@
                         <div class="form-group discount">
                             <label for="discount" class="control-label">Rémise</label>
                             <div class="input-group">
-                                <input type="number" placeholder="Rémise" class="form-control required"/>
+                                <input type="number" placeholder="Rémise" class="form-control"/>
                                  <span class="input-group-addon"> % </span>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                         <div class="form-group">
                             <label for="discount" class="control-label">Rémise</label>
                             <div class="input-group">
-                                <input type="number" name="discount[1]" placeholder="Rémise" id="discount1" class="input-discount form-control required"/>
+                                <input type="number" name="discount[1]" placeholder="Rémise" id="discount1" class="input-discount form-control"/>
                                 <span class="input-group-addon"> % </span>
                             </div>
                         </div>

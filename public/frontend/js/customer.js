@@ -62,69 +62,92 @@ jQuery(document).ready(function() {
 
     $(document).on('change', '.input-select-attribute', function(event) {
         var parent_element = $(this).parents('.product-content');
-        if(!parent_element.hasClass('selected-input')){
-            parent_element.addClass('selected-input');
-            $(this).addClass('first');
-        }
         var box = $(this);
+        
         var attribute_option_id = $(box).val();
         var product_id = parent_element.find('.select-product-name').val();
         var first_product_stock_id;
-        if($(box).hasClass('first')) {
-            var url = $(box).attr('data-route');
-            var i = 0; 
-            var values = [];
-            parent_element.find('[name="attrs[]"]').each(function(index, element){
-                values[i] = $(element).val();
-                i++;            
-            });
-            var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
-            $.ajax({
-                dataType: 'json',
-                type: 'POST',
-                url: url,
-                data: data,
-                beforeSend: function() {
-                    $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
-                },
-                success: function(response, status) {
-                    parent_element.find('[name*="attrs"]:not(.first)').html('');                      
-                    $.each(response, function(key, value){
-                        var element = parent_element.find('[data-attribute='+ value.attribute_id +']');
-                        //var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
-                        var selected = (key==1) ? 'selected' : '';
-                        if(key==1){
-                            first_product_stock_id = value.product_stock_id;
-                            console.log("We paste into undefined");
-                        }
-                        if(!element.hasClass('first')){ 
-                            element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
-                            element.addClass('has-product-stock-id');
-                        }
-                    })
-                    element_not_first = parent_element.find('[name*="attrs"]:not(.first)');
-                    var product_stock_id = element_not_first.find('option:selected').data('product_stock_id');;
-                    product_stock_id = (typeof product_stock_id == "undefined") ? first_product_stock_id : product_stock_id;
-                    parent_element.find('[name*="product_stock_id"]').val(product_stock_id); 
-                    parent_element.find('.input-product-quantity').attr('data-product-stock-id', product_stock_id);
-                    parent_element.find('.input-product-quantity').removeAttr('disabled');
-                    parent_element.find('.input-product-quantity').val('');
-                    $.LoadingOverlay("hide");            
-                },
-                error: function(xhr){
-                    console.log('Erreur' + xhr.responseText);
-                    $.LoadingOverlay("hide");
-                }
-            });
-        }
+        var url = $(box).attr('data-route');
+        var data = {'product_id': product_id, 'attribute_option_id': attribute_option_id};
+        
+        if(parent_element.find('.input-select-attribute').length > 1){
+            if(!parent_element.hasClass('selected-input')){
+                parent_element.addClass('selected-input');
+                $(this).addClass('first');
+            }
+            if($(box).hasClass('first')) {
+                var i = 0; 
+                var values = [];
+                parent_element.find('[name="attrs[]"]').each(function(index, element){
+                    values[i] = $(element).val();
+                    i++;            
+                });
+                $.ajax({
+                    dataType: 'json',
+                    type: 'POST',
+                    url: url,
+                    data: data,
+                    beforeSend: function() {
+                        $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+                    },
+                    success: function(response, status) {
+                        parent_element.find('[name*="attrs"]:not(.first)').html('');                      
+                        $.each(response, function(key, value){
+                            var element = parent_element.find('[data-attribute='+ value.attribute_id +']');
+                            //var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
+                            var selected = (key==1) ? 'selected' : '';
+                            if(key==1){
+                                first_product_stock_id = value.product_stock_id;
+                            }
+                            if(!element.hasClass('first')){ 
+                                element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
+                                element.addClass('has-product-stock-id');
+                            }
+                        })
+                        element_not_first = parent_element.find('[name*="attrs"]:not(.first)');
+                        var product_stock_id = element_not_first.find('option:selected').data('product_stock_id');;
+                        product_stock_id = (typeof product_stock_id == "undefined") ? first_product_stock_id : product_stock_id;
+                        parent_element.find('[name*="product_stock_id"]').val(product_stock_id); 
+                        parent_element.find('.input-product-quantity').attr('data-product-stock-id', product_stock_id);
+                        parent_element.find('.input-product-quantity').removeAttr('disabled');
+                        parent_element.find('.input-product-quantity').val('1');
+                        $.LoadingOverlay("hide");            
+                    },
+                    error: function(xhr){
+                        console.log('Erreur' + xhr.responseText);
+                        $.LoadingOverlay("hide");
+                    }
+                });
+            }
 
-        element_not_first = parent_element.find('[name*="attrs"]:not(.first)');
-        var product_stock_id = element_not_first.find('option:selected').data('product_stock_id');;
-        product_stock_id = (typeof product_stock_id == "undefined") ? first_product_stock_id : product_stock_id;
-        parent_element.find('[name*="product_stock_id"]').val(product_stock_id); 
-        parent_element.find('.input-product-quantity').attr('data-product-stock-id', product_stock_id);
-        parent_element.find('.input-product-quantity').removeAttr('disabled');
-        parent_element.find('.input-product-quantity').val('');
+            element_not_first = parent_element.find('[name*="attrs"]:not(.first)');
+            var product_stock_id = element_not_first.find('option:selected').data('product_stock_id');;
+            product_stock_id = (typeof product_stock_id == "undefined") ? first_product_stock_id : product_stock_id;
+            parent_element.find('[name*="product_stock_id"]').val(product_stock_id); 
+            parent_element.find('.input-product-quantity').attr('data-product-stock-id', product_stock_id);
+            parent_element.find('.input-product-quantity').removeAttr('disabled');
+            parent_element.find('.input-product-quantity').val('1');
+        } else {
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: data,
+            })
+            .done(function(data) {
+                var product_stock_id = data[0].product_stock_id;
+                parent_element.find('[name*="product_stock_id"]').val(product_stock_id);
+                parent_element.find('.input-product-quantity').attr('data-product-stock-id', product_stock_id);
+                parent_element.find('.input-product-quantity').removeAttr('disabled');
+                parent_element.find('.input-product-quantity').val('1');
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+            
+        }
     });
 
     $document.on('change', '.select-parent-category', function(event) {
@@ -182,10 +205,6 @@ jQuery(document).ready(function() {
         
     });
 
-    $('.input-product-stock-id').change(function(event) {
-        console.log("It's change");
-    });
-
     $('#paiement').click(function(event) {
         var info_product_customer = $('#customer_form').serializeArray();
         var total_price_product = 0;
@@ -201,20 +220,16 @@ jQuery(document).ready(function() {
         });
 
         $('.input-product-quantity').each(function(index, el) {
-            $('.table-content-paiement').find('.tr' + index).append('<th>' + $(this).val() + '</th>');
+            $('.table-content-paiement').find('.tr' + (index-1)).append('<th>' + $(this).val() + '</th>');
         });
         $('.input-product-price').each(function(index, el) {
-            $('.table-content-paiement').find('.tr' + index).append('<th>' + fixed_two_after_dot($(this).val()) + ' <i class="fa fa-eur" aria-hidden="true"></i></th>');
+            var product_quantity = parseInt($(this).parents('.product-content').find('.input-product-quantity').val());
+            var price = parseInt($(this).val());
+            $('.table-content-paiement').find('.tr' + index).append('<th>' + fixed_two_after_dot(price*product_quantity) + ' <i class="fa fa-eur" aria-hidden="true"></i></th>');
             total_price_product += parseFloat($(this).val());
         });
         $('.select-parent-category').each(function(index, el) {
             /*console.log($(this).find('option:selected').text());*/
-        });
-        $('.select-sub-category').each(function(index, el) {
-            /*console.log($(this).find('option:selected').text());*/
-        });
-        $('.select-product-color').each(function(index, el) {
-           /* console.log($(this).find('option:selected').text());*/
         });
         $('.input-discount').each(function(index, el) {
             var parent = $(this).parents('.product-content');

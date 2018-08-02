@@ -82,7 +82,7 @@ class CustomerRepository implements CustomerRepositoryInterface
 			$encasement_product->sub_category = $input['sub_category'][$i];
 			$encasement_product->sub_category = $input['sub_category'][$i];
 			$encasement_product->product_stock_id = $input['product_stock_id'][$i];
-			$encasement_product->quantity = $input['product_quantity'][$i];
+			$encasement_product->quantity = ($input['product_quantity'][$i]) ? $input['product_quantity'][$i] : 1;
 			$encasement_product->save();
 			if(isset($input['attrs'])){
 				foreach ($input['attrs'][$i] as $attr) {
@@ -124,8 +124,6 @@ class CustomerRepository implements CustomerRepositoryInterface
 	}
 
 	public function save($input){
-
-	    //dd($input);
 		$input['store_id'] = auth()->user()->store->first()->store_id;
 		if($input['type_customer'] == StoreCustomer::CUSTOMER_SYSTEM_USER && $input['user_id'] != null){
 			$query = StoreCustomer::where('store_id', $input['store_id'])->where('user_id', $input['user_id'])->where('type_customer', StoreCustomer::CUSTOMER_SYSTEM_USER)->get()->first();
@@ -198,7 +196,7 @@ class CustomerRepository implements CustomerRepositoryInterface
 			$encasement_product->parent_category = $input['parent_category'][$i];
 			$encasement_product->sub_category = $input['sub_category'][$i];
 			$encasement_product->product_stock_id = $input['product_stock_id'][$i];
-			$encasement_product->quantity = $input['product_quantity'][$i];
+			$encasement_product->quantity = ($input['product_quantity'][$i]) ? $input['product_quantity'][$i] : 1;
 			$encasement_product->save();
 			
 			//Update the quantity of the product in the stock
