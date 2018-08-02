@@ -60,7 +60,8 @@ class CodePromoController extends Controller
             'code_promo_name' => 'required',
             'date_debut' => 'required',
             'date_fin' => 'required',
-            'quantity_max' => 'required'
+            'quantity_max' => 'required',
+            'discount' => 'required'
         );
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -112,7 +113,8 @@ class CodePromoController extends Controller
             'code_promo_name' => 'required',
             'date_debut' => 'required',
             'date_fin' => 'required',
-            'quantity_max' => 'required'
+            'quantity_max' => 'required',
+            'discount' => 'required'
         );
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -132,7 +134,7 @@ class CodePromoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) 
     {
         if ($this->code_promo_repository->deleteById($id)) {
             flash()->success(config('message.code_promo.delete-success'));
@@ -146,5 +148,18 @@ class CodePromoController extends Controller
         $keyword = $request->get('datastring');
         $products = $this->code_promo_repository->getProducts($keyword,\Auth::user()->user_id);
         return response()->json($products);
+    }
+
+    public function getDiscount(Request $request){
+        $code_promo = $this->code_promo_repository->getByPromoName($request);
+        
+        if($code_promo){
+            $begin_date = \Carbon\Carbon::parse($code_promo->date_debut)->format('d-m-Y');
+            $end_date = \Carbon\Carbon::parse($code_promo->date_fin)->format('d-m-Y');
+            $now = \Carbon\Carbon::now()->format('d-m-Y');
+            if($now >= $begin_date || $now <= $end_date) return response()->json(['error' => "La durée d'utilisation du code a expirée."]);
+            else return response()->json(['discount' => $code_promo->discount]);
+        } 
+        else return response()->json(['error' => "Code inexistant."]);
     }
 }

@@ -78,7 +78,6 @@
     <!--@include('front.layout.section-avantage')-->
     <script src="{!! URL::to('/') !!}/frontend/js/vendor/modernizr-2.8.3.min.js"></script>
     @include('front.layout.footer')
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
@@ -91,6 +90,7 @@
 {!! Html::script('backend/js/validation.js') !!}
 {!! Html::script('backend/js/jquery.form.js') !!}
 {!! Html::script('backend/js/functions.js') !!}
+
 <script type="text/javascript">
     // Effet fix du menu gauche 
     aside_fixed();

@@ -14,4 +14,6 @@ interface CodePromoRepositoryInterface
 	public function getById($code_promo_id);
 
 	public function getByUserCategory($category_id, $user_id);
+
+	public function getByPromoName($request);
 }

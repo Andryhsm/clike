@@ -311,6 +311,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::get('encaissement', 'CustomerController@encasement')->name('encasement');
                     Route::post('get-product','CodePromoController@getProduct')->name('get_product');
                     Route::get('get-customers', 'CustomerController@getAllCustomer')->name('get-customers');
+                    Route::post('get-discount', 'CodePromoController@getDiscount')->name('get_discount');
                 }); 
             });
 
