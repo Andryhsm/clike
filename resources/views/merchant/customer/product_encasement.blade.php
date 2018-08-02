@@ -43,15 +43,20 @@
                             <select class="form-control required">
                             </select>
                         </div>
+                        <div class="form-group product_quantity">  
+                            <label for="product_quantity" class="control-label">Quantité</label>
+                            <input type="number" disabled="disabled" class="form-control required input-product-quantity " data-url="{!! route('get-quantity-by-stock-id') !!}" placeholder="price" />
+                        </div>
+                        <div class="product_stock_id hidden">
+                            <input type="text" class="control-label">
+                        </div>
                     </div>
                 
                 <div class="row">
                     <div class="product_price hidden">  
                         <input type="text" placeholder="price" />
                     </div>
-                    <div class="product_quantity hidden">  
-                        <input type="text" class="form-control required" placeholder="price" />
-                    </div>
+                    
                 </div>
                 <div class="col-sm-12 mt-10 button">
                     <button type="button" style="float:right;" class="btn btn-danger remove_size_input">Annuler ce produit</button>
@@ -117,6 +122,13 @@
                             <select name="promo_code[1]"  id="promo_code1" class="select-promo-code form-control required">
                             </select>
                         </div>
+                        <div class="form-groupe product_quantity">  
+                            <label for="product_quantity" class="control-label">Quantité</label>
+                            <input type="number" name="product_quantity[1]" data-url="{!! route('get-quantity-by-stock-id') !!}" id="product_quantity1" disabled="disabled" class="input-product-quantity form-control required" placeholder="quantity" />
+                        </div>
+                        <div class="product_stock_id hidden">
+                            <input type="text" name="product_stock_id[1]" class="control-label">
+                        </div>
                     </div>
                 </div>
                 <!-- <div class="row">
@@ -127,9 +139,6 @@
                 <div class="row">
                     <div class="product_price hidden">  
                         <input type="text" name="product_price[1]" id="product_price1" class="input-product-price form-control required" placeholder="price" />
-                    </div>
-                    <div class="product_quantity hidden">  
-                        <input type="text" name="product_quantity[1]" id="product_quantity1" class="input-product-quantity form-control required" placeholder="price" />
                     </div>
                 </div>
                 

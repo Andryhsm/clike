@@ -9,12 +9,32 @@
                                 {!! Form::text('last_name', ($customer) ? $customer->last_name : null , ['class' => 'form-control required','id'=>'last_name','placeholder'=>"Nom", 'required']) !!}
                             </div>
                             <div class="form-group">
+                                <?php 
+                                    $address = "";
+                                    if($customer && $type_customer==1) {
+                                        if(isset($customer->address)){
+                                            $address = $customer->address->address1;
+                                        }
+                                    } else if($customer){
+                                        $address = $customer->address;
+                                    }
+                                ?>
                                 {!! Form::label('address', 'Adresse', ['class' => 'control-label']) !!}
-                                {!! Form::text('address', ($customer && $type_customer==1) ? $customer->address->address1 : ($customer) ? $customer->address : null , ['class' => 'form-control','id'=>'address','placeholder'=>"Adresse"]) !!}
+                                {!! Form::text('address', $address, ['class' => 'form-control','id'=>'address','placeholder'=>"Adresse"]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('country', 'Ville', ['class' => 'control-label']) !!}
-                                {!! Form::text('country', ($customer && $type_customer==1) ? $customer->address->city : ($customer) ? $customer->country : null , ['class' => 'form-control','id'=>'country','placeholder'=>"Ville"]) !!}
+                                <?php
+                                    $country = "";
+                                    if($customer && $type_customer==1) {
+                                        if(isset($customer->address)){
+                                            $country = $customer->address->address1;
+                                        }
+                                    }else if($customer) {
+                                        $country = $customer->country;
+                                    }
+                                ?>
+                                {!! Form::text('country', $country , ['class' => 'form-control','id'=>'country','placeholder'=>"Ville"]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('birthday', 'Date de naissance', ['class' => 'control-label']) !!}
@@ -29,7 +49,17 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('postal_code', 'Code Postal', ['class' => 'control-label required']) !!}
-                                {!! Form::text('postal_code', ($customer && $type_customer==1) ? $customer->address->zip : ($customer) ? $customer->postal_code : null , ['class' => 'form-control','id'=>'postal_code','placeholder'=>"Code postal"]) !!}
+                                <?php 
+                                    $zip = "";
+                                    if($customer && $type_customer==1) {
+                                        if(isset($customer->address)){
+                                            $zip = $customer->address->zip;
+                                        }
+                                    }else if($customer){
+                                        $zip = $customer->postal_code;
+                                    }
+                                ?>
+                                {!! Form::text('postal_code', $zip , ['class' => 'form-control','id'=>'postal_code','placeholder'=>"Code postal"]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('phone_number', 'Téléphone', ['class' => 'control-label']) !!}

@@ -15,11 +15,12 @@ class CreateTableEncasementProductAttributeOption extends Migration
     {
         Schema::create('encasement_attribute_option', function(Blueprint $table) {
             $table->increments('encasement_attribute_option_id');
-            $table->integer('encasement_product_id')->index('idx_encasement_product_id')->unsigned();
+            $table->integer('encasement_product_id')->unsigned();
+            // $table->foreign('encasement_product_id')
+            //         ->references('encasement_product_id')->on('encasement_product')
+            //         ->onDelete('cascade');
             $table->integer('attribute_option_id')->unsigned();
-            $table->foreign('encasement_product_id')
-                    ->references('encasement_product')->on('encasement_product_id')
-                    ->onDelete('cascade');
+            
         });
     }
 
@@ -30,6 +31,6 @@ class CreateTableEncasementProductAttributeOption extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('encasement_attribute_option');
     }
 }

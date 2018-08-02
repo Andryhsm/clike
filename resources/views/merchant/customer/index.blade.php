@@ -68,7 +68,7 @@
 	                                    <td>
 	                                        <div class="btn-group">
 	                                            <a href="{{ route('client.edit',['id' => $customer->user_id, 'type_customer' => 1]) }}"
-	                                               class="btn btn-primary btn-sm" title="Edit">Encaissement</a>&nbsp;
+	                                               class="btn btn-primary btn-sm" title="Edit">Encaisser</a>&nbsp;
 	                                            {{-- {!! Form::open(array('url' => route('client.destroy',['id' => $customer->user_id, 'type_customer' => \App\StoreCustomer::CUSTOMER_SYSTEM_USER]), 'class' => 'pull-right')) !!}
                                                 {!! Form::hidden('_method', 'DELETE') !!}
                                                 {!! Form::button('<i class="fa fa-fw fa-trash"></i>', ['type' => 'submit', 'class' => 'btn delete-btn btn-default btn-sm','title'=>'Delete'] ) !!}

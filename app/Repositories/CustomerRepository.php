@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\CustomerRepositoryInterface;
+use App\Interfaces\ProductStockRepositoryInterface;
 use App\User;
 use App\UserAddress;
 use App\Store;
@@ -9,6 +10,7 @@ use App\StoreCustomer;
 use App\Encasement;
 use App\Customer;
 use App\EncasementProduct;
+use App\EncasementAttributeOption;
 use Carbon\Carbon;
 use App\Models\NewsletterOption;
 /**
@@ -19,14 +21,16 @@ use App\Models\NewsletterOption;
 class CustomerRepository implements CustomerRepositoryInterface
 {
 	protected $model;
+	protected $product_stock_repository;
 
-    public function __construct(User $user)
+    public function __construct(User $user, ProductStockRepositoryInterface $product_stock_repo)
     {
         $this->model = $user;
+        $this->product_stock_repository = $product_stock_repo;
     }
 
 	public function create($input){
-		dd($input);
+
 	}
 
 	public function getCustomerSystemById($id)
@@ -70,14 +74,24 @@ class CustomerRepository implements CustomerRepositoryInterface
 			$encasement_product = new EncasementProduct();
 			$encasement_product->encasement_id = $encasement->encasement_id;
 			$encasement_product->product_id = $input['product_name'][$i];
-			$encasement_product->attribute_size_id = $input['product_size'][$i];
-			$encasement_product->attribute_color_id = $input['product_color'][$i];
+			//$encasement_product->attribute_size_id = $input['product_size'][$i];
+			//$encasement_product->attribute_color_id = $input['product_color'][$i];
 			$encasement_product->discount = $input['discount'][$i];
 			//$encasement_product->promo_code_id = $input['promo_code'][$i];
 			$encasement_product->parent_category = $input['parent_category'][$i];
 			$encasement_product->sub_category = $input['sub_category'][$i];
-			$encasement_product->quantity = 1;
+			$encasement_product->sub_category = $input['sub_category'][$i];
+			$encasement_product->product_stock_id = $input['product_stock_id'][$i];
+			$encasement_product->quantity = $input['product_quantity'][$i];
 			$encasement_product->save();
+			if(isset($input['attrs'])){
+				foreach ($input['attrs'][$i] as $attr) {
+					$encasement_attribute_option = new EncasementAttributeOption();
+					$encasement_attribute_option->encasement_product_id = $encasement_product->product_id;
+					$encasement_attribute_option->attribute_option_id = $attr;
+					$encasement_attribute_option->save();
+				}
+			}
 		}
 		return $this->model;
 	}
@@ -111,7 +125,7 @@ class CustomerRepository implements CustomerRepositoryInterface
 
 	public function save($input){
 
-		dd($input);
+	    //dd($input);
 		$input['store_id'] = auth()->user()->store->first()->store_id;
 		if($input['type_customer'] == StoreCustomer::CUSTOMER_SYSTEM_USER && $input['user_id'] != null){
 			$query = StoreCustomer::where('store_id', $input['store_id'])->where('user_id', $input['user_id'])->where('type_customer', StoreCustomer::CUSTOMER_SYSTEM_USER)->get()->first();
@@ -156,7 +170,7 @@ class CustomerRepository implements CustomerRepositoryInterface
 					$customer->country = $input['country'];
 					$customer->phone_number = $input['phone_number'];
 					$customer->email = $input['email'];
-					$customer->birthday = $input['birthday'];
+					$customer->birthday = ($input['birthday'] == null) ? '0000-00-00' : $input['birthday'] ;
 					$customer->save();
 
 					$store_customer = new StoreCustomer();
@@ -178,12 +192,26 @@ class CustomerRepository implements CustomerRepositoryInterface
 			$encasement_product = new EncasementProduct();
 			$encasement_product->encasement_id = $encasement->encasement_id;
 			$encasement_product->product_id = $input['product_name'][$i];
-			$encasement_product->attribute_size_id = $input['product_size'][$i];
-			$encasement_product->attribute_color_id = $input['product_color'][$i];
+			//$encasement_product->attribute_size_id = $input['product_size'][$i];
+			//$encasement_product->attribute_color_id = $input['product_color'][$i];
 			$encasement_product->discount = $input['discount'][$i];
 			$encasement_product->parent_category = $input['parent_category'][$i];
 			$encasement_product->sub_category = $input['sub_category'][$i];
+			$encasement_product->product_stock_id = $input['product_stock_id'][$i];
+			$encasement_product->quantity = $input['product_quantity'][$i];
 			$encasement_product->save();
+			
+			//Update the quantity of the product in the stock
+			$result = $this->product_stock_repository->updateProductCountInEncasement($encasement_product->product_stock_id , $encasement_product->quantity);
+
+			if(isset($input['attrs'])){
+				foreach ($input['attrs'][$i] as $attr) {
+					$encasement_attribute_option = new EncasementAttributeOption();
+					$encasement_attribute_option->encasement_product_id = $encasement_product->product_id;
+					$encasement_attribute_option->attribute_option_id = $attr;
+					$encasement_attribute_option->save();
+				}
+			}
 		}
 		return $this->model;
 	}

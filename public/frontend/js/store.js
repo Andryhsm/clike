@@ -38,7 +38,6 @@ jQuery(document).ready(function() {
         }
     });
 
-
     $document.on('change', '#country', function() {
         var country_id = $(this).val();
         get_state(country_id, '', '');

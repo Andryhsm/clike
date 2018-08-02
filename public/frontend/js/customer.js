@@ -34,6 +34,7 @@ jQuery(document).ready(function() {
         html_data.find('.promo_code select').attr('name', 'promo_code[' + row_index + ']').attr('id', 'promo_code' + row_index).addClass('select-promo-code');
         html_data.find('.product_price input').attr('name', 'product_price[' + row_index + ']').attr('id', 'product_price' + row_index).addClass('input-product-price');
         html_data.find('.product_quantity input').attr('name', 'product_quantity[' + row_index + ']').attr('id', 'product_quantity' + row_index).addClass('input-product-quantity');
+        html_data.find('.product_stock_id input').attr('name', 'product_stock_id[' + row_index + ']').attr('id', 'product_stock_id' + row_index).addClass('input-product-stock-id');
         //h
 
         html_data.find('.size_input_quantity input').attr('name', 'quantities_size[' + row_index + ']').attr('placeholder', 'quantité pour taille ' + row_index);
@@ -61,7 +62,6 @@ jQuery(document).ready(function() {
 
     $(document).on('change', '.input-select-attribute', function(event) {
         var parent_element = $(this).parents('.product-content');
-        console.log("On change in the input");
         if(!parent_element.hasClass('selected-input')){
             parent_element.addClass('selected-input');
             $(this).addClass('first');
@@ -69,7 +69,7 @@ jQuery(document).ready(function() {
         var box = $(this);
         var attribute_option_id = $(box).val();
         var product_id = parent_element.find('.select-product-name').val();
-        console.log(product_id);
+        var first_product_stock_id;
         if($(box).hasClass('first')) {
             var url = $(box).attr('data-route');
             var i = 0; 
@@ -91,13 +91,24 @@ jQuery(document).ready(function() {
                     parent_element.find('[name*="attrs"]:not(.first)').html('');                      
                     $.each(response, function(key, value){
                         var element = parent_element.find('[data-attribute='+ value.attribute_id +']');
-                        var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
+                        //var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
+                        var selected = (key==1) ? 'selected' : '';
+                        if(key==1){
+                            first_product_stock_id = value.product_stock_id;
+                            console.log("We paste into undefined");
+                        }
                         if(!element.hasClass('first')){ 
                             element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
                             element.addClass('has-product-stock-id');
                         }
                     })
-                     
+                    element_not_first = parent_element.find('[name*="attrs"]:not(.first)');
+                    var product_stock_id = element_not_first.find('option:selected').data('product_stock_id');;
+                    product_stock_id = (typeof product_stock_id == "undefined") ? first_product_stock_id : product_stock_id;
+                    parent_element.find('[name*="product_stock_id"]').val(product_stock_id); 
+                    parent_element.find('.input-product-quantity').attr('data-product-stock-id', product_stock_id);
+                    parent_element.find('.input-product-quantity').removeAttr('disabled');
+                    parent_element.find('.input-product-quantity').val('');
                     $.LoadingOverlay("hide");            
                 },
                 error: function(xhr){
@@ -105,7 +116,15 @@ jQuery(document).ready(function() {
                     $.LoadingOverlay("hide");
                 }
             });
-        }    
+        }
+
+        element_not_first = parent_element.find('[name*="attrs"]:not(.first)');
+        var product_stock_id = element_not_first.find('option:selected').data('product_stock_id');;
+        product_stock_id = (typeof product_stock_id == "undefined") ? first_product_stock_id : product_stock_id;
+        parent_element.find('[name*="product_stock_id"]').val(product_stock_id); 
+        parent_element.find('.input-product-quantity').attr('data-product-stock-id', product_stock_id);
+        parent_element.find('.input-product-quantity').removeAttr('disabled');
+        parent_element.find('.input-product-quantity').val('');
     });
 
     $document.on('change', '.select-parent-category', function(event) {
@@ -131,6 +150,40 @@ jQuery(document).ready(function() {
                 console.log("error du recuperation du code promo");
             });
 
+    }); 
+
+    $document.on('keyup', '.input-product-quantity', function(event) {
+        var url = $(this).data('url');
+        var product_stock_id = $(this).data('product-stock-id');
+        var product_quantity = parseInt($(this).val());
+        var $product_quantity = $(this).parents('.product-content').find('.product_quantity');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {product_stock_id: product_stock_id}
+        })
+        .done(function(data) {
+            console.log(data);
+            var quantity_in_stock = parseInt(data.quantity);
+            console.log("quantity_in_stock "+ quantity_in_stock + " product_quantity "+ product_quantity);
+            if(quantity_in_stock < product_quantity) {
+                $product_quantity.find('.error').remove();
+                $product_quantity.append('<label class="error">Le stock est insuffisant!</label>')
+            } else {
+                $product_quantity.find('.error').remove();
+            }
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+        
+    });
+
+    $('.input-product-stock-id').change(function(event) {
+        console.log("It's change");
     });
 
     $('#paiement').click(function(event) {
@@ -187,10 +240,7 @@ jQuery(document).ready(function() {
         $('#total_ttc').val(total_price_product_ttc);
     });
 
-    $("#encasement").click(function(event) {
-
-        //('#customer_form').submit();
-    });
+    
 
     autocomplete_list_customer();
     
@@ -318,7 +368,8 @@ function validate_product_info() {
         }
     });
     if($('#size_list_input').find('.invalid').length == 0){
-        $('#next-in-paiement').trigger('click');
+        if($('.error').length == 0)    
+            $('#next-in-paiement').trigger('click');
     }
 }
 
