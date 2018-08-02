@@ -45,16 +45,16 @@
                     </div>
                     <div class="bloc">
                         <select id="product_sold" name="">
-                            <option value="all_article">Tous les articles</option>
-                            <option value="discount_product">Produits soldés</option>
-                            <option value="attribut_set">Par gamme</option>
+                            <option value="">Tous les articles</option>
+                            <option value="">Produits soldés</option>
+                            <option value="">Par gamme</option>
                         </select>
                     </div>
                     <div class="bloc">
                         <select id="stock_manage" name="">
-                            <option value="all_stock">Voir tout</option>
-                            <option value="exist_stock">En stock</option>
-                            <option value="empty_stock">En partie en rupture de stock</option>
+                            <option value="">Voir tout</option>
+                            <option value="">En stock</option>
+                            <option value="">En partie en rupture de stock</option>
                         </select>
                     </div>
                 </div>             
@@ -74,6 +74,32 @@
                                 <th class="no-sort"></th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach($products->data as $product)
+                            <tr class="content-product">
+                                <td>  <a href="#" class="checkbox" data-product-id="{!! $product->product_id !!}"><i class="fa fa-circle-o mr-10"></i></a>
+                                </td>
+                                <td class="article">
+                                    <?php 
+                                        $url_image = isset($product->images[0]) ? 'upload/product/'.$product->images[0]->image_name : '';
+                                        //$url_image = !empty($product->images[0]) ? $product->getDefaultImagePath() : '';
+                                    ?>
+                                    <img class="article-img" src="{!! url($url_image) !!}"></img>
+                                </td>
+                                <td class="product_name"><span>{!! isset($product->french->product_name) ? $product->french->product_name : '' !!}</span></td>
+                                <td class="article_price">{!! format_price($product->original_price) !!}</td>
+                                <td class="inventory">en stock</td>
+                                <td class="action">
+                                    <a href="{!! route('article.edit',['article'=>$product->product_id]) !!}" class=""><i class="fa fa-eye"></i></a>
+                                    
+                                    {!! Form::open(array('url' => route('article.destroy',['article'=>$product->product_id]), 'class' => 'pull-right')) !!}
+                                    {!! Form::hidden('_method', 'DELETE') !!}
+                                    {!! Form::button('<i class="fa fa-fw fa-trash"></i>', ['type' => 'submit', 'class' => 'btn delete-btn delete-btn'.$product->product_id.' btn-default btn-sm'] ) !!}
+                                    {{ Form::close() }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -90,26 +116,8 @@
 @stop
 @section('footer-scripts')
     <script>
-        var $document = $(document);
-        var url_get_data_product = "{!! route('merchant-article-data') !!}";
-        if (jQuery('#article_list').length > 0) {
-            table = jQuery('#article_list').on('preXhr.dt', function ( e, settings, data) {
-                    var article_filter = $('#product_sold').val();
-                    //console.log(article_filter);
-                    //var stock_manage = $('#stock_manage').val();
-
-                    if(article_filter != null)    
-                        data.article_filter = article_filter;
-                    /*if(stock_manage != null)    
-                        data.stock_manage = stock_manage;*/
-                })
-                .DataTable({
-                "processing": true,
-                "serverSide": true,
-                "ajax": {   
-                    "url": url_get_data_product,
-                    "type": "POST"
-                },
+        if (jQuery('table.article').length > 0) {
+            jQuery('table.article').DataTable({
                 "responsive": true,
                 "bPaginate": true,
                 "bLengthChange": false,
@@ -133,12 +141,10 @@
                         "info": "Afficher la page _PAGE_ de _PAGES_"
                 },
                 columns: [
-                    {data: 'check', name:'check',searchable: false, sortable: false},
-                    {data: 'product_image', name:'product_image',searchable: false, sortable: false},
-                    {data: 'product_name', name:'product_name',searchable: false, sortable: false},
-                    {data: 'product_price', name:'product_rice',searchable: false, sortable: false},
-                    {data: 'inventory', name:'inventory',searchable: false, sortable: false},
-                    {data: 'action', name:'action',searchable: false, sortable: false}
+                    {searchable: true, sortable: true},
+                    {searchable: false, sortable: false},
+                    {searchable: true, sortable: true},
+                    {searchable: false, sortable: false}
                 ],
                 fnDrawCallback: function () {
                     var $paginate = this.siblings('.dataTables_paginate');
@@ -156,10 +162,6 @@
         if (jQuery('.dataTables_filter').length > 0) {
             jQuery('.dataTables_filter').find('input').addClass('form-control')
         }
-        $document.on('change', '#product_sold', function(event) {
-            event.preventDefault();
-            table.ajax.url(url_get_data_product).load();
-        });
        
     </script>
     <script type="text/javascript">
