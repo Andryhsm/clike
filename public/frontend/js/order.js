@@ -102,6 +102,7 @@ $(function() {
                             $(el).find('.real-price').text('' + price);
                             $(el).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
                             $(el).find('.real-price').data('price', '' + fixed_two_after_dot(price));
+                            toastr.succes("Code appliqué avec succès!");
                         });
                         
                         calcul_total_price();
