@@ -208,12 +208,10 @@ jQuery(document).ready(function() {
 
     $('#paiement').click(function(event) {
         var form = $("#customer_form");
-        form.validate({
-            rules: {}
-        });
         validate_customer_info();
+        validate_product_name();
         if (form.valid()) {
-                if($('.error_').length == 0){
+                if($('.error_').length == 0 && $('.invalid_').length == 0){
                     $('#next-in-paiement').trigger('click');
                     var info_product_customer = $('#customer_form').serializeArray();
                     var total_price_product = 0;
@@ -300,14 +298,14 @@ function get_product_data(box, product_id, content_range) {
     var $current_element = $('#product_name' + content_range);
     $parent_element = $current_element.parents('.product_name');
     if($current_element.val() == 0){
-        if(!$current_element.hasClass('invalid')){
-            $current_element.addClass('invalid');
+        if(!$current_element.hasClass('invalid_')){
+            $current_element.addClass('invalid_');
             $parent_element.append("<label class='error'>Veuillez sélectionner un produit</label>");
         }
     }else{
-        if($current_element.hasClass('invalid')){
-            $current_element.removeClass('invalid');
-            $parent_element.find('.error').remove();
+        if($current_element.hasClass('invalid_')){
+            $current_element.removeClass('invalid_');
+            $parent_element.find('.error_').remove();
         }
     }
 
@@ -343,16 +341,25 @@ function add_option_select_category(data, content_range) {
     var category_arr = data.category_arr;
     var parent_categorie = data.parent_categorie;
     if (Object.keys(category_arr).length > 0) {
-        $('#parent_category' + content_range).html("<option name='0'>Séléctionner une catégorie</option>");
+        //$('#parent_category' + content_range).html("<option name='0'>Séléctionner une catégorie</option>");
     }
     if(Object.keys(parent_categorie).length > 0){
-        $('#sub_category' + content_range).html("<option value='0'>Séléctionner une catégorie</option>");
+        //$('#sub_category' + content_range).html("<option value='0'>Séléctionner une catégorie</option>");
+        var index_parent_category = 0;
         for (var category_id in parent_categorie) {
-            $('#parent_category' + content_range).append('<option value="' + category_id + '">' + data.parent_categorie[category_id] + '</option>');
+            var selected = ""
+            if(index_parent_category == 0)
+                selected = "selected";
+            $('#parent_category' + content_range).append('<option value="' + category_id + '" '+selected+'>' + data.parent_categorie[category_id] + '</option>');
+            index_parent_category++;
         }
     }           
+    var index_sub_category = 0;
     for (var category_id in category_arr) {
-        $('#sub_category' + content_range).append('<option value="' + category_id + '">' + data.category_arr[category_id] + '</option>');
+        var selected = "";
+        if(index_sub_category == 0)
+            selected = "selected";
+        $('#sub_category' + content_range).append('<option value="' + category_id + '" '+selected+'>' + data.category_arr[category_id] + '</option>');
     }
 }
 
@@ -375,18 +382,19 @@ function validate_customer_info() {
     }
 }
 
-function valid_product_name() {
+function validate_product_name() {
         $('.select-product-name').each(function(index, element) {
             $element_parent = $(element).parents('.product_name');
+            console.log($(element).val());
             if ($(element).val() == 0) {
                 if(!$(element).hasClass('invalid_')){
                     $(element).addClass('invalid_');
-                    $element_parent.append("<label class='error'>Veuillez sélectionner un produit</label>");
+                    $element_parent.append("<label class='error_'>Veuillez sélectionner un produit</label>");
                 }
             }
             else {
                 $(element).removeClass('invalid_');
-                $element_parent.find('.error').remove();
+                $element_parent.find('.error_').remove();
             }
         });
         if($('#size_list_input').find('.invalid').length == 0){
