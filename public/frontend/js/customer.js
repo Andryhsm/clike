@@ -180,6 +180,7 @@ jQuery(document).ready(function() {
         var product_stock_id = $(this).data('product-stock-id');
         var product_quantity = parseInt($(this).val());
         var $product_quantity = $(this).parents('.product-content').find('.product_quantity');
+        console.log(product_stock_id);
         $.ajax({
             url: url,
             type: 'GET',

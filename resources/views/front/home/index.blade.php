@@ -284,7 +284,7 @@
 <!-- end section top product -->
 
 <!-- start section two bloc -->
-<section class="section-two-bloc pt-33">
+<section class="section-two-bloc pt-33 hidden">
     <div class="container">
         <div class="section-two-bloc-content">
             <div class="row">
