@@ -79,7 +79,7 @@ class StoreController extends Controller
 			'main_email' => 'required',
 			'cell_phone' => 'required',
 			'fix_phone' => 'required',
-			//'g-recaptcha-response'=>'required|recaptcha'
+			'g-recaptcha-response'=>'required|recaptcha'
 /*			'last_name' => 'required',
 			'first_name' => 'required',
 			'position' => 'required',
@@ -158,6 +158,7 @@ class StoreController extends Controller
      */
     public function update($id,Request $store_request)
     {
+
 		$rules = array(
 			'shop_name' => 'required',
 			'registration_number' => 'required',
@@ -168,11 +169,10 @@ class StoreController extends Controller
 			'state_id' => 'required',
 			'latitude' => 'required',
 			'longitude' => 'required',
-			'main_phone' => 'required',
-			'main_email' => 'required',
-			'cell_phone' => 'required',
-			'fix_phone' => 'required',
-			'g-recaptcha-response'=>'required|recaptcha'
+			//'main_phone' => 'required',
+			//'main_email' => 'required',
+			// 'cell_phone' => 'required',
+			// 'fix_phone' => 'required'
 /*			'last_name' => 'required',
 			'first_name' => 'required',
 			'position' => 'required',

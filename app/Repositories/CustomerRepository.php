@@ -110,6 +110,8 @@ class CustomerRepository implements CustomerRepositoryInterface
 	}
 
 	public function save($input){
+
+		dd($input);
 		$input['store_id'] = auth()->user()->store->first()->store_id;
 		if($input['type_customer'] == StoreCustomer::CUSTOMER_SYSTEM_USER && $input['user_id'] != null){
 			$query = StoreCustomer::where('store_id', $input['store_id'])->where('user_id', $input['user_id'])->where('type_customer', StoreCustomer::CUSTOMER_SYSTEM_USER)->get()->first();

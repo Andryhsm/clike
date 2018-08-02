@@ -351,7 +351,8 @@ class StoreRepository implements StoreRepositoryInterface
 				$user->first_name = $manager['first_name'];
 				$user->last_name = $manager['last_name'];
 				$user->email = $manager['email'];
-				$user->password = (!empty($manager['password']) && $manager['password'] != null) ?  Hash::make($manager['password']) : $user->password;;
+				$user->password = (!empty($manager['password']) && $manager['password'] != null) ?  Hash::make($manager['password']) : $user->password;
+
 				$user->phone_number = $manager['sms'];
 				$user->status = '1';
 				$user->profile_image = '';
@@ -415,6 +416,7 @@ class StoreRepository implements StoreRepositoryInterface
 			$store_opening_hour->opening_hour = (isset($opening_hour_array[$key])) ? $opening_hour_array[$key] : null;
 			$store_opening_hour->closure_hour = (isset($closure_hour_array[$key])) ? $closure_hour_array[$key] : null;
 			$store_opening_hour->opening_day_id = $key;
+			$store_opening_hour->store_id = $store_model->store_id;
 			$store_opening_hour->save();
 		}
 		

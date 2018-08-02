@@ -43,7 +43,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
     Route::post('login', 'LoginController@store');
     Route::get('logout', 'LoginController@destroy')->name('logout');
     Route::get('get-state/{country_id}', 'RegionController@getState')->name('get-state');
-    Route::post('get-coordinates','StoreController@getCoordinates');
 
     //Route::post('search_store','searchController@search');
     Route::get('get-brand-by-tag','BrandController@byTag');
@@ -314,7 +313,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::post('get-discount', 'CodePromoController@getDiscount')->name('get_discount');
                 }); 
             });
-
+            Route::post('get-coordinates','StoreController@getCoordinates')->name('get-coordinates');
             Route::get('invoice/{id}','MerchantController@viewInvoice')->name('invoice');
             Route::resource('magasin', 'StoreController');
             Route::post('response-to-customer', 'OrderController@responseToCustomer')->name('response-to-customer');

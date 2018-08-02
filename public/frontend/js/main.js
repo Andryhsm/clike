@@ -609,8 +609,43 @@
 		$a.css('color', '#fff !important');
 	});
 
+/*************************Boutton More Details Avis client ********************************/
+var buttonTextM = "";
+var buttonTextL = "";
+if ($('#language').val() == "fr") {
+	buttonTextM = "More details";
+	buttonTextL = "Less details";
+}
+else {
+	buttonTextM = "Plus de détails";
+	buttonTextL = "Moins de détails";
+}
+
+var reviews_length = $('#reviews').text().length ;
+
+/************************** End More Detail ******************************/
+
 	$('.flip').on('click', function() {
 		console.log("We need to flip");
+		// chargement boutton more information
+		if (reviews_length > 1200) {
+			$('#btn_details').show();
+			$('#btn_details').click(function(e) {
+				if ($('#productTabContent').hasClass('height-content')) {
+					$('#productTabContent').removeClass('height-content');
+					$('.tabs-limit').addClass('hidden');
+					$("#btn_details").val(buttonTextL);
+				}
+				else {
+					$('#productTabContent').addClass('height-content');
+					$("#btn_details").val(buttonTextM);
+					$('.tabs-limit').removeClass('hidden');
+				}
+			});
+			}else{
+			$('#btn_details').hide();
+			}
+		// end more information
 		var parent_nav = $(this).parents('.nav-tabs');
 		if (!parent_nav.hasClass('inverse'))
 			$(this).parents('.nav-tabs').addClass('inverse');
