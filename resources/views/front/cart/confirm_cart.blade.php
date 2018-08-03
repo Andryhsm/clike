@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="col-lg-7">
                                             <h4>{!! (isset($item->getProduct()->brand)) ? ($item->getProduct()->brand->parent_id==null) ? $item->getProduct()->brand->brand_name : $item->getProduct()->brand->parent->brand_name : "" !!}</h4>
-                                            <span><a href="#">{!! $item->getName() !!}</a></span>
+                                            <span><a href="#" class="item_product_name">{!! $item->getName() !!}</a></span>
                                             <div class="product-price">
                                                     <?php 
                                                         $product = $item->getProduct(); 
