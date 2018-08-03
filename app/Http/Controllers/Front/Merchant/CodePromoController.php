@@ -167,7 +167,7 @@ class CodePromoController extends Controller
                 foreach ($code_promo->categories as $category) {
                     if(in_array($category->category_id, $ids)) $category_ids[] = $category->category_id;
                 }
-                return response()->json(['discount' => $code_promo->discount, 'promed_ids' => implode(',', $promed_ids), 'category_ids' => implode(',', $category_ids)]);
+                return response()->json(['discount' => $code_promo->discount, 'promed_ids' => implode(',', $promed_ids), 'category_ids' => implode(',', $category_ids), 'quantity_max' => $code_promo->quantity_max]);
             }
         }
         else return response()->json(['error' => "Code inexistant."]);

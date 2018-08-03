@@ -89,26 +89,29 @@ $(function() {
                     $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
                 },
                 success: function(response, status) {
-                    console.log(response.category_ids)
+                    
                     if(response.error) toastr.error(response.error);
                     else {
                         $('.article:not(:last-child)').each(function(i, el) {
-                            if($.inArray($(el).find('.item_product_id').val(), response.promed_ids.split(',')) 
-                                || $.inArray($(el).find('.item_category_id').val(), response.category_ids.split(',')))
-                            {                                      
-                                if($(el).find('.discount').text()) {                          
-                                    var promotional_price = parseFloat($(el).find('input.promotional_price').attr('value'));
-                                    var price = promotional_price - ((promotional_price * response.discount) / 100);
-                                    price = price.round(2);                        
-                                }
-                                else {  
-                                    var original_price = parseFloat($(el).find('input.original_price').attr('value'));
-                                    var price = original_price - ((original_price * response.discount) / 100);
-                                }
-                                $(el).find('.real-price').text('' + price);
-                                $(el).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
-                                $(el).find('.real-price').data('price', '' + fixed_two_after_dot(price));
-                            }                          
+                            if($(el).find('.quantity').val() > response.quantity_max) toastr.error('Quantité maximale dépassée pour le produit ' + $(el).find('.item_product_name').text());
+                            else {
+                                if($.inArray($(el).find('.item_product_id').val(), response.promed_ids.split(',')) 
+                                    || $.inArray($(el).find('.item_category_id').val(), response.category_ids.split(',')))
+                                {                                      
+                                    if($(el).find('.discount').text()) {                          
+                                        var promotional_price = parseFloat($(el).find('input.promotional_price').attr('value'));
+                                        var price = promotional_price - ((promotional_price * response.discount) / 100);
+                                        price = price.round(2);                        
+                                    }
+                                    else {  
+                                        var original_price = parseFloat($(el).find('input.original_price').attr('value'));
+                                        var price = original_price - ((original_price * response.discount) / 100);
+                                    }
+                                    $(el).find('.real-price').text('' + price);
+                                    $(el).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
+                                    $(el).find('.real-price').data('price', '' + fixed_two_after_dot(price));
+                                }   
+                            }                       
                         })
                         calcul_total_price();
                         toastr.success("Code appliqué avec succès!");                                            
