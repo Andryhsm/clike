@@ -74,7 +74,7 @@ function solde(box)
     if($('.solde-content').hasClass('hidden')){
         $('.solde-content').removeClass('hidden');
         $('#reduction').val('');
-        $('promotional_price').val('');
+        $('#promotional_price').val('');
     }else{
         $('.solde-content').addClass('hidden')
     }
@@ -88,8 +88,8 @@ function splitDataName($data) {
     var result = $data.split('$');
     return result[1];
 }
-$('#reduction').on('keyup',function(){
-   if($('#product_rate').val() != ''){
+$('#reduction').bind('keyup mouseup change', function () {
+   if($('#original_price').val() != ''){
        var res = $('#original_price').val()-$('#reduction').val()*$('#original_price').val()/100;
        $('#promotional_price').val(res.toFixed(2));
    }
