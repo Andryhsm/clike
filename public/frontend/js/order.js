@@ -111,9 +111,9 @@ $(function() {
                             }                          
                         })
                         calcul_total_price();
-                        toastr.success("Code appliqué avec succès!");
-                        $.LoadingOverlay("hide");                    
+                        toastr.success("Code appliqué avec succès!");                                            
                     }
+                    $.LoadingOverlay("hide");
                 },
                 error: function(xhr, status, error){
                     console.log(xhr.responseText);
