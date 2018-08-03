@@ -81,10 +81,10 @@ class CodePromoRepository implements CodePromoRepositoryInterface
     }
     public function getProducts($keyword,$user_id)
     {
-        return ProductTranslation::where('product_name', 'like', "%$keyword%")->where('user_id',$user_id)->where('language_id',2)->groupBy('product_id')->get();
+        return ProductTranslation::where('product_name', 'like', "%$keyword%")->where('user_id',$user_id)->groupBy('product_id')->get();
     }
 
     public function getByPromoName($input) {
-        return $this->model->where('code_promo_name', $input['code_promo_name'])->first();
+        return $this->model->with('products', 'categories')->where('code_promo_name', $input['code_promo_name'])->first();
     }
 }
