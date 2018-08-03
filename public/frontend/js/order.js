@@ -107,7 +107,7 @@ $(function() {
                                         var original_price = parseFloat($(el).find('input.original_price').attr('value'));
                                         var price = original_price - ((original_price * response.discount) / 100);
                                     }
-                                    $(el).find('.real-price').text('' + price);
+                                    $(el).find('.real-price').html( price + '<i class="fa fa-eur" aria-hidden="true"></i>');
                                     $(el).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
                                     $(el).find('.real-price').data('price', '' + fixed_two_after_dot(price));
                                 }   
