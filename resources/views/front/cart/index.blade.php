@@ -30,7 +30,7 @@
                                             <div class="product-price">
                                                     <?php $product = $item->getProduct();?>
                                                     @if($product->promotional_price != null)
-                                                        <span class="old-price discount" style="color: rgb(67, 223, 230);">({!! $product->discount !!})</span>
+                                                        <span class="old-price discount" style="color: rgb(67, 223, 230);">(-{!! $product->discount !!}%)</span>
                                                         <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
                                                         <span class="new-price real-price" data-price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
                                                         <input type="text" class="hidden promotional_price" value="{!! $product->promotional_price !!}" >
