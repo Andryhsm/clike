@@ -101,7 +101,13 @@
                                             <h4>{!! (isset($item->getProduct()->brand)) ? ($item->getProduct()->brand->parent_id==null) ? $item->getProduct()->brand->brand_name : $item->getProduct()->brand->parent->brand_name : "" !!}</h4>
                                             <span><a href="#">{!! $item->getName() !!}</a></span>
                                             <div class="product-price">
-                                                    <?php $product = $item->getProduct();?>
+                                                    <?php 
+                                                        $product = $item->getProduct(); 
+                                                        $categories = [];
+                                                        foreach ($product->categories as $category) $categories[] = $category->category_id;
+                                                    ?>
+                                                    <input type="text" name="item_category_id" class="item_category_id hidden" value="{!! join(',', $categories) !!}">
+                                                    <input type="text" name="item_product_id" class="item_product_id hidden" value="{!! $product->product_id !!}">
                                                     @if($product->promotional_price != null)
                                                         <span class="old-price discount" style="color: rgb(67, 223, 230);">({!! $product->discount !!})</span>
                                                         <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
