@@ -203,8 +203,8 @@
                                         product-input-select required" tabindex="1" style="color: #42838C!important" onchange="changeAttribute(this, {!! $product->product_id !!})" autocomplete="off">
                                         <option value="default" disabled selected>Veuillez choisir</option>
                                         @foreach($attribute->options as $option)
-                                            @if(in_array($option->  attribute_option_id,$attribute_option_ids))
-                                                <option value="{!! $option->attribute_option_id !!}" >{!! $option->french->option_name !!}</option>
+                                            @if(in_array($option->attribute_option_id,$attribute_option_ids))
+                                                <option {!! (count($attribute_set->attributes) == 1) ? 'data-product_stock_id="'.$product_stock_ids[$option->attribute_option_id].'"' : '' !!} value="{!! $option->attribute_option_id !!}" >{!! $option->french->option_name !!}</option>
                                             @endif
                                         @endforeach
                                     </select>
