@@ -101,12 +101,12 @@ $(function() {
                                 if(is_category_promed || is_product_promed)
                                 {                                      
                                     if($(el).find('.discount').text()) {                          
-                                        var promotional_price = parseFloat($(el).find('.real-price').data('price'));
+                                        var promotional_price = parseFloat($(el).find('.real-price').data('promotional_price'));
                                         var price = promotional_price - ((promotional_price * response.discount) / 100);
                                         price = price.round(2);                   
                                     }
                                     else {  
-                                        var original_price = parseFloat($(el).find('.real-price').data('price'));                                        
+                                        var original_price = parseFloat($(el).find('.real-price').data('original_price'));                                        
                                         var price = original_price - ((original_price * response.discount) / 100);
                                     }
                                     $(el).find('.real-price').html( price + '<i class="fa fa-eur" aria-hidden="true"></i>');
