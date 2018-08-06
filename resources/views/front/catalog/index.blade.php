@@ -256,7 +256,7 @@
                                                 <span>{!! ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name !!}</span>
                                                 <h4><a href="#">{!! $product_translation->product_name !!}</a></h4>
                                                 @if($product->original_price != $product->best_price)
-                                                    <span class="old-price">({!! getPercentage($product->original_price,$product->best_price) !!})</span>
+                                                    <span class="old-price">(-{!! getPercentage($product->original_price,$product->best_price) !!}%)</span>
                                                     <span class="old-price"><del>{!! format_price($product->original_price) !!}</del></span>
                                                     <span class="new-price">{!! format_price($product->best_price) !!}</span>
                                                 @else
