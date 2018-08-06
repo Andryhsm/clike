@@ -28,7 +28,7 @@ class VerifyMerchant
 		}
 		$user = $this->auth->user();
 		if($user->role_id==1){
-			return redirect('/');
+			return redirect()->route('customer-commande-en-cours');
 		}
 		return $next($request);
     }

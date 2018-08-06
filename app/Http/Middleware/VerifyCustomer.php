@@ -28,7 +28,7 @@ class VerifyCustomer
 		}
 		$user = $this->auth->user();
 		if ($user->role_id == 2) {
-			return redirect('/');
+			return redirect()->route('merchant-dashboard');
 		}
 		return $next($request);
 	}
