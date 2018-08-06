@@ -166,6 +166,12 @@ jQuery(document).ready(function() {
 
     $document.on('click', '.remove_user ', function() {
         $(this).parents('.master_manager').remove();
+        $('.master_manager').each(function(index, el) {
+            if(index != 0){    
+                $(el).find('.title-master-manager>span').html('Compte #' + (index+1) + '&nbsp;&nbsp;&nbsp;&nbsp; <a class="remove_user"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
+            }
+        });
+        toastr["success"]("Le compte a été bien supprimé !");
     });
 
 

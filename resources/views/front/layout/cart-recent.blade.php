@@ -61,7 +61,9 @@
         </li> 
     </ul>
 </div>
-
+@section('footer-script')
+    <script type="text/javascript" src="{!! URL::to('/') !!}/frontend/js/recent-card.js"></script>
+@stop
 @else
 <div class="dropdown-menu cart-none" data-hover="dropdown" data-animations="fadeInDown fadeInRight fadeInUp fadeInLeft">
     <div class="shopping-cart text-center">
