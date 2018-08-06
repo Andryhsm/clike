@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -60,6 +61,15 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return redirect()->guest(route('login'));
+        if(Cookie::has('who')){
+            if(Cookie::get('who') == "customer"){
+                return redirect()->guest(route('login'));
+            }else{
+                return redirect()->guest(route('merchant-login'));
+            }            
+        }else{
+            return redirect()->guest(route('login'));
+        }
+        
     }
 }

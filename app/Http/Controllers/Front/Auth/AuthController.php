@@ -49,6 +49,8 @@ class AuthController extends Controller
 
 	public function postMerchantLogin(Request $request)
 	{
+        $num_of_minutes = 60 * 24 * 7; 
+        Cookie::queue('who', 'merchant', $num_of_minutes); 
 		$rules = array(
 			'email' => 'required',
 			'password' => 'required',
@@ -81,6 +83,9 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
+        $num_of_minutes = 60 * 24 * 7; 
+        Cookie::queue('who', 'customer', $num_of_minutes);        
+
         $rules = array(
             'email' => 'required',
             'password' => 'required',
@@ -122,6 +127,9 @@ class AuthController extends Controller
 
     public function saveUser(Request $request)
     {
+        $num_of_minutes = 60 * 24 * 7; 
+        Cookie::queue('who', 'customer', $num_of_minutes); 
+
         $rules = array(
             'first_name' => 'required',
             'last_name' => 'required',
