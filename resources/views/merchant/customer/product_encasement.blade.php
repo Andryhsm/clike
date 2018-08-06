@@ -40,8 +40,7 @@
                         </div>
                         <div class="form-group promo_code">
                             <label for="promo_code" class="control-label">Code promo</label>
-                            <select class="form-control">
-                            </select>
+                            <input type="text" placeholder="Code promo" class=" form-control"/>
                         </div>
                         <div class="form-group product_quantity">  
                             <label for="product_quantity" class="control-label">Quantité</label>
@@ -119,7 +118,8 @@
                         </div> -->
                         <div class="form-group">
                             <label for="promo_code" class="control-label">Code promo</label>
-                            <select name="promo_code[1]"  id="promo_code1" class="select-promo-code form-control">
+                            
+                            <input type="text" placeholder="Code promo" name="promo_code[1]" id="promo_code1" class="select-promo-code form-control"/>
                             </select>
                         </div>
                         <div class="form-groupe product_quantity">  
