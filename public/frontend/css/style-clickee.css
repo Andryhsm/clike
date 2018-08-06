@@ -1594,6 +1594,7 @@ element.style {
 }
 .cart-list legend {
   position: absolute;
+  border-bottom: none;
 }
 .cart-list:first-child legend, .shopping-cart fieldset:last-of-type legend {
   width: 15%;

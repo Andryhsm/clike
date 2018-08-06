@@ -1052,25 +1052,25 @@ function footerCardFixed(){
 	var callback = function(mutationsList) {
 	    for(var mutation of mutationsList) {
 	        if (mutation.attributeName === 'style') {
-	            var count = $('.cart-list').length
+	            var count = $('#content-cart .cart-list').length
 					childHeight = $('.cart-list')[0].clientHeight *2 + 17;
 
 	        	if(count > 2){
-					$(".content-cart").css({'height': childHeight, 'overflow-y': 'scroll'});
-					$(".shopping-cart .cart-list").css('width', '99%');
-					$(".content-cart").scrollTop(0);	
+					$("#content-cart .content-cart").css({'height': childHeight, 'overflow-y': 'scroll'});
+					$("#content-cart .shopping-cart .cart-list").css('width', '99%');
+					$("#content-cart .content-cart").scrollTop(0);	
 					$('.cart-list legend').last().hide();				
 				} 
 	        }
 	    }
 	}
 	
-	// var observer = new MutationObserver(callback);
-	// observer.observe(contentCart, { attributes: true});
+	var observer = new MutationObserver(callback);
+	observer.observe(contentCart, { attributes: true});
 
 	$(".content-cart").scroll(function() {
-		var y = $(".content-cart").scrollTop();
-		var height = $(".content-cart")[0].scrollHeight - $(".content-cart")[0].clientHeight;
+		var y = $("#content-cart .content-cart").scrollTop();
+		var height = $("#content-cart .content-cart")[0].scrollHeight - $(".content-cart")[0].clientHeight;
 		
 		if(y == 0){
 			$('.cart-list legend').first().show();
