@@ -155,13 +155,19 @@ jQuery(document).ready(function() {
         master_div.find('#manager_id1').val('').attr('name', "manager[" + row_index + "][manager_id]").attr('id', "manager_id"+row_index);
         master_div.find('.add-user button').removeClass('add_user btn-primary').addClass('remove_user btn-danger').text('Remove User');
         master_div.find('.line-separator').removeClass('hidden');
-        master_div.find('.title-master-manager>span').html('Compte #' + row_index + '&nbsp;&nbsp;&nbsp;&nbsp; <a class="remove_user"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
+        //master_div.find('.title-master-manager>span').html('Compte #' + row_index + '&nbsp;&nbsp;&nbsp;&nbsp; <a class="remove_user"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
          console.log(row_index);
         master_div.insertAfter($document.find('.master_manager:last'));
         $('.master_manager:last input').val('');
         $('input[name="manager[' + row_index + '][reply_request]"]').val("1");
         $('input[name="manager[' + row_index + '][receive_request]"]').val("1");
         $('input[name="manager[' + row_index + '][global_manager]"]').val("1");
+        
+        $('.master_manager').each(function(index, el) {
+            if(index != 0){    
+                $(el).find('.title-master-manager>span').html('Compte #' + (index+1) + '&nbsp;&nbsp;&nbsp;&nbsp; <a class="remove_user"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
+            }
+        });
     });
 
     $document.on('click', '.remove_user ', function() {
@@ -175,6 +181,33 @@ jQuery(document).ready(function() {
     });
 
 
+    $('.cart-paye[name="cart_number"]').blur(function(){
+        var code_promo_name = $(this).val();
+        var category_ids = $('.item_category_id').val();
+        console.log('category from db ' + JSON.stringify(category_ids))
+        var product_ids = [];
+        $('.item_product_id').each(function(i, el) {
+            product_ids.push($(el).val());
+        });
+        var url = $('.content-cart-product').attr('data-url');
+        if(code_promo_name != ''){
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {'code_promo_name' : "testcodepyjama", 'product_ids' : product_ids, 'category_ids' : category_ids},
+                dataType: 'json',
+                beforeSend: function() {
+                    $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+                },
+                success: function(response, status) {
+                    console.log(response);
+                },
+                error: function(xhr, status, error){
+                    console.log(xhr.responseText);
+                }
+            }); 
+        }
+    });
 });
 
 function confirmPassword(cle) {
