@@ -356,8 +356,12 @@ if (description_length > 1200) {
                 }
             }
         });
-
-        var selected = $('select.has-product-stock-id.product-input-select').find('option:selected');
+        var selected;
+        if($('.product-input-select').length > 1){
+            selected = $('select.has-product-stock-id.product-input-select').find('option:selected');
+        } else {
+            selected = $('select.product-input-select').find('option:selected');
+        }
         var product_stock_id = selected.data('product_stock_id');
         $('#product-stock-id').val(product_stock_id);
         if($('.containt-product-info').find('.invalid').length == 0) {
