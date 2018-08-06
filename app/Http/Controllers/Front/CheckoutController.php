@@ -25,6 +25,10 @@ class CheckoutController extends Controller
 	{
 		$cart_product_info = Session::get('cart_product_info');
 		$this->cart->setCustomer(Auth::user());
+		foreach ($request["real-price"] as $item_id => $price) {
+			$item = $this->cart->item($item_id);
+			$item->setOriginalPrice($price);
+		}
 		foreach ($request->input("qty", []) as $item_id => $qty) {
 			$item = $this->cart->item($item_id);
 			if ($qty == 0) {
@@ -68,6 +72,7 @@ class CheckoutController extends Controller
 	{
 		Session::put('cart_product_info', $request->all());
 		$cart = $this->cart;
+		//dd($cart);
         return view('front.cart.confirm_cart',compact('cart'));
 	}
 	
