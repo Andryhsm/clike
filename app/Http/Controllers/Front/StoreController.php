@@ -65,6 +65,8 @@ class StoreController extends Controller
 
     public function postRegister(Request $request)
 	{
+		$num_of_minutes = 60 * 24 * 7; 
+        Cookie::queue('who', 'merchant', $num_of_minutes); 
 		$rules = array(
 			'shop_name' => 'required',
 			'registration_number' => 'required',

@@ -233,6 +233,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
         Route::post('caisse', 'CheckoutController@storeOrderInfo')->name('checkout');
         Route::get('checkout/order-confirmed', 'CheckoutController@confirmOrder')->name('checkout-order-confirmed');
         Route::get('caisse/confirmation', 'CheckoutController@confirmCart')->name('checkout-confirm-cart');
+        
         Route::group(['middleware' => ['customer']], function () {
             /*Customer specific routes*/
             Route::get('customer', 'CustomerController@index');
