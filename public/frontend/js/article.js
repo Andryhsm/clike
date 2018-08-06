@@ -88,10 +88,18 @@ function splitDataName($data) {
     var result = $data.split('$');
     return result[1];
 }
-$('#reduction').bind('keyup mouseup change', function () {
+$('#reduction').bind('keyup change', function () {
    if($('#original_price').val() != ''){
-       var res = $('#original_price').val()-$('#reduction').val()*$('#original_price').val()/100;
-       $('#promotional_price').val(res.toFixed(2));
+        if($('#reduction').val() < 0) {
+            $('#reduction').addClass('invalid');
+            toastr.error('Le rabais ne peut pas être négatif.');
+        }
+        else {
+            $('#reduction').removeClass('invalid')
+            var res = $('#original_price').val()-$('#reduction').val()*$('#original_price').val()/100;
+            $('#promotional_price').val(res.toFixed(2));
+        }
+        
    }
 });
 
