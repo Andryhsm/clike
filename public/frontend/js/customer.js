@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
         html_data.find('.product_size select').attr('name', 'product_size[' + row_index + ']').attr('id', 'product_size' + row_index).addClass('select-product-size');
         html_data.find('.product_color select').attr('name', 'product_color[' + row_index + ']').attr('id', 'product_color' + row_index).addClass('select-product-color');
         html_data.find('.discount input').attr('name', 'discount[' + row_index + ']').attr('id', 'discount' + row_index).addClass('input-discount');
-        html_data.find('.promo_code select').attr('name', 'promo_code[' + row_index + ']').attr('id', 'promo_code' + row_index).addClass('select-promo-code');
+        html_data.find('.promo_code input').attr('name', 'promo_code[' + row_index + ']').attr('id', 'promo_code' + row_index).addClass('select-promo-code');
         html_data.find('.product_price input').attr('name', 'product_price[' + row_index + ']').attr('id', 'product_price' + row_index).addClass('input-product-price');
         html_data.find('.product_quantity input').attr('name', 'product_quantity[' + row_index + ']').attr('id', 'product_quantity' + row_index).addClass('input-product-quantity');
         html_data.find('.product_stock_id input').attr('name', 'product_stock_id[' + row_index + ']').attr('id', 'product_stock_id' + row_index).addClass('input-product-stock-id');
