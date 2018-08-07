@@ -39,7 +39,7 @@ class HomeController extends Controller
     }
     public function index(Request $request)
     {
-        // if(!($request->get('key') == 'open'))
+        // if(!($request->get('key') == 'open'))    
         //     return redirect()->route('crowdfunding');
         $language_id=app('language')->language_id;
         $categories = $this->category_repository->getParentCategories($language_id);
