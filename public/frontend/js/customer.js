@@ -3,6 +3,9 @@ Number.prototype.round = function(p) {
     return parseFloat(this.toFixed(p));
 };
 
+var promos_quantity_max = {};
+var product_quantity = {};
+
 jQuery(document).ready(function() {
 
     var $document = jQuery(document);
@@ -31,12 +34,12 @@ jQuery(document).ready(function() {
         html_data.find('.product_size select').attr('name', 'product_size[' + row_index + ']').attr('id', 'product_size' + row_index).addClass('select-product-size');
         html_data.find('.product_color select').attr('name', 'product_color[' + row_index + ']').attr('id', 'product_color' + row_index).addClass('select-product-color');
         html_data.find('.discount input').attr('name', 'discount[' + row_index + ']').attr('id', 'discount' + row_index).addClass('input-discount');
-        html_data.find('.promo_code input').attr('name', 'promo_code[' + row_index + ']').attr('id', 'promo_code' + row_index).addClass('select-promo-code');
+        html_data.find('.promo_code input').attr('name', 'promo_code[' + row_index + ']').attr('id', 'promo_code' + row_index).addClass('input-code-promo');
         html_data.find('.product_price input').attr('name', 'product_price[' + row_index + ']').attr('id', 'product_price' + row_index).addClass('input-product-price');
         html_data.find('.product_quantity input').attr('name', 'product_quantity[' + row_index + ']').attr('id', 'product_quantity' + row_index).addClass('input-product-quantity');
         html_data.find('.product_stock_id input').attr('name', 'product_stock_id[' + row_index + ']').attr('id', 'product_stock_id' + row_index).addClass('input-product-stock-id');
-        //h
-
+        html_data.find('.promo_quantity_max input').attr('name', 'promo_quantity_max[' + row_index + ']').attr('id', 'promo_quantity_max' + row_index).addClass('input-promo-quantity-max');
+       
         html_data.find('.size_input_quantity input').attr('name', 'quantities_size[' + row_index + ']').attr('placeholder', 'quantité pour taille ' + row_index);
 
         html_data.find('.button :button').removeClass('btn-primary add_size_input').addClass('btn-danger remove_size_input').text('Annuler ce produit');
@@ -205,6 +208,50 @@ jQuery(document).ready(function() {
         });
         
     });
+    $document.on('change', '.input-code-promo', function(event) {
+        $parent_element = $(this).parents('.product-content');
+        var url = $(this).data('url');
+        var code_promo_name = $(this).val();
+        var product_id = $parent_element.find('.select-product-name').val();
+        var parent_category_id = $parent_element.find('.select-parent-category').val();
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            data: {'code_promo_name': code_promo_name, 'product_id': product_id, 'parent_category_id': parent_category_id},
+        })
+        .done(function(response) {
+            var $input_product_price = $parent_element.find('.input-product-price');
+            var $input_discount = $parent_element.find('.input-discount');
+            var $input_promo_quantity_max = $parent_element.find('.input-promo-quantity-max')
+            if(response.status == "found"){
+                toastr["success"](response.message);
+                if(!$input_product_price.hasClass('apply-discount-promo')) {    
+                    var price = parseInt($input_product_price.data('price'));
+                    var price_rabais = price - (price*parseInt(response.discount))/100;
+                    $input_product_price.val(price_rabais);
+                    $input_product_price.addClass('apply-discount-promo');
+                    $input_discount.val(response.discount);
+                    $input_promo_quantity_max.val(response.quantity_max);
+                }
+                if(promos_quantity_max.hasOwnProperty(product_id) == false) {    
+                    promos_quantity_max[product_id] = response.quantity_max;
+                }
+            } else {
+                if($input_product_price.hasClass('apply-discount-promo')) { 
+                    $input_product_price.val($input_product_price.data('price'));
+                    $input_product_price.removeClass('apply-discount-promo');
+                    $input_discount.val("");
+                    $input_promo_quantity_max.val("");
+                }
+                toastr.error(response.message);
+            }
+        })
+        .fail(function() {
+        });
+        
+    });
+
 
     $('#paiement').click(function(event) {
         var form = $("#customer_form");
@@ -217,6 +264,7 @@ jQuery(document).ready(function() {
                     var total_price_product = 0;
                     var total_price_product_ttc = 0;
                     var total_discount_price = 0;
+                    var total_original_price = 0;
                     var tab_tr = {};
                     $('.table-content-paiement').html('');
                     $('.select-product-name').each(function(index, el) {
@@ -231,9 +279,10 @@ jQuery(document).ready(function() {
                     });
                     $('.input-product-price').each(function(index, el) {
                         var product_quantity = parseInt($(this).parents('.product-content').find('.input-product-quantity').val());
-                        var price = parseInt($(this).val());
-                        $('.table-content-paiement').find('.tr' + index).append('<th>' + fixed_two_after_dot(price*product_quantity) + ' <i class="fa fa-eur" aria-hidden="true"></i></th>');
-                        total_price_product += parseFloat($(this).val());
+                        var price = parseInt($(this).val()) * product_quantity;
+                        $('.table-content-paiement').find('.tr' + index).append('<th>' + fixed_two_after_dot(price) + ' <i class="fa fa-eur" aria-hidden="true"></i></th>');
+                        total_price_product += price;
+                        total_original_price += parseInt($(this).data('price'));
                     });
                     $('.select-parent-category').each(function(index, el) {
                         /*console.log($(this).find('option:selected').text());*/
@@ -246,12 +295,12 @@ jQuery(document).ready(function() {
                         var discount_price = parseFloat(price) * (parseInt(percent) / 100);
                         total_discount_price += discount_price;
                     });
-                    $('.select-promo-code').each(function(index, el) {
+                    $('.input-code-promo').each(function(index, el) {
                         /*console.log($(this).val());*/
                     });
 
                     total_price_product_ttc = total_price_product - total_discount_price;
-                    var discount_total = (total_discount_price * 100) / total_price_product;
+                    var discount_total = (total_discount_price * 100) / total_original_price;
                     discount_total = discount_total.round(2);
                     total_price_product_ttc = total_price_product_ttc.round(2);
                     $('.table-content-paiement').append('<tr class="total"><th></th><th></th><th>Montant total HT</th><th>' + fixed_two_after_dot(total_price_product) + ' <i class="fa fa-eur" aria-hidden="true"></i></th></tr>');
@@ -300,7 +349,7 @@ function get_product_data(box, product_id, content_range) {
     if($current_element.val() == 0){
         if(!$current_element.hasClass('invalid_')){
             $current_element.addClass('invalid_');
-            $parent_element.append("<label class='error'>Veuillez sélectionner un produit</label>");
+            $parent_element.append("<label class='error_'>Veuillez sélectionner un produit</label>");
         }
     }else{
         if($current_element.hasClass('invalid_')){
@@ -323,7 +372,7 @@ function get_product_data(box, product_id, content_range) {
             paste_select_html(box, data.select_html, content_range);
             add_option_select_category(data, content_range);
             
-            $('#product_price' + content_range).val(product.original_price);
+            $('#product_price' + content_range).val(product.original_price).attr('data-price', product.original_price);
             $('#product_quantity' + content_range).val("1");
         })
         .fail(function(xhr, options) {

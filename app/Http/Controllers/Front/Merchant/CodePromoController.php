@@ -159,7 +159,7 @@ class CodePromoController extends Controller
             $begin_date = \Carbon\Carbon::parse($code_promo->date_debut);
             $end_date = \Carbon\Carbon::parse($code_promo->date_fin);
             $now = \Carbon\Carbon::now();
-            if($now > $end_date) return response()->json(['error' => "La durée d'utilisation du code a expirée."]);
+            if($now > $end_date) return response()->json(['error' => "La durée d'utilisation du code a été expirée."]);
             else {
                 foreach ($code_promo->products as $product) {
                     if(in_array($product->product_id, $request['product_ids'])) $promed_ids[] = $product->product_id;
@@ -172,5 +172,55 @@ class CodePromoController extends Controller
         }
         else return response()->json(['error' => "Code inexistant."]);
 
+    }
+
+    public function getDiscountByNameCode(Request $request) {
+        $code_promo = $this->code_promo_repository->getByPromoName($request);
+        $product_id = $request['product_id'];
+        $parent_category_id = $request['parent_category_id'];
+        $product_ids = [];
+        $category_ids = [];
+
+        if($code_promo){
+            $begin_date = \Carbon\Carbon::parse($code_promo->date_debut);
+            $end_date = \Carbon\Carbon::parse($code_promo->date_fin);
+            $now = \Carbon\Carbon::now();
+            if($now > $end_date) return response()->json([
+                            'status' => 'notfound', 
+                            'message' => "La durée d'utilisation du code a été expirée."
+                        ]);
+            else {
+                foreach ($code_promo->products as $product) {
+                    $product_ids[] = $product->product_id;
+                } 
+                if(in_array($product_id, $product_ids)) {
+                    $message = "Féliciation. Vous avez un rabais de ".$code_promo->discount."% pour ce produit!";
+                    return response()->json([
+                        'status' => 'found',
+                        'code_with' => 'product',   
+                        'quantity_max' => $code_promo->quantity_max,
+                        'discount' => $code_promo->discount,
+                        'message' => $message
+                    ]);
+                } 
+                foreach ($code_promo->categories as $category) {
+                    $category_ids[] = $category->category_id;
+                }
+                if(in_array($parent_category_id, $category_ids)) {
+                    return response()->json([
+                        'status' => 'found', 
+                        'code_with' => 'category', 
+                        'quantity_max' => $code_promo->quantity_max, 
+                        'discount' => $code_promo->discount
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 'notfound', 
+                        'message' => 'La catégorie ou le produit n\'existe pas dans ce code promo.'
+                    ]);
+                }
+            }
+        } 
+        else return response()->json(['status'=> 'notfound', 'message' => "Code inexistant."]);
     }
 }

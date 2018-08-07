@@ -181,33 +181,6 @@ jQuery(document).ready(function() {
     });
 
 
-    $('.cart-paye[name="cart_number"]').blur(function(){
-        var code_promo_name = $(this).val();
-        var category_ids = $('.item_category_id').val();
-        console.log('category from db ' + JSON.stringify(category_ids))
-        var product_ids = [];
-        $('.item_product_id').each(function(i, el) {
-            product_ids.push($(el).val());
-        });
-        var url = $('.content-cart-product').attr('data-url');
-        if(code_promo_name != ''){
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: {'code_promo_name' : "testcodepyjama", 'product_ids' : product_ids, 'category_ids' : category_ids},
-                dataType: 'json',
-                beforeSend: function() {
-                    $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
-                },
-                success: function(response, status) {
-                    console.log(response);
-                },
-                error: function(xhr, status, error){
-                    console.log(xhr.responseText);
-                }
-            }); 
-        }
-    });
 });
 
 function confirmPassword(cle) {
