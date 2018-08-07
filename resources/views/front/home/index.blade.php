@@ -331,19 +331,21 @@
         </div>
         <div class="section-instagramm-feed-content">
             <div class="row">
-                
-                    @if($instagrams->is_active=='1')
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 section-instagramm-feed-align">
-                            <img src="{!! url('upload/instagram_img/'. $instagrams->image) !!}" alt="instagramm feed clickee"/>    
-                        </div>    
-                    @endif
-                    
+                @if (count($instagrams)>0)
+                    @foreach ($instagrams as $instagram)
+                        @if($instagram->is_active=='1')
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 section-instagramm-feed-align">
+                                <img src="{!! $instagram->getInstagramImage (app('language')->language_code) !!}" alt="instagramm feed clickee"/>    
+                            </div>    
+                        @endif
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
 </section>    
 <!-- end section instagramm feed -->
-
+p
 <!-- start section marque -->
 <section class="section-marque ptb-40">
     <div class="brand-area">
