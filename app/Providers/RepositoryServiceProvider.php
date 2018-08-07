@@ -7,6 +7,7 @@ use App\Interfaces\AttributeSetRepositoryInterface;
 use App\Interfaces\Admin\BrandRepositoryInterface;
 use App\Interfaces\AdminUserRepositoryInterface;
 use App\Interfaces\BannerRepositoryInterface;
+use App\Interfaces\InstagramRepositoryInterface;
 use App\Interfaces\BlogCategoryInterface;
 use App\Interfaces\BlogPostInterface;
 use App\Interfaces\BlogTagInterface;
@@ -38,6 +39,7 @@ use App\Repositories\AttributeSetRepository;
 use app\Repositories\admin\BrandRepository;
 use App\Repositories\AdminUserRepository;
 use App\Repositories\BannerRepository;
+use App\Repositories\InstagramRepository;
 use App\Repositories\BlogCategoryRepository;
 use App\Repositories\BlogPostRepository;
 use App\Repositories\BlogTagRepository;
@@ -138,6 +140,9 @@ class RepositoryServiceProvider extends ServiceProvider
         });
         $this->app->bind(BannerRepositoryInterface::class, function ($app) {
             return $app->make(BannerRepository::class);
+		});
+		$this->app->bind(InstagramRepositoryInterface::class, function ($app) {
+            return $app->make(InstagramRepository::class);
         });
 		$this->app->bind(ProductRatingRepositoryInterface::class, function ($app) {
             return $app->make(ProductRatingRepository::class);
