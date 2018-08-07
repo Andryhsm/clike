@@ -346,16 +346,22 @@ function get_product_data(box, product_id, content_range) {
 
     var $current_element = $('#product_name' + content_range);
     $parent_element = $current_element.parents('.product_name');
+    $parent = $current_element.parents('.product-content');
+    $input_code_promo = $parent.find('.input-code-promo');
+
     if($current_element.val() == 0){
         if(!$current_element.hasClass('invalid_')){
             $current_element.addClass('invalid_');
             $parent_element.append("<label class='error_'>Veuillez sélectionner un produit</label>");
         }
-    }else{
+        $input_code_promo.attr("disabled", "disabled");
+        $input_code_promo.val("");
+    } else {
         if($current_element.hasClass('invalid_')){
             $current_element.removeClass('invalid_');
             $parent_element.find('.error_').remove();
         }
+        $input_code_promo.removeAttr('disabled');
     }
 
     $.ajax({
