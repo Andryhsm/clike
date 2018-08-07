@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/alternateeve/public'),
+    'url' => env('APP_URL', 'http://localhost/clike/public'),
 
     /*
     |--------------------------------------------------------------------------

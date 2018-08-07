@@ -516,6 +516,7 @@ ul {
 .mr-10 { margin-right: 10px; }
 .mr-15 {margin-right: 15px;}
 .mr-20 { margin-right: 20px; }
+.mlr-25 { margin-left: 25% !important;margin-right: 25% !important; }
 .mt-10 { margin-top: 10px; }
 .mt-12 { margin-top: 12px; }
 .mt-20 { margin-top: 20px; }
