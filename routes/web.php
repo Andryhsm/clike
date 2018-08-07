@@ -69,6 +69,13 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
         Route::resource('banner', 'BannerController');
         Route::get('slider', 'BannerController@sliderindex')->name('slider');
         Route::resource('product-rating', 'ProductRatingController');
+        
+        //instagram route
+        Route::resource('instagram', 'InstagramController');
+       // Route::post('instagram', 'InstagramController@create');
+        Route::delete('instagram/{id}', 'InstagramController@destroy');
+        Route::get('instagram/{id}','InstagramController@edit');
+        //end instagram route
 
         /*Route::get('product/get-data', 'ProductController@getData')->name('product-data');
         Route::get('product', 'ProductController@index')->name('product');

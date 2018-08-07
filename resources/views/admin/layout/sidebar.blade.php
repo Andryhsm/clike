@@ -68,7 +68,8 @@
             @endif
             
             @if(check_user_access(['page.index','email-template.index','coupon','banner.index']))
-            <li class="treeview {{ set_active(['admin/page','admin/page/*','admin/banner','admin/banner/*','admin/slider','admin/slider/*','admin/coupon','admin/coupon/*','admin/special-product','admin/special-product/*','admin/faq','admin/faq/*'])}}">
+            <li class="treeview {{ set_active(['admin/page','admin/page/*','admin/banner','admin/banner/*','admin/slider','admin/slider/*','admin/coupon','admin/coupon/*',
+            'admin/special-product','admin/special-product/*','admin/faq','admin/faq/*,admin/instagram_feed','admin/instagram_feed/*'])}}">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
                     <span>Contenu</span>
@@ -78,8 +79,8 @@
                 </a>
                 <ul class="treeview-menu">
                     @if(check_user_access('page.index'))
-                    <li class="{{ set_active(['admin/page','admin/page/*']) }}"><a
-                                href="{!! URL::to('/admin/page') !!}"><i class="fa fa-circle-o"></i> Gestion de page</a>
+                    <li class="{{ set_active(['admin/page','admin/page/*']) }}">
+                        <a href="{!! URL::to('/admin/page') !!}"><i class="fa fa-circle-o"></i> Gestion de page</a>
                     </li>
                     @endif
                     @if(check_user_access(['faq.index', 'faq.create', 'faq.edit']))
@@ -88,8 +89,8 @@
                     </li>
                     @endif
                     <!-- @if(check_user_access('coupon'))
-                    <li class="{{ set_active(['admin/coupon','admin/coupon/*']) }}"><a href="{!! route('coupon') !!}"><i
-                                    class="fa fa-circle-o"></i> Coupon Manager</a></li>
+                    <li class="{{ set_active(['admin/coupon','admin/coupon/*']) }}">
+                        <a href="{!! route('coupon') !!}"><i class="fa fa-circle-o"></i> Coupon Manager</a></li>
                     @endif -->
                     @if(check_user_access('banner.index'))
                     <li class="{{ set_active(['admin/slider','admin/slider/*']) }}">
@@ -104,6 +105,11 @@
                     @if(check_user_access('special-product.index'))
                     <li class="{{ set_active(['admin/special-product','admin/special-product/*']) }}">
                         <a href="{!! URL::to('/admin/special-product') !!}"><i class="fa fa-circle-o"></i> Les produits dans accueil</a>
+                    </li>
+                    @endif
+                    @if(check_user_access('instagram.index'))
+                    <li class="{{ set_active(['admin/instagram','admin/instagram/*']) }}">
+                        <a href="{!! URL::to('/admin/instagram') !!}"><i class="fa fa-circle-o"></i> Gestion Instagram feed </a>
                     </li>
                     @endif
                 </ul>
