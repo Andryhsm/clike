@@ -112,7 +112,7 @@ class PasswordController extends Controller
                 return Redirect::back();
             case PasswordBroker::PASSWORD_RESET:
                 flash()->success(config('message.reset-password.password-set'));
-                return Redirect::to('/login');
+                return redirect()->route('login');
         }
     }
 }

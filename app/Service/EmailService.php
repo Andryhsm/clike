@@ -59,7 +59,7 @@ Class EmailService {
 		return Mail::failures();
 	}
 
-	public function sendEmailBySendinblue($mail_params_array){
+	public static function sendEmailBySendinblue($mail_params_array){
 		$mailin = new Mailin('andryhsm@gmail.com', '0fPYUtrw6xKIDpJd');
         $mailin->
         addTo($mail_params_array['to'])->
