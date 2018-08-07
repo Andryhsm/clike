@@ -25,7 +25,7 @@ class BannerController extends Controller
 		$this->upload_service = $upload_service;
 		$this->banner_repository = $banner_repository;
 		$this->language_repository = $language;
-	}
+	}	
 
 	public function index()
 	{
@@ -94,7 +94,7 @@ class BannerController extends Controller
             $image_name['french_image_name']=$this->uploadImage('french_image',$request->is_subbanner);
             $image_name['french_image_name_hover']=$this->uploadImage('french_image_hover',$request->is_subbanner);
 			$banner=$this->banner_repository->updateById($id,$request->all(),$image_name);
-			if($banner){				
+			if($banner){
 				if (Session::get('sliderORbanner') == 1) {
 					flash()->success(config('message.banner.update-success'));
 					return Redirect('admin/banner');
@@ -136,7 +136,6 @@ class BannerController extends Controller
 				case 4:
 					$img->fit(3000,1300)->save($thumb_path.'/'.$image_name);		
 					break;		
-
 				default:
 					# code...
 					break;
