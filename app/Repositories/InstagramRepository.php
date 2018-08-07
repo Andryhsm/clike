@@ -24,11 +24,6 @@ class InstagramRepository implements InstagramRepositoryInterface
         return $this->model->find($template_id);
     }
 
-    public function getAll()
-    {
-        return $this->model->all();
-    }
-
     public function create($input,$image_name)
     {
 
@@ -59,8 +54,8 @@ class InstagramRepository implements InstagramRepositoryInterface
         return $this->model->whereIsActive(1)->orderBy('id', 'DESC')->limit(5)->get();
     }
 
-    public function getAllInstagram(){
-        return $this->model->where('is_active','=','0')->orwhere('is_active','=','1')->get();
+    public function getAll(){
+        return $this->model->get();
     }
     
     public function getActiveMainInstagram(){

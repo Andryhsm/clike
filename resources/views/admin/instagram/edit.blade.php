@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="content-heading">Photo Instagram</label>
                             {!!  Form::file('image',['class'=>"form-control"])!!}
-                            {{ Form::image('/images/instagram_img/'.$instagram->image, null, ['class' => 'brand-image'])}}
+                            {{ Form::image('/upload/instagram_img/'.$instagram->image, null, ['class' => 'brand-image'])}}
                         </div>
 
                         <div class="form-group">

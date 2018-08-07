@@ -17,6 +17,4 @@ interface InstagramRepositoryInterface
 	
 	public function getActiveMainInstagram();
 
-	public function getAllInstagram();
-
 }

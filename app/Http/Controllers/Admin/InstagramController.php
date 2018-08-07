@@ -28,7 +28,7 @@ class InstagramController extends Controller
 
 	public function index()
 	{
-		$instagrams = $this->instagram_repository->getAllInstagram();
+		$instagrams = $this->instagram_repository->getAll();
 		return view('admin.instagram.index')->with('instagrams', $instagrams);
 	}
 
@@ -90,7 +90,7 @@ class InstagramController extends Controller
 		if (Input::hasFile($name)) {
 			$file = Input::file($name);
 			try{
-              $image_name = $this->upload_service->upload($file, '/images/instagram_img/');
+              $image_name = $this->upload_service->upload($file, '/upload/instagram_img/');
 			}catch(Exception $e){
 				  flash()->error($e->getMessage());
                   return Redirect::back();
