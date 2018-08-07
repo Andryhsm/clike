@@ -43,7 +43,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
     Route::post('login', 'LoginController@store');
     Route::get('logout', 'LoginController@destroy')->name('logout');
     Route::get('get-state/{country_id}', 'RegionController@getState')->name('get-state');
-    Route::post('get-coordinates','StoreController@getCoordinates');
 
     //Route::post('search_store','searchController@search');
     Route::get('get-brand-by-tag','BrandController@byTag');
@@ -197,9 +196,9 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
     Route::post('register', 'Auth\AuthController@saveUser')->name('sign-up');
     Route::get('logout', 'Auth\AuthController@destroy')->name('logout');
     Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider')->name('auth');
-    Route::get('forgot-password', ['as' => 'auth.reset.request', 'uses' => 'Auth\PasswordController@getEmail'])->name('forgot-password-get');
-    Route::post('forgot-password', ['as' => 'auth.reset.submit', 'uses' => 'Auth\PasswordController@postEmail'])->name('forgot-password-post');
-    Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\PasswordController@getReset'])->name('password-reset');
+    Route::get('forgot-password', ['as' => 'auth.reset.request', 'uses' => 'Auth\PasswordController@getEmail']);
+    Route::post('forgot-password', ['as' => 'auth.reset.submit', 'uses' => 'Auth\PasswordController@postEmail']);
+    Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\PasswordController@getReset']);
     Route::post('forgot', ['as' => 'auth.reset', 'uses' => 'Auth\PasswordController@postReset'])->name('forgot');
     Route::get('contacter-nous', 'ContactUsController@index')->name('contact-us-get');
     Route::post('contact-us', 'ContactUsController@send')->name('contact-us-post');
@@ -241,6 +240,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
         Route::post('caisse', 'CheckoutController@storeOrderInfo')->name('checkout');
         Route::get('checkout/order-confirmed', 'CheckoutController@confirmOrder')->name('checkout-order-confirmed');
         Route::get('caisse/confirmation', 'CheckoutController@confirmCart')->name('checkout-confirm-cart');
+
         Route::group(['middleware' => ['customer']], function () {
             /*Customer specific routes*/
             Route::get('customer', 'CustomerController@index');
@@ -296,6 +296,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::get('produit/get-data', 'ProductController@getData')->name('merchant-product-data');
                     Route::get('produit', 'ProductController@index')->name('merchant-product');
                     Route::resource('article', 'ArticleController');
+                    Route::post('get-data-article', 'ArticleController@getData')->name('merchant-article-data');
                     Route::get('child-category','ArticleController@getChild')->name('get-child-category');
                     Route::get('produit/attributes', 'ArticleController@attributes')->name('get_attribute');
                     Route::post('produit', 'ProductController@store')->name('save_product_merchant');
@@ -318,9 +319,11 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::get('encaissement', 'CustomerController@encasement')->name('encasement');
                     Route::post('get-product','CodePromoController@getProduct')->name('get_product');
                     Route::get('get-customers', 'CustomerController@getAllCustomer')->name('get-customers');
+                    Route::get('get-quantity-by-product-stock-id', 'CustomerController@getQuantityByProductStockId')->name("get-quantity-by-stock-id");
+                    Route::post('get-discount', 'CodePromoController@getDiscountPrice')->name('get_discount');
                 }); 
             });
-
+            Route::post('get-coordinates','StoreController@getCoordinates')->name('get-coordinates');
             Route::get('invoice/{id}','MerchantController@viewInvoice')->name('invoice');
             Route::resource('magasin', 'StoreController');
             Route::post('response-to-customer', 'OrderController@responseToCustomer')->name('response-to-customer');

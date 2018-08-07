@@ -60,14 +60,18 @@ class ProductController extends Controller
         $product_attribute_options = $this->product_repository->getProductAttributeOption($product_id);
 
         $attribute_option_ids = [];
+        $product_stock_ids = [];
         foreach ($product_attribute_options as $value) {
             foreach($value->options as $option){
                 if(!in_array($option->attribute_option_id,$attribute_option_ids)){
                     $attribute_option_ids[] = $option->attribute_option_id;
+                    if(count($attribute_set->attributes) == 1) {
+                       $product_stock = $this->product_repository->getRelatedProductStock($product_id, $option->attribute_option_id);
+                       $product_stock_ids[$option->attribute_option_id] = $product_stock->first()->product_stock_id;
+                    }
                 }
     	    }
         }
-
         return view('front.product.index')
             ->with('product', $product)
             ->with('affiliate_products', $affiliate_products)
@@ -79,7 +83,8 @@ class ProductController extends Controller
             ->with('attribute_option_id', $product_attributes['attribute_option'])
             ->with('categories', $categories)
             ->with('attribute_set', $attribute_set)
-            ->with('attribute_option_ids',$attribute_option_ids);
+            ->with('attribute_option_ids',$attribute_option_ids)
+            ->with('product_stock_ids', $product_stock_ids);
     }
 
     public function getProductAttribute($attribute_values)

@@ -163,6 +163,26 @@ class Product extends Model
 		return $product_attribute_option->first();
 	}
 
+	/*public function scopeDraw($q, $param){
+    	$article_filter = isset($param['article_filter']) ? $param['article_filter'] : null;  
+        return $q->select('product.*')
+        	->leftjoin('attribute_set as attribute', function ($query) {
+				$query->on('attribute.attribute_set_id', '=', 'product.attribute_set_id');
+			})
+        	->where(function($query) use ($article_filter){
+                if(!empty($article_filter)){
+		            switch ($article_filter) {
+					    case "discount_product":
+					        $query->whereNotNull('product.discount');
+					        break;
+					    case "attribut_set":
+					        $query->orderBy('attribute.set_name', 'asc');
+					        break;
+					}
+				}
+            });
+    }*/
+
 	public function scopeFilter($q, $param = [], $store_ids)
 	{
 		$tag_id = isset($param['tag']) ? $param['tag'] : [];  //Input::get('tag');

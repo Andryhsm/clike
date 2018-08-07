@@ -475,6 +475,23 @@ class ProductRepository implements ProductRepositoryInterface
         return $this->model->with('french', 'admin', 'tags', 'images')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
     }
 
+    public function getByStoreFilter($param, $store_id)
+    {
+        $article_filter = isset($param['article_filter']) ? $param['article_filter'] : null; 
+        switch ($article_filter) {
+            case "discount_product":
+                return $this->model->with('french', 'admin', 'tags', 'images')->where('store_id', $store_id)->whereNotNull('product.discount')->get();
+                break;
+            case "attribut_set":
+                return $this->model->join('attribute_set', function ($query) {
+                    $query->on('attribute_set.attribute_set_id', '=', 'product.attribute_set_id');
+                    })->with('french', 'admin', 'tags', 'images')->where('store_id', $store_id)->orderBy('attribute_set.set_name', 'asc')->get();
+                break;
+            default:
+                return $this->model->with('french', 'admin', 'tags', 'images')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
+        }
+    }
+
     public function deleteById($product_id)
     {
         $product = $this->model->find($product_id);

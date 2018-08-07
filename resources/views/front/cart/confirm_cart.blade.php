@@ -24,9 +24,12 @@
                                               <button type="button" onclick="location.href = '".{!! url(LaravelLocalization::getCurrentLocale()) !!}."'" class="close">×</button>
                                         </div>
                                       <div class="info-facture mt-40">
-                                          <div class="col-sm-7">     
-                                                {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
-                                           </div>
+                                            <div class="col-sm-7">     
+                                                {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "autocomplete" => "off" ])}}                                                
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <a class="apply_codepromo fw-400" style="line-height: 55px;"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Appliquer</a>
+                                            </div>
                                       </div>
                                      
                                   </div>  
@@ -85,29 +88,37 @@
                                 </div>
                             </div>
                             <div class="cart-product-list col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
-                                <div class="content-cart-product">
+                                <div class="content-cart-product" data-url="{!! route('get_discount') !!}">
                                     <div class="cart-title">
                                         <h2>{!! (count($cart->items()) < 2) ? count($cart->items()).' ARTICLE' : count($cart->items()).' ARTICLES' !!} </h2>
                                     </div>
                                     @if(count($cart->items())>0)
                                     @foreach($cart->items() as $item_id=>$item)
                                  
-                                    <div class="cart-product row">
+                                    <div class="cart-product article row">
                                         <div class="col-lg-4">
                                             <div class="product-image"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/'.$item->getUrl()) !!}"><img src="{!! URL::to('/').'/'.\App\Product::PRODUCT_IMAGE_PATH.$item->getImage() !!}" alt="{!! $item->getImageAlt() !!}"></a>
                                             </div>
                                         </div>
                                         <div class="col-lg-7">
                                             <h4>{!! (isset($item->getProduct()->brand)) ? ($item->getProduct()->brand->parent_id==null) ? $item->getProduct()->brand->brand_name : $item->getProduct()->brand->parent->brand_name : "" !!}</h4>
-                                            <span><a href="#">{!! $item->getName() !!}</a></span>
+                                            <span><a href="#" class="item_product_name">{!! $item->getName() !!}</a></span>
                                             <div class="product-price">
-                                                    <?php $product = $item->getProduct();?>
+                                                    <?php 
+                                                        $product = $item->getProduct(); 
+                                                        $categories = [];
+                                                        foreach ($product->categories as $category) $categories[] = $category->category_id;
+                                                    ?>
+                                                    <input type="text" name="item_category_id" class="item_category_id hidden" value="{!! join(',', $categories) !!}">
+                                                    <input type="text" name="item_product_id" class="item_product_id hidden" value="{!! $product->product_id !!}">
                                                     @if($product->promotional_price != null)
-                                                        <span class="old-price" style="color: rgb(67, 223, 230);">({!! $product->discount !!})</span>
+                                                        <span class="old-price discount" style="color: rgb(67, 223, 230);">(-{!! $product->discount !!}%)</span>
                                                         <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
-                                                        <span class="new-price real-price" data-price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
+                                                        <span class="new-price real-price" data-price="{!! $product->promotional_price !!}" data-promotional_price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
+                                                        <input type="text" class="data-real-price hidden" name="real-price[{!! $item_id !!}]" value="{!! $product->promotional_price !!}" autocomplete="off">
                                                     @else
-                                                        <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
+                                                        <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}" data-original_price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
+                                                        <input type="text" class="data-real-price hidden" name="real-price[{!! $item_id !!}]" value="{!! $product->original_price !!}" autocomplete="off">
                                                     @endif
                                             </div>
                                             <div class="reviews-total">

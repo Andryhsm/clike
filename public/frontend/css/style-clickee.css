@@ -1505,7 +1505,8 @@ element.style {
     margin-left: auto;
     margin-right: auto;
 }
-.receive-notification i, .receive-email i,.gender i, .save-cart i, .visible i, .category_parent i, .solde i {
+.receive-notification i, .receive-email i,.gender i, .save-cart i, .visible i, 
+.category_parent i, .solde i, .apply_codepromo i {
   font-size: 22px;
   font-weight: 600;
 }
@@ -1594,6 +1595,7 @@ element.style {
 }
 .cart-list legend {
   position: absolute;
+  border-bottom: none;
 }
 .cart-list:first-child legend, .shopping-cart fieldset:last-of-type legend {
   width: 15%;
@@ -3412,4 +3414,9 @@ div#area-modal {
 }
 .close-thik {
   cursor: pointer;
+}
+label.error_ {
+    color: red;
+    font-style: italic;
+    font-weight: normal;
 }

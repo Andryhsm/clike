@@ -122,7 +122,7 @@
                         {!! Form::text('tva', ($store) ? $store->tva :  null, ['class' => 'form-control','id'=>'tva']) !!}
                     </div>
                     <div class="row info-one-day">
-                        <label class="control-label col-lg-12 mt-10 pb-20" style="text-align: left;">Choisisser les horaires d'ouverture de votre magasin</label>
+                        <label class="control-label col-lg-12 mt-10 pb-20" style="text-align: left;">Choisissez les horaires d'ouverture de votre magasin</label>
                         <div class="form-check col-lg-4">
                             <a class="open-day" data-day="monday" href="#"><span><i class="fa fa-square-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Lundi</span></a>
                             <input type="hidden" name="opening_day_id[1]" class="form-check-input" id="monday" value="1"/>

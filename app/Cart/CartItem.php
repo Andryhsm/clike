@@ -148,7 +148,10 @@ class CartItem implements Arrayable
     {
         $this->url             = $product->url->target_url;
         $this->name            = $product->french->product_name;
-        $this->original_price  = $product->original_price;
+        if($product->promotional_price) 
+            $this->original_price  = $product->promotional_price;
+        else 
+            $this->original_price  = $product->original_price;
         $this->sku             = $product->sku;
         $color_id           = 0;
         $this->category_ids = [];
@@ -287,6 +290,11 @@ class CartItem implements Arrayable
 	{
 		return $this->original_price;
 	}
+
+    public function setOriginalPrice($original_price)
+    {
+        $this->original_price = $original_price;
+    }
 
 	public function getAllAttributeOptionId()
     {
