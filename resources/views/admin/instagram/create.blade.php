@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-info alert-dismissible">
-                    Taille du photo recommandée: 1000 x 1000, à 750 x 500
+                    Taille du photo recommandée: 375 x 365
                 </div>
                 <div class="box box-primary">
                     {!! Form::open(array('url' => 'admin/instagram','files' => true,'class'=>'validate_form')) !!}

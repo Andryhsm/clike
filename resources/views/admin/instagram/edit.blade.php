@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-info alert-dismissible">                    
-                    Taille du photo instagram Feed recommandée: 1000 x 1000, Taille de la bannière latérale: 750 x 500
+                    Taille du photo recommandée: 375 x 365
                 </div>
                 <div class="box box-primary">
                        {{ Form::model($instagram, array('method' => 'PATCH', 'url' => array('admin/instagram', $instagram->id),'class'=>'validate_form','files' => true)) }}
