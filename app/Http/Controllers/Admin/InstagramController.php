@@ -52,9 +52,8 @@ class InstagramController extends Controller
 			$brand=$this->instagram_repository->create($request->all(),$image_name);
 			
             flash()->success(config('message.banner.add-success'));
-            return Redirect('admin/instagram');
+            return Redirect('admin/instagram')->with('success','Instagram feed create successfully.');
 				}
-				
     }
 
 	public function edit($id, Request $request)
@@ -79,7 +78,7 @@ class InstagramController extends Controller
 			$instagram=$this->instagram_repository->updateById($id,$request->all(),$image_name);
 
             flash()->success(config('message.banner.update-success'));
-            return Redirect('admin/instagram');
+            return Redirect('admin/instagram')->with('success','Instagram feed update successfully.');;
 			
             }
     }
@@ -102,6 +101,7 @@ class InstagramController extends Controller
 			if(!\File::isDirectory($thumb_path)){
 				\File::makeDirectory($thumb_path);
 			}
+			$img->fit(375,365)->save($thumb_path.'/'.$image_name);
 		}
 		return $image_name;
 
@@ -112,7 +112,7 @@ class InstagramController extends Controller
 		if ($this->instagram_repository->deleteById($id)) {
 
 				flash()->success(config('message.banner.delete-success'));
-				return Redirect('admin/instagram');
+				return Redirect('admin/instagram')->with('success','Image Clear successfully.');;
 			
 		}
 	}
