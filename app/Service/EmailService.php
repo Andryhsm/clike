@@ -3,6 +3,8 @@ namespace App\Service;
 use App\Models\EmailTemplate;
 use App\Models\EmailTemplateVariable;
 use Mail;
+use App\Mailin;
+use App\Sms;
 Class EmailService {
 
     public function __construct(){
@@ -55,5 +57,18 @@ Class EmailService {
 			return $e->getMessage();
 		}
 		return Mail::failures();
+	}
+
+	public function sendEmailBySendinblue($mail_params_array){
+		$mailin = new Mailin('andryhsm@gmail.com', '0fPYUtrw6xKIDpJd');
+        $mailin->
+        addTo($mail_params_array['to'])->
+        setFrom($mail_params_array['from'])->
+        setReplyTo($mail_params_array['replyTo'])->
+        setSubject($mail_params_array['subject'])->
+        setText($mail_params_array['email_text'])->
+        setHtml($mail_params_array['email_html']);
+        $res = $mailin->send();
+        return $res;
 	}
 }

@@ -4,16 +4,31 @@ namespace App\Http\Controllers\front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Service\EmailService;
 use App\Mailin;
 use App\Sms;
 
 
 class TestController extends Controller
 {
-    
+    protected $email_service;
+
+    public function __construct(EmailService $email_service)
+    {
+        $this->email_service = $email_service;
+    }
     public function SendMailTest()
     {
-	    $mailin = new Mailin('andryhsm@gmail.com', '0fPYUtrw6xKIDpJd');
+
+        $content_var_values = [];
+        $content_var_values['to'] = 'andryhsm@gmail.com';
+        $content_var_values['from'] = 'fenoheriniainat@gmail.com';
+        $content_var_values['replyTo'] = 'fenoheriniainat@gmail.com';
+        $content_var_values['subject'] = 'Test Sendinblue';
+        $content_var_values['email_text'] = 'Hello, this is a test via clickee by sendinblue text';
+        $content_var_values['email_html'] = '<h1>Hello, this is a test via clickee by sendinblue html</h1>';
+        $res = $this->email_service->sendEmailBySendinblue($content_var_values);    
+	    /*$mailin = new Mailin('andryhsm@gmail.com', '0fPYUtrw6xKIDpJd');
         $mailin->
         addTo('andryhsm@gmail.com', 'Andry ANDRIANAIVO')->
         setFrom('fenoheriniainat@gmail.com', 'Feno Heriniaina')->
@@ -21,7 +36,7 @@ class TestController extends Controller
         setSubject('Test via clickee by sendinblue')->
         setText('Hello, this is a test via clickee by sendinblue text')->
         setHtml('<h1>Hello, this is a test via clickee by sendinblue html</h1>');
-        $res = $mailin->send();
+        $res = $mailin->send();*/
 		dd($res);
 	}
 	

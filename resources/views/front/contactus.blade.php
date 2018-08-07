@@ -5,8 +5,9 @@
     <div class="contact-area pt-25 pb-10">
         <div class="container">
             <div class="row contact-us-content">
-                @include('notification')
-                
+                <div class="col-lg-12">               
+                    @include('notification')
+                </div>
                 <!-- BEGIN FORM-->
                 <form action="{!! route('contact-us-post') !!}" class="default-form" role="form" method="post">
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">

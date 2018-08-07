@@ -331,11 +331,13 @@
         </div>
         <div class="section-instagramm-feed-content">
             <div class="row">
-            <?php for ($i = 1; $i <= 8; $i++) { ?>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 section-instagramm-feed-align">
-                    <img src="{!! URL::to('/') !!}/images/instagram{!! $i !!}.svg" alt="instagramm feed clickee"/>
-                </div>    
-            <?php } ?>
+                
+                    @if($instagrams->is_active=='1')
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 section-instagramm-feed-align">
+                            <img src="{!! url('upload/instagram_img/'. $instagrams->image) !!}" alt="instagramm feed clickee"/>    
+                        </div>    
+                    @endif
+                    
             </div>
         </div>
     </div>

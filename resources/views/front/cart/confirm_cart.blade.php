@@ -24,9 +24,12 @@
                                               <button type="button" onclick="location.href = '".{!! url(LaravelLocalization::getCurrentLocale()) !!}."'" class="close">×</button>
                                         </div>
                                       <div class="info-facture mt-40">
-                                          <div class="col-sm-7">     
-                                                {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "autocomplete" => "off" ])}}
-                                           </div>
+                                            <div class="col-sm-7">     
+                                                {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "autocomplete" => "off" ])}}                                                
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <a class="apply_codepromo fw-400" style="line-height: 55px;"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Appliquer</a>
+                                            </div>
                                       </div>
                                      
                                   </div>  
@@ -111,11 +114,11 @@
                                                     @if($product->promotional_price != null)
                                                         <span class="old-price discount" style="color: rgb(67, 223, 230);">(-{!! $product->discount !!}%)</span>
                                                         <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
-                                                        <span class="new-price real-price" data-price="{!! $product->promotional_price !!}" data-promotional_price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
-                                                        <input type="text" class="data-real-price hidden" name="real-price[{!! $item_id !!}]" value="{!! $product->promotional_price !!}">
+                                                        <span class="new-price real-price" data-price="{!! $product->promotional_price !!}" data-real_price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
+                                                        <input type="text" class="data-real-price hidden" name="real-price[{!! $item_id !!}]" value="{!! $product->promotional_price !!}" autocomplete="off">
                                                     @else
-                                                        <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}" data-original_price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
-                                                        <input type="text" class="data-real-price hidden" name="real-price[{!! $item_id !!}]" value="{!! $product->original_price !!}">
+                                                        <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}" data-real_price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
+                                                        <input type="text" class="data-real-price hidden" name="real-price[{!! $item_id !!}]" value="{!! $product->original_price !!}" autocomplete="off">
                                                     @endif
                                             </div>
                                             <div class="reviews-total">
