@@ -40,13 +40,16 @@
                         </div>
                         <div class="form-group promo_code">
                             <label for="promo_code" class="control-label">Code promo</label>
-                            <input type="text" placeholder="Code promo" class=" form-control"/>
+                            <input data-url="{!! route('get-discount-by-name-code') !!}" type="text" placeholder="Code promo" class=" form-control input-code-promo"/>
                         </div>
                         <div class="form-group product_quantity">  
                             <label for="product_quantity" class="control-label">Quantité</label>
                             <input type="number" disabled="disabled" class="form-control required input-product-quantity " data-url="{!! route('get-quantity-by-stock-id') !!}" placeholder="price" />
                         </div>
                         <div class="product_stock_id hidden">
+                            <input type="text" class="control-label">
+                        </div>
+                        <div class="promo_quantity_max hidden">
                             <input type="text" class="control-label">
                         </div>
                     </div>
@@ -119,7 +122,7 @@
                         <div class="form-group">
                             <label for="promo_code" class="control-label">Code promo</label>
                             
-                            <input type="text" placeholder="Code promo" name="promo_code[1]" id="promo_code1" class="select-promo-code form-control"/>
+                            <input data-url="{!! route('get-discount-by-name-code') !!}" type="text" placeholder="Code promo" name="promo_code[1]" id="promo_code1" class="input-code-promo form-control"/>
                             </select>
                         </div>
                         <div class="form-groupe product_quantity">  
@@ -128,6 +131,9 @@
                         </div>
                         <div class="product_stock_id hidden">
                             <input type="text" name="product_stock_id[1]" class="control-label">
+                        </div>
+                        <div class="promo_quantity_max hidden">
+                            <input type="text" name="promo_quantity_max[1]" class="control-label input-promo-quantity-max">
                         </div>
                     </div>
                 </div>
@@ -142,7 +148,7 @@
                     </div>
                 </div>
                 
-            </div>
+            </div>  
         </div>
     </div>
 </section>

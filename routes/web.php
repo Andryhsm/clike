@@ -321,6 +321,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::get('get-customers', 'CustomerController@getAllCustomer')->name('get-customers');
                     Route::get('get-quantity-by-product-stock-id', 'CustomerController@getQuantityByProductStockId')->name("get-quantity-by-stock-id");
                     Route::post('get-discount', 'CodePromoController@getDiscountPrice')->name('get_discount');
+                    Route::post('get-discount-by-name-code', 'CodePromoController@getDiscountByNameCode')->name('get-discount-by-name-code');
                 }); 
             });
             Route::post('get-coordinates','StoreController@getCoordinates')->name('get-coordinates');
