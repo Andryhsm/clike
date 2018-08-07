@@ -38,7 +38,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($instagram as $instagram)
+                        @foreach($instagrams as $instagram)
                         <tr>
                             <td>{!! $instagram->title !!}</td>
                             <td>
