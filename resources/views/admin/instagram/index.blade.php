@@ -38,7 +38,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($instagrams as $instagram)
+                        @foreach($instagram as $instagram)
                         <tr>
                             <td>{!! $instagram->title !!}</td>
                             <td>
@@ -54,7 +54,6 @@
                                         <a href="{{ URL::to('admin/instagram/' . $instagram->id . '/edit') }}"  class="btn btn-default btn-sm" title="Edit"><i class="fa fa-fw fa-edit"></i></a>
                                         {!! Form::open(array('url' => 'admin/instagram/' . $instagram->id, 'class' => 'pull-right', 'method'=>'POST')) !!}
                                         {!! Form::hidden('_method', 'DELETE') !!}
-                                        {!! csrf_field() !!}
                                         {!! Form::button('<i class="fa fa-fw fa-trash"></i>', ['type' => 'submit', 'class' => 'btn delete-btn btn-default btn-sm'] ) !!}
                                         {{ Form::close() }}
                                 </div>
