@@ -4,8 +4,52 @@
 @section('additional-styles')
     {!! Html::style('backend/plugins/datatables/dataTables.bootstrap.css') !!}
 @stop
+<style>
+     /* Systeme draggable dans gestion Instagram */
+        [draggable] {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -khtml-user-drag: element;
+            -webkit-user-drag: element;
+          }
+          .listItem {
+            margin: 0px;
+            background-color: #f4f4f4;
+            color: white;
+            width: 10px;
+            border-top: thick solid white;
+            border-top-width: 1px;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+          }
+          .dataTransferClass {
+            background-color: #f4f4f4;
+          }
+          .dragStartClass {
+            opacity: 0;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+          }
+          .listItem.over {
+            border-top: thick solid white;
+            border-top-width: 50px;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+          }
+    /* END Systeme draggable dans gestion Instagram */
+</style>
 @section('content')
-
 <section class="content-header">
     <h1>
         Liste des Photos Instagrams Feeds
@@ -59,21 +103,54 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
-                   
+                        @endforeach
                         </tbody>
                     </table>
+
+
+                    <!-- Liste des ordres affichage -->
+                    <div class="box-footer">
+                        <input type="button" name="answer" class="btn btn-primary" onclick="showDiv('toggle')" value="Voir les orders"></input>
+                    </div>
+                    <div id="toggle" style="display:none">
+                        <div class='list-group gallery' id="checklist">
+                          {!! Form::open(array('url' => 'admin/instagram/images' ,'class' => 'pull-right', 'method'=>'POST')) !!}
+                                @if($instagram->count())
+                                    @foreach($instagrams as $instagram)
+                                    @if($instagram->is_active =='1')
+                                    <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 listItem' draggable="true">
+                                       <input type="hidden" name="orders[]"  value="orders">
+                                       <input type="hidden" name="ids[]"  value="{!! $instagram->id !!}">
+                                        <a class="thumbnail fancybox" rel="ligthbox" href="/upload/instagram_img/{{ $instagram->image }}">
+                                            <img class="img-responsive" alt="" src="/upload/instagram_img/{{ $instagram->image }}" />
+                                            <div class='text-center'>
+                                                <small class='text-muted'>{{ $instagram->title }}</small>
+                                            </div> 
+                                        </a>
+                                    </div> 
+                                    @endif
+                                    @endforeach
+                                @endif
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary pull-right save-form">Validate the order</button>
+                                </div>
+                            {{ Form::close() }}
+                        </div> 
+                    </div>
+                    <!-- End Liste des ordres affichage -->
+
+
                 </div>
             </div>
         </div>
     </div>
+    
+       
 </section>
-
     <!-- Fin Liste des Instagrams feed -->
-
 @stop
-
 @section('additional-scripts')
+    {!! Html::script('backend/js/instagram.js') !!}
     {!! Html::script('backend/plugins/datatables/jquery.dataTables.min.js') !!}
     {!! Html::script('backend/plugins/datatables/dataTables.bootstrap.min.js') !!}
 @stop
