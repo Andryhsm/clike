@@ -142,6 +142,18 @@ class UserRepository implements UserRepositoryInterface
         $this->model->status = 1;
         $this->model->password = Hash::make('123456');
         $this->model->save();
+
+        $user_address = new UserAddress();
+        $user_address->first_name = (!empty($input['first_name']))?$input['first_name']:$input['name'];
+        $user_address->last_name = (!empty($input['last_name']))?$input['last_name']:$input['name'];
+        $user_address->phone = '';
+        $user_address->address1 = '';
+        $user_address->city = '';
+        $user_address->state_id = 0;
+        $user_address->country_id = 0;
+        $user_address->zip = (Cookie::has('zip_code')) ? Cookie::get('zip_code') : null;
+        $this->model->address()->save($user_address);
+        
         return $this->model;
     }
 
