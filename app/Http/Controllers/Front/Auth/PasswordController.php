@@ -51,11 +51,14 @@ class PasswordController extends Controller
         $response = $this->broker()->sendResetLink(
             $request->only('email')
         );
-
-
+        //Solution provisoire car sendResetLinkResponse ne marche pas
+        if($response == Password::RESET_LINK_SENT){
+            flash()->success(config('message.reset-password.success-mail'));   
+        }
         return $response == Password::RESET_LINK_SENT
             ? $this->sendResetLinkResponse($response)
             : $this->sendResetLinkFailedResponse($request, $response);
+
     }
 
     /**
@@ -106,7 +109,11 @@ class PasswordController extends Controller
         });
         switch ($response) {
             case PasswordBroker::INVALID_PASSWORD:
+                flash()->error(config('message.reset-password.reset-password-error-length'));
+                return Redirect::back();
             case PasswordBroker::INVALID_TOKEN:
+                flash()->error(config('message.reset-password.token'));
+                return Redirect::back();
             case PasswordBroker::INVALID_USER:
                 flash()->error(config('message.reset-password.reset-password-error'));
                 return Redirect::back();

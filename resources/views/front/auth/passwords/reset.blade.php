@@ -6,7 +6,7 @@
             <div class="section-title animated animated fadeInUp text-center">
                 <h2>Réinitialiser le mot de passe</h2>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 @include('notification')
             </div>
             <div class="user-form-block animated animated login-area">
