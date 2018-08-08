@@ -6,7 +6,7 @@
             <div class="section-title animated animated fadeInUp text-center">
                 <h2>Réinitialiser le mot de passe</h2>
             </div>
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 @include('notification')
             </div>
             <div class="user-form-block animated animated login-area">
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <div class="col-sm-6 mlr-25">
                         <button type="submit" class="btn btn-clickee-default" id="reset_password">
-                            Reset Password
+                            ENREGISTRER
                         </button>
                     </div>
                 </div>

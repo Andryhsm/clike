@@ -108,7 +108,7 @@ class PasswordController extends Controller
             case PasswordBroker::INVALID_PASSWORD:
             case PasswordBroker::INVALID_TOKEN:
             case PasswordBroker::INVALID_USER:
-                flashUser()->error(config('message.reset-password.reset-password-error'));
+                flash()->error(config('message.reset-password.reset-password-error'));
                 return Redirect::back();
             case PasswordBroker::PASSWORD_RESET:
                 flash()->success(config('message.reset-password.password-set'));
