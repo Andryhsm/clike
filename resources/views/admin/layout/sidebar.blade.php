@@ -69,7 +69,7 @@
             
             @if(check_user_access(['page.index','email-template.index','coupon','banner.index']))
             <li class="treeview {{ set_active(['admin/page','admin/page/*','admin/banner','admin/banner/*','admin/slider','admin/slider/*','admin/coupon','admin/coupon/*',
-            'admin/special-product','admin/special-product/*','admin/faq','admin/faq/*,admin/instagram_feed','admin/instagram_feed/*'])}}">
+            'admin/special-product','admin/special-product/*','admin/faq','admin/faq/*','admin/instagram','admin/instagram/*'])}}">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
                     <span>Contenu</span>

@@ -200,7 +200,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
     Route::get('forgot-password', ['as' => 'auth.reset.request', 'uses' => 'Auth\PasswordController@getEmail']);
     Route::post('forgot-password', ['as' => 'auth.reset.submit', 'uses' => 'Auth\PasswordController@postEmail']);
     Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\PasswordController@getReset']);
-    Route::post('forgot', ['as' => 'auth.reset', 'uses' => 'Auth\PasswordController@postReset'])->name('forgot');
+    Route::post('forgot', ['as' => 'auth.reset', 'uses' => 'Auth\PasswordController@postReset']);
     Route::get('contacter-nous', 'ContactUsController@index')->name('contact-us-get');
     Route::post('contact-us', 'ContactUsController@send')->name('contact-us-post');
     Route::get('panier', 'CartController@index')->name('cart');
