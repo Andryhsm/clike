@@ -163,6 +163,9 @@ img.banner-hover{
     outline: none;
     border-radius: 0px;
 }
+input.required.cart-paye:focus {
+    border: 4px solid rgb(101, 187, 159);
+}
 .content-review-form textarea {
   height: auto !important;
 }
@@ -3420,4 +3423,7 @@ label.error_ {
     color: red;
     font-style: italic;
     font-weight: normal;
+}
+.content-cart input {
+  font-size: 22px;
 }
