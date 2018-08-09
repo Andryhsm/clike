@@ -2,15 +2,7 @@ function showDiv(toggle){
     document.getElementById(toggle).style.display = 'block';
     }
 
-   
 //Systeme draggable image pour les ordres dans Instagrams
-// dragstart
-// drag
-// dragenter
-// dragleave
-// dragover
-// drop
-// dragend
 
 var listItems = document.querySelectorAll('.listItem');
 var dragSrcEl = null;
@@ -23,48 +15,37 @@ function handleDragStart(e) {
 
 }
 function handleDragOver(e) {
-  // if (e.preventDefault) { not needed according to my question and anwers on : http://stackoverflow.com/questions/36920665/why-if-statement-with-e-preventdefault-drag-and-drop-javascript
   e.preventDefault();
-  // }
-  e.dataTransfer.dropEffect = 'move'; // sets cursor
+  e.dataTransfer.dropEffect = 'move'; 
   return false;
 }
 
 function handleDragEnter(e) {
-  // this / e.target is the current hover target.
   this.classList.add('over');
 }
 function handleDragLeave(e) {
-  this.classList.remove('over'); // this / e.target is previous target element.
+  this.classList.remove('over');
 }
 function handleDrop(e) {
   var listItems = document.querySelectorAll('.listItem');
-  e.stopPropagation(); // stops the browser from redirecting.
+  e.stopPropagation(); 
   dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
   dragTargetOrderId = parseInt(this.getAttribute("order-id"));
   var tempThis = this;
-  // Don't do anything if dropping the same column we're dragging.
-  // and
-  // check if only one difference and then do not execute
-  // && ((Math.abs(dragSrcOrderId - dragTargetOrderId)) != 1)
+  
   if (dragSrcEl != this) {
-    // Set the source column's HTML to the HTML of the column we dropped on.
     var tempThis = this;
     function makeNewOrderIds(tempThis) {
-      // check if up or down movement
       dragSrcEl.setAttribute("order-id", dragTargetOrderId);
       tempThis.setAttribute("order-id", dragTargetOrderId);
-      //  find divs between old and new location and set new ids - different in up or down movement (if else)
       if (dragSrcOrderId < dragTargetOrderId) {
         for (i = dragSrcOrderId + 1; i < dragTargetOrderId; i++) {
           listItems[i].setAttribute("order-id", i - 1);
-          // set new id src
           dragSrcEl.setAttribute("order-id", dragTargetOrderId - 1);
         }
       } else {
         for (i = dragTargetOrderId; i < dragSrcOrderId; i++) {
           listItems[i].setAttribute("order-id", i + 1);
-          // set new id src
           dragSrcEl.setAttribute("order-id", dragTargetOrderId);
 
         }
@@ -111,3 +92,10 @@ function reOrder(listItems) {
     parent.appendChild(tempListItems[i]);
   }
 };
+
+/*function showOne(){
+  if (document.getElementById('listItems').style.display != "block") {
+      document.getElementById('listItems').style.display = "block";
+  };
+}*/
+// END Systeme draggable image pour les ordres dans Instagrams

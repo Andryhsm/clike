@@ -117,14 +117,9 @@ class InstagramController extends Controller
 		}
 	}
 	public function orders(Request $request){
-		dd($request['order']);
-		$ids = Input::get('ids');
-		dd($ids);
-		foreach(Input::get('orders') as $key=>$value)  {
-			$order=$key+1;
+		
+		$instagram = $this->instagram_repository->updateOrderInstagram($request->all());
+		return Redirect('admin/instagram');
 			
-			$this->$instagram_repository->updateOrderInstagram($ids[$key],$order);
-
-		}
 	}
 }

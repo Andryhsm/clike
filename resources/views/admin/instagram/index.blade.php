@@ -113,32 +113,37 @@
                         <input type="button" name="answer" class="btn btn-primary" onclick="showDiv('toggle')" value="Voir les orders"></input>
                     </div>
                     <div id="toggle" style="display:none">
-                        <div class='list-group gallery' id="checklist">
-                          {!! Form::open(array('url' => 'admin/instagram/images' ,'class' => 'pull-right', 'method'=>'POST')) !!}
-                                @if($instagram->count())
-                                    @foreach($instagrams as $instagram)
-                                    @if($instagram->is_active =='1')
-                                    <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 listItem' draggable="true">
-                                       <input type="hidden" name="orders[]"  value="orders">
-                                       <input type="hidden" name="ids[]"  value="{!! $instagram->id !!}">
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="/upload/instagram_img/{{ $instagram->image }}">
-                                            <img class="img-responsive" alt="" src="/upload/instagram_img/{{ $instagram->image }}" />
-                                            <div class='text-center'>
-                                                <small class='text-muted'>{{ $instagram->title }}</small>
+                        <h3>
+                            Modification des Orders affichages des Instagrams Feeds
+                        </h3>
+                        {!! Form::open(array('url' => 'admin/instagram/images' ,'class' => 'pull-right', 'method'=>'POST')) !!}
+                            <div  id="checklist">
+                                <div class='list-group gallery'>
+                                        @if($instagram->count())
+                                            @foreach($instagrams as $instagram)
+                                            @if($instagram->is_active =='1')
+                                            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 listItem' draggable="true">
+                                            <input type="hidden" name="orders[]"  value="orders">
+                                            <input type="hidden" name="ids[]"  value="{!! $instagram->id !!}">
+                                                <a class="thumbnail fancybox" rel="ligthbox" href="">
+                                                    <img class="img-responsive" alt="" src="/upload/instagram_img/{{ $instagram->image }}" />
+                                                    <div class='text-center'>
+                                                        <small class='text-muted'>{{ $instagram->title }}</small>
+                                                    </div> 
+                                                </a>
                                             </div> 
-                                        </a>
-                                    </div> 
-                                    @endif
-                                    @endforeach
-                                @endif
-                                <div class="box-footer">
+                                            @endif
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div> 
+                            <div class="box-footer">
                                     <button type="submit" class="btn btn-primary pull-right save-form">Validate the order</button>
-                                </div>
+                            </div>
                             {{ Form::close() }}
-                        </div> 
                     </div>
+                    
                     <!-- End Liste des ordres affichage -->
-
 
                 </div>
             </div>

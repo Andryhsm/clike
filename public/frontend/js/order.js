@@ -143,9 +143,9 @@ function apply_codepromo() {
                             $('#' + id).find('input.data-real-price').val(price);
                         });
                         calcul_total_price();
-                        toastr.success('Code appliqué avec succès!');
+                        toastr.success('Code promo apply successfuly!');
                     }
-                    else toastr.warning("Aucun produit n'est affecté à ce code.");
+                    else toastr.warning("No products are assigned to this code.");
                 }
                 $.LoadingOverlay("hide");
             },
