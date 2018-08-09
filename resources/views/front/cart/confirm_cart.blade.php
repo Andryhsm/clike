@@ -57,7 +57,7 @@
                                             <div class="form-group row mb-0">
                                                 <label class="col-lg-5 fw-400" for="cart_number">Numéro de carte *</label>
                                                 <div class="col-sm-7">     
-                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "id" => "input-credit-card", "maxlength" => "19"])}}
                                                 </div>
                                             </div>
                                             <div class="form-group row mb-0">
@@ -95,7 +95,7 @@
                                     @if(count($cart->items())>0)
                                     @foreach($cart->items() as $item_id=>$item)
                                  
-                                    <div class="cart-product article row">
+                                    <div class="cart-product article row" id="{!! $item_id !!}">
                                         <div class="col-lg-4">
                                             <div class="product-image"><a href="{!! url(LaravelLocalization::getCurrentLocale().'/'.$item->getUrl()) !!}"><img src="{!! URL::to('/').'/'.\App\Product::PRODUCT_IMAGE_PATH.$item->getImage() !!}" alt="{!! $item->getImageAlt() !!}"></a>
                                             </div>
@@ -114,10 +114,10 @@
                                                     @if($product->promotional_price != null)
                                                         <span class="old-price discount" style="color: rgb(67, 223, 230);">(-{!! $product->discount !!}%)</span>
                                                         <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
-                                                        <span class="new-price real-price" data-price="{!! $product->promotional_price !!}" data-real_price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
+                                                        <span class="new-price real-price" data-price="{!! $product->promotional_price !!}" data-real-price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
                                                         <input type="text" class="data-real-price hidden" name="real-price[{!! $item_id !!}]" value="{!! $product->promotional_price !!}" autocomplete="off">
                                                     @else
-                                                        <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}" data-real_price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
+                                                        <span class="old-price real-price original_price" data-price="{!! $product->original_price !!}" data-real-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
                                                         <input type="text" class="data-real-price hidden" name="real-price[{!! $item_id !!}]" value="{!! $product->original_price !!}" autocomplete="off">
                                                     @endif
                                             </div>

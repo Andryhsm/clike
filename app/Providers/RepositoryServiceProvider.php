@@ -34,6 +34,7 @@ use App\Interfaces\StoreRepositoryInterface;
 use App\Interfaces\TagRepositoryInterface;
 use App\Interfaces\CustomerRepositoryInterface;
 use App\Interfaces\ProductStockRepositoryInterface;
+use App\Interfaces\CardInfoInterface;
 use App\Repositories\AttributeRepository;
 use App\Repositories\AttributeSetRepository;
 use app\Repositories\admin\BrandRepository;
@@ -73,6 +74,7 @@ use App\Repositories\ProductStatusRepository;
 use App\Repositories\CustomerRepository;
 use App\Repositories\CodePromoRepository;
 use App\Repositories\ProductStockRepository;
+use App\Repositories\CardInfoRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -217,6 +219,10 @@ class RepositoryServiceProvider extends ServiceProvider
 
 		$this->app->bind(ProductStockRepositoryInterface::class, function($app){
 			return $app->make(ProductStockRepository::class);
+		});
+
+		$this->app->bind(CardInfoInterface::class, function($app){
+			return $app->make(CardInfoRepository::class);
 		});
 	}
 }

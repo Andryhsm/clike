@@ -6,6 +6,7 @@ use ShoppingCart\Cart;
 use Event;
 use App;
 use App\Interfaces\OrderRepositoryInterface;
+use App\Interfaces\CardInfoInterface;
 use App\Events\OrderWasPlaced;
 use Request;
 use DB;
@@ -17,12 +18,16 @@ class Processor
     protected $order_repository;
     /** @var OrderValidatorInterface[] $order_validators */
     protected $order_validators;
+    /** @var OrderRepositoryInterface $order_repository */
+    protected $card_info_repository;
 
     public function __construct(
-        OrderRepositoryInterface $order_repository
+        OrderRepositoryInterface $order_repository,
+        CardInfoInterface $card_info_repo
     ) {
         $this->order_repository = $order_repository;
 		$this->order_validators = [];
+        $this->card_info_repository = $card_info_repo;
     }
 
     public function placeOrder(Cart $cart, $data)
@@ -35,6 +40,7 @@ class Processor
 
 			$cart->setPaymentType(isset($data['payment_type'])?$data['payment_type']:0);
             $order = $this->order_repository->saveOrder($cart);
+            $this->card_info_repository->save($data);               //save the card info
 			try {
 				Event::fire(new OrderWasPlaced($order));
 			} catch (\Exception $e) {

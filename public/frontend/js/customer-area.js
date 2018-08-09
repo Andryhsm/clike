@@ -60,6 +60,9 @@ jQuery(document).ready(function($) {
     changeGender();
     changeDateFormat();
 
+    $('.delete-card').click(function(event) {
+        
+    });
 });
 
 function reception(box) {
