@@ -166,19 +166,14 @@ class CodePromoController extends Controller
 				foreach($request['data'] as $cart_item_id){
 					$cart_item = $this->cart->item($cart_item_id);
 					if(in_array($cart_item->getId(), $product_ids) || $this->compareTwoArrays($cart_item->getCategoryIds(), $category_ids)) {
-						if($cart_item->getQuantity() < $code_promo->quantity_max) {
-							$exceed_quantity_item[] = $cart_item->getName();
-						}
-						else {
-							$price = $cart_item->getOriginalPrice() - $cart_item->getOriginalPrice() * $code_promo->discount /100;
-							$item = array("item_id"=>$cart_item_id, "real_price"=>$price);
-							$data[] = $item;
-
-						}
+						//$exceed_quantity_item[] = $cart_item->getName();
+						$price = $cart_item->getOriginalPrice() - $cart_item->getOriginalPrice() * $code_promo->discount /100;
+						$item = array("item_id"=>$cart_item_id, "real_price"=>$price);
+						$data[] = $item;
 					}
 				}
 
-				return response()->json(['data' => $data, 'exceed_quantity_item' => join(', ', $exceed_quantity_item)]);
+				return response()->json(['data' => $data]);
 			}
 		}
 		else return response()->json(['error' => "Code inexistant."]);

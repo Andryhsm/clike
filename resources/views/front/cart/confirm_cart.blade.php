@@ -28,7 +28,7 @@
                                                 {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "autocomplete" => "off" ])}}                                                
                                             </div>
                                             <div class="col-sm-5">
-                                                <a class="apply_codepromo fw-400" style="line-height: 55px;"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Appliquer</a>
+                                                <span class="apply_codepromo fw-400" style="line-height: 55px;"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Appliquer</span>
                                             </div>
                                       </div>
                                      
