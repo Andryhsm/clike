@@ -57,7 +57,7 @@
                                             <div class="form-group row mb-0">
                                                 <label class="col-lg-5 fw-400" for="cart_number">Numéro de carte *</label>
                                                 <div class="col-sm-7">     
-                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "id" => "input-credit-card", "maxlength" => "19"])}}
                                                 </div>
                                             </div>
                                             <div class="form-group row mb-0">

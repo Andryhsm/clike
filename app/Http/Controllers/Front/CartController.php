@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Front;
-
 use App\Cart\Interfaces\CartServiceInterface;
 use App\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 Use Cart;
-
 class CartController extends Controller
 {
 	protected $product_repository;
@@ -20,7 +17,6 @@ class CartController extends Controller
 		$this->cart_service = $cartservice;
 		$this->cart = app('cart');
 	}
-
 	/**
      * Display a listing of the resource.
      *
@@ -61,8 +57,6 @@ class CartController extends Controller
 		return response()->json(['success'=> true,'message' => trans('cart.item_added_success'), 'row_id_cart' => Session::get('row_id_cart')]);
 		//return redirect()->route('cart');
 	}
-
-
 	public function remove($item_id)
 	{
 		try {
@@ -74,7 +68,6 @@ class CartController extends Controller
 		$this->cart->refresh($this->product_repository);
 		return response()->json(['response' => 'success']);
 	}
-
 	public function update(Request $request)
 	{
 		foreach ($request->input("qty", []) as $item_id => $qty) {
@@ -82,7 +75,6 @@ class CartController extends Controller
 				Session::flash('message.error', CartItem::REMOVED_ITEM_FROM_CART);
 				return redirect()->back();
 			}
-
 			$item = $this->cart->item($item_id);
 			if ($qty == 0) {
 				$this->cart->remove($item_id);
@@ -100,8 +92,6 @@ class CartController extends Controller
 			return Redirect::to("checkout/shipping-info")->with(['initiatepurchase' => true]);
 		}
 	}
-
-
 	public function getRecentItems()
 	{
 		$items = Cart::recent();
@@ -113,5 +103,4 @@ class CartController extends Controller
 	}
 	
 	
-
 }

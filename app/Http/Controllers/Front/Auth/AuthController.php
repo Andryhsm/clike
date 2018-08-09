@@ -101,7 +101,7 @@ class AuthController extends Controller
 				$intended_url = \Session::get('url.intended', '');
 				if(!Cookie::has('zip-code') && !Cookie::has('radius')){
 				    add_area_in_cookie($user->address->zip, $user->radius);
-                }else{
+                } else {
                     $user = \App\User::find(auth()->user()->user_id);
                     $user->radius = Cookie::get('radius');
                     $user->save();

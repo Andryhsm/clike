@@ -81,7 +81,15 @@ $(function() {
             reset_codepromo();
         }
     });
-        
+    
+    $('#input-credit-card').keyup(function()
+    {
+        $(this).val(function(i, v)
+        {
+            var v = v.replace(/[^\d]/g, '').match(/.{1,4}/g);
+            return v ? v.join(' ') : '';
+        });
+    });
 });
 
 function is_promed_item(category_list, response_category_list){
