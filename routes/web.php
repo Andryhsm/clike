@@ -75,6 +75,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
        // Route::post('instagram', 'InstagramController@create');
         Route::delete('instagram/{id}', 'InstagramController@destroy');
         Route::get('instagram/{id}','InstagramController@edit');
+        Route::post('instagram/images','InstagramController@orders');
         //end instagram route
 
         /*Route::get('product/get-data', 'ProductController@getData')->name('product-data');

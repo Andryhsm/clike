@@ -16,7 +16,7 @@
                     {!! Form::input('email', 'email', '', ['class' => 'required','autocomplete' => 'off']) !!}
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-clickee-default mt-0" id="forgot_password">{!! trans("forgot_password.submit")!!}</button>
+                    <button class="btn btn-clickee-default mt-0" id="forgot_password">ENVOYER</button>
                 </div>
             </div>
 <!-- 

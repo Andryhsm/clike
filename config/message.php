@@ -23,6 +23,8 @@ return [
 		'success-mail' => 'Le lien de réinitialisation du mot de passe est envoyé à votre adresse e-mail.',
 		'password-set' => 'Mot de passe réinitialisé avec succès.',
 		'reset-password-error' => 'Votre e-mail est invalide.',
+		'reset-password-error-length' => 'Les mots de passe doivent comporter au moins six caractères et correspondre à la confirmation.',
+		'token' => 'Ce jeton de réinitialisation de mot de passe n\'est pas valide.',
 		'inactive-user' => 'Your account is de-activated.',
 	],
 	'product' => [

@@ -53,7 +53,7 @@ class InstagramRepository implements InstagramRepositoryInterface
 
     public function getActiveInstagram()
     {
-        return $this->model->whereIsActive(1)->orderBy('id', 'DESC')->limit(5)->get();
+        return $this->model->whereIsActive(1)->orderBy('id', 'DESC')->limit(8)->get();
     }
 
     public function getAll(){
@@ -62,5 +62,10 @@ class InstagramRepository implements InstagramRepositoryInterface
     
     public function getActiveMainInstagram(){
         return $this->model->whereIsActive(1)->first();
+    }
+    public function updateOrderInstagram($id,$order){
+        $this->model = $this->model->find($id);
+        $this->model->order = $order;
+        return $this->model->save();
     }
 }
