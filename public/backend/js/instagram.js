@@ -2,6 +2,9 @@ function showDiv(toggle){
     document.getElementById(toggle).style.display = 'block';
     }
 
+function hideDiv(toggle){
+  document.getElementById(toggle).style.display = 'none';
+  }
 //Systeme draggable image pour les ordres dans Instagrams
 
 var listItems = document.querySelectorAll('.listItem');

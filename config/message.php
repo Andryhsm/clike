@@ -278,6 +278,15 @@ return [
 		'delete-success' => 'Client supprimé avec succès.',
 		'delete-error' => 'Echec lors de la suppression du client.',
 	],
+	'instagram' => [
+		'add-success' => 'Instagram Feed ajouté avec succès, veillez verifier l\' ordre si c\'est activé.',
+		'add-error' => 'Echec lors de l\'enregistrement de votre Instagram Feed.',
+		'update-success' => 'Modification de votre Instagram Feed effectuée avec succès.',
+		'update-error' => 'Echec de la modificationde votre Instagram Feed.',
+		'delete-success' => 'Instagram Feed supprimé avec succès.',
+		'delete-error' => 'Echec lors de la suppression de votre Instagram Feed.',
+		'order-success' => 'Votre ordre est enregistré avec succés.',
+	],
 
 ];
 
