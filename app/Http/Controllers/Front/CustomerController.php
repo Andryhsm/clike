@@ -7,6 +7,7 @@ use App\Interfaces\OrderRepositoryInterface;
 use App\Interfaces\StoreRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
 use App\Interfaces\FaqRepositoryInterface;
+use App\Interfaces\CardInfoInterface;
 use App\Models\OrderItem;
 use App\User;
 use App\UserAddress;
@@ -28,8 +29,17 @@ class CustomerController extends Controller
     protected $store_repository;
 	protected $order_item_repository;
 	protected $faq_repository;
+    protected $card_info_repository;
 
-    public function __construct(UserRepositoryInterface $user_repository,FaqRepositoryInterface $faq_repository, OrderRepositoryInterface $order_repository, StoreRepositoryInterface $store_repository, OrderItemRepositoryInterface $order_item_repo, CustomerRepositoryInterface $customer_repository)
+    public function __construct(
+        UserRepositoryInterface $user_repository,
+        FaqRepositoryInterface $faq_repository,
+        OrderRepositoryInterface $order_repository, 
+        StoreRepositoryInterface $store_repository, 
+        OrderItemRepositoryInterface $order_item_repo, 
+        CustomerRepositoryInterface $customer_repository,
+        CardInfoInterface $card_info_repo
+    )
     {
         $this->user_repository = $user_repository;
         $this->order_repository = $order_repository;
@@ -37,6 +47,7 @@ class CustomerController extends Controller
 		$this->order_item_repository = $order_item_repo;
 		$this->faq_repository = $faq_repository;
         $this->customer_repository = $customer_repository;
+        $this->card_info_repository = $card_info_repo;
     }
     public function index(){
         $user_id = Auth::id();
@@ -149,7 +160,8 @@ class CustomerController extends Controller
     public function getCustomerInformations(){
         $user_id = Auth::id();
         $customer = $this->user_repository->getById($user_id);
-        return view('front.customer.customer_informations.index', compact('customer'));
+        $card_infos = $this->card_info_repository->getByUserId($user_id);
+        return view('front.customer.customer_informations.index', compact('customer', 'card_infos'));
     }
     
     public function updateCustomerInformations(Request $request){
