@@ -78,6 +78,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
         Route::post('instagram/images','InstagramController@orders');
         //end instagram route
 
+        Route::resource('pack', 'PackController');
+
         /*Route::get('product/get-data', 'ProductController@getData')->name('product-data');
         Route::get('product', 'ProductController@index')->name('product');
         Route::post('product/attributes', 'ProductController@attributes')->name('get_attribute');
