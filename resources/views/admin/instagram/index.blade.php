@@ -65,10 +65,11 @@
 
 
                     <!-- Liste des ordres affichage -->
-                    <div class="box-footer">
-                        <input type="button" name="answer" class="btn btn-primary" onclick="showDiv('toggle')" value="Voir les orders"></input>
-                    </div>
-                    
+                    @if (count($instagrams)>0)
+                        <div class="box-footer">
+                            <input type="button" name="answer" class="btn btn-primary" onclick="showDiv('toggle')" value="Afficher les orders"></input>
+                        </div>
+                    @endif
                     <div id="toggle" style="display:none">
                         <section class="content-header">
                             <h3>
@@ -78,9 +79,8 @@
                         {!! Form::open(array('url' => 'admin/instagram/images' ,'class' => 'pull-right', 'method'=>'POST')) !!}
                             <div  id="checklist">
                                 <div class='list-group gallery'>
-                                        @if($instagram->count())
-                                            @foreach($instagrams as $instagram)
-                                            @if($instagram->is_active =='1')
+                                    @foreach($instagrams as $instagram)
+                                        @if($instagram->is_active =='1')
                                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 listItem' draggable="true">
                                             <input type="hidden" name="orders[]"  value="orders">
                                             <input type="hidden" name="ids[]"  value="{!! $instagram->id !!}">
@@ -91,9 +91,8 @@
                                                     </div> 
                                                 </a>
                                             </div> 
-                                            @endif
-                                            @endforeach
                                         @endif
+                                    @endforeach
                                     </div>
                                 </div> 
                             <div class="box-footer">
