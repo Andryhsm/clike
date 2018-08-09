@@ -130,10 +130,11 @@ function apply_codepromo() {
             },
             success: function(response, status) {
                 console.log(JSON.stringify(response.data))
+                console.log(JSON.stringify(response.exceed_quantity_item))
                 console.log(response.error)
                 if(response.error) toastr.error(response.error);
                 else {
-                    if(response.data) {
+                    if(response.data != '' && response.exceed_quantity_item == '') {
                         $.each(response.data, function(id, item) {
                             var id = item.item_id;
                             var price = item['real_price'];
@@ -143,9 +144,11 @@ function apply_codepromo() {
                             $('#' + id).find('input.data-real-price').val(price);
                         });
                         calcul_total_price();
-                        toastr.success('Code promo apply successfuly!');
+                        toastr.success('Code promo appliqué avec succès!');
+                        if(response.exceed_quantity_item != '') 
+                            toastr.warning("Quantité maximale dépassée pour les produits " + response.exceed_quantity_item);
                     }
-                    else toastr.warning("No products are assigned to this code.");
+                    else toastr.warning("Aucun produit assigné à ce code.");
                 }
                 $.LoadingOverlay("hide");
             },

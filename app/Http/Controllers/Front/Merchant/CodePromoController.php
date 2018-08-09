@@ -162,16 +162,23 @@ class CodePromoController extends Controller
 				$product_ids = $this->createArrayFromCollection($code_promo->products, 'product_id');
 				$category_ids = $this->createArrayFromCollection($code_promo->categories, 'category_id');
 				$data = [];
+				$exceed_quantity_item = [];
 				foreach($request['data'] as $cart_item_id){
 					$cart_item = $this->cart->item($cart_item_id);
 					if(in_array($cart_item->getId(), $product_ids) || $this->compareTwoArrays($cart_item->getCategoryIds(), $category_ids)) {
-						$price = $cart_item->getOriginalPrice() - $cart_item->getOriginalPrice() * $code_promo->discount /100;
-						$item = array("item_id"=>$cart_item_id, "real_price"=>$price);
-						$data[] = $item;
+						if($cart_item->getQuantity() < $code_promo->quantity_max) {
+							$exceed_quantity_item[] = $cart_item->getName();
+						}
+						else {
+							$price = $cart_item->getOriginalPrice() - $cart_item->getOriginalPrice() * $code_promo->discount /100;
+							$item = array("item_id"=>$cart_item_id, "real_price"=>$price);
+							$data[] = $item;
+
+						}
 					}
 				}
 
-				return response()->json(['data' => $data]);
+				return response()->json(['data' => $data, 'exceed_quantity_item' => join(', ', $exceed_quantity_item)]);
 			}
 		}
 		else return response()->json(['error' => "Code inexistant."]);
