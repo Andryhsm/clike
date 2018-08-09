@@ -136,7 +136,7 @@ function apply_codepromo() {
                         $.each(response.data, function(id, item) {
                             var id = item.item_id;
                             var price = item['real_price'];
-                            $('#' + id).find('.real-price').html( price + '<i class="fa fa-eur" aria-hidden="true"></i>');
+                            $('#' + id).find('.real-price').html( fixed_two_after_dot(price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i>');
                             $('#' + id).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
                             $('#' + id).find('.real-price').data('price', '' + fixed_two_after_dot(price));
                             $('#' + id).find('input.data-real-price').val(price);
