@@ -112,8 +112,19 @@ class InstagramController extends Controller
 		if ($this->instagram_repository->deleteById($id)) {
 
 				flash()->success(config('message.banner.delete-success'));
-				return Redirect('admin/instagram')->with('success','Image Clear successfully.');;
+				return Redirect('admin/instagram')->with('success','Image Clear successfully.');
 			
+		}
+	}
+	public function orders(Request $request){
+		dd($request['order']);
+		$ids = Input::get('ids');
+		dd($ids);
+		foreach(Input::get('orders') as $key=>$value)  {
+			$order=$key+1;
+			
+			$this->$instagram_repository->updateOrderInstagram($ids[$key],$order);
+
 		}
 	}
 }

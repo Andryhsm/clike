@@ -345,7 +345,7 @@
     </div>
 </section>    
 <!-- end section instagramm feed -->
-p
+
 <!-- start section marque -->
 <section class="section-marque ptb-40">
     <div class="brand-area">

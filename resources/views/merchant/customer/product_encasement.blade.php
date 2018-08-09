@@ -21,7 +21,7 @@
                         <div class="form-group discount">
                             <label for="discount" class="control-label">Rémise</label>
                             <div class="input-group">
-                                <input type="number" placeholder="Rémise" class="form-control"/>
+                                <input type="number" placeholder="Rémise" class="form-control" readonly>
                                  <span class="input-group-addon"> % </span>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group promo_code">
                             <label for="promo_code" class="control-label">Code promo</label>
-                            <input data-url="{!! route('get-discount-by-name-code') !!}" type="text" placeholder="Code promo" class=" form-control input-code-promo"/>
+                            <input data-url="{!! route('get-discount-by-name-code') !!}" type="text" placeholder="Code promo" class=" form-control input-code-promo" disabled="disabled">
                         </div>
                         <div class="form-group product_quantity">  
                             <label for="product_quantity" class="control-label">Quantité</label>
@@ -95,7 +95,7 @@
                         <div class="form-group">
                             <label for="discount" class="control-label">Rémise</label>
                             <div class="input-group">
-                                <input type="number" name="discount[1]" placeholder="Rémise" id="discount1" class="input-discount form-control"/>
+                                <input type="number" name="discount[1]" placeholder="Rémise" id="discount1" class="input-discount form-control" readonly>
                                 <span class="input-group-addon"> % </span>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                         <div class="form-group">
                             <label for="promo_code" class="control-label">Code promo</label>
                             
-                            <input data-url="{!! route('get-discount-by-name-code') !!}" type="text" placeholder="Code promo" name="promo_code[1]" id="promo_code1" class="input-code-promo form-control"/>
+                            <input data-url="{!! route('get-discount-by-name-code') !!}" type="text" placeholder="Code promo" name="promo_code[1]" id="promo_code1" class="input-code-promo form-control" disabled="disabled">
                             </select>
                         </div>
                         <div class="form-groupe product_quantity">  

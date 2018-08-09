@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <div class="col-sm-6 mlr-25">
                         <button type="submit" class="btn btn-clickee-default" id="reset_password">
-                            Reset Password
+                            ENREGISTRER
                         </button>
                     </div>
                 </div>

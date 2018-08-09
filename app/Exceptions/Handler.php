@@ -62,11 +62,27 @@ class Handler extends ExceptionHandler
         }
 
         if(Cookie::has('who')){
-            if(Cookie::get('who') == "customer"){
-                return redirect()->guest(route('login'));
-            }else{
-                return redirect()->guest(route('merchant-login'));
-            }            
+      
+            switch (Cookie::get('who')) {
+                case 'customer':
+                    $num_of_minutes = 60 * 24 * 7; 
+                    Cookie::queue('who', 'destroy', $num_of_minutes); 
+                    return redirect()->guest(route('login')); 
+                    break;
+                case 'merchant':
+                    $num_of_minutes = 60 * 24 * 7; 
+                    Cookie::queue('who', 'destroy', $num_of_minutes); 
+                    return redirect()->guest(route('merchant-login')); 
+                    break;
+                case 'destroy':
+                    return redirect()->guest(route('login')); 
+                    break;
+                
+                default:
+                    return redirect()->guest(route('login')); 
+                    break;
+            }           
+
         }else{
             return redirect()->guest(route('login'));
         }
