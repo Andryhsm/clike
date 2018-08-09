@@ -64,6 +64,13 @@ return [
 		'delete-success' => 'Marque supprimée avec succès.',
 		'delete-error' => 'Marque non supprimée avec succès.',
 	],
+	'pack' => [
+		'add-success' => 'Pack ajoutée avec succès.',
+		'update-success' => 'Pack mise à jour avec succès.',
+		'update-error' => 'Pack non mise à jour avec succès.',
+		'delete-success' => 'Pack supprimée avec succès.',
+		'delete-error' => 'Pack non supprimée avec succès.',
+	],
 	'promotion' => [
 		'add-success' => 'Promotion ajoutée avec succès.',
 		'add-error' => 'Quelque chose s\'est mal passé, merci de réessayer plus tard!',

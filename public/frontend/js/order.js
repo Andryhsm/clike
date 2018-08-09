@@ -70,7 +70,8 @@ $(function() {
         delete_cart($(this));
     });
 
-    $('.apply_codepromo').click(function(){
+    $('.apply_codepromo').click(function(event){
+        event.preventDefault();
         if ($(this).find('i').hasClass('fa-circle-o')) {
             $(this).find('i').removeClass('fa-circle-o');
             $(this).find('i').addClass('fa-dot-circle-o');
