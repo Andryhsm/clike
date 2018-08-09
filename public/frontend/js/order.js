@@ -110,9 +110,9 @@ function apply_codepromo_2() {
         $('.article:not(:last-child)').each(function(i, el) {
             var tab = [];
             tab['product_id'] = $(el).find('.item_product_id').val();
-            tab['category_id'] = $(el).find('.item_category_id').val()split(',');
+            tab['category_id'] = $(el).find('.item_category_id').val().split(',');
             tab['real_price'] = $(el).find('.item_product_id').val();
-        }
+        });
     }
 }
 
@@ -178,7 +178,7 @@ function apply_codepromo() {
 
 function reset_codepromo() {
     $('.article:not(:last-child)').each(function(i, el) {
-        var real_price = parseFloat($(el).find('.real-price').data('real_price'));
+        var real_price = parseFloat($(el).find('.real-price').attr('data-real-price'));
         $(el).find('.real-price').html( real_price + '<i class="fa fa-eur" aria-hidden="true"></i>');
         $(el).find('.real-price').attr('data-price', '' + fixed_two_after_dot(real_price));
         $(el).find('.real-price').data('price', '' + fixed_two_after_dot(real_price));
