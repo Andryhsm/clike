@@ -21,6 +21,7 @@ class CodePromoController extends Controller
 	{
 		$this->code_promo_repository = $code_promo_repo;
 		$this->category_repository = $category_repo;
+		$this->cart = app('cart');
 	}
 
 	/**
@@ -184,10 +185,12 @@ class CodePromoController extends Controller
 				$product_ids = $this->createArrayFromCollection($code_promo->products, 'product_id');
 				$category_ids = $this->createArrayFromCollection($code_promo->categories, 'category_id');
 				$data = [];
-				foreach($request['data'] as $cart_item){
-					if(in_array($cart_item['product_id'], $product_ids) || $this->compareTwoArrays($cart_item['category_id'], $category_ids)) {
-						$cart_item['real_price'] -= $cart_item['real_price'] * $code_promo->discount /100;
-						$data[] = $cart_item;
+				foreach($request['data'] as $cart_item_id){
+					$cart_item = $this->cart->item($cart_item_id);
+					if(in_array($cart_item->getId(), $product_ids) || $this->compareTwoArrays($cart_item->getCategoryIds(), $category_ids)) {
+						$price = $cart_item->getOriginalPrice() - $cart_item->getOriginalPrice() * $code_promo->discount /100;
+						$item = array("item_id"=>$cart_item_id, "real_price"=>$price);
+						$data[] = $item;
 					}
 				}
 

@@ -74,7 +74,7 @@ $(function() {
         if ($(this).find('i').hasClass('fa-circle-o')) {
             $(this).find('i').removeClass('fa-circle-o');
             $(this).find('i').addClass('fa-dot-circle-o');
-            apply_codepromo_2();            
+            apply_codepromo();            
         } else {
             $(this).find('i').removeClass('fa-dot-circle-o');
             $(this).find('i').addClass('fa-circle-o');
@@ -104,18 +104,7 @@ function is_promed_item(category_list, response_category_list){
     return is_promed;
 }
 
-var cartItem = {
-  init:function(item_id, product_id,category_id,real_price, quantity){
-    this.item_id = item_id;
-    this.product_id = product_id;
-    this.category_id = category_id;
-    this.real_price = real_price;
-    this.quantity = quantity;
-  }
-
-}
-
-function apply_codepromo_2() {
+function apply_codepromo() {
     var code_promo_name = $('.cart-paye[name="cart_number"]').val();
     // var category_ids = $('.item_category_id').val();
     // console.log('category from db ' + JSON.stringify(category_ids))
@@ -127,15 +116,7 @@ function apply_codepromo_2() {
     var data = [];
     if(code_promo_name != ''){
         $('.article:not(:last-child)').each(function(i, el) {
-            cart_item = Object.create(cartItem);
-            cart_item.init(
-                            $(el).attr('id'), 
-                            $(el).find('.item_product_id').val(), 
-                            $(el).find('.item_category_id').val().split(','), 
-                            $(el).find('.real-price').attr('data-real-price'),
-                            $(el).find('.quantity').val()
-                           )
-            data.push(cart_item);
+            data.push($(el).attr('id'));
         });
         console.log(JSON.stringify(data));
         $.ajax({
