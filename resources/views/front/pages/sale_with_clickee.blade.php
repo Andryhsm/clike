@@ -166,7 +166,7 @@
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
                                     <span>Découverte</span>
                                 </div>
-                                <div class="engagement-price mt-25">GRATUIT</div>
+                                <div class="engagement-price mt-25 text-uppercase">{!! !empty($packs['Découverte']['Engagement annuel'])?$packs['Découverte']['Engagement annuel']:'' !!}</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
                                 <span>
@@ -199,7 +199,7 @@
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
                                     <span>Vendeur</span>
                                 </div>
-                                <div class="engagement-price mb--10"><span class="price-int">30</span><span class="price-unity">€</span>/mois</div>
+                                <div class="engagement-price mb--10"><span class="price-int">{!! !empty($packs['Vendeur']['Engagement annuel'])?$packs['Vendeur']['Engagement annuel']:'' !!}</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
                                 <span>
@@ -232,7 +232,7 @@
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
                                     <span>Marketing</span>
                                 </div>
-                                <div class="engagement-price mb--10"><span class="price-int">45</span><span class="price-unity">€</span>/mois</div>
+                                <div class="engagement-price mb--10"><span class="price-int">{!! !empty($packs['Marketing']['Engagement annuel'])?$packs['Marketing']['Engagement annuel']:'' !!}</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
                                 <span>
@@ -265,7 +265,7 @@
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo clickee"/>
                                     <span>Marketing +</span>
                                 </div>
-                                <div class="engagement-price mb--10"><span class="price-int">65</span><span class="price-unity">€</span>/mois</div>
+                                <div class="engagement-price mb--10"><span class="price-int">{!! !empty($packs['Marketing +']['Engagement annuel'])?$packs['Marketing +']['Engagement annuel']:'' !!}</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
                                 <span>
@@ -327,7 +327,7 @@
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
                                     <span>Découverte</span>
                                 </div>
-                                <div class="engagement-price mt-25">GRATUIT</div>
+                                <div class="engagement-price mt-25 text-uppercase">{!! !empty($packs['Découverte']['Sans engagement'])?$packs['Découverte']['Sans engagement']:'' !!}</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
                                 <span>
@@ -360,7 +360,7 @@
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
                                     <span>Vendeur</span>
                                 </div>
-                                <div class="engagement-price mb--10"><span class="price-int">39</span><span class="price-unity">€</span>/mois</div>
+                                <div class="engagement-price mb--10"><span class="price-int">{!! !empty($packs['Vendeur']['Sans engagement'])?$packs['Vendeur']['Sans engagement']:'' !!}</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
                                 <span>
@@ -393,7 +393,7 @@
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
                                     <span>Marketing</span>
                                 </div>
-                                <div class="engagement-price mb--10"><span class="price-int">59</span><span class="price-unity">€</span>/mois</div>
+                                <div class="engagement-price mb--10"><span class="price-int">{!! !empty($packs['Marketing']['Sans engagement'])?$packs['Marketing']['Sans engagement']:'' !!}</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
                                 <span>
@@ -426,7 +426,7 @@
                                     <img class="engagement-logo" src="{!! URL::to('/') !!}/images/icon/logo_dans_page.svg" alt="logo"/>
                                     <span>Marketing +</span>
                                 </div>
-                                <div class="engagement-price mb--10"><span class="price-int">79</span><span class="price-unity">€</span>/mois</div>
+                                <div class="engagement-price mb--10"><span class="price-int">{!! !empty($packs['Marketing +']['Sans engagement'])?$packs['Marketing +']['Sans engagement']:'' !!}</span><span class="price-unity">€</span>/mois</div>
                                 <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
                                 
                                 <span>

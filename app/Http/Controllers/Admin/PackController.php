@@ -100,6 +100,12 @@ class PackController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pack = $this->pack_repository->deleteById($id);
+        if ($pack) {
+            flash()->success(config('message.pack.delete-success'));
+        } else {
+            flash()->error(config('message.pack.delete-error'));
+        }
+        return redirect()->route('pack.index');
     }
 }
