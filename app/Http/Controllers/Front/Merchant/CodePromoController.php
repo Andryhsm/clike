@@ -151,30 +151,66 @@ class CodePromoController extends Controller
 	}
 
 	public function getDiscountPrice(Request $request){ 
+		// $code_promo = $this->code_promo_repository->getByPromoName($request);
+		// $ids = explode(',', $request['category_ids']);
+		// $promed_ids = [];
+		// $category_ids = [];
+		// if($code_promo){
+		// 	$begin_date = \Carbon\Carbon::parse($code_promo->date_debut);
+		// 	$end_date = \Carbon\Carbon::parse($code_promo->date_fin);
+		// 	$now = \Carbon\Carbon::now();
+		// 	if($now > $end_date) return response()->json(['error' => "La durée d'utilisation du code a été expirée."]);
+		// 	else {
+		// 		foreach ($code_promo->products as $product) {
+		// 			if(in_array($product->product_id, $request['product_ids'])) $promed_ids[] = $product->product_id;
+		// 		} 
+		// 		foreach ($code_promo->categories as $category) {
+		// 			if(in_array($category->category_id, $ids)) $category_ids[] = $category->category_id;
+		// 		}
+		// 		return response()->json(['discount' => $code_promo->discount, 
+		// 								'promed_ids' => implode(',', $promed_ids), 
+		// 								'category_ids' => implode(',', $category_ids), 
+		// 								'quantity_max' => $code_promo->quantity_max]);
+		// 	}
+		// }
+		// else return response()->json(['error' => "Code inexistant."]);
 		$code_promo = $this->code_promo_repository->getByPromoName($request);
-		$ids = explode(',', $request['category_ids']);
-		$promed_ids = [];
-		$category_ids = [];
 		if($code_promo){
 			$begin_date = \Carbon\Carbon::parse($code_promo->date_debut);
 			$end_date = \Carbon\Carbon::parse($code_promo->date_fin);
 			$now = \Carbon\Carbon::now();
-			if($now > $end_date) return response()->json(['error' => "La durée d'utilisation du code a été expirée."]);
+			if($now > $end_date || $now < $begin_date) return response()->json(['error' => "La durée d'utilisation du code a expirée."]);
 			else {
-				foreach ($code_promo->products as $product) {
-					if(in_array($product->product_id, $request['product_ids'])) $promed_ids[] = $product->product_id;
-				} 
-				foreach ($code_promo->categories as $category) {
-					if(in_array($category->category_id, $ids)) $category_ids[] = $category->category_id;
+				$product_ids = $this->createArrayFromCollection($code_promo->products, 'product_id');
+				$category_ids = $this->createArrayFromCollection($code_promo->categories, 'category_id');
+				$data = [];
+				foreach($request['data'] as $cart_item){
+					if(in_array($cart_item['product_id'], $product_ids) || $this->compareTwoArrays($cart_item['category_id'], $category_ids)) {
+						$cart_item['real_price'] -= $cart_item['real_price'] * $code_promo->discount /100;
+						$data[] = $cart_item;
+					}
 				}
-				return response()->json(['discount' => $code_promo->discount, 
-										'promed_ids' => implode(',', $promed_ids), 
-										'category_ids' => implode(',', $category_ids), 
-										'quantity_max' => $code_promo->quantity_max]);
+
+				return response()->json(['data' => $data]);
 			}
 		}
 		else return response()->json(['error' => "Code inexistant."]);
 
+	}
+
+	public function createArrayFromCollection($collection, $name) {
+		$array = [];
+		foreach ($collection as $id=>$collection_item) {
+			$array[$id] = $collection_item[$name];
+		}
+		return $array; 
+	}
+
+	public function compareTwoArrays($array1, $array2) {
+		foreach ($array1 as $key => $value) {
+			if(in_array($value, $array2)) return true;
+		}
+		return false;
 	}
 
 	public function getDiscountByNameCode(Request $request) {
