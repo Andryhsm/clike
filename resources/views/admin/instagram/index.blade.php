@@ -4,51 +4,7 @@
 @section('additional-styles')
     {!! Html::style('backend/plugins/datatables/dataTables.bootstrap.css') !!}
 @stop
-<style>
-     /* Systeme draggable dans gestion Instagram */
-        [draggable] {
-            -moz-user-select: none;
-            -khtml-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-            -khtml-user-drag: element;
-            -webkit-user-drag: element;
-          }
-          .listItem {
-            margin: 0px;
-            background-color: #f4f4f4;
-            color: white;
-            width: 10px;
-            border-top: thick solid white;
-            border-top-width: 1px;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            transition: all 0.2s ease-out;
-          }
-          .dataTransferClass {
-            background-color: #f4f4f4;
-          }
-          .dragStartClass {
-            opacity: 0;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            transition: all 0.2s ease-out;
-          }
-          .listItem.over {
-            border-top: thick solid white;
-            border-top-width: 50px;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            transition: all 0.2s ease-out;
-          }
-    /* END Systeme draggable dans gestion Instagram */
-</style>
+
 @section('content')
 <section class="content-header">
     <h1>
@@ -112,10 +68,13 @@
                     <div class="box-footer">
                         <input type="button" name="answer" class="btn btn-primary" onclick="showDiv('toggle')" value="Voir les orders"></input>
                     </div>
+                    
                     <div id="toggle" style="display:none">
-                        <h3>
-                            Modification des Orders affichages des Instagrams Feeds
-                        </h3>
+                        <section class="content-header">
+                            <h3>
+                                Modification des Orders affichages des Instagrams Feeds
+                            </h3>
+                        </section>
                         {!! Form::open(array('url' => 'admin/instagram/images' ,'class' => 'pull-right', 'method'=>'POST')) !!}
                             <div  id="checklist">
                                 <div class='list-group gallery'>
@@ -139,6 +98,7 @@
                                 </div> 
                             <div class="box-footer">
                                     <button type="submit" class="btn btn-primary pull-right save-form">Validate the order</button>
+                                    <input type="button" name="answer" class="btn btn-primary" onclick="hideDiv('toggle')" value="Fermer"></input>
                             </div>
                             {{ Form::close() }}
                     </div>

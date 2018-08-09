@@ -51,8 +51,8 @@ class InstagramController extends Controller
             $image_name['image']=$this->uploadImage('image');
 			$brand=$this->instagram_repository->create($request->all(),$image_name);
 			
-            flash()->success(config('message.banner.add-success'));
-            return Redirect('admin/instagram')->with('success','Instagram feed create successfully.');
+            flash()->success(config('message.instagram.add-success'));
+            return Redirect('admin/instagram');
 				}
     }
 
@@ -60,6 +60,7 @@ class InstagramController extends Controller
 	{
 		$instagram = Instagram::find($id);
 		$languages = $this->language_repository->getOptions();
+		flash()->success(config('message.instagram.update-success'));
 		return view('admin.instagram.edit')->with('instagram', $instagram)->with('languages',$languages);
 	}
 
@@ -77,8 +78,8 @@ class InstagramController extends Controller
             $image_name['image']=$this->uploadImage('image');
 			$instagram=$this->instagram_repository->updateById($id,$request->all(),$image_name);
 
-            flash()->success(config('message.banner.update-success'));
-            return Redirect('admin/instagram')->with('success','Instagram feed update successfully.');;
+            flash()->success(config('message.instagram.update-success'));
+            return Redirect('admin/instagram');
 			
             }
     }
@@ -108,17 +109,16 @@ class InstagramController extends Controller
 	}
 	public function destroy($id)
 	{
-		
 		if ($this->instagram_repository->deleteById($id)) {
 
-				flash()->success(config('message.banner.delete-success'));
-				return Redirect('admin/instagram')->with('success','Image Clear successfully.');
-			
+				flash()->success(config('message.instagram.delete-success'));
+				return Redirect('admin/instagram');
 		}
 	}
 	public function orders(Request $request){
 		
 		$instagram = $this->instagram_repository->updateOrderInstagram($request->all());
+		flash()->success(config('message.instagram.order-success'));
 		return Redirect('admin/instagram');
 			
 	}

@@ -64,6 +64,13 @@ return [
 		'delete-success' => 'Marque supprimée avec succès.',
 		'delete-error' => 'Marque non supprimée avec succès.',
 	],
+	'pack' => [
+		'add-success' => 'Pack ajoutée avec succès.',
+		'update-success' => 'Pack mise à jour avec succès.',
+		'update-error' => 'Pack non mise à jour avec succès.',
+		'delete-success' => 'Pack supprimée avec succès.',
+		'delete-error' => 'Pack non supprimée avec succès.',
+	],
 	'promotion' => [
 		'add-success' => 'Promotion ajoutée avec succès.',
 		'add-error' => 'Quelque chose s\'est mal passé, merci de réessayer plus tard!',
@@ -277,6 +284,15 @@ return [
 		'update-error' => 'Echec de la modification du client.',
 		'delete-success' => 'Client supprimé avec succès.',
 		'delete-error' => 'Echec lors de la suppression du client.',
+	],
+	'instagram' => [
+		'add-success' => 'Instagram Feed ajouté avec succès, veillez verifier l\' ordre si c\'est activé.',
+		'add-error' => 'Echec lors de l\'enregistrement de votre Instagram Feed.',
+		'update-success' => 'Modification de votre Instagram Feed effectuée avec succès.',
+		'update-error' => 'Echec de la modificationde votre Instagram Feed.',
+		'delete-success' => 'Instagram Feed supprimé avec succès.',
+		'delete-error' => 'Echec lors de la suppression de votre Instagram Feed.',
+		'order-success' => 'Votre ordre est enregistré avec succés.',
 	],
 
 ];
