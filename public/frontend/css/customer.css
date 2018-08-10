@@ -251,8 +251,10 @@
     /*line-height: 3 !important;*/
 }
 .order-img img{
-    width: 100%;
-    height: 100%;
+    /*width: 100%;
+    height: 100%;*/
+    max-width: 150px;
+    max-height: 200px;
     border: 4px solid #044651;
 }
 .order-img img:hover{
@@ -261,6 +263,7 @@
 .order-img {
     padding-left: 0;
     padding-right: 0;
+    display: table-cell;
 }
 /*.order-story .order-img img {
     width: 100%;
