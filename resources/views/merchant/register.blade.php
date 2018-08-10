@@ -452,7 +452,7 @@
                         @endif
 
                         <div class="text-center add-user-alignement mb-20">
-                            <button type="button" class="btn btn-clickee-primary call_add_user">{!! trans('merchant.add_user') !!}</button>
+                            <button type="button" class="btn btn-clickee-primary call_add_user add_user">{!! trans('merchant.add_user') !!}</button>
                         </div>
 
                     @endif

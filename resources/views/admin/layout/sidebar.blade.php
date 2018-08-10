@@ -69,7 +69,7 @@
             
             @if(check_user_access(['page.index','email-template.index','coupon','banner.index']))
             <li class="treeview {{ set_active(['admin/page','admin/page/*','admin/banner','admin/banner/*','admin/slider','admin/slider/*','admin/coupon','admin/coupon/*',
-            'admin/special-product','admin/special-product/*','admin/faq','admin/faq/*','admin/instagram','admin/instagram/*'])}}">
+            'admin/special-product','admin/special-product/*','admin/faq','admin/faq/*','admin/instagram','admin/instagram/*','admin/pack','admin/pack/*'])}}">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
                     <span>Contenu</span>
@@ -110,6 +110,11 @@
                     @if(check_user_access('instagram.index'))
                     <li class="{{ set_active(['admin/instagram','admin/instagram/*']) }}">
                         <a href="{!! URL::to('/admin/instagram') !!}"><i class="fa fa-circle-o"></i> Gestion Instagram feed </a>
+                    </li>
+                    @endif
+                    @if(check_user_access('pack.index'))
+                    <li class="{{ set_active(['admin/pack','admin/pack/*']) }}">
+                        <a href="{!! URL::to('/admin/pack') !!}"><i class="fa fa-circle-o"></i> Gestion Pack </a>
                     </li>
                     @endif
                 </ul>

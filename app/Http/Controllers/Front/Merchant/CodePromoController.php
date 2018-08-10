@@ -21,6 +21,7 @@ class CodePromoController extends Controller
 	{
 		$this->code_promo_repository = $code_promo_repo;
 		$this->category_repository = $category_repo;
+		$this->cart = app('cart');
 	}
 
 	/**
@@ -148,33 +149,6 @@ class CodePromoController extends Controller
 		$keyword = $request->get('datastring');
 		$products = $this->code_promo_repository->getProducts($keyword,\Auth::user()->user_id);
 		return response()->json($products);
-	}
-
-	public function getDiscountPrice(Request $request){ 
-		$code_promo = $this->code_promo_repository->getByPromoName($request);
-		$ids = explode(',', $request['category_ids']);
-		$promed_ids = [];
-		$category_ids = [];
-		if($code_promo){
-			$begin_date = \Carbon\Carbon::parse($code_promo->date_debut);
-			$end_date = \Carbon\Carbon::parse($code_promo->date_fin);
-			$now = \Carbon\Carbon::now();
-			if($now > $end_date) return response()->json(['error' => "La durée d'utilisation du code a été expirée."]);
-			else {
-				foreach ($code_promo->products as $product) {
-					if(in_array($product->product_id, $request['product_ids'])) $promed_ids[] = $product->product_id;
-				} 
-				foreach ($code_promo->categories as $category) {
-					if(in_array($category->category_id, $ids)) $category_ids[] = $category->category_id;
-				}
-				return response()->json(['discount' => $code_promo->discount, 
-										'promed_ids' => implode(',', $promed_ids), 
-										'category_ids' => implode(',', $category_ids), 
-										'quantity_max' => $code_promo->quantity_max]);
-			}
-		}
-		else return response()->json(['error' => "Code inexistant."]);
-
 	}
 
 	public function getDiscountByNameCode(Request $request) {

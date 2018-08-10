@@ -33,7 +33,6 @@ class InstagramRepository implements InstagramRepositoryInterface
         $this->model->created_by = auth()->guard('admin')->user()->admin_id;
         return $this->model->save();
     }
-
     public function updateById($id, $input,$image_name)
     {
         $this->model = $this->model->findOrNew($id);
@@ -53,19 +52,25 @@ class InstagramRepository implements InstagramRepositoryInterface
 
     public function getActiveInstagram()
     {
-        return $this->model->whereIsActive(1)->orderBy('id', 'DESC')->limit(8)->get();
+        return $this->model->whereIsActive(1)->orderBy('order', 'ASC')->limit(8)->get();  
     }
 
     public function getAll(){
-        return $this->model->get();
+        return $this->model->orderBy('order', 'ASC')->get();
     }
     
     public function getActiveMainInstagram(){
         return $this->model->whereIsActive(1)->first();
     }
-    public function updateOrderInstagram($id,$order){
-        $this->model = $this->model->find($id);
-        $this->model->order = $order;
-        return $this->model->save();
+    public function updateOrderInstagram($input){
+        $instagram = new Instagram();
+        $orders = $input['orders'];
+        $ids = $input['ids'];
+        foreach($orders as $key=>$value)  {
+            $this->model = $this->model->find($ids[$key]);
+            $order=$key+1;
+            $this->model->order=$order;
+            $this->model->save();
+        }
     }
 }

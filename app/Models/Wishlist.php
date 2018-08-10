@@ -17,6 +17,15 @@ class Wishlist extends Model
 	 * @var string
 	 */
 	protected $primaryKey = 'wishlist_id';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id',
+        'product_id',
+    ];
 
 	const CACHE_TIME_FOR_WISHLIST = 1440; 
 

@@ -78,6 +78,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
         Route::post('instagram/images','InstagramController@orders');
         //end instagram route
 
+        Route::resource('pack', 'PackController');
+
         /*Route::get('product/get-data', 'ProductController@getData')->name('product-data');
         Route::get('product', 'ProductController@index')->name('product');
         Route::post('product/attributes', 'ProductController@attributes')->name('get_attribute');
@@ -237,6 +239,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
     Route::get('zoom-image-test', 'TestController@imageZoom')->name('zoom-image-test');
     Route::get('page-test', 'TestController@styleElement')->name('page-test');
     Route::get('checkout_store_quantity_session', 'CheckoutController@storeQuantitySession')->name('checkout_store_quantity_session');
+    Route::post('apply-codepromo', 'CheckoutController@applyCodePromo')->name('apply_codepromo');
     Route::group(['middleware' => ['auth']], function () {        
         Route::post('caisse', 'CheckoutController@storeOrderInfo')->name('checkout');
         Route::get('checkout/order-confirmed', 'CheckoutController@confirmOrder')->name('checkout-order-confirmed');
@@ -322,7 +325,6 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::post('get-product','CodePromoController@getProduct')->name('get_product');
                     Route::get('get-customers', 'CustomerController@getAllCustomer')->name('get-customers');
                     Route::get('get-quantity-by-product-stock-id', 'CustomerController@getQuantityByProductStockId')->name("get-quantity-by-stock-id");
-                    Route::post('get-discount', 'CodePromoController@getDiscountPrice')->name('get_discount');
                     Route::post('get-discount-by-name-code', 'CodePromoController@getDiscountByNameCode')->name('get-discount-by-name-code');
                 }); 
             });

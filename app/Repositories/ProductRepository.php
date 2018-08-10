@@ -138,7 +138,6 @@ class ProductRepository implements ProductRepositoryInterface
 				]
             );
             
-            
             //update
             //product_stock
             $counts = $input['product_inventory'];
