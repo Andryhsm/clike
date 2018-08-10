@@ -29,12 +29,11 @@ class AuthController extends Controller
     protected $brand_repository;
     protected $wishlist;
 
-    public function __construct(UserRepository $user_repository,RegionRepositoryInterface $region_repo, BrandRepositoryInterface $brand_repo, PackRepository $pack_repository, Wishlist $wishlist){
+    public function __construct(UserRepository $user_repository,RegionRepositoryInterface $region_repo, BrandRepositoryInterface $brand_repo, PackRepository $pack_repository){
         $this->user_repository=$user_repository;
         $this->region_repository = $region_repo;
         $this->brand_repository = $brand_repo;
         $this->pack_repository = $pack_repository;
-        $this->wishlist = $wishlist;
     }
     /**
      * Display a listing of the resource.
@@ -138,17 +137,17 @@ class AuthController extends Controller
                     $all_wishlist_products = (\Cache::has('wishlist_product')) ? \Cache::get('wishlist_product') : [];
                     $products = (array_key_exists($id_user, $all_wishlist_products)) ? $all_wishlist_products[$id_user] : [];
                     foreach ($products as $key => $product) {
-                        $wishlist = $this->wishlist->where('user_id',auth()->user()->user_id)->where('product_id',$product->product->product_id)->first();                        
+                        $wishlist = Wishlist::where('user_id',\Auth::user()->user_id)->where('product_id',$product->product->product_id)->first();                        
                         if($wishlist == null){
-                            $this->Wishlist = new Wishlist();
-                            $this->wishlist->user_id = \Auth::user()->user_id;
-                            $this->wishlist->product_id = $product->product->product_id;
-                            $this->wishlist->save();   
-                            //dd($this->wishlist);
+                            $list = new Wishlist();
+                            $list->user_id = \Auth::user()->user_id;
+                            $list->product_id = $product->product->product_id;
+                            $list->save();   
                         }
                     }
+                    \Cache::forget('wishlist_product');
+                    Cookie::forget('id_user_browser');
                 }
-
 				return redirect()->route('customer-commande-en-cours');
             }
         }
