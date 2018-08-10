@@ -70,15 +70,15 @@ $(function() {
         delete_cart($(this));
     });
 
-    $('.apply_codepromo').click(function(event){
+    $('.apply_codepromo').on('click', 'i', function(event){
         event.preventDefault();
-        if ($(this).find('i').hasClass('fa-circle-o')) {
-            $(this).find('i').removeClass('fa-circle-o');
-            $(this).find('i').addClass('fa-dot-circle-o');
+        if ($(this).hasClass('fa-circle-o')) {
+            $(this).removeClass('fa-circle-o');
+            $(this).addClass('fa-dot-circle-o');
             apply_codepromo();            
         } else {
-            $(this).find('i').removeClass('fa-dot-circle-o');
-            $(this).find('i').addClass('fa-circle-o');
+            $(this).removeClass('fa-dot-circle-o');
+            $(this).addClass('fa-circle-o');
             reset_codepromo();
         }
     });
@@ -113,7 +113,7 @@ function apply_codepromo() {
     $('.item_product_id').each(function(i, el) {
         product_ids.push($(el).val());
     });
-    var url = $('.content-cart-product').attr('data-url');
+    var url = $('.apply_codepromo').attr('data-url');
     var data = [];
     if(code_promo_name != ''){
         $('.article:not(:last-child)').each(function(i, el) {
@@ -130,7 +130,6 @@ function apply_codepromo() {
             },
             success: function(response, status) {
                 console.log(JSON.stringify(response.data))
-                console.log(JSON.stringify(response.exceed_quantity_item))
                 console.log(response.error)
                 if(response.error) toastr.error(response.error);
                 else {

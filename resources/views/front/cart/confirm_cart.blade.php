@@ -28,7 +28,7 @@
                                                 {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "autocomplete" => "off" ])}}                                                
                                             </div>
                                             <div class="col-sm-5">
-                                                <span class="apply_codepromo fw-400" style="line-height: 55px;"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Appliquer</span>
+                                                <a href="#" class="apply_codepromo fw-400" data-url="{!! route('get_discount') !!}" style="line-height: 55px;"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Appliquer</a>
                                             </div>
                                       </div>
                                      
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="cart-product-list col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
-                                <div class="content-cart-product" data-url="{!! route('get_discount') !!}">
+                                <div class="content-cart-product">
                                     <div class="cart-title">
                                         <h2>{!! (count($cart->items()) < 2) ? count($cart->items()).' ARTICLE' : count($cart->items()).' ARTICLES' !!} </h2>
                                     </div>
