@@ -9,6 +9,7 @@ use App\Interfaces\StoreRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
 use App\Interfaces\BrandRepositoryInterface;
 use App\Interfaces\RegionRepositoryInterface;
+use App\Repositories\PackRepository;
 use App\BrandTag;
 
 class PagesController extends Controller
@@ -18,14 +19,16 @@ class PagesController extends Controller
 	protected $product_repository;
 	protected $region_repository;
 	protected $brand_repository;
+	protected $pack_repository;
 	
-	public function __construct(StoreRepositoryInterface $store_repo_interface, ProductRepositoryInterface $product_repo_interface,UserRepositoryInterface $user_repository,RegionRepositoryInterface $region_repo, BrandRepositoryInterface $brand_repo)
+	public function __construct(StoreRepositoryInterface $store_repo_interface, ProductRepositoryInterface $product_repo_interface,UserRepositoryInterface $user_repository,RegionRepositoryInterface $region_repo, BrandRepositoryInterface $brand_repo, PackRepository $pack_repository)
 	{
         $this->region_repository = $region_repo;
         $this->brand_repository = $brand_repo;
 		$this->user_repository = $user_repository;
 		$this->store_repository = $store_repo_interface;
 		$this->product_repository = $product_repo_interface;
+		$this->pack_repository = $pack_repository;
 	}
 	
     public function legalMention()
@@ -48,7 +51,12 @@ class PagesController extends Controller
 		$product_count = $this->product_repository->getCount();
 		$user_count = $this->user_repository->getCountByRole(1);
 		$store_count = $this->store_repository->getCount();
-		return view('front.pages.sale_with_clickee', compact('product_count', 'user_count', 'store_count'));
+		$packs_data = $this->pack_repository->getAll();
+		$packs = [];
+		foreach ($packs_data as $key => $pack) {
+			$packs[$pack->name][$pack->type] = $pack->price;
+		}
+		return view('front.pages.sale_with_clickee', compact('product_count', 'user_count', 'store_count', 'packs'));
 	}
 	
 	public function PagePresse()

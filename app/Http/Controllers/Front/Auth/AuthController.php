@@ -14,6 +14,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Interfaces\BrandRepositoryInterface;
 use App\Interfaces\RegionRepositoryInterface;
+use App\Repositories\PackRepository;
 use App\BrandTag;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
@@ -22,10 +23,15 @@ class AuthController extends Controller
 {
 
     protected $user_repository;
-    public function __construct(UserRepository $user_repository,RegionRepositoryInterface $region_repo, BrandRepositoryInterface $brand_repo){
+    protected $pack_repository;
+    protected $region_repository;
+    protected $brand_repository;
+
+    public function __construct(UserRepository $user_repository,RegionRepositoryInterface $region_repo, BrandRepositoryInterface $brand_repo, PackRepository $pack_repository){
         $this->user_repository=$user_repository;
         $this->region_repository = $region_repo;
         $this->brand_repository = $brand_repo;
+        $this->pack_repository = $pack_repository;
     }
     /**
      * Display a listing of the resource.
@@ -44,7 +50,12 @@ class AuthController extends Controller
         $store = false;
         $brands = $this->brand_repository->lists();
         $brand_tags = BrandTag::get();
-		return view('merchant.content', compact('countries', 'store', 'brands', 'brand_tags'));
+        $packs_data = $this->pack_repository->getAll();
+        $packs = [];
+        foreach ($packs_data as $key => $pack) {
+            $packs[$pack->name][$pack->type] = $pack->price;
+        }
+		return view('merchant.content', compact('countries', 'store', 'brands', 'brand_tags', 'packs'));
 	}
 
 	public function postMerchantLogin(Request $request)
