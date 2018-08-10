@@ -70,15 +70,15 @@ $(function() {
         delete_cart($(this));
     });
 
-    $('.apply_codepromo').click(function(event){
+    $('.apply_codepromo').on('click', 'i', function(event){
         event.preventDefault();
-        if ($(this).find('i').hasClass('fa-circle-o')) {
-            $(this).find('i').removeClass('fa-circle-o');
-            $(this).find('i').addClass('fa-dot-circle-o');
+        if ($(this).hasClass('fa-circle-o')) {
+            $(this).removeClass('fa-circle-o');
+            $(this).addClass('fa-dot-circle-o');
             apply_codepromo();            
         } else {
-            $(this).find('i').removeClass('fa-dot-circle-o');
-            $(this).find('i').addClass('fa-circle-o');
+            $(this).removeClass('fa-dot-circle-o');
+            $(this).addClass('fa-circle-o');
             reset_codepromo();
         }
     });
@@ -113,7 +113,7 @@ function apply_codepromo() {
     $('.item_product_id').each(function(i, el) {
         product_ids.push($(el).val());
     });
-    var url = $('.content-cart-product').attr('data-url');
+    var url = $('.apply_codepromo').attr('data-url');
     var data = [];
     if(code_promo_name != ''){
         $('.article:not(:last-child)').each(function(i, el) {
@@ -133,7 +133,7 @@ function apply_codepromo() {
                 console.log(response.error)
                 if(response.error) toastr.error(response.error);
                 else {
-                    if(response.data) {
+                    if(response.data != '') {
                         $.each(response.data, function(id, item) {
                             var id = item.item_id;
                             var price = item['real_price'];
@@ -143,9 +143,9 @@ function apply_codepromo() {
                             $('#' + id).find('input.data-real-price').val(price);
                         });
                         calcul_total_price();
-                        toastr.success('Code promo apply successfuly!');
+                        toastr.success('Code promo appliqué avec succès!');
                     }
-                    else toastr.warning("No products are assigned to this code.");
+                    else toastr.warning("Aucun produit assigné à ce code.");
                 }
                 $.LoadingOverlay("hide");
             },

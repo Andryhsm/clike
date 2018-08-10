@@ -162,9 +162,11 @@ class CodePromoController extends Controller
 				$product_ids = $this->createArrayFromCollection($code_promo->products, 'product_id');
 				$category_ids = $this->createArrayFromCollection($code_promo->categories, 'category_id');
 				$data = [];
+				$exceed_quantity_item = [];
 				foreach($request['data'] as $cart_item_id){
 					$cart_item = $this->cart->item($cart_item_id);
 					if(in_array($cart_item->getId(), $product_ids) || $this->compareTwoArrays($cart_item->getCategoryIds(), $category_ids)) {
+						//$exceed_quantity_item[] = $cart_item->getName();
 						$price = $cart_item->getOriginalPrice() - $cart_item->getOriginalPrice() * $code_promo->discount /100;
 						$item = array("item_id"=>$cart_item_id, "real_price"=>$price);
 						$data[] = $item;
