@@ -43,7 +43,7 @@ class CardInfoRepository implements CardInfoInterface
 				$this->model->save();
 				$user_id = Auth()->user()->user_id;
 		    	$user = \App\User::find($user_id);
-		    	$user->default_card_id = $card_info_id;
+		    	$user->default_card_id = $this->model->card_info_id;
 		    	$user->save();
 			}
 		}
