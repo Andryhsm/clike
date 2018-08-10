@@ -18,7 +18,7 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $primaryKey = 'user_id';
     protected $fillable = [
-        'first_name','last_name', 'email', 'password','phone_number', 'gender', 'birthday'
+        'first_name','last_name', 'email', 'password','phone_number', 'gender', 'birthday', 'default_card_id'
     ];
 
     public static $manage_account_rules = ['first_name'      => 'Required',

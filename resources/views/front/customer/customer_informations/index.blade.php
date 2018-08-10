@@ -87,10 +87,14 @@
                 </div>
                 <div class="text-center">
                     <p>
-                        <a href="#" class="default-payment mt-30 mr-20" onclick="checka(this);">
-                            <i class="fa fa-circle-o"></i>
+                        @if($customer->default_card_id == $card_info->card_info_id)
+                            Ceci est votre paiement par défaut
+                        @else
+                        <a href="#" class="default-payment mt-30 mr-20" data-url="{!! route('set-default-card-id') !!}">
+                            <i class="icon-mode-payement fa fa-circle-o"></i>
                             Définir comme mode de paiement par défaut
                         </a>
+                        @endif
                         {{ Form::text('default_payment', '' ,['class'=>"hidden",'id' => 'default_payment']) }}
                     </p>
                 </div>

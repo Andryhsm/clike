@@ -16,6 +16,11 @@ class CardInfoRepository implements CardInfoInterface
 		$this->model = $card_info;
 	}
 
+	public function getById($card_info_id)
+	{
+		return $this->model->where('card_info_id', $card_info_id)->first();
+	}
+
 	public function getByUserId($user_id)
 	{
 		return $this->model->where('user_id', $user_id)->get();
