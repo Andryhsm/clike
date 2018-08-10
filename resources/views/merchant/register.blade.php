@@ -14,17 +14,7 @@
                     </div>
                 </div>
                 <div class="register-area register-area-merchant">
-                    <?php
-                        if($store){
-                            $url = route('store.edit', ['id' => $store->store_id]);
-                        }elseif(Auth::check()){
-                            $url = route("store");
-                        }else{
-                            $url = route('merchant-sign-up-post');
-                        }
-                    ?>
                     
-                    {!! Form::open(['url' =>$url , 'id'=>'store_form', 'method' => ($store) ? 'PATCH' : 'post', 'role' => 'form','class'=>'form-horizontal','enctype' => 'multipart/form-data']) !!}
                     <div class="row">
                         <div class="section-title">
                             <div style="height: 110px;"></div>
@@ -474,7 +464,6 @@
                     <div class="text-center mr-t-btn">
                         <button class="btn btn-clickee-primary" type="submit" id="add-store">{!! trans("merchant.complete_registration")!!}</button>
                     </div>
-                    {!! Form::close() !!}
                 </div>
             </div>
     </div>

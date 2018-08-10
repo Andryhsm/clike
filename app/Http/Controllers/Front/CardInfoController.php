@@ -15,6 +15,8 @@ class CardInfoController extends Controller
     }
 
     public function deleteCard(Request $request) {
-    	dd($request);
+    	$card_info_id = $request->get('id');
+    	$status = $this->cart_info_repository->deleteById($card_info_id);
+    	return response()->json(['status' => $status, 'card_info_id' => $card_info_id]);
     }
 }

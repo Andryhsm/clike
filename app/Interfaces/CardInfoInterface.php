@@ -10,4 +10,6 @@ interface CardInfoInterface
 
 	public function save($input);
 
+	public function saveForMerchant($input, $user_id);
+
 }

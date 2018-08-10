@@ -61,6 +61,27 @@ jQuery(document).ready(function($) {
     changeDateFormat();
 
     $('.delete-card').click(function(event) {
+        $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+        var $this = $(this);
+        var url = $this.data('url');
+        var card_info_id = $this.data('card-info-id');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            data: {id: card_info_id},
+        })
+        .done(function(response) {
+            if(response.status == true){
+                toastr.success("Votre information de carte est bien supprimé!");
+                $this.parents('.information-visa').remove();
+                console.log("We need to hide the information");
+                $.LoadingOverlay("hide");
+            }
+        })
+        .fail(function() {
+            $.LoadingOverlay("hide");
+        });
         
     });
 });

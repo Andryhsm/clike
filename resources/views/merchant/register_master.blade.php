@@ -12,7 +12,7 @@
       <a class="nav-link" id="4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Boutique</a>
     </li>
   </ul>
-  
+   {!! Form::open(['url' =>route('merchant-sign-up-post') , 'id'=>'store_form', 'method' => 'post', 'role' => 'form','class'=>'form-horizontal','enctype' => 'multipart/form-data']) !!}
   <!-- Form en dessus de tout -->
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade active in" id="tab1" role="tabpanel" aria-labelledby="1-tab">
@@ -83,3 +83,4 @@
         @include('merchant.register')
     </div>
   </div>
+{!! Form::close() !!}
