@@ -70,18 +70,20 @@ $(function() {
         delete_cart($(this));
     });
 
-    // $('.apply_codepromo').on('click', 'i', function(event){
-    //     event.preventDefault();
-    //     if ($(this).hasClass('fa-circle-o')) {
-    //         $(this).removeClass('fa-circle-o');
-    //         $(this).addClass('fa-dot-circle-o');
-    //         apply_codepromo();            
-    //     } else {
-    //         $(this).removeClass('fa-dot-circle-o');
-    //         $(this).addClass('fa-circle-o');
-    //         reset_codepromo();
-    //     }
-    // });
+    $('.apply_codepromo').on('click', 'i', function(event){
+        event.preventDefault();
+        if($('.cart-paye[name="cart_number"]').val() != ''){
+            if ($(this).hasClass('fa-circle-o')) {
+                $(this).removeClass('fa-circle-o');
+                $(this).addClass('fa-dot-circle-o');
+                apply_codepromo();            
+            } else {
+                $(this).removeClass('fa-dot-circle-o');
+                $(this).addClass('fa-circle-o');
+                reset_codepromo();
+            }
+        }
+    });
 
     $('#input-credit-card').keyup(function()
     {
@@ -105,27 +107,15 @@ function is_promed_item(category_list, response_category_list){
     return is_promed;
 }
 
-function apply_get_discount(box){
-    if($('.cart-paye[name="cart_number"]').val() != ''){
-        if ($(box).find('i').hasClass('fa-circle-o')) {
-            $(box).find('i').removeClass('fa-circle-o');
-            $(box).find('i').addClass('fa-dot-circle-o');
-            apply_codepromo();            
-        } else {
-            $(box).find('i').removeClass('fa-dot-circle-o');
-            $(box).find('i').addClass('fa-circle-o');
-            reset_codepromo();
-        }
-    }
-}
-
 function apply_codepromo() {    
     var product_ids = [];
     $('.item_product_id').each(function(i, el) {
         product_ids.push($(el).val());
     });
     var code_promo_name = $('.cart-paye[name="cart_number"]').val();
+    console.log(code_promo_name)
     var url = $('.apply_codepromo').attr('data-url');
+    //console.log(url)
     var data = [];
     $('.article:not(:last-child)').each(function(i, el) {
         data.push($(el).attr('id'));
