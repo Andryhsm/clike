@@ -70,19 +70,19 @@ $(function() {
         delete_cart($(this));
     });
 
-    $('.apply_codepromo').on('click', 'i', function(event){
-        event.preventDefault();
-        if ($(this).hasClass('fa-circle-o')) {
-            $(this).removeClass('fa-circle-o');
-            $(this).addClass('fa-dot-circle-o');
-            apply_codepromo();            
-        } else {
-            $(this).removeClass('fa-dot-circle-o');
-            $(this).addClass('fa-circle-o');
-            reset_codepromo();
-        }
-    });
-    
+    // $('.apply_codepromo').on('click', 'i', function(event){
+    //     event.preventDefault();
+    //     if ($(this).hasClass('fa-circle-o')) {
+    //         $(this).removeClass('fa-circle-o');
+    //         $(this).addClass('fa-dot-circle-o');
+    //         apply_codepromo();            
+    //     } else {
+    //         $(this).removeClass('fa-dot-circle-o');
+    //         $(this).addClass('fa-circle-o');
+    //         reset_codepromo();
+    //     }
+    // });
+
     $('#input-credit-card').keyup(function()
     {
         $(this).val(function(i, v)
@@ -105,55 +105,68 @@ function is_promed_item(category_list, response_category_list){
     return is_promed;
 }
 
-function apply_codepromo() {
-    var code_promo_name = $('.cart-paye[name="cart_number"]').val();
-    // var category_ids = $('.item_category_id').val();
-    // console.log('category from db ' + JSON.stringify(category_ids))
+function apply_get_discount(box){
+    if($('.cart-paye[name="cart_number"]').val() != ''){
+        if ($(box).find('i').hasClass('fa-circle-o')) {
+            $(box).find('i').removeClass('fa-circle-o');
+            $(box).find('i').addClass('fa-dot-circle-o');
+            apply_codepromo();            
+        } else {
+            $(box).find('i').removeClass('fa-dot-circle-o');
+            $(box).find('i').addClass('fa-circle-o');
+            reset_codepromo();
+        }
+    }
+}
+
+function apply_codepromo() {    
     var product_ids = [];
     $('.item_product_id').each(function(i, el) {
         product_ids.push($(el).val());
     });
+    var code_promo_name = $('.cart-paye[name="cart_number"]').val();
     var url = $('.apply_codepromo').attr('data-url');
     var data = [];
-    if(code_promo_name != ''){
-        $('.article:not(:last-child)').each(function(i, el) {
-            data.push($(el).attr('id'));
-        });
-        console.log(JSON.stringify(data));
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: {'data' : data, 'code_promo_name' : code_promo_name},
-            dataType: 'json',
-            beforeSend: function() {
-                $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
-            },
-            success: function(response, status) {
-                console.log(JSON.stringify(response.data))
-                console.log(response.error)
-                if(response.error) toastr.error(response.error);
-                else {
-                    if(response.data != '') {
-                        $.each(response.data, function(id, item) {
-                            var id = item.item_id;
-                            var price = item['real_price'];
-                            $('#' + id).find('.real-price').html( fixed_two_after_dot(price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i>');
-                            $('#' + id).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
-                            $('#' + id).find('.real-price').data('price', '' + fixed_two_after_dot(price));
-                            $('#' + id).find('input.data-real-price').val(price);
-                        });
-                        calcul_total_price();
-                        toastr.success('Code promo appliqué avec succès!');
-                    }
-                    else toastr.warning("Aucun produit assigné à ce code.");
+    $('.article:not(:last-child)').each(function(i, el) {
+        data.push($(el).attr('id'));
+    });
+    console.log(JSON.stringify(data));
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {'data' : data, 'code_promo_name' : code_promo_name},
+        dataType: 'json',
+        beforeSend: function() {
+            $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+        },
+        success: function(response, status) {
+            console.log('response')
+            console.log(JSON.stringify(response.data))
+            console.log(response.error)
+            if(response.error) toastr.error(response.error);
+            else {
+                if(response.data != '') {
+                    $.each(response.data, function(id, item) {
+                        var id = item.item_id;
+                        var price = item['real_price'];
+                        $('#' + id).find('.real-price').html( fixed_two_after_dot(price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i>');
+                        $('#' + id).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
+                        $('#' + id).find('.real-price').data('price', '' + fixed_two_after_dot(price));
+                        $('#' + id).find('input.data-real-price').val(price);
+                    });
+                    calcul_total_price();
+                    toastr.success('Code promo appliqué avec succès!');
                 }
-                $.LoadingOverlay("hide");
-            },
-            error: function(xhr, status, error){
-                console.log(xhr.responseText);
+                else toastr.warning("Aucun produit assigné à ce code.");
             }
-        }); 
-    }
+            $.LoadingOverlay("hide");
+        },
+        error: function(xhr, status, error){
+            console.log(xhr.responseText);
+            $.LoadingOverlay("hide");
+        }
+    }); 
+
 }
 
 function reset_codepromo() {
