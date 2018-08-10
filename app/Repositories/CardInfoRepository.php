@@ -41,6 +41,10 @@ class CardInfoRepository implements CardInfoInterface
 				$this->model->date_expirate = Carbon::parse($input['date_expirate']);
 				$this->model->user_id = auth()->user()->user_id;
 				$this->model->save();
+				$user_id = Auth()->user()->user_id;
+		    	$user = \App\User::find($user_id);
+		    	$user->default_card_id = $card_info_id;
+		    	$user->save();
 			}
 		}
 	}
