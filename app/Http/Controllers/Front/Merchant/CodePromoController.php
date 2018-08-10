@@ -151,50 +151,6 @@ class CodePromoController extends Controller
 		return response()->json($products);
 	}
 
-	public function getDiscountPrice(Request $request){ 
-		$code_promo = $this->code_promo_repository->getByPromoName($request);
-		if($code_promo){
-			$begin_date = \Carbon\Carbon::parse($code_promo->date_debut);
-			$end_date = \Carbon\Carbon::parse($code_promo->date_fin);
-			$now = \Carbon\Carbon::now();
-			if($now > $end_date || $now < $begin_date) return response()->json(['error' => "La durée d'utilisation du code a expirée."]);
-			else {
-				$product_ids = $this->createArrayFromCollection($code_promo->products, 'product_id');
-				$category_ids = $this->createArrayFromCollection($code_promo->categories, 'category_id');
-				$data = [];
-				$exceed_quantity_item = [];
-				foreach($request['data'] as $cart_item_id){
-					$cart_item = $this->cart->item($cart_item_id);
-					if(in_array($cart_item->getId(), $product_ids) || $this->compareTwoArrays($cart_item->getCategoryIds(), $category_ids)) {
-						//$exceed_quantity_item[] = $cart_item->getName();
-						$price = $cart_item->getOriginalPrice() - $cart_item->getOriginalPrice() * $code_promo->discount /100;
-						$item = array("item_id"=>$cart_item_id, "real_price"=>$price);
-						$data[] = $item;
-					}
-				}
-
-				return response()->json(['data' => $data]);
-			}
-		}
-		else return response()->json(['error' => "Code inexistant."]);
-
-	}
-
-	public function createArrayFromCollection($collection, $name) {
-		$array = [];
-		foreach ($collection as $id=>$collection_item) {
-			$array[$id] = $collection_item[$name];
-		}
-		return $array; 
-	}
-
-	public function compareTwoArrays($array1, $array2) {
-		foreach ($array1 as $key => $value) {
-			if(in_array($value, $array2)) return true;
-		}
-		return false;
-	}
-
 	public function getDiscountByNameCode(Request $request) {
 		$code_promo = $this->code_promo_repository->getByPromoName($request);
 		$product_id = $request['product_id'];
