@@ -108,6 +108,9 @@ input#logo, input#shop_image {
 	position: absolute;
 	z-index: -1;
 }
+input.error, textarea.error, select.error {
+    border-color: red !important;
+}
 #store_form input, #store_form select,
 #product input, #product select,
 #code_promo input, #code_promo select,

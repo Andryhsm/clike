@@ -185,7 +185,6 @@ $('#attribute_set_').change(function(){
             url: url_get_attribute,
             data: "attribute_set_id=" + selected_attribute_set_id + "&product_id=" + product_id,
             complete: function (data) {
-                console.log(data);
                 $('.product-attribute').html(data.responseText);
             }
         });
@@ -194,21 +193,22 @@ $('#attribute_set_').change(function(){
 
 $('#add-decline').click(function(){
     var rep = $('.decline:last').attr('data-count');
-    var row_count = parseInt(rep);
+    var row_count = parseInt(rep) + 1;
     var html_data = $(document).find('.decline:first').clone();
-    $('.decline:last').append('<div class="line_separator"></div>')
-    html_data.find('.product_inventory').val('');
+    html_data.find('.product_inventory').val('').attr('name', 'product_inventory['+row_count+']').attr('data-range', row_count);
     html_data.find('.attribute_id').attr('name','attribute_id['+ row_count +'][]');
     html_data.find('.attribute_option').attr('name','attributes['+ row_count +'][]');
-    html_data.find('.product_stock_id').attr('value','');
+    html_data.find('.product_stock_id').attr('value','').attr('name', 'product_stock_id['+row_count+']');
     html_data.find('.product_stock_attribute_option_id').attr('value','').attr('name','product_stock_attribute_option_id['+ row_count +'][]');
-    html_data.attr('data-count', row_count + 1);
+    html_data.attr('data-count', row_count);
+    html_data.find('input[name*="stock-types"]').attr('name', 'stock-types['+row_count+']');
     html_data.insertAfter('.decline:last');
     
     if($('.decline').length > 1) $('#remove-decline').removeClass('hidden');
 })
-
+//product_stock_id['+row_count+']
 $(document).on('click', '#remove-decline', function(event) {
+    console.log("remove declinaison");
    $('.decline:last').remove();
    if($('.decline').length == 1) $('#remove-decline').addClass('hidden');
 
@@ -234,9 +234,10 @@ function set_stock_type(stock)
     $(stock).closest('.stock-types').find('input').val(type);    
 }
 
-$('#add-article').click(function(e) {
+
+$('form#product').on('click', '#add-article', function(e) {
     e.preventDefault();
-    $.validator.messages.required = '';
+    //$.validator.messages.required = '';
     var form = $('#product');
     $('#attribute_set_').attr('disabled', false);
     form.validate({
@@ -244,6 +245,11 @@ $('#add-article').click(function(e) {
            product_name: "required",
         },
         ignore: []
+    });
+    $('.product_inventory').each(function (index, el) {
+        $(this).rules("add", {
+            required: true
+        });
     });
     if(form.valid()){
         $('#product').submit();
