@@ -247,17 +247,16 @@ text {
     padding-left: 6rem;
     padding-right: 6rem;
 }
-#article_list thead tr {
+/*#article_list thead tr {
     display: grid;
     grid-template-columns: 55% 15% 20% 20%;
     margin-left: 6rem;
     margin-right: 6rem;
-}
+}*/
 #article_list tbody {
     margin-left: 6rem;
     margin-right: 6rem;
-    display: block;
-    /*width: 100%;*/
+    /*display: block;*/
 }
 #article_list .checkbox i, .blocs-3 i, .stock-types i {
     font-size: 22px;
@@ -266,14 +265,13 @@ text {
 .action i {
     font-size: 22px;
 }
-#article_list .article {
+/*#article_list .article {
     width: 15%;
-    /* text-align: left; */
-}
-#article_list .product_name {
+}*/
+/*#article_list .product_name {
     width: 35%;
     text-align: left;
-}
+}*/
 /*#article_list .article_price {
     width: 20%;
 }*/
@@ -288,7 +286,7 @@ text {
     border-bottom: 1px solid #044651;
 }
 #article_list td:first-child {
-    width: 2%;
+    padding-left: 4.5%;
 }
 .blocs-3, .stock-types {
     display: flex;
@@ -396,4 +394,10 @@ a.checkbox:hover {
 }
 label#add-img1 {
     cursor: pointer;
+}
+table.dataTable thead > tr > th {
+    padding-right: 0px;
+}
+td.sorting_1 {
+    text-align: left;
 }
