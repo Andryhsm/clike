@@ -154,7 +154,7 @@ function apply_codepromo() {
                         var price_item = $('#' + id).find('.product-price').children().length;
                         console.log(price_item)
                         var original_price = item.original_price; 
-                        if(price_item  > 2) {
+                        if(price_item  > 3) {
                             $('#' + id).find('.discount').html('(-' + item.discount + '%)');
                             $('#' + id).find('.original_price del').html(fixed_two_after_dot(original_price) + '<i class="fa fa-eur" aria-hidden="true"></i>');
                             $('#' + id).find('.real-price').html( fixed_two_after_dot(price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i>');
@@ -165,7 +165,9 @@ function apply_codepromo() {
                         }
                         else {
                             var data_real_price = $('#' + id).find('.real-price').attr('data-real-price');
-                            var html = '<span class="old-price discount" data-product-discount="0" style="color: rgb(67, 223, 230);">(-' + item.discount + '%)</span>';
+                            var product_id = $('#' + id).find('.product_id_item').attr('value');
+                            var html = '<input class="hidden product_id_item" type="text" value="'+ product_id +'" autocomplete="off">';
+                            html += '<span class="old-price discount" data-product-discount="0" style="color: rgb(67, 223, 230);">(-' + item.discount + '%)</span>';
                             html += '<span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="'+item.discount+'"><del>'+fixed_two_after_dot(original_price) +'<i class="fa fa-eur" aria-hidden="true"></i></del></span>';
                             html += '<span class="new-price real-price" data-price="'+fixed_two_after_dot(price)+'" data-real-price="' + data_real_price + '">'+fixed_two_after_dot(price.round(2)) +'<i class="fa fa-eur" aria-hidden="true"></i></span>';
                             html += '<input type="text" class="data-real-price hidden" name="real-price['+id+']" value="'+fixed_two_after_dot(price) +'" autocomplete="off">';
@@ -196,8 +198,10 @@ function reset_codepromo() {
         var id = $(el).attr('id');
         var real_price = parseFloat($(el).find('.real-price').attr('data-real-price'));
         var div_item = $(el).clone();
-        if($(el).find('.discount').attr('data-product-discount') == 0) {                                                                  
-            var html = '<span class="old-price real-price original_price" data-price="'+real_price+'" data-real-price="'+real_price+'">'+fixed_two_after_dot(real_price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i></span>';
+        if($(el).find('.discount').attr('data-product-discount') == 0) { 
+            var product_id = $(el).find('.product_id_item').attr('value');
+            var html = '<input class="hidden product_id_item" type="text" value="'+ product_id +'" autocomplete="off">';                                                                 
+            html += '<span class="old-price real-price original_price" data-price="'+real_price+'" data-real-price="'+real_price+'">'+fixed_two_after_dot(real_price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i></span>';
             html += '<input type="text" class="data-real-price hidden" name="real-price['+id+']" value="'+real_price+'" autocomplete="off">';
             $(el).find('.product-price').html(html);
         }
