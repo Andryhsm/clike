@@ -817,8 +817,6 @@ var reviews_length = $('#reviews').text().length ;
 			dataType: 'json'
 		})
 		.done(function(data) {
-			console.log("All product");
-			console.log(data);
 			var all_products = data.products;
 			var options = {
 				data: all_products,

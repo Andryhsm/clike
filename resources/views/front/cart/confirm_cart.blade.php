@@ -26,6 +26,7 @@
                                       <div class="info-facture mt-40">
                                             <div class="col-sm-7">     
                                                 {{Form::text('code_promo_name', '',['class'=>'required cart-paye', "placeholder" => "", "autocomplete" => "off" ])}}                                                
+
                                             </div>
                                             <div class="col-sm-5">
                                                 <a class="apply_codepromo fw-400" data-url="{!! route('apply_codepromo') !!}" style="line-height: 55px;"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Appliquer</a>
@@ -53,23 +54,22 @@
                                                 <h2>PAIEMENT SÉCURISÉ  <img class="image-secure" src="{!! URL::to('/').'/images/icon/cadenat.svg' !!}"/></h2>
                                             </div>
                                             <p class="secure-text pb-20">FAITES VOS ACHATS EN TOUTE CONFIANCE AVEC NOTRE PAIEMENT SÉCURISÉ</p>
-                                            
                                             <div class="form-group row mb-0">
                                                 <label class="col-lg-5 fw-400" for="cart_number">Numéro de carte *</label>
                                                 <div class="col-sm-7">     
-                                                    {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "id" => "input-credit-card", "maxlength" => "19"])}}
+                                                    {{Form::text('cart_number', ($card_info) ? $card_info->card_number : '',['class'=>'required cart-paye', "placeholder" => "", "id" => "input-credit-card", "maxlength" => "19"])}}
                                                 </div>
                                             </div>
                                             <div class="form-group row mb-0">
                                                 <label class="col-lg-5 fw-400" for="date_expirate">Date d’expiration *</label>
                                                 <div class="col-sm-7">     
-                                                    {{Form::text('date_expirate', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                    {{Form::text('date_expirate', ($card_info) ? $card_info->date_expirate : '',['class'=>'required cart-paye', "placeholder" => "", ])}}
                                                 </div>
                                             </div>
                                             <div class="form-group row mb-0">
                                                 <label class="col-lg-5 fw-400" for="verif_code">Code de vérification *</label>
                                                 <div class="col-sm-7">     
-                                                    {{Form::text('verif_code', '',['class'=>'required cart-paye', "placeholder" => "" ])}}
+                                                    {{Form::text('verif_code', ($card_info) ? $card_info->verification_code : '',['class'=>'required cart-paye', "placeholder" => "", ])}}
                                                 </div>
                                             </div>
                                             
@@ -173,4 +173,20 @@
         </div>
     </div>
     @include('front.layout.section-avantage')    
+   
 @stop
+
+@section('footer-script')
+    <script type="text/javascript">
+        var card_infos = '{!! json_encode($card_infos) !!}';
+        var card_infos_data = JSON.parse(card_infos);
+        console.log(card_infos_data);
+        var options = {
+            
+            data: card_infos_data,
+            
+            getValue: "card_number"
+        };
+        $("#input-credit-card").easyAutocomplete(options);
+     </script>
+@endsection

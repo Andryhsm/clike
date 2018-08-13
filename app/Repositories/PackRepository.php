@@ -43,5 +43,9 @@ class PackRepository
     {
         return $this->model->find($id)->delete();
     }
+    public function findPackByNameAndType($input){
+
+        return $this->model->Where('name', $input['name'])->Where('type', $input['type'])->first();
+    }
     
 }

@@ -73,7 +73,7 @@
                     <div id="toggle" style="display:none">
                         <section class="content-header">
                             <h3>
-                                Modification des Orders affichages des Instagrams Feeds
+                                Modification des Orders affichages des Instagrams Feeds || Veillez glisser pour ordonner 
                             </h3>
                         </section>
                         {!! Form::open(array('url' => 'admin/instagram/images' ,'class' => 'pull-right', 'method'=>'POST')) !!}
@@ -109,7 +109,6 @@
         </div>
     </div>
     
-       
 </section>
     <!-- Fin Liste des Instagrams feed -->
 @stop

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\CodePromoRepository;
+use App\Interfaces\CardInfoInterface;
 use Auth;
 
 class CheckoutController extends Controller
@@ -15,12 +16,15 @@ class CheckoutController extends Controller
 	protected $order_processor;
 	protected $cart;
 	protected $order_repository;
-	public function __construct(Processor $processor,OrderRepositoryInterface $order_repo, CodePromoRepository $code_promo_repo)
+	protected $card_info_repository;
+
+	public function __construct(Processor $processor,OrderRepositoryInterface $order_repo, CodePromoRepository $code_promo_repo, CardInfoInterface $card_info_repo)
 	{
 		$this->order_processor = $processor;
 		$this->cart = app('cart');
 		$this->order_repository = $order_repo;
 		$this->code_promo_repo = $code_promo_repo;
+		$this->card_info_repository = $card_info_repo;
 	}
 
 	public function storeOrderInfo(Request $request)
@@ -75,8 +79,9 @@ class CheckoutController extends Controller
 	{
 		Session::put('cart_product_info', $request->all());
 		$cart = $this->cart;
-		//dd($cart);
-        return view('front.cart.confirm_cart',compact('cart'));
+		$card_info = $this->card_info_repository->getById(auth()->user()->default_card_id);
+		$card_infos = $this->card_info_repository->getByUserId(auth()->user()->user_id);
+        return view('front.cart.confirm_cart',compact('cart', 'card_info', 'card_infos'));
 	}
 	
 	public function applyCodePromo(Request $request){ 

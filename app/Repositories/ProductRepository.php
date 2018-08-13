@@ -66,7 +66,6 @@ class ProductRepository implements ProductRepositoryInterface
                 $product_stock->product_count = $count;
                 $product_stock->product_stock_status_id = $status[$key];
                 $product_stock->save();
-                 
                 //product_stock_attribute_option
                 foreach ($attributes[$key] as $key1=>$attribute) {
                     $product_stock_attribute_option = new ProductStockAttributeOption();
@@ -110,7 +109,7 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function updateArticle($input,$product_images)
     {
-
+        //dd($input);
         try {
             //product
             $product_id = $input['product_id'];
@@ -137,7 +136,6 @@ class ProductRepository implements ProductRepositoryInterface
 					'meta_advice'=>$input['meta_advice'],
 				]
             );
-            
             
             //update
             //product_stock

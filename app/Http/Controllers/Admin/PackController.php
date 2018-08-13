@@ -50,9 +50,17 @@ class PackController extends Controller
      */
     public function store(Request $request)
     {
-        $pack = $this->pack_repository->save($request->all());
-        flash()->success(config('message.pack.add-success'));
-        return redirect('admin/pack');
+        $find_pack = $this->pack_repository->findPackByNameAndType($request->all());
+        if($find_pack == null){
+            $pack = $this->pack_repository->save($request->all());
+            flash()->success(config('message.pack.add-success'));
+            return redirect('admin/pack');
+        }
+        else{
+            return redirect()->back()->withErrors("Ce Pack existe déjà");
+        }
+        
+        
     }
 
     /**

@@ -36,7 +36,7 @@
                 <div class="col-lg-12">
                     <div class="form-group">
                         <label for="product_name">Nom de l'article</label>
-                        <input type="text" name="product_name" class="form-control required" id="product_name"
+                        <input type="text" data-msg="Vous devez entrer le nom de l'article!" name="product_name" class="form-control required" id="product_name"
                                value="{!! ($product) ? $product->translation->product_name : null !!}"
                                placeholder="Nom de l'article">
                         <input type="text" name="product_id" value="{!! ($product) ? $product->product_id : null !!}" class="hidden"/>
@@ -100,11 +100,11 @@
                         
                         <div class="form-group">
                             <label for="brand_name">Marque</label>
-                            <input type="text" name="brand_name" class="form-control required" id="brand_name" value="{!!($product) ? $product->brand_name: null !!}" placeholder="Marque">
+                            <input data-msg="Veuillez entrer la marque!" type="text" name="brand_name" class="form-control required" id="brand_name" value="{!!($product) ? $product->brand_name: null !!}" placeholder="Marque">
                         </div>
                         <div class="form-group">
                             <label for="attribute_set_">Gamme</label>
-                            <select {!! ($product) ? 'disabled="true"' : '' !!} name="attribute_set_id" id="attribute_set_" class="form-control required">
+                            <select data-msg="Veuillez sélectionner la gamme!" {!! ($product) ? 'readonly' : '' !!} name="attribute_set_id" id="attribute_set_" class="form-control required">
                                 <option value="" selected="selected">Selectionner gamme</option>
                                 @if (count($attribute_sets) > 0) 
                                     @foreach($attribute_sets as $attribute_set)
@@ -130,7 +130,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="original_price">Tarif</label>
-                                    <input type="text" name="original_price" class="form-control required" id="original_price" value="{!!($product) ? $product->original_price: null !!}" placeholder="Tarif">
+                                    <input data-msg="Veuillez entrer le tarif!" type="text" name="original_price" class="form-control required" id="original_price" value="{!!($product) ? $product->original_price: null !!}" placeholder="Tarif">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -162,7 +162,7 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            {{ Form::textarea('description', ($product) ? $product->translation->description : null , ['class' => 'form-control required', 'id' => 'description', 'placeholder' => 'Description']) }}
+                            {{ Form::textarea('description', ($product) ? $product->translation->description : null , ['class' => 'form-control required', 'id' => 'description', 'placeholder' => 'Description', 'data-msg' => 'Veuillez entrer la description de l\'article!']) }}
                         </div>
                         <div class="form-group">
                             <label for="meta_advice">Conseils d'entretien</label>
@@ -180,13 +180,14 @@
                         @if($product) 
                             @foreach($product->stocks as $key=>$stock)
                                 <div class="decline" data-count="{!! $key + 1 !!}">
-                                    <input name="product_stock_id[]" value="{!! $stock->product_stock_id !!}" class="hidden product_stock_id" />
+                                    <input name="product_stock_id[{!! $key + 1 !!}]" value="{!! $stock->product_stock_id !!}" class="hidden product_stock_id" />
                                     <div class="product-attribute">
                                         <?php
                                             $stock_option_ids=[];
                                             foreach($stock->options as $key1=>$option){
                                                 $stock_option_ids[] = $option->attribute_option_id;
                                             }
+                                            $key=$key+1;
                                         ?>
                                         @if($attribute_set)
                                             @foreach($attribute_set->attributes as $key1=>$attribute)
@@ -196,9 +197,9 @@
                                                     <div class="">
                                                         <input type="text" name="attribute_id[{!! $key !!}][]" class="hidden attribute_id" value="{!! $attribute->attribute_id !!}" />
                                                         
-                                                        <input type="text" name="product_stock_attribute_option_id[{!! $key !!}][]" class="hidden product_stock_attribute_option_id" value="{!! $stock->options[$key1]->product_stock_attribute_option_id !!}" />
+                                                        <input data="Veuillez sélectionner s'il vous plait" type="text" name="product_stock_attribute_option_id[{!! $key !!}][]" class="hidden product_stock_attribute_option_id" value="{!! $stock->options[$key1]->product_stock_attribute_option_id !!}" />
                                                 
-                                                            <select class="form-control attribute_option"
+                                                            <select data-msg="Ce champ est important!" class="form-control attribute_option required"
                                                                     name="attributes[{!! $key !!}][]"
                                                                     data-placeholder="Select option" style="width: 100%;">
                                                             @foreach($attribute->options as $option)
@@ -215,7 +216,7 @@
                                     
                                     <div class="form-group">                                       
                                         <label for="product_inventory">Inventaire</label>
-                                        <input type="text" name="product_inventory[]" class="product_inventory form-control required" value="{!! $stock->product_count !!}" placeholder="Inventaire">
+                                        <input data-range="1" data-msg="Vous avez oubliez l'inventaire ci-dessus!" type="text" name="product_inventory[{!! $key !!}]" class="product_inventory form-control required" value="{!! $stock->product_count !!}" placeholder="Inventaire">
                                     </div>
                                     
                                     <?php
@@ -239,8 +240,9 @@
                                         <p><i class="fa {!! $stock_class1 !!}" data_type="1" onclick="set_stock_type(this);"></i> En stock</p>
                                         <p><i class="fa {!! $stock_class2 !!}" data_type="2" onclick="set_stock_type(this);"></i> Derniers articles</p>
                                         <p><i class="fa {!! $stock_class3 !!}" data_type="3" onclick="set_stock_type(this);"></i> En rupture</p>
-                                        <input type="text" name="stock-types[]" class="hidden" value="{!! $stock->product_stock_status_id !!}"/>
+                                        <input type="text" name="stock-types[{!! $key !!}]" class="hidden" value="{!! $stock->product_stock_status_id !!}"/>
                                     </div>
+
                                 </div>
                             @endforeach    
                         @else
@@ -250,13 +252,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="product_inventory">Inventaire</label>
-                                    <input type="text" name="product_inventory[]" class="product_inventory form-control required" value="" placeholder="Inventaire">
+                                    <input type="text" name="product_inventory[1]" data-msg="Vous avez oubliez ci-dessus!" class="product_inventory form-control required" value="" placeholder="Inventaire">
                                 </div>
                                 <div class="stock-types ptb-20">
                                     <p><i class="fa fa-dot-circle-o" data_type="1" onclick="set_stock_type(this);"></i> En stock</p>
                                     <p><i class="fa fa-circle-o" data_type="2" onclick="set_stock_type(this);"></i> Derniers articles</p>
                                     <p><i class="fa fa-circle-o" data_type="3" onclick="set_stock_type(this);"></i> En rupture</p>
-                                    <input type="text" name="stock-types[]" class="hidden" value="1"/>
+                                    <input type="text" name="stock-types[1]" class="stock-types hidden" value="1"/>
                                 </div>
                             </div>
                         @endif
@@ -306,7 +308,7 @@
                 <input class="hidden" type="" name="categories_id" id="category_id" value="{!! ($product) ? $product->categories->first()->category_id : '' !!}">
                 <div class="col-lg-12">
                     <div class="ptb-20 mlr-10">
-                        <select name="category_child_id" id="category_child" class="form-control required">
+                        <select data-msg="Veuillez cocher puis sélectionner la catégorie de l'article!" name="category_child_id" id="category_child" class="form-control required">
                             @if($product)
                                 @foreach($category_childs as $child)
                                     <?php 

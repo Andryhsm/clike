@@ -268,6 +268,8 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                 Route::get('imprimer-pdf/{id}','CustomerController@printPdf')->name('customer-print-pdf');
                 Route::get('waiting-order/{id}','CustomerController@waitingOrder')->name('customer-waiting-order');
                 Route::get('canceled-order/{id}','CustomerController@canceledOrder')->name('customer-canceled-order');
+                Route::get('delete-card-info', 'CardInfoController@deleteCard')->name('delete-card-info');
+                Route::post('set-default-card-id', 'CardInfoController@setDefaultCardId')->name('set-default-card-id');
             });
             /*Route::post('manage-account', 'CustomerController@postManageAccount')->name('manage-account');
             Route::post('change-password', 'CustomerController@postResetPassword')->name('change-password');

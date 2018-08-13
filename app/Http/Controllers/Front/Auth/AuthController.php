@@ -18,6 +18,7 @@ use App\Repositories\PackRepository;
 use App\BrandTag;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use App\Models\Wishlist;
 
 class AuthController extends Controller
 {
@@ -26,6 +27,7 @@ class AuthController extends Controller
     protected $pack_repository;
     protected $region_repository;
     protected $brand_repository;
+    protected $wishlist;
 
     public function __construct(UserRepository $user_repository,RegionRepositoryInterface $region_repo, BrandRepositoryInterface $brand_repo, PackRepository $pack_repository){
         $this->user_repository=$user_repository;
@@ -129,11 +131,28 @@ class AuthController extends Controller
 					return redirect()->route('ask-product-search', ['keyword' => $ask_product['keyword']]);
 					//return Redirect::to('ask-product/search?keyword='.$ask_product['keyword']);
 				}
+                //pour les wishlists
+                if(Cookie::has('id_user_browser')){
+                    $id_user = Cookie::get('id_user_browser');
+                    $all_wishlist_products = (\Cache::has('wishlist_product')) ? \Cache::get('wishlist_product') : [];
+                    $products = (array_key_exists($id_user, $all_wishlist_products)) ? $all_wishlist_products[$id_user] : [];
+                    foreach ($products as $key => $product) {
+                        $wishlist = Wishlist::where('user_id',\Auth::user()->user_id)->where('product_id',$product->product->product_id)->first();                        
+                        if($wishlist == null){
+                            $list = new Wishlist();
+                            $list->user_id = \Auth::user()->user_id;
+                            $list->product_id = $product->product->product_id;
+                            $list->save();   
+                        }
+                    }
+                    \Cache::forget('wishlist_product');
+                    Cookie::forget('id_user_browser');
+                }
 				return redirect()->route('customer-commande-en-cours');
             }
         }
         return Redirect::back()
-            ->withInput()->withErrors('Your email address/password combination is incorrect.');
+            ->withInput()->withErrors('Votre combinaison adresse e-mail / mot de passe est incorrecte.');
     }
 
     public function saveUser(Request $request)

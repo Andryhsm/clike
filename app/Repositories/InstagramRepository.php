@@ -33,7 +33,6 @@ class InstagramRepository implements InstagramRepositoryInterface
         $this->model->created_by = auth()->guard('admin')->user()->admin_id;
         return $this->model->save();
     }
-
     public function updateById($id, $input,$image_name)
     {
         $this->model = $this->model->findOrNew($id);

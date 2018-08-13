@@ -16,9 +16,19 @@ class CardInfoRepository implements CardInfoInterface
 		$this->model = $card_info;
 	}
 
+	public function getById($card_info_id)
+	{
+		return $this->model->where('card_info_id', $card_info_id)->first();
+	}
+
 	public function getByUserId($user_id)
 	{
 		return $this->model->where('user_id', $user_id)->get();
+	}
+
+	public function deleteById($card_info_id) 
+	{
+		return $card_info = $this->model->where('card_info_id', $card_info_id)->delete();
 	}
 
 	public function save($input)
@@ -30,6 +40,24 @@ class CardInfoRepository implements CardInfoInterface
 				$this->model->verification_code = $input['verif_code'];
 				$this->model->date_expirate = Carbon::parse($input['date_expirate']);
 				$this->model->user_id = auth()->user()->user_id;
+				$this->model->save();
+				$user_id = Auth()->user()->user_id;
+		    	$user = \App\User::find($user_id);
+		    	$user->default_card_id = $this->model->card_info_id;
+		    	$user->save();
+			}
+		}
+	}
+
+	public function saveForMerchant($input, $user_id)
+	{
+		if($input['cart_number'] != null) {
+			$card_info = $this->model->where('card_number', $input['cart_number'])->first();
+			if($card_info == null) {
+				$this->model->card_number = $input['cart_number'];
+				$this->model->verification_code = $input['verif_code'];
+				$this->model->date_expirate = Carbon::parse($input['date_expirate']);
+				$this->model->user_id = $user_id;
 				$this->model->save();
 			}
 		}

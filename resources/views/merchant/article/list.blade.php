@@ -68,9 +68,11 @@
                     <table id="article_list" class="article">
                         <thead class="text-uppercase">
                             <tr>
-                                <th>ARTICLE</th>
-                                <th>PRIX</th>
-                                <th>INVENTAIRE</th>
+                                <th></th>
+                                <th></th>
+                                <th style="text-align: left; width: 30%;">ARTICLE</th>
+                                <th style="width: 15%;">PRIX</th>
+                                <th style="width: 15%;">INVENTAIRE</th>
                                 <th class="no-sort"></th>
                             </tr>
                         </thead>

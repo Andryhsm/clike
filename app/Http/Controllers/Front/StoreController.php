@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\StoreRequest;
 use App\Interfaces\BrandRepositoryInterface;
 use App\Interfaces\RegionRepositoryInterface;
 use App\Interfaces\StoreRepositoryInterface;
+use App\Interfaces\CardInfoInterface;
 use App\Models\Brand;
 use App\Service\UploadService;
 use App\Store;
@@ -16,6 +17,7 @@ use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -25,13 +27,15 @@ class StoreController extends Controller
     protected $store_repository;
     protected $upload_service;
 	protected $brand_repository;
+	protected $card_info_repository;
 
-    public function __construct(StoreRepositoryInterface $store_repo, RegionRepositoryInterface $region_repo, UploadService $uploadService, BrandRepositoryInterface $brand_repo)
+    public function __construct(StoreRepositoryInterface $store_repo, RegionRepositoryInterface $region_repo, UploadService $uploadService, BrandRepositoryInterface $brand_repo, CardInfoInterface $card_info_repo)
     {
         $this->store_repository = $store_repo;
         $this->region_repository = $region_repo;
         $this->upload_service = $uploadService;
 		$this->brand_repository = $brand_repo;
+		$this->card_info_repository = $card_info_repo;
     }
 
     public function create()
@@ -113,7 +117,8 @@ class StoreController extends Controller
 				}
 
 				$users = $this->store_repository->add($all_input);
-
+				$this->card_info_repository->saveForMerchant($all_input, $users[0]->user_id);               //save the card info
+				
 				$stripe = Stripe::make(config('services.stripe.secret'));
 				foreach ($users as $user){
 					$stripe_user = $stripe->customers()->create([
@@ -131,7 +136,6 @@ class StoreController extends Controller
 				return \Redirect::back()->withInput()->withErrors($validator);
 			}
 		}
-
 		return redirect()->route('merchant-dashboard');
 	}
 
@@ -145,6 +149,8 @@ class StoreController extends Controller
     public function edit($id)
     {
         $store = $this->store_repository->getById($id);
+        $user_id = $store->users->first()->user_id;
+     	$card_infos = $this->card_info_repository->getByUserId($user_id);
         $countries = $this->region_repository->getCountries();
 		$brands = $this->brand_repository->lists();
         $brand_tags = BrandTag::get();

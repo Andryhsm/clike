@@ -3427,3 +3427,13 @@ label.error_ {
 .content-cart input {
   font-size: 22px;
 }
+.content-cart .easy-autocomplete-container ul li, .easy-autocomplete-container ul .eac-category {
+    font-size: 18px;
+}
+.decline {
+    border-bottom: 1px solid #104651;
+    margin-bottom: 20px;
+}
+.decline:last-child {
+    border-bottom: none;
+}
