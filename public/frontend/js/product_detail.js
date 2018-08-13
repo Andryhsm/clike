@@ -367,7 +367,7 @@ if (description_length > 1200) {
         
         $('#product-stock-id').val(product_stock_id);
         if(product_stock_status_id == 3) {
-            toastr.error("Désolé, ceci est en rupture de stock!");
+            toastr.error("Désolé, ceci n'est plus disponible dans le stock!");
         } else {
             if($('.containt-product-info').find('.invalid').length == 0) {
                 $('#product_form').submit();

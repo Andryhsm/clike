@@ -55,7 +55,7 @@ class CheckoutController extends Controller
 			//return redirect("checkout/order-confirmed")->with('order_id',$order->order_id);
 		} catch (\Exception $e) {
 			//dd($e->getMessage());
-			flash()->error("Erreur d'enregistrement de votre commande, veuillez essayer ultérieurement!");
+			flash()->error("Erreur d'enrégistrement de votre commande, veuillez essayer ultérieurement!");
 			return redirect()->route("cart");
 		}
 	}
