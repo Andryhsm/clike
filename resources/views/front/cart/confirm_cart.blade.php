@@ -109,6 +109,7 @@
                                                         $categories = [];
                                                         foreach ($product->categories as $category) $categories[] = $category->category_id;
                                                     ?>
+                                                    <input class="hidden product_id_item" type="text" value="{!! $item->getProduct()->product_id !!}" autocomplete="off">
                                                     @if($product->promotional_price != null)
                                                         <span class="old-price discount" data-product-discount="{!! $product->discount !!}" style="color: rgb(67, 223, 230);">(-{!! $product->discount !!}%)</span>
                                                         <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>

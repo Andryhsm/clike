@@ -33,6 +33,7 @@ class CheckoutController extends Controller
 		$cart_product_info = Session::get('cart_product_info');
 		$this->cart->setCustomer(Auth::user());
 		foreach ($request["real-price"] as $item_id => $price) {
+			//dd($price);
 			$item = $this->cart->item($item_id);
 			$item->setOriginalPrice($price);
 		}
@@ -102,7 +103,7 @@ class CheckoutController extends Controller
 				foreach($request['data'] as $item){
 					$cart_item = $this->cart->item($item['item_id']);
 					if(in_array($cart_item->getId(), $product_ids) || $this->compareTwoArrays($cart_item->getCategoryIds(), $category_ids)) {
-						$old_prices[$item['item_id']] = $item['old_price'];
+						$old_prices[$item['product_id']] = $item['old_price'];
 						if($item['quantity'] > $code_promo->quantity_max) 
 							$exceed_quantity_item[] = $cart_item->getName();
 

@@ -127,7 +127,8 @@ function apply_codepromo() {
         data.push({
             item_id: $(el).attr('id'), 
             quantity:  $(el).find('.quantity').val(),
-            old_price : $(el).find('.real-price').attr('data-real-price')
+            old_price:  $(el).find('.real-price').attr('data-real-price'),
+            product_id : $(el).find('.product_id_item').attr('value')
         });
     });
     console.log(JSON.stringify(data));
@@ -149,10 +150,6 @@ function apply_codepromo() {
                     $.each(response.data, function(id, item) {
                         var id = item.item_id;
                         var price = item['real_price'];
-                        // $('#' + id).find('.real-price').html( fixed_two_after_dot(price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i>');
-                        // $('#' + id).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
-                        // $('#' + id).find('.real-price').data('price', '' + fixed_two_after_dot(price));
-                        // $('#' + id).find('input.data-real-price').val(price);
 
                         var price_item = $('#' + id).find('.product-price').children().length;
                         console.log(price_item)
@@ -164,6 +161,7 @@ function apply_codepromo() {
                             $('#' + id).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
                             $('#' + id).find('.real-price').data('price', '' + fixed_two_after_dot(price));
                             $('#' + id).find('input.data-real-price').val(price);
+                            $('#' + id).find('input.data-real-price').attr('value', price);
                         }
                         else {
                             var data_real_price = $('#' + id).find('.real-price').attr('data-real-price');
@@ -175,10 +173,11 @@ function apply_codepromo() {
                         }
 
                     });
-                    calcul_total_price();                    
+                    calcul_total_price(); 
+                    toastr.success('Code promo appliqué avec succès!');                   
                     if(response.exceed_quantity_item != '') 
                         toastr.warning("Les produits " + response.exceed_quantity_item + " ont dépassé la quantité maximale autorisée par le code promo. Si vous ne diminuez pas la quantité, seuls les " + response.quantity_max + " auront le prix rabaissé et le reste auront le prix original");
-                    toastr.success('Code promo appliqué avec succès!');
+                    
                 }
                 else toastr.warning("Aucun produit assigné à ce code.");
             }
