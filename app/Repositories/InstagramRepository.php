@@ -73,4 +73,5 @@ class InstagramRepository implements InstagramRepositoryInterface
             $this->model->save();
         }
     }
+
 }

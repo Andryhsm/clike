@@ -42,7 +42,7 @@ class InstagramController extends Controller
 	{
 		$rules = array(
 			'title' => 'required',
-			'image' => 'mimes:jpeg,jpg,png,gif|max:10000' // max 10000kb
+			'image' => 'mimes:jpeg,jpg,png,gif|max:10000|required' // max 10000kb
 		);
 		$validator = Validator::make($request->all(), $rules);
 		if ($validator->fails()) {
@@ -68,16 +68,16 @@ class InstagramController extends Controller
 
 		$rules = array(
 			'title' => 'required',
-			'image' => 'mimes:jpeg,jpg,png,gif' // max 10000kb
+			'image' => 'mimes:jpeg,jpg,png,gif|required' // max 10000kb
 		);
 		$validator = Validator::make($request->all(), $rules);
 		if ($validator->fails()) {
 			return Redirect::back()->withInput()->withErrors($validator);
 		} else {
           
+			$this->deleteUploadedImage($id);
             $image_name['image']=$this->uploadImage('image');
 			$instagram=$this->instagram_repository->updateById($id,$request->all(),$image_name);
-
             flash()->success(config('message.instagram.update-success'));
             return Redirect('admin/instagram');
 			
@@ -109,8 +109,8 @@ class InstagramController extends Controller
 	}
 	public function destroy($id)
 	{
+		$this->deleteUploadedImage($id);
 		if ($this->instagram_repository->deleteById($id)) {
-
 				flash()->success(config('message.instagram.delete-success'));
 				return Redirect('admin/instagram');
 		}
@@ -122,4 +122,12 @@ class InstagramController extends Controller
 		return Redirect('admin/instagram');
 			
 	}
+
+    public function deleteUploadedImage($id){
+    	$instagram = $this->instagram_repository->getById($id);
+        $path = public_path(Instagram::Instagram_IMAGE_PATH.$instagram->image);
+        if (file_exists($path)) {
+           unlink($path);
+        }
+    }
 }
