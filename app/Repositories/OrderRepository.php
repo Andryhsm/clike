@@ -58,8 +58,7 @@ class OrderRepository implements OrderRepositoryInterface
 		$order_status_history->user_name = $cart->getCustomer()->first_name." ".$cart->getCustomer()->last_name;
 		$order_status_history->created_at = Carbon::now();
 		$order_status_history->save();
-		Session::forget('quantity_max');
-		Session::forget('old_prices');
+		
 		return $this->model;
 	}
 

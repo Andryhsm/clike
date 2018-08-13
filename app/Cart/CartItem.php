@@ -287,7 +287,7 @@ class CartItem implements Arrayable
         $total = 0;
         if(Session::get('old_prices') != null) 
             $old_prices[] = Session::get('old_prices');
-        if( $this->getQuantity() > Session::get('quantity_max'))
+        if( $this->getQuantity() > Session::get('quantity_max')){
             foreach ($old_prices as $key => $value) {
                 if($this->id == $key) {
                     $price1 = $this->getOriginalPrice() * Session::get('quantity_max');
@@ -295,7 +295,10 @@ class CartItem implements Arrayable
                     $total = $price1 + $price2;
                 }
             }
+            $this->price = $total / $this->getQuantity();
+        }
         else $total = $this->getOriginalPrice() * $this->getQuantity();
+        //dd($total.' ******');
         return $total;
     }
 

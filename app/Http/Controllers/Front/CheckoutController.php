@@ -48,6 +48,8 @@ class CheckoutController extends Controller
 			$order = $this->order_processor->placeOrder($this->cart, $request->all());
 			$this->cart->clear();
 			Session::forget('cart_product_info');
+			Session::forget('quantity_max');
+			Session::forget('old_prices');
 			return redirect()->route('customer-commande-en-cours');
 			//return redirect("checkout/order-confirmed")->with('order_id',$order->order_id);
 		} catch (OrderException $e) {
