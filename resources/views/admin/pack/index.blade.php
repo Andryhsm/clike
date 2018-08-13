@@ -29,8 +29,8 @@
                             <thead>
                             <tr>
                                 <th>Nom</th>
-                                <th>Price</th>
                                 <th>Type</th>
+                                <th>Price</th>
                                 <th class="no-sort">Action</th>
                             </tr>
                             </thead>
@@ -38,8 +38,8 @@
                             @foreach($packs->data as $pack)
                                 <tr>
                                     <td>{!! $pack->name !!}</td>
-                                    <td>{!! $pack->price !!}</td>
                                     <td>{!! $pack->type !!}</td>
+                                    <td>{!! $pack->price !!}</td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ URL::to('admin/pack/' . $pack->pack_id . '/edit') }}"

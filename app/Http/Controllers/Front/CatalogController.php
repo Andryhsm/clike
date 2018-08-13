@@ -117,10 +117,10 @@ class CatalogController extends Controller
                     $product_tags[$tag->tag_id] = $tag->tag;
                 }
             }
-            if (count($product->brand) > 0) {
+/*            if (count($product->brand) > 0) {
                  $brand_id = $product->brand->parent_id==null ? $product->brand->brand_id : $product->brand->parent->brand_id;
                 $product_brands[$brand_id] = ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name;
-            }
+            }*/
         }
 
         if(Session::has('prices_array')){ 

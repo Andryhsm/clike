@@ -54,7 +54,7 @@ class PagesController extends Controller
 		$packs_data = $this->pack_repository->getAll();
 		$packs = [];
 		foreach ($packs_data as $key => $pack) {
-			$packs[$pack->name][$pack->type] = $pack->price;
+			$packs[$pack->name][$pack->type] = $pack;
 		}
 		return view('front.pages.sale_with_clickee', compact('product_count', 'user_count', 'store_count', 'packs'));
 	}

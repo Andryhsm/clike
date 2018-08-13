@@ -92,10 +92,22 @@
                             <!-- <label for="content-heading">Type de bannière</label> -->
                             {!! Form::select('is_subbanner', ['4' => 'Slider'],(isset($banner)) ? $banner->is_subbanner : null,['class'=>'form-control required','id'=>'is_subbanner']) !!}
                         </div>
+                        
                         <div class="form-group">
                             <label for="page_title">Nom slider</label>
                             <input type="text" name="banner_title" class="form-control required" id="page_title"
                                    placeholder="Nom bannière">
+                        </div>
+                        <div class="form-group hidden">
+                            <label for="title">Titre</label>
+                            <input type="text" name="title" class="form-control required" id="title" value="null"
+                                   placeholder="Titre">
+                        </div>
+                         </div>
+                        <div class="form-group hidden">
+                            <label for="subtitle">Sous titre</label>
+                            <input type="text" name="subtitle" class="form-control required" id="subtitle" value="null"
+                                   placeholder="Sous titre">
                         </div>
                         <div class="form-group">
                             <label for="page_title">Alt slider</label>
