@@ -97,6 +97,14 @@
                             <label for="page_title">Nom slider</label>
                             {!! Form::text('banner_title', null,array('class'=>'form-control required', 'placeholder'=>'Banner Name')) !!}
                         </div>
+                        <div class="form-group hidden">
+                            <label for="subtitle">Sous titre</label>
+                            {!! Form::text('subtitle', null,array('class'=>'form-control required', 'value'=>'null')) !!}
+                        </div>
+                        <div class="form-group hidden">
+                            <label for="title">Titre</label>
+                            {!! Form::text('title', null,array('class'=>'form-control required','value'=>'null')) !!}
+                        </div>
                          <div class="form-group">
                             <label for="page_title">Alt slider</label>
                             {!! Form::text('alt', null,array('class'=>'form-control ', 'placeholder'=>'Alt slider')) !!}
