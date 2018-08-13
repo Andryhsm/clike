@@ -25,7 +25,7 @@
                                         </div>
                                       <div class="info-facture mt-40">
                                             <div class="col-sm-7">     
-                                                {{Form::text('cart_number', '',['class'=>'required cart-paye', "placeholder" => "", "autocomplete" => "off" ])}}                                                
+                                                {{Form::text('code_promo_name', '',['class'=>'required cart-paye', "placeholder" => "", "autocomplete" => "off" ])}}                                                
                                             </div>
                                             <div class="col-sm-5">
                                                 <a class="apply_codepromo fw-400" data-url="{!! route('apply_codepromo') !!}" style="line-height: 55px;"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;Appliquer</a>
@@ -109,10 +109,8 @@
                                                         $categories = [];
                                                         foreach ($product->categories as $category) $categories[] = $category->category_id;
                                                     ?>
-                                                    <input type="text" name="item_category_id" class="item_category_id hidden" value="{!! join(',', $categories) !!}">
-                                                    <input type="text" name="item_product_id" class="item_product_id hidden" value="{!! $product->product_id !!}">
                                                     @if($product->promotional_price != null)
-                                                        <span class="old-price discount" style="color: rgb(67, 223, 230);">(-{!! $product->discount !!}%)</span>
+                                                        <span class="old-price discount" data-product-discount="{!! $product->discount !!}" style="color: rgb(67, 223, 230);">(-{!! $product->discount !!}%)</span>
                                                         <span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
                                                         <span class="new-price real-price" data-price="{!! $product->promotional_price !!}" data-real-price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
                                                         <input type="text" class="data-real-price hidden" name="real-price[{!! $item_id !!}]" value="{!! $product->promotional_price !!}" autocomplete="off">
