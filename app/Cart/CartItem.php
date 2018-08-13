@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use ShoppingCart\Exceptions\CartInvalidAttributesException;
 use App;
 use App\Exceptions\CartException;
+use Illuminate\Support\Facades\Session;
 
 class CartItem implements Arrayable
 {
@@ -282,8 +283,18 @@ class CartItem implements Arrayable
 
     public function getTotal()
     {
-        $total = $this->getOriginalPrice() * $this->getQuantity();
-        return $total;
+        if(Session::get('old_prices') != null && Session::get('old_prices') != null && $this->getQuantity() > Session::get('quantity_max')) {
+            foreach (Session::get('old_prices') as $key => $value) {
+                if($this->id == $key) {
+                    $price1 = $this->getOriginalPrice() * Session::get('quantity_max');
+                    $price2 = $value * ($this->getQuantity() - Session::get('quantity_max'));
+                    $this->original_price = ($price1 + $price2) / $this->getQuantity();
+                }
+            }                
+            
+        }
+        return $this->getOriginalPrice() * $this->getQuantity();
+        
     }
 
     public function getOriginalPrice()

@@ -69,10 +69,15 @@ $(function() {
         event.preventDefault();
         delete_cart($(this));
     });
+    $('.cart-paye[name="code_promo_name"]').keyup(function(){
+        if($('.cart-paye[name="code_promo_name"]').val() == '') 
+            $('.apply_codepromo i').attr('class','fa fa-circle-o');
+
+    });
 
     $('.apply_codepromo').on('click', 'i', function(event){
         event.preventDefault();
-        if($('.cart-paye[name="cart_number"]').val() != ''){
+        if($('.cart-paye[name="code_promo_name"]').val() != ''){
             if ($(this).hasClass('fa-circle-o')) {
                 $(this).removeClass('fa-circle-o');
                 $(this).addClass('fa-dot-circle-o');
@@ -112,13 +117,19 @@ function apply_codepromo() {
     $('.item_product_id').each(function(i, el) {
         product_ids.push($(el).val());
     });
-    var code_promo_name = $('.cart-paye[name="cart_number"]').val();
+    var code_promo_name = $('.cart-paye[name="code_promo_name"]').val();
     console.log(code_promo_name)
     var url = $('.apply_codepromo').attr('data-url');
     //console.log(url)
     var data = [];
-    $('.article:not(:last-child)').each(function(i, el) {
-        data.push($(el).attr('id'));
+    $('.article:not(:last-child)').each(function(i, el) {  
+        console.log($(el).attr('id') + ' ' + $(el).find('.quantity').val());
+        data.push({
+            item_id: $(el).attr('id'), 
+            quantity:  $(el).find('.quantity').val(),
+            old_price:  $(el).find('.real-price').attr('data-real-price'),
+            product_id : $(el).find('.product_id_item').attr('value')
+        });
     });
     console.log(JSON.stringify(data));
     $.ajax({
@@ -130,22 +141,45 @@ function apply_codepromo() {
             $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
         },
         success: function(response, status) {
-            console.log('response')
-            console.log(JSON.stringify(response.data))
-            console.log(response.error)
+            // console.log(JSON.stringify(response.data))
+            // console.log(response.error)
+            // console.log(response.exceed_quantity_item)
             if(response.error) toastr.error(response.error);
             else {
                 if(response.data != '') {
                     $.each(response.data, function(id, item) {
                         var id = item.item_id;
                         var price = item['real_price'];
-                        $('#' + id).find('.real-price').html( fixed_two_after_dot(price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i>');
-                        $('#' + id).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
-                        $('#' + id).find('.real-price').data('price', '' + fixed_two_after_dot(price));
-                        $('#' + id).find('input.data-real-price').val(price);
+
+                        var price_item = $('#' + id).find('.product-price').children().length;
+                        console.log(price_item)
+                        var original_price = item.original_price; 
+                        if(price_item  > 3) {
+                            $('#' + id).find('.discount').html('(-' + item.discount + '%)');
+                            $('#' + id).find('.original_price del').html(fixed_two_after_dot(original_price) + '<i class="fa fa-eur" aria-hidden="true"></i>');
+                            $('#' + id).find('.real-price').html( fixed_two_after_dot(price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i>');
+                            $('#' + id).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
+                            $('#' + id).find('.real-price').data('price', '' + fixed_two_after_dot(price));
+                            $('#' + id).find('input.data-real-price').val(price);
+                            $('#' + id).find('input.data-real-price').attr('value', price);
+                        }
+                        else {
+                            var data_real_price = $('#' + id).find('.real-price').attr('data-real-price');
+                            var product_id = $('#' + id).find('.product_id_item').attr('value');
+                            var html = '<input class="hidden product_id_item" type="text" value="'+ product_id +'" autocomplete="off">';
+                            html += '<span class="old-price discount" data-product-discount="0" style="color: rgb(67, 223, 230);">(-' + item.discount + '%)</span>';
+                            html += '<span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="'+item.discount+'"><del>'+fixed_two_after_dot(original_price) +'<i class="fa fa-eur" aria-hidden="true"></i></del></span>';
+                            html += '<span class="new-price real-price" data-price="'+fixed_two_after_dot(price)+'" data-real-price="' + data_real_price + '">'+fixed_two_after_dot(price.round(2)) +'<i class="fa fa-eur" aria-hidden="true"></i></span>';
+                            html += '<input type="text" class="data-real-price hidden" name="real-price['+id+']" value="'+fixed_two_after_dot(price) +'" autocomplete="off">';
+                            $('#' + id).find('.product-price').html(html);
+                        }
+
                     });
-                    calcul_total_price();
-                    toastr.success('Code promo appliqué avec succès!');
+                    calcul_total_price(); 
+                    toastr.success('Code promo appliqué avec succès!');                   
+                    if(response.exceed_quantity_item != '') 
+                        toastr.warning("Les produits " + response.exceed_quantity_item + " ont dépassé la quantité maximale autorisée par le code promo. Si vous ne diminuez pas la quantité, seuls les " + response.quantity_max + " auront le prix rabaissé et le reste auront le prix original");
+                    
                 }
                 else toastr.warning("Aucun produit assigné à ce code.");
             }
@@ -161,11 +195,27 @@ function apply_codepromo() {
 
 function reset_codepromo() {
     $('.article:not(:last-child)').each(function(i, el) {
+        var id = $(el).attr('id');
         var real_price = parseFloat($(el).find('.real-price').attr('data-real-price'));
-        $(el).find('.real-price').html( real_price + '<i class="fa fa-eur" aria-hidden="true"></i>');
-        $(el).find('.real-price').attr('data-price', '' + fixed_two_after_dot(real_price));
-        $(el).find('.real-price').data('price', '' + fixed_two_after_dot(real_price));
-        $(el).find('input.data-real-price').val(real_price);
+        var div_item = $(el).clone();
+        if($(el).find('.discount').attr('data-product-discount') == 0) { 
+            var product_id = $(el).find('.product_id_item').attr('value');
+            var html = '<input class="hidden product_id_item" type="text" value="'+ product_id +'" autocomplete="off">';                                                                 
+            html += '<span class="old-price real-price original_price" data-price="'+real_price+'" data-real-price="'+real_price+'">'+fixed_two_after_dot(real_price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i></span>';
+            html += '<input type="text" class="data-real-price hidden" name="real-price['+id+']" value="'+real_price+'" autocomplete="off">';
+            $(el).find('.product-price').html(html);
+        }
+        else {
+            var original_price = $(el).find('.original_price').attr('data-price');
+            var discount = $(el).find('.discount').attr('data-product-discount');
+            $(el).find('.original_price del').html(fixed_two_after_dot(original_price) + '<i class="fa fa-eur" aria-hidden="true"></i>');
+            $(el).find('.discount').html('(-'+discount+'%)')
+            $(el).find('.real-price').html( real_price + '<i class="fa fa-eur" aria-hidden="true"></i>');
+            $(el).find('.real-price').attr('data-price', '' + fixed_two_after_dot(real_price));
+            $(el).find('.real-price').data('price', '' + fixed_two_after_dot(real_price));
+            $(el).find('input.data-real-price').val(real_price);  
+        }
+        
     });
     calcul_total_price();
     toastr.info("Code annulé avec succès!"); 

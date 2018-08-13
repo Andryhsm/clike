@@ -29,9 +29,11 @@ class CheckoutController extends Controller
 
 	public function storeOrderInfo(Request $request)
 	{
+		//dd($request['code_promo_name']);
 		$cart_product_info = Session::get('cart_product_info');
 		$this->cart->setCustomer(Auth::user());
 		foreach ($request["real-price"] as $item_id => $price) {
+			//dd($price);
 			$item = $this->cart->item($item_id);
 			$item->setOriginalPrice($price);
 		}
@@ -47,6 +49,8 @@ class CheckoutController extends Controller
 			$order = $this->order_processor->placeOrder($this->cart, $request->all());
 			$this->cart->clear();
 			Session::forget('cart_product_info');
+			Session::forget('quantity_max');
+			Session::forget('old_prices');
 			return redirect()->route('customer-commande-en-cours');
 			//return redirect("checkout/order-confirmed")->with('order_id',$order->order_id);
 		} catch (OrderException $e) {
@@ -94,17 +98,34 @@ class CheckoutController extends Controller
 				$product_ids = $this->createArrayFromCollection($code_promo->products, 'product_id');
 				$category_ids = $this->createArrayFromCollection($code_promo->categories, 'category_id');
 				$data = [];
-				foreach($request['data'] as $cart_item_id){
-					$cart_item = $this->cart->item($cart_item_id);
+				$exceed_quantity_item = []; 
+				$old_prices = [];
+				foreach($request['data'] as $item){
+					$cart_item = $this->cart->item($item['item_id']);
 					if(in_array($cart_item->getId(), $product_ids) || $this->compareTwoArrays($cart_item->getCategoryIds(), $category_ids)) {
-						//$exceed_quantity_item[] = $cart_item->getName();
+						$old_prices[$item['product_id']] = $item['old_price'];
+						if($item['quantity'] > $code_promo->quantity_max) 
+							$exceed_quantity_item[] = $cart_item->getName();
+
 						$price = $cart_item->getOriginalPrice() - $cart_item->getOriginalPrice() * $code_promo->discount /100;
-						$item = array("item_id"=>$cart_item_id, "real_price"=>$price);
-						$data[] = $item;
+						$item = array(
+									"item_id" => $item['item_id'], 
+									"real_price" => $price,
+									"original_price" => $cart_item->getOriginalPrice(),
+									"discount" => $code_promo->discount
+								);
+						$data[] = $item;										
 					}
 				}
-
-				return response()->json(['data' => $data]);
+			
+				Session::put('quantity_max', $code_promo->quantity_max);
+				Session::put('old_prices', $old_prices);
+				//dd(Session::get('old_prices'));
+				return response()->json([
+										'data' => $data, 
+										'exceed_quantity_item' => join(', ', $exceed_quantity_item),
+										'quantity_max' => $code_promo->quantity_max
+									]);
 			}
 		}
 		else return response()->json(['error' => "Code inexistant."]);
