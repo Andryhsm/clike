@@ -118,7 +118,6 @@ function apply_codepromo() {
         product_ids.push($(el).val());
     });
     var code_promo_name = $('.cart-paye[name="code_promo_name"]').val();
-    console.log(code_promo_name)
     var url = $('.apply_codepromo').attr('data-url');
     //console.log(url)
     var data = [];
@@ -131,7 +130,7 @@ function apply_codepromo() {
             product_id : $(el).find('.product_id_item').attr('value')
         });
     });
-    console.log(JSON.stringify(data));
+    //console.log(JSON.stringify(data));
     $.ajax({
         url: url,
         type: 'POST',
@@ -141,9 +140,6 @@ function apply_codepromo() {
             $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
         },
         success: function(response, status) {
-            // console.log(JSON.stringify(response.data))
-            // console.log(response.error)
-            // console.log(response.exceed_quantity_item)
             if(response.error) toastr.error(response.error);
             else {
                 if(response.data != '') {
@@ -152,7 +148,6 @@ function apply_codepromo() {
                         var price = item['real_price'];
 
                         var price_item = $('#' + id).find('.product-price').children().length;
-                        console.log(price_item)
                         var original_price = item.original_price; 
                         if(price_item  > 3) {
                             $('#' + id).find('.discount').html('(-' + item.discount + '%)');
@@ -175,7 +170,7 @@ function apply_codepromo() {
                         }
 
                     });
-                    calcul_total_price(); 
+                    calcul_total_price(response.data, response.quantity_max); 
                     toastr.success('Code promo appliqué avec succès!');                   
                     if(response.exceed_quantity_item != '') 
                         toastr.warning("Les produits " + response.exceed_quantity_item + " ont dépassé la quantité maximale autorisée par le code promo. Si vous ne diminuez pas la quantité, seuls les " + response.quantity_max + " auront le prix rabaissé et le reste auront le prix original");
@@ -296,11 +291,21 @@ function store_quantity_in_session(url) {
         });
 }
 
-function calcul_total_price() {
+function calcul_total_price(data, quantity_max) {
+    console.log(JSON.stringify(data))
+    console.log(quantity_max)
     total_amount = 0.00;
     $('.real-price').each(function(index, el) {
+        var id = $(el).closest('.article').attr('id');
         var quantity = $(this).parents('.cart-product').find('.quantity').val();
-        var price = $(this).data('price');
+        var price = 0;
+        $.each(data, function(i, val) {
+            var rest = quantity - quantity_max;
+            if(id == val.item_id && quantity > quantity_max) 
+                price = (quantity_max * val.real_price + rest * val.original_price)/quantity;
+        });
+        
+        if(price == 0) price = $(this).data('price');
         var amount = parseFloat(price);
         var total_peer_product = amount * parseInt(quantity);
         total_amount += total_peer_product;
