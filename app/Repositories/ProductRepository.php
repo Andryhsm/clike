@@ -109,7 +109,7 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function updateArticle($input,$product_images)
     {
-        dd($input);
+        //dd($input);
         try {
             //product
             $product_id = $input['product_id'];
