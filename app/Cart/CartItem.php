@@ -7,7 +7,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
 use ShoppingCart\Exceptions\CartInvalidAttributesException;
 use App;
-use App\Exceptions\CartException;
+//use App\Exceptions\CartException;
 
 class CartItem implements Arrayable
 {

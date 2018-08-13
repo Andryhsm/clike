@@ -29,30 +29,32 @@ class CheckoutController extends Controller
 
 	public function storeOrderInfo(Request $request)
 	{
-		$cart_product_info = Session::get('cart_product_info');
-		$this->cart->setCustomer(Auth::user());
-		foreach ($request["real-price"] as $item_id => $price) {
-			$item = $this->cart->item($item_id);
-			$item->setOriginalPrice($price);
-		}
-		foreach ($request->input("qty", []) as $item_id => $qty) {
-			$item = $this->cart->item($item_id);
-			if ($qty == 0) {
-				$this->cart->remove($item_id);
-			} else {
-				$item->setQuantity($qty);
-			}
-		}
 		try {
+		
+			$cart_product_info = Session::get('cart_product_info');
+			$this->cart->setCustomer(Auth::user());
+			foreach ($request["real-price"] as $item_id => $price) {
+				$item = $this->cart->item($item_id);
+				$item->setOriginalPrice($price);
+			}
+			foreach ($request->input("qty", []) as $item_id => $qty) {
+				$item = $this->cart->item($item_id);
+				if ($qty == 0) {
+					$this->cart->remove($item_id);
+				} else {
+					$item->setQuantity($qty);
+				}
+			}
+
 			$order = $this->order_processor->placeOrder($this->cart, $request->all());
 			$this->cart->clear();
 			Session::forget('cart_product_info');
 			return redirect()->route('customer-commande-en-cours');
 			//return redirect("checkout/order-confirmed")->with('order_id',$order->order_id);
-		} catch (OrderException $e) {
-			dd($e->getMessage());
-			flash()->error($e->getMessage());
-			return redirect("cart");
+		} catch (\Exception $e) {
+			//dd($e->getMessage());
+			flash()->error("Erreur d'enregistrement de votre commande, veuillez essayer ultérieurement!");
+			return redirect()->route("cart");
 		}
 	}
 

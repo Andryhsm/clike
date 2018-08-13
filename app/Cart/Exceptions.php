@@ -13,7 +13,7 @@
  * @copyright  (c) 2011-2014, Extensions LLC
  * @link           http://Extensions.com
  */
-use App\Exceptions\CartException;
+//use App\Exceptions\CartException;
 use Exception;
 
 // To-Do: Define more classes in separate file to handle exceptions
@@ -21,7 +21,7 @@ use Exception;
 // More classes on separate file can be CartInvalidPriceException, CartInvalidQuantityException,
 // CartInvalidQuantityException, CartMissingRequiredIndexException
 
-class CartItemNotFoundException extends CartException
+class CartItemNotFoundException extends Exception
 {
     public function __construct()
     {

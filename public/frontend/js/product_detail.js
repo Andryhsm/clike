@@ -363,10 +363,17 @@ if (description_length > 1200) {
             selected = $('select.product-input-select').find('option:selected');
         }
         var product_stock_id = selected.data('product_stock_id');
+        var product_stock_status_id = selected.data('status');
+        
         $('#product-stock-id').val(product_stock_id);
-        if($('.containt-product-info').find('.invalid').length == 0) {
-            $('#product_form').submit();
+        if(product_stock_status_id == 3) {
+            toastr.error("Désolé, ceci est en rupture de stock!");
+        } else {
+            if($('.containt-product-info').find('.invalid').length == 0) {
+                $('#product_form').submit();
+            }    
         }
+        
     });
   
     $('.product-input-select').change(function(){
@@ -476,7 +483,7 @@ function changeAttribute(box, product_id) {
                     var element = $('[data-attribute='+ value.attribute_id +']');
                     var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
                     if(!element.hasClass('first')){ 
-                        element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
+                        element.append('<option data-product_stock_id="'+value.product_stock_id+'" data-status="'+value.product_stock_status_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
                         element.addClass('has-product-stock-id');
                     }
                 })
@@ -524,7 +531,7 @@ function change_attribute(box, product_id) {
                     var element = $('[data-attribute='+ value.attribute_id +']');
                     var selected = ($.inArray(value.attribute_option_id, values)) ? 'selected = "selected"' : '';
                     if(!element.hasClass('first')){ 
-                        element.append('<option data-product_stock_id="'+value.product_stock_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
+                        element.append('<option data-product_stock_id="'+value.product_stock_id+'" data-status="'+value.product_stock_status_id+'" value="' + value.attribute_option_id + '" ' + selected + '>' + value.option_name + '</option>') 
                         element.addClass('has-product-stock-id');
                     }
                 })

@@ -421,6 +421,6 @@ class ProductController extends Controller
        }
        $atribute_options = $this->product_repository->getRelatedAttributeOption($product_id, $product_stock_ids); 
       
-       return response ()->json ($atribute_options);
+       return response()->json ($atribute_options);
    }
 }
