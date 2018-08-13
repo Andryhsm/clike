@@ -208,14 +208,12 @@ $('#add-decline').click(function(){
 })
 //product_stock_id['+row_count+']
 $(document).on('click', '#remove-decline', function(event) {
-    console.log("remove declinaison");
-   $('.decline:last').remove();
    if($('.decline').length == 1) $('#remove-decline').addClass('hidden');
 
    if($('.decline:last').find('.product_stock_attribute_option_id').val()) {
         var product_stock_id = $('.decline:last').find('.product_stock_id').val();
         var product_stock_attribute_option_id = $('.decline:last').find('.product_stock_attribute_option_id').val();
-
+        console.log(product_stock_attribute_option_id + ' ********');
         var product_stock_attribute_option_id_val = $('#remove_attribute_option').val();
         if($('#remove_attribute_option').val() == '') $('#remove_attribute_option').val(product_stock_attribute_option_id);
         else $('#remove_attribute_option').val(product_stock_attribute_option_id_val + ',' + product_stock_attribute_option_id);
@@ -224,6 +222,7 @@ $(document).on('click', '#remove-decline', function(event) {
         var file = $(this).siblings('img').attr('data-file');
         $('#' + file).remove();
     }
+    $('.decline:last').remove();
 });
 
 function set_stock_type(stock)
