@@ -79,9 +79,6 @@ class BannerRepository implements BannerRepositoryInterface
         return $this->model->where('is_subbanner','=','1')->orwhere('is_subbanner','=','2')->get();
     }
 
-    public function getAllSlider(){
-        return $this->model->where('is_subbanner','=','4')->get();
-    }
 
     public function getActiveMainBanner(){
         return $this->model->whereIsActive(1)->whereIsSubbanner(1)->first();
@@ -90,10 +87,6 @@ class BannerRepository implements BannerRepositoryInterface
     public function getActiveSubBanner()
     {
         return $this->model->whereIsActive(1)->whereIsSubbanner(2)->orderBy('banner_id', 'DESC')->limit(2)->get();
-    }
-
-    public function getActiveSlider(){
-        return $this->model->whereIsActive(1)->whereIsSubbanner(4)->orderBy('banner_id', 'DESC')->limit(5)->get();   
     }
     public function getProductImageById($id){
         return $bannerImage = Banner::where('banner', $id)->get()->first();

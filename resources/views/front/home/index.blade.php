@@ -11,21 +11,25 @@
        @endforeach
     </ol>
     <div class="carousel-inner">
-        @foreach($sliders as $slider)
-            <div class="item {!! ($loop->first) ? 'active' : '' !!}">
-                <img src="{!! $slider->getBannerImage(app('language')->language_code) !!}" alt="{!! $slider->alt !!}" class="img-responsive" />
-                
-                <div class="container container-slider">
-                    <div class="carousel-caption">
-                        <div class="slider-title">
-                            <h1>ON A</h1>
-                            <h1>DU NEUF</h1>
+        @if (count($sliders)>0)
+            @foreach($sliders as $slider)
+                @if($slider->is_active=='1')
+                    <div class="item {!! ($loop->first) ? 'active' : '' !!}">
+                        <img src="{!! $slider->getSliderImage(app('language')->language_code) !!}" alt="{!! $slider->alt !!}" class="img-responsive" />
+                        
+                        <div class="container container-slider">
+                            <div class="carousel-caption">
+                                <div class="slider-title">
+                                    <h1>ON A</h1>
+                                    <h1>DU NEUF</h1>
+                                    </div>
+                                    <button type="button" class="btn btn-clickee-default btn-slider" onclick="location.href = '{!! route('search') !!}';">SHOPPER</button>
+                                </div>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-clickee-default btn-slider" onclick="location.href = '{!! route('search') !!}';">SHOPPER</button>
-                    </div>
-                </div>
-            </div>
-       @endforeach
+                    @endif
+            @endforeach
+        @endif
     </div>
     <a class="left carousel-control" href="#home-top-slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
     <a class="right carousel-control" href="#home-top-slide" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>

@@ -29,15 +29,15 @@ class Banner extends Model
     ];
 
     public function getBannerImage($language_code){
-        $image_name=($language_code=='en' || $this->french_banner_image==null)?$this->banner_image:$this->french_banner_image;
+        $image_name=($this->french_banner_image==null)?$this->banner_image:$this->french_banner_image;
         return URL::to('/').self::Banner_IMAGE_PATH.$image_name;
     }
     public function getBannerImageHover($language_code){
-        $image_name=($language_code=='en' || $this->french_banner_image==null)?$this->banner_image:$this->banner_image_hover;
+        $image_name=($this->french_banner_image==null)?$this->banner_image:$this->banner_image_hover;
         return URL::to('/').self::Banner_IMAGE_PATH.$image_name;
     }
     public function getCdnBannerImage($language_code){
-        $image_name=($language_code=='en' || $this->french_banner_image==null)?$this->banner_image:$this->french_banner_image;
+        $image_name=($this->french_banner_image==null)?$this->banner_image:$this->french_banner_image;
         return self::Banner_CDN_IMAGE_PATH.$image_name;
     }
 }

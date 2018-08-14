@@ -119,7 +119,7 @@ class ArticleController extends Controller
             $image_name = $this->upload_service->upload($file, Product::PRODUCT_IMAGE_PATH,false);
 			$img = \Image::make(public_path().'/'.Product::PRODUCT_IMAGE_PATH.$image_name);
     		$image_name = str_replace(' ', '_', $image_name) ;						
-    		$image_name = strval(mt_rand());											//genêre un nom aléatoire pour renommer l'image
+    		$image_name = strval(mt_rand());//genêre un nom aléatoire pour renommer l'image
     		$image_name .= ".png";
     		$img->heighten(675)->save(Product::PRODUCT_IMAGE_PATH.$image_name);
     		$thumb_path = public_path(Product::PRODUCT_IMAGE_PATH.'thumb');
