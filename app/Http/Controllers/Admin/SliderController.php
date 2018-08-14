@@ -121,7 +121,7 @@ class SliderController extends Controller
 		$path = public_path(Slider::Slider_IMAGE_PATH.$sliderImage->slider_image);	
         if (file_exists($path)){
             unlink($path);
-        }
+		}
     }
 	public function destroy($id)
 	{

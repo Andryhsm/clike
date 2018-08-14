@@ -22,8 +22,6 @@
                             <input type="text" name="slider_title" class="form-control required" id="page_title"
                                    placeholder="Nom Slider">
                         </div>
-                         </div>
-        
                         <div class="form-group">
                             <label for="page_title">Alt slider</label>
                             <input type="text" name="alt" class="form-control required" id="page_title"
@@ -42,7 +40,7 @@
                             <div class="">
                                 {!! Form::checkbox('is_active', '1') !!}
                             </div>
-
+                        </div>
                         </div>
                     </div>
                     <div class="box-footer">
