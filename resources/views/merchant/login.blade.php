@@ -34,7 +34,7 @@
 
                         <a href="{{ url('/forgot-password') }}">{!! trans("form.forgot_password")!!}</a>
                         <div class="text-center">
-                                <button class="btn btn-clickee-default" type="submit" id="login-btn">{!! trans("form.login")!!}</button>
+                                <button class="btn btn-clickee-default text-uppercase" type="submit" id="login-btn">Vendre</button>
                         </div>
                         {{Form::close()}}
                     </div>
