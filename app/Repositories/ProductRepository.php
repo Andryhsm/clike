@@ -721,7 +721,11 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     public function getProductImageById($id){
-        return $productImage = ProductImage::where('product_image_id', $id)->get()->first();
+         $productImage = ProductImage::where('product_image_id', $id)->get()->first();
+    }
+
+    public function getAllProductImageById($id){
+        return $productImages = ProductImage::where('product_id', $id)->get();
     }
 	
 }

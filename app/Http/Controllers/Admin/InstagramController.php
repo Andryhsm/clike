@@ -68,20 +68,20 @@ class InstagramController extends Controller
 
 		$rules = array(
 			'title' => 'required',
-			'image' => 'mimes:jpeg,jpg,png,gif|required' // max 10000kb
+			'image' => 'mimes:jpeg,jpg,png,gif' // max 10000kb
 		);
 		$validator = Validator::make($request->all(), $rules);
 		if ($validator->fails()) {
 			return Redirect::back()->withInput()->withErrors($validator);
 		} else {
-          
-			$this->deleteUploadedImage($id);
+          	if (!empty($request->image)) {
+				$this->deleteUploadedImage($id);
+          	}
             $image_name['image']=$this->uploadImage('image');
 			$instagram=$this->instagram_repository->updateById($id,$request->all(),$image_name);
             flash()->success(config('message.instagram.update-success'));
             return Redirect('admin/instagram');
-			
-            }
+        }
     }
 
 	public function uploadImage($name){
@@ -127,7 +127,7 @@ class InstagramController extends Controller
     	$instagram = $this->instagram_repository->getById($id);
         $path = public_path(Instagram::Instagram_IMAGE_PATH.$instagram->image);
         if (file_exists($path)) {
-           unlink($path);
+          	unlink($path);
         }
     }
 }
