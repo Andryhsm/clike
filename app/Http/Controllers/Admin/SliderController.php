@@ -102,14 +102,23 @@ class SliderController extends Controller
 				  flash()->error($e->getMessage());
                   return Redirect::back();
 			}
+            $path_img_delete = public_path(Slider::Slider_IMAGE_PATH.$image_name);
 
 			$img = \Image::make(public_path().'/'.Slider::Slider_IMAGE_PATH.$image_name);
 			$thumb_path = public_path(Slider::Slider_IMAGE_PATH);
+
+			$image_name = str_replace(' ', '_', $image_name) ;                      
+            $image_name = strval(mt_rand()); //genêre un nom aléatoire pour renommer l'image
+            $image_name .= ".png";	
 			
 			if(!\File::isDirectory($thumb_path)){
 				\File::makeDirectory($thumb_path);
 			}
-			$img->fit(3000,1300)->save($thumb_path.'/'.$image_name);		
+			$img->fit(3000,1300)->save($thumb_path.'/'.$image_name);
+
+			if (file_exists($path_img_delete)) {
+                unlink($path_img_delete);
+            } 	
 
 		}
 		return $image_name;
@@ -118,12 +127,10 @@ class SliderController extends Controller
 	public function deleteUploadedImage($id){
 
 		$sliderImage = $this->slider_repository->getById($id);
-		$path = public_path(Slider::Slider_IMAGE_PATH.$sliderImage->slider_image);
-
+		$path = public_path(Slider::Slider_IMAGE_PATH.$sliderImage->slider_image);	
         if (file_exists($path)){
             unlink($path);
-        }
-	
+		}
     }
 	public function destroy($id)
 	{

@@ -36,10 +36,46 @@
                         <div class="form-group">
                             <label for="price" class="control-label">Prix</label>
                             <div class="input-group">
-                                <input type="text" name="price" value="{!! ($pack) ? $pack->price:null !!}" placeholder="Prix" class="form-control required">
+                                <input type="text" name="price" value="{!! ($pack) ? $pack->price:'0' !!}" placeholder="Prix" class="form-control required">
                                  <span class="input-group-addon"> € </span>
                             </div>
-                        </div>                        
+                        </div>
+                        <div class="form-group">
+                            <label for="transaction_fees" class="control-label">Frais de transaction</label>
+                            <div class="input-group">
+                                <input type="number" name="transaction_fees" value="{!! ($pack) ? $pack->transaction_fees:'0' !!}" placeholder="Frais de transaction" class="form-control required">
+                                 <span class="input-group-addon"> % </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            {!! Form::label('product_visibility', 'Visibilité des produits', ['class' => 'col-sm-2 control-label']) !!}
+                            <div class="">
+                                {!! Form::checkbox('product_visibility', '1', ($pack) ? (($pack->product_visibility == 1)?true:false) : false) !!}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-lg-4 row">
+                                {!! Form::label('pack_newsletter', 'Newsletters', ['class' => 'col-sm-6 control-label']) !!}
+                                <div class="col-sm-6">
+                                    {!! Form::checkbox('pack_newsletter', '1', ($pack) ? (($pack->pack_newsletter == 1)?true:false) : false, ['class' => '']) !!}
+                                </div>
+                            </div>
+                            <div class="col-lg-8 show_pack_newsletter hidden">
+                                <div class="col-lg-6">
+                                    <label for="price" class="control-label col-lg-3">De</label>
+                                    <div class="input-group col-lg-9">
+                                        <input type="number" name="of" value="{!! ($pack) ? $pack->price:null !!}" class="form-control required">
+                                    </div>    
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="price" class="control-label col-lg-3">à</label>
+                                    <div class="input-group col-lg-9">
+                                        <input type="number" name="at" value="{!! ($pack) ? $pack->price:null !!}" class="form-control required">
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
                     </div>
                     <div class="box-footer">
                         <a href="{!! route('pack.index') !!}" class="btn btn-default">Annuler</a>
@@ -74,6 +110,14 @@
                 });
                 if ($('#pack_form').valid()) {
                     $('#pack_form').submit();
+                }
+            });
+
+            $('#pack_newsletter').click(function(){
+                if($('.show_pack_newsletter').hasClass('hidden')){
+                    $('.show_pack_newsletter').removeClass('hidden');
+                }else{
+                    $('.show_pack_newsletter').addClass('hidden');
                 }
             });
         });

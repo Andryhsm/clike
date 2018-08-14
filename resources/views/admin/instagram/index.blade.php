@@ -78,7 +78,7 @@
                             </h3>
                         </section>
                         {!! Form::open(array('url' => 'admin/instagram/images' ,'class' => 'pull-right', 'method'=>'POST')) !!}
-                            <div  id="checklist">
+                            <div  id="checklist" class="ordreInstagram" style=" clear: both;content: '';display: table;">
                                 <div class='list-group gallery'>
                                     @foreach($instagrams as $instagram)
                                         @if($instagram->is_active =='1')

@@ -20,29 +20,27 @@
                         <div class="form-group">
                             <label for="page_title">Titre</label>
                             <input type="text" name="slider_title" class="form-control required" id="page_title"
-                                   placeholder="Nom bannière">
+                                   placeholder="Nom Slider">
                         </div>
-                         </div>
-        
                         <div class="form-group">
                             <label for="page_title">Alt slider</label>
-                            <input type="text" name="alt" class="form-control " id="page_title"
-                                   placeholder="Alt bannière">
+                            <input type="text" name="alt" class="form-control required" id="page_title"
+                                   placeholder="Alt Slider">
                         </div>
                         <div class="form-group">
                             <label for="page_title">Url slider</label>
-                            <input type="text" name="slider_url" class="form-control " id="slider_url" placeholder="Url bannière">
+                            <input type="text" name="slider_url" class="form-control required" id="slider_url" placeholder="Url Slider">
                         </div>
                         <div class="form-group">
                             <label for="content-heading">slider image</label>
-                            {!!  Form::file('slider_image',['class'=>"form-control"])!!}
+                            {!!  Form::file('slider_image',['class'=>"form-control required"])!!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('is_active', 'Activé', ['class' => 'col-sm-1 control-label']) !!}
                             <div class="">
                                 {!! Form::checkbox('is_active', '1') !!}
                             </div>
-
+                        </div>
                         </div>
                     </div>
                     <div class="box-footer">

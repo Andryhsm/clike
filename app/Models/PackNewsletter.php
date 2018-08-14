@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pack extends Model
+class PackNewsletter extends Model
 {
-    protected $table = 'pack';
-    protected $primaryKey = 'pack_id';
+    protected $table = 'pack_newsletter';
+    protected $primaryKey = 'pack_newsletter_id';
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.
@@ -15,11 +15,8 @@ class Pack extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'price',
-        'type',
-        'product_visibility',
-        'transaction_fees',
-        'pack_newsletter',
+        'pack_id',
+        'of',
+        'at',
     ];
 }
