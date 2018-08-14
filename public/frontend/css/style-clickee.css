@@ -1392,6 +1392,9 @@ element.style {
 .text-bold {
   font-weight: bold;
 }
+.text-italic {
+  font-style: italic;
+}
 .connect-social-media {
   color: #fff;
 }

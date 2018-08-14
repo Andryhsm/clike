@@ -103,12 +103,10 @@
                                     <a href="#" class="receive-notification"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oui, je souhaite recevoir les notifications d’achats par message texte.</a>             
                                 </li>
                                 <li>
-                                    <div class="text-center pt-20 pb-20"> 
-                                        <strong>
+                                    <div class="text-italic pt-20 pb-20">
                                             Vous voulez encore plus d’actualité sur vos achats en local ? Choisissez de <br/>
                                             recevoir la Newsletter Clickee : des offres promotionnelles et toutes les <br/>
                                             nouveautés en avant-première.
-                                        </strong>
                                     </div>
                                 </li>
                                 <li>
