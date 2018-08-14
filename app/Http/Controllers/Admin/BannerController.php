@@ -102,7 +102,7 @@ class BannerController extends Controller
 		if (Input::hasFile($name)) {
 			$file = Input::file($name);
 			try{
-              $image_name = $this->upload_service->upload($file, 'upload/banner');
+              $image_name = $this->upload_service->upload($file, '/upload/banner');
 			}catch(Exception $e){
 				  flash()->error($e->getMessage());
                   return Redirect::back();
@@ -119,10 +119,6 @@ class BannerController extends Controller
 			if(!\File::isDirectory($thumb_path)){
 				\File::makeDirectory($thumb_path);
 			}
-
-			if (file_exists($path_img_delete)) {
-                unlink($path_img_delete);
-            }   
 			
 			switch ($type) {
 				case 1:
@@ -138,7 +134,13 @@ class BannerController extends Controller
 					# code...
 					break;
 			}
+
+			if (file_exists($path_img_delete)) {
+                unlink($path_img_delete);
+            }   
 		}
+
+		return $image_name;
 
 	}
 	public function deleteUploadedImage($id){
@@ -150,8 +152,6 @@ class BannerController extends Controller
 			   unlink($path);
 			   unlink($inpath);
 			}
-		
-	
     }
 	public function destroy($id)
 	{
