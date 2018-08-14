@@ -13,7 +13,7 @@ class UpdatePack extends Migration
      */
     public function up()
     {
-        Schema::table('pack', function (Blueprint $table) {
+        /*Schema::table('pack', function (Blueprint $table) {
 
             $table->binary('product_visibility')->after('type');
 
@@ -21,7 +21,7 @@ class UpdatePack extends Migration
 
             $table->binary('pack_newsletter')->after('type');
 
-        });
+        });*/
         //test
         Schema::create('pack_newsletter', function (Blueprint $table) {
 
