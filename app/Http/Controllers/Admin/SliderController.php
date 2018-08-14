@@ -106,15 +106,19 @@ class SliderController extends Controller
 
 			$img = \Image::make(public_path().'/'.Slider::Slider_IMAGE_PATH.$image_name);
 			$thumb_path = public_path(Slider::Slider_IMAGE_PATH);
-			
-			if(!\File::isDirectory($thumb_path)){
-				\File::makeDirectory($thumb_path);
-			}
-			$img->fit(3000,1300)->save($thumb_path.'/'.$image_name);	
 
 			$image_name = str_replace(' ', '_', $image_name) ;                      
             $image_name = strval(mt_rand()); //genêre un nom aléatoire pour renommer l'image
             $image_name .= ".png";	
+			
+			if(!\File::isDirectory($thumb_path)){
+				\File::makeDirectory($thumb_path);
+			}
+			$img->fit(3000,1300)->save($thumb_path.'/'.$image_name);
+
+			if (file_exists($path_img_delete)) {
+                unlink($path_img_delete);
+            } 	
 
 		}
 		return $image_name;
