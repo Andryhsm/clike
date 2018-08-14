@@ -429,7 +429,17 @@ if (description_length > 1200) {
             }, 
             success: function(data)
             {
-                toastr.success(data.message);
+                var selected;
+                if($('.product-input-select').length > 1){
+                    selected = $('select.has-product-stock-id.product-input-select').find('option:selected');
+                } else {
+                    selected = $('select.product-input-select').find('option:selected');
+                }
+                var product_stock_status_id = selected.data('status');
+                if(product_stock_status_id == 2)
+                    toastr.info("Le produit est bien ajouté dans le panier, ceci est le derniers articles dans le stock!");
+                else
+                    toastr.success(data.message);
                 var html_data = $(document).find('.cart-list:first').clone();
                 html_data.removeClass('hidden');
                 html_data.find('.cart-img img').attr('src',img_src);
