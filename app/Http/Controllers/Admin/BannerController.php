@@ -44,7 +44,9 @@ class BannerController extends Controller
 	{
 		$rules = array(
 			'banner_title' => 'required',
-			'image' => 'mimes:jpeg,jpg,png,gif|max:10000' // max 10000kb
+			'image' => 'mimes:jpeg,jpg,png,gif|max:10000', // max 10000kb
+			'french_image'=>'required',
+			'french_image_hover'=>'required'
 		);
 		$validator = Validator::make($request->all(), $rules);
 		if ($validator->fails()) {
@@ -54,8 +56,8 @@ class BannerController extends Controller
             $image_name['french_image_name_hover']=$this->uploadImage('french_image_hover',$request->is_subbanner);
 			$brand=$this->banner_repository->create($request->all(),$image_name);
 			if($brand){				
-					flash()->success(config('message.banner.add-success'));
-					return Redirect('admin/banner');
+			flash()->success(config('message.banner.add-success'));
+			return Redirect('admin/banner');
 				
 			}
 		}
@@ -137,7 +139,6 @@ class BannerController extends Controller
 					break;
 			}
 		}
-		return $image_name;
 
 	}
 	public function deleteUploadedImage($id){
@@ -145,7 +146,7 @@ class BannerController extends Controller
 		$bannerImage = $this->banner_repository->getById($id);
 		$path = public_path(Banner::Banner_IMAGE_PATH.$bannerImage->french_banner_image);
 		$inpath = public_path(Banner::Banner_IMAGE_PATH.$bannerImage->banner_image_hover);
-			if (file_exists($path) && file_exists($inpath) ){
+			if (file_exists($path) && file_exists($inpath)){
 			   unlink($path);
 			   unlink($inpath);
 			}
