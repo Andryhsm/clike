@@ -96,6 +96,7 @@ class InstagramController extends Controller
                   return Redirect::back();
 			}
 
+            $path_img_delete = public_path(Instagram::Instagram_IMAGE_PATH.$image_name);
 			$img = \Image::make(public_path().'/'.Instagram::Instagram_IMAGE_PATH.$image_name);
 			$thumb_path = public_path(Instagram::Instagram_IMAGE_PATH);
 
@@ -107,7 +108,10 @@ class InstagramController extends Controller
 				\File::makeDirectory($thumb_path);
 			}
 			$img->fit(375,365)->save($thumb_path.'/'.$image_name);
-		}
+            if (file_exists($path_img_delete)) {
+                unlink($path_img_delete);
+            }
+        }
 		return $image_name;
 
 	}
