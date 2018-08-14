@@ -95,4 +95,7 @@ class BannerRepository implements BannerRepositoryInterface
     public function getActiveSlider(){
         return $this->model->whereIsActive(1)->whereIsSubbanner(4)->orderBy('banner_id', 'DESC')->limit(5)->get();   
     }
+    public function getProductImageById($id){
+        return $bannerImage = Banner::where('banner', $id)->get()->first();
+    }
 }

@@ -708,7 +708,7 @@ class ProductRepository implements ProductRepositoryInterface
  		  ->where('product_stock.product_id',$product_id)
           ->where('option_name', '!=', '')
  		  ->whereIn('product_stock_attribute_option.product_stock_id', $product_stock_ids)
- 		  ->distinct()->get(['attribute_id', 'product_stock_attribute_option.attribute_option_id', 'option_name', 'product_stock_attribute_option.product_stock_id']);
+ 		  ->distinct()->get(['attribute_id', 'product_stock_attribute_option.attribute_option_id', 'option_name', 'product_stock_attribute_option.product_stock_id', 'product_stock.product_stock_status_id']);
 	}
 
     public function deleteMultipleProducts($product_ids){

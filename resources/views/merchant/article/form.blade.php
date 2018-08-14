@@ -197,14 +197,14 @@
                                                     <div class="">
                                                         <input type="text" name="attribute_id[{!! $key !!}][]" class="hidden attribute_id" value="{!! $attribute->attribute_id !!}" />
                                                         
-                                                        <input data="Veuillez sélectionner s'il vous plait" type="text" name="product_stock_attribute_option_id[{!! $key !!}][]" class="hidden product_stock_attribute_option_id" value="{!! $stock->options[$key1]->product_stock_attribute_option_id !!}" />
+                                                        <input type="text" name="product_stock_attribute_option_id[{!! $key !!}][]" class="hidden product_stock_attribute_option_id" value="{!! $stock->options[$key1]->product_stock_attribute_option_id !!}" />
                                                 
-                                                            <select data-msg="Ce champ est important!" class="form-control attribute_option required"
-                                                                    name="attributes[{!! $key !!}][]"
-                                                                    data-placeholder="Select option" style="width: 100%;">
-                                                            @foreach($attribute->options as $option)
-                                                                <option value="{!! $option->attribute_option_id !!}" {!! (in_array($option->attribute_option_id, $stock_option_ids)) ? 'selected = "selected"': '' !!}>{!! $option->french->option_name !!}</option>
-                                                            @endforeach
+                                                        <select data-msg="Ce champ est important!" class="form-control attribute_option required"
+                                                                name="attributes[{!! $key !!}][]"
+                                                                data-placeholder="Select option" style="width: 100%;">
+                                                        @foreach($attribute->options as $option)
+                                                            <option value="{!! $option->attribute_option_id !!}" {!! (in_array($option->attribute_option_id, $stock_option_ids)) ? 'selected = "selected"': '' !!}>{!! $option->french->option_name !!}</option>
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

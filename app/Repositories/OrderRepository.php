@@ -11,6 +11,7 @@ use App\Models\OrderItem;
 use App\Models\OrderStatusHistory;
 use App\Models\OrderTransaction;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class OrderRepository implements OrderRepositoryInterface
 {
@@ -57,7 +58,7 @@ class OrderRepository implements OrderRepositoryInterface
 		$order_status_history->user_name = $cart->getCustomer()->first_name." ".$cart->getCustomer()->last_name;
 		$order_status_history->created_at = Carbon::now();
 		$order_status_history->save();
-
+		
 		return $this->model;
 	}
 

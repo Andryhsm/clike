@@ -843,3 +843,8 @@ function address($user){
     return \App\UserAddress::where('user_id', $user_id)->first();
     
 }
+
+function showPackByValue($packs,$name,$type,$value)
+{
+    return !empty($packs[$name][$type]->$value)?$packs[$name][$type]->$value:'';
+}
