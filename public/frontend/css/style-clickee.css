@@ -163,6 +163,9 @@ img.banner-hover{
     outline: none;
     border-radius: 0px;
 }
+.register-area input.error {
+  border-color: red !important;
+}
 input.required.cart-paye:focus {
     border: 4px solid rgb(101, 187, 159);
 }
