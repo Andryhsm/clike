@@ -216,7 +216,7 @@
                                     
                                     <div class="form-group">                                       
                                         <label for="product_inventory">Inventaire</label>
-                                        <input data-range="1" data-msg="Vous avez oubliez l'inventaire ci-dessus!" type="number" name="product_inventory[{!! $key !!}]" class="product_inventory form-control required" value="{!! $stock->product_count !!}" placeholder="Inventaire">
+                                        <input data-range="1" data-msg="Vous avez oubliez l'inventaire ci-dessus!" type="text" name="product_inventory[{!! $key !!}]" class="product_inventory form-control required" value="{!! $stock->product_count !!}" placeholder="Inventaire">
                                     </div>
                                     
                                     <?php
@@ -252,7 +252,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="product_inventory">Inventaire</label>
-                                    <input type="text" name="product_inventory[1]" data-msg="Vous avez oubliez ci-dessus!" class="product_inventory form-control required" value="" placeholder="Inventaire">
+                                    <input type="number" name="product_inventory[1]" data-msg="Vous avez oubliez ci-dessus!" class="product_inventory form-control required" value="" placeholder="Inventaire">
                                 </div>
                                 <div class="stock-types ptb-20">
                                     <p><i class="fa fa-dot-circle-o" data_type="1" onclick="set_stock_type(this);"></i> En stock</p>
