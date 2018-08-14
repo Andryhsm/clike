@@ -15,7 +15,6 @@ use App\Product;
 
 class ArticleController extends Controller
 {
-    
     protected $category_repository;
     protected $upload_service;
     protected $attribute_set_repository;
@@ -119,7 +118,8 @@ class ArticleController extends Controller
             $image_name = $this->upload_service->upload($file, Product::PRODUCT_IMAGE_PATH,false);
 			$img = \Image::make(public_path().'/'.Product::PRODUCT_IMAGE_PATH.$image_name);
     		$image_name = str_replace(' ', '_', $image_name) ;						
-    		$image_name = strval(mt_rand());//genêre un nom aléatoire pour renommer l'image
+    		$image_name = strval(mt_rand()); //genêre un nom aléatoire pour renommer l'image
+
     		$image_name .= ".png";
     		$img->heighten(675)->save(Product::PRODUCT_IMAGE_PATH.$image_name);
     		$thumb_path = public_path(Product::PRODUCT_IMAGE_PATH.'thumb');
@@ -129,7 +129,9 @@ class ArticleController extends Controller
 			}
 
 			$img->fit(130,145)->save($thumb_path.'/'.$image_name);
-
+            if (file_exists($path_img_delete)) {
+                unlink($path_img_delete);
+            }    
 		
 		return $image_name;
 	}
@@ -186,7 +188,8 @@ class ArticleController extends Controller
         if($request['remove_img']){
             $remove_images = explode(',', $request['remove_img']);
             foreach ($remove_images as $remove_image_id) {
-                $this->deleteUploadedImage($remove_image_id);
+                $productImage = $this->product_repository->getProductImageById($remove_image_id);
+                $this->deleteUploadedImage($productImage->image_name);
             }
         }
         $product = $this->product_repository->updateArticle($request->all(),$product_images);
@@ -195,10 +198,9 @@ class ArticleController extends Controller
 		return redirect()->route('article.index');
     }
 
-    public function deleteUploadedImage($id){
-        $productImage = $this->product_repository->getProductImageById($id);
-        $path = public_path(Product::PRODUCT_IMAGE_PATH.$productImage->image_name);
-        $thumb_path = public_path(Product::PRODUCT_IMAGE_PATH.'thumb/'.$productImage->image_name);
+    public function deleteUploadedImage($image_name){
+        $path = public_path(Product::PRODUCT_IMAGE_PATH.$image_name);
+        $thumb_path = public_path(Product::PRODUCT_IMAGE_PATH.'thumb/'.$image_name);
         if (file_exists($path) && file_exists($thumb_path)) {
            unlink($thumb_path); 
            unlink($path);
@@ -212,7 +214,11 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
+        $productImages = $this->product_repository->getAllProductImageById($id);
+        foreach ($productImages as $product_image) {
+            $this->deleteUploadedImage($product_image->image_name);
+        }
         if ($this->product_repository->deleteById($id)) {
             $this->special_product_repository->deleteByProductId($id);
 			flash()->success(config('message.product.delete-success'));

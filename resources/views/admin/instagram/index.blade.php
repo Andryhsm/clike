@@ -24,6 +24,7 @@
     <!-- Fin Liste des Instagrams feed -->
 
 <section class="content">
+    @include('admin.layout.notification')
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
