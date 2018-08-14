@@ -818,6 +818,7 @@ var reviews_length = $('#reviews').text().length ;
 		})
 		.done(function(data) {
 			var all_products = data.products;
+			console.log(all_products);
 			var options = {
 				data: all_products,
 				getValue: function(product) {
@@ -829,7 +830,7 @@ var reviews_length = $('#reviews').text().length ;
 						return "<div class='row content-result-autocompletion' style='padding: 0px 20px;'> " +
 							"<div class='col-xs-2'><img src='" + base_url + 'upload/product/thumb/' + item.images[0].image_name + "' /></div> " +
 							"<div class='col-xs-8'>" +
-							"<span class='brand-name text-uppercase'>" + item.brand_name + "</span><br>" +
+							"<span class='text-bold fs-14 text-uppercase'>" + item.brand_name + "</span><br>" +
 							"<span>" + value + "</span>" +
 							"</div>" +
 							"</div>";
@@ -838,7 +839,10 @@ var reviews_length = $('#reviews').text().length ;
 				list: {
 					onClickEvent: function() {
 						$('#form-search').submit();
-					}	
+					},
+					match: {
+						enabled: true
+					}
 				}
 			};
 			$('#search-product-input').easyAutocomplete(options);

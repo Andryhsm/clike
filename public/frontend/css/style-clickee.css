@@ -1389,6 +1389,9 @@ element.style {
 .text-uppercase {
   text-transform: uppercase;
 }
+.text-bold {
+  font-weight: bold;
+}
 .connect-social-media {
   color: #fff;
 }
@@ -3436,4 +3439,8 @@ label.error_ {
 }
 .decline:last-child {
     border-bottom: none;
+}
+input#search-product-input:focus {
+    border-color: #65bb9f;
+    border-width: 3px;
 }
