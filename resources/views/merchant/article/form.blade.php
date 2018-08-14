@@ -216,7 +216,7 @@
                                     
                                     <div class="form-group">                                       
                                         <label for="product_inventory">Inventaire</label>
-                                        <input data-range="1" data-msg="Vous avez oubliez l'inventaire ci-dessus!" type="text" name="product_inventory[{!! $key !!}]" class="product_inventory form-control required" value="{!! $stock->product_count !!}" placeholder="Inventaire">
+                                        <input data-range="1" data-msg="Vous avez oubliez l'inventaire ci-dessus!" type="number" name="product_inventory[{!! $key !!}]" class="product_inventory form-control required" value="{!! $stock->product_count !!}" placeholder="Inventaire">
                                     </div>
                                     
                                     <?php
