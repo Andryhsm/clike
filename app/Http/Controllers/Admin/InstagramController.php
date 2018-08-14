@@ -98,7 +98,11 @@ class InstagramController extends Controller
 
 			$img = \Image::make(public_path().'/'.Instagram::Instagram_IMAGE_PATH.$image_name);
 			$thumb_path = public_path(Instagram::Instagram_IMAGE_PATH);
-			
+
+            $image_name = str_replace(' ', '_', $image_name) ;
+            $image_name = strval(mt_rand());											//genêre un nom aléatoire pour renommer l'image
+            $image_name .= ".png";
+
 			if(!\File::isDirectory($thumb_path)){
 				\File::makeDirectory($thumb_path);
 			}
