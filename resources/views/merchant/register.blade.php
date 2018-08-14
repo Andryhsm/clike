@@ -462,7 +462,7 @@
                     </div>
                     
                     <div class="text-center mr-t-btn">
-                        <button class="btn btn-clickee-primary text-uppercase" type="submit" id="add-store">Vendre</button>
+                        <button class="btn btn-clickee-primary" type="submit" id="add-store">{!! trans("merchant.complete_registration")!!}</button>
                     </div>
                 </div>
             </div>

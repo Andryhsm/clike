@@ -66,7 +66,7 @@
         <!-- register-area-end -->
         <!--fin info-->
         <div class="register-footer-area text-center pt-40">
-            <button class="btn btn-submit btn-clickee-default" type="button" id="btn-etape1">SHOPPER</button>
+            <button class="btn btn-submit btn-clickee-default text-uppercase" type="button" id="btn-etape1">Vendre</button>
         </div>
         <div class="condition-confidentiality text-center pt-20 pb-40">
             <span> {!! trans("common/label.condition_create_account") !!} <a href="">{!! trans("common/label.general_condition") !!}</a></span>
