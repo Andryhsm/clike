@@ -22,6 +22,7 @@ class UpdateTablePackForPermissionToMerchant extends Migration
             $table->binary('pack_newsletter')->after('type');
 
         });
+        //test
         Schema::create('pack_newsletter', function (Blueprint $table) {
 
             $table->increments('pack_newsletter_id');
