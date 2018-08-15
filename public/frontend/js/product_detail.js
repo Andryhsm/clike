@@ -437,7 +437,7 @@ if (description_length > 1200) {
                 }
                 var product_stock_status_id = selected.data('status');
                 if(product_stock_status_id == 2)
-                    toastr.info("Le produit est bien ajouté dans le panier, ceci est le derniers articles dans le stock!");
+                    toastr.info("Le produit est bien ajouté dans le panier, cet article fait partie des derniers articles du stock!");
                 else
                     toastr.success(data.message);
                 var html_data = $(document).find('.cart-list:first').clone();
