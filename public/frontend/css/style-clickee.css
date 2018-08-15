@@ -812,9 +812,13 @@ ul {
 }
 .new-price{
   font-family: Roboto Bold;
-  color: #65BB9F;
 }
-
+.old-price{
+    color: #65BB9F;
+}
+.percentage{
+    color: #65BB9F;
+}
 .wishlist_prd_place_home {
     position: absolute;
     margin-left: 66%;
