@@ -52,7 +52,7 @@ class SliderController extends Controller
 			$brand=$this->slider_repository->create($request->all(),$image_name);
 			if($brand){				
 				
-					flash()->success(config('message.banner.add-success'));
+					flash()->success(config('message.slider.add-success-slider'));
 					return Redirect('admin/slider');
 				
 			}
@@ -84,7 +84,7 @@ class SliderController extends Controller
 			$slider=$this->slider_repository->updateById($id,$request->all(),$image_name);
 			if($slider){
 				
-                flash()->success(config('message.banner.update-success'));
+                flash()->success(config('message.slider.update-success-slider'));
                 return Redirect('admin/slider');
 			}
 			/*return Redirect('admin/banner');*/
@@ -137,7 +137,7 @@ class SliderController extends Controller
 		$this->deleteUploadedImage($id);
 		if ($this->slider_repository->deleteById($id)) {
 		
-            flash()->success(config('message.banner.delete-success'));
+            flash()->success(config('message.slider.delete-success-slider'));
             return Redirect('admin/slider');
     
 		}

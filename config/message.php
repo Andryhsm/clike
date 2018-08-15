@@ -171,7 +171,8 @@ return [
 		'update-error' => 'Bannière non mise à jour avec succès.',
 		'delete-success' => 'Bannière supprimée avec succès.',
 		'delete-error' => 'Bannière non supprimée avec succès.',
-
+	],
+	'slider' => [
 		'add-success-slider' => 'Slider ajouté avec succès.',
 		'add-error-slider' => 'Le curseur n\'a pas été ajouté avec succès.',
 		'update-success-slider' => 'Slider mis à jour avec succès.',
