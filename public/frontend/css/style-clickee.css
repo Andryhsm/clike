@@ -812,6 +812,7 @@ ul {
 }
 .new-price{
   font-family: Roboto Bold;
+  color: #65BB9F;
 }
 
 .wishlist_prd_place_home {
@@ -2317,7 +2318,7 @@ element.style {
 .tabs-limit {
   height: 11rem;
   margin-top: -10.5rem;
-  background-image: linear-gradient(transparent,white);
+  /*background-image: linear-gradient(transparent,white);*/
   filter: blur(1px) opacity(84.5%);
 }
 .related-product-container{
