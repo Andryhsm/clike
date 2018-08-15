@@ -39,7 +39,7 @@
             </div>
             <div class="form-group row mb-0">
                 <div class="col-sm-12">     
-                    {{Form::text('siret', '',['class'=>'required form-control', 'id'=>"siret", 'placeholder' => "Siret *", 'data-msg' => 'Veuillez entrer le numéro siret!'])}}
+                    {{Form::text('siret', '',['class'=>'required form-control', 'id'=>"siret", 'placeholder' => "Siret *", 'data-msg' => 'Veuillez entrer le numéro de siret!'])}}
                 </div>
             </div>
             <div class="form-group row mb-0">
