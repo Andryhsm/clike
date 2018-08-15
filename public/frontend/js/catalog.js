@@ -10,8 +10,10 @@ $(".dropdown > button").click(function() {}, function() {
         $(this).parents('.dropdown').addClass('open');
     }
     else {
+        $(".dropdown-menu").mouseleave(function(){
         $icon.removeClass('fa-angle-up').addClass('fa-angle-down');
         $(this).parents('.dropdown').removeClass('open');
+    });
     }
 });
 
