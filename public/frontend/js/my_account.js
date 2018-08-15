@@ -4,8 +4,7 @@ $(function() {
         if (options.role_id == '1') {
             getAjaxData('completed-orders-content', base_url + language_code + '/customer/order/completed?page=1');
             getAjaxData('pending-orders-content', base_url + language_code + '/customer/order/pending?page=1');
-        }
-        else {
+        }  else {
             getAjaxData('merchant-orders-content', base_url + language_code + '/merchant/orders?page=1');
             getAjaxData('store-content', base_url + language_code + '/merchant/stores?page=1');
             getAjaxData('merchant-invoice-content', base_url + language_code + '/merchant/invoices?page=1');
