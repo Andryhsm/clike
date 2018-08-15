@@ -5,14 +5,16 @@ $(".select-tri").on('change', '.filter', function(event) {
 
 $(".dropdown > button").click(function() {}, function() {
     var $icon = $(this).find("i");
-    if ($icon.hasClass('fa-angle-down')) {
         $icon.removeClass('fa-angle-down').addClass('fa-angle-up');
         $(this).parents('.dropdown').addClass('open');
-    }
-    else {
-        $icon.removeClass('fa-angle-up').addClass('fa-angle-down');
-        $(this).parents('.dropdown').removeClass('open');
-    }
+   // else {
+        
+   // }
+});
+$(".dropdown-menu").mouseleave(function(){
+    var $icon = $(this).prev().find("i");   
+    $icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+    $(this).parents('.dropdown').removeClass('open');
 });
 
 $('body').on('click', function(e) {

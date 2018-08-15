@@ -188,11 +188,11 @@
                                                     @endif
                                                    <!--  <span class="new-price fs-14">{!! format_price($product->original_price) !!}</span> -->
                                                     @if($product->promotional_price != null)
-                                                        <span class="old-price discount fs-14" style="color: rgb(67, 223, 230);">(-{!! $product->discount !!}%)</span>
-                                                        <span class="old-price original_price fs-14" style="color: rgb(67, 223, 230);" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
+                                                        <span class="old-price discount fs-14">(-{!! $product->discount !!}%)</span>
+                                                        <span class="old-price original_price fs-14" data-price="{!! $product->original_price !!}"><del>{!! format_price($product->original_price) !!}</del></span>
                                                         <span class="new-price real-price fs-14" data-price="{!! $product->promotional_price !!}">{!! format_price($product->promotional_price) !!}</span>
                                                     @else
-                                                        <span class="old-price real-price original_price fs-14" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
+                                                        <span class="real-price original_price fs-14" data-price="{!! $product->original_price !!}">{!! format_price($product->original_price) !!}</span>
                                                     @endif
                                                 </div>
                                             </div>
