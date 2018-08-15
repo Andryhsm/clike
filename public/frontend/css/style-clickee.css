@@ -3451,3 +3451,7 @@ input#search-product-input:focus {
     border-color: #65bb9f;
     border-width: 3px;
 }
+
+.toast-success {
+  background-color: #65bb9f !important;
+}
