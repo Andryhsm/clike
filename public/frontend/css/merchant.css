@@ -410,7 +410,7 @@ td.sorting_1 {
 }
 
 .show_article_eye {
-    background: url(../../images/icon/oeil.png) no-repeat;
+    background: url(../../images/icon/oeil.svg) no-repeat;
     width: 35px;
     height: 16px;
     display: block;
@@ -420,7 +420,7 @@ td.sorting_1 {
 }
 
 .delete_article_garbage {
-    background: url(../../images/icon/corbeille.png) no-repeat;
+    background: url(../../images/icon/corbeille.svg) no-repeat;
     width: 35px;
     height: 22px;
     display: block;
