@@ -404,3 +404,7 @@ table.dataTable thead > tr > th {
 td.sorting_1 {
     text-align: left;
 }
+
+#store_form label[for=logo], label[for=shop_image] {
+  cursor: pointer;
+}

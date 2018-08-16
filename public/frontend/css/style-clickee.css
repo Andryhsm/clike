@@ -3459,7 +3459,3 @@ input#search-product-input:focus {
 .toast-success {
   background-color: #65bb9f !important ;
 }
-
-#store_form label[for=logo], label[for=shop_image] {
-  cursor: pointer;
-}
