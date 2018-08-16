@@ -9,9 +9,3 @@
     {!! Form::button('', ['type' => 'submit', 'class' => 'delete-btn delete-btn'.$product->product_id.' hidden'] ) !!}
     {{ Form::close() }}
 </div>
-
-<script type="text/javascript">
-	$('.delete_article_garbage').on('click', function() {
-    	$(this).parent().find(':submit').trigger('click');
-    });
-</script>
