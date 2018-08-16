@@ -237,7 +237,7 @@ function delete_cart(box) {
              else
                 $('.sell_pannier').html(product_count);
 
-            toastr.success("L'article du panier a été retiré avec succès");
+            //toastr.success("L'article du panier a été retiré avec succès");
             if($('.cart-product').length == 0){
                 $('.content-cart-product').append("<tr> <td colspan=\"7\">Vous n'avez aucun article dans votre panier.</td></tr>");
             }
