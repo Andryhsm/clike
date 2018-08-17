@@ -28,7 +28,8 @@ class CartController extends Controller
 //		$this->cart_service->add($product,['qty'=>1,'attrs'=>[10,13]]);
  
 		$cart = $this->cart;
-        return view('front.cart.index',compact('cart'));
+		$total_commande = $cart->total();
+        return view('front.cart.index',compact('cart','total_commande'));
     }
 	
 	public function add(Request $request)
