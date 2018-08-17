@@ -93,7 +93,7 @@
                                     <div class="col-lg-12 info">
                                         <ul>
                                             <li>
-                                                <span>TOTAL{{$cart->total()}}</span>
+                                                <span>TOTAL</span>
                                                 <span class="pull-right total_original_amount">{!! format_price($total_commande) !!}</span>
                                              </li>
                                             <li class="text-center">    
