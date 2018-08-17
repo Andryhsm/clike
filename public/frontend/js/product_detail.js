@@ -409,14 +409,23 @@ if (description_length > 1200) {
         var price = $('.price-exact').html();
         var star_review = $('.stars_review').html();
         var cart_county = cart_count+1;
+        var new_price = parseFloat($('#product_form .new-price').html());
         if(cart_count<10){
             var count = '0'+cart_county;
         }else{
             var count = cart_county;
         }
+
+
         var number = parseInt($('.number_item').html()) + 1;
         var total_price1 = parseFloat($('.cart_total_price').html());
         var total_price2 = parseFloat($('.price-exact-price').html());
+        if (new_price) {
+            total_price2 = new_price;
+            price = new_price;
+        }else {
+            total_price2 =  parseFloat(price);
+        }    
         var total_price = total_price1 + total_price2;
         var res_total = total_price.toFixed(2)+'<i class="fa fa-eur" aria-hidden="true"></i> ('+number+')';
         //console.log(res_total);
