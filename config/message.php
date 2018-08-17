@@ -271,12 +271,12 @@ return [
 		'delete-error' => 'Facture non supprimée avec succès.',
 	],
 	'code_promo' => [
-		'add-success' => 'Code promo ajoutée avec succès.',
+		'add-success' => 'Code promo ajouté avec succès.',
 		'add-error' => 'Code promo non ajouté avec succès.',
 		'update-success' => 'Code promo mise à jour avec succès.',
 		'update-error' => 'Code promo non mise à jour avec succès.',
-		'delete-success' => 'Code promo supprimée avec succès.',
-		'delete-error' => 'Code promo non supprimée avec succès.',
+		'delete-success' => 'Code promo supprimé avec succès.',
+		'delete-error' => 'Code promo non supprimé avec succès.',
 	],
 	'customer' => [
 		'add-success' => 'Client enregistré avec succès.',

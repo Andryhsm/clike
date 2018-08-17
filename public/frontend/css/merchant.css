@@ -410,22 +410,22 @@ td.sorting_1 {
 }
 
 .show_article_eye {
-    background: url(../../images/icon/oeil.png) no-repeat;
+    background: url(../../images/icon/oeil.svg) no-repeat;
     width: 35px;
     height: 16px;
     display: block;
     cursor: pointer;
-    margin-top: 15%;
+    margin-top: 7%;
     margin-left: 12%;
 }
 
 .delete_article_garbage {
-    background: url(../../images/icon/corbeille.png) no-repeat;
+    background: url(../../images/icon/corbeille.svg) no-repeat;
     width: 35px;
     height: 22px;
     display: block;
     cursor: pointer;
-    margin-top: 15%;
+    margin-top: 5%;
     margin-left: 12%;
 }
 
