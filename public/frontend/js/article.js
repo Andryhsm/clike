@@ -1,3 +1,13 @@
+/**
+ * draggable
+ */
+$( function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  } );
+/**
+ * end draggable
+ */
 var $document = $(document);
 $( document ).ready(function(){
     if($('.decline').length > 1) $('#remove-decline').removeClass('hidden');
