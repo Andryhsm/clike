@@ -153,8 +153,8 @@ function apply_codepromo() {
                             $('#' + id).find('.discount').html('(-' + item.discount + '%)');
                             $('#' + id).find('.original_price del').html(fixed_two_after_dot(original_price) + '<i class="fa fa-eur" aria-hidden="true"></i>');
                             $('#' + id).find('.real-price').html( fixed_two_after_dot(price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i>');
-                            $('#' + id).find('.real-price').attr('data-price', '' + fixed_two_after_dot(price));
-                            $('#' + id).find('.real-price').data('price', '' + fixed_two_after_dot(price));
+                            $('#' + id).find('.real-price').attr('data-price', '' + price);
+                            $('#' + id).find('.real-price').data('price', '' + price);
                             $('#' + id).find('input.data-real-price').val(price);
                             $('#' + id).find('input.data-real-price').attr('value', price);
                         }
@@ -164,8 +164,8 @@ function apply_codepromo() {
                             var html = '<input class="hidden product_id_item" type="text" value="'+ product_id +'" autocomplete="off">';
                             html += '<span class="old-price discount" data-product-discount="0" style="color: rgb(67, 223, 230);">(-' + item.discount + '%)</span>';
                             html += '<span class="old-price original_price" style="color: rgb(67, 223, 230);" data-price="'+item.discount+'"><del>'+fixed_two_after_dot(original_price) +'<i class="fa fa-eur" aria-hidden="true"></i></del></span>';
-                            html += '<span class="new-price real-price" data-price="'+fixed_two_after_dot(price)+'" data-real-price="' + data_real_price + '">'+fixed_two_after_dot(price.round(2)) +'<i class="fa fa-eur" aria-hidden="true"></i></span>';
-                            html += '<input type="text" class="data-real-price hidden" name="real-price['+id+']" value="'+fixed_two_after_dot(price) +'" autocomplete="off">';
+                            html += '<span class="new-price real-price" data-price="'+price+'" data-real-price="' + data_real_price + '">'+fixed_two_after_dot(price.round(2)) +'<i class="fa fa-eur" aria-hidden="true"></i></span>';
+                            html += '<input type="text" class="data-real-price hidden" name="real-price['+id+']" value="'+ price +'" autocomplete="off">';
                             $('#' + id).find('.product-price').html(html);
                         }
 
@@ -205,9 +205,9 @@ function reset_codepromo() {
             var discount = $(el).find('.discount').attr('data-product-discount');
             $(el).find('.original_price del').html(fixed_two_after_dot(original_price) + '<i class="fa fa-eur" aria-hidden="true"></i>');
             $(el).find('.discount').html('(-'+discount+'%)')
-            $(el).find('.real-price').html( real_price + '<i class="fa fa-eur" aria-hidden="true"></i>');
-            $(el).find('.real-price').attr('data-price', '' + fixed_two_after_dot(real_price));
-            $(el).find('.real-price').data('price', '' + fixed_two_after_dot(real_price));
+            $(el).find('.real-price').html( fixed_two_after_dot(real_price.round(2)) + '<i class="fa fa-eur" aria-hidden="true"></i>');
+            $(el).find('.real-price').attr('data-price', '' + real_price);
+            $(el).find('.real-price').data('price', '' + real_price);
             $(el).find('input.data-real-price').val(real_price);  
         }
         
@@ -300,9 +300,9 @@ function calcul_total_price(data, quantity_max) {
         var quantity = $(this).parents('.cart-product').find('.quantity').val();
         var price = 0;
         $.each(data, function(i, val) {
-            var rest = quantity - quantity_max;
+            var rest = parseInt(quantity) - parseInt(quantity_max);
             if(id == val.item_id && quantity > quantity_max) 
-                price = (quantity_max * val.real_price + rest * val.original_price)/quantity;
+                price = (parseInt(quantity_max) * parseFloat(val.real_price) + rest * parseFloat(val.original_price))/parseInt(quantity);
         });
         
         if(price == 0) price = $(this).data('price');
