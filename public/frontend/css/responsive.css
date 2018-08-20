@@ -2375,7 +2375,9 @@ text-align: center !important;
   display: grid;
   grid-template-columns: 50% 50%;
 }
-
+.engagement_for_tablet_screen {
+  display: block !important;
+}
 }
 
 @media (max-width: 480px) {
@@ -2694,6 +2696,31 @@ text-align: center !important;
 .password-form label, .password-form div {
 	width: 100%;
 }
+.engagement_for_mobile_screen {
+  display: block !important;
+}
+.panel-group {
+  width: 90% !important;
+}
+.tab-panel-customer .nav-tabs {
+  width: 90% !important;
+}
+.engagement-menu .fa-angle-down {
+  font-size: 50px;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: -20px;
+}
+.engagement-menu {
+  border-top: none !important;
+  border-right: none !important;
+
+}
+.engagement-menu a.active {
+  border-top: none !important;
+  border-right: none !important;
+
+}
 }
 
 @media (max-width: 360px) {
@@ -2703,9 +2730,9 @@ text-align: center !important;
 .btn {
   font-size: 14px;
 }
-.engagement-menu .menu a, .menu-pop .point5 {
+/*.engagement-menu .menu a, .menu-pop .point5 {
   width: 50% !important;
-}
+}*/
 .dropdown-menu.cart-total {
   width: 250px !important;
   left: -22rem !important;
