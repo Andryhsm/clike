@@ -1254,6 +1254,9 @@ a#scrollUp {
 .container {
   width : 300px;
 }
+.section-avantage .container {
+  width: 80%;
+}
 .fixed-header-area.sticky {
   display: none;
 }
@@ -1986,15 +1989,7 @@ a#scrollUp {
 .tab-panel-customer>.nav-tabs > li, .tab-panel-customer>.nav-tabs > li {
     width: 100%;
 }
-.content-product-on-home>ul>li>.nav-title{
-  color: #044651;
-  display: inline-block;
-  padding: 0px 0px !important;
-  margin-left: 4rem;
-  margin-right: 4rem !important;
-  font-weight: 600;
-  font-size: 30px;
-}
+
 .tab-panel-customer>.nav-tabs>li:first-child.active>a, .tab-panel-customer>.nav-tabs>li:first-child.active>a:hover, .tab-panel-customer>.nav-tabs>li:first-child.active>a:focus, .tab-panel-merchant>.nav-tabs>li:first-child.active>a, .tab-panel-merchant>.nav-tabs>li:first-child.active>a:hover, .tab-panel-merchant>.nav-tabs>li:first-child.active>a:focus {
     border-top: 0px solid white !important;
     border-right: 0px solid white !important;
@@ -2378,9 +2373,20 @@ text-align: center !important;
 .engagement_for_tablet_screen {
   display: block !important;
 }
+.content-product-on-home>ul>li>.nav-title{
+  color: #044651;
+  display: inline-block;
+  padding: 0px 0px !important;
+  margin-left: 4rem;
+  margin-right: 4rem !important;
+  font-weight: 600;
+  font-size: 30px;
+}
+
 }
 
 @media (max-width: 480px) {
+<<<<<<< HEAD
 
 #left-header {
   border-right: none;
@@ -2388,6 +2394,17 @@ text-align: center !important;
 #discovery .panel-body div:nth-child(2), #collapseTwo .panel-body div:nth-child(1), #collapseThree .panel-body div:nth-child(1),  #collapseFour .panel-body div:nth-child(1) {
   padding-left: 0px;
   padding-right: 0px;
+=======
+.content-product-on-home>ul>li>.nav-title, .title h2{
+  margin-left: 0;
+  margin-right: 0!important;
+  font-weight: 600;
+  font-size: 5vw;
+}
+.content-product-on-home #productTab {
+  margin-left: -20px;
+  margin-right: -20px;
+>>>>>>> 0d55dcda232f3ce23a4cca605f34b61901804b4d
 }
 
 .owl-carousel .owl-item {
@@ -2560,9 +2577,7 @@ text-align: center !important;
     width: 60%;
     margin: 10% 0%;
 }
-.title h2 {
-    font-size: 18px;
-}
+
 .content-crowdfunding .youtube-video {
     margin: 2% -7%;
 }
@@ -2738,18 +2753,21 @@ text-align: center !important;
   border-right: none !important;
 
 }
+.section-avantage .container {
+  width: 90%; 
+}
 }
 
 @media (max-width: 360px) {
-.container {
+.container, .section-avantage .container {
   width: 100%; 
 }
 .btn {
   font-size: 14px;
 }
-/*.engagement-menu .menu a, .menu-pop .point5 {
-  width: 50% !important;
-}*/
+.content-product-on-home>ul>li>.nav-title, .title h2{
+  font-size: 7vw;
+}
 .dropdown-menu.cart-total {
   width: 250px !important;
   left: -22rem !important;

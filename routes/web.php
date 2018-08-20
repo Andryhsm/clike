@@ -184,6 +184,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
 });
 Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => ''], function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('instagram-feeds', 'HomeController@getIntagramFeeds')->name('instagram-feeds');
+    Route::get('instagram3-feeds', 'HomeController@get_3_IntagramFeeds')->name('instagram3-feeds');
 
     Route::get('connexion', ['uses' => 'Auth\AuthController@getLogin', "middleware" => 'guest', 'as' => 'login']);
     Route::post('authentification', 'Auth\AuthController@postLogin')->name('login-post');

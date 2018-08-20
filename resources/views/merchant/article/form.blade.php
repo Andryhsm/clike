@@ -61,11 +61,14 @@
                         <div class="add-img2 {!! $hidden_img2 !!}">
                             <div class="nav-img" id="sortable">
                                 @if($product)
+                                    <?php $i=1; ?>
                                     @foreach($product->images as $image)
                                         <div class="nav-img-item">
-                                            <img src="{!! URL::to('/') !!}/upload/product/{!! $image->image_name !!}" alt='{!! $image->image_name !!}' data-image-id="{!! $image->product_image_id !!}"></img>
+                                            <img src="{!! URL::to('/') !!}/upload/product/{!! $image->image_name !!}" alt='{!! $image->image_name !!}' data-image-id="{!! $image->product_image_id !!}" data-index="{!! $i !!}"></img>
                                             <a class="close-thik"></a>
+                                            <input class="hidden" value="{!! $image->product_image_id !!}" name="product_image_ids[]"> 
                                         </div>
+                                        <?php $i++; ?>
                                     @endforeach
                                 @endif
                             </div>
