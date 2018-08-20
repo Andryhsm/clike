@@ -878,6 +878,9 @@ var reviews_length = $('#reviews').text().length ;
 			close_select_radius();
 		}
 	});
+	 $('.navbar-toggle').click(function(e) {
+		$('.navbar-collapse').slideToggle();
+    });
 
 	
 	
