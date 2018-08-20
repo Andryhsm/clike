@@ -173,6 +173,7 @@
 		itemsMobile: [479, 1],
 	});
 
+	
 	/*----------------------------
 	related-products-active
 	------------------------------ */
@@ -878,11 +879,30 @@ var reviews_length = $('#reviews').text().length ;
 			close_select_radius();
 		}
 	});
+<<<<<<< HEAD
 	 $('.navbar-toggle').click(function(e) {
 		$('.navbar-collapse').slideToggle();
     });
+=======
+	var instagram_url = base_url + 'instagram-feeds';
+	if (Modernizr.mq('(max-width: 480px)')) {
+		$(function() {
+			var instagram_url = base_url + 'instagram3-feeds';
+		});
+	}
+>>>>>>> 7cf6ee7b3bfcc2e5b11df3143d321cb40f7ac8a6
 
-	
+	$.ajax({
+        url: base_url + 'marchand/child-category',
+        type: 'GET',
+        dataType: 'json'
+    })
+    .done(function(data) {
+        console.log('iiiiiiiiiiiii')
+        if (data.length > 0) {
+            console.log(JSON.stringify(data));
+        }
+    });
 	
 })(jQuery);
 
