@@ -2,7 +2,17 @@
  * draggable
  */
 $( function() {
-    $( "#sortable" ).sortable();
+    $( "#sortable" ).sortable({
+        update: function(event, uri){
+            
+           // var nav_img = $('.nav-img').find('.nav-img-item');
+            $('.nav-img .nav-img-item').each( function(i,el){
+                var index = $(el).index() + 1;
+                var id = $(el).find('img ').attr('data-file');
+                $('input#' + id).attr('name', 'images['+index+']');
+            });     
+        }
+    });
     $( "#sortable" ).disableSelection();
   } );
 /**
@@ -116,8 +126,11 @@ $('#reduction').bind('keyup change', function () {
 $(document).on('click', '.add-bouton', function(event) {
     var input_div = $('#add-img-input');
     var row_count = parseInt($('.input-img:last').attr('id'));
+    var row_index_last = $('.nav-img-item').last().find('img').attr('data-index');
+    var last_row_index =parseInt(row_index_last) + 1;
+    //console.log(last_row_index);
     var row_index = row_count + 1;
-    input_div.append('<input type="file" class="input-img" id="'+ row_index +'" name="images[]" />');
+    input_div.append('<input type="file" class="input-img" id="'+ row_index +'" name="images['+last_row_index+']" />');
     $('#' + row_index).trigger('click');
     load_left_img('.input-img#'+row_index, row_index);
 });

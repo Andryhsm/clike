@@ -94,7 +94,7 @@ class ArticleController extends Controller
         //sans limite upload
         $product_images = [];
         $images = $request->file('images');
-        foreach ($images as $index=>$image) 
+        foreach ($images as $index=>$image)
         {
             $product_images[] = $this->uploadImage($image);
         }
@@ -178,13 +178,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $product_images = [];
         if($request->file('images'))
         {
             $images = $request->file('images');
+            
             foreach ($images as $index=>$image) 
             {
-                $product_images[] = $this->uploadImage($image);
+                $product_images[$index] = $this->uploadImage($image);
             }
         }
         if($request['remove_img']){

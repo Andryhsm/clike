@@ -28,7 +28,6 @@ class ProductRepository implements ProductRepositoryInterface
     
     public function saveArticle($input,$product_images)
     {
-        //dd($input);
         try {
             $this->model->brand_name = $input['brand_name'];
             $this->model->is_active = $input['is_active'];
@@ -45,7 +44,7 @@ class ProductRepository implements ProductRepositoryInterface
             //product translation
             $product_translation = new ProductTranslation();
             $product_translation->product_id = $this->model->product_id;
-            $product_translation->product_name = $input['product_name'];
+            $product_translation->product_name = $input['product_name'];    
             $product_translation->description = $input['description'];
 			$product_translation->meta_title = $input['product_name'];
 			$product_translation->meta_description = $input['brand_name'].''.$input['product_name'];
@@ -88,6 +87,7 @@ class ProductRepository implements ProductRepositoryInterface
                 $product_image->alt = $input['product_name'];
                 $product_image->title = $input['product_name'];
                 $product_image->sort_order = $index + 1;
+               // dd($image);
                 $product_image->save();
             }
             
@@ -145,6 +145,7 @@ class ProductRepository implements ProductRepositoryInterface
             $attribute_id = $input['attribute_id'];
             $product_stock_ids = $input['product_stock_id'];
             $product_stock_attribute_option_ids = $input['product_stock_attribute_option_id'];
+            $product_image_ids = $input['product_image_ids'];
             
             foreach ($counts as $key=>$count) {
                 $product_stock = ProductStock::findOrNew($product_stock_ids[$key]);
@@ -170,15 +171,23 @@ class ProductRepository implements ProductRepositoryInterface
             $product->categories()->attach($input['category_child_id']);
             
             //product image
+           // dd($product_images);
             foreach ($product_images as $index=>$image) {
                 $product_image = new ProductImage();
                 $product_image->product_id = $product_id;
                 $product_image->image_name = $image;
                 $product_image->alt = $input['product_name'];
                 $product_image->title = $input['product_name'];
-                $product_image->sort_order = $index + 1;
+                $product_image->sort_order = $index;
                 $product_image->save();
             }
+            foreach ($product_image_ids as $key=>$value){
+                $product_image = ProductImage::find($product_image_ids[$key]);
+                $orders = $key + 1;
+                $product_image->sort_order = $orders;
+                $product_image->save();
+            }
+            //dd($product_image_ids);
             if(!empty($input['remove_img'])){
                 $remove_images = explode(',', $input['remove_img']);
                 foreach ($remove_images as $remove_image_id) {
