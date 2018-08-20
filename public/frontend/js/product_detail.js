@@ -253,7 +253,7 @@ if (description_length > 1200) {
                 }
             }
         });
-    })
+    });
     /*$(document).ajaxStart(function() {
         $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
     });
