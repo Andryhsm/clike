@@ -34,6 +34,11 @@ function showEngagement(box) {
 	var urlcontent = $(url).html();
 	//console.log(urlcontent)
 	$('#content2').html(urlcontent);
+
+	$($(box).parent().parent().find('.panel-collapse')).slideToggle();
+		// .toggleClass('in');
 }
+
+
 
 

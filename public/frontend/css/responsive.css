@@ -2381,6 +2381,15 @@ text-align: center !important;
 }
 
 @media (max-width: 480px) {
+
+#left-header {
+  border-right: none;
+}
+#discovery .panel-body div:nth-child(2), #collapseTwo .panel-body div:nth-child(1), #collapseThree .panel-body div:nth-child(1),  #collapseFour .panel-body div:nth-child(1) {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .owl-carousel .owl-item {
     float: left;
     width: 230px !important;
@@ -2590,7 +2599,7 @@ text-align: center !important;
   width: 50%;
 }
 .engagement-menu .row {
-  font-size: 16px !important;
+  font-size: 13px !important;
 }
 #engagement-menu-content {
   font-size: 14px;
@@ -2599,7 +2608,15 @@ text-align: center !important;
   line-height: 1.2;
 }
 .header-engagement-height {
-  padding: 10px !important;
+  padding: 7px !important;
+}
+.section-avantage-content div:nth-child(2){
+  padding-left: 20px;
+  padding-right: 10px;
+  font-size: 16px !important;
+}
+.section-avantage .ptb-15 .container .row div:nth-child(1) {
+  padding-left: 5px !important;
 }
 .content-page {
   margin: 8.5% 4% 4%;
