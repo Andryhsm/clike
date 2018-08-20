@@ -94,7 +94,7 @@
                                         <ul>
                                             <li>
                                                 <span>TOTAL</span>
-                                                <span class="pull-right total_original_amount">{!! format_price($cart->total()) !!}</span>
+                                                <span class="pull-right total_original_amount">{!! format_price($total_commande) !!}</span>
                                              </li>
                                             <li class="text-center">    
                                                 <button type="submit" class="btn btn-clickee-default mt-40  text-uppercase">Paiement</button>

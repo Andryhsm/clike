@@ -458,6 +458,10 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
+            <div class="engagement_for_tablet_screen hidden">
+                @include('front.pages.mobile_tablet_pages.tablet_engagement_menu')
+=======
             <!--  menu dans les écrans mobiles  -->
             <div class="engagement-menu hidden text-center" id="uploadTab">
                 <br><br><br>
@@ -529,27 +533,14 @@
                             <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Marketing +','Sans engagement','price') !!}</span><span class="price-unity">€</span>/mois</div>                             
                         </a>
                 </div>
+>>>>>>> 51d2580804a0d9f7264219ede91237767ed07f49
             </div>
-
-            <div class="hidden" id="engagement-menu-content">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 point5 left-header  border-green" style="margin-top: 30rem; border-right: none;">
-                    <p><b>Compte employés</b></p>
-                    <div class="row bg-white p-0"><p><b>Nombre d’articles</b></p></div>
-                    <p><b>Base de données clients</b></p>
-                    <div class="row bg-white p-0"><p><b>Visibilité des produits</b></p></div>
-                    <p><b>Frais de transaction</b></p>
-                    <div class="row bg-white p-0"><p><b>Codes promo</b></p></div>
-                    <p><b>Encaissement physique</b></p>
-                    <div class="row bg-white p-0"><p><b>Rapport d’activité</b></p></div>
-                    <p><b>Fiche boutique</b></p>
-                    <div class="row bg-white p-0"><p><b>Newsletters</b></p></div>
-                </div>
-                
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="content2">
-                </div>
+            <div class="engagement_for_mobile_screen hidden">
+                @include('front.pages.mobile_tablet_pages.mobile_engagement_menu')
             </div>
+           
         </div>
         
-    </div>
+   
     @include('front.layout.section-avantage')
 @endsection
