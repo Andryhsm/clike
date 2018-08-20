@@ -527,7 +527,7 @@ function getCategories($categories, $category_parent_id,$selected_category)
             }
             
             $cat_title = strtolower(str_replace(' ', '-', $category['title']));
-            echo "<a id='parent_category".$index."' data-id='" . $category['key'] . "' href='#' onclick='stopEvent()' class='dropdown-toggle arrow-bottom $selected_class' data-toggle='dropdown' data-parent='#" . $category['title'] . "' data-type='category-filter'>" . $category['french_title'] . "</a>";  
+            echo "<a id='parent_category".$index."' data-id='" . $category['key'] . "' href='#' onclick='window.location.href=\"".route('search', ['category' => $category['key']])."\"' class='dropdown-toggle arrow-bottom $selected_class' data-toggle='dropdown' data-parent='#" . $category['title'] . "' data-type='category-filter'>" . $category['french_title'] . "</a>";  
             if (!empty($category['children'])) {
                 getChildCategory($category['children'], $category_parent_id, $selected_category, $cat_title);
             } 
@@ -842,4 +842,9 @@ function address($user){
     $user_id = $user->user_id;
     return \App\UserAddress::where('user_id', $user_id)->first();
     
+}
+
+function showPackByValue($packs,$name,$type,$value)
+{
+    return !empty($packs[$name][$type]->$value)?$packs[$name][$type]->$value:'';
 }

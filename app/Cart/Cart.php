@@ -11,7 +11,7 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Collection;
 use ShoppingCart\Storage\LocalStore;
 use ShoppingCart\Exceptions\CartItemNotFoundException;
-use App\Exceptions\CartException;
+//use App\Exceptions\CartException;
 use Exception;
 use App\StoreConfig;
 use Cache;

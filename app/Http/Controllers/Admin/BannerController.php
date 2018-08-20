@@ -29,18 +29,10 @@ class BannerController extends Controller
 
 	public function index()
 	{
-		Session::put('sliderORbanner',1);
 		$banners = $this->banner_repository->getAllBanner();
 		return view('admin.banner.index')->with('banners', $banners);
 	}
 
-	public function sliderindex()
-	{
-		Session::put('sliderORbanner',2);
-
-		$banners = $this->banner_repository->getAllSlider();
-		return view('admin.banner.index')->with('banners', $banners);
-	}
 
 	public function create()
 	{
@@ -52,7 +44,9 @@ class BannerController extends Controller
 	{
 		$rules = array(
 			'banner_title' => 'required',
-			'image' => 'mimes:jpeg,jpg,png,gif|max:10000' // max 10000kb
+			'image' => 'mimes:jpeg,jpg,png,gif|max:10000', // max 10000kb
+			'french_image'=>'required',
+			'french_image_hover'=>'required'
 		);
 		$validator = Validator::make($request->all(), $rules);
 		if ($validator->fails()) {
@@ -62,13 +56,8 @@ class BannerController extends Controller
             $image_name['french_image_name_hover']=$this->uploadImage('french_image_hover',$request->is_subbanner);
 			$brand=$this->banner_repository->create($request->all(),$image_name);
 			if($brand){				
-				if (Session::get('sliderORbanner') == 1) {
-					flash()->success(config('message.banner.add-success'));
-					return Redirect('admin/banner');
-				}else{
-					flash()->success(config('message.banner.add-success-slider'));
-					return Redirect('admin/slider');
-				}
+			flash()->success(config('message.banner.add-success'));
+			return Redirect('admin/banner');
 				
 			}
 		}
@@ -94,30 +83,18 @@ class BannerController extends Controller
             $image_name['french_image_name']=$this->uploadImage('french_image',$request->is_subbanner);
 			$image_name['french_image_name_hover']=$this->uploadImage('french_image_hover',$request->is_subbanner);
 
-			if (Session::get('sliderORbanner') == 1) {
-				if(!empty($request['french_image']) && !empty($request['french_image_hover'])){
-					$this->deleteUploadedImage($id);
-				}
-			}else{
-				if(!empty($request['french_image'])){
-					$this->deleteUploadedImage($id);
-				}
+			if(!empty($request['french_image']) && !empty($request['french_image_hover'])){
+				$this->deleteUploadedImage($id);
 			}
 			
-
 			$banner=$this->banner_repository->updateById($id,$request->all(),$image_name);
 			if($banner){
-				if (Session::get('sliderORbanner') == 1) {
-					flash()->success(config('message.banner.update-success'));
-					return Redirect('admin/banner');
-				}else{
-					flash()->success(config('message.banner.update-success-slider'));
-					return Redirect('admin/slider');
-				}
-			}
+				flash()->success(config('message.banner.update-success'));
+				return Redirect('admin/banner');
 			/*return Redirect('admin/banner');*/
 		}
 	}
+}
 
 	public function uploadImage($name,$type){
 		
@@ -125,15 +102,20 @@ class BannerController extends Controller
 		if (Input::hasFile($name)) {
 			$file = Input::file($name);
 			try{
-              $image_name = $this->upload_service->upload($file, 'upload/banner');
+              $image_name = $this->upload_service->upload($file, '/upload/banner');
 			}catch(Exception $e){
 				  flash()->error($e->getMessage());
                   return Redirect::back();
 			}
 
+            $path_img_delete = public_path(Banner::Banner_IMAGE_PATH.$image_name);
 			$img = \Image::make(public_path().'/'.Banner::Banner_IMAGE_PATH.$image_name);
 			$thumb_path = public_path(Banner::Banner_IMAGE_PATH);
 			
+            $image_name = str_replace(' ', '_', $image_name) ;
+            $image_name = strval(mt_rand());											//genêre un nom aléatoire pour renommer l'image
+            $image_name .= ".png";
+
 			if(!\File::isDirectory($thumb_path)){
 				\File::makeDirectory($thumb_path);
 			}
@@ -152,7 +134,12 @@ class BannerController extends Controller
 					# code...
 					break;
 			}
+
+			if (file_exists($path_img_delete)) {
+                unlink($path_img_delete);
+            }   
 		}
+
 		return $image_name;
 
 	}
@@ -161,30 +148,17 @@ class BannerController extends Controller
 		$bannerImage = $this->banner_repository->getById($id);
 		$path = public_path(Banner::Banner_IMAGE_PATH.$bannerImage->french_banner_image);
 		$inpath = public_path(Banner::Banner_IMAGE_PATH.$bannerImage->banner_image_hover);
-
-		if (Session::get('sliderORbanner') == 1){
-			if (file_exists($path) && file_exists($inpath) ){
+			if (file_exists($path) && file_exists($inpath)){
 			   unlink($path);
 			   unlink($inpath);
 			}
-		}else{
-			if (file_exists($path) && file_exists($inpath) ){
-			   unlink($path);
-			}
-		}
-	
     }
 	public function destroy($id)
 	{
 		$this->deleteUploadedImage($id);
 		if ($this->banner_repository->deleteById($id)) {
-			if (Session::get('sliderORbanner') == 1) {
-				flash()->success(config('message.banner.delete-success'));
-				return Redirect('admin/banner');
-			}else{
-				flash()->success(config('message.banner.delete-success-slider'));
-				return Redirect('admin/slider');
-			}
+			flash()->success(config('message.banner.delete-success'));
+			return Redirect('admin/banner');
 		}
 	}
 }

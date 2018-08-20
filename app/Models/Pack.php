@@ -18,5 +18,8 @@ class Pack extends Model
         'name',
         'price',
         'type',
+        'product_visibility',
+        'transaction_fees',
+        'pack_newsletter',
     ];
 }

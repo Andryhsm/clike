@@ -19,9 +19,5 @@ interface BannerRepositoryInterface
 
 	public function getActiveSubBanner();
 
-	public function getActiveSlider();
-
 	public function getAllBanner();
-
-	public function getAllSlider();
 }

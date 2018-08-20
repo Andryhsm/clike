@@ -34,39 +34,39 @@
             </p>
             <div class="form-group row mb-0">
                 <div class="col-sm-12">   
-                    {{Form::text('shop_name', '',['class'=>'required form-control', 'id'=>"shop_name", 'placeholder' => "Nom de l'entreprise *"])}}
+                    {{Form::text('shop_name', '',['class'=>'required form-control', 'id'=>"shop_name", 'placeholder' => "Nom de l'entreprise *", 'data-msg' => "Veuillez entrer le nom de l'entreprise!"])}}
                 </div>
             </div>
             <div class="form-group row mb-0">
                 <div class="col-sm-12">     
-                    {{Form::text('siret', '',['class'=>'required form-control', 'id'=>"siret", 'placeholder' => "Siret *"])}}
+                    {{Form::text('siret', '',['class'=>'required form-control', 'id'=>"siret", 'placeholder' => "Siret *", 'data-msg' => 'Veuillez entrer le numéro de siret!'])}}
                 </div>
             </div>
             <div class="form-group row mb-0">
                 <div class="col-sm-12">      
-                    {{Form::text('email', '',['class'=>'required form-control', 'id'=>"email", 'placeholder' => "Adresse mail *"])}}
+                    {{Form::text('email', '',['class'=>'required form-control', 'id'=>"email", 'placeholder' => "Adresse mail *", 'data-msg' => 'Veuillez entrer une adresse email valide!'])}}
                 </div>
             </div>
             <div class="form-group row mb-0">
                 <div class="col-sm-12">     
-                    {{Form::text('phone_number', '',['class'=>'required form-control', 'id'=>"phone_number", "placeholder" => "Numéro de téléphone *" ])}}
+                    {{Form::text('phone_number', '',['class'=>'required form-control', 'id'=>"phone_number", "placeholder" => "Numéro de téléphone *", 'data-msg' => 'Veuillez entrer le numéro de téléphone!'])}}
                 </div>
             </div>
             <div class="form-group row mb-0">
                  <div class="col-sm-12">     
-                    {{Form::password('password',['class'=>'required form-control', 'id'=>"password", 'placeholder' => trans("form.password") . " *"]) }}
+                    {{Form::password('password',['class'=>'required form-control', 'id'=>"password", 'placeholder' => trans("form.password") . " *", 'data-msg' => "Veuillez entrer votre mot de passe!"]) }}
                 </div>
             </div>
             <div class="form-group row mb-0"> 
                  <div class="col-sm-12">     
-                    {{Form::password('confirm_password', ['class'=>'required form-control', 'id'=>"confirm_password", 'placeholder' => trans("form.confirm_password") . " *"])}}
+                    {{Form::password('confirm_password', ['class'=>'required form-control', 'id'=>"confirm_password", 'placeholder' => trans("form.confirm_password") . " *", 'data-msg' => "Les mot de passe entrés ne sont pas identiques!"])}}
                 </div>
             </div>
         </div>
         <!-- register-area-end -->
         <!--fin info-->
         <div class="register-footer-area text-center pt-40">
-            <button class="btn btn-submit btn-clickee-default" type="button" id="btn-etape1">SHOPPER</button>
+            <button class="btn btn-submit btn-clickee-default text-uppercase" type="button" id="btn-etape1">Vendre</button>
         </div>
         <div class="condition-confidentiality text-center pt-20 pb-40">
             <span> {!! trans("common/label.condition_create_account") !!} <a href="">{!! trans("common/label.general_condition") !!}</a></span>

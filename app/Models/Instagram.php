@@ -16,12 +16,12 @@ class Instagram extends Model
     protected $fillable = ['title','image','is_active','order'];
 
     public function getInstagramImage($language_code){
-        $image_name=($language_code=='en' || $this->image==null)?$this->instagram_image:$this->image; //banner_image = instagram_image
+        $image_name=($this->image==null)?$this->instagram_image:$this->image; //banner_image = instagram_image
         return URL::to('/').self::Instagram_IMAGE_PATH.$image_name;
     }
   
     public function getCdnInstagramImage($language_code){
-        $image_name=($language_code=='en' || $this->image==null)?$this->instagram_image:$this->image;
+        $image_name=($this->image==null)?$this->instagram_image:$this->image;
         return self::Instagram_CDN_IMAGE_PATH.$image_name;
     }
 }

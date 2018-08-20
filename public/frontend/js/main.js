@@ -677,63 +677,78 @@ var reviews_length = $('#reviews').text().length ;
 	});
 
 	$('#btn-etape1').on('click', function() {
-
-		var shop_name = $('#shop_name').val();
-		var siret = $('#siret').val();
-		var email = $('#email').val();
-		var phone_number = $('#phone_number').val();
-		var password = $('#password').val();
-		var confirm_password = $('#confirm_password').val();
-
-		if (shop_name == "") {
-			$('#shop_name').css('border-color', 'red');
-		}
-		else {
-			$('#shop_name').css('border-color', '#044651');
-		}
-		if (siret == "") {
-			$('#siret').css('border-color', 'red');
-		}
-		else {
-			$('#siret').css('border-color', '#044651');
-		}
-		var regexForEmailValidation = /^\w+([-+.'][^\s]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-		var emailFormat = regexForEmailValidation.test(email);
-		if (email == "" || emailFormat == false) {
-			$('#email').css('border-color', 'red');
-		}
-		else {
-			$('#email').css('border-color', '#044651');
-		}
-		if (phone_number == "") {
-			$('#phone_number').css('border-color', 'red');
-		}
-		else {
-			$('#phone_number').css('border-color', '#044651');
-		}
-		if (password == "") {
-			$('#password').css('border-color', 'red');
-		}
-		else {
-			$('#password').css('border-color', '#044651');
-		}
-		if (confirm_password == "") {
-			$('#confirm_password').css('border-color', 'red');
-		}
-		else {
-			$('#confirm_password').css('border-color', '#044651');
-		}
-		if (confirm_password != password || confirm_password == "" || password == "") {
-			$('#password').css('border-color', 'red');
-			$('#confirm_password').css('border-color', 'red');
-		}
-		else {
-			$('#password').css('border-color', '#044651');
-			$('#confirm_password').css('border-color', '#044651');
-		}
-		if (shop_name != "" && siret != "" && email != "" && emailFormat == true && phone_number != "" && password != "" && confirm_password != "" && password == confirm_password) {
+		var form = $('#store_form');
+		form.validate({
+			rules: {
+				email: {
+	                required: true,
+	                email: true
+	            },
+	            password: "required",
+			    confirm_password: {
+			      equalTo: "#password"
+			    }
+			}
+		});
+		if(form.valid()){
 			$('#2-tab').trigger('click');
 		}
+		// var shop_name = $('#shop_name').val();
+		// var siret = $('#siret').val();
+		// var email = $('#email').val();
+		// var phone_number = $('#phone_number').val();
+		// var password = $('#password').val();
+		// var confirm_password = $('#confirm_password').val();
+
+		// if (shop_name == "") {
+		// 	$('#shop_name').css('border-color', 'red');
+		// }
+		// else {
+		// 	$('#shop_name').css('border-color', '#044651');
+		// }
+		// if (siret == "") {
+		// 	$('#siret').css('border-color', 'red');
+		// }
+		// else {
+		// 	$('#siret').css('border-color', '#044651');
+		// }
+		// var regexForEmailValidation = /^\w+([-+.'][^\s]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+		// var emailFormat = regexForEmailValidation.test(email);
+		// if (email == "" || emailFormat == false) {
+		// 	$('#email').css('border-color', 'red');
+		// }
+		// else {
+		// 	$('#email').css('border-color', '#044651');
+		// }
+		// if (phone_number == "") {
+		// 	$('#phone_number').css('border-color', 'red');
+		// }
+		// else {
+		// 	$('#phone_number').css('border-color', '#044651');
+		// }
+		// if (password == "") {
+		// 	$('#password').css('border-color', 'red');
+		// }
+		// else {
+		// 	$('#password').css('border-color', '#044651');
+		// }
+		// if (confirm_password == "") {
+		// 	$('#confirm_password').css('border-color', 'red');
+		// }
+		// else {
+		// 	$('#confirm_password').css('border-color', '#044651');
+		// }
+		// if (confirm_password != password || confirm_password == "" || password == "") {
+		// 	$('#password').css('border-color', 'red');
+		// 	$('#confirm_password').css('border-color', 'red');
+		// }
+		// else {
+		// 	$('#password').css('border-color', '#044651');
+		// 	$('#confirm_password').css('border-color', '#044651');
+		// }
+		// if (shop_name != "" && siret != "" && email != "" && emailFormat == true && phone_number != "" && password != "" && confirm_password != "" && password == confirm_password) {
+		// 	$('#2-tab').trigger('click');
+		// }
 	});
 
 	$('#btn-etape3').on('click', function() {
@@ -818,6 +833,7 @@ var reviews_length = $('#reviews').text().length ;
 		})
 		.done(function(data) {
 			var all_products = data.products;
+			console.log(all_products);
 			var options = {
 				data: all_products,
 				getValue: function(product) {
@@ -829,7 +845,7 @@ var reviews_length = $('#reviews').text().length ;
 						return "<div class='row content-result-autocompletion' style='padding: 0px 20px;'> " +
 							"<div class='col-xs-2'><img src='" + base_url + 'upload/product/thumb/' + item.images[0].image_name + "' /></div> " +
 							"<div class='col-xs-8'>" +
-							"<span class='brand-name text-uppercase'>" + item.brand_name + "</span><br>" +
+							"<span class='text-bold fs-14 text-uppercase'>" + item.brand_name + "</span><br>" +
 							"<span>" + value + "</span>" +
 							"</div>" +
 							"</div>";
@@ -838,7 +854,10 @@ var reviews_length = $('#reviews').text().length ;
 				list: {
 					onClickEvent: function() {
 						$('#form-search').submit();
-					}	
+					},
+					match: {
+						enabled: true
+					}
 				}
 			};
 			$('#search-product-input').easyAutocomplete(options);

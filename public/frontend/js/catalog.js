@@ -3,17 +3,18 @@ $(".select-tri").on('change', '.filter', function(event) {
     apply_filter(url);  
 });
 
+// fonctionnement du dropdown
 $(".dropdown > button").click(function() {}, function() {
     var $icon = $(this).find("i");
-    if ($icon.hasClass('fa-angle-down')) {
         $icon.removeClass('fa-angle-down').addClass('fa-angle-up');
         $(this).parents('.dropdown').addClass('open');
-    }
-    else {
-        $icon.removeClass('fa-angle-up').addClass('fa-angle-down');
-        $(this).parents('.dropdown').removeClass('open');
-    }
 });
+$(".dropdown-menu").mouseleave(function(){
+    var $icon = $(this).prev().find("i");   
+    $icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+    $(this).parents('.dropdown').removeClass('open');
+});
+//End fonctionnement du dropdown
 
 $('body').on('click', function(e) {
     if (!$('li.dropdown').is(e.target) &&
@@ -24,30 +25,55 @@ $('body').on('click', function(e) {
     }
 });
 
+// fonctionnement des choix dans dropdown
 $(".container-filter").on('click', '.filter', function(e) {
     e.preventDefault();
     var $icon = $(this).find("i");
 
+    //supprimer le class selected dans TRIER
     if ($(this).data('type') == 'sort') {
+        var $datacurrent= $(this).data('id');
         var $old_selected = $('.sort-filter').find('.selected');
+        var $dataold = $old_selected.data('id');
+        // console.log("data current"+$datacurrent);
+        // console.log("data taloha"+$dataold);
         $old_selected.removeClass('selected');
         var $icon_old_selected = $old_selected.find('i');
         $icon_old_selected.removeClass('fa-dot-circle-o').addClass('fa-circle-o');
+
+        if($datacurrent == $dataold){
+            $icon.removeClass('fa-dot-circle-o').addClass('fa-circle-o');
+            $(this).removeClass('selected');
+        }else{
+            $(this).addClass('selected');
+            $icon.removeClass('fa-circle-o').addClass('fa-dot-circle-o');
+        }
     }
-    if ($(this).hasClass('selected'))
-        $(this).removeClass('selected');
-    else
-        $(this).addClass('selected');
+    else{
+        //mise en place du class selected dans TOUS filtre
+        if ($(this).hasClass('selected')){
+            $(this).removeClass('selected');
+        }
+        else{
+            $(this).addClass('selected');
+        }
+   
+
     if ($icon.hasClass('fa-circle-o')) {
-        $icon.removeClass('fa-circle-o').addClass('fa-dot-circle-o');
+        $icon.removeClass('fa-circle-o').addClass('fa-dot-circle-o'); //icon en active
     }
     else {
-        $icon.removeClass('fa-dot-circle-o').addClass('fa-circle-o');
+        $icon.removeClass('fa-dot-circle-o').addClass('fa-circle-o'); //icon desactive
     }
+}
+    
     var filter_url = get_filter_url();
     console.log(filter_url);
     apply_filter(filter_url);
+
 });
+
+// END fonctionnement des choix dans dropdown
 
 //Avoir le resultat du produit par page
 function changeNumberProduct() {    

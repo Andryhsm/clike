@@ -55,7 +55,7 @@ class AuthController extends Controller
         $packs_data = $this->pack_repository->getAll();
         $packs = [];
         foreach ($packs_data as $key => $pack) {
-            $packs[$pack->name][$pack->type] = $pack->price;
+            $packs[$pack->name][$pack->type] = $pack;
         }
 		return view('merchant.content', compact('countries', 'store', 'brands', 'brand_tags', 'packs'));
 	}

@@ -215,7 +215,7 @@ label.error {
 .backRed{background-color: #EC7063 !important;} 
 .backOrange{background-color: #F8C471 !important;} 
 .backBlue{background-color: #85C1E9 !important;} 
-.backBlack{background-color: #273746 !important; color: #fff;}
+.backBlack{background-color: #273746 !important; color: #fff;} 
 
 
 .option_row:first-child a.up,

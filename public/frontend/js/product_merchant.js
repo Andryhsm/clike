@@ -422,7 +422,6 @@ jQuery(document).ready(function() {
         $('.table').tableExport({
             filename: 'Product_list_%DD%-%MM%-%YY%'
         });
-    })
-
+    });
 
 });

@@ -67,7 +67,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
         Route::get('role/destroy/{role_id}', 'AdminRoleController@destroy')->name('delete_role');
 
         Route::resource('banner', 'BannerController');
-        Route::get('slider', 'BannerController@sliderindex')->name('slider');
+        //Route::get('slider', 'BannerController@index');
         Route::resource('product-rating', 'ProductRatingController');
         
         //instagram route
@@ -77,6 +77,10 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
         Route::get('instagram/{id}','InstagramController@edit');
         Route::post('instagram/images','InstagramController@orders');
         //end instagram route
+
+        //slider route
+        Route::resource('slider', 'SliderController');
+        //end slider route
 
         Route::resource('pack', 'PackController');
 

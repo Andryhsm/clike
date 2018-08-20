@@ -9,7 +9,7 @@
     {!! Html::style('backend/dist/css/skins/skin-black-light.css') !!}
     {!! Html::style('backend/css/style.css') !!}
 
-    {!! Html::style('frontend/css/style-clickee.css') !!}
+    {!! Html::style('frontend/css/style-clickee.css') !!}   
 @stop
 @section('page_title')
     <div class="section-title col-mm-8  col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -35,7 +35,7 @@
             <div class="bottle">
                 <div class="col-lg-12">
                     <div class="form-group">
-                        <label for="product_name">Nom de l'article</label>
+                        <label for="product_name">Nom de article</label>
                         <input type="text" data-msg="Vous devez entrer le nom de l'article!" name="product_name" class="form-control required" id="product_name"
                                value="{!! ($product) ? $product->translation->product_name : null !!}"
                                placeholder="Nom de l'article">
@@ -59,7 +59,7 @@
                             <label id="add-img1" for="1">Ajouter images</label>
                         </div>
                         <div class="add-img2 {!! $hidden_img2 !!}">
-                            <div class="nav-img">
+                            <div class="nav-img" id="sortable">
                                 @if($product)
                                     @foreach($product->images as $image)
                                         <div class="nav-img-item">
@@ -96,7 +96,7 @@
                     <div class="line_separator"></div>
                     
                     <div class="article-details">
-                        <p class="title"><bold>détails de l'article</bold></p>
+                        <p class="title"><bold>détails article</bold></p>
                         
                         <div class="form-group">
                             <label for="brand_name">Marque</label>
@@ -252,7 +252,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="product_inventory">Inventaire</label>
-                                    <input type="text" name="product_inventory[1]" data-msg="Vous avez oubliez ci-dessus!" class="product_inventory form-control required" value="" placeholder="Inventaire">
+                                    <input type="number" name="product_inventory[1]" data-msg="Vous avez oubliez ci-dessus!" class="product_inventory form-control required" value="" placeholder="Inventaire">
                                 </div>
                                 <div class="stock-types ptb-20">
                                     <p><i class="fa fa-dot-circle-o" data_type="1" onclick="set_stock_type(this);"></i> En stock</p>
@@ -340,8 +340,9 @@
 
 @stop
 @section('additional-script')
+    //{!! Html::script('frontend/js/ajoutproduct.js') !!}
     {!! Html::script('frontend/js/article.js') !!}
-    <script type="text/javascript">
-        
+    <script>
+       
     </script>
 @stop
