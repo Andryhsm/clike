@@ -55,6 +55,11 @@ class InstagramRepository implements InstagramRepositoryInterface
         return $this->model->whereIsActive(1)->orderBy('order', 'ASC')->limit(8)->get();  
     }
 
+    public function get_3_ActiveInstagram()
+    {
+        return $this->model->whereIsActive(1)->orderBy('id', 'DESC')->limit(3)->get();  
+    }
+
     public function getAll(){
         return $this->model->orderBy('order', 'ASC')->get();
     }

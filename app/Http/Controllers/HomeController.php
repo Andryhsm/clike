@@ -45,6 +45,7 @@ class HomeController extends Controller
         $this->special_product_repository = $special_product_repository;
 		$this->blog_repository = $blog_repo;
     }
+
     public function index(Request $request)
     {
         // if(!($request->get('key') == 'open'))    
@@ -59,5 +60,17 @@ class HomeController extends Controller
         $special_products=$this->special_product_repository->getspecialProducts();
 		$blog_posts = $this->blog_repository->getHomePagePost();
         return view('front.home.index', compact('categories','banner','sliders','instagrams','brands','sub_banners','special_products','blog_posts'));
+    }
+
+    public function getIntagramFeeds(Request $request)
+    {
+        $instagrams = $this->instagram_repository->getActiveInstagram($language_id);
+        return response()->json(['instagrams' => 'instagrams']);
+    }
+    
+    public function get_3_ActiveInstagram(Request $request)
+    {
+        $instagrams = $this->instagram_repository->getActiveInstagram($language_id);
+        return response()->json(['instagrams' => 'instagrams']);
     }
 }
