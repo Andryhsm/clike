@@ -879,18 +879,27 @@ var reviews_length = $('#reviews').text().length ;
 			close_select_radius();
 		}
 	});
-<<<<<<< HEAD
+	/**
+	 * menu
+	 */
 	 $('.navbar-toggle').click(function(e) {
 		$('.navbar-collapse').slideToggle();
-    });
-=======
+	});
+	/**
+	 * end menu
+	 */
+	/**
+	 * instagram feed
+	 */
 	var instagram_url = base_url + 'instagram-feeds';
 	if (Modernizr.mq('(max-width: 480px)')) {
 		$(function() {
 			var instagram_url = base_url + 'instagram3-feeds';
 		});
 	}
->>>>>>> 7cf6ee7b3bfcc2e5b11df3143d321cb40f7ac8a6
+	/***
+	 * end instagram feed
+	 */
 
 	$.ajax({
         url: base_url + 'marchand/child-category',
