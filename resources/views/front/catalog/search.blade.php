@@ -135,7 +135,7 @@
             
             <div class="row">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class=""> <!-- row col-lg-12 col-md-12 col-sm-12 col-xs-12 -->
 
                     @if(!empty($products))
 
@@ -155,7 +155,7 @@
                                             $class = (($key+1)%4 ==1) ? "clear" : ""; //On affiche 4 produit par ligne
 
                                         ?>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-10 {!! $class !!}">
+                                        <div class=""> <!-- {!! $class !!} col-lg-3 col-md-3 col-sm-3 col-xs-10  -->
                                            <div class="product-wrapper-home mb-30">
                                                 <div class="product-img product-pic-catalog img_btn">
                                                      <a href="{!! !empty($product->url) ? url($product->url->target_url) : '' !!}">   
