@@ -2480,10 +2480,6 @@ text-align: center !important;
     font-size: 13px !important;
 }
 
-#collapseSix, #collapseSeven, #collapseEight {
-  margin-left: 22px;
-  margin-right: -22px;
-}
 
 .panel-default div:nth-child(2) .panel-body  .left-header{
   border-right: none;
