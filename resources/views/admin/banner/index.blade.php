@@ -46,7 +46,7 @@
                                         <span class="badge bg-light-blue">Inactive</span>
                                     @endif
                                 </td>
-                                <td><img src="{!! url('upload/banner/'.$banner->french_banner_image) !!}" class="preview-image"></td>
+                                <td><img src="{!! url('public/upload/banner/'.$banner->french_banner_image) !!}" class="preview-image"></td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ URL::to('admin/banner/' . $banner->banner_id . '/edit') }}"  class="btn btn-default btn-sm" title="Edit"><i class="fa fa-fw fa-edit"></i></a>
