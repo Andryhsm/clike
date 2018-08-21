@@ -71,7 +71,7 @@ class Handler extends ExceptionHandler
                 case 'merchant':
                     $num_of_minutes = 60 * 24 * 7; 
                     Cookie::queue('who', 'destroy', $num_of_minutes); 
-                    dd(Cookie::get('who'));    
+                    dd('icicicici->'.Cookie::get('who'));    
                     return redirect()->guest(route('merchant-login')); 
                     break;
                 case 'destroy':
