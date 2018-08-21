@@ -2465,6 +2465,10 @@ text-align: center !important;
     padding-left: 3px !important;
 }
 
+.panel-default .fa-angle-down {
+  cursor: pointer;
+}
+
 .panel-default .panel-body p {
   font-size: 13px;
 }
