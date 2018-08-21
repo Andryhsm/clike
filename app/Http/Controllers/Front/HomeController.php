@@ -55,7 +55,6 @@ class HomeController extends Controller
 		$sub_banners = $this->banner_repository->getActiveSubBanner();
         $instagrams = $this->instagram_repository->getActiveInstagram();
         $sliders = $this->slider_repository->getActiveSlider();
-        dd($sliders);
         $brands=$this->brand_repository->getAll();
         $special_products=$this->special_product_repository->getspecialProducts();
 		$blog_posts = $this->blog_repository->getHomePagePost();
