@@ -146,7 +146,7 @@
                 	</div>    
                 	
                 	<div class="row" style="width: 105%;">
-                        
+                        @section('sans_en gratuit')
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 point5 left-header  border-green" id="left-header" style="margin-top: 30rem;">
                             <p><b>Compte employés</b></p>
                             <div class="row bg-white p-0"><p><b>Nombre d’articles</b></p></div>
@@ -192,7 +192,8 @@
                                 <p><i class="fa fa-times"></i></p>
                             </div>
                         </div>
-                        
+                        @endsection
+                        @section('sans_en vendeur')
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green shadow-engagement" id="seller">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
@@ -225,7 +226,8 @@
                                 <p><i class="fa fa-times"></i></p>
                             </div>
                         </div>
-                        
+                        @endsection
+                        @section('sans_en marketing')
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="marketing">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
@@ -258,7 +260,8 @@
                                 <p>de 0 à 500 clients</p>
                             </div>
                         </div>
-                        
+                        @endsection
+                        @section('sans_en marketing plus')
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green"  id="marketingp">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
@@ -291,7 +294,7 @@
                                 <p>de 500 à 2 000 clients</p>
                             </div>
                         </div>
-                        
+                        @endsection
                     </div>
                 	
                 </div>
@@ -307,7 +310,7 @@
                 	</div>
                 	
                 	<div class="row" style="width: 105%;">
-                        
+                        @section('gratuit')
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 point5 left-header border-green" style="margin-top: 30rem;">
                             <p><b>Compte employés</b></p>
                             <div class="row bg-white p-0"><p><b>Nombre d’articles</b></p></div>
@@ -353,7 +356,8 @@
                                 <p><i class="fa fa-times"></i></p>
                             </div>
                         </div>
-                        
+                        @endsection
+                        @section('vendeur')
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green shadow-engagement" id="seller2">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
@@ -386,7 +390,8 @@
                                 <p><i class="fa fa-times"></i></p>
                             </div>
                         </div>
-                        
+                        @endsection
+                        @section('marketing')
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="marketing2">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
@@ -419,7 +424,8 @@
                                 <p>de 0 à 500 clients</p>
                             </div>
                         </div>
-                        
+                    @endsection
+                    @section('marketing plus')
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="marketingp2">
                             <div class="row bg-white header-engagement-height">
                                 <div class="title pb-20 pt-10">
@@ -452,7 +458,7 @@
                                 <p>de 500 à 2 000 clients</p>
                             </div>
                         </div>
-                        
+                     @endsection
                     </div>
                 	
                 </div>

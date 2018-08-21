@@ -2456,6 +2456,14 @@ text-align: center !important;
     padding-left: 3px !important;
 }
 
+.panel-default .panel-body p {
+  font-size: 13px;
+}
+
+.panel-default .panel-body .title span {
+  font-size: 16px;
+}
+
 .fs-13 {
     font-size: 11px !important;
 }
@@ -2464,10 +2472,16 @@ text-align: center !important;
     font-size: 13px !important;
 }
 
-#left-header {
+#collapseSix, #collapseSeven, #collapseEight {
+  margin-left: 22px;
+  margin-right: -22px;
+}
+
+.panel-default div:nth-child(2) .panel-body  .left-header{
   border-right: none;
 }
-#discovery .panel-body div:nth-child(2), #collapseTwo .panel-body div:nth-child(1), #collapseThree .panel-body div:nth-child(1),  #collapseFour .panel-body div:nth-child(1) {
+#discovery .panel-body div:nth-child(2), #collapseFive .panel-body div:nth-child(2), #collapseTwo .panel-body div:nth-child(1),
+#collapseThree .panel-body div:nth-child(1),  #collapseFour .panel-body div:nth-child(1) {
   padding-left: 0px;
   padding-right: 0px;
 
