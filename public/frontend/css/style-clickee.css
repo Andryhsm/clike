@@ -772,6 +772,18 @@ ul {
     margin-right: auto;
     background: #ffffff;
     border-radius: 0px;
+    width: 255px;
+    margin: 15px;
+}
+.tab-content-search .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .product-wrapper {
     position: relative;
@@ -1810,7 +1822,7 @@ element.style {
 .wishlist_prd_place {
     margin-left: 69% !important;
     margin-top: -31% !important;
-    width: 20% !important;
+    width: 22% !important;
     height: 12% !important;
     border-radius: 50% !important;
     transform: scale(0.7);
@@ -1824,8 +1836,8 @@ element.style {
     background-position-x: -70px;
     margin-top: 17%;
     margin-left: 15%;*/
-    margin-top: 20% !important;
-    margin-left: 17% !important;
+    margin-top: 18% !important;
+    margin-left: 19% !important;
 }
 .wishlist_prd:hover {
   /*background-position-y: -34px; */
@@ -3468,13 +3480,3 @@ input#search-product-input:focus {
 #sortable div { /*margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px;*/ }
 #sortable div img { /*position: absolute;*/ margin-left: -1.5em; }
 /*end draggable*/
-.tab-content-search .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-}

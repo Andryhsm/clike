@@ -464,13 +464,13 @@ a#scrollUp {
 .wishlist_prd_index {
     margin-left: -7rem;
 }
-.wishlist_prd_place {
-    /*margin-top: -31%;*/
+/*.wishlist_prd_place {
+    margin-top: -31%;
 }
 .wishlist_prd{
     margin-left: 11% !important;
     margin-top: 15% !important;
-}
+}*/
 .service-area-register {
     margin-left: -28%;
 }
@@ -1061,10 +1061,10 @@ a#scrollUp {
 #selected-category {
   background-size: 170% !important;
 }
-.wishlist_prd {
+/*.wishlist_prd {
     margin-top: 17% !important;
     margin-left: 13% !important;
-}
+}*/
 .owl-theme .owl-controls .owl-buttons div {
     margin-left: -8%;
     margin-right: -7%;
@@ -1107,12 +1107,12 @@ a#scrollUp {
 .clear-desktop {
     clear: none !important;
 }
-.wishlist_prd_place {
+/*.wishlist_prd_place {
     width: 29% !important;
     height: 16% !important;
     margin-left: 66% !important;
     margin-top: -41% !important;
-}
+}*/
 .bootstrap-duallistbox-container .buttons {
   width: 95% !important;
   margin-top: -20%;
@@ -1199,6 +1199,9 @@ a#scrollUp {
 /* small mobile :320px. */
 @media (max-width: 767px) {
 .tab-content-search .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: center;
@@ -2242,15 +2245,15 @@ img.equipe-clickee {
 .header-top-area-left{
 text-align: center !important;
 }
-.wishlist_prd {
+/*.wishlist_prd {
     margin-left: 19% !important;
     margin-top: 24% !important;
 }
 .wishlist_prd_place {
     margin-left: 70% !important;
-    /*width: 15% !important;
-    margin-top: -23% !important;*/
-}
+    width: 15% !important;
+    margin-top: -23% !important;
+}*/
 .single-service-3 {
   margin-top: 10px;
   height: 160px;
@@ -2398,6 +2401,9 @@ text-align: center !important;
 @media (max-width: 480px) {
 
 .tab-content-search .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -2484,15 +2490,15 @@ text-align: center !important;
 .press-title a {
   font-size: 13px;
  }
-.wishlist_prd {
-    margin-left: 10% !important;
-    margin-top: 11% !important;
+/*.wishlist_prd {
+    margin-left: 18% !important;
+    margin-top: 19% !important;
 }
 .wishlist_prd_place {
-  width: 26% !important;
-  height: 14% !important;
+  width: 22% !important;
+  height: 12% !important;
   margin-top: -35% !important;
-}
+}*/
 .category-grid {
   width: 100% !important;
 }
