@@ -199,6 +199,7 @@ class AuthController extends Controller
             $user = Socialite::driver($provider)->stateless()->user();
         else
             $user = Socialite::driver($provider)->user();
+        dd($user);
         $authUser = $this->findOrCreateUser($user, $provider);    
         Auth::login($authUser, true);
         flash()->success(config('message.user.success-login'));
