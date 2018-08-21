@@ -879,10 +879,7 @@ var reviews_length = $('#reviews').text().length ;
 			close_select_radius();
 		}
 	});
-<<<<<<< HEAD
-	
-	
-=======
+
 	/**
 	 * menu
 	 */
@@ -895,23 +892,16 @@ var reviews_length = $('#reviews').text().length ;
 	/**
 	 * instagram feed
 	 */
-	var instagram_url = base_url + 'instagram-feeds';
->>>>>>> d1eb3fd2a3c6d40080d6ab36578c8a285ab369f2
 	if (Modernizr.mq('(max-width: 480px)')) {
 		$(function() {
 			getInstagramFeeds(3);
 		});
 	}
-<<<<<<< HEAD
 	else getInstagramFeeds(8);
 	
 	
 })(jQuery);
-=======
-	/***
-	 * end instagram feed
-	 */
->>>>>>> d1eb3fd2a3c6d40080d6ab36578c8a285ab369f2
+
 
 function getInstagramFeeds(limit) {
 	var instagram_url = $('.section-instagramm-feed-content .row').attr('data-href');
