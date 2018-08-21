@@ -180,7 +180,7 @@ $(document).on('click', '.close-thik', function(event) {
 function load_left_img(div, row_index){
     $(div).change(function() {
         var center = $('.center-img img');
-        $('.nav-img').append('<div class="nav-img-item"><img src="" data-file="' + row_index + '"></img><a class="close-thik"></a></div>');
+        $('.nav-img').append('<div class="nav-img-item"><img src="" data-file="' + row_index + '"></img><a class="close-thik"></a><input class="hidden" value="" name="product_image_ids[]"></div>');
         var navimg = $('.nav-img div:last-child img');
         readURL(this, center);
         readURL(this, navimg);

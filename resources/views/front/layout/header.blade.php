@@ -156,9 +156,11 @@
         <div class="navbar navbar-default navbar-static-top">
             <div class="container" style="padding-left: inherit;padding-right: inherit;">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
                 <?php 
                     $category_parent_id = '';
@@ -172,9 +174,8 @@
                         }
                     }
                 ?>
-                <div class="navbar-collapse collapse">
+                <div class="navbar-collapse collapse on">
                     <?php getCategories($categories_data['tree_data'], $category_parent_id, $selected_category); ?>
-                
                 </div>
             </div>
         </div>  

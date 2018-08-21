@@ -458,82 +458,8 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
             <div class="engagement_for_tablet_screen hidden">
                 @include('front.pages.mobile_tablet_pages.tablet_engagement_menu')
-=======
-            <!--  menu dans les écrans mobiles  -->
-            <div class="engagement-menu hidden text-center" id="uploadTab">
-                <br><br><br>
-                <div class="row menu-pop" style="width: 105%;"> 
-                    <div class="point5 col-xs-3"></div>
-                    <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
-                    <div class="point5 col-xs-3"></div>
-                    <div class="oint5 col-xs-3"></div>
-                </div>                      
-                <div class="row menu" style="width: 105%;">
-                        <a class="active  bg-white text-center col-xs-3" href = "#discovery" data-tab="uploadTab" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Découverte</span>
-                            </div>
-                            <div class="engagement-price mt-25 text-uppercase">{!! showPackByValue($packs,'Découverte','Engagement annuel','price') !!}</div>
-                        </a>
-                        <a class="shadow-engagement  bg-white text-center col-xs-3" href = "#seller" data-tab="uploadTab" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Vendeur</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Vendeur','Engagement annuel','price') !!}</span><span class="price-unity">€</span>/mois</div>
-                        </a>
-                        <a class="text-center  bg-white col-xs-3" href = "#marketing" data-tab="uploadTab" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Marketing</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Marketing','Engagement annuel','price') !!}</span><span class="price-unity">€</span>/mois</div>
-                        </a>
-                        <a class="text-center  bg-white col-xs-3" href = "#marketingp" data-tab="uploadTab" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Marketing +</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Marketing +','Engagement annuel','price') !!}</span><span class="price-unity">€</span>/mois</div>                             
-                        </a>
-                </div>
-            </div>
-
-            <div class="engagement-menu hidden text-center" id="browseTab">
-                <br><br><br>
-                <div class="row menu-pop" style="width: 105%;">
-                    <div class="point5 col-xs-3"></div>
-                    <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
-                    <div class="point5 col-xs-3"></div>
-                    <div class="oint5 col-xs-3"></div>
-                </div>                      
-                <div class="row menu" style="width: 105%;">
-                        <a class="active  bg-white text-center col-xs-3" href = "#discovery2" data-tab="browseTab" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Découverte</span>
-                            </div>
-                            <div class="engagement-price mt-25 text-uppercase">{!! showPackByValue($packs,'Découverte','Sans engagement','price') !!}</div>
-                        </a>
-                        <a class="shadow-engagement  bg-white text-center col-xs-3" href = "#seller2" data-tab="browseTab" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Vendeur</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Vendeur','Sans engagement','price') !!}</span><span class="price-unity">€</span>/mois</div>
-                        </a>
-                        <a class="text-center  bg-white col-xs-3" href = "#marketing2" data-tab="browseTab" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Marketing</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Marketing','Sans engagement','price') !!}</span><span class="price-unity">€</span>/mois</div>
-                        </a>
-                        <a class="text-center  bg-white col-xs-3" href = "#marketingp2" data-tab="browseTab" onclick = "showEngagement(this)">
-                            <div class="pt-10">
-                                <span>Marketing +</span>
-                            </div>
-                            <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Marketing +','Sans engagement','price') !!}</span><span class="price-unity">€</span>/mois</div>                             
-                        </a>
-                </div>
->>>>>>> 51d2580804a0d9f7264219ede91237767ed07f49
             </div>
             <div class="engagement_for_mobile_screen hidden">
                 @include('front.pages.mobile_tablet_pages.mobile_engagement_menu')

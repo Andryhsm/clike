@@ -189,10 +189,12 @@ class ArticleController extends Controller
                 $product_images[$index] = $this->uploadImage($image);
             }
         }
+       // dd($request['remove_img']);
         if($request['remove_img']){
             $remove_images = explode(',', $request['remove_img']);
             foreach ($remove_images as $remove_image_id) {
                 $productImage = $this->product_repository->getProductImageById($remove_image_id);
+                //dd($productImage);
                 $this->deleteUploadedImage($productImage->image_name);
             }
         }

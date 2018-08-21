@@ -182,10 +182,12 @@ class ProductRepository implements ProductRepositoryInterface
                 $product_image->save();
             }
             foreach ($product_image_ids as $key=>$value){
-                $product_image = ProductImage::find($product_image_ids[$key]);
-                $orders = $key + 1;
-                $product_image->sort_order = $orders;
-                $product_image->save();
+                if(isset($product_image_ids[$key])){
+                    $product_image = ProductImage::find($product_image_ids[$key]);
+                    $orders = $key + 1;
+                    $product_image->sort_order = $orders;
+                    $product_image->save();
+                }
             }
             //dd($product_image_ids);
             if(!empty($input['remove_img'])){
@@ -730,7 +732,8 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     public function getProductImageById($id){
-         $productImage = ProductImage::where('product_image_id', $id)->get()->first();
+         $productImage = ProductImage::where('product_image_id', $id)->first();
+         return $productImage;
     }
 
     public function getAllProductImageById($id){
