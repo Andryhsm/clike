@@ -50,9 +50,9 @@ class InstagramRepository implements InstagramRepositoryInterface
         return $this->model->find($id)->delete();
     }
 
-    public function getActiveInstagram($input)
+    public function getActiveInstagram()
     {
-        return $this->model->whereIsActive(1)->orderBy('id', 'DESC')->limit($input['limit'])->get();  
+        return $this->model->whereIsActive(1)->orderBy('id', 'DESC')->limit(8)->get();  
     }
 
     public function getAll(){
