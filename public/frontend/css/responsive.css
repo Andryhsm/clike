@@ -2396,6 +2396,7 @@ text-align: center !important;
 }
 
 @media (max-width: 480px) {
+
 .tab-content-search .row {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -2405,6 +2406,17 @@ text-align: center !important;
   -ms-flex-align: center;
   align-items: center;
 }
+.section-avantage-content div:nth-child(1) {
+    padding-left: 3px !important;
+}
+
+.fs-13 {
+    font-size: 11px !important;
+}
+
+.fs-15 {
+    font-size: 13px !important;
+}
 
 #left-header {
   border-right: none;
@@ -2412,6 +2424,7 @@ text-align: center !important;
 #discovery .panel-body div:nth-child(2), #collapseTwo .panel-body div:nth-child(1), #collapseThree .panel-body div:nth-child(1),  #collapseFour .panel-body div:nth-child(1) {
   padding-left: 0px;
   padding-right: 0px;
+
 }
 .content-product-on-home>ul>li>.nav-title, .title h2{
   margin-left: 0;
@@ -2422,6 +2435,7 @@ text-align: center !important;
 .content-product-on-home #productTab {
   margin-left: -20px;
   margin-right: -20px;
+
 }
 
 .owl-carousel .owl-item {
