@@ -195,11 +195,12 @@ class AuthController extends Controller
 
     public function handleProviderCallback($provider)
     {
-        if($provider == 'google' || $provider == 'facebook')
+        if($provider == 'google' || $provider == 'facebook'){
             $user = Socialite::driver($provider)->stateless()->user();
-        else
+        }else{
+            dd("user");
             $user = Socialite::driver($provider)->user();
-        dd($user);
+        }
         $authUser = $this->findOrCreateUser($user, $provider);    
         Auth::login($authUser, true);
         flash()->success(config('message.user.success-login'));
