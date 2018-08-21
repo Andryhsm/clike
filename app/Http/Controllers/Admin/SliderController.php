@@ -115,7 +115,7 @@ class SliderController extends Controller
 				\File::makeDirectory($thumb_path);
 			}
 			$img->fit(3000,1300)->save($thumb_path.'/'.$image_name);
-			dd($image_name);
+
 			if (file_exists($path_img_delete)) {
                 unlink($path_img_delete);
             } 	
