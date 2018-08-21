@@ -2416,6 +2416,9 @@ text-align: center !important;
     display: inline-block;
     margin-left: 10px;
 }
+.dropdown-filter span {
+  width: 95%;
+}
 
 }
 
