@@ -45,7 +45,7 @@
                                         <span class="badge bg-light-blue">Inactif</span>
                                     @endif
                                 </td>
-                                <td><img src="{!! url('public/upload/slider/'.$slider->slider_image) !!}" class="preview-image"></td>
+                                <td><img src="{!! url('upload/slider/'.$slider->slider_image) !!}" class="preview-image"></td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ URL::to('admin/slider/' . $slider->slider_id . '/edit') }}"  class="btn btn-default btn-sm" title="Edit"><i class="fa fa-fw fa-edit"></i></a>
