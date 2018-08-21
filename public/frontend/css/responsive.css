@@ -3,6 +3,8 @@
   .block-operation-bottom{
     padding: 4% 15px 10px 15px;
   }
+  
+
 }
 
 /* Normal desktop :992px. */
@@ -1186,6 +1188,9 @@ a#scrollUp {
 .order-img {
 	width: 160px;
 	/*height: 180px;*/
+}
+.content-product-on-home>ul>li>.nav-title {
+  font-size: 3vw;
 }
 
 }
@@ -2418,6 +2423,17 @@ text-align: center !important;
 }
 .dropdown-filter span {
   width: 95%;
+}
+.section-instagramm-feed-content .section-instagramm-feed-align {
+  width: 360px;
+  margin: auto auto;
+  display: contents;
+}
+.section-instagramm-feed-content .section-instagramm-feed-align img {
+  margin: 10px;
+}
+.banner-caption-right-top h1, .banner-caption-right-bottom h1 {
+    font-size: 24px;
 }
 
 }
