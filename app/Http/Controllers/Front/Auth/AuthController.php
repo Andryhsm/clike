@@ -62,8 +62,8 @@ class AuthController extends Controller
 
 	public function postMerchantLogin(Request $request)
 	{
-        $num_of_minutes = 60 * 24 * 7; 
-        Cookie::queue('who', 'merchant', $num_of_minutes); 
+        /*$num_of_minutes = 60 * 24 * 7; 
+        Cookie::queue('who', 'merchant', $num_of_minutes);*/ 
 		$rules = array(
 			'email' => 'required',
 			'password' => 'required',
@@ -96,8 +96,8 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        $num_of_minutes = 60 * 24 * 7; 
-        Cookie::queue('who', 'customer', $num_of_minutes);        
+        /*$num_of_minutes = 60 * 24 * 7; 
+        Cookie::queue('who', 'customer', $num_of_minutes);*/        
 
         $rules = array(
             'email' => 'required',
@@ -157,8 +157,8 @@ class AuthController extends Controller
 
     public function saveUser(Request $request)
     {
-        $num_of_minutes = 60 * 24 * 7; 
-        Cookie::queue('who', 'customer', $num_of_minutes); 
+        /*$num_of_minutes = 60 * 24 * 7; 
+        Cookie::queue('who', 'customer', $num_of_minutes);*/ 
 
         $rules = array(
             'first_name' => 'required',
@@ -259,8 +259,8 @@ class AuthController extends Controller
         Auth::logout();
 		\Session::flush();
 		flash()->success(config('message.user.success-logout'));
-        $num_of_minutes = 60 * 24 * 7; 
-        Cookie::queue('who', 'destroy', $num_of_minutes); 
+        /*$num_of_minutes = 60 * 24 * 7; 
+        Cookie::queue('who', 'destroy', $num_of_minutes); */
 		if($user->role_id=='2')
 		{
 			return redirect()->route('merchant-login');

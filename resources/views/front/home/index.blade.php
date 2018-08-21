@@ -15,7 +15,7 @@
             @foreach($sliders as $slider)
                 @if($slider->is_active=='1')
                     <div class="item {!! ($loop->first) ? 'active' : '' !!}">
-                        <img src="{!! $slider->getSliderImage(app('language')->language_code) !!}" alt="{!! $slider->alt !!}" class="img-responsive" />
+                        <img src="{!! url($slider->getSliderImage()) !!}" alt="{!! $slider->alt !!}" class="img-responsive" />
                         
                         <div class="container container-slider">
                             <div class="carousel-caption">
@@ -46,10 +46,10 @@
                     @if($banner)
                     <div class="section-three-bloc-align">
                         <a href="{!! $banner->url !!}">
-                            <img class="banner-active" src="{!! $banner->getBannerImage(app('language')->language_code) !!}" alt="{!! $banner->alt !!}"/>
+                            <img class="banner-active" src="{!! url($banner->getBannerImage()) !!}" alt="{!! $banner->alt !!}"/>
                         </a>
                         <a href="{!! $banner->url !!}">
-                            <img class="banner-hover" src="{!! $banner->getBannerImageHover(app('language')->language_code) !!}" alt="{!! $banner->alt !!}"/>
+                            <img class="banner-hover" src="{!! url($banner->getBannerImageHover()) !!}" alt="{!! $banner->alt !!}"/>
                         </a>
                     </div>
                     <div class="banner-caption-left text-center">
@@ -334,7 +334,7 @@
             <h2>INSTAGRAM FEED</h2>
         </div>
         <div class="section-instagramm-feed-content">
-            <div class="row" data-href="{!! url('instagram-feeds') !!}">
+            <div class="row text-center" data-href="{!! url('instagram-feeds') !!}">
                 
             </div>
         </div>
