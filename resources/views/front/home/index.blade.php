@@ -334,7 +334,7 @@
             <h2>INSTAGRAM FEED</h2>
         </div>
         <div class="section-instagramm-feed-content">
-            <div class="row" data-href="{!! url('instagram-feeds') !!}">
+            <div class="row text-center" data-href="{!! url('instagram-feeds') !!}">
                 
             </div>
         </div>
