@@ -13,7 +13,7 @@ interface InstagramRepositoryInterface
 
 	public function getById($product_id);
 
-	public function getActiveInstagram($input);
+	public function getActiveInstagram();
 	
 	public function getActiveMainInstagram();
 

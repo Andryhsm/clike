@@ -52,9 +52,9 @@ class HomeController extends Controller
         $language_id=app('language')->language_id;
         $categories = $this->category_repository->getParentCategories($language_id);
         $banner = $this->banner_repository->getActiveMainBanner($language_id);
-		$sub_banners = $this->banner_repository->getActiveSubBanner($language_id);
-        $instagrams = $this->instagram_repository->getActiveInstagram($language_id);
-        $sliders = $this->slider_repository->getActiveSlider($language_id);
+		$sub_banners = $this->banner_repository->getActiveSubBanner();
+        $instagrams = $this->instagram_repository->getActiveInstagram();
+        $sliders = $this->slider_repository->getActiveSlider();
         $brands=$this->brand_repository->getAll();
         $special_products=$this->special_product_repository->getspecialProducts();
 		$blog_posts = $this->blog_repository->getHomePagePost();
