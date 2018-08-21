@@ -156,7 +156,7 @@
 
                                         ?>
                                         <div class=""> <!-- {!! $class !!} col-lg-3 col-md-3 col-sm-3 col-xs-10  -->
-                                           <div class="product-wrapper-home mb-30">
+                                           <div class="product-wrapper mb-30">
                                                 <div class="product-img product-pic-catalog img_btn">
                                                      <a href="{!! !empty($product->url) ? url($product->url->target_url) : '' !!}">   
                                                         <img src="{!! url($product->getDefaultImagePath()) !!}" alt="{!! $product_translation->product_name !!}"

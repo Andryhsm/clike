@@ -1198,6 +1198,7 @@ a#scrollUp {
 
 /* small mobile :320px. */
 @media (max-width: 767px) {
+
 .tab-content-search .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2191,7 +2192,10 @@ img.equipe-clickee {
 /* end max-width 767px */ 
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
- .main-sidebar {
+.navbar-collapse .dropdown ul {
+  display: none !important;
+}
+.main-sidebar {
     margin-top: 31.5%;
 }
 .pl-0{
@@ -2220,12 +2224,12 @@ img.equipe-clickee {
 }
 .wishlist_prd_place_home {
     margin-left: 69%;
-    width: 27%;
+    width: 25%;
     margin-top: -38%;
 }
-.wishlist_prd_home {
+/*.wishlist_prd_home {
     margin-left: 11%;
-}
+}*/
 .simple-btn-brand{
   width: 98%;
 }
@@ -2277,7 +2281,7 @@ text-align: center !important;
   margin: 0px;
 }
 .container.section-image-product {width:100%;}
-.container {width: 450px;}
+.container {width: 90%} /*450px;*/
 .service-text h3 {
   font-size: 16px;
 } 
@@ -2390,10 +2394,27 @@ text-align: center !important;
   color: #044651;
   display: inline-block;
   padding: 0px 0px !important;
-  margin-left: 4rem;
-  margin-right: 4rem !important;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 3vw;
+}
+.section-instagramm-feed-align {
+  display: -webkit-box;display: -ms-flexbox;display: flex;
+}
+.section-three-bloc-align {
+  height: 100% !important;
+}
+.banner-caption-right-top {
+    top: 21% ;
+    width: 50%;
+}
+.banner-caption-right-bottom {
+    top: 21%;
+    width: 50%;
+}
+.section-instagramm-feed-align-sub-top , .section-instagramm-feed-align-sub-bottom {
+    width: 50%;
+    display: inline-block;
+    margin-left: 10px;
 }
 
 }
