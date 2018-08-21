@@ -879,26 +879,43 @@ var reviews_length = $('#reviews').text().length ;
 			close_select_radius();
 		}
 	});
-	var instagram_url = base_url + 'instagram-feeds';
+	
+	
 	if (Modernizr.mq('(max-width: 480px)')) {
 		$(function() {
-			var instagram_url = base_url + 'instagram3-feeds';
+			getInstagramFeeds(3);
 		});
 	}
+	else getInstagramFeeds(8);
+	
+	
+})(jQuery);
 
+function getInstagramFeeds(limit) {
+	var instagram_url = $('.section-instagramm-feed-content .row').attr('data-href');
+		
 	$.ajax({
-        url: base_url + 'marchand/child-category',
-        type: 'GET',
+        url: instagram_url,
+        type: 'POST',
+        data: {limit: limit},
         dataType: 'json'
     })
     .done(function(data) {
-        console.log('iiiiiiiiiiiii')
-        if (data.length > 0) {
-            console.log(JSON.stringify(data));
+        if (data.instagrams) {
+            $.each(data.instagrams, function(i, val){
+            	var html = '<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 section-instagramm-feed-align">';
+	            html = html + '<img src="'+val+'" alt="instagramm feed clickee"/>';    
+	            html = html + '</div> ';
+	            $('.section-instagramm-feed-content .row').append(html);
+            });
+            
         }
-    });
-	
-})(jQuery);
+    })
+    .fail(function(xhr) {
+		console.log(xhr.responseText);
+	});
+}
+
 
 function stopEvent() {
 	return false;

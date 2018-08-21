@@ -60,4 +60,16 @@ class HomeController extends Controller
 		$blog_posts = $this->blog_repository->getHomePagePost();
         return view('front.home.index', compact('categories','banner','sliders','instagrams','brands','sub_banners','special_products','blog_posts'));
     }
+
+    public function getInstagramFeeds(Request $request)
+    {
+        $language_id=app('language')->language_id;
+        $instagrams = $this->instagram_repository->getActiveInstagram($request);
+        $instagram_imgs = [];
+        foreach ($instagrams as $key => $value) {
+            $instagram_imgs[] = $value->getInstagramImage($language_id);
+        }
+        return response()->json(['instagrams' => $instagram_imgs]);
+    }
+
 }

@@ -62,15 +62,6 @@ class HomeController extends Controller
         return view('front.home.index', compact('categories','banner','sliders','instagrams','brands','sub_banners','special_products','blog_posts'));
     }
 
-    public function getIntagramFeeds(Request $request)
-    {
-        $instagrams = $this->instagram_repository->getActiveInstagram($language_id);
-        return response()->json(['instagrams' => 'instagrams']);
-    }
     
-    public function get_3_ActiveInstagram(Request $request)
-    {
-        $instagrams = $this->instagram_repository->getActiveInstagram($language_id);
-        return response()->json(['instagrams' => 'instagrams']);
-    }
+    
 }

@@ -334,16 +334,8 @@
             <h2>INSTAGRAM FEED</h2>
         </div>
         <div class="section-instagramm-feed-content">
-            <div class="row">
-                @if (count($instagrams)>0)
-                    @foreach ($instagrams as $instagram)
-                        @if($instagram->is_active=='1')
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 section-instagramm-feed-align">
-                                <img src="{!! $instagram->getInstagramImage (app('language')->language_code) !!}" alt="instagramm feed clickee"/>    
-                            </div>    
-                        @endif
-                    @endforeach
-                @endif
+            <div class="row" data-href="{!! url('instagram-feeds') !!}">
+                
             </div>
         </div>
     </div>
@@ -379,3 +371,12 @@
 
 <!-- end section avantage -->
 @stop
+<!-- @if (count($instagrams)>0)
+                    @foreach ($instagrams as $instagram)
+                        @if($instagram->is_active=='1')
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 section-instagramm-feed-align">
+                                <img src="{!! $instagram->getInstagramImage (app('language')->language_code) !!}" alt="instagramm feed clickee"/>    
+                            </div>    
+                        @endif
+                    @endforeach
+                @endif -->
