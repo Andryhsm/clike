@@ -2386,7 +2386,7 @@ text-align: center !important;
 }
 
 @media (max-width: 480px) {
-<<<<<<< HEAD
+
 
 #left-header {
   border-right: none;
@@ -2394,7 +2394,7 @@ text-align: center !important;
 #discovery .panel-body div:nth-child(2), #collapseTwo .panel-body div:nth-child(1), #collapseThree .panel-body div:nth-child(1),  #collapseFour .panel-body div:nth-child(1) {
   padding-left: 0px;
   padding-right: 0px;
-=======
+
 .content-product-on-home>ul>li>.nav-title, .title h2{
   margin-left: 0;
   margin-right: 0!important;
@@ -2404,7 +2404,7 @@ text-align: center !important;
 .content-product-on-home #productTab {
   margin-left: -20px;
   margin-right: -20px;
->>>>>>> 0d55dcda232f3ce23a4cca605f34b61901804b4d
+
 }
 
 .owl-carousel .owl-item {
