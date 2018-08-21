@@ -887,7 +887,7 @@ var reviews_length = $('#reviews').text().length ;
 		$('.navbar-collapse').slideToggle();
 	});
 
-	
+
 	/**
 	 * end menu
 	 */
@@ -926,7 +926,7 @@ function getInstagramFeeds(limit) {
         }
     })
     .fail(function(xhr) {
-		console.log(xhr.responseText);
+		//console.log(xhr.responseText);
 	});
 }
 
