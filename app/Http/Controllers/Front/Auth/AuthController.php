@@ -259,13 +259,14 @@ class AuthController extends Controller
         Auth::logout();
 		\Session::flush();
 		flash()->success(config('message.user.success-logout'));
-        $num_of_minutes = 60 * 24 * 7; 
-        Cookie::queue('who', 'destroy', $num_of_minutes); 
+        /*$num_of_minutes = 60 * 24 * 7; 
+        Cookie::queue('who', 'destroy', $num_of_minutes); */
+        //dd('ici');
 		if($user->role_id=='2')
 		{
-			return redirect()->route('merchant-login');
+			return redirect()->route('merchant-login')->withCookie(Cookie::forget('who'));
 		} else {
-			return redirect()->route('login');
+			return redirect()->route('login')->withCookie(Cookie::forget('who'));
 		}        
     }
     
