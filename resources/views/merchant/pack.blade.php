@@ -338,96 +338,13 @@
         </div>
     </div>
 
-    <!--  menu dans les écrans mobiles  -->
-    <div class="engagement-menu hidden text-center" id="uploadTab">
-        <br><br><br>
-        <div class="row menu-pop" style="width: 105%;"> <!-- margin-bottom: -1.4rem; -->
-            <div class="point5 col-xs-3"></div>
-            <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
-            <div class="point5 col-xs-3"></div>
-            <div class="oint5 col-xs-3"></div>
-        </div>                      
-        <div class="row menu" style="width: 105%;">
-                <a class="active  bg-white text-center col-xs-3" href = "#discovery" data-tab="uploadTab" onclick = "showEngagement(this)">
-                    <div class="pt-10">
-                        <span>Découverte</span>
-                    </div>
-                    <div class="engagement-price mt-25 text-uppercase">{!! showPackByValue($packs,'Découverte','Engagement annuel','price') !!}</div>
-                </a>
-                <a class="shadow-engagement  bg-white text-center col-xs-3" href = "#seller" data-tab="uploadTab" onclick = "showEngagement(this)">
-                    <div class="pt-10">
-                        <span>Vendeur</span>
-                    </div>
-                    <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Vendeur','Engagement annuel','price') !!}</span><span class="price-unity">€</span>/mois</div>
-                </a>
-                <a class="text-center  bg-white col-xs-3" href = "#marketing" data-tab="uploadTab" onclick = "showEngagement(this)">
-                    <div class="pt-10">
-                        <span>Marketing</span>
-                    </div>
-                    <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Marketing','Engagement annuel','price') !!}</span><span class="price-unity">€</span>/mois</div>
-                </a>
-                <a class="text-center  bg-white col-xs-3" href = "#marketingp" data-tab="uploadTab" onclick = "showEngagement(this)">
-                    <div class="pt-10">
-                        <span>Marketing +</span>
-                    </div>
-                    <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Marketing +','Engagement annuel','price') !!}</span><span class="price-unity">€</span>/mois</div>                             
-                </a>
-        </div>
+    <div class="engagement_for_tablet_screen hidden">
+        @include('front.pages.mobile_tablet_pages.tablet_engagement_menu')
     </div>
-
-    <div class="engagement-menu hidden text-center" id="browseTab">
-        <br><br><br>
-        <div class="row menu-pop" style="width: 105%;"> <!-- margin-bottom: -1.4rem; -->
-            <div class="point5 col-xs-3"></div>
-            <div class="point5 col-xs-3 bg-green" style="font-size: 15px;">LE PLUS POPULAIRE</div>
-            <div class="point5 col-xs-3"></div>
-            <div class="oint5 col-xs-3"></div>
-        </div>                      
-        <div class="row menu" style="width: 105%;">
-                <a class="active  bg-white text-center col-xs-3" href = "#discovery2" data-tab="browseTab" onclick = "showEngagement(this)">
-                    <div class="pt-10">
-                        <span>Découverte</span>
-                    </div>
-                    <div class="engagement-price mt-25 text-uppercase">{!! showPackByValue($packs,'Découverte','Sans engagement','price') !!}</div>
-                </a>
-                <a class="shadow-engagement  bg-white text-center col-xs-3" href = "#seller2" data-tab="browseTab" onclick = "showEngagement(this)">
-                    <div class="pt-10">
-                        <span>Vendeur</span>
-                    </div>
-                    <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Vendeur','Sans engagement','price') !!}</span><span class="price-unity">€</span>/mois</div>
-                </a>
-                <a class="text-center  bg-white col-xs-3" href = "#marketing2" data-tab="browseTab" onclick = "showEngagement(this)">
-                    <div class="pt-10">
-                        <span>Marketing</span>
-                    </div>
-                    <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Marketing','Sans engagement','price') !!}</span><span class="price-unity">€</span>/mois</div>
-                </a>
-                <a class="text-center  bg-white col-xs-3" href = "#marketingp2" data-tab="browseTab" onclick = "showEngagement(this)">
-                    <div class="pt-10">
-                        <span>Marketing +</span>
-                    </div>
-                    <div class="engagement-price text-center"><span class="price-int">{!! showPackByValue($packs,'Marketing +','Sans engagement','price') !!}</span><span class="price-unity">€</span>/mois</div>                             
-                </a>
-        </div>
+    <div class="engagement_for_mobile_screen hidden">
+        @include('front.pages.mobile_tablet_pages.mobile_engagement_menu')
     </div>
-
-    <div class="hidden" id="engagement-menu-content">
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 point5 left-header  border-green" style="margin-top: 30rem; border-right: none;">
-            <p><b>Compte employés</b></p>
-            <div class="row bg-white p-0"><p><b>Nombre d’articles</b></p></div>
-            <p><b>Base de données clients</b></p>
-            <div class="row bg-white p-0"><p><b>Visibilité des produits</b></p></div>
-            <p><b>Frais de transaction</b></p>
-            <div class="row bg-white p-0"><p><b>Codes promo</b></p></div>
-            <p><b>Encaissement physique</b></p>
-            <div class="row bg-white p-0"><p><b>Rapport d’activité</b></p></div>
-            <p><b>Fiche boutique</b></p>
-            <div class="row bg-white p-0"><p><b>Newsletters</b></p></div>
-        </div>
-        
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 point5 border-green" id="content2">
-        </div>
-    </div>
+    
 </div>
 
 

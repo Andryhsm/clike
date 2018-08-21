@@ -515,6 +515,9 @@ a#scrollUp {
  
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
+.engagement-menu {
+  display:none;
+}
 .container.content-product-on-home ul {
   margin-left: -10px;
   margin-right: -10px;
@@ -2423,7 +2426,9 @@ text-align: center !important;
 .section-instagramm-feed-align-sub-top , .section-instagramm-feed-align-sub-bottom {
     width: 50%;
     display: inline-block;
-    margin-left: 10px;
+}
+.section-instagramm-feed-align-sub-top {
+  margin-right: 10px
 }
 .dropdown-filter span {
   width: 95%;
@@ -2437,7 +2442,7 @@ text-align: center !important;
   margin: 10px;
 }
 .banner-caption-right-top h1, .banner-caption-right-bottom h1 {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 }
