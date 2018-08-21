@@ -41,7 +41,3 @@ function showEngagement(box) {
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 0d55dcda232f3ce23a4cca605f34b61901804b4d
