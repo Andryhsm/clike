@@ -2386,6 +2386,7 @@ text-align: center !important;
 }
 
 @media (max-width: 480px) {
+<<<<<<< HEAD
 
 .section-avantage-content div:nth-child(1) {
     padding-left: 3px !important;
