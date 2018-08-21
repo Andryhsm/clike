@@ -61,18 +61,18 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        if(Cookie::has('who')){  
+        if(Cookie::has('who')){
+      
             switch (Cookie::get('who')) {
                 case 'customer':
-                    $num_of_minutes = 60 * 24 * 7; 
-                    Cookie::queue('who', 'destroy', $num_of_minutes); 
-                    return redirect()->guest(route('login')); 
+                    /*$num_of_minutes = 60 * 24 * 7; 
+                    Cookie::queue('who', 'destroy', $num_of_minutes); */
+                    return redirect()->guest(route('login'))->withCookie(Cookie::forget('who')); 
                     break;
                 case 'merchant':
-                    $num_of_minutes = 60 * 24 * 7; 
-                    Cookie::queue('who', 'destroy', $num_of_minutes); 
-                    dd('icicicici->'.Cookie::get('who'));    
-                    return redirect()->guest(route('merchant-login')); 
+                    /*$num_of_minutes = 60 * 24 * 7; 
+                    Cookie::queue('who', 'destroy', $num_of_minutes);*/ 
+                    return redirect()->guest(route('merchant-login'))->withCookie(Cookie::forget('who')); 
                     break;
                 case 'destroy':
                     return redirect()->guest(route('login')); 

@@ -1842,8 +1842,8 @@ element.style {
     padding: 6px 12px;
 }
 .product-pic-catalog {
-    /*width: 255px;
-    height: 365px;*/
+    /*width: 255px;*/
+    height: 365px;
     font-weight: bold;
 }
 .product-pic-catalog img {
@@ -3472,4 +3472,9 @@ input#search-product-input:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
 }
