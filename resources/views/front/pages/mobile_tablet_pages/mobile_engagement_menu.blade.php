@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="panel panel-default">
-            <div class="row bg-white shadow-engagement">
+            <div class="row bg-white">
                 <a class="text-center col-xs-10" href = "#seller" data-tab="uploadTab" onclick = "showEngagement(this)">
                     <div class="pt-10">
                         <span>Vendeur</span>
