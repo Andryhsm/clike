@@ -886,6 +886,8 @@ var reviews_length = $('#reviews').text().length ;
 	 $('.navbar-toggle').click(function(e) {
 		$('.navbar-collapse').slideToggle();
 	});
+
+	
 	/**
 	 * end menu
 	 */
