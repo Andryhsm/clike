@@ -29,8 +29,8 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
     'twitter' => [
-        'client_id'     => env('TWITTER_ID','nMF6CrRFecJjbXklkIsKm4Xdv  '),
-        'client_secret' => env('TWITTER_SECRET','JFgCxlGohhx11vvuBzSIH1Lalte6csxjZLGBcpnYhVWrQdZ6ED'),
+        'client_id'     => env('TWITTER_ID','kAd4Uzsr8Ml7zXvFStahEMkMO  '),
+        'client_secret' => env('TWITTER_SECRET','PaLm9TKC4MHB3wN0JCjIJ4xKI9j8qVQilOvZLVmCX7gzyeiLlu'),
         'redirect'      => env('TWITTER_URL','https://www.clickee.fr/auth/twitter/callback'),
         'scope'         =>'email'
     ],
