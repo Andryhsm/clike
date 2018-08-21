@@ -2387,6 +2387,17 @@ text-align: center !important;
 
 @media (max-width: 480px) {
 
+.section-avantage-content div:nth-child(1) {
+    padding-left: 3px !important;
+}
+
+.fs-13 {
+    font-size: 11px !important;
+}
+
+.fs-15 {
+    font-size: 13px !important;
+}
 
 #left-header {
   border-right: none;
@@ -2395,6 +2406,7 @@ text-align: center !important;
   padding-left: 0px;
   padding-right: 0px;
 
+}
 .content-product-on-home>ul>li>.nav-title, .title h2{
   margin-left: 0;
   margin-right: 0!important;
