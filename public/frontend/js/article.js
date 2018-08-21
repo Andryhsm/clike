@@ -18,6 +18,50 @@ $( function() {
 /**
  * end draggable
  */
+/**
+ * Drag and drop Image
+*/
+////////////////////////////////////////Pour le 1er bouton image
+$(document).ready(function(){
+    $.event.props.push("dataTransfer");
+    // On pose les évènements nécessaires au drag'n'drop
+    $('#output').bind({
+        "dragenter dragexit dragover" : do_nothing, drop : drop
+    });
+});
+
+// Fonction stoppant toute évènement natif et leur propagation
+function do_nothing(evt){
+    evt.stopPropagation();
+    evt.preventDefault();
+}
+
+function drop(evt){
+    //console.log(evt.dataTransfer.files[0].name + '+++++');
+    do_nothing(evt);
+   for ( var i=0 ; i<10 ; i++){
+    var file = evt.dataTransfer.files[i];
+    var tmppath = URL.createObjectURL(file); 
+    var center = $('.center-img img');
+    $('.nav-img').append('<div class="nav-img-item"><img src="" data-file="1"></img><a class="close-thik"></a></div>');
+    $('.center-img img').attr('src', tmppath);
+    $('.nav-img div:last-child img').attr('src', tmppath);
+    var navimg = $('.nav-img img');
+    $('.add-img1').addClass('hidden');
+    $('.add-img2').removeClass('hidden');
+
+    var input_div = $('#add-img-input');
+    var row_count = parseInt($('.input-img:last').attr('id'));
+    //console.log(last_row_index);
+    var row_index = row_count + 1;
+    input_div.append('<input type="file" class="input-img" id="'+ row_index +'" name="images['+row_count+']" value="'+tmppath+'" />');
+    console.log($('#'+row_index).val());
+}
+}
+
+/**
+ * ENd Drag and Drop Image
+ */
 var $document = $(document);
 $( document ).ready(function(){
     if($('.decline').length > 1) $('#remove-decline').removeClass('hidden');
@@ -185,7 +229,7 @@ function load_left_img(div, row_index){
         readURL(this, center);
         readURL(this, navimg);
     });
-}
+}    
 
 function readURL(input, div) {
     if (input.files && input.files[0]) {
