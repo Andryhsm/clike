@@ -3468,3 +3468,8 @@ input#search-product-input:focus {
 #sortable div { /*margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px;*/ }
 #sortable div img { /*position: absolute;*/ margin-left: -1.5em; }
 /*end draggable*/
+.tab-content-search .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}

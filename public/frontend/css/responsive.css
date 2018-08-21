@@ -1198,8 +1198,18 @@ a#scrollUp {
 
 /* small mobile :320px. */
 @media (max-width: 767px) {
-  .skin-black-light .main-header > .logo {
-    background-color: #044651 !important;
+.tab-content-search .row {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.container.product-container {
+  width: 90%;
+}
+.skin-black-light .main-header > .logo {
+  background-color: #044651 !important;
 }
 .content-crowdfunding .youtube-video {
     margin: 2% -7.5%;
@@ -1970,9 +1980,9 @@ a#scrollUp {
     display: block; 
     /*margin-left: 27%;*/
 }
-.tab-content-search>.tab-pane>.row>div>.product-wrapper-home{
+/*.tab-content-search>.tab-pane>.row>div>.product-wrapper-home{
   margin-left: 22%;
-}
+}*/
 .bootstrap-duallistbox-container .buttons {
   width: 100% !important;
   margin-top: -18%;
@@ -2386,6 +2396,16 @@ text-align: center !important;
 }
 
 @media (max-width: 480px) {
+.tab-content-search .row {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 #left-header {
   border-right: none;
 }
