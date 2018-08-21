@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
         }
 
         if(Cookie::has('who')){
-      
+            dd(Cookie::get('who'));      
             switch (Cookie::get('who')) {
                 case 'customer':
                     $num_of_minutes = 60 * 24 * 7; 
