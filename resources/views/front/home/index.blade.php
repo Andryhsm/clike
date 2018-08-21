@@ -15,7 +15,7 @@
             @foreach($sliders as $slider)
                 @if($slider->is_active=='1')
                     <div class="item {!! ($loop->first) ? 'active' : '' !!}">
-                        <img src="{!! $slider->getSliderImage(app('language')->language_code) !!}" alt="{!! $slider->alt !!}" class="img-responsive" />
+                        <img src="{!! $slider->getSliderImage() !!}" alt="{!! $slider->alt !!}" class="img-responsive" />
                         
                         <div class="container container-slider">
                             <div class="carousel-caption">
