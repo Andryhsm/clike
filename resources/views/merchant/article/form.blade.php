@@ -54,9 +54,9 @@
                             $hidden_img2 = ($product) ? '':'hidden';
                         ?>
                         
-                        <div class="add-img1 {!! $hidden_img1 !!}">
+                        <div id="output" class="add-img1 {!! $hidden_img1 !!}">
                             <img src="{!! URL::to('/') !!}/images/icon/file-img.svg"></img>
-                            <label id="add-img1" for="1">Ajouter images</label>
+                            <label id="add-img1" for="1">Ajouter images <small>ou Glissez deposez</small> </label>
                         </div>
                         <div class="add-img2 {!! $hidden_img2 !!}">
                             <div class="nav-img" id="sortable">
