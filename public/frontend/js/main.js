@@ -1074,10 +1074,11 @@ function aside_fixed() {
 	if (Modernizr.mq('(max-width: 767px)') ) {	
 		if (Modernizr.mq('(max-width: 480px)')) left = 0;
 		$window.scroll(function() {
-			console.log('iiiiiiiiiiiii')
+			
 			if($('.nav-menu').hasClass('is-open')) {
+				
 				$aside = $('.navbar-mobile');
-				$aside.css('width', '97%');
+				$aside.css('width', '96%');
 			}
 			content = $('.main')[0].clientHeight + offset.top 
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
