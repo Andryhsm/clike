@@ -464,7 +464,7 @@
                             <p class="text-uppercase">{!! auth()->user()->last_name !!} {!! auth()->user()->first_name !!}</p>
                         </div>
                         <div class="col-lg-6  col-md-6 col-sm-6 col-xs-4 no-padding pull-right">
-                            <button data-url="{!! route('delete-card-info') !!}" data-card-info-id="{!! $card_info->card_info_id !!}" class="btn btn-customer-filled btn-icon text-center delete-card">
+                            <button data-url="{!! route('delete-card-info') !!}" data-card-info-id="{!! $card_info->card_info_id !!}" class="btn btn-customer-filled btn-icon pull-right delete-card">
                                 <span>Supprimer</span>
                             </button>
                         </div>
