@@ -896,6 +896,7 @@ var reviews_length = $('#reviews').text().length ;
 	 */
 	if (Modernizr.mq('(max-width: 480px)')) {
 		$(function() {
+			console.log('303030')
 			getInstagramFeeds(3);
 		});
 	}
@@ -1059,7 +1060,7 @@ function initMap() {}
 
 function aside_fixed() {
 	//console.log('log')
-	var $aside = $("#aside"),
+	var $aside = $(".aside"),
 		$window = $(window),
 		offset = $aside.offset(),
 		content = $('.main')[0].clientHeight - 140,
@@ -1070,9 +1071,15 @@ function aside_fixed() {
 		css = {},
 		animate = {};
 
-	if (Modernizr.mq('(max-width: 767px)')) {	
+	if (Modernizr.mq('(max-width: 767px)') ) {	
 		if (Modernizr.mq('(max-width: 480px)')) left = 0;
 		$window.scroll(function() {
+			
+			if($('.nav-menu').hasClass('is-open')) {
+				
+				$aside = $('.navbar-mobile');
+				$aside.css('width', '96%');
+			}
 			content = $('.main')[0].clientHeight + offset.top 
 			if ($window.scrollTop() > offset.top && $window.scrollTop() < content) {
 				$aside.stop().css({ 'position': 'fixed', 'top': '0', 'z-index': '2000'});
@@ -1083,6 +1090,7 @@ function aside_fixed() {
 					marginTop: 0
 				}).css({'position': 'relative'});
 				$('.nav-menu.content').css( 'margin-right', '0');
+				if($('.nav-menu').hasClass('is-open')) $aside.css('width', '100%');
 			}
 		});
 	}

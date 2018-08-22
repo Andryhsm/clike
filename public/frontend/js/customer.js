@@ -314,7 +314,10 @@ jQuery(document).ready(function() {
         
     
     });
+
     autocomplete_list_customer();
+
+
 });
 
 function fixed_two_after_dot(number) {
@@ -505,3 +508,4 @@ function autocomplete_list_customer() {
         .fail(function() {})
         .always(function() {});
 }
+

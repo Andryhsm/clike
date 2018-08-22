@@ -9,7 +9,7 @@
     {!! Html::style('backend/dist/css/skins/skin-black-light.css') !!}
     {!! Html::style('backend/css/style.css') !!}
     {!! Html::style('frontend/css/style-clickee.css') !!}
-    {!! Html::style('frontend/css/morris.css') !!}
+   
 @stop
 @section('page_title')
     <div class="section-title col-mm-8  col-lg-8 col-md-8 col-sm-12 col-xs-12">

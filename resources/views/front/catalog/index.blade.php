@@ -223,7 +223,7 @@
                                     <div class="row mb-30">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <!-- single-product-start -->
-                                            <div class="product-wrapper">
+                                            <div class="product-wrapper-home">
                                                 <div class="product-img product-pic">
                                                     <a href="#">
                                                         <img src="{!! url($product_image) !!}" alt="{!! $alt !!}"

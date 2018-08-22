@@ -29,7 +29,10 @@
     {!! Html::style('backend/plugins/bootstrap-datetime-picker/bootstrap-datetimepicker.css') !!}
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script type="text/javascript">
+        
         var base_url = {!! "'".URL::to('/')."/'" !!};
+        var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
+        var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";  
     </script>
 
 
@@ -94,10 +97,7 @@
 <script type="text/javascript">
     // Effet fix du menu gauche 
     aside_fixed();
-    Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
-    var base_url = {!! "'".URL::to('/')."/'" !!};
-    var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
-    var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";  
+    
 </script>
 @yield('footer-scripts')
 @include('merchant.layout.model', ['delete_multiple' => false])

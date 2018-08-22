@@ -1,3 +1,14 @@
+<div class="navbar-mobile navbar-default navbar-static-top">
+    <div class="container" style="padding-left: inherit;padding-right: inherit;">
+        <div > <!--class="navbar-header"-->
+            <button type="button" class="navbar-toggle"> 
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </div>
+</div>
 <div class="nav-menu content">
     <ul class="list-menu nav">
         <li class="nav-item active">
@@ -49,17 +60,5 @@
 
 </div>
 
-<div class="navbar navbar-default navbar-static-top">
-    <div class="container" style="padding-left: inherit;padding-right: inherit;">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse on collapse in" style="display: none;" aria-expanded="true">
-        </div>
-    </div>
-</div>
+
 

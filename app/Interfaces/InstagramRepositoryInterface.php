@@ -14,6 +14,8 @@ interface InstagramRepositoryInterface
 	public function getById($product_id);
 
 	public function getActiveInstagram();
+
+	public function getHomeActiveInstagram($input);
 	
 	public function getActiveMainInstagram();
 
