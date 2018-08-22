@@ -29,10 +29,10 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
     'twitter' => [
-        'client_id'     => 'TWITTER_ID','kAd4Uzsr8Ml7zXvFStahEMkMO',
+        'client_id'     => 'kAd4Uzsr8Ml7zXvFStahEMkMO',
         'client_secret' => 'PaLm9TKC4MHB3wN0JCjIJ4xKI9j8qVQilOvZLVmCX7gzyeiLlu',
         'redirect'      => 'https://www.clickee.fr/auth/twitter/callback',
-        'scope'         =>'email'
+        'scope'         => 'email'
     ],
     'facebook' => [
         'client_id'     => env('FACEBOOK_ID'),
