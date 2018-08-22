@@ -15,7 +15,8 @@
             </div>
             <div id="discovery" class="panel-collapse collapse">
                 <div class="row panel-body">
-                    @yield('sans_en gratuit')
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
+                    @include('front.pages.mobile_tablet_pages.bloc_sans_engagement.gratuit')
                 </div>
             </div>
         </div>
@@ -30,8 +31,9 @@
                 <i class="fa fa-angle-down" onclick = "showEngagement(this)"></i>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
-                    @yield('sans_en vendeur')
+                <div class="row panel-body">
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
+                    @include('front.pages.mobile_tablet_pages.bloc_sans_engagement.vendre')
                 </div>
             </div>
         </div>
@@ -46,8 +48,9 @@
                 <i class="fa fa-angle-down" onclick = "showEngagement(this)"></i>
             </div>
             <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-                    @yield('sans_en marketing')
+                <div class="row panel-body">
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
+                    @include('front.pages.mobile_tablet_pages.bloc_sans_engagement.marketing')
                 </div>
             </div>
         </div>   
@@ -60,11 +63,12 @@
                     </div>
                     <div class="engagement-price text-center"><span class="price-int">79</span><span class="price-unity">€</span>/mois</div>
                 </a>
-                <i class="fa fa-angle-down onclick = "showEngagement(this)""></i>
+                <i class="fa fa-angle-down" onclick = "showEngagement(this)"></i>
             </div>
             <div id="collapseFour" class="panel-collapse collapse">
-                <div class="panel-body">
-                    @yield('sans_en marketing plus')
+                <div class="row panel-body">
+                   @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
+                     @include('front.pages.mobile_tablet_pages.bloc_sans_engagement.marketing_plus')
                 </div>
             </div>
         </div>
@@ -92,7 +96,8 @@
             </div>
             <div id="collapseFive" class="panel-collapse collapse">
                 <div class="row panel-body">
-                    @yield('gratuit')
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.gratuit')
                 </div>
             </div>
         </div>
@@ -108,7 +113,8 @@
             </div>
             <div id="collapseSix" class="panel-collapse collapse">
                 <div class="row panel-body">
-                    @yield('vendeur')
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.vendre')
                 </div>
             </div>
         </div>
@@ -124,7 +130,8 @@
             </div>
             <div id="collapseSeven" class="panel-collapse collapse">
                 <div class="row panel-body">
-                    @yield('marketing')
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.marketing')
                 </div>
             </div>
         </div>
@@ -140,7 +147,8 @@
             </div>
             <div id="collapseEight" class="panel-collapse collapse">
                 <div class="row panel-body">
-                    @yield('marketing plus')
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
+                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.marketing_plus')
                 </div>
             </div>
         </div>

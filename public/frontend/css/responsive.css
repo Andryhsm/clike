@@ -2485,16 +2485,11 @@ text-align: center !important;
     font-size: 13px !important;
 }
 
-#collapseSix, #collapseSeven, #collapseEight {
-  margin-left: 22px;
-  margin-right: -22px;
-}
 
 .panel-default div:nth-child(2) .panel-body  .left-header{
   border-right: none;
 }
-#discovery .panel-body div:nth-child(2), #collapseFive .panel-body div:nth-child(2), #collapseTwo .panel-body div:nth-child(1),
-#collapseThree .panel-body div:nth-child(1),  #collapseFour .panel-body div:nth-child(1) {
+.panel-default .panel-body div:nth-child(1), .panel-default .panel-body div:nth-child(2){
   padding-left: 0px;
   padding-right: 0px;
 
@@ -2718,7 +2713,7 @@ text-align: center !important;
   width: 50%;
 }
 .engagement-menu .row {
-  font-size: 13px !important;
+  font-size: 12px !important;
 }
 #engagement-menu-content {
   font-size: 14px;
