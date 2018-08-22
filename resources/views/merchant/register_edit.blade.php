@@ -448,31 +448,58 @@
         </div>
     
     </section>
-    <section class="content">
-        <div class="bottle">
-            <div class="visa-account">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <img class="pull-right" src="{!! URL::to('/') !!}/images/icon/visa.svg"/>
-                </div>
-                <div class="mini-height-1 col-lg-6 col-md-6 col-sm-6 col-xs-5">
-                    <strong>VISA (0623)</strong><br>
-                    <span class="expired">Exp : 09/06</span><br>
-                    <span class="text-uppercase">DAVID BOITARD</span>
-                </div>
-                <div class="vertically-centered col-lg-4 col-md-4 col-sm-4 col-xs-5">
-                    <a href="" class="btn-icon btn-merchant-filled">
-                        <span>Supprimer</span>
-                    </a>
+
+    @if(count($card_infos) > 0)
+        @foreach($card_infos as $card_info)
+
+            <div class="information-visa" data-card-info-id="{!! $card_info->card_info_id !!}">
+                <div class="content">
+                    <div class="bottle">
+                        <div class="visa-img">
+                            <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/visa.svg"></img>
+                        </div>
+                        <div class="visa-information col-lg-4 col-md-4 col-sm-4 col-xs-6 mini-height">
+                            <p class="title-bold-2">VISA (3485)</p>
+                            <p>Exp : {!! $card_info->date_expirate !!}</p>
+                            <p class="text-uppercase">{!! auth()->user()->last_name !!} {!! auth()->user()->first_name !!}</p>
+                        </div>
+                        <div class="col-lg-6  col-md-6 col-sm-6 col-xs-4 no-padding pull-right">
+                            <button data-url="{!! route('delete-card-info') !!}" data-card-info-id="{!! $card_info->card_info_id !!}" class="btn btn-customer-filled btn-icon text-center delete-card">
+                                <span>Supprimer</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p>
+                            @if(auth()->user()->default_card_id == $card_info->card_info_id)
+                                Ceci est votre paiement par défaut
+                            @else
+                            <a href="#" class="default-payment mt-30 mr-20" data-url="{!! route('set-default-card-id') !!}">
+                                <i class="icon-mode-payement fa fa-circle-o"></i>
+                                Définir comme mode de paiement par défaut
+                            </a>
+                            @endif
+                            {{ Form::text('default_payment', '' ,['class'=>"hidden",'id' => 'default_payment']) }}
+                        </p>
+                    </div>
+                    <?php
+                        $date_cart = \Carbon\Carbon::parse($card_info->date_expirate);
+                        $now =  $now = \Carbon\Carbon::now();
+                    ?>
+                    @if($date_cart < $now)
+                    <div class="visa-expired col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <img class="mr-10" src="{!! URL::to('/') !!}/images/icon/information.svg"/>
+                        <span>Cette carte a expiré</span>
+                    </div>
+                    @endif
                 </div>
             </div>
-            <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-20">Ceci est votre mode de paiement par défaut</span>
-            <div class="visa-expired col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <img class="mr-10" src="{!! URL::to('/') !!}/images/icon/information.svg"/>
-                <span>Cette carte a expiré</span>
-            </div>
-        </div>
-    </section>
-    <section class="content">
+         @endforeach
+    @endif
+
+
+    
+    <!-- <section class="content">
         <div class="bottle">
             <div class="visa-account">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -493,7 +520,7 @@
                 <i class="fa fa-circle-o mr-10"></i> Définir comme mode de paiement par défaut
             </span>
         </div>
-    </section>
+    </section> -->
 @stop
 @section('additional-script')
     {!! Html::script('frontend/js/store.js') !!}
