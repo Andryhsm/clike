@@ -1060,7 +1060,7 @@ function initMap() {}
 
 function aside_fixed() {
 	//console.log('log')
-	var $aside = $("#aside"),
+	var $aside = $(".aside"),
 		$window = $(window),
 		offset = $aside.offset(),
 		content = $('.main')[0].clientHeight - 140,
@@ -1070,7 +1070,6 @@ function aside_fixed() {
 		//left = '30px',
 		css = {},
 		animate = {};
-
 
 	if (Modernizr.mq('(max-width: 767px)') ) {	
 		if (Modernizr.mq('(max-width: 480px)')) left = 0;

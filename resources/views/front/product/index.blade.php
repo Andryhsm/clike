@@ -574,7 +574,7 @@
 
                         <div class="col-lg-12">
                         <!-- single-product-start -->
-                        <div class="product-wrapper">
+                        <div class="product-wrapper-home">
                             <div class="product-img-connexe product-pic">
                                 <a href="{!! $related_product->url->target_url !!}">
                                     <img src="{!! url($related_product->getDefaultImagePath()) !!}" alt="{!! (isset($related_product_translation->product_name)) ? $related_product_translation->product_name : '' !!}"
@@ -583,7 +583,7 @@
                             </div>
                             <div class="product-content pt-10">                                
                                 <!-- whishlist add/remove -->
-                                <div class="wishlist_prd_place_home" style="height: 13%;width: 24%;">
+                                <div class="wishlist_prd_place_home"> <!--  style="height: 13%;width: 24%;" -->
 
                                     <?php 
                                      $wishlist_del = (in_array($related_product->product_id,all_product_id_wishlist())) ? 'coeur_pm' : '';

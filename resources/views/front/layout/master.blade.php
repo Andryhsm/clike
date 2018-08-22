@@ -59,7 +59,6 @@
 <script src="{!! URL::to('/') !!}/frontend/js/vendor/modernizr-2.8.3.min.js"></script>
 
 <script type="text/javascript">
-    Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
     var base_url = {!! "'".URL::to('/')."/'" !!};
     var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
     var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";
