@@ -190,6 +190,7 @@ class AuthController extends Controller
 
     public function redirectToProvider($provider)
     {
+        dd(Socialite::driver($provider)->redirect());
         return Socialite::driver($provider)->redirect();
     }
 
