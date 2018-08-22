@@ -180,7 +180,76 @@ jQuery(document).ready(function() {
         toastr["success"]("Le compte a été bien supprimé !");
     });
 
+    $('.delete-card').click(function(event) {
+        $.LoadingOverlay("show", { 'size': "10%", 'zIndex': 9999 });
+        var $this = $(this);
+        var url = $this.data('url');
+        console.log(url);
+        var card_info_id = $this.data('card-info-id');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            data: {id: card_info_id},
+        })
+        .done(function(response) {
+            if(response.status == true){
+                toastr.success("Votre information de carte est bien supprimé!");
+                $this.parents('.information-visa').remove();
+                console.log("We need to hide the information");
+                $.LoadingOverlay("hide");
+            }
+        })
+        .fail(function() {
+            $.LoadingOverlay("hide");
+        });
+        
+    });
 
+    $('.default-payment').click(function(e){
+        e.preventDefault();
+        $('.icon-mode-payement').each(function(i, el){
+            if($(el).hasClass('fa-dot-circle-o')){
+                $(el).removeClass('fa-dot-circle-o');
+                $(el).addClass('fa-circle-o');
+            }
+        });
+        var index = $(this).parent('p').index();
+        if ($(this).find('i').hasClass('fa-circle-o')) {
+            $(this).find('i').removeClass('fa-circle-o');
+            $(this).find('i').addClass('fa-dot-circle-o');
+        }
+        else {
+            $(this).find('i').removeClass('fa-dot-circle-o');
+            $(this).find('i').addClass('fa-circle-o');
+        }
+        $(this).closest('.newsletter-item').find('i').each(function(i, el){
+            if($(el).hasClass('fa-dot-circle-o') && $(el).closest('p').index() != index) {
+                $(el).removeClass('fa-dot-circle-o');
+                $(el).addClass('fa-circle-o');
+            }
+        });
+
+        var card_info_id = $(this).parents('.information-visa').data('card-info-id');
+
+        var url = $(this).data('url')
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            data: {card_info_id: card_info_id},
+        })
+        .done(function(response) {
+            if(response.status == "success"){
+                toastr.success("Votre carte de paiement par default est bien modifié!");
+            }
+        })
+        .fail(function() {
+            console.log("error");
+        });
+        
+    });
 });
 
 function confirmPassword(cle) {
