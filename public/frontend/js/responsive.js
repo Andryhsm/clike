@@ -21,10 +21,18 @@ if (Modernizr.mq('(max-width: 767px)')) {
 		});
 		max = (max == 1) ? 97 : max;
 		$(".engagement-menu .menu a").css('height', max)
-		console.log(max + '$$$$$$$$$$$')
+		
 	})
 
 }
+
+jQuery(document).ready(function(){
+	$('.navbar-mobile button').click(function(e){
+        e.preventDefault();
+        $('.nav-menu').toggleClass('is-open');
+        
+    })
+});
 
 function showEngagement(box) {
 	var tab = $(box).attr('data-tab')

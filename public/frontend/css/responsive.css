@@ -1206,6 +1206,10 @@ a#scrollUp {
   .engagement-menu#uploadTab, #engagement-menu-content {
     display: none;
   }
+  .nav-menu .nav>li>a>img {
+      max-width: none;
+      width: 35px !important;
+  }
 }
 
 /* small mobile :320px. */
@@ -2179,10 +2183,7 @@ img.equipe-clickee {
 	margin-left: 16.66666667%;
 	margin-bottom: 10px;
 }
-.aside.merchant ul {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto;
-}
+
 .table > tbody > tr > td {
   padding-left: 0;
   padding-right: 0;
@@ -2199,7 +2200,32 @@ img.equipe-clickee {
 .order-description {
   line-height: 1 !important;
 }
-
+/***   ****/
+.nav-menu {
+    position: absolute;
+    /*width: calc(100% - 20px);*/
+    height: 100%;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in;
+    z-index: 9;
+    margin-left: -20px;
+    padding-top: 0px;
+  }
+  .navbar-mobile {
+    display: block;
+  }
+  .nav-menu.is-open {
+    transform: translateX(0);
+    position: relative !important;
+    margin-left: 0px;
+  }
+  .nav-item >a>span {
+    display: block !important;
+  }
+  .nav-menu .nav>li>a {
+    display: block !important;
+  }
+ /**  **/
 }
 /* end max-width 767px */ 
 /* Large Mobile :480px. */
@@ -2444,11 +2470,18 @@ text-align: center !important;
 .banner-caption-right-top h1, .banner-caption-right-bottom h1 {
     font-size: 20px;
 }
+/*.aside.merchant ul {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+}*/
+
 
 }
 
 @media (max-width: 480px) {
-
+ .nav-menu .nav>li>a>img {
+  width: 30px !important;
+}
 .tab-content-search .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2855,33 +2888,7 @@ text-align: center !important;
 .section-avantage .container {
   width: 90%; 
 }
-.nav-menu {
-  display: none !important;
-}
-.m-nav-toggle{
-  display: flex;
-  float: right;
-  cursor: pointer;
-  width: 40px;
-  height: 66px;
-}
-span.m-toggle-icon, span.m-toggle-icon:before, span.m-toggle-icon:after{
-  content: "";
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #fff;
-  position: relative;
-  transform: all 0.3 ease-in-out;
-}
 
-span.m-toggle-icon:before{
-  top: 12px;
-}
-
-span.m-toggle-icon:after{
-  top: -13px;
-}
 
 }
 

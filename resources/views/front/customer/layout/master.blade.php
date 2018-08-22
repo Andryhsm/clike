@@ -60,7 +60,7 @@
          <script src="{!! URL::to('/') !!}/frontend/js/customer-area.js"></script>
          <script type="text/javascript">
             // Effet fix du menu gauche 
-            //aside_fixed();
+            aside_fixed();
             Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
             var base_url = {!! "'".URL::to('/')."/'" !!};
             var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
