@@ -31,7 +31,7 @@
                 <i class="fa fa-angle-down" onclick = "showEngagement(this)"></i>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
+                <div class="row panel-body">
                     @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
                     @include('front.pages.mobile_tablet_pages.bloc_sans_engagement.vendre')
                 </div>
@@ -48,7 +48,7 @@
                 <i class="fa fa-angle-down" onclick = "showEngagement(this)"></i>
             </div>
             <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
+                <div class="row panel-body">
                     @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
                     @include('front.pages.mobile_tablet_pages.bloc_sans_engagement.marketing')
                 </div>
@@ -66,7 +66,7 @@
                 <i class="fa fa-angle-down" onclick = "showEngagement(this)"></i>
             </div>
             <div id="collapseFour" class="panel-collapse collapse">
-                <div class="panel-body">
+                <div class="row panel-body">
                    @include('front.pages.mobile_tablet_pages.bloc_engagement_annuel.bloc_critere')
                      @include('front.pages.mobile_tablet_pages.bloc_sans_engagement.marketing_plus')
                 </div>

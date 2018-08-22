@@ -2484,8 +2484,7 @@ text-align: center !important;
 .panel-default div:nth-child(2) .panel-body  .left-header{
   border-right: none;
 }
-#discovery .panel-body div:nth-child(2), #collapseFive .panel-body div:nth-child(2), #collapseTwo .panel-body div:nth-child(1),
-#collapseThree .panel-body div:nth-child(1),  #collapseFour .panel-body div:nth-child(1) {
+.panel-default .panel-body div:nth-child(1), .panel-default .panel-body div:nth-child(2){
   padding-left: 0px;
   padding-right: 0px;
 
