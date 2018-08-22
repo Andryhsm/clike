@@ -154,7 +154,8 @@ class StoreController extends Controller
         $countries = $this->region_repository->getCountries();
 		$brands = $this->brand_repository->lists();
         $brand_tags = BrandTag::get();
-        return view('merchant.register_edit', compact('countries','store','brands','brand_tags'));
+        $card_infos = $this->card_info_repository->getByUserId($user_id);
+        return view('merchant.register_edit', compact('countries','store','brands','brand_tags','card_infos'));
     }
 
     /**

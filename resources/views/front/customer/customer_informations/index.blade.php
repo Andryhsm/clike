@@ -67,50 +67,50 @@
         </div>
     </div> 
     @if(count($card_infos) > 0)
-    @foreach($card_infos as $card_info)
-        <div class="information-visa" data-card-info-id="{!! $card_info->card_info_id !!}">
-            <div class="content">
-                <div class="bottle">
-                    <div class="visa-img">
-                        <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/visa.svg"></img>
+        @foreach($card_infos as $card_info)
+            <div class="information-visa" data-card-info-id="{!! $card_info->card_info_id !!}">
+                <div class="content">
+                    <div class="bottle">
+                        <div class="visa-img">
+                            <img class="pull-left" src="{!! URL::to('/') !!}/images/icon/visa.svg"></img>
+                        </div>
+                        <div class="visa-information col-lg-4 col-md-4 col-sm-4 col-xs-6 mini-height">
+                            <p class="title-bold-2">VISA (3485)</p>
+                            <p>Exp : {!! $card_info->date_expirate !!}</p>
+                            <p class="text-uppercase">{!! $customer->last_name !!} {!! $customer->first_name !!}</p>
+                        </div>
+                        <div class="col-lg-6  col-md-6 col-sm-6 col-xs-4 no-padding pull-right">
+                            <button data-url="{!! route('delete-card-info') !!}" data-card-info-id="{!! $card_info->card_info_id !!}" class="btn btn-customer-filled btn-icon pull-right delete-card">
+                                <span>Supprimer</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="visa-information col-lg-4 col-md-4 col-sm-4 col-xs-6 mini-height">
-                        <p class="title-bold-2">VISA (3485)</p>
-                        <p>Exp : {!! $card_info->date_expirate !!}</p>
-                        <p class="text-uppercase">{!! $customer->last_name !!} {!! $customer->first_name !!}</p>
+                    <div class="text-center">
+                        <p>
+                            @if($customer->default_card_id == $card_info->card_info_id)
+                                Ceci est votre paiement par défaut
+                            @else
+                            <a href="#" class="default-payment mt-30 mr-20" data-url="{!! route('set-default-card-id') !!}">
+                                <i class="icon-mode-payement fa fa-circle-o"></i>
+                                Définir comme mode de paiement par défaut
+                            </a>
+                            @endif
+                            {{ Form::text('default_payment', '' ,['class'=>"hidden",'id' => 'default_payment']) }}
+                        </p>
                     </div>
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-xs-4 no-padding pull-right">
-                        <button data-url="{!! route('delete-card-info') !!}" data-card-info-id="{!! $card_info->card_info_id !!}" class="btn btn-customer-filled btn-icon pull-right delete-card">
-                            <span>Supprimer</span>
-                        </button>
+                    <?php
+                        $date_cart = \Carbon\Carbon::parse($card_info->date_expirate);
+                        $now =  $now = \Carbon\Carbon::now();
+                    ?>
+                    @if($date_cart < $now)
+                    <div class="visa-expired col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <img class="mr-10" src="{!! URL::to('/') !!}/images/icon/information.svg"/>
+                        <span>Cette carte a expiré</span>
                     </div>
+                    @endif
                 </div>
-                <div class="text-center">
-                    <p>
-                        @if($customer->default_card_id == $card_info->card_info_id)
-                            Ceci est votre paiement par défaut
-                        @else
-                        <a href="#" class="default-payment mt-30 mr-20" data-url="{!! route('set-default-card-id') !!}">
-                            <i class="icon-mode-payement fa fa-circle-o"></i>
-                            Définir comme mode de paiement par défaut
-                        </a>
-                        @endif
-                        {{ Form::text('default_payment', '' ,['class'=>"hidden",'id' => 'default_payment']) }}
-                    </p>
-                </div>
-                <?php
-                    $date_cart = \Carbon\Carbon::parse($card_info->date_expirate);
-                    $now =  $now = \Carbon\Carbon::now();
-                ?>
-                @if($date_cart < $now)
-                <div class="visa-expired col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <img class="mr-10" src="{!! URL::to('/') !!}/images/icon/information.svg"/>
-                    <span>Cette carte a expiré</span>
-                </div>
-                @endif
             </div>
-        </div>
-    @endforeach
+        @endforeach
     @endif
 </div>
 @stop
