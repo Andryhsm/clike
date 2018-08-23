@@ -80,12 +80,14 @@ class ArticleController extends Controller
     public function getChild(Request $request)
     {
         $id = $request->get('category_id');
+        $gamme = $this->category_repository->getById($id)->category_gamme;
         $childs = $this->category_repository->getChildCategory($id);
         $category_childs = [];
         foreach($childs as $child)
         {
             $category_childs[] = $child->category_id."$".$child->getByLanguage(2)->category_name;
         }
+        $category_childs['gamme'] = $gamme;
         return response()->json($category_childs);
     }
    
