@@ -43,7 +43,7 @@ function drop(evt){
     var file = evt.dataTransfer.files[0];
      var reader = new FileReader();
         reader.onload = function (evt) {
-            
+            $('#1').remove();
             //var tmppath = URL.createObjectURL(file); 
             var url = evt.target.result; 
             var center = $('.center-img img');
