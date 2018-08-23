@@ -1199,7 +1199,12 @@ a#scrollUp {
 .content-product-on-home>ul>li>.nav-title {
   font-size: 3vw;
 }
-
+.section-instagramm-feed .container {
+  width: 100% !important;
+}
+.section-instagramm-feed-content .section-instagramm-feed-align img {
+  width: 250px;
+}
 }
 
 @media (min-width: 768px) {
@@ -2464,7 +2469,11 @@ text-align: center !important;
   margin: auto auto;
   display: contents;
 }
+.section-instagramm-feed .container {
+  width: 100% !important;
+}
 .section-instagramm-feed-content .section-instagramm-feed-align img {
+  width: 250px;
   margin: 10px;
 }
 .banner-caption-right-top h1, .banner-caption-right-bottom h1 {
@@ -2474,6 +2483,7 @@ text-align: center !important;
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto auto;
 }*/
+
 
 
 }
