@@ -87,7 +87,7 @@ class ArticleController extends Controller
         {
             $category_childs[] = $child->category_id."$".$child->getByLanguage(2)->category_name;
         }
-        $category_childs['gamme'] = $gamme;
+        $category_childs[] = $gamme;
         return response()->json($category_childs);
     }
    
