@@ -93,12 +93,32 @@ function checka(box) {
         })
         .done(function(data) {
             /*console.log(data);*/
+            var etat_gamme = data[data.length - 1];
             if (data.length > 0) {
                 $('#category_child').html('<option value="">Onglets</option>')
+                data.pop();console.log(data, data.length)
                 for (var i = data.length - 1; i >= 0; i--) {
                     var childs = data[i];
+                    //childs = childs.filter((obj) => obj);console.log(childs)
                     $('#category_child').append('<option value="' + splitDataId(childs) + '">' + splitDataName(childs) + '</option>')
                 }
+            }
+            var gamme = $('#attribute_set_');
+
+            if (etat_gamme == null) {
+                gamme.parent().remove();
+            } else if(gamme[0] == undefined){
+                $('<div class="form-group">\n' +
+                    '                            <label for="attribute_set_">Gamme</label>\n' +
+                    '                            <select data-msg="Veuillez sélectionner la gamme!" name="attribute_set_id" id="attribute_set_" class="form-control required">\n' +
+                    '                                <option value="" selected="selected">Selectionner gamme</option>\n' +
+                    '                                 \n' +
+                    '                                        <option value="33">Chaussures</option>\n' +
+                    '                                        <option value="32">Accessoires</option>\n' +
+                    '                                        <option value="31">Vetements/Accessoires</option>\n' +
+                    '                                        </select>\n' +
+                    '                            \n' +
+                    '                        </div>').insertAfter($('#brand_name').parent())
             }
         })
         .fail(function() {
@@ -145,12 +165,16 @@ function solde(box)
     checkin(box);
 }
 function splitDataId($data) {
-    var result = $data.split('$');
-    return result[0];
+    if ($data != null && $data != '1') {
+        var result = $data.split('$');
+        return result[0];
+    }
 }
 function splitDataName($data) {
-    var result = $data.split('$');
-    return result[1];
+    if ($data != null  && $data != '1') {
+        var result = $data.split('$');
+        return result[1];
+    }
 }
 $('#reduction').bind('keyup change', function () {
    if($('#original_price').val() != ''){

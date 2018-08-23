@@ -733,6 +733,7 @@ ul {
   float:none !important;
   display:inline-block !important;
   zoom:1 !important;
+  padding-right: 30px;
 }
 .content-product-on-home>ul>li>.nav-title{
   color: #044651;
