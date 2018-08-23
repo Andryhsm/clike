@@ -28,12 +28,12 @@
                                 <input type="text" class="form-control" id="name" name="name">
                             </div>
                             <div class="form-group">
-                                <label for="email">Email </label>
-                                <input type="text" class="form-control" id="email" name="email">
+                                <label for="email">* Email </label>
+                                <input type="text" class="form-control required" id="email" name="email">
                             </div>
                             <div class="form-group">
-                                <label for="phone">Téléphone </label>
-                                <input type="text" class="form-control" id="phone" name="phone">
+                                <label for="phone">* Téléphone </label>
+                                <input type="text" class="form-control required" id="phone" name="phone">
                             </div>
                         </div>    
 
