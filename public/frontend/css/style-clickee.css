@@ -1455,7 +1455,7 @@ element.style {
 
 /*faq start*/
 .actives > .panel-heading{
-  background:#044651 !important;
+  background:#65bb9f !important;
 }
 .actives > .panel-heading > .panel-title a{
   color: #ffffff !important;
@@ -1482,7 +1482,7 @@ element.style {
   border-top: 13px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 13px solid transparent;
-  border-left: 10px solid #044651;
+  border-left: 10px solid #65bb9f;
 }
 .panel-heading {
     padding: 0px 0px !important;
@@ -1558,7 +1558,7 @@ element.style {
 }
 .left-arrow a:hover::before{
   border-top: 13px solid transparent;
-  border-right: 10px solid #044651;
+  border-right: 10px solid #65bb9f;
   border-bottom: 13px solid transparent;
   border-left: 10px solid transparent;
 }
@@ -1579,7 +1579,7 @@ element.style {
   border-top: 13px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 13px solid transparent;
-  border-left: 10px solid #044651;
+  border-left: 10px solid #65bb9f;
 }
 .faq-content {
     background: #EFEFED;
