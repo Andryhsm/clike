@@ -79,7 +79,7 @@
 
 @yield('footer-script')
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 </body>
 <!-- END BODY -->
 </html>
