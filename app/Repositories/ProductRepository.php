@@ -121,8 +121,8 @@ class ProductRepository implements ProductRepositoryInterface
             $product->original_price = $input['original_price'];
             $product->created_by = Session::get('store_to_user');
             $product->store_id = auth()->user()->store->first()->store_id;
-            $product->attribute_set_id = $input['attribute_set_id'];
-            $product->range = $input['attribute_set_id'];
+            $product->attribute_set_id = isset($input['attribute_set_id']) ? $input['attribute_set_id'] : '';
+            $product->range = isset($input['attribute_set_id']) ? $input['attribute_set_id'] : '';
             $product->balance = "1";
             $product->discount = $input['discount'];
             $product->promotional_price = $input['promotional_price'];
@@ -143,8 +143,8 @@ class ProductRepository implements ProductRepositoryInterface
             //product_stock
             $counts = $input['product_inventory'];
             $status = $input['stock-types'];
-            $attributes = $input['attributes'];
-            $attribute_id = $input['attribute_id'];
+            $attributes = isset($input['attributes']) ? $input['attributes'] : '';
+            $attribute_id = isset($input['attribute_id']) ? $input['attribute_id'] : '';
             $product_stock_ids = $input['product_stock_id'];
             $product_stock_attribute_option_ids = $input['product_stock_attribute_option_id'];
             $product_image_ids = $input['product_image_ids'];
@@ -158,12 +158,15 @@ class ProductRepository implements ProductRepositoryInterface
                 $product_stock->save();
                  
                 //product_stock_attribute_option
-                foreach ($attributes[$key] as $key1=>$attribute) {
-                    $product_stock_attribute_option = ProductStockAttributeOption::findOrNew($product_stock_attribute_option_ids[$key][$key1]);
-                    $product_stock_attribute_option->product_stock_id = $product_stock->product_stock_id;
-                    $product_stock_attribute_option->attribute_option_id = $attribute;
-                    $product_stock_attribute_option->attribute_id = $attribute_id[$key][$key1];
-                    $product_stock_attribute_option->save();
+                if ($attributes !='') {
+                    foreach ($attributes[$key] as $key1=>$attribute) {
+                        $product_stock_attribute_option = ProductStockAttributeOption::findOrNew($product_stock_attribute_option_ids[$key][$key1]);
+                        $product_stock_attribute_option->product_stock_id = $product_stock->product_stock_id;
+                        $product_stock_attribute_option->attribute_option_id = $attribute;
+                        $product_stock_attribute_option->attribute_id = $attribute_id[$key][$key1];
+                        $product_stock_attribute_option->save();
+                    }
+
                 }
             }
             
