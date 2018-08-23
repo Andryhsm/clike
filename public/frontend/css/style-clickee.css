@@ -1525,7 +1525,7 @@ element.style {
   color: #044651 !important;
 }
 .panel-default > .panel-heading:hover{
-  background:#044651;
+  background:#65bb9f;
   color: #ffffff !important;
 }
 .g-recaptcha {
