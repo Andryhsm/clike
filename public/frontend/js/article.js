@@ -92,11 +92,10 @@ function checka(box) {
             data: { category_id: id },
         })
         .done(function(data) {
-            /*console.log(data);*/
             var etat_gamme = data[data.length - 1];
             if (data.length > 0) {
                 $('#category_child').html('<option value="">Onglets</option>')
-                data.pop();console.log(data, data.length)
+                data.pop();
                 for (var i = data.length - 1; i >= 0; i--) {
                     var childs = data[i];
                     //childs = childs.filter((obj) => obj);console.log(childs)
@@ -104,9 +103,13 @@ function checka(box) {
                 }
             }
             var gamme = $('#attribute_set_');
-
+            var input_hidden = $('.attribute_id');
+            var input_select = $(input_hidden.parent().find('input[type=text], select')[1]);
             if (etat_gamme == null) {
                 gamme.parent().remove();
+                $(input_select).parent().parent().hide();
+                $(input_select).disabled;
+                input_hidden.parent().hide();
             } else if(gamme[0] == undefined){
                 $('<div class="form-group">\n' +
                     '                            <label for="attribute_set_">Gamme</label>\n' +
@@ -118,7 +121,7 @@ function checka(box) {
                     '                                        <option value="31">Vetements/Accessoires</option>\n' +
                     '                                        </select>\n' +
                     '                            \n' +
-                    '                        </div>').insertAfter($('#brand_name').parent())
+                    '                        </div>').insertAfter($('#brand_name').parent());
             }
         })
         .fail(function() {
