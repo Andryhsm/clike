@@ -286,7 +286,7 @@ if (description_length > 1200) {
         }
     });
     if (window.innerWidth < 768) {
-        $('#image_main').zoom({ on: 'grab' });
+        //$('#image_main').zoom({ on: 'grab' });
         console.log("On doit zoomer");
     }
     else if (window.innerWidth < 991) {

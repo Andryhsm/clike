@@ -52,6 +52,14 @@
                               style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
             </div>
+
+            <div class="form-group">
+                {!! Form::label('category_gamme', "Avec gamme", ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-10">
+                    {!! Form::checkbox('category_gamme', '1',false) !!}
+                </div>
+            </div>
+
             <input type="hidden" name="parent_id" value="">
             <input type="hidden" name="url_id" value="">
 

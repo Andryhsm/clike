@@ -64,6 +64,7 @@ jQuery(document).ready(function() {
                         $("#category_form").find("input[name='fr_category_name']").val((category.french != null) ? category.french.category_name : '');
                         /*$("#category_form").find("input[name='category_url']").val(category.url.request_url);*/
                         $("#category_form").find("input[name='is_active']").prop('checked', (category.is_active == '1') ? true : false);
+                        $("#category_form").find("input[name='category_gamme']").prop('checked', (category.category_gamme == '1') ? true : false);
                         $("#category_form").find("input[name='parent_id']").val(category.parent_id);
                         /*$("#category_form").find("input[name='url_id']").val(category.url.sys_url_rewrite_id);*/
                         $('#category_form').find("#en_category_description").text(category.english.description);

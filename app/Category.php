@@ -21,7 +21,7 @@ class Category extends Model
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['category_name', 'description', 'parent_id', 'is_active', 'category_image', 'created_by'];
+	protected $fillable = ['category_name', 'description', 'parent_id', 'is_active', 'category_image', 'created_by', 'category_gamme'];
 
 	const CATEGORY_IMAGE_PATH = '/upload/category/';
 	const CDN_CATEGORY_IMAGE_PATH = 'https://db-alternateeve-csi7douue.stackpathdns.com/upload/category/';
