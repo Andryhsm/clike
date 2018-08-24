@@ -5,7 +5,7 @@
             <span>Vendeur</span>
         </div>
         <div class="engagement-price mb--10"><span class="price-int">{!! showPackByValue($packs,'Vendeur','Engagement annuel','price') !!}</span><span class="price-unity">€</span>/mois</div>
-        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+        <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
 
         <span>
                                     Souscrivez au Pack Vendeur pour commencer à booster vos ventes en local.

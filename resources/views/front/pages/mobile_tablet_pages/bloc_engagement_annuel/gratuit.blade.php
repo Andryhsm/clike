@@ -5,7 +5,7 @@
             <span>Découverte</span>
         </div>
         <div class="engagement-price mt-25 text-uppercase">{!! showPackByValue($packs,'Découverte','Sans engagement','price') !!}</div>
-        <a href="#" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
+        <a href="{!! route('merchant-login') !!}" class="btn btn-clickee-info-plein mtb-10">CHOISIR</a>
 
         <span>
                                     Souscrivez au Pack Découverte pour découvrir toutes les fonctionnalités de Clickee sans dépenser un euro.
