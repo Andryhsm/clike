@@ -57,6 +57,18 @@
                             <option value="empty_stock">En partie en rupture de stock</option>
                         </select>
                     </div>
+                     
+                </div>
+                <div class="form-group attribut" id="attribut_set" style="display:none">
+                    <select data-msg="Veuillez sélectionner une gamme!" {!! ($product) ? 'readonly' : '' !!} name="attribute_set_id" id="attribute_set_filter" class="form-control"> 
+                   <option disabled selected>Selectionner gamme</option>
+                        @if (count($attribute_sets) > 0)
+                            @foreach($attribute_sets as $attribute_set)
+                                <option value="{!! $attribute_set->attribute_set_id !!}" {!! ($product) ? (($attribute_set->attribute_set_id == $product->attribute_set_id) ? 'selected = "selected"' : '') : '' !!}>{!! $attribute_set->set_name !!}
+                                </option>
+                            @endforeach
+                        @endif
+                    </select>
                 </div>             
             </section>
             @include('admin.layout.notification')
@@ -94,11 +106,16 @@
     <script>
         var $document = $(document);
         var url_get_data_product = "{!! route('merchant-article-data') !!}";
+       //var url_get_data_attribute_set = "{!! route('merchant-attribute-filter-data') !!}";
         if (jQuery('#article_list').length > 0) {
             table = jQuery('#article_list').on('preXhr.dt', function ( e, settings, data) {
                     var article_filter = $('#product_sold').val();
+                    var attribute_set_filter = $('#attribute_set_filter').val();
                     //console.log(article_filter);
                     //var stock_manage = $('#stock_manage').val();
+                   //console.log('XXXXXXXXXXXXXXXXX' + attribute_set_filter);
+                   if(attribute_set_filter != null)
+                        data.attribute_set_filter= attribute_set_filter;
 
                     if(article_filter != null)    
                         data.article_filter = article_filter;
@@ -109,7 +126,7 @@
                 "processing": true,
                 "serverSide": true,
                 "ajax": {   
-                    "url": url_get_data_product,
+                    "url": url_get_data_product, 
                     "type": "POST"
                 },
                 "responsive": true,
@@ -159,8 +176,22 @@
             jQuery('.dataTables_filter').find('input').addClass('form-control')
         }
         $document.on('change', '#product_sold', function(event) {
-            event.preventDefault();
-            table.ajax.url(url_get_data_product).load();
+             if ( this.value == 'attribut_set')
+              {
+                $("#attribut_set").show();
+              }
+              else
+              {
+                $("#attribut_set").hide();
+                event.preventDefault();
+                table.ajax.url(url_get_data_product).load();
+              }
+           
+        });
+        $document.on('change', '#attribute_set_filter', function(event) {
+                event.preventDefault();
+                table.ajax.url(url_get_data_product).load();
+           
         });
        
     </script>

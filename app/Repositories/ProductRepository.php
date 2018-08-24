@@ -505,6 +505,10 @@ class ProductRepository implements ProductRepositoryInterface
                 return $this->model->with('french', 'admin', 'tags', 'images')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
         }
     }
+    public function getByAttributeSetFilter($param , $store_id){
+        $attribute_set_filter = isset($param['attribute_set_filter']) ? $param['attribute_set_filter'] : null;
+        return $this->model->with('french' ,  'admin', 'tags' , 'images')->where('store_id', $store_id)->where('attribute_set_id' , $attribute_set_filter)->orderBy('product_id', 'desc')->get();
+    }
 
     public function deleteById($product_id)
     {

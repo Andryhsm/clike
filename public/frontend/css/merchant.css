@@ -63,7 +63,7 @@ h3 .bottle-box-number {
 #code_promo input, #code_promo select,
 #customer_form input,  #customer_form select, #customer_form .select2,
 #promotion input, #promotion .select2, #promotion textarea, 
-#add_contact input, #product_sold, #stock_manage,
+#add_contact input, #product_sold, #stock_manage, #attribute_set_filter,
 .merchant-order-list textarea, #description, #meta_advice {
     border: 4px solid rgb(4, 70, 81);
     display: block;
@@ -117,7 +117,7 @@ input.error, textarea.error, select.error {
 #customer_form input, #customer_form select, #customer_form .select2,
 #promotion input, #promotion .select2,
 #add_contact input, 
-#product_sold, #stock_manage {
+#product_sold, #stock_manage, #attribute_set_filter {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -129,6 +129,11 @@ input.error, textarea.error, select.error {
     background: url(../../../images/arrow_select.svg) no-repeat 0 -4px;
     background-size: 17px;
     background-position: 95% 50%;
+ }
+ #attribute_set_filter {
+    background: url(../../../images/arrow_select.svg) no-repeat 0 -4px;
+    background-size: 17px;
+    background-position: 98.9% 50%;
  }
   #store_form textarea, #code_promo select#categories, #promotion textarea, textarea {
     height: 14.3rem !important;
