@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="message" style="margin-bottom: 8px;">Message</label>
-                                <textarea class="form-control" rows="8" id="message" name="message" style="height: 32.7rem; width: 100%; font-size: 14px; line-height: 18px; border: 4px solid rgb(4, 70, 81); padding: 10px; border-radius: 0px;"></textarea>
+                                <textarea class="form-control" rows="8" id="message" name="message" style="height: 37.7rem; width: 100%; font-size: 14px; line-height: 18px; border: 4px solid rgb(4, 70, 81); padding: 10px; border-radius: 0px;"></textarea>
                                 </div>
                             <div class="pt-10 pb-77 pull-right">
                                 <button type="submit" class="btn btn-clickee-info">ENVOYER</button>
