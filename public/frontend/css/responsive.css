@@ -1,9 +1,31 @@
+@media (min-width: 1200px){
+
+  .tab-pane > div:nth-child(1) {
+    margin-bottom: 0.6rem;
+    width: 105% !important;
+  }
+
+    .tab-pane > div:nth-child(2) {
+    width: 105% !important;
+  }
+
+  .col-lg-2 {
+    width: 19.666667% !important;
+}
+
+  #tab-engagement {
+    margin: 5% 5% 1% 4.4%;
+}
+}
+
 /*Pour test seulement*/
-@media (max-width: 1200px){
+@media (min-width: 1024px) and @media (max-width: 1200px){
   .block-operation-bottom{
     padding: 4% 15px 10px 15px;
   }
-  
+  #tab-engagement {
+    margin: 5% 1% 1% 1.4%;
+  }
 
 }
 
@@ -12,6 +34,7 @@
   .main-sidebar {
     margin-top: 14.5%;
 }
+
 .share-social-network {
     width: 76% !important;
 }
@@ -515,6 +538,7 @@ a#scrollUp {
  
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
+
 .engagement-menu {
   display:none;
 }

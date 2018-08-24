@@ -128,10 +128,10 @@
                 <li role="presentation"><a class="flip" href="#browseTab" aria-controls="browseTab" role="tab" data-toggle="tab" id="head-tab-register">SANS ENGAGEMENT</a>
 
                 </li>
-                <button type="button" class="close" href="javascript:history.back()" aria-label="Close">
+                <button type="button" class="close" href="javascript:history.back()" aria-label="Close"/>
             </ul>
 
-            
+        </div>
 
             <div class="tab-content tab-login" id="tab-engagement">                
 
@@ -182,9 +182,9 @@
             <div class="engagement_for_mobile_screen hidden">
                 @include('front.pages.mobile_tablet_pages.mobile_engagement_menu')
             </div>
-           
-        </div>
-        
+
+    </div>
+
    
     @include('front.layout.section-avantage')
 @endsection
