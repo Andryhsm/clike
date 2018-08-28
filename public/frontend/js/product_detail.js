@@ -273,7 +273,8 @@ if (description_length > 1200) {
         }
         $('#main_image').trigger('zoom.destroy');
         if (window.innerWidth < 768) {
-            $('#image_main').zoom({ on: 'grab', url: main_image });
+            console.log("kaiakaiakaiakaiakaiakaiakaiakaiakai");
+            $('#image_main').zoom({ on: 'grab', url: main_image, contain: false });
         }
         else if (window.innerWidth < 991) {
             $('#image_main').zoom({ on: 'grab', url: main_image });
@@ -285,9 +286,14 @@ if (description_length > 1200) {
             $('#image_main').zoom({ on: 'click', url: main_image });
         }
     });
+
     if (window.innerWidth < 768) {
-        //$('#image_main').zoom({ on: 'grab' });
         console.log("On doit zoomer");
+        console.log("kaiakaiakaiakaiakaiakaiakaiakaiakai");
+       var image= $('#zoomcontent #image_main .main-image').attr('src');
+       var image_name = $('#zoomcontent #image_main .main-image').attr('alt');
+        $('#zoomcontent #image_main').remove();
+            $('#zoomcontent').prepend('<nav class="mobilezoom" id="image_main" ><img class="main_image" src="'+ image +'" alt="'+image_name+'" width="600" height="500"></nav>');
     }
     else if (window.innerWidth < 991) {
         $('#image_main').zoom({ on: 'grab' });

@@ -23,9 +23,7 @@ if (Modernizr.mq('(max-width: 767px)')) {
 		$(".engagement-menu .menu a").css('height', max)
 		
 	})
-
 }
-
 jQuery(document).ready(function(){
 	$('.navbar-mobile button').click(function(e){
         e.preventDefault();

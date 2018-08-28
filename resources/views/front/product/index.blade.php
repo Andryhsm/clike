@@ -3,9 +3,9 @@
     <?php
         $product_translation = $product->translation;
     ?>
-        <meta property="og:title" content="Produit clickee" /> 
-        <meta property="og:image" content="{!! URL::to('/').'/'.$product->getDefaultImagePath() !!}" /> 
-        <meta property="og:description" content="{!! $product_translation->description !!}" /> 
+        <meta property="og:title" content="Produit clickee" />
+        <meta property="og:image" content="{!! URL::to('/').'/'.$product->getDefaultImagePath() !!}" />
+        <meta property="og:description" content="{!! $product_translation->description !!}" />
         <meta property="og:url" content="{!! URL::current() !!}">
 
 @endsection
@@ -53,8 +53,8 @@
                             </div>
                         </div>
                         <section id="auto-contain" class="col-lg-8 col-md-8">
-                            <div class="parent" style="overflow: hidden !important;">
-                                <div class="panzoom" id="image_main" >
+                            <div class="parent" id="zoomcontent" style="overflow: hidden !important;">
+                                <div class="panzoom" id="image_main" style="cursor: all-scroll !important; ">
                                     <img class="main-image" src="{!! url($product->getDefaultImagePath()) !!}" alt="{!! $product_translation->product_name !!}" data-zoom-image="{!! url($product->getDefaultImagePath()) !!}" width="600" height="500">
                                 </div>
                             </div>
@@ -628,5 +628,10 @@
             @include('front.layout.section-avantage') 
         </div>
     </div>
-
+    @section('additional-script')
+    <script>
+ 
+</script>
+    @stop
 @stop
+
