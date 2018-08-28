@@ -273,7 +273,7 @@ if (description_length > 1200) {
         }
         $('#main_image').trigger('zoom.destroy');
         if (window.innerWidth < 768) {
-            var image= $('.slides .thumb-image .active').attr('src');
+            var image= $('.slides .thumb-image .active').attr('data-image');
             var image_name = $('.slides .thumb-image .active').attr('alt');
              $('#zoomcontent #image_main').remove();
              $('#zoomcontent').prepend('<nav class="mobilezoom" id="image_main" ><img class="main_image" src="'+ image +'" alt="'+image_name+'" width="600" height="500"></nav>');
@@ -290,8 +290,6 @@ if (description_length > 1200) {
     });
 
     if (window.innerWidth < 768) {
-        console.log("On doit zoomer");
-        console.log("kaiakaiakaiakaiakaiakaiakaiakaiakai");
        var image= $('#zoomcontent #image_main .main-image').attr('src');
        var image_name = $('#zoomcontent #image_main .main-image').attr('alt');
         $('#zoomcontent #image_main').remove();
