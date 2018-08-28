@@ -71,7 +71,7 @@ class CatalogController extends Controller
         $prices_array = [];
         
         
-        if(Cookie::has('zip-code') && Cookie::has('radius')){
+        if(Cookie::has('zip-code') && Cookie::has('radius')){ //vérification des cockies
             $zip_code = Cookie::get('zip-code');
             $zip_code = str_replace(' ', '+', $zip_code);
             $zip_code = str_replace('%', '+', $zip_code);

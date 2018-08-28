@@ -47,6 +47,7 @@ class ArticleController extends Controller
     {
         $store_id = auth()->user()->store->first()->store_id;
        
+        //verification du filtre pour les produits
         if(Input::has('article_filter')){
 
             if(Input::get('article_filter') != "attribut_set"){
@@ -62,7 +63,6 @@ class ArticleController extends Controller
         }
        
         
-        // article filter
         $data_tables = Datatables::collection($products);
         $data_tables->EditColumn('check', function ($product) {
             return '<a href="#" class="checkbox" data-product-id="'. $product->product_id.'"><i class="fa fa-circle-o mr-10"></i></a>';
@@ -116,7 +116,6 @@ class ArticleController extends Controller
    
     public function store(Request $request)
     {
-        //sans limite upload
         $product_images = [];
         $images = $request->file('images');
         foreach ($images as $index=>$image)
@@ -185,10 +184,8 @@ class ArticleController extends Controller
         
         $category_id = $product->categories->first()->category_id;
         $attribute_set = $this->product_repository->getAttributesBySetId($product->attribute_set_id);
-       // dd($attribute_set->attributes);
         $categories = $this->category_repository->getParentCategories(2);
         $attribute_sets = $this->attribute_set_repository->getAll();
-        //dd($product->stocks);
         $category_childs = $this->category_repository->getChildCategory($category_id);
         
         return view('merchant.article.form',compact('product','categories','attribute_sets','category_childs','attribute_set'));
@@ -214,12 +211,10 @@ class ArticleController extends Controller
                 $product_images[$index] = $this->uploadImage($image);
             }
         }
-       // dd($request['remove_img']);
         if($request['remove_img']){
             $remove_images = explode(',', $request['remove_img']);
             foreach ($remove_images as $remove_image_id) {
                 $productImage = $this->product_repository->getProductImageById($remove_image_id);
-                //dd($productImage);
                 $this->deleteUploadedImage($productImage->image_name);
             }
         }
