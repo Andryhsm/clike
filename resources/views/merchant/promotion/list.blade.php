@@ -57,8 +57,8 @@
                                 <thead>
                                 <tr>
                                     <th width="">Campagne</th>
-                                    <th width="">Date envoie</th>
-                                    <th width="">Nombre envoie</th>
+                                    <th width="">Date envoi</th>
+                                    <th width="">Nombre envoi</th>
                                     <th width="" class="no-sort">Statistiques</th>
                                 </tr>
                                 </thead>
@@ -74,7 +74,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ URL::to('marchand/promotion/' . $promotion->promotion_id . '') }}" class="btn btn-default btn-sm" style="" title="Résultats"> Résultats </a>
+                                                    <a href="{{ URL::to('marchand/promotion/' . $promotion->promotion_id . '') }}" class="btn btn-block btn-merchant-filled" style="" title="Résultats"> Résultats </a>
                                                 </div>
                                             </td>
                                         </tr>
