@@ -55,8 +55,8 @@ class DashboardController extends Controller
     	$total_sales = $this->order_item_repository->getTotalSalesMerchant($store_id);
     	$total_sales_local = $this->customer_repository->getTotalEncasement($store_id);
     	
-    	$inline = ($total_sales*100)/($total_sales+$total_sales_local);
-    	$local = ($total_sales_local*100)/($total_sales+$total_sales_local);
+    	$inline = ($total_sales*100)/($total_sales+$total_sales_local); //total vente en ligne
+    	$local = ($total_sales_local*100)/($total_sales+$total_sales_local); //total vente local
     	return response()->json(['en_ligne'=>$inline,'local'=>$local]);
     	
     }

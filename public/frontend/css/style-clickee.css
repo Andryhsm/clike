@@ -2285,9 +2285,18 @@ element.style {
   height: 585px;
   width: 575px;
   vertical-align: middle;
-  display: table-cell; 
+  display: table-cell;
   text-align: center;
+  
 } 
+#auto-contain > div.parent > .mobilezoom {
+    height: 585px;
+    width: 575px;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    
+  } 
 .contain-product-info {
   margin-left: 6%;
 }

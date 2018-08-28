@@ -91,7 +91,7 @@
 <!-- end section three blocs -->
 
 <!-- start section top product  -->
-<section class="section-top-product">
+<section class="section-top-product hidden">
     <div class="container content-product-on-home">
         <ul class="nav nav-tabs" id="productTab" role="tablist">
             <li class="active">

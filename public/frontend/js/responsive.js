@@ -28,9 +28,7 @@ if (Modernizr.mq('(max-width: 767px)')) {
 		/** fin règle les hauteurs des menus dans le choix des pack dans les écrans tablettes **/
 		
 	})
-
 }
-
 jQuery(document).ready(function(){
 	$('.navbar-mobile button').click(function(e){
         e.preventDefault();
