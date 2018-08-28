@@ -66,7 +66,7 @@ class HomeController extends Controller
         $instagrams = $this->instagram_repository->getHomeActiveInstagram($request);
         $instagram_imgs = [];
         foreach ($instagrams as $key => $value) {
-            $instagram_imgs[] = $value->getInstagramImage($language_id);
+            $instagram_imgs[$value->url] = $value->getInstagramImage($language_id);
         }
         return response()->json(['instagrams' => $instagram_imgs]);
     }

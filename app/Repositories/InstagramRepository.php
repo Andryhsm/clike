@@ -29,6 +29,7 @@ class InstagramRepository implements InstagramRepositoryInterface
 
         $this->model->title = $input['title'];
         $this->model->image = $image_name['image'];
+        $this->model->url = $input['url'];
         $this->model->is_active = isset($input['is_active']) ? $input['is_active'] : '0';
         $this->model->created_by = auth()->guard('admin')->user()->admin_id;
         return $this->model->save();
@@ -37,6 +38,7 @@ class InstagramRepository implements InstagramRepositoryInterface
     {
         $this->model = $this->model->findOrNew($id);
         $this->model->title = $input['title'];
+        $this->model->url = $input['url'];
         if(!empty($image_name['image'])){
             $this->model->image = $image_name['image'];
         }

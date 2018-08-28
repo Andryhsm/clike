@@ -23,6 +23,13 @@
                                     <input type="text" name="title" class="form-control required" id="title"
                                         placeholder="Description instagram feed">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="title">URL</label>
+                                    <input type="text" name="url" class="form-control required" id="url"
+                                        placeholder="URL instagram feed">
+                                </div>
+
                                 <div class="form-group">
                                     <label for="content-heading">Photo Instagram Feed</label>
                                     {!!  Form::file('image',['class'=>"form-control"])!!}

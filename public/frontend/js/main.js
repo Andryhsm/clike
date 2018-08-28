@@ -919,7 +919,7 @@ function getInstagramFeeds(limit) {
         if (data.instagrams) {
             $.each(data.instagrams, function(i, val){
             	var html = '<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 section-instagramm-feed-align">';
-	            html = html + '<img src="'+val+'" alt="instagramm feed clickee"/>';    
+	            html = html + '<a href="'+i+'"><img src="'+val+'" alt="instagramm feed clickee"/></a>';    
 	            html = html + '</div> ';
 	            $('.section-instagramm-feed-content .row').append(html);
             });
