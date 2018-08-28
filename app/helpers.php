@@ -513,6 +513,7 @@ function getProductPrice($product,$symbol='CDN$')
     return $price;
 }
 
+// Coller les options du menu dans la page catalogue
 function getCategories($categories, $category_parent_id,$selected_category)
 {
     echo '<ul class="nav navbar-nav grid-container--fit">';
@@ -539,6 +540,7 @@ function getCategories($categories, $category_parent_id,$selected_category)
     }
     echo '</ul>';
 }
+
 function getChildCategory($categories, $category_parent_id,$selected_category,$name)
 {
     $index = 0;
@@ -676,11 +678,6 @@ function calculateDistance($lat1, $lon1, $lat2, $lon2, $decimals = 1)
 function getMerchantCount($item)
 {
 	$count = 0;
-	
-	//dd($item->brand->item);
-	
-	dd($item->product->store);
-	
 	$location = getLatitudeAndLongitudeByZipCode($item['zip_code']);
 	foreach ($item->brand->stores as $store) {
 		$distance = calculateDistance($store->latitude, $store->longitude, $location['lat'], $location['lng']);
@@ -720,12 +717,14 @@ function add_info_cookie_area($zip, $distance){
     Cookie::queue(Cookie::make('distance', $distance, $num_of_minutes));
 }
 
+// Ajout des informations distance et zone dans la cookie
 function add_area_in_cookie($zip, $distance){
     $num_of_minutes = 60 * 24 * 7 * 4 * 6; // one week
     Cookie::queue(Cookie::make('zip_code', $zip, $num_of_minutes));
     Cookie::queue(Cookie::make('distance', $distance, $num_of_minutes));
 }
 
+// Avoir le nombre du wishlist dans le produit
 function count_wishlist(){
     $product_count = 0;
     if(auth()->check()){    
@@ -744,7 +743,7 @@ function count_wishlist(){
     }
     return $product_count;
 }
-
+// Si la l'utilisateur est authentifié les wishlists sont enregistrés dans la base si non dans la cache et prend comme index l'id du wishlist du naviguateur et le tableau prend comme index l'id du produit
 function all_product_id_wishlist(){
     $id_products = [];
     if(auth()->check()){    
@@ -773,7 +772,7 @@ function explode_multi($delemiter, $array_string){
     }
     return $result_string;
 }
-
+// Avoir la liste des wishlist dans la cache
 function is_user_has_wishlist(){
     if(Cookie::has('id_user_browser')){
         $id_user = Cookie::get('id_user_browser');
@@ -787,7 +786,7 @@ function is_user_has_wishlist(){
         return false;
     }
 }
-
+// Avoir le compteur d'une avis par product id
 function average_rating_product($product_id){
     $reviews = App\Models\ProductRating::where('product_id',$product_id)->where('status', 1)->get();
     $total_ratings =  App\Models\ProductRating::where('product_id',$product_id)->where('status', 1)->sum('rating');
@@ -818,6 +817,7 @@ function getNumberOrderPending($user_id)
 			->get();
 	return count($items);		
 }
+
 function getNumberOrderEarned($user_id)
 {
     $items = \App\Models\OrderItem::whereHas('itemRequest',function($query) use($user_id){
@@ -832,6 +832,8 @@ function getNumberOrderEarned($user_id)
 			->get();
 	return count($items);		
 }
+
+// Avoir le compteur d'une avis par product id
 function average_rating($product_id){
     $reviews = \App\Models\ProductRating::where('product_id',$product_id)->where('status', 1)->orderBy('review_date','desc')->paginate(4);
     $total_ratings = \App\Models\ProductRating::where('product_id',$product_id)->where('status', 1)->sum('rating');

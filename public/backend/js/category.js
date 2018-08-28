@@ -177,12 +177,4 @@ jQuery(document).ready(function() {
                 location.href = delete_category + active_node.data.key;
             });
     });
-    /*$document.on('keyup keypress change', "#fr_category_name", function(e) {
-        var clone_text = $("#fr_category_name").val();
-        clone_text = $.trim(clone_text);
-        clone_text = normalize_string(clone_text);
-        clone_text = clone_text.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-').replace(/\_/g, '');
-        $("#category_url").val(clone_text);
-    });*/
-
 });

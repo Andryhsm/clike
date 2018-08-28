@@ -25,8 +25,7 @@ class AutocompleteController extends Controller
         $language_id=app('language')->language_id;
         $all_products = [];                      
         $store_ids = [];
-        
-        
+
         if(Cookie::has('zip-code') && Cookie::has('radius')){
             $zip_code = Cookie::get('zip-code');
             $zip_code = str_replace(' ', '+', $zip_code);
