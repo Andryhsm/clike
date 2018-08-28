@@ -11,9 +11,9 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="alert alert-info alert-dismissible">
+                <!--<div class="alert alert-info alert-dismissible">
                     Taille du slider recommandée: 3000 x 1300 
-                </div>
+                </div> -->
                 <div class="box box-primary">
                     {!! Form::open(array('url' => 'admin/slider','files' => true,'class'=>'validate_form')) !!}
                     <div class="box-body">
