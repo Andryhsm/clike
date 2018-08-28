@@ -1134,4 +1134,5 @@ function verify_radio()
     		$('.search-radio').attr('disabled','disabled');
     	}
     });
+
 }
