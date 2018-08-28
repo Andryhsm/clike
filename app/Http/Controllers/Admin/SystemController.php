@@ -18,14 +18,7 @@ class SystemController extends Controller
 	{
 		$english_settings = $this->model->where('language_id','1')->get();
 		$french_settings = $this->model->where('language_id','2')->get();
-
-
-
 		$thumb_path = public_path(\App\Product::PRODUCT_IMAGE_PATH.'thumb');
-		//dd($thumb_path);
-
-
-		
 		return view('admin.system.form',compact('english_settings','french_settings'));
 	}
 
