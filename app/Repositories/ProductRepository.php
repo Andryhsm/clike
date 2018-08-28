@@ -34,8 +34,8 @@ class ProductRepository implements ProductRepositoryInterface
             $this->model->original_price = $input['original_price'];
             $this->model->created_by = Session::get('store_to_user');
             $this->model->store_id = auth()->user()->store->first()->store_id;
-            $this->model->attribute_set_id = $input['attribute_set_id'];
-            $this->model->range = $input['attribute_set_id'];
+            $this->model->attribute_set_id = isset($input['attribute_set_id']) ? $input['attribute_set_id'] : '';
+            $this->model->range = isset($input['attribute_set_id']) ? $input['attribute_set_id'] : '';
             $this->model->balance = "1";
             $this->model->discount = $input['discount'];
             $this->model->promotional_price = $input['promotional_price'];
@@ -55,9 +55,9 @@ class ProductRepository implements ProductRepositoryInterface
             //product_stock
             $counts = $input['product_inventory'];
             $status = $input['stock-types'];
-            $attributes = $input['attributes'];
-            $attribute_id = $input['attribute_id'];
-            
+            $attributes = isset($input['attributes']) ? $input['attributes'] : '';
+            $attribute_id = isset($input['attribute_id']) ? $input['attribute_id'] : '';
+
             foreach ($counts as $key=>$count) {
                 $product_stock = new ProductStock();
                 $product_stock->product_id = $this->model->product_id;
@@ -66,15 +66,17 @@ class ProductRepository implements ProductRepositoryInterface
                 $product_stock->product_stock_status_id = $status[$key];
                 $product_stock->save();
                 //product_stock_attribute_option
-                foreach ($attributes[$key] as $key1=>$attribute) {
-                    $product_stock_attribute_option = new ProductStockAttributeOption();
-                    $product_stock_attribute_option->product_stock_id = $product_stock->product_stock_id;
-                    $product_stock_attribute_option->attribute_option_id = $attribute;
-                    $product_stock_attribute_option->attribute_id = $attribute_id[$key][$key1];
-                    $product_stock_attribute_option->save();
+                if ($attributes !='') {
+                    foreach ($attributes[$key] as $key1=>$attribute) {
+                        $product_stock_attribute_option = new ProductStockAttributeOption();
+                        $product_stock_attribute_option->product_stock_id = $product_stock->product_stock_id;
+                        $product_stock_attribute_option->attribute_option_id = $attribute;
+                        $product_stock_attribute_option->attribute_id = $attribute_id[$key][$key1];
+                        $product_stock_attribute_option->save();
+                    }
                 }
             }
-            
+
             //category
             $this->model->categories()->attach($input['categories_id']);
             $this->model->categories()->attach($input['category_child_id']);
@@ -119,8 +121,8 @@ class ProductRepository implements ProductRepositoryInterface
             $product->original_price = $input['original_price'];
             $product->created_by = Session::get('store_to_user');
             $product->store_id = auth()->user()->store->first()->store_id;
-            $product->attribute_set_id = $input['attribute_set_id'];
-            $product->range = $input['attribute_set_id'];
+            $product->attribute_set_id = isset($input['attribute_set_id']) ? $input['attribute_set_id'] : '';
+            $product->range = isset($input['attribute_set_id']) ? $input['attribute_set_id'] : '';
             $product->balance = "1";
             $product->discount = $input['discount'];
             $product->promotional_price = $input['promotional_price'];
@@ -141,8 +143,8 @@ class ProductRepository implements ProductRepositoryInterface
             //product_stock
             $counts = $input['product_inventory'];
             $status = $input['stock-types'];
-            $attributes = $input['attributes'];
-            $attribute_id = $input['attribute_id'];
+            $attributes = isset($input['attributes']) ? $input['attributes'] : '';
+            $attribute_id = isset($input['attribute_id']) ? $input['attribute_id'] : '';
             $product_stock_ids = $input['product_stock_id'];
             $product_stock_attribute_option_ids = $input['product_stock_attribute_option_id'];
             $product_image_ids = $input['product_image_ids'];
@@ -156,12 +158,15 @@ class ProductRepository implements ProductRepositoryInterface
                 $product_stock->save();
                  
                 //product_stock_attribute_option
-                foreach ($attributes[$key] as $key1=>$attribute) {
-                    $product_stock_attribute_option = ProductStockAttributeOption::findOrNew($product_stock_attribute_option_ids[$key][$key1]);
-                    $product_stock_attribute_option->product_stock_id = $product_stock->product_stock_id;
-                    $product_stock_attribute_option->attribute_option_id = $attribute;
-                    $product_stock_attribute_option->attribute_id = $attribute_id[$key][$key1];
-                    $product_stock_attribute_option->save();
+                if ($attributes !='') {
+                    foreach ($attributes[$key] as $key1=>$attribute) {
+                        $product_stock_attribute_option = ProductStockAttributeOption::findOrNew($product_stock_attribute_option_ids[$key][$key1]);
+                        $product_stock_attribute_option->product_stock_id = $product_stock->product_stock_id;
+                        $product_stock_attribute_option->attribute_option_id = $attribute;
+                        $product_stock_attribute_option->attribute_id = $attribute_id[$key][$key1];
+                        $product_stock_attribute_option->save();
+                    }
+
                 }
             }
             
@@ -499,6 +504,10 @@ class ProductRepository implements ProductRepositoryInterface
             default:
                 return $this->model->with('french', 'admin', 'tags', 'images')->where('store_id', $store_id)->orderBy('product_id', 'desc')->get();
         }
+    }
+    public function getByAttributeSetFilter($param , $store_id){
+        $attribute_set_filter = isset($param['attribute_set_filter']) ? $param['attribute_set_filter'] : null;
+        return $this->model->with('french' ,  'admin', 'tags' , 'images')->where('store_id', $store_id)->where('attribute_set_id' , $attribute_set_filter)->orderBy('product_id', 'desc')->get();
     }
 
     public function deleteById($product_id)

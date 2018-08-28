@@ -28,11 +28,11 @@ class Slider extends Model
         'alt'
     ];
 
-    public function getSliderImage($language_code){
+    public function getSliderImage(){
         $image_name= $this->slider_image;
         return URL::to('/').self::Slider_IMAGE_PATH.$image_name;
     }
-    public function getCdnSliderImage($language_code){
+    public function getCdnSliderImage(){
         $image_name= $this->slider_image;
         return self::Slider_CDN_IMAGE_PATH.$image_name;
     }

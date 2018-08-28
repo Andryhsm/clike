@@ -1,7 +1,6 @@
 /****** CSS MANIPULATION *****/
     $('#content-cart').css('left', "-600px");
     $('#content-cart').css('width', '500px;');
-    console.log("Un autre bonjour ! ");
 
      if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) 
     {

@@ -18,6 +18,56 @@ $( function() {
 /**
  * end draggable
  */
+/**
+ * Drag and drop Image
+*/
+////////////////////////////////////////Pour le 1er bouton image
+$(document).ready(function(){
+    $.event.props.push("dataTransfer");
+    // On pose les évènements nécessaires au drag'n'drop
+    $('#output').bind({
+        "dragenter dragexit dragover" : do_nothing, drop : drop
+    });
+});
+
+// Fonction stoppant toute évènement natif et leur propagation
+function do_nothing(evt){
+    evt.stopPropagation();
+    evt.preventDefault();
+}
+
+function drop(evt){
+    //console.log(evt.dataTransfer.files[0].name + '+++++');
+    do_nothing(evt);
+  // for ( var i=0 ; i<10 ; i++){
+    var file = evt.dataTransfer.files[0];
+     var reader = new FileReader();
+        reader.onload = function (evt) {
+            $('#1').remove();
+            //var tmppath = URL.createObjectURL(file); 
+            var url = evt.target.result; 
+            var center = $('.center-img img');
+            $('.nav-img').append('<div class="nav-img-item"><img src="" data-file="1"></img><a class="close-thik"></a></div>');
+            $('.center-img img').attr('src', url);
+            $('.nav-img div:last-child img').attr('src', url);
+            var navimg = $('.nav-img img');
+            $('.add-img1').addClass('hidden');
+            $('.add-img2').removeClass('hidden');
+
+            var input_div = $('#add-img-input');
+            var row_count = parseInt($('.input-img:last').attr('id'));
+            //console.log(last_row_index);
+            var row_index = row_count + 1;
+            input_div.append('<input type="file" class="input-img" id="'+ row_index +'" name="images['+row_count+']" value="'+url+'" />');
+           
+        }
+        reader.readAsDataURL(file);
+    //console.log($('#'+row_index).val());
+}
+
+/**
+ * ENd Drag and Drop Image
+ */
 var $document = $(document);
 $( document ).ready(function(){
     if($('.decline').length > 1) $('#remove-decline').removeClass('hidden');
@@ -48,13 +98,36 @@ function checka(box) {
             data: { category_id: id },
         })
         .done(function(data) {
-            /*console.log(data);*/
+            var etat_gamme = data[data.length - 1];
             if (data.length > 0) {
                 $('#category_child').html('<option value="">Onglets</option>')
+                data.pop();
                 for (var i = data.length - 1; i >= 0; i--) {
                     var childs = data[i];
+                    //childs = childs.filter((obj) => obj);console.log(childs)
                     $('#category_child').append('<option value="' + splitDataId(childs) + '">' + splitDataName(childs) + '</option>')
                 }
+            }
+            var gamme = $('#attribute_set_');
+            var input_hidden = $('.attribute_id');
+            var input_select = $(input_hidden.parent().find('input[type=text], select')[1]);
+            if (etat_gamme == null) {
+                gamme.parent().remove();
+                $(input_select).parent().parent().hide();
+                $(input_select).disabled;
+                input_hidden.parent().hide();
+            } else if(gamme[0] == undefined){
+                $('<div class="form-group">\n' +
+                    '                            <label for="attribute_set_">Gamme</label>\n' +
+                    '                            <select data-msg="Veuillez sélectionner la gamme!" name="attribute_set_id" id="attribute_set_" class="form-control required">\n' +
+                    '                                <option value="" selected="selected">Selectionner gamme</option>\n' +
+                    '                                 \n' +
+                    '                                        <option value="33">Chaussures</option>\n' +
+                    '                                        <option value="32">Accessoires</option>\n' +
+                    '                                        <option value="31">Vetements/Accessoires</option>\n' +
+                    '                                        </select>\n' +
+                    '                            \n' +
+                    '                        </div>').insertAfter($('#brand_name').parent());
             }
         })
         .fail(function() {
@@ -101,12 +174,16 @@ function solde(box)
     checkin(box);
 }
 function splitDataId($data) {
-    var result = $data.split('$');
-    return result[0];
+    if ($data != null && $data != '1') {
+        var result = $data.split('$');
+        return result[0];
+    }
 }
 function splitDataName($data) {
-    var result = $data.split('$');
-    return result[1];
+    if ($data != null  && $data != '1') {
+        var result = $data.split('$');
+        return result[1];
+    }
 }
 $('#reduction').bind('keyup change', function () {
    if($('#original_price').val() != ''){
@@ -185,7 +262,7 @@ function load_left_img(div, row_index){
         readURL(this, center);
         readURL(this, navimg);
     });
-}
+}    
 
 function readURL(input, div) {
     if (input.files && input.files[0]) {

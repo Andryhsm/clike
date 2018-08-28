@@ -42,4 +42,5 @@ interface ProductRepositoryInterface
 	public function getAffiliates($product_id);
 
 	public function deleteMultipleProducts($product_ids);
+	public function getByAttributeSetFilter($param,$id);
 }

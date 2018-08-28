@@ -52,19 +52,18 @@ class HomeController extends Controller
         $language_id=app('language')->language_id;
         $categories = $this->category_repository->getParentCategories($language_id);
         $banner = $this->banner_repository->getActiveMainBanner($language_id);
-		$sub_banners = $this->banner_repository->getActiveSubBanner($language_id);
-        $instagrams = $this->instagram_repository->getActiveInstagram($language_id);
-        $sliders = $this->slider_repository->getActiveSlider($language_id);
+		$sub_banners = $this->banner_repository->getActiveSubBanner();
+        $sliders = $this->slider_repository->getActiveSlider();
         $brands=$this->brand_repository->getAll();
         $special_products=$this->special_product_repository->getspecialProducts();
 		$blog_posts = $this->blog_repository->getHomePagePost();
-        return view('front.home.index', compact('categories','banner','sliders','instagrams','brands','sub_banners','special_products','blog_posts'));
+        return view('front.home.index', compact('categories','banner','sliders','brands','sub_banners','special_products','blog_posts'));
     }
 
     public function getInstagramFeeds(Request $request)
     {
         $language_id=app('language')->language_id;
-        $instagrams = $this->instagram_repository->getActiveInstagram($request);
+        $instagrams = $this->instagram_repository->getHomeActiveInstagram($request);
         $instagram_imgs = [];
         foreach ($instagrams as $key => $value) {
             $instagram_imgs[] = $value->getInstagramImage($language_id);

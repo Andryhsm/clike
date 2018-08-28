@@ -60,7 +60,7 @@
                         @endif
                         @if(check_user_access('attribute_set'))
                         <li class="{{ set_active(['admin/attribute-set','admin/attribute-set/*']) }}"><a
-                                    href="{!! route('attribute_set') !!}"><i class="fa fa-circle-o"></i> Attribut Set</a>
+                                    href="{!! route('attribute_set') !!}"><i class="fa fa-circle-o"></i> Gamme</a>
                         </li>
                         @endif
                     </ul>

@@ -39,7 +39,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js"></script>
         
     </head>
-    
+    <script type="text/javascript">
+            
+            var base_url = {!! "'".URL::to('/')."/'" !!};
+            var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
+            var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";
+        </script>
     <body>
         <div class='container-fluid customer-area'>
             @include('front.customer.layout.header')
@@ -60,11 +65,8 @@
          <script src="{!! URL::to('/') !!}/frontend/js/customer-area.js"></script>
          <script type="text/javascript">
             // Effet fix du menu gauche 
-            //aside_fixed();
-            Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
-            var base_url = {!! "'".URL::to('/')."/'" !!};
-            var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
-            var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";
+            aside_fixed();
+            
         </script>
     </body>
 <!-- END BODY -->

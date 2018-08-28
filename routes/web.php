@@ -241,6 +241,9 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
     Route::get('souhait/suppression-de/{id}','WishlistController@remove_in_list')->name('wishlist-remove-in-list');
     Route::get('souhait/findid/{idpu}','WishlistController@findIdWishlist')->name('wishlist-findid');
 
+    Route::get('delete-card-info', 'CardInfoController@deleteCard')->name('delete-card-info');
+    Route::post('set-default-card-id', 'CardInfoController@setDefaultCardId')->name('set-default-card-id');
+
     Route::get('zoom-image-test', 'TestController@imageZoom')->name('zoom-image-test');
     Route::get('page-test', 'TestController@styleElement')->name('page-test');
     Route::get('checkout_store_quantity_session', 'CheckoutController@storeQuantitySession')->name('checkout_store_quantity_session');
@@ -273,8 +276,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                 Route::get('imprimer-pdf/{id}','CustomerController@printPdf')->name('customer-print-pdf');
                 Route::get('waiting-order/{id}','CustomerController@waitingOrder')->name('customer-waiting-order');
                 Route::get('canceled-order/{id}','CustomerController@canceledOrder')->name('customer-canceled-order');
-                Route::get('delete-card-info', 'CardInfoController@deleteCard')->name('delete-card-info');
-                Route::post('set-default-card-id', 'CardInfoController@setDefaultCardId')->name('set-default-card-id');
+                
             });
             /*Route::post('manage-account', 'CustomerController@postManageAccount')->name('manage-account');
             Route::post('change-password', 'CustomerController@postResetPassword')->name('change-password');
@@ -308,6 +310,7 @@ Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => 
                     Route::get('produit', 'ProductController@index')->name('merchant-product');
                     Route::resource('article', 'ArticleController');
                     Route::post('get-data-article', 'ArticleController@getData')->name('merchant-article-data');
+                    Route::post('get-data-attribute-set', 'ArticleController@getDataAttributeFilter')->name('merchant-attribute-filter-data');
                     Route::get('child-category','ArticleController@getChild')->name('get-child-category');
                     Route::get('produit/attributes', 'ArticleController@attributes')->name('get_attribute');
                     Route::post('produit', 'ProductController@store')->name('save_product_merchant');

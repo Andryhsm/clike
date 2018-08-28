@@ -283,7 +283,7 @@
 		transition: true,
 
 		// Default cursor style for the element
-		cursor: 'move',
+		cursor: 'all-scroll',
 
 		// There may be some use cases for zooming without panning or vice versa
 		disablePan: false,
@@ -920,11 +920,11 @@
 		 */
 		_resetStyle: function() {
 			this.$elem.css({
-				'cursor': '',
+				'cursor': 'all-scroll',
 				'transition': ''
 			});
 			this.$parent.css({
-				'overflow': '',
+				'overflow': 'scroll',
 				'position': ''
 			});
 		},

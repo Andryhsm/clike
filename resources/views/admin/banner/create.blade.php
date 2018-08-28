@@ -10,9 +10,9 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="alert alert-info alert-dismissible">
+            <!--    <div class="alert alert-info alert-dismissible">
                     Taille de la bannière principale recommandée: 1000 x 1000, Taille de la bannière latérale: 750 x 500
-                </div>
+                </div> -->
                 <div class="box box-primary">
                     {!! Form::open(array('url' => 'admin/banner','files' => true,'class'=>'validate_form')) !!}
                     <div class="box-body">

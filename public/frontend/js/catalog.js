@@ -3,12 +3,28 @@ $(".select-tri").on('change', '.filter', function(event) {
     apply_filter(url);  
 });
 
-// fonctionnement du dropdown
-$(".dropdown > button").click(function() {}, function() {
-    var $icon = $(this).find("i");
-        $icon.removeClass('fa-angle-down').addClass('fa-angle-up');
-        $(this).parents('.dropdown').addClass('open');
+$(".dropdown > button").bind('click',function(){
+    var icon = $(this).find("i");
+   if(icon.hasClass('fa-angle-down')) 
+        icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+    else icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+    $(this).parents('.dropdown').toggleClass('open');
 });
+// fonctionnement du dropdown
+// $(".dropdown > button").click(function() {}, function() {
+//     var $icon = $(this).find("i");
+//         $icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+//         $(this).parents('.dropdown').addClass('open');
+// });
+
+// $('button.dropdown-filter').click(function(e) {
+//     $(this).siblings('.dropdown-menu').slideToggle();
+//     var icon = $(this).find("i");
+//     if(icon.hasClass('fa-angle-down')) 
+//         icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+//     else icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+// });
+
 $(".dropdown-menu").mouseleave(function(){
     var $icon = $(this).prev().find("i");   
     $icon.removeClass('fa-angle-up').addClass('fa-angle-down');

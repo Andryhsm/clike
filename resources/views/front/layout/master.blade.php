@@ -59,7 +59,6 @@
 <script src="{!! URL::to('/') !!}/frontend/js/vendor/modernizr-2.8.3.min.js"></script>
 
 <script type="text/javascript">
-    Stripe.setPublishableKey('{!! config('services.stripe.publishable_key') !!}');
     var base_url = {!! "'".URL::to('/')."/'" !!};
     var base_secure_url = {!! "'".URL::to('/', [], true)."/'" !!};
     var language_code = "{!! LaravelLocalization::getCurrentLocale() !!}";
@@ -80,7 +79,7 @@
 
 @yield('footer-script')
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 </body>
 <!-- END BODY -->
 </html>

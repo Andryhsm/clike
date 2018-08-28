@@ -98,6 +98,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 	{
 		$this->model->parent_id = ($input['parent_id'] != '') ? $input['parent_id'] : null;
 		$this->model->is_active = isset($input['is_active']) ? $input['is_active'] : 0;
+		$this->model->category_gamme = isset($input['category_gamme']) ? $input['category_gamme'] : 0;
 		$this->model->created_by = auth()->guard('admin')->user()->admin_id;
 		$this->model->save();
 
@@ -133,6 +134,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 		$category = $this->model->findOrNew($category_id);
 		$category->parent_id = ($input['parent_id'] != '') ? $input['parent_id'] : null;
 		$category->is_active = isset($input['is_active']) ? $input['is_active'] : 0;
+		$category->category_gamme = isset($input['category_gamme']) ? $input['category_gamme'] : 0;
 		$category->created_by = auth()->guard('admin')->user()->admin_id;
 		$category->save();
 

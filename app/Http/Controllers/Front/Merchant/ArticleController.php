@@ -36,14 +36,33 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('merchant.article.list');
+        $product = false;
+        $categories = $this->category_repository->getParentCategories(2);
+        $attribute_sets = $this->attribute_set_repository->getAll();
+        return view('merchant.article.list',compact('product','categories','attribute_sets'));
     }
+
+
     public function getData(Request $request)
-    {   
+    {
         $store_id = auth()->user()->store->first()->store_id;
+       
         if(Input::has('article_filter')){
-            $products = $this->product_repository->getByStoreFilter($request->all(),$store_id);
+
+            if(Input::get('article_filter') != "attribut_set"){
+                $products = $this->product_repository->getByStoreFilter($request->all(),$store_id);
+            }
+            else{
+
+                 if(Input::has('attribute_set_filter')){
+                    $products = $this->product_repository->getByAttributeSetFilter($request->all(),$store_id);
+
+                }
+            }
         }
+       
+        
+        // article filter
         $data_tables = Datatables::collection($products);
         $data_tables->EditColumn('check', function ($product) {
             return '<a href="#" class="checkbox" data-product-id="'. $product->product_id.'"><i class="fa fa-circle-o mr-10"></i></a>';
@@ -61,8 +80,12 @@ class ArticleController extends Controller
         })->EditColumn('action', function ($product) {
             return view("merchant.article.action", ['product' => $product]);
         });
+
+        //return function
         return $data_tables->rawColumns(['check','product_price','product_image','inventory','action'])->make(true);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -80,12 +103,14 @@ class ArticleController extends Controller
     public function getChild(Request $request)
     {
         $id = $request->get('category_id');
+        $gamme = $this->category_repository->getById($id)->category_gamme;
         $childs = $this->category_repository->getChildCategory($id);
         $category_childs = [];
         foreach($childs as $child)
         {
             $category_childs[] = $child->category_id."$".$child->getByLanguage(2)->category_name;
         }
+        $category_childs[] = $gamme;
         return response()->json($category_childs);
     }
    

@@ -80,7 +80,7 @@
                         {!! Form::open(array('url' => 'admin/instagram/images' ,'class' => 'pull-right', 'method'=>'POST')) !!}
                             <div  id="checklist" class="ordreInstagram" style=" clear: both;content: '';display: table;">
                                 <div class='list-group gallery'>
-                                    @foreach($instagrams as $instagram)
+                                    @foreach($instagrams as $instagram) 
                                         @if($instagram->is_active =='1')
                                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 listItem' draggable="true">
                                             <input type="hidden" name="orders[]"  value="orders">
