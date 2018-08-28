@@ -26,7 +26,6 @@ class AttributeSetController extends Controller
 	{
 		$attribute_sets = Datatables::collection($this->attribute_set_repository->getAll())->make(true);
 		$attribute_sets = $attribute_sets->getData();
-		/*dd($attribute_sets);*/
 		return view('admin.attribute_set.list', compact('attribute_sets'));
 	}
 

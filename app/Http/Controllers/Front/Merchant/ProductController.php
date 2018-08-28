@@ -122,9 +122,9 @@ class ProductController extends Controller
 		$attribute_set_id = $request->get('attribute_set_id');
 		$product_id = $request->get('product_id');
 		$attribute_set = $this->product_repository->getAttributesBySetId($attribute_set_id);
-		if($product_id > 0){
+		if($product_id > 0) {
 			$product_attributes = $this->product_repository->getAttributesByProductId($product_id);
-		}else{	
+		} else {	
 			$product_attributes = [];
 		}
 		/*\Log::debug($product_attributes);*/
@@ -148,7 +148,6 @@ class ProductController extends Controller
 
 	public function store(ProductRequest $product_request)
 	{
-		\Log::Info("Bonjour tous le monde");
 		$product = $this->product_repository->save($product_request->all());
 		if ($product_request->get('searchproduct')) {
 			$this->saveAffiliateProduct($product->product_id, $product_request->all());
@@ -382,8 +381,6 @@ class ProductController extends Controller
 			$data_id[$value->product_attribute_option_id] = $value->attribute_id;
 		}
 
-		dd($data_id);
-
 		foreach ($data_id as $k => $d) {
 			$pav = ProductAttributeValue::find($k);
 			$pav->attribute_id = 78;
@@ -393,8 +390,6 @@ class ProductController extends Controller
 		}
 
 		//dd($data_id);
-
-		dd("ok");
 	}
 
 	public function getProductForEncasement(Request $request){
