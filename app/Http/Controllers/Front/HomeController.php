@@ -70,5 +70,4 @@ class HomeController extends Controller
         }
         return response()->json(['instagrams' => $instagram_imgs]);
     }
-
 }

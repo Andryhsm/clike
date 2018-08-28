@@ -900,6 +900,7 @@ var reviews_length = $('#reviews').text().length ;
 			getInstagramFeeds(3);
 		});
 	}
+
 	else getInstagramFeeds(8);
 	
 	
