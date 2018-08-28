@@ -19,10 +19,10 @@
                 </div>
                 <div class="row">
                 <div class="order-content col-lg-12">
-                    <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                    <div class="order-content-item order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                     </div>
-                    <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-5">
+                    <div class="order-content-item order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-5">
                         
                         <div><strong class="text-uppercase">{!! $item->product->brand_name !!}</strong></div>
                         
@@ -36,7 +36,7 @@
                             <div class="title-bold-2">{!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)</div>
                         </div>
                     </div>
-                    <div class="order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="order-content-item order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         @if($item->order_status_id == 3)
                             <div>
                                 <button class="btn btn-customer-filled pull-right" data-url="{!! route('customer-waiting-order', ['id' => $item->itemRequest->first()->order_item_request_id]) !!}" id="{!! $item->order_item_id !!}" type="button" onclick="waiting_order(this);">
@@ -96,10 +96,10 @@
                 </div>
                 <div class="row">
                 <div class="order-content col-lg-12">
-                    <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                    <div class="order-content-item order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                     </div>
-                    <div class="order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                    <div class="order-content-item order-info ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         
                         <div><strong class="text-uppercase">{!! $item->product->brand_name !!}</strong></div>
                        
@@ -113,7 +113,7 @@
                             <div class="title-bold-2">{!! format_price($item->price) !!}  (<b>X{!! $item->quantity !!}</b>)</div>
                         </div>
                     </div>
-                    <div class="order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="order-content-item order-form ptb-10 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div>
                             <a disabled="disabled" class="Coupon btn btn-customer-filled pull-right">Coupon à présenter</a>
                         </div>

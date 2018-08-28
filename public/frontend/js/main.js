@@ -881,7 +881,7 @@ var reviews_length = $('#reviews').text().length ;
 	});
 
 	/**
-	 * menu
+	 * Affiche ou cache le menu de la home page (version petits écrans)
 	 */
 	 $('.navbar-toggle').click(function(e) {
 		$('.navbar-collapse').slideToggle();
@@ -889,18 +889,16 @@ var reviews_length = $('#reviews').text().length ;
 
 
 	/**
-	 * end menu
+	 * instagram feed dans la home page
 	 */
-	/**
-	 * instagram feed
-	 */
+
 	if (Modernizr.mq('(max-width: 480px)')) {
 		$(function() {
-			console.log('303030')
+			// affiche 3 images instagram dans les écrans mobiles
 			getInstagramFeeds(3);
 		});
 	}
-	else getInstagramFeeds(8);
+	else getInstagramFeeds(8); // affiche 8 images instagram dans les autres écrans
 	
 	
 })(jQuery);
@@ -1058,13 +1056,14 @@ function close_select_radius() {
 
 function initMap() {}
 
+/***
+*** Début fixer le nav menu gauche dans compte marchand et client
+***/
 function aside_fixed() {
-	//console.log('log')
 	var $aside = $(".aside"),
 		$window = $(window),
 		offset = $aside.offset(),
 		content = $('.main')[0].clientHeight - 140,
-		//content = $('.test')[0].clientHeight,
 		topPadding = 15,
 		left = $('.nav-menu.content').offset().left + parseInt($('.main').css('padding-left')),
 		//left = '30px',
@@ -1117,6 +1116,9 @@ function aside_fixed() {
 		});
 	}
 }
+/***
+*** Début fixer le nav menu gauche dans compte marchand et client
+***/
 
 function verify_radio()
 {

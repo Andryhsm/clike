@@ -335,7 +335,7 @@
         </div>
         <div class="section-instagramm-feed-content">
             <div class="row text-center" data-href="{!! url('instagram-feeds') !!}">
-                
+                <!-- va être alimenté à l'aide d'ajax (contient les images instagram) -->
             </div>
         </div>
     </div>

@@ -1207,8 +1207,8 @@ a#scrollUp {
   height: 22vw;
 }
 .order-img img {
-  width: 85% !important;
-  height: 100%;
+  max-width: 85% !important;
+  /*height: 100%;*/
 }
 .coupon-product .order-img img {
   width: 80%;
@@ -1218,6 +1218,7 @@ a#scrollUp {
 }
 .order-img {
 	width: 160px;
+  margin-right: 20px
 	/*height: 180px;*/
 }
 .content-product-on-home>ul>li>.nav-title {
