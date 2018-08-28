@@ -1,30 +1,46 @@
 @media (min-width: 1200px){
 
-  .tab-pane > div:nth-child(1) {
-    margin-bottom: 0.6rem;
+.tab-pane > div:nth-child(1) {
+    margin-bottom: 0.6rem !important;
     width: 105% !important;
   }
 
-    .tab-pane > div:nth-child(2) {
+.tab-pane > div:nth-child(2) {
     width: 105% !important;
   }
 
- #uploadTab .col-lg-2 {
+#uploadTab .col-lg-2 {
     width: 19.666667% !important;
 }
 
-  #tab-engagement {
+#tab-engagement {
+    background-color: black;
     margin: 5% 3% 1% 4.4%;
 }
+
+
+#uploadTab .col-sm-2.point5  {
+    font-size: 14px !important;
+}
+
+.tab-panel-customer .nav-tabs, .product-tab-inner .nav-tabs {
+    background-position: 50% !important;
+
+}
+
 }
 
 /*Pour test seulement*/
-@media (min-width: 1024px) and @media (max-width: 1200px){
+@media (min-width: 1024px) and (max-width: 1200px){
   .block-operation-bottom{
     padding: 4% 15px 10px 15px;
   }
   #tab-engagement {
     margin: 5% 1% 1% 1.4%;
+  }
+
+    #tab-engagement {
+    background-color: red;
   }
 
 }
@@ -35,6 +51,30 @@
     margin-top: 14.5%;
 }
 
+#uploadTab  > div:nth-child(2) > div:nth-child(1){
+    margin-top: 25.999999rem !important;
+}
+
+#tab-engagement {
+    background-color: orange;
+    margin: 5% 3% -1% 3.4%;
+  }
+
+.tab-panel-customer .nav-tabs, .product-tab-inner .nav-tabs {
+  background-position: 50% !important;
+}
+
+#tab-engagement  .col-lg-2{
+/*  margin-top: 27rem !important;
+*/  }
+
+#uploadTab .col-sm-2.point5 {
+    font-size: 14px !important;
+}
+
+/*#tab-sale > .nav .nav-tabs {
+    font-size: 15px !important;
+}*/
 .share-social-network {
     width: 76% !important;
 }
@@ -538,6 +578,15 @@ a#scrollUp {
  
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
+
+#tab-engagement {
+    margin: 5% -4% -1% 5.4%;
+}
+
+#uploadTab .col-sm-2.point5 {
+  width: 18% !important;
+  font-size: 13px !important;
+}
 
 .engagement-menu {
   display:none;
