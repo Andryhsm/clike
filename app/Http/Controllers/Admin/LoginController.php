@@ -30,14 +30,14 @@ class LoginController extends Controller
 
             if (!$auth->attempt($credentials)) {
                 return Redirect::back()
-                    ->withInput()->withErrors('Your email address/password combination is incorrect.');
+                    ->withInput()->withErrors('La combinaison de votre adresse e-mail/mot de passe n\'est pas valide.');
             }
             $user = $auth->getLastAttempted();
             $auth->login($user, $request->has('memory'));
             return redirect()->route('dashboard');
         }
         return Redirect::back()
-            ->withErrors('Your email address/password combination is incorrect.')
+            ->withErrors('La combinaison de votre adresse e-mail/mot de passe n\'est pas valide.')
             ->withInput();
 
     }
