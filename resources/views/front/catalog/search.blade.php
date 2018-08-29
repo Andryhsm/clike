@@ -8,16 +8,20 @@
                 $category_name_title = "TOUT";
                 if(Input::has('category')){
                     $categories_name_selected = [];
+                    $category_ids = [];
                     $selected_category = Input::get('category'); 
                     $category = \App\Category::with('translation')->where('category_id', $selected_category)->first();
                     $categories_name_selected[] = $category->translation[1]->category_name;
+                    $category_ids[] = $category->category_id;
                     while($category->parent){
                         $category = $category->parent;
                         $categories_name_selected[] = $category->translation[1]->category_name;
+                        $category_ids[] = $category->category_id;
                     }
+            
                     echo "<div class='container'>"; 
                     for($i = sizeof($categories_name_selected) - 1; $i >= 0 ; $i--){
-                            echo "<a href='#'>".$categories_name_selected[$i]."</a> ";
+                            echo "<a href='#' onclick='window.location.href=\"".route('search', ['category' => $category_ids[$i]])."\"' >".$categories_name_selected[$i]."</a> ";
                             echo ($i > 0) ? "&nbsp;&nbsp;&nbsp;&nbsp;<i class='fa fa-angle-right'></i>&nbsp;&nbsp;&nbsp;&nbsp;" : "";
                     }
                     echo "</div>";
