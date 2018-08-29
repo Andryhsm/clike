@@ -47,7 +47,7 @@ class RadioRepository
     
     public function findRadio($zip)
     {
-        return $this->model->where('zip',$zip)->inRandomOrder()->first();
+        return $this->model->where('zip', 'like',$zip)->inRandomOrder()->first();
     }
 
 }

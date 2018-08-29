@@ -71,7 +71,7 @@ class CatalogController extends Controller
         $prices_array = [];
         
         
-        if(Cookie::has('zip-code') && Cookie::has('radius')){
+        if(Cookie::has('zip-code') && Cookie::has('radius')){ //vérification des cockies
             $zip_code = Cookie::get('zip-code');
             $zip_code = str_replace(' ', '+', $zip_code);
             $zip_code = str_replace('%', '+', $zip_code);
@@ -117,10 +117,6 @@ class CatalogController extends Controller
                     $product_tags[$tag->tag_id] = $tag->tag;
                 }
             }
-/*            if (count($product->brand) > 0) {
-                 $brand_id = $product->brand->parent_id==null ? $product->brand->brand_id : $product->brand->parent->brand_id;
-                $product_brands[$brand_id] = ($product->brand->parent_id==null) ? $product->brand->brand_name : $product->brand->parent->brand_name;
-            }*/
         }
 
         if(Session::has('prices_array')){ 
@@ -159,7 +155,6 @@ class CatalogController extends Controller
                 }
             }
         }
-        //dd($attribute_options);
         return $attribute_options;
     }
 
