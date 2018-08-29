@@ -62,12 +62,8 @@ class HomeController extends Controller
 
     public function getInstagramFeeds(Request $request)
     {
-        $language_id=app('language')->language_id;
-        $instagrams = $this->instagram_repository->getHomeActiveInstagram($request);
-        $instagram_imgs = [];
-        foreach ($instagrams as $key => $value) {
-            $instagram_imgs[$value->url] = $value->getInstagramImage($language_id);
-        }
-        return response()->json(['instagrams' => $instagram_imgs]);
+        $instagrams = $this->instagram_repository->getHomeActiveInstagram($request->all());
+        
+        return response()->json(['instagrams' => $instagrams]);
     }
 }

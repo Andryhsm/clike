@@ -9,6 +9,7 @@ use App\Models\Instagram;
 use App\Product;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 
 class InstagramRepository implements InstagramRepositoryInterface
 {
@@ -58,7 +59,7 @@ class InstagramRepository implements InstagramRepositoryInterface
     }
 
     public function getHomeActiveInstagram($input) {
-        return $this->model->whereIsActive(1)->orderBy('id', 'DESC')->limit($input['limit'])->get();
+        return $this->model->where('is_active',1)->orderBy('order', 'ASC')->limit($input['limit'])->get();
     }
 
     public function getAll(){

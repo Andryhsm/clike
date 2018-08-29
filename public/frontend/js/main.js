@@ -912,10 +912,14 @@ function getInstagramFeeds(limit) {
         dataType: 'json'
     })
     .done(function(data) {
+    	console.log(data);
+    	var vide = "#";
         if (data.instagrams) {
             $.each(data.instagrams, function(i, val){
+            	var url = (val.url != null) ? val.url:vide;
+            	var image = base_url+"upload/instagram_img/"+val.image;
             	var html = '<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 section-instagramm-feed-align">';
-	            html = html + '<a href="'+i+'"><img src="'+val+'" alt="instagramm feed clickee"/></a>';    
+	            html = html + '<a href="'+ url +'"><img src="'+image+'" alt="instagramm feed clickee"/></a>';    
 	            html = html + '</div> ';
 	            $('.section-instagramm-feed-content .row').append(html);
             });
@@ -1121,18 +1125,21 @@ function aside_fixed() {
 function verify_radio()
 {
 	var zip_code = $('#zip-code').val();
-	var loadurl = $('#zip-code').attr('data-url-verify-radio');
-	$.ajax({
-        type: "POST",
-        url: loadurl,
-        data: "zip_code=" + zip_code
-    }).done(function(data) {
-    	console.log(data.radio);
-    	if(data.radio != null){
-    		$('.search-radio').removeAttr('disabled');
-    	}else{
-    		$('.search-radio').attr('disabled','disabled');
-    	}
-    });
-
+	if(zip_code != ''){
+		var loadurl = $('#zip-code').attr('data-url-verify-radio');
+		$.ajax({
+	        type: "POST",
+	        url: loadurl,
+	        data: "zip_code=" + zip_code
+	    }).done(function(data) {
+	    	//console.log(zip_code);
+	    	console.log(data.radio);
+	    	if(data.radio != null && jQuery.inArray( zip_code, data.radio) !== -1){
+	    		$('.search-radio').removeAttr('disabled');
+	    	}else{
+	    		$('.search-radio').attr('disabled','disabled');
+	    	}
+	    });
+    }else
+    	$('.search-radio').attr('disabled','disabled');
 }
