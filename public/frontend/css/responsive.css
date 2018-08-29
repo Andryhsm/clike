@@ -1,25 +1,36 @@
 @media (min-width: 1200px){
 
   .tab-pane > div:nth-child(1) {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.6rem !important;
     width: 105% !important;
   }
 
-    .tab-pane > div:nth-child(2) {
+  .tab-pane > div:nth-child(2) {
     width: 105% !important;
   }
 
- #uploadTab .col-lg-2 {
+  #uploadTab .col-lg-2 {
     width: 19.666667% !important;
 }
 
   #tab-engagement {
     margin: 5% 3% 1% 4.4%;
 }
+
+
+  #uploadTab .col-sm-2.point5  {
+    font-size: 14px !important;
+}
+
+  .tab-panel-customer .nav-tabs, .product-tab-inner .nav-tabs {
+    background-position: 50% !important;
+
+}
+
 }
 
 /*Pour test seulement*/
-@media (min-width: 1024px) and @media (max-width: 1200px){
+@media (min-width: 1024px) and (max-width: 1200px){
   .block-operation-bottom{
     padding: 4% 15px 10px 15px;
   }
@@ -27,14 +38,74 @@
     margin: 5% 1% 1% 1.4%;
   }
 
+  #tab-engagement {
+    margin: 5% 3% 1% 3.4%;
+  }
+
+  #uploadTab  > div:nth-child(2) > div:nth-child(1){
+    margin-top: 25.88888888rem !important;
+  }
+
+  .tab-panel-customer .nav-tabs, .product-tab-inner .nav-tabs {
+    background-position: 54% !important;
+  } 
+
+  .title span {
+    font-size: 19px !important;
+  }  
+
+  .tab-panel-customer>.nav-tabs > li, .tab-panel-customer>.nav-tabs > li {
+    margin: 7px -5.5px !important;
+  }  
+
+  #tab-sale > ul > li{
+    font-size: 14px !important;
+  }
 }
+
 
 /* Normal desktop :992px. */
 @media (min-width: 992px) and (max-width: 1024px) {
   .main-sidebar {
     margin-top: 14.5%;
-}
+  }
 
+  #uploadTab  > div:nth-child(2) > div:nth-child(1){
+    margin-top: 25.999999rem !important;
+  }
+
+
+  .title span {
+    font-size: 18px !important;
+  }  
+
+
+  #tab-engagement {
+    margin: 5% 3% -1% 3.4%;
+    background-color: red !important;
+  }
+
+  .tab-panel-customer>.nav-tabs > li, .tab-panel-customer>.nav-tabs > li{
+    width: 51% !important;
+    margin: 10px -5.5px !important;  
+  }
+
+  .tab-panel-customer .nav-tabs, .product-tab-inner .nav-tabs {
+    background-position: 50% !important;
+  }
+
+
+  #uploadTab .col-sm-2.point5 {
+      font-size: 14px !important;
+  }
+
+  #tab-sale > ul > li{
+      font-size: 14px !important;
+  }
+
+/*#tab-sale > .nav .nav-tabs {
+    font-size: 15px !important;
+}*/
 .share-social-network {
     width: 76% !important;
 }
@@ -511,9 +582,7 @@ a#scrollUp {
     margin-top: 40%;
     margin-bottom: 0px;
 }
-.tab-panel-customer>.nav-tabs > li, .tab-panel-customer>.nav-tabs > li {
-  width: 50% !important;
-}
+
 .mean-menu-area .nav>li>a {
     height: 90px;
 }
@@ -539,6 +608,21 @@ a#scrollUp {
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
 
+#tab-engagement {
+    margin: 5% -4% -1% 5.4%;
+}
+
+#browseTab > div:nth-child(2) > div:nth-child(1){
+  margin-top: 32rem !important;
+  background-color: red;
+}
+
+
+#uploadTab .col-sm-2.point5 {
+  width: 20% !important;
+  font-size: 13px !important;
+}
+
 .engagement-menu {
   display:none;
 }
@@ -562,7 +646,7 @@ a#scrollUp {
     width: 50%;
 }
 .tab-panel-customer>.nav-tabs > li, .tab-panel-customer>.nav-tabs > li {
-  width: 50% !important;
+  width: 58% !important;
 }
 .container > .navbar-collapse > ul > li > ul > li {
       display: block !important;
@@ -1181,9 +1265,7 @@ a#scrollUp {
 .header-engagement-height {
     height: 32rem;
 }
-.point5.left-header { 
-  margin-top: 32rem !important;
-}
+
 .visa-account img {
   width: 80%;
 }
@@ -1207,8 +1289,8 @@ a#scrollUp {
   height: 22vw;
 }
 .order-img img {
-  width: 85% !important;
-  height: 100%;
+  max-width: 85% !important;
+  /*height: 100%;*/
 }
 .coupon-product .order-img img {
   width: 80%;
@@ -1218,6 +1300,7 @@ a#scrollUp {
 }
 .order-img {
 	width: 160px;
+  margin-right: 20px
 	/*height: 180px;*/
 }
 .content-product-on-home>ul>li>.nav-title {
@@ -1239,10 +1322,18 @@ a#scrollUp {
       max-width: none;
       width: 35px !important;
   }
+
 }
 
 /* small mobile :320px. */
 @media (max-width: 767px) {
+  #tab-engagement {
+    background-color: brown !important;
+  }
+
+  .point5.left-header {
+    margin-top: 27rem !important;
+}
 
 .tab-content-search .row {
   display: -webkit-box;

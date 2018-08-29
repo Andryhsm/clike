@@ -29,10 +29,10 @@
                 </div>
             </div>
             <div class="coupon-product text-center">
-                <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="order-img order-content-item col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                 </div>
-                <div class="order-info">
+                <div class="order-info order-content-item">
                     
                     <div class="title-bold-2">{!! $item->product->brand_name !!}</div>
                     

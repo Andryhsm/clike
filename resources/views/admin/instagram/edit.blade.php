@@ -11,9 +11,9 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="alert alert-info alert-dismissible">                    
+             <!--   <div class="alert alert-info alert-dismissible">                    
                     Taille du photo recommandée: 375 x 365
-                </div>
+                </div> -->
                 <div class="box box-primary">
                        {{ Form::model($instagram, array('method' => 'PATCH', 'url' => array('admin/instagram', $instagram->id),'class'=>'validate_form','files' => true)) }}
                     <div class="box-body">

@@ -39,7 +39,6 @@ function start_map($shop_data) {
 
 jQuery(document).ready(function($) {
     change_header_title();
-    aside_fixed();
     // $('.nav-menu .list-menu').on('click', '.nav-link', function(event) {
     //     var content = $(this).attr('id')
     //     event.preventDefault();

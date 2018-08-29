@@ -28,10 +28,10 @@
                     </div>
                     
                     <div class="order-story col-lg-12">
-                        <div class="order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                        <div class="order-content-item order-img col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <img src="{!! URL::to('/').'/'.$item->product->getDefaultImagePath() !!}"></img>
                         </div>
-                        <div class="order-info ptb-10 col-lg-3 col-md-3 col-sm-3 col-xs-5">
+                        <div class="order-content-item order-info ptb-10 col-lg-3 col-md-3 col-sm-3 col-xs-5">
                             
                             <div><strong class="text-uppercase">{!! $item->product->brand_name !!}</strong></div>
                             
@@ -46,7 +46,7 @@
                             </div>
                             
                         </div>
-                        <div class="order-info info-2 ptb-10 col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <div class="order-content-item order-info info-2 ptb-10 col-lg-5 col-md-5 col-sm-5 col-xs-12">
                             <div><p><span class="title-bold-2">N° DE COMMANDE : </span>{!! $item->order->order_id !!}</p></div>
                             <div><p><span class="title-bold-2">DATE DE COMMANDE : </span>{!! formatDate($item->order->order_date, "M dS, Y") !!}</p></div>
                             <div><p><span class="title-bold-2">BOUTIQUE : </span>{!! $item->product->store->store_name !!}</p></div>

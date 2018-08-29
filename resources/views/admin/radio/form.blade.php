@@ -30,7 +30,7 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            {!! Form::label('zip', 'Code postal', ['class' => '']) !!}
+                            {!! Form::label('zip', 'Code postal (Veuillez insérer le(s) code(s) postal(aux) séparé(s) par virgule)', ['class' => '']) !!}
                             {!! Form::text('zip', ($radio)? $radio->zip:null, ['class' => 'form-control','id'=>'zip','placeholder'=>"Zip"]) !!}
                         </div>
                     </div>
