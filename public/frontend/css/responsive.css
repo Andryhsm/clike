@@ -82,6 +82,7 @@
 
   #tab-engagement {
     margin: 5% 3% -1% 3.4%;
+    background-color: red !important;
   }
 
   .tab-panel-customer>.nav-tabs > li, .tab-panel-customer>.nav-tabs > li{
@@ -611,10 +612,14 @@ a#scrollUp {
     margin: 5% -4% -1% 5.4%;
 }
 
+#browseTab > div:nth-child(2) > div:nth-child(1){
+  margin-top: 32rem !important;
+  background-color: red;
+}
 
 
 #uploadTab .col-sm-2.point5 {
-  width: 18% !important;
+  width: 20% !important;
   font-size: 13px !important;
 }
 
