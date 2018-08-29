@@ -81,7 +81,7 @@ class AuthController extends Controller
 			}
 		}
 		return Redirect::back()
-			->withInput()->withErrors('Your email address/password combination is incorrect.');
+			->withInput()->withErrors('La combinaison de votre Adresse e-mail n\'est pas valide.');
 	}
 
     /**
