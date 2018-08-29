@@ -62,7 +62,7 @@ class OrderController extends Controller
         $items = [];
         $b=false;
         $d=false;
-        dd($order_items);
+        //dd($order_items);
         //chercher les items
         foreach ($order_items as $item) {
             $country = $item->product->store->country->name;
