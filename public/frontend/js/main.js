@@ -899,6 +899,43 @@ var reviews_length = $('#reviews').text().length ;
 		});
 	}
 	else getInstagramFeeds(8); // affiche 8 images instagram dans les autres écrans
+
+	/**
+	 * bouton plus de details
+	 */
+	var buttonTextM = "";
+    var buttonTextL = "";
+    if ($('#language').val() == "fr") {
+        buttonTextM = "More details";
+        buttonTextL = "Less details";
+    }
+    else {
+        buttonTextM = "Plus de détails";
+        buttonTextL = "Moins de détails";
+    }
+	var description_length = $('#description').text().length ;
+	$('.descriptionclick').on('click', function(){
+		// console.log('je suis dans description');
+		if (description_length > 1200) {
+			$('#btn_details').show();
+			$('#btn_details').click(function(e) {
+				if ($('#productTabContent').hasClass('height-content')) {
+					// console.log('ato amin if io');
+					$('#productTabContent').removeClass('height-content');
+					$('.tabs-limit').addClass('hidden');
+					$("#btn_details").val(buttonTextL);
+				}
+				else {
+					// console.log('ato am else zao');
+					$('#productTabContent').addClass('height-content');
+					$("#btn_details").val(buttonTextM);
+					$('.tabs-limit').removeClass('hidden');
+				}
+			});
+		}else{
+			$('#btn_details').hide();
+		}
+	});
 })(jQuery);
 
 
