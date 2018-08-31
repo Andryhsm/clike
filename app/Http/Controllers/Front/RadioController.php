@@ -33,6 +33,11 @@ class RadioController extends Controller
 
         $radio = $this->radio_repository->findRadio($zip_code);
 
-        return response()->json(['radio' => $radio]);
+        if(count($radio)>0)
+            $array = explode(',',$radio->zip);
+        else
+            $array = [];
+
+        return response()->json(['radio' => $array]);
     }
 }

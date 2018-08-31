@@ -88,7 +88,8 @@
                                                 <a class="thumbnail fancybox" rel="ligthbox" href="">
                                                     <img class="img-responsive" alt="" src="/upload/instagram_img/{{ $instagram->image }}" />
                                                     <div class='text-center'>
-                                                        <small class='text-muted'>{{ $instagram->title }}</small>
+                                                        <small class='text-muted'>{{ $instagram->title }}</small><br>
+                                                        <small class='text-muted'>{{ $instagram->url }}</small>
                                                     </div> 
                                                 </a>
                                             </div> 

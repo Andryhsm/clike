@@ -22,8 +22,12 @@
                             <label for="page_title">Déscription du Instagram</label>
                             {!! Form::text('title', null,array('class'=>'form-control required', 'placeholder'=>'Description Instagram feed')) !!}
                         </div>
+
+                        <div class="form-group">
+                            <label for="page_title">URL</label>
+                            {!! Form::text('url', null,array('class'=>'form-control required', 'placeholder'=>'URL Instagram feed')) !!}
+                        </div>
                 
-                        
                         <div class="form-group">
                             <label for="content-heading">Photo Instagram</label>
                             {!!  Form::file('image',['class'=>"form-control"])!!}

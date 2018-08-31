@@ -180,7 +180,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => [], 'prefix' => 'admin/'],
             return view('admin.404');
         })->name('404');
     });
-
 });
 Route::group(['namespace' => 'Front', 'middleware' => ['language'], 'prefix' => ''], function () {
     Route::get('/', 'HomeController@index')->name('home');

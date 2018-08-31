@@ -381,9 +381,9 @@
                         <div class="tab-panel tab-panel-customer" style="width:100%;">
                             
                              <ul class="nav nav-tabs" style="font-size: 17px !important;" role="tablist">
-    	                        <li role="presentation" class="active"><a href="#description" class="notflip" aria-controls="uploadTab" role="tab" data-toggle="tab" id="head-tab-signing">Description</a>
+    	                        <li role="presentation" class="active"><a href="#description" class="notflip descriptionclick" aria-controls="uploadTab" role="tab" data-toggle="tab" id="head-tab-signing">Description</a>
     	                        </li>
-    	                        <li role="presentation"><a class="flip" href="#reviews" aria-controls="browseTab" role="tab" data-toggle="tab" id="head-tab-register">Avis clients</a>
+    	                        <li role="presentation"><a class="flip reviewsclick" href="#reviews" aria-controls="browseTab" role="tab" data-toggle="tab" id="head-tab-register">Avis clients</a>
     
     	                        </li>
     	                        <button type="button" class="close" href="javascript:history.back()" aria-label="Close">
