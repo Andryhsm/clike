@@ -10,9 +10,15 @@ jQuery(document).ready(function() {
 
     var $document = jQuery(document);
 
-    $('#product_name1').select2({
-        data: product_is_active
+    $('#brand_name').select2({
+        data: marques_data
     });
+
+    // $('#product_name1').select2({
+    //     data: product_is_active
+    // });
+
+    // $('#brand_name').select2(data, {id: 3991, a_key: 'Lorem Ipsum'});
 
     $("#customer_form").validate();
 

@@ -609,18 +609,34 @@ a#scrollUp {
 @media (min-width: 768px) and (max-width: 991px) {
 
 #tab-engagement {
-    margin: 5% -4% -1% 5.4%;
+  margin: 5% 2% -1% 3.4%;
 }
 
-#browseTab > div:nth-child(2) > div:nth-child(1){
+#tab-engagement {
+  background-color: pink !important;
+}
+
+#tab-sale > ul {
+  font-size: 15px !important;
+}
+
+.title span {
+  font-size: 15px;
+}
+
+#left-header{
   margin-top: 32rem !important;
-  background-color: red;
+}
+
+#left-header p {
+  height: 27.66666px;
+  margin: 0 0 0px;
 }
 
 
 #uploadTab .col-sm-2.point5 {
   width: 20% !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
 }
 
 .engagement-menu {
@@ -646,7 +662,7 @@ a#scrollUp {
     width: 50%;
 }
 .tab-panel-customer>.nav-tabs > li, .tab-panel-customer>.nav-tabs > li {
-  width: 58% !important;
+  width: 50% !important;
 }
 .container > .navbar-collapse > ul > li > ul > li {
       display: block !important;

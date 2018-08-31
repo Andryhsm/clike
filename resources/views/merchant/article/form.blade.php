@@ -8,7 +8,9 @@
     {!! Html::style('backend/dist/css/AdminLTE.min.css') !!}
     {!! Html::style('backend/dist/css/skins/skin-black-light.css') !!}
     {!! Html::style('backend/css/style.css') !!}
-
+    {!! Html::style('backend/plugins/dynatree/src/skin/ui.dynatree.css') !!}
+    {!! Html::style('backend/plugins/dropzone/dropzone.css') !!}
+    {!! Html::style('backend/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css') !!}
     {!! Html::style('frontend/css/style-clickee.css') !!}   
 @stop
 @section('page_title')
@@ -100,14 +102,19 @@
                     
                     <div class="article-details">
                         <p class="title"><bold>détails article</bold></p>
-                        
+                        {{----}}
+                        {{--<div class="form-group">--}}
+                            {{--<label for="brand_name">Marque</label>--}}
+                            {{--<input data-msg="Veuillez entrer la marque!" type="text" name="brand_name" class="form-control required" id="brand_name" value="{!!($product) ? $product->brand_name: null !!}" placeholder="Marque">--}}
+                        {{--</div>--}}
                         <div class="form-group">
-                            <label for="brand_name">Marque</label>
-                            <input data-msg="Veuillez entrer la marque!" type="text" name="brand_name" class="form-control required" id="brand_name" value="{!!($product) ? $product->brand_name: null !!}" placeholder="Marque">
+                            <label for="brand_name" class="control-label">Marque</label>
+                            <select id="brand_name" data-msg="Veuillez entrer la marque!" name="brand_name" data-content-range="1" class="select-marque form-control required">
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="attribute_set_">Gamme</label>
-                            <select data-msg="Veuillez sélectionner la gamme!" {!! ($product) ? 'readonly' : '' !!} name="attribute_set_id" id="attribute_set_" class="form-control required">
+                            <label for="attribute_set_">Gammert</label>
+                            <select data-msg="Veuillez sélectionner la gamme!" {!! ($product) ? 'disabled' : '' !!} name="attribute_set_id" id="attribute_set_" class="form-control required">
                                 <option value="" selected="selected">Selectionner gamme</option>
                                 @if (count($attribute_sets) > 0) 
                                     @foreach($attribute_sets as $attribute_set)
@@ -219,7 +226,7 @@
                                     
                                     <div class="form-group">                                       
                                         <label for="product_inventory">Inventaire</label>
-                                        <input data-range="1" data-msg="Vous avez oubliez l'inventaire ci-dessus!" type="text" name="product_inventory[{!! $key !!}]" class="product_inventory form-control required" value="{!! $stock->product_count !!}" placeholder="Inventaire">
+                                        <input data-range="1" data-msg="Vous avez oubliez l'inventaire ci-dessus!" type="number" name="product_inventory[{!! $key !!}]" class="product_inventory form-control required" value="{!! $stock->product_count !!}" placeholder="Inventaire">
                                     </div>
                                     
                                     <?php
@@ -346,6 +353,25 @@
     //{!! Html::script('frontend/js/ajoutproduct.js') !!}
     {!! Html::script('frontend/js/article.js') !!}
     <script>
-       
+        var marques_data = [
+            {
+                id : 0,
+                text : "Séléctionner une marque"
+            },
+                <?php
+                $index = 0;
+                foreach ($marques as $marque): ?>
+            {
+                id : '{!! addslashes($marque->brand_name) !!}',
+                text : '{!! addslashes($marque->brand_name) !!}'
+            } {!! ((sizeof($marques) - 1) != $index) ? "," : "" !!}
+
+            <?php
+            $index++;
+            endforeach ?>
+        ];
     </script>
+    {!! Html::script('frontend/js/jquery.easy-autocomplete.min.js') !!}
+    {!! Html::script('backend/plugins/select2/select2.js') !!}
+    {!! Html::script('frontend/js/customer.js') !!}
 @stop

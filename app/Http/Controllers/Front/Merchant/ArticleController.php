@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front\Merchant;
 
+use App\Interfaces\BrandRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Interfaces\CategoryRepositoryInterface;
@@ -20,14 +21,16 @@ class ArticleController extends Controller
     protected $attribute_set_repository;
     protected $product_repository;
     protected $special_product_repository;
-    
-    public function __construct(ProductRepositoryInterface $product_repo, CategoryRepositoryInterface $category_repo,UploadService $uploadservice, AttributeSetRepository $attribute_set_repo, SpecialProductRepository $Special_product_repo)
+    protected $brand_repository;
+
+    public function __construct(ProductRepositoryInterface $product_repo, CategoryRepositoryInterface $category_repo,UploadService $uploadservice, AttributeSetRepository $attribute_set_repo, SpecialProductRepository $Special_product_repo, BrandRepositoryInterface $brand_repository)
     {
         $this->category_repository = $category_repo;
         $this->product_repository = $product_repo;
         $this->upload_service = $uploadservice;
         $this->attribute_set_repository = $attribute_set_repo;
         $this->special_product_repository = $Special_product_repo;
+        $this->brand_repository = $brand_repository;
     }
     /**
      * Display a listing of the resource.
@@ -94,10 +97,11 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        $marques = $this->brand_repository->lists();
         $product = false;
         $categories = $this->category_repository->getParentCategories(2);
         $attribute_sets = $this->attribute_set_repository->getAll();
-        return view('merchant.article.form',compact('product','categories','attribute_sets'));
+        return view('merchant.article.form',compact('product','categories','attribute_sets', 'marques'));
     }
     
     public function getChild(Request $request)
@@ -180,6 +184,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
+        $marques = $this->brand_repository->lists();
         $product = $this->product_repository->getById($id);
         
         $category_id = $product->categories->first()->category_id;
@@ -188,7 +193,7 @@ class ArticleController extends Controller
         $attribute_sets = $this->attribute_set_repository->getAll();
         $category_childs = $this->category_repository->getChildCategory($category_id);
         
-        return view('merchant.article.form',compact('product','categories','attribute_sets','category_childs','attribute_set'));
+        return view('merchant.article.form',compact('product','categories','attribute_sets','category_childs','attribute_set','marques'));
     }
 
     /**

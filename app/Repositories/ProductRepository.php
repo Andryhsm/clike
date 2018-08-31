@@ -146,7 +146,7 @@ class ProductRepository implements ProductRepositoryInterface
             $attributes = isset($input['attributes']) ? $input['attributes'] : '';
             $attribute_id = isset($input['attribute_id']) ? $input['attribute_id'] : '';
             $product_stock_ids = $input['product_stock_id'];
-            $product_stock_attribute_option_ids = $input['product_stock_attribute_option_id'];
+            $product_stock_attribute_option_ids = isset($input['product_stock_attribute_option_id']) ? $input['product_stock_attribute_option_id'] : [];
             $product_image_ids = $input['product_image_ids'];
             
             foreach ($counts as $key=>$count) {

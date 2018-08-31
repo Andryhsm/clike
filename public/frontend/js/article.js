@@ -110,24 +110,16 @@ function checka(box) {
             }
             var gamme = $('#attribute_set_');
             var input_hidden = $('.attribute_id');
-            var input_select = $(input_hidden.parent().find('input[type=text], select')[1]);
-            if (etat_gamme == null) {
-                gamme.parent().remove();
-                $(input_select).parent().parent().hide();
-                $(input_select).disabled;
-                input_hidden.parent().hide();
-            } else if(gamme[0] == undefined){
-                $('<div class="form-group">\n' +
-                    '                            <label for="attribute_set_">Gamme</label>\n' +
-                    '                            <select data-msg="Veuillez sélectionner la gamme!" name="attribute_set_id" id="attribute_set_" class="form-control required">\n' +
-                    '                                <option value="" selected="selected">Selectionner gamme</option>\n' +
-                    '                                 \n' +
-                    '                                        <option value="33">Chaussures</option>\n' +
-                    '                                        <option value="32">Accessoires</option>\n' +
-                    '                                        <option value="31">Vetements/Accessoires</option>\n' +
-                    '                                        </select>\n' +
-                    '                            \n' +
-                    '                        </div>').insertAfter($('#brand_name').parent());
+            var input_select_taille = $(input_hidden.parent().find('input[type=text], select')[1]);
+            if (etat_gamme == null) {console.log('testing')
+                $('#attribute_set_').prop("disabled",true);
+                gamme.parent().hide();
+                // $(input_select_taille).parent().parent().hide();
+                // $(input_select_taille).disabled;
+                input_hidden.parent().parent().hide();
+            } else {
+                gamme.parent().show();
+                gamme.prop("disabled",false);
             }
         })
         .fail(function() {
@@ -338,7 +330,6 @@ $('form#product').on('click', '#add-article', function(e) {
     e.preventDefault();
     //$.validator.messages.required = '';
     var form = $('#product');
-    $('#attribute_set_').attr('disabled', false);
     form.validate({
         rules: {
            product_name: "required",
