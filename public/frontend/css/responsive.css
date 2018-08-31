@@ -1,7 +1,7 @@
 @media (min-width: 1200px){
 
   .tab-pane > div:nth-child(1) {
-    margin-bottom: 0.6rem !important;
+    margin-bottom: -1.4rem !important;
     width: 105% !important;
   }
 
@@ -82,7 +82,6 @@
 
   #tab-engagement {
     margin: 5% 3% -1% 3.4%;
-    background-color: red !important;
   }
 
   .tab-panel-customer>.nav-tabs > li, .tab-panel-customer>.nav-tabs > li{
@@ -610,10 +609,6 @@ a#scrollUp {
 
 #tab-engagement {
   margin: 5% 2% -1% 3.4%;
-}
-
-#tab-engagement {
-  background-color: pink !important;
 }
 
 #tab-sale > ul {
