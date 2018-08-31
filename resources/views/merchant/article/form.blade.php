@@ -113,7 +113,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="attribute_set_">Gammert</label>
+                            <label for="attribute_set_">Gamme</label>
                             <select data-msg="Veuillez sélectionner la gamme!" {!! ($product) ? 'disabled' : '' !!} name="attribute_set_id" id="attribute_set_" class="form-control required">
                                 <option value="" selected="selected">Selectionner gamme</option>
                                 @if (count($attribute_sets) > 0) 
